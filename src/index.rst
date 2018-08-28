@@ -6,14 +6,19 @@
 SKA telescope developer portal
 ------------------------------
 
-.. warning::
-   This portal is under development and sudden major changes may happen at any 
-   time. 
-
 Welcome to the `Square Kilometre Array <http://www.skatelescope.org>`_ software 
 documentation portal. Wheather you are a developer involved in SKA or you are 
 simply one of our many users, all of our software processes and projects are 
 documented in this portal.
+
+Scope
+=====
+
+This documentation applies to the bridging phase of the SKA project, with first
+contributions effectively happening in July 2018. 
+Part of the bridging phase goals will be to consolidate and enrich this portal 
+with more detailed information. It is thus anticipated that in this phase 
+the change rate of the documentation will be very frequent.
 
 SKA Code of Conduct
 -------------------
@@ -32,14 +37,19 @@ reference guide defining the culture of this online community of contributors.
 SKA developer community
 -----------------------
 
+SKA software development is managed in an open and transparent way. 
+
 .. todo::
    - Getting started into our community
    - SAFe process implementation
    - Decision making process
    - Community forum
 
-Source code repository
-----------------------
+Development tools
+-----------------
+
+SKA source code is maintained under the SKA-telescope organization on github. 
+Every team is tracking daily work in a team-based project on our JIRA server.
 
 .. todo::
    - Github organisation
@@ -63,6 +73,9 @@ Other Services
 
 Commitment to opensource
 ------------------------
+
+As defined in SKA software standard, SKA software development is committed to opensource,
+and an open source licensing model is always preferred within SKA software development.
 
 .. todo::
    - Licensing your project
