@@ -58,7 +58,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'developer.skatelescope.org'
-copyright = '2017, SKA Organization'
+copyright = '2018, SKA Organization'
 author = 'Marco Bartolini'
 
 # The version info for the project you're documenting, acts as replacement for
