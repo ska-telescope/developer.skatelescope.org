@@ -3,6 +3,9 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+.. ATTENTION::
+   This portal is under active development and in **BETA** version 
+
 SKA telescope developer portal
 ------------------------------
 
@@ -26,7 +29,7 @@ SKA Code of Conduct
 SKA Organisation (SKAO) is committed to the highest standards of business 
 ethics and as such expects everyone involved in SKAO-related business to 
 uphold the standards and expected professional behaviour set out in 
-`SKA Code of Ethics <https://www.skatelescope.org/code-of-ethics/>`_ .
+`SKA Code of Ethics page <https://www.skatelescope.org/code-of-ethics/>`_ .
 
 The code of ethics applies to every SKA collaborators and it is the 
 reference guide defining the culture of this online community of contributors.
@@ -48,11 +51,19 @@ SKA software development is managed in an open and transparent way.
 Development tools
 -----------------
 
-SKA source code is maintained under the SKA-telescope organization on github. 
-Every team is tracking daily work in a team-based project on our JIRA server.
+Git
+===
+
+Git is adopted as distributed version control system, and all SKA code shall be hosted in a git repository.
+The github organization *ska-telescope* can be found at https://github.com/ska-telescope . All SKA developers 
+must have a github account and be added to the organization as part of a team. 
+
+Jira
+====
+
+Every team is tracking daily work in a team-based project on our JIRA server at [https://jira.skatelescope.org] 
 
 .. todo::
-   - Github organisation
    - Create a new project
    - Link to issue tracker
 
