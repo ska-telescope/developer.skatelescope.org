@@ -24,6 +24,7 @@ import sphinx_rtd_theme
 
 def setup(app):
     app.add_stylesheet('css/custom.css')
+    app.add_javascript('js/github.js')
 
 # -- General configuration ------------------------------------------------
 
@@ -106,7 +107,7 @@ html_theme_options = {
     #'logo' : 'ska_logo.jpg',
 }
 
-html_context = { 
+html_context = {
     'favicon': 'img/favicon.ico',
     'logo': 'img/logo.jpg',
     'theme_logo_only' : True,
