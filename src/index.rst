@@ -70,7 +70,7 @@ SKA software development is managed in an open and transparent way.
   :caption: Development tools
   :hidden:
 
-  github
+  tools/git
 
 Development tools
 -----------------
@@ -81,7 +81,7 @@ Git is adopted as distributed version control system, and all SKA code shall be 
 The github organization *ska-telescope* can be found at https://github.com/ska-telescope . All SKA developers
 must have a github account and be added to the organization as part of a team.
 
-- :doc:`github`
+- :doc:`tools/git`
 
 Jira
 ====
