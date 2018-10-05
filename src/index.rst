@@ -128,7 +128,6 @@ Developer Services
 
 - :doc:`services/ait_performance_env`
 
-
 Commitment to opensource
 ------------------------
 
