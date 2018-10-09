@@ -3,7 +3,7 @@ AIT cluster
 
 Cluster specs
 -------------
-.. image:: https://assets.readthedocs.org/sustainability/segment-ad.png
+.. image:: ../_static/img/services/ait_performance_env/cluster.png
 
 Access the cluster
 ------------------
