@@ -13,7 +13,7 @@
   :hidden:
 
 .. ATTENTION::
-   This portal is under active development and in **BETA** version
+   This portal is under active development and in **ALPHA** version
 
 SKA telescope developer portal
 ------------------------------
