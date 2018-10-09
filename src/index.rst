@@ -3,8 +3,17 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+.. HOME SECTION ==================================================
+
+.. Hidden toctree to manage the sidebar navigation.
+
+.. toctree::
+  :maxdepth: 1
+  :caption: Home
+  :hidden:
+
 .. ATTENTION::
-   This portal is under active development and in **BETA** version
+   This portal is under active development and in **ALPHA** version
 
 SKA telescope developer portal
 ------------------------------
