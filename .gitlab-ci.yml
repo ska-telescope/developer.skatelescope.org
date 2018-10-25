@@ -1,0 +1,57 @@
+# This file is a template, and might need editing before it works on your project.
+# Official language image. Look for the different tagged releases at:
+# https://hub.docker.com/r/library/python/tags/
+image: python:latest
+
+# Change pip's cache directory to be inside the project directory since we can
+# only cache local items.
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache"
+
+# Pip's cache doesn't store the python packages
+# https://pip.pypa.io/en/stable/reference/pip_install/#caching
+#
+# If you want to also cache the installed packages, you have to install
+# them in a virtualenv and cache it as well.
+cache:
+  paths:
+    - .cache/pip
+    - venv/
+
+before_script:
+  - apt-get update
+  - apt install -y python-minimal
+  - apt install -y python-pip
+  - python -V               # Print out python version for debugging
+  - apt-get install -y rsync
+  - pip install virtualenv
+  - virtualenv venv
+  - source venv/bin/activate
+
+pages:
+  script:
+  - pip install -r requirements.txt
+  - make html
+  - ls build/html
+  - mkdir .public
+  - cp -r build/html/* .public
+  - mv .public public
+  #tags:
+  #  - ska
+  artifacts:
+    paths:
+    - public
+  only:
+  - master
+
+deploy_staging:
+  stage: deploy
+  script:
+    - echo "Deploy to staging server"
+    - rsync -av public /srv/public
+  #tags:
+  #  - ska
+  environment:
+    name: staging
+  only:
+  - master
