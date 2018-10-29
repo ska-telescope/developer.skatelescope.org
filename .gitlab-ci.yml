@@ -39,8 +39,8 @@ pages:
   artifacts:
     paths:
     - public
-  only:
-  - master
+ # only:
+ # - master
 
 deploy_staging:
   stage: deploy
@@ -52,5 +52,5 @@ deploy_staging:
   #  - ska
   environment:
     name: staging
-  only:
-  - master
+# only:
+# - master
