@@ -56,6 +56,7 @@ reference guide defining the culture of this online community of contributors.
   :hidden:
 
   community/getting_started
+  community/teams_responsibilities
   community/decision_making
 
 SKA developer community
@@ -64,6 +65,7 @@ SKA developer community
 SKA software development is managed in an open and transparent way.
 
 - :doc:`community/getting_started`
+- :doc:`community/teams_responsibilities`
 - :doc:`community/decision_making`
 
 .. todo::
