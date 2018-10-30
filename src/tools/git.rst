@@ -1,7 +1,14 @@
 Git
 ---
 
+Git is the version control system of choice used by SKA. Describing the basics
+of how to use git is out of the scope of this developer portal, but it is
+fundamental that all developers contributing to SKA get familiar with git and
+how to use it. These online resources are a good starting point:
 
+  * git tutorial 1
+  * git reference
+  * git cheatsheet
 
 Branching policy
 ================
