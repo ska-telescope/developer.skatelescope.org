@@ -17,7 +17,20 @@ in a condition of instability, reverting to a condition of stability shall have
 the precedence over any other activity on the repository.
 
 We suggest to adopt a story-based branching model, often referred to as
-**feature branching**.
+**feature branching**. Bearing in mind that a story by definition is some piece
+of work a developer should conclude in the time of a sprint, the workflow would
+follow these steps:
+
+  * As a developer starts working on a new story she creates a new branch
+  * The new branch shall be named as the story, i.e. story-AT1-26
+  * All the commit messages contributing to the development of the story begin with the story ID, i.e. **AT1-26 basic testing**
+  * The developer makes sure that all tests execute correctly on his local story branch
+  * When the story is ready for acceptance the developer pushes the repository upstream
+  * A pull request is created to merge the story branch into the master branch
+  * The CI pipeline is executed successfully on the pull request
+  * Reviewers interact with comments on the pull request up to its acceptance
+  * Pull request is merged into Master
+  * The CI pipeline is executed successfully on the master branch.
 
 .. todo::
   - tutorial pointers
