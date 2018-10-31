@@ -9,13 +9,15 @@ Development team
 
 Scrum Master
 ============
-The Scrum Master of each team is the responsible for the process the team
+The Scrum Master of each team is responsible for the process the team
 follows. A generic description of this role can be found `on the SAFe website <https://www.scaledagileframework.com/scrum-master/>`_.
-The SKA Scrum Masters are responsible for:
+The SKA Scrum Masters are also responsible for:
 
   *  Meet the team, make sure they know each other and find a nice way to present interests, skills and get to know each other. Lead the team to find a name they like.
 
-  * Make sure all team components can access SKA confluence and jira.
+  * Make sure all team members can access SKA confluence and jira.
+
+  * Make sure all team members have access to SKA video conferencing tools.
 
   * Create a team page on the `SKA confluence portal <https://confluence.skatelescope.org/display/SE/Bridging+organisation>`_ describing who belongs to the team and his/her role. This page will serve as an entry point for team related information.
 
