@@ -103,6 +103,28 @@ Every team is tracking daily work in a team-based project on our JIRA server at 
    - Create a new project
    - Link to issue tracker
 
+.. DEVELOPMENT GUIDELINES SECTION ==================================================
+
+.. Hidden toctree to manage the sidebar navigation.
+
+.. toctree::
+  :maxdepth: 1
+  :caption: Development guidelines
+  :hidden:
+
+  development/codeguide
+
+Development guidelines
+-----------------
+Coding guidelines
+=================
+
+A Python skeleton project is created for use within the SKA Telescope. This skeleton purpose is to
+enforce coding best practices and bootstrap the initial project setup. Any development should start
+by forking this skeleton project and change the apropriate files.
+
+- :doc:`development/codeguide`
+
 .. PROJECTS SECTION ==================================================
 
 .. Hidden toctree to manage the sidebar navigation.
