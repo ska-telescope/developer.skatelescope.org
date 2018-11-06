@@ -39,7 +39,7 @@ of the software system under construction. The workflow follows these steps:
   * The developer continues working on his local master branch with multiple commits on the same story.
   * Each day the local master pulls the remote and incorporates changes from others.
   * The local master is tested successfully.
-  * The local commits are pushed onto remote.
+  * The local commits are pushed onto the remote master.
   * The CI pipeline is correctly executed on the remote master by the CI server.
 
 Implemented correctly, this practice leads to having an integrated, tested,
@@ -54,20 +54,38 @@ We support adopting a story-based branching model, often referred to as
 piece of work a developer should conclude in the time of a sprint, the workflow
 would follow these steps:
 
-  * As a developer starts working on a new story she creates a new branch.
-  * The new branch shall be named as the story, i.e. *story-AT1-26*.
-  * All the commit messages contributing to the development of the story begin with the story ID, i.e. *AT1-26 basic testing*.
-  * The developer makes sure that all tests execute correctly on his local story branch.
-  * When the story is ready for acceptance the developer pushes the story branch upstream.
-  * A pull request is created to merge the story branch into the master branch.
-  * The CI pipeline is executed successfully by the CI server on the pull request.
-  * Reviewers interact with comments on the pull request up to its acceptance.
-  * Pull request is merged into Master.
-  * The CI pipeline is executed successfully on the master branch by the CI server.
+* As a developer starts working from master on a new story, she creates a new branch.
+* The new branch shall be named as the story, i.e. *story-AT1-26*.
+
+.. code:: bash
+
+  $ git branch
+  * master
+  $ git checkout -b my-story-id
+  $ git branch
+  master
+  * my-story-id
+
+* All the commit messages contributing to the development of the story begin with the story ID, i.e. *AT1-26 basic testing*.
+* The developer makes sure that all tests execute correctly on her local story branch.
+* When the story is ready for acceptance the developer pushes the story branch upstream.
+
+.. code:: bash
+
+  $ git push -u origin my-story-id
+
+* A pull request is created on the DVCS server to merge the story branch into the master branch.
+* Reviewers interact with comments on the pull request until all conflicts are resolved and reviewers accept the pull request.  
+* Pull request is merged into Master.
+* The CI pipeline is executed successfully on the master branch by the CI server.
 
 Whenever a team deviates from one of the recommended policy, it is important
 that the team captures its decision and publicly describe its policy,
 discussing it with the rest of the community.
+
+See a more detailed description of this workflow at https://guides.github.com/introduction/flow/
+
+
 
 Github
 ------
