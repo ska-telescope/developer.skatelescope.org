@@ -10,6 +10,43 @@ how to use it. These online resources are a good starting point:
   * Official git reference at: https://git-scm.com/docs
   * Interactive Git cheatsheet: http://www.ndpsoftware.com/git-cheatsheet.html
 
+
+Committing code
+===============
+
+When working on a development project, it is important to stick to these simple
+commit rules:
+
+* Commit often.
+* Have the **Jira story ID** at the beginning of your commit messages.
+* Git logs shall be human readable in sequence, describing the development activity.
+* Use imperative forms in the commit message.
+
+Configure git
+=============
+
+Set GIT institutional email address
++++++++++++++++++++++++++++++++++++
+
+Setup git so that it uses your institutional email account to sign commits,
+this can be done in your global git configuration:
+
+.. code::bash
+
+  $ git config --global user.email "your@institutional.email"
+  $ git config --global user.email
+  your@institutional.email
+
+Or you can configure the mail address on a project basis.
+
+.. code::bash
+
+  $ cd your/git/project
+  $ git config user.email "your@institutional.email"
+  $ git config user.email
+  your@institutional.email
+
+
 Branching policy
 ================
 
@@ -50,7 +87,11 @@ Story based branching
 +++++++++++++++++++++
 
 We support adopting a story-based branching model, often referred to as
-**feature branching**. Bearing in mind that a *story* by definition is some
+**feature branching**. This workflow effectively leverages **pull requests** enabling code reviews and continuous branch testing, but it
+is important to stress the importance of having short lived branches. It is
+easy to abuse this policy and have long living branches resulting in painful
+merge activities and dead or stale development lines.
+Bearing in mind that a *story* by definition is some
 piece of work a developer should conclude in the time of a sprint, the workflow
 would follow these steps:
 
@@ -75,7 +116,7 @@ would follow these steps:
   $ git push -u origin my-story-id
 
 * A pull request is created on the DVCS server to merge the story branch into the master branch.
-* Reviewers interact with comments on the pull request until all conflicts are resolved and reviewers accept the pull request.  
+* Reviewers interact with comments on the pull request until all conflicts are resolved and reviewers accept the pull request.
 * Pull request is merged into Master.
 * The CI pipeline is executed successfully on the master branch by the CI server.
 
@@ -86,6 +127,24 @@ discussing it with the rest of the community.
 See a more detailed description of this workflow at https://guides.github.com/introduction/flow/
 
 
-
 Github
 ------
+
+Use institutional email
+=======================
+
+Create a github account using your **institutional email** address at
+https://github.com/join?source=login . If you already have an account on
+github, you shall have your institutional email added to your profile: click on
+your user icon on the top right corner and select *Settings->Emails->Add email
+address* .
+
+Setup SSH key
+=============
+
+Associate your ssh-key to your user at *Settings->SSH and GPG keys* .
+
+Join SKA Organisation
+=====================
+
+SKA Organisation can be found on github at https://github.com/ska-telescope/ , The scrum master of your team will make sure you can access it.
