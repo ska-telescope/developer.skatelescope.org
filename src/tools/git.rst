@@ -148,3 +148,10 @@ Join SKA Organisation
 =====================
 
 SKA Organisation can be found on github at https://github.com/ska-telescope/ , The scrum master of your team will make sure you can access it.
+
+Desktop client
+==============
+
+Less experienced developers can use the github desktop client at:
+https://desktop.github.com/
+This definitely lowers the barrier of using git for a number of different users.
