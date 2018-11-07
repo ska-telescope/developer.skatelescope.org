@@ -79,7 +79,7 @@ the button “Run pipeline” on a specific branch (i.e. master).
 |image5|
 
 The pipeline will run with a shared runner made available from GitLab.
-It is also possible to assign specific ska runner to the project (by adding the `tags <https://docs.gitlab.com/ee/ci/yaml/README.html#tags>`. To do
+It is also possible to assign specific ska runner to the project (by adding the `tags <https://docs.gitlab.com/ee/ci/yaml/README.html#tags>`__. To do
 that the option must be enabled:
 
 |image6|
