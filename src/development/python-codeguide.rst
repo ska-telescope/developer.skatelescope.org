@@ -6,9 +6,9 @@
     - Writing Command-Line Scripts
     - C or Cython Extensions
 
-*****************
-Coding Guidelines
-*****************
+************************
+Python Coding Guidelines
+************************
 
 This section describes requirements and guidelines.
 
