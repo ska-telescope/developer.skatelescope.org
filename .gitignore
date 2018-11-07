@@ -4,3 +4,4 @@ build
 *.swp
 *~ 
 .vscode
+Pipfile.lock
