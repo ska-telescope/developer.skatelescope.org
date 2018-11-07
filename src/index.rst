@@ -114,18 +114,18 @@ Every team is tracking daily work in a team-based project on our JIRA server at 
   :caption: Development guidelines
   :hidden:
 
-  development/codeguide
+  development/python-codeguide
 
 Development guidelines
------------------
-Coding guidelines
-=================
+----------------------
+Python coding guidelines
+========================
 
 A Python skeleton project is created for use within the SKA Telescope. This skeleton purpose is to
 enforce coding best practices and bootstrap the initial project setup. Any development should start
 by forking this skeleton project and change the apropriate files.
 
-- :doc:`development/codeguide`
+- :doc:`development/python-codeguide`
 
 .. PROJECTS SECTION ==================================================
 
