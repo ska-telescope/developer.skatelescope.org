@@ -115,7 +115,7 @@ Every team is tracking daily work in a team-based project on our JIRA server at 
   development/codeguide
 
 Development guidelines
------------------
+----------------------
 Coding guidelines
 =================
 
