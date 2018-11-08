@@ -1,4 +1,4 @@
-How to import a project from GitHub
+Continuous Integration
 --------------------------
 Creating a new CICD project
 ================

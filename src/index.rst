@@ -82,6 +82,8 @@ SKA software development is managed in an open and transparent way.
   :hidden:
 
   tools/git
+  
+  tools/continuousintegration
 
 Development tools
 -----------------
@@ -137,7 +139,6 @@ by forking this skeleton project and change the apropriate files.
   projects/list
   projects/create_new_project
   projects/document_project
-  projects/GitlabGitHubGuideline
 
 Projects
 --------
@@ -145,7 +146,6 @@ Projects
 - :doc:`projects/list`
 - :doc:`projects/create_new_project`
 - :doc:`projects/document_project`
-- :doc:`projects/GitlabGitHubGuideline`
 
 .. SERVICES SECTION ==================================================
 
