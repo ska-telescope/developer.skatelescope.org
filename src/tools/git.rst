@@ -31,7 +31,7 @@ Set GIT institutional email address
 Setup git so that it uses your institutional email account to sign commits,
 this can be done in your global git configuration:
 
-.. code::bash
+.. code:: bash
 
   $ git config --global user.email "your@institutional.email"
   $ git config --global user.email
@@ -39,7 +39,7 @@ this can be done in your global git configuration:
 
 Or you can configure the mail address on a project basis.
 
-.. code::bash
+.. code:: bash
 
   $ cd your/git/project
   $ git config user.email "your@institutional.email"
