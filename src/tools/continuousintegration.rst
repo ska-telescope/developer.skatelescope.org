@@ -1,7 +1,7 @@
 Continuous Integration
---------------------------
+----------------------
 Creating a new CICD project
-================
+===========================
 
 GitLab CI/CD can be used with GitHub or any other Git server. Instead of
 moving your entire project to GitLab, you can connect your external
@@ -64,7 +64,7 @@ The update can be forced with the specific button in the repository settings:
 |image4|
 
 Configuring a CI pipeline
-================
+=========================
 
 To enable the Gitlab automation, it is needed to insert a
 `configuration
