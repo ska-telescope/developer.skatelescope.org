@@ -16,13 +16,13 @@ At the moment, VPN credentials are sent individually and is required to send an 
 You will receive an .ovpn key to access the private network.
 
 In order to connect you will need an OpenVPN client:
+
 - Windows and Linux: https://openvpn.net/community-downloads/
 - MacOS: https://tunnelblick.net/
 
 Now just drag or add the .ovpn file to VPN the client. The follow tutorial is for tunnelblick, but it is similar to the other VPN clients.
 
 .. image:: openvpn_open.png
-
 .. image:: openvpn_more.png
 
 Now that you have configured the VPN credentials click on the VPN client icon located at the toolbar and connect to the private network.
