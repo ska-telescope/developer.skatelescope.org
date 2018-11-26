@@ -112,15 +112,16 @@ Including C Code
 * When C extensions are used, the Python interface for those extensions
   must meet the aforementioned Python interface guidelines.
 
-* The use of Cython_ is strongly recommended for C extensions, as per the
-  example in the template package. Cython_ extensions should store ``.pyx``
-  files in the source code repository, but they should be compiled to ``.c``
-  files that are updated in the repository when important changes are made to
-  the ``.pyx`` file.
+* The use of Cython_ is strongly recommended for C extensions. Cython_ extensions
+  should store ``.pyx`` files in the source code repository, but they should be compiled
+  to ``.c`` files that are updated in the repository when important changes are made
+  to the ``.pyx`` file.
 
 * In cases where C extensions are needed but Cython_ cannot be used, the `PEP 7
   Style Guide for C Code <https://www.python.org/dev/peps/pep-0007/>`_ is
   recommended.
+
+.. _Cython: https://cython.org/
 
 
 Examples
@@ -254,4 +255,5 @@ and ``':class:`AClass'``, but not ``':class:`numpy.array'`` or
 Acknowledgements
 ================
 
-The present document's coding guidelines are derived from project `Astropy's codding guidelines <http://docs.astropy.org/en/stable/development/codeguide.html>`_.
+The present document's coding guidelines are derived from project
+`Astropy's codding guidelines <http://docs.astropy.org/en/stable/development/codeguide.html>`_.
