@@ -84,7 +84,6 @@ SKA software development is managed in an open and transparent way.
   :hidden:
 
   tools/git
-  
   tools/continuousintegration
 
 Development tools
@@ -116,10 +115,19 @@ Every team is tracking daily work in a team-based project on our JIRA server at 
   :caption: Development guidelines
   :hidden:
 
+  development/definition_of_done
   development/python-codeguide
 
 Development guidelines
 ----------------------
+
+Definition of Done
+==================
+
+The definition of done is used to guide teams in planning and estimating the size of stories and features:
+
+- :doc:`development/definition_of_done`
+
 Python coding guidelines
 ========================
 
