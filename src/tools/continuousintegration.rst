@@ -78,11 +78,16 @@ the button “Run pipeline” on a specific branch (i.e. master).
 
 |image5|
 
-The pipeline will run with a shared runner made available from GitLab.
+Using a specific executor
+=========================
+
+The pipeline by default will run with a shared runner made available from GitLab.
 It is also possible to assign specific ska runner to the project (by adding the `tags <https://docs.gitlab.com/ee/ci/yaml/README.html#tags>`__). 
 To do that the option must be enabled:
 
 |image6|
+
+The EngageSKA cluster located at the Datacenter of Institute of Telecommunication (IT) in Aveiro provides some virtual machines available adding the tag "engageska" or "docker-executor" as shown `here <https://github.com/ska-telescope/ska-skeleton/blob/master/.gitlab-ci.yml>`__..
 
 .. |image0| image:: media/image1.png
    :width: 6.27083in
