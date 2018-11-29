@@ -87,7 +87,7 @@ To do that the option must be enabled:
 
 |image6|
 
-The EngageSKA cluster located at the Datacenter of Institute of Telecommunication (IT) in Aveiro provides some virtual machines available adding the tag "engageska" or "docker-executor" as shown `here <https://github.com/ska-telescope/ska-skeleton/blob/master/.gitlab-ci.yml>`__..
+The EngageSKA cluster located at the Datacenter of Institute of Telecommunication (IT) in Aveiro provides some virtual machines available adding the tag "engageska" or "docker-executor" as shown `here <https://github.com/ska-telescope/ska-skeleton/blob/master/.gitlab-ci.yml>`__.
 
 .. |image0| image:: media/image1.png
    :width: 6.27083in
