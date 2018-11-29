@@ -1,11 +1,16 @@
-Teams and responsibilities
---------------------------
+Agile teams and responsibilities
+--------------------------------
 
-SKA software development is organized with agile development teams.
+SKA software development is organized in agile teams.
 
 Development team
 ================
 
+See https://www.scaledagileframework.com/dev-team/
+
+.. todo::
+
+  - should we expand this section? The whole portal is dedicated to describe DEV practices and tools ...
 
 Scrum Master
 ============
@@ -39,3 +44,9 @@ The SKA Scrum Masters are also responsible for:
 
 Product Owner
 =============
+
+See https://www.scaledagileframework.com/product-owner/
+
+.. todo::
+
+  - Define specifics activities for SKA POs.

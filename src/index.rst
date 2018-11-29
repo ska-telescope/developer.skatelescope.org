@@ -13,7 +13,7 @@
   :hidden:
 
 .. ATTENTION::
-   This portal is under active development and in **ALPHA** version
+   This portal is under active development and in **BETA** version
 
 SKA telescope developer portal
 ------------------------------
@@ -149,6 +149,7 @@ by forking this skeleton project and change the apropriate files.
   projects/list
   projects/create_new_project
   projects/document_project
+  projects/licensing
 
 Projects
 --------
@@ -156,6 +157,7 @@ Projects
 - :doc:`projects/list`
 - :doc:`projects/create_new_project`
 - :doc:`projects/document_project`
+- :doc:`projects/licensing`
 
 .. SERVICES SECTION ==================================================
 
@@ -180,6 +182,5 @@ As defined in SKA software standard, SKA software development is committed to op
 and an open source licensing model is always preferred within SKA software development.
 
 .. todo::
-   - Licensing your project
    - Committment to opensource
    - Exceptions
