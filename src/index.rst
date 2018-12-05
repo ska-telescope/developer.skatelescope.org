@@ -12,9 +12,6 @@
   :caption: Home
   :hidden:
 
-.. ATTENTION::
-   This portal is under active development and in **BETA** version
-
 SKA telescope developer portal
 ------------------------------
 
