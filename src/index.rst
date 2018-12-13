@@ -112,11 +112,21 @@ Every team is tracking daily work in a team-based project on our JIRA server at 
   :caption: Development guidelines
   :hidden:
 
+  development/fundamental_sw_requirements
   development/definition_of_done
   development/python-codeguide
 
 Development guidelines
 ----------------------
+
+Fundamental SKA Software & Hardware Description Language Standards
+==================================================================
+
+These standards underpin all SKA software development. The canonical copy is 
+`held in eB <https://ska-aw.bentley.com/SKAProd/Search/QuickLink.aspx?n=SKA-TEL-SKO-0000661&t=3&d=&sc=Global&i=view>`_,
+but the essential information is here:
+
+- :doc:`development/fundamental_sw_requirements`
 
 Definition of Done
 ==================

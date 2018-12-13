@@ -1,6 +1,10 @@
-==================================================================
-Fundamental SKA Software & Hardware Description Language Standards
-==================================================================
+==================================
+Fundamental SKA Software Standards
+==================================
+
+These standards underpin all SKA software development. The canonical copy of this information is 
+`held in eB <https://ska-aw.bentley.com/SKAProd/Search/QuickLink.aspx?n=SKA-TEL-SKO-0000661&t=3&d=&sc=Global&i=view>`_,
+but the essential information is on this page, which is extracted from the eB document.
 
 Standards Applicable to all SKA Software
 ========================================
