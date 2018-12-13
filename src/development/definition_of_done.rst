@@ -37,3 +37,15 @@ Feature
   * Feature is integrated in an integration environment
   * Code documentation is integrated as part of the developer portal
   * Architectural documentation is updated to reflect the actual implementation
+  
+Formally Controlled Project Documentation
+=========================================
+
+Some documentation (particularly architectural documentation) that impacts other parts of 
+the project must to be formally reviewed and placed in the project's configuration management
+system. Whilst there is an unavoidable overhead to this we aim to make it as efficient as 
+possible. However, this level of documentation requires you to follow the process [in the Configuration Management are of Confluence](https://confluence.skatelescope.org/display/CMI/Document+Management), specifically:
+
+  * Document number obtained by completing and forwarding the [New Document Request Form](https://ska-aw.bentley.com/SKAProd/Search/QuickLink.aspx?n=SKA-TEL-SKO-0000511&t=3&d=Main%5ceB_PROD&sc=Global&i=view) to mailto:cm@skatelescope.org.
+  * Document is reviewed by suitable reviewer(s).
+  * Document is in eB and signed off.
