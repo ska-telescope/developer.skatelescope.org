@@ -5,7 +5,7 @@
 CI-Dashboard
 ----------------
 
-The following list is automatically extracted from our gitlab project dashboard page
+The following table is automatically extracted from our gitlab project dashboard page
 at [https://ska-telescope.gitlab.io/ska_ci_dashboard/]
 
 =====  =====  ====== 

@@ -82,6 +82,7 @@ SKA software development is managed in an open and transparent way.
 
   tools/git
   tools/continuousintegration
+  tools/cidashboard
 
 Development tools
 -----------------
