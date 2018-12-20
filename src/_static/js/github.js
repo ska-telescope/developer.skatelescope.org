@@ -39,9 +39,11 @@ jQuery(function(){
 				   href: "//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"
 				}).appendTo("head");
 			
-			dashboard_table.html($(data).find("#dataTable"));
-			
-			dashboard_table.DataTable();
+			dashboard_table.html($(data).find("#dataTable"));			
         });
+		
+		$(document).ready( function () {
+			dashboard_table.DataTable();
+		} );
     }
 });
