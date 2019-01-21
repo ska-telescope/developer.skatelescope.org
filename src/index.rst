@@ -116,6 +116,7 @@ Every team is tracking daily work in a team-based project on our JIRA server at 
   development/fundamental_sw_requirements
   development/definition_of_done
   development/python-codeguide
+  development/javascript-codeguide
 
 Development guidelines
 ----------------------
@@ -144,6 +145,15 @@ enforce coding best practices and bootstrap the initial project setup. Any devel
 by forking this skeleton project and change the apropriate files.
 
 - :doc:`development/python-codeguide`
+
+Javascript coding guidelines
+============================
+
+A React based javascript skeleton project is created for use within the SKA Telescope. Similar to the 
+Python skeleton above its purpose is to enforce coding best practices and bootstrap the initial project 
+setup for browser based javascript applications.
+
+- :doc:`development/javascript-codeguide`
 
 .. PROJECTS SECTION ==================================================
 
