@@ -108,10 +108,9 @@ Every team is tracking daily work in a team-based project on our JIRA server at 
 PyCharm
 =======
 
-PyCharm is a recommended IDE for developing SKA control system software.
+PyCharm is the recommended IDE for developing SKA control system software.
 
 - :doc:`tools/pycharm/pycharm`
-- :doc:`tools/pycharm/docker_configuration`
 
 .. DEVELOPMENT GUIDELINES SECTION ==================================================
 

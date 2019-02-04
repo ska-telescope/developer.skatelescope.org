@@ -1,12 +1,13 @@
-Configuring PyCharm for control system development
-**************************************************
+.. _`PyCharm docker configuration`:
+
+PyCharm docker configuration
+****************************
 
 These instructions show how to configure PyCharm Professional for SKA control system development using the SKA Docker
-images. PyCharm can be configured to use the Python interpreter inside a Docker image, which brings two immediate
-benefits:
+images. PyCharm can be configured to use the Python interpreter inside a Docker image, which allows:
 
-- development and testing can proceed without requiring a local Tango installation;
-- the development environment is identical to the testing and deployment environment, eliminating problems that occur
+- development and testing without requiring a local Tango installation;
+- the development environment to be identical to the testing and deployment environment, eliminating problems that occur
   due to differences in execution environment.
 
 Follow the steps below to configure PyCharm to develop new code and run tests for the tango-example project using the
