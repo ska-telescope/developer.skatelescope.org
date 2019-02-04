@@ -20,8 +20,8 @@ text files into html documentation. In order to contribute, you can
 clone the repository and test your changes locally:
 
 ```bash
-$ pip install -r requirements.txt
-$ make html
+$ pipenv install
+$ pipenv run make html
 $ browser build/html/index.html
 ```
 
