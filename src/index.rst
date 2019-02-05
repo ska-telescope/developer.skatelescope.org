@@ -114,7 +114,6 @@ Every team is tracking daily work in a team-based project on our JIRA server at 
   :hidden:
 
   development/fundamental_sw_requirements
-  development/base_dev_env
   development/definition_of_done
   development/python-codeguide
   development/javascript-codeguide
@@ -130,15 +129,6 @@ These standards underpin all SKA software development. The canonical copy is
 but the essential information is here:
 
 - :doc:`development/fundamental_sw_requirements`
-
-Base Development Environment
-============================
-
-Defines the standard environment (OS, libraries, packages and tool specific
-dependencies) on which development is expected to take place and thereby
-supported.
-
-- :doc:`development/base_dev_env`
 
 Definition of Done
 ==================
@@ -202,6 +192,38 @@ Developer Services
 ------------------
 
 - :doc:`services/ait_performance_env`
+
+.. DEPENDENCIES MANAGEMENT ==================================================
+
+.. Hidden toctree to manage the sidebar navigation.
+
+.. toctree::
+  :maxdepth: 1
+  :caption: Dependencies Management
+  :hidden:
+
+  dependencies/base_dev_env
+  dependencies/base
+  dependencies/ska-skeleton
+  dependencies/developer.skatelescope.org
+
+Dependencies Management
+-----------------------
+
+Defines the guidelines for *dependency listing* and *base system* definition as
+well as list the dependencies for every SKA's Telescope project.
+
+Base Development Environment
+============================
+
+Defines the standard environment (OS, libraries, packages and tool specific
+dependencies) on which development is expected to take place and thereby
+supported.
+
+- :doc:`dependencies/base_dev_env`
+- :doc:`dependencies/base`
+- :doc:`dependencies/ska-skeleton`
+- :doc:`dependencies/developer.skatelescope.org`
 
 Commitment to opensource
 ------------------------
