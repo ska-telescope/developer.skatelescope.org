@@ -5,8 +5,12 @@
 List of projects
 ----------------
 
-The following list is automatically extracted from our github organisation page
+The following table is automatically extracted from our github organisation page
 at [https://skatelescope.org/ska-telescope]
 
-- p1
-- p2
+================= ============= ===========
+Github repository Documentation Description
+================= ============= ===========
+testgit           testdoc       test description 
+testgit           testdoc       test description 
+================= ============= ===========
