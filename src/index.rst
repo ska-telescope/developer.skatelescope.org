@@ -114,6 +114,7 @@ Every team is tracking daily work in a team-based project on our JIRA server at 
   :hidden:
 
   development/fundamental_sw_requirements
+  development/base_dev_env
   development/definition_of_done
   development/python-codeguide
   development/javascript-codeguide
@@ -129,6 +130,15 @@ These standards underpin all SKA software development. The canonical copy is
 but the essential information is here:
 
 - :doc:`development/fundamental_sw_requirements`
+
+Base Development Environment
+============================
+
+Defines the standard environment (OS, libraries, packages and tool specific
+dependencies) on which development is expected to take place and thereby
+supported.
+
+- :doc:`development/base_dev_env`
 
 Definition of Done
 ==================
