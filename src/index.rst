@@ -203,6 +203,7 @@ Developer Services
   :hidden:
 
   dependencies/base_dev_env
+  dependencies/listing_project_dependencies
   dependencies/base
   dependencies/ska-skeleton
   dependencies/developer.skatelescope.org
@@ -221,6 +222,7 @@ dependencies) on which development is expected to take place and thereby
 supported.
 
 - :doc:`dependencies/base_dev_env`
+- :doc:`dependencies/listing_project_dependencies`
 - :doc:`dependencies/base`
 - :doc:`dependencies/ska-skeleton`
 - :doc:`dependencies/developer.skatelescope.org`
