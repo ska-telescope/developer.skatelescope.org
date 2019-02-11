@@ -22,20 +22,19 @@ Tools include:
  
 Prerequisites
 ===========================
- - VirtualBox installed
- - Vagrant (optional)
- - git
+	VirtualBox installed
+	Vagrant (optional)
+	git
 
 Creating a Development Environment with Vagrant
 ===========================
 To create a box containing the Development Environment there are few commands to execute. They are:
-``` 
+
 	git clone https://github.com/ska-telescope/ansible-playbooks.git
 	cd ansible-playbooks
 	vagrant up
 	vagrant provision
-``` 
- 
+
 The above commands will create a new Ubuntu 18.04 box with the above packages installed and the TANGO framwork. 
 
 
@@ -45,12 +44,10 @@ Download a image of ubuntu 18.04 like the following one:
  - https://sourceforge.net/projects/osboxes/files/v/vb/55-U-u/18.04/1804164.7z/download
 
 Run the box and call the following commands:
-``` 
 	git clone https://github.com/ska-telescope/ansible-playbooks.git
 	cd ansible-playbooks
     apt-add-repository --yes --update ppa:ansible/ansible && apt-get install ansible
 	ansible-playbook -i hosts deploy_tangoenv.yml 
-```
 
 Other information on https://github.com/ska-telescope/ansible-playbooks.
 
