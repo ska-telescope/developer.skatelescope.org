@@ -20,7 +20,8 @@ Processes include:
  - testing code,
  - packaging it.
  
-The main process is a python/c++ developer working with one tango device server writing one or more devices. 
+The main process is a python/c++ developer working with one tango device server writing one or more devices:
+
 1. (optional) Work with pogo and create the device(s) needed;
 2. Work with a text editor (such as pycharm or VSCode);
 3. The tango framework is running locally (with docker) together with other runtime application (generally other devices) needed for the specific development so that the developer can test the device(s) just created;
