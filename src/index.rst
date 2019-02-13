@@ -84,6 +84,7 @@ SKA software development is managed in an open and transparent way.
   tools/continuousintegration
   tools/cidashboard
   tools/pycharm/pycharm
+  tools/vscode/vscode
 
 Development tools
 -----------------
@@ -111,6 +112,14 @@ PyCharm
 PyCharm is the recommended IDE for developing SKA control system software.
 
 - :doc:`tools/pycharm/pycharm`
+
+Visual Studio Code
+==================
+
+Visual Studio Code (VSCode) is an alternative IDE for developing SKA control
+system software.
+
+- :doc:`tools/vscode/vscode`
 
 .. DEVELOPMENT GUIDELINES SECTION ==================================================
 
