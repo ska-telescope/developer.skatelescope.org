@@ -45,6 +45,7 @@ To create a box containing the Development Environment there are few commands to
 2. cd ansible-playbooks
 3. vagrant up
 4. vagrant provision
+5. reboot the box
 
 The above commands will create a new Ubuntu 18.04 box with the TANGO framwork installed and all the tools above. 
 
@@ -59,6 +60,7 @@ Run the box and call the following commands:
 2. cd ansible-playbooks
 3. apt-add-repository --yes --update ppa:ansible/ansible && apt-get install ansible
 4. ansible-playbook -i hosts deploy_tangoenv.yml 
+5. reboot the box
 
 Start the tango system
 ======================
