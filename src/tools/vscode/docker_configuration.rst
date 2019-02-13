@@ -99,7 +99,7 @@ in interactive mode and are ready to debug.
 
 * Debug a particular file using the ``vscode-debug.sh`` utility inside
   the docker image. For instance
-``./vscode-debug.sh powersupply/powersupply.py``:
+  ``./vscode-debug.sh powersupply/powersupply.py``:
 
 .. image:: vscode_connect.png
     :align: center
