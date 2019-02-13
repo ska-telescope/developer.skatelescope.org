@@ -46,7 +46,7 @@ To create a box containing the Development Environment there are few commands to
 3. vagrant up
 4. vagrant provision
 
-The above commands will create a new Ubuntu 18.04 box with the above packages installed and the TANGO framwork. 
+The above commands will create a new Ubuntu 18.04 box with the TANGO framwork installed and all the tools above. 
 
 Creating a Development Environment without Vagrant
 ==================================================
@@ -60,5 +60,17 @@ Run the box and call the following commands:
 3. apt-add-repository --yes --update ppa:ansible/ansible && apt-get install ansible
 4. ansible-playbook -i hosts deploy_tangoenv.yml 
 
-Other information on https://github.com/ska-telescope/ansible-playbooks.
+Start the tango system
+======================
+In order to start the tango system just call the following commands:
 
+1. cd /usr/src/ska-docker/docker-compose
+2. make up
+3. make start tangotest
+
+Other information
+=================
+Please visit the following github pages for more information:
+
+1. https://github.com/ska-telescope/ansible-playbooks.
+2. https://github.com/ska-telescope/ska-docker
