@@ -44,8 +44,7 @@ To create a box containing the Development Environment there are few commands to
 1. git clone https://github.com/ska-telescope/ansible-playbooks.git
 2. cd ansible-playbooks
 3. vagrant up
-4. vagrant provision
-5. reboot the box
+4. reboot the box
 
 The above commands will create a new Ubuntu 18.04 box with the TANGO framwork installed and all the tools above. 
 
