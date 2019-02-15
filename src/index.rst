@@ -83,6 +83,8 @@ SKA software development is managed in an open and transparent way.
   tools/git
   tools/continuousintegration
   tools/cidashboard
+  tools/pycharm/pycharm
+  tools/vscode/vscode
 
 Development tools
 -----------------
@@ -103,6 +105,21 @@ Every team is tracking daily work in a team-based project on our JIRA server at 
 .. todo::
    - Create a new project
    - Link to issue tracker
+
+PyCharm
+=======
+
+PyCharm is the recommended IDE for developing SKA control system software.
+
+- :doc:`tools/pycharm/pycharm`
+
+Visual Studio Code
+==================
+
+Visual Studio Code (VSCode) is an alternative IDE for developing SKA control
+system software.
+
+- :doc:`tools/vscode/vscode`
 
 .. DEVELOPMENT GUIDELINES SECTION ==================================================
 
@@ -142,7 +159,7 @@ Python coding guidelines
 
 A Python skeleton project is created for use within the SKA Telescope. This skeleton purpose is to
 enforce coding best practices and bootstrap the initial project setup. Any development should start
-by forking this skeleton project and change the apropriate files.
+by forking this skeleton project and change the appropriate files.
 
 - :doc:`development/python-codeguide`
 
