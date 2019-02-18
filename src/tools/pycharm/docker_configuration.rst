@@ -1,7 +1,7 @@
 .. _`PyCharm docker configuration`:
 
-PyCharm docker configuration
-****************************
+PyCharm Professional Docker configuration
+*****************************************
 
 These instructions show how to configure PyCharm Professional for SKA control system development using the SKA Docker
 images. PyCharm can be configured to use the Python interpreter inside a Docker image, which allows:

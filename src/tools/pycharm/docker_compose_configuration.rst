@@ -1,7 +1,7 @@
 .. _`PyCharm docker-compose configuration`:
 
-PyCharm docker-compose configuration
-************************************
+PyCharm Professional docker-compose configuration
+*************************************************
 
 These instructions show how to configure PyCharm Professional to use a docker-compose configuration, which allows
 development and testing of devices that requires interactions with other live devices. Follow the steps below to
