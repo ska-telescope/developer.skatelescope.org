@@ -4,11 +4,11 @@ Listing Project Dependencies
 Principles
 ==========
 
-All the dependencies that extraneous to the *base system* should be listed by
-every project maintainer. These dependencies should not only comprise of the
-OS level packages, but also of the specific tooling used by the package
-(i.e PyPI packages in a Python base project, npm packages in a node.js
-project).
+All the dependencies that are extraneous to the *base system* should be
+listed by every project maintainer. These dependencies should not only
+comprise of the OS level packages, but also of the specific tooling used
+by the package (i.e PyPI packages in a Python base project, npm packages
+in a node.js project).
 
 The expected dependencies lists for a Python based project are specified in
 :doc:`base_dev_env`.
