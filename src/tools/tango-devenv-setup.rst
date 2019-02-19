@@ -1,5 +1,6 @@
-Development Environment
------------------------
+Tango Development Environment set up
+------------------------------------
+
 Definition
 ===========================
 The Development Environment is the set of processes and software tools used to create software.  

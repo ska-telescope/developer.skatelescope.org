@@ -83,6 +83,7 @@ SKA software development is managed in an open and transparent way.
   tools/git
   tools/continuousintegration
   tools/cidashboard
+  tools/tango-devenv-setup
   tools/pycharm/pycharm
   tools/vscode/vscode
 
@@ -106,20 +107,27 @@ Every team is tracking daily work in a team-based project on our JIRA server at 
    - Create a new project
    - Link to issue tracker
 
-PyCharm
-=======
+Development Environments
+========================
 
-PyCharm is the recommended IDE for developing SKA control system software.
+Python and Tango development
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A completely configured development environment can be set up very easily. This will include 
+TANGO, PyTANGO, docker and properly configured IDEs.
+
+- :doc:`tools/tango-devenv-setup`
+
+
+PyCharm and VSCode are two IDEs that can be configured to support python and 
+PyTANGO development activities. You will find detailed instructions and howtos at:
 
 - :doc:`tools/pycharm/pycharm`
-
-Visual Studio Code
-==================
-
-Visual Studio Code (VSCode) is an alternative IDE for developing SKA control
-system software.
-
 - :doc:`tools/vscode/vscode`
+
+
+
+
 
 .. DEVELOPMENT GUIDELINES SECTION ==================================================
 
