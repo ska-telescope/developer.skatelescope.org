@@ -120,7 +120,7 @@ TANGO, PyTANGO, docker and properly configured IDEs.
 
 
 PyCharm and VSCode are two IDEs that can be configured to support python and 
-PyTANGO development activities. You will find detailed instructions and howtos at:
+PyTANGO development activities. You will find detailed instructions and how-tos at:
 
 - :doc:`tools/pycharm/pycharm`
 - :doc:`tools/vscode/vscode`
