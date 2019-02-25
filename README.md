@@ -27,5 +27,5 @@ $ browser build/html/index.html
 
 Once your local changes are compiling, you can request to update the documentation
 via a pull request.
-When the pull request gets merged, the online version of the wensite gets
+When the pull request gets merged, the online version of the website gets
 automatically updated to the most recent version.
