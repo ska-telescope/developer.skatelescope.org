@@ -188,10 +188,27 @@ Projects
 
   services/ait_performance_env
 
+
 Developer Services
 ------------------
 
 - :doc:`services/ait_performance_env`
+
+.. SHARE SECTION ==================================================
+
+.. Hidden toctree to manage the sidebar navigation.
+
+.. toctree::
+  :maxdepth: 1
+  :caption: Share Your Knowledge
+  :hidden:
+
+  community/share_your_knowledge  
+
+
+Share Your Knowledge
+--------------------
+- :doc:`community/share_your_knowledge`
 
 Commitment to opensource
 ------------------------
