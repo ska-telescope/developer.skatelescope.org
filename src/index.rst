@@ -240,3 +240,20 @@ and an open source licensing model is always preferred within SKA software devel
 .. todo::
    - Committment to opensource
    - Exceptions
+
+.. FOLLOW US SECTION ==================================================
+
+.. Hidden toctree to manage the sidebar navigation.
+
+.. toctree::
+  :maxdepth: 1
+  :caption: Follow us
+  :hidden:
+
+  follow_us/followus_env
+
+Follow Us
+----------
+
+- :doc:`follow_us/followus_env`
+
