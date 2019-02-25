@@ -1,5 +1,8 @@
-Git
----
+Working with git
+----------------
+
+About git
+=========
 
 Git is the version control system of choice used by SKA. Describing the basics
 of how to use git is out of the scope of this developer portal, but it is
@@ -127,8 +130,8 @@ discussing it with the rest of the community.
 See a more detailed description of this workflow at https://guides.github.com/introduction/flow/
 
 
-Github
-------
+Working with Github
+-------------------
 
 Use institutional email
 =======================
