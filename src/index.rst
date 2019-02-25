@@ -126,7 +126,26 @@ PyTANGO development activities. You will find detailed instructions and howtos a
 - :doc:`tools/vscode/vscode`
 
 
+.. AGILE PRACTICES FOLLOWED AT SKA SECTION ==================================================
 
+.. Hidden toctree to manage the sidebar navigation.
+
+.. toctree::
+  :maxdepth: 1
+  :caption: Agile practices followed at SKA
+  :hidden:
+
+  agile_practices/definition_of_done
+
+Agile practices followed at SKA
+--------------------------------
+
+Definition of Done
+==================
+
+The definition of done is used to guide teams in planning and estimating the size of stories and features:
+
+- :doc:`agile_practices/definition_of_done`
 
 
 .. DEVELOPMENT GUIDELINES SECTION ==================================================
@@ -139,9 +158,9 @@ PyTANGO development activities. You will find detailed instructions and howtos a
   :hidden:
 
   development/fundamental_sw_requirements
-  development/definition_of_done
   development/python-codeguide
   development/javascript-codeguide
+
 
 Development guidelines
 ----------------------
@@ -155,12 +174,6 @@ but the essential information is here:
 
 - :doc:`development/fundamental_sw_requirements`
 
-Definition of Done
-==================
-
-The definition of done is used to guide teams in planning and estimating the size of stories and features:
-
-- :doc:`development/definition_of_done`
 
 Python coding guidelines
 ========================
