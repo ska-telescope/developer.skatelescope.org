@@ -29,19 +29,12 @@ Part of the bridging phase goals will be to consolidate and enrich this portal
 with more detailed information. It is thus anticipated that in this phase
 the change rate of the documentation will be very frequent.
 
-SKA Code of Conduct
--------------------
 
-SKA Organisation (SKAO) is committed to the highest standards of business
-ethics and as such expects everyone involved in SKAO-related business to
-uphold the standards and expected professional behavior set out in
-`SKA Code of Ethics page <https://www.skatelescope.org/ska-organisation-code-of-conduct-for-meetings/>`_ .
 
-The code of ethics applies to every SKA collaborators and it is the
-reference guide defining the culture of this online community of contributors.
+SKA developer community
+-----------------------
 
-  * Download the `SKA Code of Ethics
-    <http://www.skatelescope.org/wp-content/uploads/2017/12/SKAO_Code_of_Ethics_Nov17.pdf>`_
+SKA software development is managed in an open and transparent way.
 
 .. COMMUNITY SECTION ==================================================
 
@@ -52,15 +45,12 @@ reference guide defining the culture of this online community of contributors.
   :caption: Community
   :hidden:
 
+  community/code_of_conduct
   community/getting_started
   community/teams_responsibilities
   community/decision_making
 
-SKA developer community
------------------------
-
-SKA software development is managed in an open and transparent way.
-
+- :doc:`community/code_of_conduct`
 - :doc:`community/getting_started`
 - :doc:`community/teams_responsibilities`
 - :doc:`community/decision_making`
@@ -118,13 +108,32 @@ TANGO, PyTANGO, docker and properly configured IDEs.
 
 
 PyCharm and VSCode are two IDEs that can be configured to support python and 
-PyTANGO development activities. You will find detailed instructions and howtos at:
+PyTANGO development activities. You will find detailed instructions and how-tos at:
 
 - :doc:`tools/pycharm/pycharm`
 - :doc:`tools/vscode/vscode`
 
 
+.. AGILE PRACTICES FOLLOWED AT SKA SECTION ==================================================
 
+.. Hidden toctree to manage the sidebar navigation.
+
+.. toctree::
+  :maxdepth: 1
+  :caption: Agile practices followed at SKA
+  :hidden:
+
+  agile_practices/definition_of_done
+
+Agile practices followed at SKA
+--------------------------------
+
+Definition of Done
+==================
+
+The definition of done is used to guide teams in planning and estimating the size of stories and features:
+
+- :doc:`agile_practices/definition_of_done`
 
 
 .. DEVELOPMENT GUIDELINES SECTION ==================================================
@@ -137,9 +146,9 @@ PyTANGO development activities. You will find detailed instructions and howtos a
   :hidden:
 
   development/fundamental_sw_requirements
-  development/definition_of_done
   development/python-codeguide
   development/javascript-codeguide
+
 
 Development guidelines
 ----------------------
@@ -153,12 +162,6 @@ but the essential information is here:
 
 - :doc:`development/fundamental_sw_requirements`
 
-Definition of Done
-==================
-
-The definition of done is used to guide teams in planning and estimating the size of stories and features:
-
-- :doc:`development/definition_of_done`
 
 Python coding guidelines
 ========================
@@ -211,10 +214,27 @@ Projects
 
   services/ait_performance_env
 
+
 Developer Services
 ------------------
 
 - :doc:`services/ait_performance_env`
+
+.. SHARE SECTION ==================================================
+
+.. Hidden toctree to manage the sidebar navigation.
+
+.. toctree::
+  :maxdepth: 1
+  :caption: Share Your Knowledge
+  :hidden:
+
+  community/share_your_knowledge  
+
+
+Share Your Knowledge
+--------------------
+- :doc:`community/share_your_knowledge`
 
 Commitment to opensource
 ------------------------
@@ -238,3 +258,20 @@ and an open source licensing model is always preferred within SKA software devel
   recommended_reading/system_design
   recommended_reading/programming
   recommended_reading/programming_languages
+
+.. FOLLOW US SECTION ==================================================
+
+.. Hidden toctree to manage the sidebar navigation.
+
+.. toctree::
+  :maxdepth: 1
+  :caption: Follow us
+  :hidden:
+
+  follow_us/followus_env
+
+Follow Us
+----------
+
+- :doc:`follow_us/followus_env`
+
