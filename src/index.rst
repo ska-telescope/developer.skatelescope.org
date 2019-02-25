@@ -49,13 +49,11 @@ SKA software development is managed in an open and transparent way.
   community/getting_started
   community/teams_responsibilities
   community/decision_making
-  community/recommended_readings
 
 - :doc:`community/code_of_conduct`
 - :doc:`community/getting_started`
 - :doc:`community/teams_responsibilities`
 - :doc:`community/decision_making`
-- :doc:`community/recommended_readings`
 
 .. todo::
    - SAFe process implementation
@@ -247,6 +245,19 @@ and an open source licensing model is always preferred within SKA software devel
 .. todo::
    - Committment to opensource
    - Exceptions
+
+.. RECOMMENDED READING SECTION ==================================================
+
+.. Hidden toctree to manage the sidebar navigation.
+
+.. toctree::
+  :maxdepth: 1
+  :caption: Recommended Reading
+  :hidden:
+
+  recommended_reading/system_design
+  recommended_reading/programming
+  recommended_reading/programming_languages
 
 .. FOLLOW US SECTION ==================================================
 
