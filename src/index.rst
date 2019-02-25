@@ -29,19 +29,12 @@ Part of the bridging phase goals will be to consolidate and enrich this portal
 with more detailed information. It is thus anticipated that in this phase
 the change rate of the documentation will be very frequent.
 
-SKA Code of Conduct
--------------------
 
-SKA Organisation (SKAO) is committed to the highest standards of business
-ethics and as such expects everyone involved in SKAO-related business to
-uphold the standards and expected professional behavior set out in
-`SKA Code of Ethics page <https://www.skatelescope.org/ska-organisation-code-of-conduct-for-meetings/>`_ .
 
-The code of ethics applies to every SKA collaborators and it is the
-reference guide defining the culture of this online community of contributors.
+SKA developer community
+-----------------------
 
-  * Download the `SKA Code of Ethics
-    <http://www.skatelescope.org/wp-content/uploads/2017/12/SKAO_Code_of_Ethics_Nov17.pdf>`_
+SKA software development is managed in an open and transparent way.
 
 .. COMMUNITY SECTION ==================================================
 
@@ -52,16 +45,13 @@ reference guide defining the culture of this online community of contributors.
   :caption: Community
   :hidden:
 
+  community/code_of_conduct
   community/getting_started
   community/teams_responsibilities
   community/decision_making
   community/recommended_readings
 
-SKA developer community
------------------------
-
-SKA software development is managed in an open and transparent way.
-
+- :doc:`community/code_of_conduct`
 - :doc:`community/getting_started`
 - :doc:`community/teams_responsibilities`
 - :doc:`community/decision_making`
