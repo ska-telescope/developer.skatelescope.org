@@ -6,7 +6,7 @@ List of projects
 ----------------
 
 The following table is automatically extracted from our github organisation page
-at [https://skatelescope.org/ska-telescope]
+at [https://github.com/ska-telescope]
 
 ================= ============= ===========
 Github repository Documentation Description
