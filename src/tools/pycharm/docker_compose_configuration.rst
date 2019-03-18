@@ -44,15 +44,15 @@ instance of the powersupply device:
 .. code-block:: console
 
     mypc:tango-example tangodeveloper$ make interactive
-    docker build  -t ska-registry.av.it.pt/tango-example/powersupply:0.1.0-067e5b3-dirty . -f Dockerfile --build-arg DOCKER_REGISTRY_HOST=ska-registry.av.it.pt --build-arg DOCKER_REGISTRY_USER=tango-example
+    docker build  -t nexus.engageska-portugal.pt/tango-example/powersupply:0.1.0-067e5b3-dirty . -f Dockerfile --build-arg DOCKER_REGISTRY_HOST=nexus.engageska-portugal.pt --build-arg DOCKER_REGISTRY_USER=tango-example
     Sending build context to Docker daemon  914.4kB
-    Step 1/4 : FROM ska-registry.av.it.pt/ska-docker/ska-python-buildenv:latest AS buildenv
+    Step 1/4 : FROM nexus.engageska-portugal.pt/ska-docker/ska-python-buildenv:latest AS buildenv
     # Executing 3 build triggers
      ---> Using cache
      ---> Using cache
      ---> Using cache
      ---> 10811adeaf7d
-    Step 2/4 : FROM ska-registry.av.it.pt/ska-docker/ska-python-runtime:latest AS runtime
+    Step 2/4 : FROM nexus.engageska-portugal.pt/ska-docker/ska-python-runtime:latest AS runtime
     # Executing 6 build triggers
      ---> Using cache
      ---> Using cache
@@ -69,14 +69,14 @@ instance of the powersupply device:
      ---> b54df79f52d6
     [Warning] One or more build-args [DOCKER_REGISTRY_HOST DOCKER_REGISTRY_USER] were not consumed
     Successfully built b54df79f52d6
-    Successfully tagged ska-registry.av.it.pt/tango-example/powersupply:0.1.0-067e5b3-dirty
-    docker tag ska-registry.av.it.pt/tango-example/powersupply:0.1.0-067e5b3-dirty ska-registry.av.it.pt/tango-example/powersupply:latest
-    DOCKER_REGISTRY_HOST=ska-registry.av.it.pt DOCKER_REGISTRY_USER=tango-example docker-compose up -d
+    Successfully tagged nexus.engageska-portugal.pt/tango-example/powersupply:0.1.0-067e5b3-dirty
+    docker tag nexus.engageska-portugal.pt/tango-example/powersupply:0.1.0-067e5b3-dirty nexus.engageska-portugal.pt/tango-example/powersupply:latest
+    DOCKER_REGISTRY_HOST=nexus.engageska-portugal.pt DOCKER_REGISTRY_USER=tango-example docker-compose up -d
     tango-example_tangodb_1 is up-to-date
     tango-example_databaseds_1 is up-to-date
     tango-example_powersupply_1 is up-to-date
     docker run --rm -it --name=powersupply-dev -e TANGO_HOST=databaseds:10000 --network=tango-example_default \
-          -v /Users/stewartwilliams/PycharmProjects/tango-example:/app ska-registry.av.it.pt/tango-example/powersupply:latest /bin/bash
+          -v /Users/stewartwilliams/PycharmProjects/tango-example:/app nexus.engageska-portugal.pt/tango-example/powersupply:latest /bin/bash
     tango@0f360f86d436:/app$ tango_admin --add-server PowerSupply/test PowerSupply test/power_supply/1
 
 .. ::note::

@@ -63,9 +63,9 @@ Begin a terminal session in the cloned repository directory and build the image:
 .. code-block:: console
 
     mypc:tango-example tangodeveloper$ make build
-    docker build  -t ska-registry.av.it.pt/tango-example/powersupply:0.1.0-65c0927 . -f Dockerfile --build-arg DOCKER_REGISTRY_HOST=ska-registry.av.it.pt --build-arg DOCKER_REGISTRY_USER=tango-example
+    docker build  -t nexus.engageska-portugal.pt/tango-example/powersupply:0.1.0-65c0927 . -f Dockerfile --build-arg DOCKER_REGISTRY_HOST=nexus.engageska-portugal.pt --build-arg DOCKER_REGISTRY_USER=tango-example
     Sending build context to Docker daemon  450.6kB
-    Step 1/4 : FROM ska-registry.av.it.pt/ska-docker/ska-python-buildenv:latest AS buildenv
+    Step 1/4 : FROM nexus.engageska-portugal.pt/ska-docker/ska-python-buildenv:latest AS buildenv
     latest: Pulling from ska-docker/ska-python-buildenv
     177e7ef0df69: Pull complete
     d9178ba39f54: Pull complete
@@ -81,13 +81,13 @@ Begin a terminal session in the cloned repository directory and build the image:
     209febb6128f: Pull complete
     41eb9ed8ebf6: Pull complete
     Digest: sha256:a909606b3d0d4b01b5102bd0e4f329d7fd175319f81c8706493e75504dd0439e
-    Status: Downloaded newer image for ska-registry.av.it.pt/ska-docker/ska-python-buildenv:latest
+    Status: Downloaded newer image for nexus.engageska-portugal.pt/ska-docker/ska-python-buildenv:latest
     # Executing 3 build triggers
      ---> Running in c98b60355c16
     Installing dependencies from Pipfile.lock (48af56)…
     Removing intermediate container c98b60355c16
      ---> 52007c1fb364
-    Step 2/4 : FROM ska-registry.av.it.pt/ska-docker/ska-python-runtime:latest AS runtime
+    Step 2/4 : FROM nexus.engageska-portugal.pt/ska-docker/ska-python-runtime:latest AS runtime
     latest: Pulling from ska-docker/ska-python-runtime
     177e7ef0df69: Already exists
     d9178ba39f54: Already exists
@@ -96,7 +96,7 @@ Begin a terminal session in the cloned repository directory and build the image:
     f7ec90efdf53: Already exists
     0f3a4ec2943c: Pull complete
     Digest: sha256:9adf4810777d14b660b99fbe2d443f8871cc591313c8ac436dacee38de39160e
-    Status: Downloaded newer image for ska-registry.av.it.pt/ska-docker/ska-python-runtime:latest
+    Status: Downloaded newer image for nexus.engageska-portugal.pt/ska-docker/ska-python-runtime:latest
     # Executing 6 build triggers
      ---> Running in edf8f96df923
     Removing intermediate container edf8f96df923
@@ -114,8 +114,8 @@ Begin a terminal session in the cloned repository directory and build the image:
      ---> 76e5e0e2e4b9
     [Warning] One or more build-args [DOCKER_REGISTRY_HOST DOCKER_REGISTRY_USER] were not consumed
     Successfully built 76e5e0e2e4b9
-    Successfully tagged ska-registry.av.it.pt/tango-example/powersupply:0.1.0-65c0927
-    docker tag ska-registry.av.it.pt/tango-example/powersupply:0.1.0-65c0927 ska-registry.av.it.pt/tango-example/powersupply:latest
+    Successfully tagged nexus.engageska-portugal.pt/tango-example/powersupply:0.1.0-65c0927
+    docker tag nexus.engageska-portugal.pt/tango-example/powersupply:0.1.0-65c0927 nexus.engageska-portugal.pt/tango-example/powersupply:latest
     mypc:tango-example tangodeveloper$
 
 The last lines of terminal output displays the name and tags of the resulting images, e.g.,
@@ -124,11 +124,11 @@ The last lines of terminal output displays the name and tags of the resulting im
 
     ...
     Successfully built 76e5e0e2e4b9
-    Successfully tagged ska-registry.av.it.pt/tango-example/powersupply:0.1.0-65c0927
-    docker tag ska-registry.av.it.pt/tango-example/powersupply:0.1.0-65c0927 ska-registry.av.it.pt/tango-example/powersupply:latest
+    Successfully tagged nexus.engageska-portugal.pt/tango-example/powersupply:0.1.0-65c0927
+    docker tag nexus.engageska-portugal.pt/tango-example/powersupply:0.1.0-65c0927 nexus.engageska-portugal.pt/tango-example/powersupply:latest
 
-In the example above, the image name is tagged as *ska-registry.av.it.pt/tango-example/powersupply:0.1.0-65c0927* and
-*ska-registry.av.it.pt/tango-example/powersupply:latest*. Take a note of the image tagged as *latest* as you will need
+In the example above, the image name is tagged as *nexus.engageska-portugal.pt/tango-example/powersupply:0.1.0-65c0927* and
+*nexus.engageska-portugal.pt/tango-example/powersupply:latest*. Take a note of the image tagged as *latest* as you will need
 it when configuring the remote interpreter.
 
 Configure the remote interpreter
