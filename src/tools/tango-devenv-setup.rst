@@ -52,7 +52,7 @@ The above commands will create a new Ubuntu 18.04 box with the TANGO framwork in
 Creating a Development Environment without Vagrant
 ==================================================
 Download a image of ubuntu 18.04 like the following one: 
- - https://sourceforge.net/projects/osboxes/files/v/vb/55-U-u/18.04/1804164.7z/download
+ - https://sourceforge.net/projects/osboxes/files/v/vb/55-U-u/18.04/18.04.2/18042.64.7z/download
 
 Run the box and call the following commands:
 
