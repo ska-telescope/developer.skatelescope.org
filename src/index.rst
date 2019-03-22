@@ -70,6 +70,7 @@ SKA software development is managed in an open and transparent way.
 
   tools/git
   tools/continuousintegration
+  tools/python_package_release_procedure
   tools/cidashboard
   tools/tango-devenv-setup
   tools/pycharm/pycharm
