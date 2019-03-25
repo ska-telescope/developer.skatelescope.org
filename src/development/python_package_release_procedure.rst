@@ -115,7 +115,7 @@ the following section(s), for example:
 .. code:: ini
 
   [[source]]
-  url = 'https://nexus.engageska-portugal.pt/repository/ska-pypi'
+  url = 'https://nexus.engageska-portugal.pt/repository/pypi/simple'
   verify_ssl = true
   name = 'nexus'
 
