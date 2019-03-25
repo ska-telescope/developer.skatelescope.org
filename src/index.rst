@@ -182,6 +182,15 @@ setup for browser based javascript applications.
 
 - :doc:`development/javascript-codeguide`
 
+
+Software Packaging
+==================
+
+Packaginge software....
+
+-:doc:`development/python_package_release_procedure`
+
+
 .. PROJECTS SECTION ==================================================
 
 .. Hidden toctree to manage the sidebar navigation.

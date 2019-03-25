@@ -6,8 +6,8 @@ Versioning Procedure
 As part of our goal to align all developmental efforts to one standard, we
 have documented a procedure of how we would like all the *SKA* developers to
 version their releases and what process to follow in ensuring that they are 
-able to make use of the existing Gitlab CI/CD pipeline to automate the
-python (for now) packages and have them published on the *SKA* pypi registry
+able to make use of the existing Gitlab CI/CD pipeline to automate the building
+of python packages, for now, and have them published on the *SKA* pypi registry
 which is hosted on *Nexus*.
 
 
