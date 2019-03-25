@@ -70,7 +70,6 @@ SKA software development is managed in an open and transparent way.
 
   tools/git
   tools/continuousintegration
-  tools/python_package_release_procedure
   tools/cidashboard
   tools/tango-devenv-setup
   tools/pycharm/pycharm
@@ -149,6 +148,7 @@ The definition of done is used to guide teams in planning and estimating the siz
   development/fundamental_sw_requirements
   development/python-codeguide
   development/javascript-codeguide
+  development/python_package_release_procedure
 
 
 Development guidelines
