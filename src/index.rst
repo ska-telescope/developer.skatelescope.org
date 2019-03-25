@@ -189,7 +189,7 @@ SKA Software Packaging Procedure
 This details a procedure that all *SKA* developers shall follow to ensure that they make use of the
 existing CI/CD pipelines to automate the building of their software packages for release.
 
--:doc:`development/python_package_release_procedure`
+- :doc:`development/python_package_release_procedure`
 
 
 .. PROJECTS SECTION ==================================================
