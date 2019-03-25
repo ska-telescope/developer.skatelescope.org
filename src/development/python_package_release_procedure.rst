@@ -71,9 +71,9 @@ for a Python package:
   
   $ python setup.py sdist bdist_wheel
 
-This will form part of the CI pipeline job for the repository.
-It will be build automatically. The developer should add this 
-build step in their *.gitlab-ci.yml* file, for example:
+This will form part of the CI pipeline job for the repository so that it can be build
+automatically. The developer should add this build step in their *.gitlab-ci.yml* file,
+for example:
 
 .. code:: yaml
 
