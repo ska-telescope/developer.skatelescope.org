@@ -1,5 +1,9 @@
 .. _Semver: https://semver.org
 
+==================================
+Software Package Release Procedure
+==================================
+
 Versioning Procedure
 --------------------
 
@@ -27,7 +31,8 @@ For example:
 
 .. code:: bash
 
-  $ git tag -a "1.0.0 -m "Release 1.0.0."
+  $ git tag -a "1.0.0" -m "Release 1.0.0. This is a patch release that resolves
+    issue <JIRA issue>."
 
 
 
