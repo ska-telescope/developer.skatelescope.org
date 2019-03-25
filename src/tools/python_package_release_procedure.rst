@@ -1,3 +1,5 @@
+.. _Python_packaging: https://packaging.python.org/tutorials/packaging-projects/
+
 Versioning Procedure
 --------------------
 
@@ -13,7 +15,7 @@ Versioning scheme to use
 
 The scheme chosen to be adopted by the *SKA* developer community is the semantic versioning
 scheme.
-More information regarding this scheme can be found [here].
+More information regarding this scheme can be found on the Python_packaging_ site.
 
 How to mark a release
 =====================
@@ -62,11 +64,11 @@ for a Python package:
 
 .. code:: bash
   
-  $ python setup.py sdist bdist_wheel --universal
+  $ python setup.py sdist bdist_wheel
 
 This will form part of the CI pipeline job for the repository.
 It will be build automatically. The developer should add this 
-build step in their *.gitlab-ci.yml* file for example:
+build step in their *.gitlab-ci.yml* file, for example:
 
 .. code:: yaml
 
@@ -85,7 +87,7 @@ Publishing packages to *Nexus*
 Provided that the release branch has been tagged precisely
 as described in the above sections then the CI job will be
 triggered by the availability of the tag to publish the
-Python wheel to the *SKA* pypi registry on *Nexus*.
+*Python* wheel to the *SKA* pypi registry on *Nexus*.
 
 .. code:: yaml
 
@@ -100,9 +102,11 @@ Python wheel to the *SKA* pypi registry on *Nexus*.
 Installing a package from *Nexus*
 ---------------------------------
 
-Example:
+For developers who want to install a python package from the *SKA*
+pypi registry hosted on *Nexus*, they should edit the project's Pipfile to have
+the following section(s), for example:
 
-  .. code:: yaml
+  .. code:: ini
 
     [[source]]
     url = 'https://nexus.engageska-portugal.pt/repository/ska-pypi'
