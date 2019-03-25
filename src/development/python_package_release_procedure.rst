@@ -25,9 +25,8 @@ More information regarding this scheme can be found on the Semver_ site.
 How to mark a release
 =====================
 
-For this, a developer should make use of the git tags to indicate that this 
-current commit is to be released.
-For example:
+A developer should make use of the git annotated tags to indicate that this
+current commit is to serve as a release. For example:
 
 .. code:: bash
 
