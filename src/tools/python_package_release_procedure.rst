@@ -106,12 +106,12 @@ For developers who want to install a python package from the *SKA*
 pypi registry hosted on *Nexus*, they should edit the project's Pipfile to have
 the following section(s), for example:
 
-  .. code:: ini
+.. code:: ini
 
-    [[source]]
-    url = 'https://nexus.engageska-portugal.pt/repository/ska-pypi'
-    verify_ssl = true
-    name = 'nexus'
+  [[source]]
+  url = 'https://nexus.engageska-portugal.pt/repository/ska-pypi'
+  verify_ssl = true
+  name = 'nexus'
 
-    [packages]
-    'lmcbaseclasses': {'version='*', index='nexus'}
+  [packages]
+  'lmcbaseclasses': {'version='*', index='nexus'}
