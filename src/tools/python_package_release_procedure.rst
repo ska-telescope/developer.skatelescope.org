@@ -80,11 +80,11 @@ build step in their *.gitlab-ci.yml* file for example:
 
 
 Publishing packages to *Nexus*
-----------------------------
+------------------------------
 
 Provided that the release branch has been tagged precisely
 as described in the above sections then the CI job will be
-triggered by the availability of the tag to publish the 
+triggered by the availability of the tag to publish the
 Python wheel to the *SKA* pypi registry on *Nexus*.
 
 .. code:: yaml
@@ -98,4 +98,16 @@ Python wheel to the *SKA* pypi registry on *Nexus*.
       - twine upload --repository-url $PYPI_REPOSITORY_URL dist/*
 
 Installing a package from *Nexus*
--------------------------------
+---------------------------------
+
+Example:
+
+  .. code:: yaml
+
+    [[source]]
+    url = 'https://nexus.engageska-portugal.pt/repository/ska-pypi'
+    verify_ssl = true
+    name = 'nexus'
+
+    [packages]
+    'lmcbaseclasses': {'version='*', index='nexus'}
