@@ -120,4 +120,4 @@ the following section(s), for example:
   name = 'nexus'
 
   [packages]
-  'lmcbaseclasses': {version='*', index='nexus'}
+  'lmcbaseclasses' = {version='*', index='nexus'}
