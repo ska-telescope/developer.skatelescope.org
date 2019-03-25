@@ -1,13 +1,14 @@
-.. _Python_packaging: https://packaging.python.org/tutorials/packaging-projects/
+.. _Semver: https://semver.org
 
 Versioning Procedure
 --------------------
 
 As part of our goal to align all developmental efforts to one standard, we
-have documented a procedure of how we would like all the *SKA* developer to 
+have documented a procedure of how we would like all the *SKA* developers to
 version their releases and what process to follow in ensuring that they are 
 able to make use of the existing Gitlab CI/CD pipeline to automate the
-python (for now) packages and have them published on the *SKA* *Nexus* registry.
+python (for now) packages and have them published on the *SKA* pypi registry
+which is hosted on *Nexus*.
 
 
 Versioning scheme to use
@@ -15,7 +16,7 @@ Versioning scheme to use
 
 The scheme chosen to be adopted by the *SKA* developer community is the semantic versioning
 scheme.
-More information regarding this scheme can be found on the Python_packaging_ site.
+More information regarding this scheme can be found on the Semver_ site.
 
 How to mark a release
 =====================
