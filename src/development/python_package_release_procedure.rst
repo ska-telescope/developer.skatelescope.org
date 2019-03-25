@@ -84,7 +84,7 @@ build step in their *.gitlab-ci.yml* file, for example:
       - docker-executor
     script:
       - pip install setuptools
-      - python setup.py sdist bdist_wheel
+      - python setup.py sdist bdist_wheel # --universal option to used for pure python packages
 
 
 Publishing packages to *Nexus*
