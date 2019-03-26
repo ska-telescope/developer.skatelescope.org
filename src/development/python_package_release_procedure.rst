@@ -104,6 +104,9 @@ to the *SKA* pypi registry on *Nexus*.
     stage: publish
     tags:
       - docker-executor
+    variables:
+      TWINE_USERNAME: $TWINE_USERNAME
+      TWINE_PASSWORD: $TWINE_PASSWORD
     script:
       - pip install twine
       - twine upload --repository-url $PYPI_REPOSITORY_URL dist/*
