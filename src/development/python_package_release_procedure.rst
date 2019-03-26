@@ -33,6 +33,11 @@ current commit is to serve as a release. For example:
   $ git tag -a "1.0.0" -m "Release 1.0.0. This is a patch release that resolves
     issue <JIRA issue>."
 
+After that is complete, then the tag needs to be published to the origin:
+
+.. code:: bash
+
+  $ git push origin <tag_name>
 
 
 Packaging Procedure
