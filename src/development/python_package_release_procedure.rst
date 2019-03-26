@@ -97,7 +97,7 @@ triggered by the availability of the tag to publish the
 .. code:: yaml
 
   publish to nexus:
-    stage: deploy
+    stage: publish
     tags:
       - docker-executor
     script:
