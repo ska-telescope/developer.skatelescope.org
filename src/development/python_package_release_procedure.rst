@@ -89,10 +89,9 @@ for example:
 Publishing packages to *Nexus*
 ------------------------------
 
-Provided that the release branch has been tagged precisely
-as described in the above sections then the CI job will be
-triggered by the availability of the tag to publish the
-*Python* wheel to the *SKA* pypi registry on *Nexus*.
+Provided that the release branch has been tagged precisely as described in the above sections
+then the CI job will be triggered by the availability of the tag to publish the *Python* wheel
+to the *SKA* pypi registry on *Nexus*.
 
 .. code:: yaml
 
@@ -103,6 +102,11 @@ triggered by the availability of the tag to publish the
     script:
       - pip install twine
       - twine upload --repository-url $PYPI_REPOSITORY_URL dist/*
+    only:
+      variables:
+         - $CI_COMMIT_MESSAGE =~ /^.+$/ # Confirm tag message exists
+         - $CI_COMMIT_TAG =~ /^((([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?)(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?)$/ # Confirm semantic versioning of tag
+
 
 Installing a package from *Nexus*
 ---------------------------------
