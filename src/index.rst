@@ -148,6 +148,7 @@ The definition of done is used to guide teams in planning and estimating the siz
   development/fundamental_sw_requirements
   development/python-codeguide
   development/javascript-codeguide
+  development/containerisation-standards
 
 
 Development guidelines
@@ -180,6 +181,14 @@ Python skeleton above its purpose is to enforce coding best practices and bootst
 setup for browser based javascript applications.
 
 - :doc:`development/javascript-codeguide`
+
+Containerisation Standards
+==========================
+
+A set of standards, conventions and guidelines for building, integrating and maintaining Container
+technologies.
+
+- :doc:`development/containerisation-standards`
 
 .. PROJECTS SECTION ==================================================
 

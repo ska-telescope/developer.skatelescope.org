@@ -9,6 +9,13 @@ Visual Studio Code is an open source project and available for free from the
 
 .. _`VSCode download page`: https://code.visualstudio.com/Download
 
-- :doc:`docker_configuration`
-.. - :doc:`docker_compose_configuration`
+.. toctree::
+  :maxdepth: 1
+  :caption: Development tools
+  :hidden:
 
+  docker_configuration
+
+- :doc:`docker_configuration`
+
+.. - :doc:`docker_compose_configuration`
