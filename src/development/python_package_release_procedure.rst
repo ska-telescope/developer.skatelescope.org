@@ -82,7 +82,7 @@ for example:
 
 .. code:: yaml
 
-  build_wheel:
+  build_wheel for publication: # Executed on a tag:
     stage: build
     tags:
       - docker-executor
