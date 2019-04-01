@@ -25,8 +25,8 @@ repository.
 The step-by-step procedure is the following:
 
 1. Select the option “\ Repo by URL\ ”,
-2. Write the repository url (i.e. https://github.com/ska-telescope/ska_python_skeleton.git),
-3. Select a project name (for instance ska_python_skeleton-ci),
+2. Write the repository url (i.e. https://github.com/ska-telescope/ska-python-skeleton.git),
+3. Select a project name (for instance ska-python-skeleton-ci),
 4. Select the correct ska group (i.e. ska-telescope),
 5. Select/write a project slug (URL-friendly version of a repository name) and
 6. Insert a project description.
@@ -69,8 +69,8 @@ Configuring a CI pipeline
 To enable the Gitlab automation, it is needed to insert a
 `configuration
 file <https://docs.gitlab.com/ee/ci/yaml/README.html>`__ that must be placed in the root of the repository (i.e. GitHub) and called ".gitlab-ci.yml". It mainly contains definitions of how your project should be built. An example of
-it can be found within the project "ska_python_skeleton" available 
-`here <https://github.com/ska-telescope/ska_python_skeleton/blob/master/.gitlab-ci.yml>`__.
+it can be found within the project "ska-python-skeleton" available
+`here <https://github.com/ska-telescope/ska-python-skeleton/blob/master/.gitlab-ci.yml>`__.
 Once the file is in the root directory, it is possible to run the CI pipeline manually
 (creating a pipeline) or with a commit in github as soon as the
 mirroring finishes. The following pipeline was created manually pressing
@@ -87,7 +87,7 @@ To do that the option must be enabled:
 
 |image6|
 
-The EngageSKA cluster located at the Datacenter of Institute of Telecommunication (IT) in Aveiro provides some virtual machines available adding the tag "engageska" or "docker-executor" as shown `here <https://github.com/ska-telescope/ska_python_skeleton/blob/master/.gitlab-ci.yml>`__.
+The EngageSKA cluster located at the Datacenter of Institute of Telecommunication (IT) in Aveiro provides some virtual machines available adding the tag "engageska" or "docker-executor" as shown `here <https://github.com/ska-telescope/ska-python-skeleton/blob/master/.gitlab-ci.yml>`__.
 
 .. |image0| image:: media/image1.png
    :width: 6.27083in

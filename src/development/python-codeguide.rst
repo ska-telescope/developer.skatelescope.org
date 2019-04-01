@@ -35,7 +35,7 @@ Data and Configuration
 ======================
 
 * All persistent configuration should use `python-dotenv <https://github.com/theskumar/python-dotenv>`_.
-  Such configuration ``.env`` files should be placed at the top of the ``ska_python_skeleton``
+  Such configuration ``.env`` files should be placed at the top of the ``ska-python-skeleton``
   module and provide a description that is sufficient for users to understand the settings changes.
 
 Standard output, warnings, and errors
