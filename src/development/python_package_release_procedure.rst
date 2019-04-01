@@ -90,7 +90,8 @@ for example:
       - pip install setuptools
       - python setup.py egg_info -b+$CI_COMMIT_SHORT_SHA sdist bdist_wheel # --universal option to used for pure python packages
 
-This will build a *Python* wheel that will be published to *Nexus*.
+This will build a *Python* wheel that will be published to *Nexus*. For developmental purposes one can replace the ``-b+$CI_COMMIT_SHORT_SHA``
+command line option with ``-b+dev.$CI_COMMIT_SHORT_SHA`` to have the wheel built on each commit.
 
 Publishing packages to *Nexus*
 ------------------------------
