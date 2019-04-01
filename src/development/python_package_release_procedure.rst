@@ -90,7 +90,7 @@ for example:
       - pip install setuptools
       - python setup.py egg_info -b+$CI_COMMIT_SHORT_SHA sdist bdist_wheel # --universal option to used for pure python packages
 
-This will build a Python wheel that will be published to *Nexus*.
+This will build a *Python* wheel that will be published to *Nexus*.
 
 Publishing packages to *Nexus*
 ------------------------------
@@ -109,7 +109,9 @@ to the *SKA* pypi registry on *Nexus*.
       TWINE_USERNAME: $TWINE_USERNAME
       TWINE_PASSWORD: $TWINE_PASSWORD
     script:
-      - pip install twine
+      # check metadata requirements
+      - scripts/validate-metadata.sh
+      - pip3 install twine
       - twine upload --repository-url $PYPI_REPOSITORY_URL dist/*
     only:
       variables:
