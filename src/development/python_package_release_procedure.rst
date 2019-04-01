@@ -88,8 +88,9 @@ for example:
       - docker-executor
     script:
       - pip install setuptools
-      - python setup.py sdist bdist_wheel # --universal option to used for pure python packages
+      - python setup.py egg_info -b+$CI_COMMIT_SHORT_SHA sdist bdist_wheel # --universal option to used for pure python packages
 
+This will build a Python wheel that will be published to *Nexus*.
 
 Publishing packages to *Nexus*
 ------------------------------
