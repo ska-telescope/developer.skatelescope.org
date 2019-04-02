@@ -36,20 +36,8 @@ Prerequisites
 ===========================
 - VirtualBox installed	
 - git
-- Vagrant (optional)
 
-Creating a Development Environment with Vagrant
-===============================================
-To create a box containing the Development Environment there are few commands to execute. They are:
-
-1. git clone https://github.com/ska-telescope/ansible-playbooks.git
-2. cd ansible-playbooks
-3. vagrant up
-4. reboot the box
-
-The above commands will create a new Ubuntu 18.04 box with the TANGO framwork installed and all the tools above. 
-
-Creating a Development Environment without Vagrant
+Creating a Development Environment
 ==================================================
 Download a image of ubuntu 18.04 like the following one: 
  - https://sourceforge.net/projects/osboxes/files/v/vb/55-U-u/18.04/18.04.2/18042.64.7z/download
@@ -64,11 +52,12 @@ Run the box and call the following commands:
 
 Start the tango system
 ======================
-In order to start the tango system just call the following commands:
+Login into the box with username "tango" (password: "tango") and call the following commands:
 
 1. cd /usr/src/ska-docker/docker-compose
 2. make up
 3. make start tangotest
+
 
 Other information
 =================
