@@ -22,6 +22,9 @@ The scheme chosen to be adopted by the *SKA* developer community is the semantic
 scheme.
 More information regarding this scheme can be found on the Semver_ site.
 
+Python Packaging Procedure
+--------------------------
+
 How to mark a release
 =====================
 
@@ -38,10 +41,6 @@ After that is complete, then the tag needs to be published to the origin:
 .. code:: bash
 
   $ git push origin <tag_name>
-
-
-Packaging Procedure
--------------------
 
 
 Minimum requirements to meet
@@ -94,7 +93,7 @@ This will build a *Python* wheel that will be published to *Nexus*. For developm
 command line option with ``-b+dev.$CI_COMMIT_SHORT_SHA`` to have the wheel built on each commit.
 
 Publishing packages to *Nexus*
-------------------------------
+==============================
 
 Provided that the release branch has been tagged precisely as described in the above sections
 then the CI job will be triggered by the availability of the tag to publish the *Python* wheel
@@ -121,7 +120,7 @@ to the *SKA* pypi registry on *Nexus*.
 
 
 Installing a package from *Nexus*
----------------------------------
+=================================
 
 For developers who want to install a python package from the *SKA*
 pypi registry hosted on *Nexus*, they should edit the project's Pipfile to have
