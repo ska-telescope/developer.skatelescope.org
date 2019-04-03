@@ -42,6 +42,7 @@ After that is complete, then the tag needs to be published to the origin:
 
   $ git push origin <tag_name>
 
+.. caution:: The format of the tag should be N.N.N
 
 Minimum requirements to meet
 ============================
