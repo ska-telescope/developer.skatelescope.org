@@ -148,6 +148,7 @@ The definition of done is used to guide teams in planning and estimating the siz
   development/fundamental_sw_requirements
   development/python-codeguide
   development/javascript-codeguide
+  development/python_package_release_procedure
 
 
 Development guidelines
@@ -180,6 +181,16 @@ Python skeleton above its purpose is to enforce coding best practices and bootst
 setup for browser based javascript applications.
 
 - :doc:`development/javascript-codeguide`
+
+
+SKA Software Packaging Procedure
+================================
+
+This details a procedure that all *SKA* developers shall follow to ensure that they make use of the
+existing CI/CD pipelines to automate the building of their software packages for release.
+
+- :doc:`development/python_package_release_procedure`
+
 
 .. PROJECTS SECTION ==================================================
 
