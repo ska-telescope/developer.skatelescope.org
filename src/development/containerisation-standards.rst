@@ -34,6 +34,7 @@ references are:
 * `Container Network Interface <https://github.com/containernetworking/cni>`_.
 * `Container Storage Interface <https://github.com/container-storage-interface/spec>`_.
 * `Dockerfile best practices <https://docs.docker.com/develop/develop-images/dockerfile_best-practices/>`_.
+* `Docker v2 Registry API Specification <https://docs.docker.com/registry/spec/api/>`_.
 
 The standards are broken down into the following areas:
 
@@ -41,7 +42,7 @@ The standards are broken down into the following areas:
 * Defining and building Container images - how to structure image definitions, and map your applications onto the image declaration
 * Running Containerised applications - interfacing your application with the Container run time environment
 
-Throughout this documentation, `Docker <https://docs.docker.com/>`_ is used as the reference implementation, however the aim is to target compliance with the OCI specifications so it is possible to substitute in alternative Container Engines that are compatible.
+Throughout this documentation, `Docker <https://docs.docker.com/>`_ is used as the reference implementation with the canonical version being Docker 18.09.4 CE API version 1.39, however the aim is to target compliance with the OCI specifications so it is possible to substitute in alternative Container Engines that are compatible.
 
 Structuring Applications in a Containerised Environment
 =======================================================
@@ -64,6 +65,7 @@ These features combine to give a form of virtualisation that runs directly in th
 **Capabilities** are used to set the permissions that containerised processes have for performing system calls such as IO.
 The **file-system magic** performed with pivot_root recasts the root of the file-system for the Container init process to a new mount point, typically the root of the Container image directory tree.  Bind mounting enables sharing file-system resources into a Container.
 
+.. _figure-1-container-anatomy:
 
 .. figure:: container-anatomy.png
    :scale: 40%
@@ -289,7 +291,7 @@ The following are suggested labels for all images:
 * license: license that this image and contained software are released under
 * repository: the primary repository that this image should be found in
 * vendor: the owning organisation of the software component
-* version: follows `semantic versioning <https://semver.org>`_, and should be linked to the image version tag discussed below.
+* version: follows `Semantic Versioning <https://semver.org>`_, and should be linked to the image version tag discussed below.
 * website: where the software pertaining to the building of this image resides
 
 Arguments
@@ -318,6 +320,8 @@ The ARGs referenced above can then be addressed at build time with:
 
 Note: the ``ARG postgres_client`` is placed after the ``apt install -y binutls cmake`` as this will ensure that the variable is bound as late as possible without invalidating the layer cache of that package install.
 
+.. _header-3-environment-variables:
+
 Environment Variables
 ~~~~~~~~~~~~~~~~~~~~~
 
@@ -339,7 +343,7 @@ ADD or COPY + RUN vs RUN + curl
 ``ADD`` and ``COPY`` are mostly interchangeable, however ``ADD my-fancy.tar.gz /tmp`` might not do what you expect in that it will auto-extract the archive at the target location.
 ``COPY`` is the preferred mechanism as this does not have any special behaviours.
 
-Be clear what the purpose of the ``COPY`` or ``ADD`` statement is.  If it is a dependency only for a subsequent build requirement, then consider replacing with ``RUN`` eg:
+Be clear of what the purpose of the ``COPY`` or ``ADD`` statement is.  If it is a dependency only for a subsequent build requirement, then consider replacing with ``RUN`` eg:
 
 .. code:: docker
 
@@ -395,66 +399,148 @@ Built with ``docker build -t myimage:1.0.0-onbuild .``
 
 In any child image created ``FROM myimage:1.0.0-onbuild ...``, the parent image will seemingly call back from the dead and execute statement ``COPY ./app ./app`` and ``RUN chmod 644 ./app/bin/*`` as soon as the ``FROM`` statement is interpreted.  As there is no obvious way to tell whether an image has embedded ``ONBUILD`` statements (without ``docker inspect myimage:1.0.0-onbuild``), it is customary to add an indicator to the tag name as above: ``myimage:1.0.0-onbuild`` to act as a warning to the developer.  Use the ``ONBUILD`` feature sparingly, as it can easily caused unintended consequences and catch out dependent developers.
 
-
-
-What is the application interface contract for containers
-
-
-
-
 Naming and Tagging
 ------------------
 
+Image names should be reflect the application that will run in the resultant Container, which ideally ties in directly with the repository name eg: ``tango-example/powersupply:latest``, is the image that represents the Tango `powersupply <https://github.com/ska-telescope/tango-example/blob/master/Dockerfile>`_ device from the `tango-example <https://github.com/ska-telescope/tango-example>`_ repository.
+
 Images should be tagged with:
 
-- short commit hash as derived by ``git rev-parse --verify --short=8 HEAD`` eg: bbedf059 - this is useful on each feature branch build as it uniquely identifies branch HEAD on each push when used in conjunction with CI
-- the current branch HEAD built image from CI should also have the additional tag of the branch name.  This assists with mapping image versions to feature development
-- When an image version for an application is promoted to production, it should be tagged with the application version and 'latest' eg: for a tango device and a released image instance - hash tag: 9fab040a, version tags: 1.13.2,1.13,1 - where major/minor version point to the latest in that line
+- short commit hash as derived by ``git rev-parse --verify --short=8 HEAD`` from the parent repository eg: bbedf059.  This is useful on each feature branch build as it uniquely identifies branch HEAD on each push when used in conjunction with Continuous Integration.
+- When an image version for an application is promoted to production, it should be tagged with the application version (using Semantic Versioning).  For the latest most major.minor.patch release the 'latest' tag should be added eg: for a tango device and a released image instance - hash tag: 9fab040a, version tags: ``1.13.2``, ``1.13``, ``1``, ``latest`` - where major/minor/patch version point to the latest in that line.
 
+While it is customary for th Docker community at large to support image variants based on image OS base and to denote this with tags eg: |python:<version>-slim|_ which represents the Debian Slim (A trimmed `Debian OS <https://hub.docker.com/_/debian>`_) version of a specific Python release, the SKA will endeavour to support only one OS base per image, removing this need as it does not strictly follow Semantic Versioning.
 
-Development and test images will be periodically purged after N months, leaving the last version built.  All production images are kept indefinitely.
+.. |python:<version>-slim| replace:: ``python:<version>-slim``
+.. _python:<version>-slim: https://hub.docker.com/_/python/
 
-  This way anyone who looks at the image repository will have an idea of the context of a particular image version and can trace it back to the source
+Within the SKA hosted Continuous Integration infrastructure, development and test images will be periodically purged from the ``nexus.engageska-portugal.pt`` repository after N months, leaving the last version built.  All production images are kept indefinitely.
 
-
+This way anyone who looks at the image repository will have an idea of the context of a particular image version and can trace it back to the source.
 
 Image Tools
 -----------
 
-docker and others (eg: BuildKit, img, ...)
+Any image build tool is acceptable so long as it adheres to the OCI image specification v1.0.0.  The canonical tool used for this standards document is Docker 18.09.4 API version 1.39, but other tools maybe used such as `BuildKit <https://github.com/moby/buildkit>`_ and `img <https://github.com/genuinetools/img>`_.
 
 Development tools
 -----------------
 
- - integration with: IDEs, Debuggers, Profilers
-
-
-
+Debuging tools, profilers, and any tools not essential to the running of the target application should not be included in the target application production image.  Instead, a derivative image should be made solely for debugging purposes that can be swapped in for the running application as required.  This is to avoid image bloat, and to reduce the attack surface of running containers as a security consideration.
 
 Image Storage
 -------------
-Docker v2 Registry API standard
-SKA supported and/or hosted repositories
-Integration with external and private
-Tagging and version control (rules around deployment and 'latest')
-Image signing (DCT)?
 
+All images should be stored in a Docker v2 Registry API compliant repository, protected by HTTPS, and authentication.  The SKA supported and hosted repositories are based on the `Nexus Container Registry <https://help.sonatype.com/repomanager3/private-registry-for-docker>`_ available at `nexus.engageska-portugal.pt <https://nexus.engageska-portugal.pt/#browse/search/docker>`_ .
 
+All Containerised software used within the SKA, will be served out of the hosted repository service.  This will ensure that images are quality assured and always remain available beyond the maintenance life-cycle of third party and COTs software.
 
+Image signing
+~~~~~~~~~~~~~
 
+All images pushed to the SKA hosted repository must be signed.  This will ensure that only trusted content will be launched in Containerised environments.  `Docker Content Trust <https://docs.docker.com/engine/security/trust/content_trust/>`_ signatures can be checked with:
 
+.. code:: bash
+
+    $docker trust inspect --pretty \
+       nexus.engageska-portugal.pt/ska-docker/ska-python-runtime:1.2.3
+
+    Signatures for nexus.engageska-portugal.pt/ska-docker/ska-python-runtime:1.2.3
+
+    SIGNED TAG          DIGEST                                                             SIGNERS
+    1.2.3               3f8bb7c750e86d031dd14c65d331806105ddc0c6f037ba29510f9b9fbbb35960   (Repo Admin)
+
+    Administrative keys for nexus.engageska-portugal.pt/ska-docker/ska-python-runtime:1.2.3
+
+      Repository Key:	abdd8255df05a14ddc919bc43ee34692725ece7f57769381b964587f3e4decac
+      Root Key:	a1bbec595228fa5fbab2016f6918bbf16a572df61457c9580355002096bb58e1
 
 
 Running Containerised Applications
 ==================================
 
+As part of the development process for a Containerised Application, the developer must determine what **the application interface contract** is.  Referring back to the :ref:`Container Anatomy<figure-1-container-anatomy>` diagram above, a Containerised Application has a number of touch points with the underlying host through the Container Engine.  These touch points form the interface and include:
 
-Container resource interface
-----------------------------
+* Network - network and device attachment, hostname, DNS resolution
+* Volumes - persistent data and configuration files
+* Ports
+* Environment variables
+* Permissions
+* Memory
+* CPU
+* Devices
+* OS tuning, and ulimits
+* IPC
+* Signal handling
+* Command and arguments
+* Treatment of StdIn, StdOut, and StdErr
+
+Usage documentation for the image must describe the intended purpose of each of these configurable resources where applicable, how they combine and what the defaults are with default behaviours.
+
+When launching a Container, it is preferred that a qualified tag is used to limit the consequences of inadvertently pulling an unstable/untested image version - specify ``python:3.7.4`` or ``python:3.7`` rathern than ``python:latest``, which could eventually introduce a backward compatibility breaking change.
+
+Container Resources
+-------------------
+
+Management of container resources is largely dependent on the specific Container Engine in use.  For example, Docker by default runs a Container application in it's own namespace, but as the root user, however this is highly configurable.  The following example shares IPC, devices, and user details with the host OS, effectively transparently running the application as the current user of the command line:
+
+.. code:: bash
+
+    #!/bin/sh
+    cat <<EOF | docker build -t mplayer -
+    FROM ubuntu:18.04
+    ENV DEBIAN_FRONTEND noninteractive
+    RUN \
+        apt update && \
+        apt install mplayer -y
+
+    ENTRYPOINT ["/usr/bin/mplayer"]
+    EOF
+
+    docker run --rm --name the-morepork --rm \
+       --ipc=host \
+      -e HOME=${HOME} \
+      -e DISPLAY=unix$DISPLAY \
+      -v /tmp/.X11-unix:/tmp/.X11-unix \
+      --device /dev/snd \
+      -v /etc/passwd:/etc/passwd:ro --user=$(id -u) \
+      -v ${HOME}:${HOME} -w ${HOME} \
+      -v /etc/machine-id:/etc/machine-id \
+      -v /run/user/$(id -u):/run/user/$(id -u) \
+      -v /var/lib/dbus:/var/lib/dbus \
+      -ti mplayer /usr/bin/mplayer https://www.doc.govt.nz/Documents/conservation/native-animals/birds/bird-song/morepork-song.mp3
+
+
 
 Storage
+~~~~~~~
+
+As previously stated, all storage shared into a container is achieved through bind mounting.  This is true for both directory mount points and individual files. While it is not necessary to use the ``VOLUMES`` directive in the image ``Dockerfile``, it is good practice to do this for all directories to be mounted as it provides annotation of the image requirements.
+
+
 Network
-Compute
+~~~~~~~
+
+
+Permissions
+~~~~~~~~~~~
+
+
+Configuration
+~~~~~~~~~~~~~
+
+Configuration
+ - env vars
+ - config files
+
+(prefer not to rely on 3rd party secret/config service integration eg: vault, consul etc.)
+
+
+In the earlier section on :ref:`image environment variables<header-3-environment-variables>`, it is the time to define configuration defaults.
+
+
+
+
 Memory
 CPU
 Devices
@@ -465,25 +551,8 @@ Service Discovery
 -----------------
 
 
-Runtime Contract
-----------------
-
-Configuration
- - env vars
- - config files
-
-(prefer not to rely on 3rd party secret/config service integration eg: vault, consul etc.)
-
-
-namespaces
-clustering related applications
-
-resource allocation
- - storage
- - ports
- - memory
- - cpu
- - devices
+Logging
+-------
 
 logging integration
  - emission standards - stdout/stderr, syslog [what are the rules for when these should be used?]
@@ -499,22 +568,12 @@ Standard input, output, and errors
 Inputs/Outputs
 
 
+Sharing
+-------
+
 Interactions (external to container, container to container)
- - stdin
- - signals
  - SHMEM/IPC
  - pipes
-
-monitoring integration
- - liveness
- - readiness
- - telemetry
-
-OS Interaction
- - loading kernel modules
- - tuning parameters (sysctl)
-
-
 
 
 
@@ -529,19 +588,3 @@ Documentation and Testing
 =========================
 
 * docs.
-
-
-
-
-Examples
-========
-
-This section shows examples in order to illustrate points from the guidelines.
-
-
-
-Acknowledgements
-================
-
-The present document's coding guidelines are derived from project
-`a-source <http://example.com>`_.
