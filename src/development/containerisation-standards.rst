@@ -18,18 +18,18 @@
 Containerisation Standards
 **************************
 
-This section describes a set of standards, conventions and guidelines for building, integrating and maintaining Container technologies.
+This section describes a set of standards, conventions and guidelines for
+building, integrating and maintaining Container technologies.
 
 .. contents:: Table of Contents
 
 Overview of Standards
 =====================
 
-These standards, best practices and guidelines are based
-on existing industry standards and tooling.  The main
-references are:
+These standards, best practices and guidelines are based on existing industry
+standards and tooling.  The main references are:
 
-* `Open Container Initiative run-time sepcification <https://github.com/opencontainers/runtime-spec/releases/tag/v1.0.0>`_.
+* `Open Container Initiative run-time specification <https://github.com/opencontainers/runtime-spec/releases/tag/v1.0.0>`_.
 * `Open Container Initiative image specification <https://github.com/opencontainers/image-spec/releases/tag/v1.0.0>`_.
 * `Container Network Interface <https://github.com/containernetworking/cni>`_.
 * `Container Storage Interface <https://github.com/container-storage-interface/spec>`_.
@@ -55,7 +55,7 @@ Containerisation are a manifestation of a collection of features of the Linux ke
 
 * `Namespaces <https://en.wikipedia.org/wiki/Linux_namespaces>`_ - introduced in 2002
 * `Cgroups <https://en.wikipedia.org/wiki/Cgroups>`_ - introduced in January 2008
-* `Capabilities <https://wiki.archlinux.org/index.php/capabilities>`_ (CAPS) - POSIX 1003.1e capabilities - predate namespaces, but gensis for Linux unknown - approximately Kernel 2.2 onwards
+* `Capabilities <https://wiki.archlinux.org/index.php/capabilities>`_ (CAPS) - POSIX 1003.1e capabilities - predate namespaces, but genesis for Linux unknown - approximately Kernel 2.2 onwards
 * File-system magic - such as `pivot_root <https://linux.die.net/man/8/pivot_root>`_, and `bind mounting <https://unix.stackexchange.com/questions/198590/what-is-a-bind-mount>`_ first appeared in Linux 2.4 - `circa 2001 <https://lwn.net/Articles/690679/>`_
 
 These features combine to give a form of virtualisation that runs directly in the host system Kernel of Linux, where the Container is typically launched by a Container Engine such as `Docker <https://docs.docker.com/>`_.
@@ -83,7 +83,7 @@ Container Image
 
 The Linux Kernel features make it possible for the Container Virtualisation to take place in the Kernel, and to have controls placed on the runtime of processes within that virtualisation.  The Container Image, is the first corner stone of the software contract between the developer of a Containerised application and the Container Engine that implements the Virtualisation.  The Image is used to encapsulate all the dependencies of the target application including executables, libraries, static configuration and sometimes static data.
 
-The `OCI Image sepcification <https://github.com/opencontainers/image-spec/releases/tag/v1.0.0>`_ defines a standard for constructing the root file-system that a Containerised application is to be launched from.  The file-system layout of the image is just like the running application would expect and need as an application running in virtual server.  This can be as little as an empty ``/`` (root) directory for a fully statically linked executable, or it could be a complete OS file-system layout including ``/etc``, ``/usr``, ``/bin``, ``/lib``, ``/dev`` etc. - whatever the target application needs.
+The `OCI Image specification <https://github.com/opencontainers/image-spec/releases/tag/v1.0.0>`_ defines a standard for constructing the root file-system that a Containerised application is to be launched from.  The file-system layout of the image is just like the running application would expect and need as an application running in virtual server.  This can be as little as an empty ``/`` (root) directory for a fully statically linked executable, or it could be a complete OS file-system layout including ``/etc``, ``/usr``, ``/bin``, ``/lib``, ``/dev`` etc. - whatever the target application needs.
 
 According to the OCI specification, these images are built up out of layers that typically start with a minimal OS such as `AlpineLinux <https://alpinelinux.org/>`_ with successive layers of modification, that might add libraries, and other application dependencies.
 
@@ -121,9 +121,9 @@ Each Containerised Application should be a single discrete application.  A good 
 
 For example, ``iperf``, and ``apache2`` are correct, but putting ``NGiNX`` and ``PostgreSQL`` in a single Container is wrong.  This is because ``NGiNX`` and ``PostgreSQL`` should be independently maintained, upgraded and scaled.
 
-A Containerised Application should also not need a specialised multi-process init process such as ``supervisord``.  As soon as this is forming part of the design, there should almost always be an alternative where each application controlled by the ``init`` process is put into a seaprate Container.  Often this can be because the design is trying to treat a Container like a full blown Virtual Machine through adding ``sshd``, ``syslog`` and other core OS services.  This is not an optimal design because these services will be multiplied up with the scalling of the Containerised Application wasting resources.  In both these example cases, ``ssh`` is not required because a Container can be attached to for diagnostic purposes eg: ``docker exec ...``, and it is possible to bind mount ``/dev/log`` from the host into a Container or configure the Containerised Application to point to ``syslog`` over TCP/UDP.
+A Containerised Application should also not need a specialised multi-process init process such as ``supervisord``.  As soon as this is forming part of the design, there should almost always be an alternative where each application controlled by the ``init`` process is put into a separate Container.  Often this can be because the design is trying to treat a Container like a full blown Virtual Machine through adding ``sshd``, ``syslog`` and other core OS services.  This is not an optimal design because these services will be multiplied up with the scaling of the Containerised Application wasting resources.  In both these example cases, ``ssh`` is not required because a Container can be attached to for diagnostic purposes eg: ``docker exec ...``, and it is possible to bind mount ``/dev/log`` from the host into a Container or configure the Containerised Application to point to ``syslog`` over TCP/UDP.
 
-Take special care with signal handling - the Container Engine propogates signals to init process which should be the application (using the EXEC for of entry point).  If not it will be necessary to ensure that what ever  wrapper (executable, shell script etc.) is used propogates signals correctly to the actual application in the container.  This is particularly important at termination where th Engine will typically send a SIGHUP waiting for a specified timeout and then following up with a SIGKILL.  This could be harmful to stateful applications such as databases, message queues, or anything that requires an orderly shutdown.
+Take special care with signal handling - the Container Engine propagates signals to init process which should be the application (using the EXEC for of entry point).  If not it will be necessary to ensure that what ever  wrapper (executable, shell script etc.) is used propagates signals correctly to the actual application in the container.  This is particularly important at termination where th Engine will typically send a SIGHUP waiting for a specified timeout and then following up with a SIGKILL.  This could be harmful to stateful applications such as databases, message queues, or anything that requires an orderly shutdown.
 
 
 Defining and Building Container Images
@@ -140,9 +140,9 @@ The core of a Containerised Application is the image.  According to the OCI spec
    Cattle not Pets!
 
 
-The rules for building an image are specified in the ``Dockerfile`` which forms a kind of manifest.  Each rule specified creates a new layer in the image.  Each layer in the image represents a kind of high watermark of an image state which can ultimately be shared between different image builds.  Within the local image cache, these layer points can be shared between running Containers because as explained above, the image layers are stacked as a read only UnionFS.   This Immutability is a key concept in Containers.  Containers should not be considered mutable and therefore precious - 'they are cattle, not pets'! in the sense that it should be possible to destry and recreate them with (little or) no side effects.
+The rules for building an image are specified in the ``Dockerfile`` which forms a kind of manifest.  Each rule specified creates a new layer in the image.  Each layer in the image represents a kind of high watermark of an image state which can ultimately be shared between different image builds.  Within the local image cache, these layer points can be shared between running Containers because as explained above, the image layers are stacked as a read only UnionFS.   This Immutability is a key concept in Containers.  Containers should not be considered mutable and therefore precious - 'they are cattle, not pets'! in the sense that it should be possible to destroy and recreate them with (little or) no side effects.
 
-If there is any file-system based state requirement for a Containerised application, then that requirement should be satisfied by mounting in storage.  This will mean that the Container can be killed and restarted at anytime, giving a pathway to upgradability and maintainability for the application.
+If there is any file-system based state requirement for a Containerised application, then that requirement should be satisfied by mounting in storage.  This will mean that the Container can be killed and restarted at anytime, giving a pathway to upgrade-ability and maintainability for the application.
 
 The Image
 ---------
@@ -184,7 +184,13 @@ The basic build process is performed by:
                  -f path/to/Dockerfile \
                  project/path/to/build/context
 
-The build context is a directory tree that is copied into the image build process (just another Container), making all of those files available to subsequent ``COPY`` and ``ADD`` commands for adding content into the target image.  The size of the build context should be minimised in order to speed up the build process.  This should be done by specifying a path with in the project that contains only the files that are required to be added to the image.
+The build context is a directory tree that is copied into the image build
+process (just another Container), making all of those files available to
+subsequent ``COPY`` and ``ADD`` commands for adding content into the target
+image.  The size of the build context should be minimised in order to speed up
+the build process.  This should be done by specifying a path with in the
+project that contains only the files that are required to be added to the
+image.
 
 Always be careful about excluding files from the Image build context.  Aside from specifying a build context directory outside the root of the current project, it is also possible to specify a |.dockerignore|_ file which functions like a ``.gitignore`` file listing exclusions from the initial copy into the build context.  Never use ``ADD``, ``COPY`` or ``ENV`` to include secret information such as certificates and passwords into an image eg: ``COPY id_rsa .ssh/id_rsa``.  These values will be permanently embedded in the image, which may then be pushed to a public repository creating a security risk.
 
@@ -263,12 +269,12 @@ Consider the following:
 
 Looking at the example above, during the intensive development build phase of an application, it is likely that the most volitile element is the ``./app`` itself, followed by the Python dependencies in the ``requirements.txt`` file, then finally the least changeable element considered is the specific postgresql client libraries (the base image is always at the top).
 
-Laying out the build process in this way ensures that the build exploits as much as possible the build cache that the Container Engine holds locally.  The cache calculates a hash of each element of the ``Dockerfile`` linked to all the previous elements.  If this hash has not changed then the build process will skip te rebuild of that layer and pull it from the cache instead.  If in the above example, the ``COPY ./app /app`` step was placed before the ``RUN apt install``, then the package install would be triggered everytime the code changed in the application unnecessarily.
+Laying out the build process in this way ensures that the build exploits as much as possible the build cache that the Container Engine holds locally.  The cache calculates a hash of each element of the ``Dockerfile`` linked to all the previous elements.  If this hash has not changed then the build process will skip te rebuild of that layer and pull it from the cache instead.  If in the above example, the ``COPY ./app /app`` step was placed before the ``RUN apt install``, then the package install would be triggered every time the code changed in the application unnecessarily.
 
 Labels
 ~~~~~~
 
-Use the ``LABEL`` directive to add ample metadata to your image.  This metadata is inherrited by child images, so is useful for provenance and tracability.
+Use the ``LABEL`` directive to add ample metadata to your image.  This metadata is inherited by child images, so is useful for provenance and traceability.
 
 
 .. code:: docker
@@ -325,7 +331,7 @@ Note: the ``ARG postgres_client`` is placed after the ``apt install -y binutls c
 Environment Variables
 ~~~~~~~~~~~~~~~~~~~~~
 
-Only set environment variables using ``ENV`` if they are required in the final image.  ``ENV`` directives create layers and a permanent record of values that are set, even if they are ovrridden by a subsequent ``ENV`` directive.  If an environment variable is required by a build step eg: ``RUN gen-myspecial-hash``, then chain the ``export`` of the variable in the ``RUN`` statement, eg:
+Only set environment variables using ``ENV`` if they are required in the final image.  ``ENV`` directives create layers and a permanent record of values that are set, even if they are overridden by a subsequent ``ENV`` directive.  If an environment variable is required by a build step eg: ``RUN gen-myspecial-hash``, then chain the ``export`` of the variable in the ``RUN`` statement, eg:
 
 .. code:: docker
 
@@ -335,7 +341,7 @@ Only set environment variables using ``ENV`` if they are required in the final i
         && unset THE_HASH
     ...
 
-This ensures that the value is ephemeral, atleast from the point of view of the resultant image.
+This ensures that the value is ephemeral, at least from the point of view of the resultant image.
 
 ADD or COPY + RUN vs RUN + curl
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -360,7 +366,7 @@ The above example downloads and installs the software archive, and then removes 
 USER and WORKDIR
 ~~~~~~~~~~~~~~~~
 
-It is good practice to switch the user to a non privelleged account if possible for the application, as this is good security practice, eg: ``RUN groupadd -r userX && useradd --no-log-init -r -g userX userX``, and then specify the user with ``USER userX``.
+It is good practice to switch the user to a non privelleged account if possible for the application, as this is good security practice, eg: ``RUN groupadd -r userX && useradd --no-log-init -r -g userX userX``, and then specify the user with ``USER userX[:userX]``.
 
 Never use sudo - there should never be a need for an account to elevate permissions.  If this seems to be required then it really is time to revisit the architecture.
 
@@ -477,7 +483,7 @@ As part of the development process for a Containerised Application, the develope
 
 Usage documentation for the image must describe the intended purpose of each of these configurable resources where applicable, how they combine and what the defaults are with default behaviours.
 
-When launching a Container, it is preferred that a qualified tag is used to limit the consequences of inadvertently pulling an unstable/untested image version - specify ``python:3.7.4`` or ``python:3.7`` rathern than ``python:latest``, which could eventually introduce a backward compatibility breaking change.
+When launching a Container, it is preferred that a qualified tag is used to limit the consequences of inadvertently pulling an unstable/untested image version - specify ``python:3.7.4`` or ``python:3.7`` rather than ``python:latest``, which could eventually introduce a backward compatibility breaking change.
 
 Container Resources
 -------------------
@@ -486,7 +492,6 @@ Management of container resources is largely dependent on the specific Container
 
 .. code:: bash
 
-    #!/bin/sh
     cat <<EOF | docker build -t mplayer -
     FROM ubuntu:18.04
     ENV DEBIAN_FRONTEND noninteractive
@@ -511,61 +516,89 @@ Management of container resources is largely dependent on the specific Container
       -ti mplayer /usr/bin/mplayer https://www.doc.govt.nz/Documents/conservation/native-animals/birds/bird-song/morepork-song.mp3
 
 
-
 Storage
 ~~~~~~~
 
-As previously stated, all storage shared into a container is achieved through bind mounting.  This is true for both directory mount points and individual files. While it is not necessary to use the ``VOLUMES`` directive in the image ``Dockerfile``, it is good practice to do this for all directories to be mounted as it provides annotation of the image requirements.
+As previously stated, all storage shared into a container is achieved through bind mounting.  This is true for both directory mount points and individual files. While it is not mandatory to use the ``VOLUMES`` directive in the image ``Dockerfile``, it is good practice to do this for all directories to be mounted as it provides annotation of the image requirements.
+These volumes and files can be populated with default data, but be aware they are completely masked at runtime when overlayed by a mount.
 
+When adding a volume at runtime, consider whether write access is really required.  As with the example above ``-v /etc/passwd:/etc/passwd:ro`` ensures that the ``/etc/passwd`` file is read only in the container reducing the security concerns.
+
+
+.. _header-3-network:
 
 Network
 ~~~~~~~
 
+Containerised applications should avoid using ``--net=host`` (host only) based networking as this will push the Container onto the running host network namespace monopolising any ports that it uses.  This means that this Container or any other that uses the same ports cannot run on the same host severely impacting on scheduling and resource utilisation efficiencies.
 
 Permissions
 ~~~~~~~~~~~
 
+Where possible, an Containerised application should run under a specific UIG/GID to avoid privilege escalation as an attack vector.
+
+It should be a last resort to run the Container in privileged mode ``docker run --privileged ...``, as there are very few use cases that will require this.  The most notable are when a Container needs to load kernel modules, or a Container requires direct host resource access (such as network stack, or specialised device) for performance reasons. Running a Container in this mode will push it into the host OS namespace meaning that the Container will monopolise any resources such as ports (see :ref:`header-3-network`).
 
 Configuration
 ~~~~~~~~~~~~~
 
-Configuration
- - env vars
- - config files
+Configuration of a Containerised application should be managed primarily by:
 
-(prefer not to rely on 3rd party secret/config service integration eg: vault, consul etc.)
+ - :ref:`header-3-environment-variables`
+ - configuration files
 
+Avoid passing large numbers of configuration options on the command line, and service connection information that could contain secrets such as keys and passwords should not be passed as options, as these can appear in the host OS process table.
 
-In the earlier section on :ref:`image environment variables<header-3-environment-variables>`, it is the time to define configuration defaults.
+Configuration passed into a Container should not rely on a 3rd party secret/configuration service integration such as `vault <https://www.vaultproject.io/>`_, `consul <https://www.consul.io/>`_ or `etcd <https://etcd.readthedocs.io/en/latest/>`_.  If integration with these services are required, then a sidecar configuration provider architecture should be adopted that specifically handles these environment specific issues.
 
-
-
-
-Memory
-CPU
-Devices
+Appropriate configuration defaults should be defined in the image build as described in the earlier section on :ref:`image environment variables<header-3-environment-variables>`, along with default configuration files. These defaults should be enough to launch the application into it's minimal state unaided by specifics from the user.  If this is not possible then the default action of the Container should be to run the application with the ``--help`` option to start the process of informing the user what to do next.
 
 
+Memory and CPU
+~~~~~~~~~~~~~~
+
+Runtime constraints for Memory and CPU should be specified, to ensure that an application does not exhaust host resources, or behave badly next to other co-located applications, for example with Docker:
+
+.. code:: bash
+
+    docker run --rm --name postgresdb --memory="1g" --cpu-shares="1024" --cpuset-cpus="1,3" -d postgres
+
+In the above scenario, the PostgreSQL database would have a 1GB of memory limit before an Out Of Memory error occurred, and it would get a 100% share of CPUs 1 and 3.  This example also illustrates CPU pinning.
 
 Service Discovery
 -----------------
+
+Although Container Orchestration is not covered by these standards, it is important to note that all the leading Orchestration solutons (Docker Swarm, Kubernetes, Mesos) use DNS as the primary service discovery mechanism.  This should be considered when designing Containerised applications so that they inherrently expect to resolve dependent services by DNS, and in return expose their own services over DNS.  This will ensure that when in future the Containerised application is integrated as part of an Orchestrated solution, it will conform to that architecture.
+
+
+Standard input, output, and errors
+----------------------------------
+
+Container Engines such as Docker are implemented on the fundamental premise that the Containerised application behaves as a standard UNIX application that can be launched (``exec'ed``) from the commandline.
+Because of this, the application is expected to respond to all the standard inputs and outputs including:
+
+* stdin
+* stdout
+* stderr
+* signals
+* commandline parameters
+
+The primary use case for stdin is where the Container is launched replacing the netry point with a shell such as ``bash``.  This enables a DevOps engineer to enter into the Container namespace for diagnostic and debug purposes.  While it is possible to do, it is not good practice to design a Containerised application to read from stdin as this will make an assumption that any scheduling and orchestration service that executes the container will be able to enact UNIX pipes.
+
+stdout and stderr are sent straight to the Container Engine logging system.  In Docker, this is the `logging sub-system <https://docs.docker.com/config/containers/logging/configure/>`_ which combines the output for viewing purposes with ``docker logs ...``.  Because these logging systems are configurable, and can be syndicated into unviversal logging solutions, using stdout/stderr is used a defacto standard for logging.
 
 
 Logging
 -------
 
-logging integration
- - emission standards - stdout/stderr, syslog [what are the rules for when these should be used?]
- - syslog - RFC5424
- - enriched logging (JSON)
+The SKA has adopted syslog - `RFC5424 <https://tools.ietf.org/html/rfc5424>`_ as the logging standard to be adopted by all SKA software.  This should be considered a base line standard can and will be decorated with additional data by an integrated logging solution.
 
+The following recommendations are made:
 
-
-
-Standard input, output, and errors
-=====================================
-
-Inputs/Outputs
+ - when developing Containerised applications, the development process should scale from the individual unit on the desktop up to the production deployment.  In order to do this, logging should be implemented so that  stdout/stderr is used, but is configurable to switch the emission to syslog
+ - log formatting must adhere to syslog - RFC5424
+ - testing should include confirmation of integration with the host syslog, which is easily achieved through bind mounting ``/dev/log``
+ - within the syslog standard, the message portion should be enriched with JSON structured formats so that the universal logging slution integrated with the COntainer Engine and/or Orchestration solution can provide greater semantic meaning of the application logs
 
 
 Sharing
@@ -574,14 +607,6 @@ Sharing
 Interactions (external to container, container to container)
  - SHMEM/IPC
  - pipes
-
-
-
-
-Dependencies
-==========================
-
-* dependencies
 
 
 Documentation and Testing
