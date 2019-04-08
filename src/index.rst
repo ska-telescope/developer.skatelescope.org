@@ -149,6 +149,7 @@ The definition of done is used to guide teams in planning and estimating the siz
   development/python-codeguide
   development/javascript-codeguide
   development/containerisation-standards
+  development/python_package_release_procedure
 
 
 Development guidelines
@@ -189,6 +190,15 @@ A set of standards, conventions and guidelines for building, integrating and mai
 technologies.
 
 - :doc:`development/containerisation-standards`
+
+SKA Software Packaging Procedure
+================================
+
+This details a procedure that all *SKA* developers shall follow to ensure that they make use of the
+existing CI/CD pipelines to automate the building of their software packages for release.
+
+- :doc:`development/python_package_release_procedure`
+
 
 .. PROJECTS SECTION ==================================================
 
