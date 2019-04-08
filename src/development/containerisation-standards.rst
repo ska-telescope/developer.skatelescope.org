@@ -113,11 +113,11 @@ Each containerised application should be a single discrete application.  A good 
 * is the process independently maintainable and upgradable?
 * is the running process independently scalable?
 
-For example, ``iperf``, and ``apache2`` are correct, but putting ``NGiNX`` and ``PostgreSQL`` in a single container is wrong.  This is because ``NGiNX`` and ``PostgreSQL`` should be independently maintained, upgraded and scaled, an init process handler would be required to support multiple parenet processes, and signals would not be correctly propagated to these parent processes (eg: Postgres and NGiNX) from the Container Engine.
+For example, ``iperf``, or ``apache2`` as separate containerised applications are correct, but putting ``NGiNX`` and ``PostgreSQL`` in a single container is wrong.  This is because ``NGiNX`` and ``PostgreSQL`` should be independently maintained, upgraded and scaled, an init process handler would be required to support multiple parenet processes, and signals would not be correctly propagated to these parent processes (eg: Postgres and NGiNX) from the Container Engine.
 
 A containerised application should not need a specialised multi-process init process such as ``supervisord``.  As soon as this is forming part of the design, there should almost always be an alternative where each application controlled by the ``init`` process is put into a separate container.  Often this can be because the design is trying to treat a container like a full blown Virtual Machine through adding ``sshd``, ``syslog`` and other core OS services.  This is not an optimal design because these services will be multiplied up with horizontal scaling of the containerised application wasting resources.  In both these example cases, ``ssh`` is not required because a container can be attached to for diagnostic purposes eg: ``docker exec ...``, and it is possible to bind mount ``/dev/log`` from the host into a container or configure the containerised application to point to ``syslog`` over TCP/UDP.
 
-Take special care with signal handling - the Container Engine propagates signals to init process which should be the application (using the EXEC for of entry point).  If not it will be necessary to ensure that what ever  wrapper (executable, shell script etc.) is used propagates signals correctly to the actual application in the container.  This is particularly important at termination time where th Engine will typically send a SIGHUP waiting for a specified timeout and then following up with a SIGKILL.  This could be harmful to stateful applications such as databases, message queues, or anything that requires an orderly shutdown.
+Take special care with signal handling - the Container Engine propagates signals to init process which should be the application (using the EXEC for of entry point).  If not it will be necessary to ensure that what ever  wrapper (executable, shell script etc.) is used propagates signals correctly to the actual application in the container.  This is particularly important at termination time where the Engine will typically send a SIGHUP waiting for a specified timeout and then following up with a SIGKILL.  This could be harmful to stateful applications such as databases, message queues, or anything that requires an orderly shutdown.
 
 
 Defining and Building Container Images
@@ -125,16 +125,7 @@ Defining and Building Container Images
 
 The core of a containerised application is the image.  According to the OCI specification, this is the object that encapsulates the executable and dependencies, external storage (VOLUMES) and the basics of the launch interface (the ENTRYPOINT and ARGS).
 
-
-.. figure:: https://i.stack.imgur.com/Lm3Td.jpg
-   :width: 200px
-   :alt: Cattle not Pets
-   :align: right
-
-   Cattle not Pets!
-
-
-The rules for building an image are specified in the ``Dockerfile`` which forms a kind of manifest.  Each rule specified creates a new layer in the image.  Each layer in the image represents a kind of high watermark of an image state which can ultimately be shared between different image builds.  Within the local image cache, these layer points can be shared between running containers because the image layers are stacked as a read only UnionFS.   This Immutability is a key concept in containers.  containers should not be considered mutable and therefore precious - 'they are cattle, not pets'! in the sense that it should be possible to destroy and recreate them with (little or) no side effects.
+The rules for building an image are specified in the ``Dockerfile`` which forms a kind of manifest.  Each rule specified creates a new layer in the image.  Each layer in the image represents a kind of high watermark of an image state which can ultimately be shared between different image builds.  Within the local image cache, these layer points can be shared between running containers because the image layers are stacked as a read only UnionFS.   This Immutability is a key concept in containers.  containers should not be considered mutable and therefore precious.  The goal is that it should be possible to destroy and recreate them with (little or) no side effects.
 
 If there is any file-system based state requirement for a containerised application, then that requirement should be satisfied by mounting in external storage.  This will mean that the container can be killed and restarted at anytime, giving a pathway to upgrade-ability, maintainability and portability for the application.
 
@@ -155,6 +146,15 @@ Consistency with ``Dockerfile`` syntax will make code easier to read.  All direc
 All element names should be in lower case eg: image labels and tags, and arguments (``ARG``). The exception is environment variables (``ENV``) as it is customary to make them all upper case within a shell environment.
 
 Be liberal with comments (lines starting with ``#``).  These should explain each step of the build and describe any external dependencies and how changes in those external dependencies (such as a version change in a base image, or included library) might impact on the success of the build and the viability of the target application.
+
+.. code:: docker
+
+    # This application depends on type hints available only in 3.7+
+    # as described in PEP-484
+    ARG base_image="python:3.7"
+    FROM $base_image
+    ...
+
 
 Where multi-line arguments are used, sort them for ease of reading, eg:
 
@@ -182,7 +182,7 @@ The build context is a directory tree that is copied into the image build
 process (just another container), making all of the contained files available to
 subsequent ``COPY`` and ``ADD`` commands for pushing content into the target
 image.  The size of the build context should be minimised in order to speed up
-the build process.  This should be done by specifying a path with in the
+the build process.  This should be done by specifying a path within the
 project that contains only the files that are required to be added to the
 image.
 
@@ -194,7 +194,25 @@ Always be careful to exclude unnecessary and sensitive files from the image buil
 Minimise Layers
 ~~~~~~~~~~~~~~~
 
-Image builds tend to be highly information dense, therefore it is important to keep the scripting of the build process in the ``Dockerfile`` short and succint.  Break the build process into multiple images as it is likely that part of your proposed image build is core and common to other applications. Sharing base images (and layers) between derivative images will improve download time of images, and reduce storage requirements.  The Container Engine should only download layers that it does not already have - remember, the UnionFS shares the layers between running containers as it is only the upper most layer that is writable.
+Image builds tend to be highly information dense, therefore it is important to keep the scripting of the build process in the ``Dockerfile`` short and succint.  Break the build process into multiple images as it is likely that part of your proposed image build is core and common to other applications. Sharing base images (and layers) between derivative images will improve download time of images, and reduce storage requirements.  The Container Engine should only download layers that it does not already have - remember, the UnionFS shares the layers between running containers as it is only the upper most layer that is writable.  The following example illustrates a parent image with children:
+
+.. code:: docker
+
+    FROM python:latest
+    RUN apt install -y libpq-dev \
+                       postgresql-client-10
+    RUN pip install psycopg2 \
+                    sqlalchemy
+
+The image is built with ``docker build -t python-with-postgres:latest .``.  Now we have a base image with Python, Postgres, and SQLalchemy support that can be used as a common based for other applications:
+
+.. code:: docker
+
+    FROM  python-with-postgres:latest
+    COPY ./app /app
+    ...
+
+
 
 Minimising layers also reduces the build and rebuild time - ``ENV``, ``RUN``, ``COPY``, and ``ADD`` statements will create intermediate cached layers.
 
@@ -302,7 +320,7 @@ Use the ``LABEL`` directive to add ample metadata to your image.  This metadata 
           website="http://github.com/ACMEIncorporate/widget"
     ...
 
-The following are suggested labels for all images:
+The following are recommended labels for all images:
 
 * author: name and email address of the author
 * description: a short description of this image and it's purpose.
@@ -433,7 +451,7 @@ While it is customary for th Docker community at large to support image variants
 .. |python:<version>-slim| replace:: ``python:<version>-slim``
 .. _python:<version>-slim: https://hub.docker.com/_/python/
 
-Within the SKA hosted Continuous Integration infrastructure, development and test images will be periodically purged from the ``nexus.engageska-portugal.pt`` repository after N months, leaving the last version built.  All production images are kept indefinitely.
+Within the SKA hosted Continuous Integration infrastructure, development and test images will be periodically purged from the `repository <https://nexus.engageska-portugal.pt/>`_ after N months, leaving the last version built.  All production images are kept indefinitely.
 
 This way anyone who looks at the image repository will have an idea of the context of a particular image version and can trace it back to the source.
 
@@ -445,7 +463,7 @@ Any image build tool is acceptable so long as it adheres to the OCI image specif
 Development tools
 -----------------
 
-Debuging tools, profilers, and any tools not essential to the running of the target application should not be included in the target application production image.  Instead, a derivative image should be made solely for debugging purposes that can be swapped in for the running application as required.  This is to avoid image bloat, and to reduce the attack surface of running containers as a security consideration.  These derivative images should be named explicitly ``debug`` eg: ``tango-example/powersupply-debug:1.13.2``.
+Debuging tools, profilers, and any tools not essential to the running of the target application should not be included in the target application production image.  Instead, a derivative image should be made solely for debugging purposes that can be swapped in for the running application as required.  This is to avoid image bloat, and to reduce the attack surface of running containers as a security consideration.  These derivative images should be named explicitly ``dev`` eg: ``tango-example/powersupply-dev:1.13.2``.
 
 Image Storage
 -------------
@@ -599,7 +617,7 @@ Because of this, the application is expected to respond to all the standard inpu
 
 The primary use case for stdin is where the container is launched replacing the entry point with a shell such as ``bash``.  This enables a DevOps engineer to enter into the container namespace for diagnostic and debug purposes.  While it is possible to do, it is not good practice to design a containerised application to read from stdin as this will make an assumption that any scheduling and orchestration service that executes the container will be able to enact UNIX pipes which is not the case.
 
-stdout and stderr are sent straight to the Container Engine logging system.  In Docker, this is the `logging sub-system <https://docs.docker.com/config/containers/logging/configure/>`_ which combines the output for viewing purposes with ``docker logs ...``.  Because these logging systems are configurable, and can be syndicated into unviversal logging solutions, using stdout/stderr is used a defacto standard for logging.
+stdout and stderr are sent straight to the Container Engine logging system.  In Docker, this is the `logging sub-system <https://docs.docker.com/config/containers/logging/configure/>`_ which combines the output for viewing purposes with ``docker logs ...``.  Because these logging systems are configurable, and can be syndicated into unviversal logging solutions, using stdout/stderr is used as a defacto standard for logging.
 
 
 Logging
