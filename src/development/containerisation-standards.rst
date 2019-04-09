@@ -481,7 +481,7 @@ Debuging tools, profilers, and any tools not essential to the running of the tar
 Image Storage
 -------------
 
-All images should be stored in a Docker v2 Registry API compliant repository, protected by HTTPS, and authentication.  The SKA supported and hosted repositories are based on the `Nexus Container Registry <https://help.sonatype.com/repomanager3/private-registry-for-docker>`_ available at `nexus.engageska-portugal.pt <https://nexus.engageska-portugal.pt/#browse/search/docker>`_ .
+All images should be stored in a Docker v2 Registry API compliant repository, protected by HTTPS.  The SKA supported and hosted repositories are based on the `Nexus Container Registry <https://help.sonatype.com/repomanager3/private-registry-for-docker>`_ available at `nexus.engageska-portugal.pt <https://nexus.engageska-portugal.pt/#browse/search/docker>`_ .
 
 All containerised software used within the SKA, will be served out of the hosted repository service.  This will ensure that images are quality assured and always remain available beyond the maintenance life-cycle of third party and COTs software.
 
@@ -730,7 +730,7 @@ Naming and Tagging
 * The SKA will endeavour to support only one OS base per image as the practice of multi-OS bases does not strictly follow Semantic Versioning, and creates considerable maintenance overhead.
 * Within the SKA hosted Continuous Integration infrastructure, all production images are kept indefinitely.
 * Images with debuging tools, profilers, and any tools not essential to the running of the target application should be contained in a derivative image that is named explicitly ``dev`` eg: ``tango-example/powersupply-dev:1.13.2``.
-* All images should be stored in a Docker v2 Registry API compliant repository, protected by HTTPS, and authentication.
+* All images should be stored in a Docker v2 Registry API compliant repository, protected by HTTPS.
 * All containerised software used within the SKA, will be served out of the hosted repository service.
 
 
