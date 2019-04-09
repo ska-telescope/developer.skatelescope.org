@@ -7,6 +7,10 @@
         div .figborder p.caption {margin-top: 10px;}
     </style>
 
+.. .. admonition:: The thing
+
+..    You can make up your own admonition too.
+
 
 **************************
 Containerisation Standards
@@ -32,11 +36,17 @@ standards and tooling.  The main references are:
 
 The standards are broken down into the following areas:
 
-* Structuring applications in a containerised environment - general guidelines for breaking up application suites for running in a containerised environment
+* Structuring applications in a containerised environment - general guidelines for breaking up application suites for running in a containerised way
 * Defining and building container images - how to structure image definitions, and map your applications onto the image declaration
 * Running containerised applications - interfacing your application with the container run time environment
 
 Throughout this documentation, `Docker <https://docs.docker.com/>`_ is used as the reference implementation with the canonical version being Docker 18.09.4 CE API version 1.39, however the aim is to target compliance with the OCI specifications so it is possible to substitute in alternative Container Engines, and image build tools that are compatible.
+
+Cheatsheet
+==========
+
+A `Standards CheatSheet`_ is provided at the end of this document as a quick guide to standards and conventions elaborated on throughout this document.
+
 
 Structuring applications in a Containerised Environment
 =======================================================
@@ -118,6 +128,8 @@ For example, ``iperf``, or ``apache2`` as separate containerised applications ar
 A containerised application should not need a specialised multi-process init process such as ``supervisord``.  As soon as this is forming part of the design, there should almost always be an alternative where each application controlled by the ``init`` process is put into a separate container.  Often this can be because the design is trying to treat a container like a full blown Virtual Machine through adding ``sshd``, ``syslog`` and other core OS services.  This is not an optimal design because these services will be multiplied up with horizontal scaling of the containerised application wasting resources.  In both these example cases, ``ssh`` is not required because a container can be attached to for diagnostic purposes eg: ``docker exec ...``, and it is possible to bind mount ``/dev/log`` from the host into a container or configure the containerised application to point to ``syslog`` over TCP/UDP.
 
 Take special care with signal handling - the Container Engine propagates signals to init process which should be the application (using the EXEC for of entry point).  If not it will be necessary to ensure that what ever  wrapper (executable, shell script etc.) is used propagates signals correctly to the actual application in the container.  This is particularly important at termination time where the Engine will typically send a SIGHUP waiting for a specified timeout and then following up with a SIGKILL.  This could be harmful to stateful applications such as databases, message queues, or anything that requires an orderly shutdown.
+
+A container image among other things, is a software packaging solution, so it is natural for it to follow the same Software Development Life Cycle as the application held inside.  This also means that it is good practice for the released container image versions to map to the released application versions.  An example of this in action is the `NGiNX Ingress Controller releases <https://github.com/kubernetes/ingress-nginx/releases>`_.  By extension, this also leads to having one Git repository and container image per application in order to correctly manage independent release cycles.
 
 
 Defining and Building Container Images
@@ -262,7 +274,7 @@ As a general rule, stable image tags should be used for base images that at leas
 Reduce Image Size
 ~~~~~~~~~~~~~~~~~
 
-Avoid installing unnecessary packages in your container image.  Your production container should not automatically require a debugger, editor or network analysis tools.  Leave these out, or if tey are truly required, then create a derivative image from the standard production one explicityl for the purposes of debugging, and problem resolution.  Adding these unnecessary packages will bloat the image size, and reduce the efficiency of image building, and shipping as well as unnecessarily expose the production container to potential further security vulnerabilities by increasing the attack surface.
+Avoid installing unnecessary packages in your container image.  Your production container should not automatically require a debugger, editor or network analysis tools.  Leave these out, or if they are truly required, then create a derivative image from the standard production one explicitly for the purposes of debugging, and problem resolution.  Adding these unnecessary packages will bloat the image size, and reduce the efficiency of image building, and shipping as well as unnecessarily expose the production container to potential further security vulnerabilities by increasing the attack surface.
 
 
 RUN and packages
@@ -398,7 +410,7 @@ USER and WORKDIR
 
 It is good practice to switch the container user to a non privelleged account when possible for the application, as this is good security practice, eg: ``RUN groupadd -r userX && useradd --no-log-init -r -g userX userX``, and then specify the user with ``USER userX[:userX]``.
 
-Never use sudo - there should never be a need for an account to elevate permissions.  If this seems to be required then it really is time to revisit the architecture and be sure of the reasoning.
+Never use sudo - there should never be a need for an account to elevate permissions.  If this seems to be required then please revisit the architecture, discuss with the Systems Team and be sure of the reasoning.
 
 ``WORKDIR`` is a helper that sets the default directory at container launch time.  Aside from being good practice, this is often helpful when debugging as the path and context is already set when using ``docker exec -ti ...``.
 
@@ -433,7 +445,7 @@ ONBUILD is a powerful directive that enables the author of an image to enforce a
 
 Built with ``docker build -t myimage:1.0.0-onbuild .``
 
-In any child image created ``FROM myimage:1.0.0-onbuild ...``, the parent image will seemingly call back from the dead and execute statement ``COPY ./app ./app`` and ``RUN chmod 644 ./app/bin/*`` as soon as the ``FROM`` statement is interpreted.  As there is no obvious way to tell whether an image has embedded ``ONBUILD`` statements (without ``docker inspect myimage:1.0.0-onbuild``), it is customary to add an indicator to the tag name as above: ``myimage:1.0.0-onbuild`` to act as a warning to the developer.  Use the ``ONBUILD`` feature sparingly, as it can easily caused unintended consequences and catch out dependent developers.
+In any child image created ``FROM myimage:1.0.0-onbuild ...``, the parent image will seemingly call back from the dead and execute statement ``COPY ./app ./app`` and ``RUN chmod 644 ./app/bin/*`` as soon as the ``FROM`` statement is interpreted.  As there is no obvious way to tell whether an image has embedded ``ONBUILD`` statements (without ``docker inspect myimage:1.0.0-onbuild``), it is customary to add an indicator to the tag name as above: ``myimage:1.0.0-onbuild`` to act as a warning to the developer.  Use the ``ONBUILD`` feature sparingly, as it can easily cause unintended consequences and catch out dependent developers.
 
 Naming and Tagging
 ------------------
@@ -455,6 +467,7 @@ Within the SKA hosted Continuous Integration infrastructure, development and tes
 
 This way anyone who looks at the image repository will have an idea of the context of a particular image version and can trace it back to the source.
 
+
 Image Tools
 -----------
 
@@ -472,8 +485,8 @@ All images should be stored in a Docker v2 Registry API compliant repository, pr
 
 All containerised software used within the SKA, will be served out of the hosted repository service.  This will ensure that images are quality assured and always remain available beyond the maintenance life-cycle of third party and COTs software.
 
-Image signing
-~~~~~~~~~~~~~
+Image signing and Publishing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 All images pushed to the SKA hosted repository must be signed.  This will ensure that only trusted content will be launched in containerised environments.  `Docker Content Trust <https://docs.docker.com/engine/security/trust/content_trust/>`_ signatures can be checked with:
 
@@ -492,6 +505,8 @@ All images pushed to the SKA hosted repository must be signed.  This will ensure
       Repository Key:	abdd8255df05a14ddc919bc43ee34692725ece7f57769381b964587f3e4decac
       Root Key:	a1bbec595228fa5fbab2016f6918bbf16a572df61457c9580355002096bb58e1
 
+
+.. _header-2-running-containerised-applications:
 
 Running Containerised Applications
 ==================================
@@ -646,3 +661,107 @@ SysV/POSIX shared memory segments, semaphores and message queues can be shared u
 
 Named pipes, are straight forward as these are achieved through shared hostpath mounts between the containers where the pipe can be created using ``mkfifo``.
 
+
+------------
+
+
+********************
+Standards CheatSheet
+********************
+
+This section provides a condensed summary of the standards to be used as a checklist.
+
+
+.. admonition:: Reference Implementation
+
+   Throughout  `Docker <https://docs.docker.com/>`_ is used as the reference implementation with the canonical version being Docker 18.09.4 CE API version 1.39.
+
+
+Structuring applications in a Containerised Environment
+=======================================================
+
+* Each containerised application should be a single discrete application.
+* A containerised application should not need a specialised multi-process init process such as ``supervisord`` as there should not be multiple parent processes.
+* Ensure that signal handling is correctly propagated from PID 1 to the containerised application so that container engine SIGHUP and SIGKILL are correctly handled.
+* There should be one container image per application with one application per Git repository in order to correctly manage independent release cycles.
+
+
+Defining and Building Container Images
+======================================
+
+* Containers are immutable by design - it should be possible to destroy and recreate them with (little or) no side effects.
+* Do not store state inside a containerised application - always mount in storage for this purpose keeping containers ephemeral.
+* Minimise the size and number of layers of the image to speed up image transfer and container launch.
+* Order the layers from most static to least static to reduce churn and depth to the image rebuild process.
+* All directives and key words should be in upper case.
+* All element names should be in lower case - image labels and tags, and arguments (``ARG``) apart from environment variables (``ENV`` - upper case).
+* Liberally use comments (lines starting with ``#``) to explain each step of the build and describe any external dependencies.
+* Where multi-line arguments are used such as ``RUN apt install ...``, sort them for ease of reading.
+* The size of the build context should be minimised in order to speed up the build process.
+* Always be careful to exclude unnecessary and sensitive files from the image build context.
+* Break the build process into multiple images so that core and common builds can be shared with other applications.
+* Use multi-stage builds (with ``COPY --from...``) to reduce the final size of an image.
+* Avoid embedding configuration and data in the container image unless it is small, guaranteed to be static,   and forms sensible defaults for the running application.
+* Base images and image provenance must be checked in order to maintain the security and integrity of the SKA runtime systems.
+* Stable image tags should be used for base images that include the Major and Minor version number of `Semantic Versioning <https://semver.org>`_ eg: ``python:3.7``.
+* Avoid installing unnecessary packages in your container image.
+* Create a derivative image from the standard production one explicitly for the purposes of debugging, and problem resolution.
+* Always clean the package cache afterward use of ``apt install ...`` to avoid the package archives and other temporary files becoming part of the new layer.
+* Order the build directives specified in the ``Dockerfile``, to ensure that they are running from the lowest frequency changing to the highest to exploit the build cache.
+* Use the ``LABEL`` directive to add metadata to your image.
+* Use arguments (``ARG``) to parameterise elements such as the base image, and versions of key packages to be installed.
+* Only set environment variables using ``ENV`` if they are required in the final image to avoid embedding unwanted data.
+* Prioritise use of ``RUN + curl`` over ``ADD/COPY + RUN`` to reduce image size.
+* use ``USER`` and ``WORKDIR`` to switch the user at execution time and set directory context.
+* Never use sudo - there should never be a need for an account to elevate permissions.
+* set ``ENTRYPOINT`` to the full path to the application and ``CMD`` to the default command line arguments.
+* Use the ``["thing"]`` which is the ``exec`` notation ensuring that proper signal propagation occurs to the containerised application.
+* Use the ``ONBUILD`` feature sparingly, as it can cause unintended consequences.
+
+Naming and Tagging
+==================
+
+* Image names should reflect the application that will run in the resultant container eg: ``tango-example/powersupply:1.13.2``.
+* Images should be tagged with short commit hash as derived by ``git rev-parse --verify --short=8 HEAD`` from the parent Git repository.
+* When an image version for an application is promoted to production, it should be tagged with the application version (using `Semantic Versioning <https://semver.org>`_).
+* For the most current major.minor.patch image version the 'latest' tag should be added.
+* Applicaiton version tags should be added eg: ``1.13.2``, ``1.13``, ``1`` - where major/minor/patch version point to the latest in that series.
+* A production deployment should always be made with a fully qualified semantic version eg: ``tango-example/powersupply:1.13.2``.
+* The SKA will endeavour to support only one OS base per image as the practice of multi-OS bases does not strictly follow Semantic Versioning, and creates considerable maintenance overhead.
+* Within the SKA hosted Continuous Integration infrastructure, all production images are kept indefinitely.
+* Images with debuging tools, profilers, and any tools not essential to the running of the target application should be contained in a derivative image that is named explicitly ``dev`` eg: ``tango-example/powersupply-dev:1.13.2``.
+* All images should be stored in a Docker v2 Registry API compliant repository, protected by HTTPS, and authentication.
+* All containerised software used within the SKA, will be served out of the hosted repository service.
+
+
+Image Signing and Publishing
+============================
+
+* All images pushed to the SKA hosted repository must be signed.  This will ensure that only trusted content will be launched in containerised environments.
+
+
+Running Containerised Applications
+==================================
+
+* The containerised application developer must determine what **the application interface contract** based on the :ref:`touch points with resources<header-2-running-containerised-applications>` from the underlying host through the Container Engine.
+* Usage documentation for the image must describe the intended purpose of each configured resource, how they combine and what the defaults are with default behaviours.
+* Use ``VOLUMES`` statements for all directories to be mounted as it provides annotation of the image requirements.
+* When adding a volume at runtime, consider whether write access is really required - add ``:ro`` liberally.
+* Containerised applications should avoid using ``--net=host`` (host only) based networking as this will push the container onto the running host network namespace monopolising any ports that it uses.
+* Where possible, a containerised application should run under a specific UIG/GID to avoid privilege escalation as an attack vector.
+* It should be a last resort to run the container in privileged mode ``docker run --privileged ...`` as this has security implications.
+* Configuration of a containerised application should be managed primarily by :ref:`header-3-environment-variables` and configuration files.
+* Avoid passing large numbers of configuration options on the command line or secrets such as keys and passwords.
+* Configuration passed into a container should not directly rely on a 3rd party secret/configuration service integration.
+* Appropriate configuration defaults should be defined in the image build using :ref:`image environment variables<header-3-environment-variables>`, along with default configuration files. These defaults should be enough to launch the application into it's minimal state unaided by specifics from the user.
+* Runtime constraints for Memory and CPU should be specified, to ensure that an application does not exhaust host resources, or behave badly with co-located applications.
+* Although Container Orchestration is not covered by these standards, it is important to note that the leading Orchestration solutons (Docker Swarm, Kubernetes, Mesos) use DNS as the primary service discovery mechanism.  This should be considered when designing containerised applications so that they inherrently expect to resolve dependent services by DNS, and in return expose their own services over DNS.  This will ensure that when in future the containerised application is integrated as part of an Orchestrated solution, it will conform to that architecture seamlessly.
+
+
+Logging
+=======
+
+* Stdout and stderr are sent straight to the Container Engine logging system.  In Docker, this is the `logging sub-system <https://docs.docker.com/config/containers/logging/configure/>`_ which combines the output for viewing purposes with ``docker logs ...``.  This is used as a defacto standard for containerised application logging.
+* Logging should be implemented so that  stdout/stderr is used, but is configurable to switch the emission to syslog
+* The SKA has adopted syslog - `RFC5424 <https://tools.ietf.org/html/rfc5424>`_ as the logging standard to be used by all SKA software.
+* Within the syslog standard, the message portion should be enriched with JSON structured data so that the universal logging solution integrated with the Container Engine and/or Orchestration solution can derive greater semantic meaning from the application logs
