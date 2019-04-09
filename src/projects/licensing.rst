@@ -1,5 +1,7 @@
-Licensing your project
-----------------------
+.. _licensing:
+
+Licensing a project
+-------------------
 
 SKA organisation promotes a model of open and transparent collaboration. In this model collaboration is made possible using permissive licenses, and not by pursuing the ownership of code by the organisation.
 Copyright will thus belong to the institutions contributing to source code development for the lifetime of the project, and software developed for the SKA telescope will be available to the wider community as source code.
