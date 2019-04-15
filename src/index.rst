@@ -149,6 +149,7 @@ The definition of done is used to guide teams in planning and estimating the siz
   development/python-codeguide
   development/javascript-codeguide
   development/containerisation-standards
+  development/orchestration-guidelines
   development/python_package_release_procedure
 
 
@@ -190,6 +191,13 @@ A set of standards, conventions and guidelines for building, integrating and mai
 technologies.
 
 - :doc:`development/containerisation-standards`
+
+Container Orchestration Guidelines
+==================================
+
+A set of standards, conventions and guidelines for deploying application suites on Container Orchestration technologies.
+
+- :doc:`development/orchestration-guidelines`
 
 SKA Software Packaging Procedure
 ================================
