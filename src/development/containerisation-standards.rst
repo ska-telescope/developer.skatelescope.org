@@ -45,7 +45,7 @@ Throughout this documentation, `Docker <https://docs.docker.com/>`_ is used as t
 Cheatsheet
 ==========
 
-A `Standards CheatSheet`_ is provided at the end of this document as a quick guide to standards and conventions elaborated on throughout this document.
+A `Container Standards CheatSheet`_ is provided at the end of this document as a quick guide to standards and conventions elaborated on throughout this document.
 
 
 Structuring applications in a Containerised Environment
@@ -326,10 +326,11 @@ Use the ``LABEL`` directive to add ample metadata to your image.  This metadata 
           author="A Developer <a.developer@example.com>" \
           description="This image illustrates LABELs" \
           license="Apache2.0" \
-          repository="acmeincorporated/imagename" \
+          registry="acmeincorporated/imagename" \
           vendor="ACME Incorporated" \
-          version="1.0.0" \
-          website="http://github.com/ACMEIncorporate/widget"
+          org.skatelescope.team="Systems Team" \
+          org.skatelescope.version="1.0.0" \
+          org.skatelescope.website="http://github.com/ACMEIncorporate/widget"
     ...
 
 The following are recommended labels for all images:
@@ -337,10 +338,11 @@ The following are recommended labels for all images:
 * author: name and email address of the author
 * description: a short description of this image and it's purpose.
 * license: license that this image and contained software are released under
-* repository: the primary repository that this image should be found in
+* registry: the primary registry that this image should be found in
 * vendor: the owning organisation of the software component
-* version: follows `Semantic Versioning <https://semver.org>`_, and should be linked to the image version tag discussed below.
-* website: where the software pertaining to the building of this image resides
+* org.skatelescope.team: the SKA team responsible for this image.
+* org.skatelescope.version: follows `Semantic Versioning <https://semver.org>`_, and should be linked to the image version tag discussed below.
+* org.skatelescope.website: where the software pertaining to the building of this image resides
 
 Arguments
 ~~~~~~~~~
@@ -665,9 +667,9 @@ Named pipes, are straight forward as these are achieved through shared hostpath 
 ------------
 
 
-********************
-Standards CheatSheet
-********************
+******************************
+Container Standards CheatSheet
+******************************
 
 This section provides a condensed summary of the standards to be used as a checklist.
 
