@@ -10,10 +10,13 @@ Mono VS Multi repositories
 
 One of the first choices when creating a new project is how to split the code into repositories. 
 In a project such as SKA there is no strict rule that can be applied, and a degree of judgement is 
-necessary from the developers.
-In general, a repository should be created for every software component following this definition: 
+necessary from the developers. Too many repositories create an integration problem and are subject to 
+difficult dependency management, whereas too few repositories make it more difficult to concurrently
+develop and release independent features.
+Both scenarios can be approached with the aid of right tooling and processes, but in general
+a repository should be created for every software component following this definition: 
 
-  *All software and firmware source code handed over to the SKA organisation shall be organised into source code repositories. A source code repository is a set of files and metadata, organized in a directory structure. It is expected that source code repositories map to individual applications or modules according to the following definition: A component is reusable, replaceable with something else that implements the same API, independently deployable, and encapsulates some coherent set of behaviors and responsibilities of the system.*
+  *All software and firmware source code handed over to the SKA organisation shall be organised into source code repositories. A source code repository is a set of files and metadata, organized in a directory structure. It is expected that source code repositories map to individual applications or modules according to the following definition: A module is reusable, replaceable with something else that implements the same API, independently deployable, and encapsulates some coherent set of behaviors and responsibilities of the system.*
   
   -- *adapted from 'Continuous Delivery'*
 
