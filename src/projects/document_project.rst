@@ -1,3 +1,5 @@
+.. _document-project: 
+
 Documenting a project
 ---------------------
 
