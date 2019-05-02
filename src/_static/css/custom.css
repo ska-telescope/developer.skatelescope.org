@@ -76,3 +76,35 @@ SKA Earth Green: rgb(166, 206, 57)
 	width: 186px;
 	height: 135px;
 }
+
+.section .container {
+    margin-block-end: 1em;
+}
+
+.toggle .header {
+    display: block;
+    clear: both;
+    color: white;
+    padding: 0 18px;
+    overflow: hidden;
+    background-color: #6ab0de;
+}
+
+.toggle .header:after {
+    content: '+';
+    font-weight: bold;
+    font-size: 18px;
+    color: white;
+    float: right;
+    display: inline-block;
+}
+
+.toggle .header.open:after {
+    content: "-";
+    font-weight: bold;
+    font-size: 18px;
+    color: white;
+    height: 1em;
+    float: right;
+    display: inline-block;
+}
