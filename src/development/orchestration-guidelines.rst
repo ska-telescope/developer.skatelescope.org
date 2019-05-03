@@ -639,6 +639,8 @@ An example of dependency is the declaration of a Service before the associated P
 Use comments liberally in the template files to describe the intended purpose of the resource declarations and any other features of the template markup.  ``#`` YAML comments get copied through to the rendered template output and are a valuable help when debugging template issues with ``helm template charts/chart-name/ ...`` .
 
 
+.. _managing-configuration:
+
 Managing configuration
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -912,6 +914,7 @@ This is a complete example the demonstrates container patterns, initContainers a
                 app: pod-examples
             spec:
               volumes:
+              # lifecyle containers as hooks share state using volumes
               - name: shared-data
                 emptyDir: {}
               - name: the-end
@@ -920,6 +923,7 @@ This is a complete example the demonstrates container patterns, initContainers a
                   type: Directory
 
               initContainers:
+              # initContainers can initialise data, and do pre-flight checks
               - name: init-container
                 image: alpine
                 command: ['sh', '-c', "echo 'initContainer says: hello!' > /pod-data/status.txt"]
@@ -928,15 +932,21 @@ This is a complete example the demonstrates container patterns, initContainers a
                   mountPath: /pod-data
 
               containers:
-              # primary data generator
+              # primary data generator container
               - name: main-app-container
                 image: alpine
                 command: ["/bin/sh"]
                 args: ["-c", "while true; do echo 'Main app says: ' `date` >> /pod-data/status.txt; sleep 5;done"]
                 lifecycle:
+                  # postStart hook is async task called on Pod boot
+                  # useful for async container warmup tasks that are not hard dependencies
+                  # definitely not guaranteed to run before main container command
                   postStart:
                     exec:
                       command: ["/bin/sh", "-c", "echo 'Hello from the postStart handler' >> /pod-data/status.txt"]
+                  # preStop hook is async task called on Pod termination
+                  # useful for initiating termination cleanup tasks
+                  # definitely not guaranteed to complete before container termination (sig KILL)
                   preStop:
                     exec:
                       command: ["/bin/sh", "-c", "echo 'Hello from the preStop handler' >> /the-end/last.txt"]
@@ -946,7 +956,7 @@ This is a complete example the demonstrates container patterns, initContainers a
                 - name: the-end
                   mountPath: /the-end
                     
-              # helper that exposes data over http
+              # Sidecar helper that exposes data over http
               - name: sidecar-nginx-container
                 image: nginx
                 ports:
@@ -964,6 +974,7 @@ This is a complete example the demonstrates container patterns, initContainers a
                     path: /index.html
                     port: http
 
+              # Ambassador pattern used as a proxy or shim to access external inputs
               # gets date from Google and adds it to input
               - name: ambassador-container
                 image: alpine
@@ -973,6 +984,8 @@ This is a complete example the demonstrates container patterns, initContainers a
                 - name: shared-data
                   mountPath: /pod-data
 
+              # Adapter pattern used as a proxy or shim to generate/render outputs
+              # fit for external consumption (similar to Sidecar)
               # reformats input data from sidecar and ambassador ready for output
               - name: adapter-container
                 image: alpine
@@ -986,8 +999,6 @@ This will produce output that demonstrates each of the containers fulfilling the
 
     .. code:: bash
 
-        # tidy up with: kubectl delete deployment/pod-examples service/pod-examples
-        
         $ curl http://`kubectl get service/pod-examples -o jsonpath="{.spec.clusterIP}"`
         initContainer says: hello!
         Main app says:  Thu May 2 03:45:42 UTC 2019
@@ -995,11 +1006,12 @@ This will produce output that demonstrates each of the containers fulfilling the
         Ambassador says: Thu, 02 May 2019 03:45:55 GMT
         Main app says:  Thu May 2 03:46:12 UTC 2019
         All from your friendly Adapter
-        
-        $ cat /tmp/last.txt
+
+        $ kubectl delete deployment/pod-examples service/pod-examples
+        deployment.extensions "pod-examples" deleted
+        service "pod-examples" deleted
+        piers@wattle:~$ cat /tmp/last.txt
         Hello from the preStop handler
-
-
 
 Container patterns
 ~~~~~~~~~~~~~~~~~~
@@ -1008,7 +1020,7 @@ The ``Pod`` is a cluster of one or more containers that share the same resource 
 
 All ``Pod`` deployments should be designed around having a core or leading container.  All other containers in the ``Pod`` provide auxillary or secondary services.  There are three main patterns for multi-container ``Pods``:
 
-* Sidecar - extend the primary container functionality eg: adds logging, metrics, health checks, 
+* Sidecar - extend the primary container functionality eg: adds logging, metrics, health checks (as input to livenessProbe/readinessProbe)
 * Ambasador - container that acts as an out-bound proxy for the primary container by handling translations to external services
 * Adapter - container that acts as an in-bound proxy for the primary container aligning interface with alternative standards
 
@@ -1032,6 +1044,8 @@ The value of the lifecycle hooks are generally reserved for:
 readinessProbe/livenessProbe
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Readiness probes are used by the scheduler to determine whether the container is in a state ready to serve requests.
+Liveness probes are used by the scheduler to determine whether the container continues to be in a healthy state for serving requests.
 Where possible, ``livenessProbe`` and ``readinessProbe`` should be specified.  This is automatically used to calculate whether a ``Pod`` is available and healthy and whether it should be load balanced in a ``Service``.  These features can play an important role in the continuity of service when clusters are auto-healed, workloads are shifted from node to node, or during rolling updates to deployments.
 
 The following shows the registered probes and their status for the :ref:`sidecar container in the examples above  <patterns-and-lifecycle-hooks-examples>`:
@@ -1051,23 +1065,295 @@ The following shows the registered probes and their status for the :ref:`sidecar
             /usr/share/nginx/html from shared-data (rw)
         ...
 
+While probes can be a `command <https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#define-a-liveness-command>`_, it is better to make health checks an http service that is combined with a application `metrics handler <https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md>`_ so that external applications can use the same feature to do health checking. 
+
+Sharing, Networking, Devices, Host Resource Access
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Sharing resources is often the bottle neck in High Performance Computing, and where the greatest attention to detail is required with containerised applications in order to gain acceptable performance and efficency.
+
+Containers within a ``Pod`` can share resources with each other directly using shared volumes, network, and memory.  These are the preferred methods because they are cross-platform portable for containers in general, Kubernetes and OS/hardware.
+
+The following example demonstrates how to share memory as a volume between containers:
+
+.. container:: toggle
+
+    .. container:: header
+
+        Pod containers sharing memory
+
+    .. code:: yaml
+
+        ---
+        apiVersion: v1
+        kind: Pod
+        metadata:
+          name: sharing-memory
+          labels:
+            name: sharing-memory
+        spec:
+          volumes:                          
+            - name: dshm
+              emptyDir:
+                medium: Memory
+          containers:
+            - image: kubernetes/pause
+              name: hello-container1
+              volumeMounts:                 
+                - mountPath: /dev/shm
+                  name: dshm
+            - image: kubernetes/pause
+              name: hello-container2
+              volumeMounts:                 
+                - mountPath: /dev/shm
+                  name: dshm
+          
+
+The following example demonstrates how to share over a named pipe between containers:
+
+.. container:: toggle
+
+    .. container:: header
+
+        Pod containers sharing over named pipe
+
+    .. code:: yaml
+
+        ---
+        kind: Service
+        apiVersion: v1
+        metadata:
+          name: pod-sharing-examples
+        spec:
+          type: ClusterIP
+          selector:
+            app: pod-sharing-examples
+          ports:
+          - name: ncat
+            protocol: TCP
+            port: 1234
+            targetPort: ncat
+
+        ---
+        apiVersion: extensions/v1beta1
+        kind: Deployment
+        metadata:
+          name: pod-sharing-examples
+          labels:
+            app: pod-sharing-examples
+        spec:
+          replicas: 1
+          template:
+            metadata:
+              labels:
+                app: pod-sharing-examples
+            spec:
+              volumes:
+              # lifecyle containers as hooks share state using volumes
+              - name: shared-data
+                emptyDir: {}
+
+              initContainers:
+              # Setup the named pipe for inter-container communication
+              - name: init-container
+                image: alpine
+                command: ['sh', '-c', "mkfifo /pod-data/piper"]
+                volumeMounts:
+                - name: shared-data
+                  mountPath: /pod-data
+
+              containers:
+              # Producer
+              - name: producer-container
+                image: alpine
+                command: ["/bin/sh"]
+                args: ["-c", "while true; do echo 'Main app says: ' `date` >> /pod-data/piper; sleep 3;done"]
+                volumeMounts:
+                - name: shared-data
+                  mountPath: /pod-data
+
+              # Consumer - read from the pipe and publish on 1234
+              - name: consumer-container
+                image: alpine
+                command: ["/bin/sh"]
+                args: ["-c", "nc -l -p 1234 < /pod-data/piper"]
+                ports:
+                - name: ncat
+                  containerPort: 1234
+                volumeMounts:
+                - name: shared-data
+                  mountPath: /pod-data
+        
+        #  $ nc `kubectl get service/pod-sharing-examples -o jsonpath="{.spec.clusterIP}"` 1234
+        #  Main app says:  Thu May 2 20:48:56 UTC 2019
+        #  Main app says:  Thu May 2 20:49:53 UTC 2019
+        #  Main app says:  Thu May 2 20:49:56 UTC 2019
+        # $ kubectl delete deployment/pod-sharing-examples service/pod-sharing-examples
+        # deployment.extensions "pod-sharing-examples" deleted
+        # service "pod-sharing-examples" deleted
 
 
-- sharing volumes, network, memory etc.
+The following example demonstrates how to share over the localhost network between containers:
+
+.. container:: toggle
+
+    .. container:: header
+
+        Pod containers sharing over localhost network
+
+    .. code:: yaml
+
+        ---
+        kind: Service
+        apiVersion: v1
+        metadata:
+          name: pod-sharing-network-examples
+        spec:
+          type: ClusterIP
+          selector:
+            app: pod-sharing-network-examples
+          ports:
+          - name: ncat
+            protocol: TCP
+            port: 5678
+            targetPort: ncat
+
+        ---
+        apiVersion: extensions/v1beta1
+        kind: Deployment
+        metadata:
+          name: pod-sharing-network-examples
+          labels:
+            app: pod-sharing-network-examples
+        spec:
+          replicas: 1
+          template:
+            metadata:
+              labels:
+                app: pod-sharing-network-examples
+            spec:
+              containers:
+              # Producer
+              - name: producer-container
+                image: alpine
+                command: ["/bin/sh"]
+                args: ["-c", "apk add --update coreutils; (while true; do echo 'Main app says: ' `date`; sleep 1; done) | stdbuf -i0 nc -lk -p 1234"]
+
+              # Consumer - read from the local port and publish on 5678
+              - name: consumer-container
+                image: alpine
+                command: ["/bin/sh"]
+                args: ["-c", "apk add --update coreutils; nc localhost 1234 | stdbuf -i0 nc -l -p 5678"]
+                ports:
+                - name: ncat
+                  containerPort: 5678
+
+            #  $ nc `kubectl get service/pod-sharing-network-examples -o jsonpath="{.spec.clusterIP}"` 5678
+            #  Main app says:  Thu May 2 20:48:56 UTC 2019
+            #  Main app says:  Thu May 2 20:49:53 UTC 2019
+            #  Main app says:  Thu May 2 20:49:56 UTC 2019
+            # $ kubectl delete deployment/pod-sharing-network-examples service/pod-sharing-network-examples
+            # deployment.extensions "pod-sharing-network-examples" deleted
+            # service "pod-sharing-network-examples" deleted
 
 
-Trusting images - upstream, and tags
+Performance driven networking requirements are a concern with HPC.  Often the solution is to bind an applicaiton directly to a specific host network adapter.  Historically, the solution for this in containers has been to escalate the privileges of the container so that it is running in the host namespace, and this is achieved in in Kubernetes using the following approach:
 
-resource reservations and constraints: mem/cpu, ephemeral storage, devices
+    .. code:: yaml
 
-specialised resource reservations
+        ...
+        spec:
+          containers:
+            - name: my-privileged-container
+              securityContext:
+                privileged: true
+        ...
 
-Restarts - clean crashing (no internal restart)
+This **SHOULD** be avoided at all costs.  This pushes the container into the host namespace for processes, network and storage.  A critical side effect of this is that any port that the container consumes can conflict with host services, and will mean that **ONLY** a single instance of this container can run on any given host.  Outside of these functional concerns, it is a serious security breach as the privileged container has full (root) access to the node including any applications (and containers) running there.
+
+To date, the only valid exceptions discovered have been:
+
+* Core daemon services running for the Kubernetes and OpenStack control plane that are deployed as containers but are node level services
+* Storage, Network, or Device Kubernetes plugins that need to deploy OS kernel drivers
+
+As a first step to resolving a networking issue, the Kubernetes and Platform management team should always be approached to help resolve architectural issues to avoid this approach.  In the event of not being able to reconcile the requirement, then the following ``hostNetwork`` solution should be attempted first:
+
+    .. code:: yaml
+
+        ...
+        spec:
+          containers:
+            - name: my-hostnetwork-container
+              securityContext:
+                hostNetwork: true
+
+Images, Tags, and pullPolicy
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Only use images from trusted sources.  In most cases this should be only from the `official SKA repository <https://nexus.engageska-portugal.pt/>`_, with a few exceptions such as the core vender supported images for key services such as `MySQL <https://hub.docker.com/_/mysql>`_.  It is anticipated that in the future the SKA will host mirrors and/or pull-through caches for key external software components, and will then firewall off access to external repositories that are not explicitly trusted.
+
+As a general rule, stable image tags should be used for images that at least include the Major and Minor version number of `Semantic Versioning <https://semver.org>`_ eg: ``mysql:5.27``.  As curated images come from trusted sources, this ensures that the deployment process gets a functionally stable starting point that will still accrue bug fixing and security patching over time.  Do **NOT** use the ``latest`` tag as it is likely that this will break your application in future as it gives no way of guaranteeing feature parity and stability.
+
+In Helm Charts, it is good practice to parameterise the registry, image and tag of each container so that these can be varied in different environment deployments by changing ``values``.  Also parameterise the ``pullPolicy`` so that communication with the registry at container boot time can be easily turned on and off.
+
+    .. code:: yaml
+
+        ...
+        containers:
+        - name: tangodb
+          image: "{{ .Values.tangodb.image.registry }}/{{ .Values.tangodb.image.image }}:{{ .Values.tangodb.image.tag }}"
+          imagePullPolicy: {{ .Values.tangodb.image.pullPolicy }}
+
+
+
+Resource reservations and constraints
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Compute platform level `resources <https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/>`_ encompass:
+
+* Memory
+* CPU
+* Plugin based devices
+* `Extended resources <https://kubernetes.io/docs/tasks/configure-pod-container/extended-resource/>`_ - configured node level logical resources
+
+Resources can be either specified in terms of:
+
+* Limits - the maximum amount of resource a container is allowed to consume before a it maybe restarted or evicted
+* Requests - the amount of resource a container requires to be available before it will be scheduled
+
+Limits and requests are specified at the individual container level:
+
+    .. code:: yaml
+
+        ...
+        containers:
+        - name: tango-device-thing
+          resources:
+            requests:
+              cpu: 4000m    # 4 cores
+              memory: 512M  # 0.5GB
+              skatelescope.org/widget: 3
+            limits:
+              cpu: 8000m    # 8 cores
+              memory: 1024M  # 1GB
+
+
+Resource requirements should be explicitly set both in terms of requests and limits (not normally applicable to extended resources) as this can be used by the scheduler to determine load balancing policy, and to determine when an application is misbehaving.  These paramters should be set as configured ``values.yaml`` parameters.
+
+Restarts
+~~~~~~~~
+
+Containers should be designed to cleanly crash as in the main process should exit on a fatal error (no internal restart).  This then will ensure that the configured ``livenessProbe`` and ``readinessProbe`` will function correctly and where necessary, remove the affected ``Pod`` from ``Services`` ensuring that there are no dead service connections.
 
 Logging
+-------
+
+The SKA has adopted syslog - `RFC5424 <https://tools.ietf.org/html/rfc5424>`_ as the logging standard to be used by all SKA software.  This should be considered a base line standard and will be decorated with additional data by an infrastructure wide integrated logging solution (eg: `ElasticStack <https://www.elastic.co/products/>`_).  To ensure compliance with this, all containers must log to ``stdout/stderr`` and/or be configured to log to ``syslog``.  Connection to ``syslog`` should be configurable using :ref:`standard container mechanisms  <managing-configuration>` such as mounted files (handled by ``ConfigMaps``) or environment variables.  This will ensure that any deployed application can be automatically plugged into the infrastructure wide logging and monitoring solution.
 
 Metrics
+-------
 
+Each ``Pod`` should have an application metrics handler that emits the `adopted container standard format <https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md>`_. For efficency purposes this should be amalgamated with the ``livenessProbe`` and ``readinessProbe``.
 
 
 Use of Services
@@ -1075,8 +1361,6 @@ Use of Services
 
 Service definitions, and discovery - ClusterIP everything (no NodePort), External systems on ExternalName
 - only expose ports that are actually needed
-
-
 
 Use of Ingress
 --------------
