@@ -249,7 +249,7 @@ The following is an example of the start of a StatefulSet for the Tango Database
 Namespaces
 ~~~~~~~~~~
 
-Even though it is possible to specify the namespace directly in the Metadata, it **SHOULD NOT** be, as this reduces the flexibility of any resource definition and templating solution employed such as Helm.  The namespace can be specified at run time eg: ``kubectl --namespace test apply -f resource-file.yaml``. 
+Even though it is possible to specify the namespace directly in the Metadata, it **SHOULD NOT** be, as this reduces the flexibility of any resource definition and templating solution employed such as Helm.  The namespace can be specified at run time eg: ``kubectl --namespace test apply -f resource-file.yaml``.
 
 
 Name and Labels
@@ -346,7 +346,7 @@ When designing a Chart it is important to have clear separation of concerns:
 * configuration - any variables that influence the application run time.
 * resources - any storage, networking, configuration files, secrets, ACLs.
 
-The general structure of a Chart should follow: 
+The general structure of a Chart should follow:
 
 .. code:: bash
 
@@ -415,7 +415,7 @@ All resources should have the following boilerplate metadata to ensure that all 
 Defining resources
 ~~~~~~~~~~~~~~~~~~
 
-The `Helm templating language <https://helm.sh/docs/chart_template_guide/>`_ is based on `Go template <https://godoc.org/text/template>`_. 
+The `Helm templating language <https://helm.sh/docs/chart_template_guide/>`_ is based on `Go template <https://godoc.org/text/template>`_.
 
 All resources go in the ``templates/`` directory with the general rule is one Kubernetes resource per template file.  Files that render resources are suffixed ``.yaml`` whilst files that contain expressions and macros only go in files suffixed ``.tpl``.
 
@@ -962,7 +962,7 @@ This is a complete example that demonstrates container patterns, initContainers 
                   mountPath: /pod-data
                 - name: the-end
                   mountPath: /the-end
-                    
+
               # Sidecar helper that exposes data over http
               - name: sidecar-nginx-container
                 image: nginx
@@ -1073,7 +1073,7 @@ The following shows the registered probes and their status for the :ref:`sidecar
             /usr/share/nginx/html from shared-data (rw)
         ...
 
-While probes can be a `command <https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#define-a-liveness-command>`_, it is better to make health checks an http service that is combined with an application `metrics handler <https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md>`_ so that external applications can use the same feature to do health checking (eg: `Prometheus <https://prometheus.io/>`_, or `Icinga <https://icinga.com/>`_). 
+While probes can be a `command <https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#define-a-liveness-command>`_, it is better to make health checks an http service that is combined with an application `metrics handler <https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md>`_ so that external applications can use the same feature to do health checking (eg: `Prometheus <https://prometheus.io/>`_, or `Icinga <https://icinga.com/>`_).
 
 Sharing, Networking, Devices, Host Resource Access
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1299,7 +1299,115 @@ The following example demonstrates how to share memory as a volume between conta
 
                 main()
 
-          
+
+
+The following example demonstrates how to share memory over POSIX IPC between containers:
+
+.. container:: toggle
+
+    .. container:: header
+
+        Pod containers sharing memory over POSIX IPC
+
+    .. code:: yaml
+
+        ---
+        kind: Service
+        apiVersion: v1
+        metadata:
+          name: pod-ipc-sharing-examples
+          labels:
+            app: pod-ipc-sharing-examples
+        spec:
+          type: ClusterIP
+          selector:
+            app: pod-ipc-sharing-examples
+          ports:
+          - name: ncat
+            protocol: TCP
+            port: 1234
+            targetPort: ncat
+
+        ---
+        apiVersion: extensions/v1beta1
+        kind: Deployment
+        metadata:
+          name: pod-ipc-sharing-examples
+          labels:
+            app: pod-ipc-sharing-examples
+        spec:
+          replicas: 1
+          template:
+            metadata:
+              labels:
+                app: pod-ipc-sharing-examples
+            spec:
+              volumes:
+              - name: shared-data
+                emptyDir: {}
+
+              initContainers:
+              # get and build the ipc shmem tool
+              - name: builder-container
+                image: golang:1.11
+                command: ['sh', '-c', "export GOPATH=/src; go get github.com/ghetzel/shmtool"]
+                volumeMounts:
+                - name: shared-data
+                  mountPath: /src
+
+              containers:
+              # Producer
+              - name: producer-container
+                image: alpine
+                command: ["/bin/sh"]
+
+                args:
+                - "-c"
+                - >
+                  apk add -U util-linux;
+                  mkdir /lib64 && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2;
+                  ipcmk --shmem 1KiB;
+                  echo "ipcmk again as chmtool cant handle 0 SHMID";
+                  ipcmk --shmem 1KiB; > /pod-data/memaddr.txt;
+                  while true;
+                   do echo 'Main app (pod-ipc-sharing-examples) says: ' `date` | /pod-data/bin/shmtool open -s 1024 `ipcs -m | cut -d' ' -f 2 | sed  '/^$/d' | tail -1`;
+                      sleep 1;
+                   done
+                volumeMounts:
+                - name: shared-data
+                  mountPath: /pod-data
+
+              # Consumer - read from the pipe and publish on 1234
+              - name: consumer-container
+                image: alpine
+                command: ["/bin/sh"]
+                args:
+                - "-c"
+                - >
+                  apk add --update coreutils util-linux;
+                  mkdir /lib64 && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2;
+                  sleep 3;
+                  (while true;
+                     do /pod-data/bin/shmtool read `ipcs -m | cut -d' ' -f 2 | sed  '/^$/d' | tail -1`;
+                        sleep 1;
+                     done) | stdbuf -i0 nc -l -k -p 1234
+                ports:
+                - name: ncat
+                  containerPort: 1234
+                  protocol: TCP
+                volumeMounts:
+                - name: shared-data
+                  mountPath: /pod-data
+
+        # test with:
+        #  $ nc `kubectl get service/pod-ipc-sharing-examples -o jsonpath="{.spec.clusterIP}"` 1234
+        #  Main app (pod-ipc-sharing-examples) says:  Tue May 7 20:46:03 UTC 2019
+        #  Main app (pod-ipc-sharing-examples) says:  Tue May 7 20:46:04 UTC 2019
+        #  Main app (pod-ipc-sharing-examples) says:  Tue May 7 20:46:05 UTC 2019
+        # $ kubectl delete deployment,svc -l app=pod-ipc-sharing-examples
+        # deployment.extensions "pod-ipc-sharing-examples" deleted
+        # service "pod-ipc-sharing-examples" deleted
+
 
 The following example demonstrates how to share over a named pipe between containers:
 
@@ -1378,7 +1486,7 @@ The following example demonstrates how to share over a named pipe between contai
                 volumeMounts:
                 - name: shared-data
                   mountPath: /pod-data
-        
+
         # test with:
         #  $ nc `kubectl get service/pod-sharing-examples -o jsonpath="{.spec.clusterIP}"` 1234
         #  Main app says:  Thu May 2 20:48:56 UTC 2019
@@ -2062,7 +2170,7 @@ Use podAntiAffinity (hard requiredDuringSchedulingIgnoredDuringExecution) to ens
                     topologyKey: "kubernetes.io/hostname"
 
 
-Scenario obs5 - run 3 Pods using required Pod Anti Affinity with self (force schedule one per node) and require Pod Affinity with obs3.  This has forced scheduling of one per node, and because obs3 is only running on two different nodes the 3rd replica is in a constant state of Pending.   Pod Affinity is described with a topology key that is 
+Scenario obs5 - run 3 Pods using required Pod Anti Affinity with self (force schedule one per node) and require Pod Affinity with obs3.  This has forced scheduling of one per node, and because obs3 is only running on two different nodes the 3rd replica is in a constant state of Pending.   Pod Affinity is described with a topology key that is
 
 obs6 - Taint NoSchedule
 ~~~~~~~~~~~~~~~~~~~~~~~
