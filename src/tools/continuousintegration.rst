@@ -108,11 +108,9 @@ _____________
 - Try and have the stages complete as fast as possible.
 
     - In some cases it may be possible to parallelize jobs. For example, unit tests and static analysis could be run in parallel.
-- If a job fails, the pipeline will be aborted and the cause of the failure needs to be addressed.
 - All projects must include all the stages listed below.
 - Project dependencies must be stored in, and made available from the SKA software repository.
 - All tests must pass on the “master” branch and should be kept stable.
-- Every stage should have some kind of JUnit output to indicate success or failure. In the case of failure it should display the error messages.
 
 Stages
 ______
@@ -123,7 +121,7 @@ The project will be checked out at the git commit hash. This specific version of
 To create a release a git tag should be used. `See Release Procedure <http://developer.skatelescope.org/en/latest/development/python_package_release_procedure.html>`_.
 
 Input
-  Git commit hash (provided by Gitlab)
+  Git commit hash
 
 Output
   A distributable unit of software. E.g .deb .whl .jar or docker image.
