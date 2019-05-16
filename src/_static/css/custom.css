@@ -81,17 +81,9 @@ SKA Earth Green: rgb(166, 206, 57)
     margin-block-end: 1em;
 }
 
-.toggle .header {
-    display: block;
-    clear: both;
-    color: white;
-    padding: 0 18px;
-    overflow: hidden;
-    background-color: #6ab0de;
-}
-
 .toggle .header:after {
     content: '+';
+    padding-right: 5px;
     font-weight: bold;
     font-size: 18px;
     color: white;
@@ -101,10 +93,24 @@ SKA Earth Green: rgb(166, 206, 57)
 
 .toggle .header.open:after {
     content: "-";
+    padding-right: 5px;
     font-weight: bold;
     font-size: 18px;
     color: white;
     height: 1em;
     float: right;
     display: inline-block;
+}
+
+.toggle .header {
+    display: block;
+    clear: both;
+    color: white;
+    /* padding: 0 5px; */
+    overflow: hidden;
+    background-color: #6ab0de;
+}
+
+.toggle .header p {
+    margin-block-end: 0em;
 }
