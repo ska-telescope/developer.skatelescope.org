@@ -155,8 +155,12 @@ Output
 Test types
 ++++++++++
 
+.. todo::
+   - Further define components to be mocked or not
+   - Further define smoke/deployments tests
+
 Unit tests
-  The smallest possible units/components are tested in very fast tests. 
+  The smallest possible units/components are tested in very fast tests. Each test should complete in milliseconds.
 
 Component tests
   Individual components are tested.
