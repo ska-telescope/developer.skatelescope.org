@@ -45,7 +45,7 @@ Throughout this documentation, `Docker <https://docs.docker.com/>`_ is used as t
 Cheatsheet
 ==========
 
-A `Standards CheatSheet`_ is provided at the end of this document as a quick guide to standards and conventions elaborated on throughout this document.
+A `Container Standards CheatSheet`_ is provided at the end of this document as a quick guide to standards and conventions elaborated on throughout this document.
 
 
 Structuring applications in a Containerised Environment
@@ -135,7 +135,7 @@ A container image among other things, is a software packaging solution, so it is
 Defining and Building Container Images
 ======================================
 
-The core of a containerised application is the image.  According to the OCI specification, this is the object that encapsulates the executable and dependencies, external storage (VOLUMES) and the basics of the launch interface (the ENTRYPOINT and ARGS).
+The core of a containerised application is the image.  According to the OCI specification, this is the object that encapsulates the executable and dependencies, external storage (VOLUME) and the basics of the launch interface (the ENTRYPOINT and ARGS).
 
 The rules for building an image are specified in the ``Dockerfile`` which forms a kind of manifest.  Each rule specified creates a new layer in the image.  Each layer in the image represents a kind of high watermark of an image state which can ultimately be shared between different image builds.  Within the local image cache, these layer points can be shared between running containers because the image layers are stacked as a read only UnionFS.   This Immutability is a key concept in containers.  containers should not be considered mutable and therefore precious.  The goal is that it should be possible to destroy and recreate them with (little or) no side effects.
 
@@ -326,10 +326,11 @@ Use the ``LABEL`` directive to add ample metadata to your image.  This metadata 
           author="A Developer <a.developer@example.com>" \
           description="This image illustrates LABELs" \
           license="Apache2.0" \
-          repository="acmeincorporated/imagename" \
+          registry="acmeincorporated/imagename" \
           vendor="ACME Incorporated" \
-          version="1.0.0" \
-          website="http://github.com/ACMEIncorporate/widget"
+          org.skatelescope.team="Systems Team" \
+          org.skatelescope.version="1.0.0" \
+          org.skatelescope.website="http://github.com/ACMEIncorporate/widget"
     ...
 
 The following are recommended labels for all images:
@@ -337,10 +338,11 @@ The following are recommended labels for all images:
 * author: name and email address of the author
 * description: a short description of this image and it's purpose.
 * license: license that this image and contained software are released under
-* repository: the primary repository that this image should be found in
+* registry: the primary registry that this image should be found in
 * vendor: the owning organisation of the software component
-* version: follows `Semantic Versioning <https://semver.org>`_, and should be linked to the image version tag discussed below.
-* website: where the software pertaining to the building of this image resides
+* org.skatelescope.team: the SKA team responsible for this image.
+* org.skatelescope.version: follows `Semantic Versioning <https://semver.org>`_, and should be linked to the image version tag discussed below.
+* org.skatelescope.website: where the software pertaining to the building of this image resides
 
 Arguments
 ~~~~~~~~~
@@ -566,7 +568,7 @@ Management of container resources is largely dependent on the specific Container
 Storage
 ~~~~~~~
 
-As previously stated, all storage shared into a container is achieved through bind mounting.  This is true for both directory mount points and individual files. While it is not mandatory to use the ``VOLUMES`` directive in the image ``Dockerfile``, it is good practice to do this for all directories to be mounted as it provides annotation of the image requirements.
+As previously stated, all storage shared into a container is achieved through bind mounting.  This is true for both directory mount points and individual files. While it is not mandatory to use the ``VOLUME`` directive in the image ``Dockerfile``, it is good practice to do this for all directories to be mounted as it provides annotation of the image requirements.
 These volumes and files can be populated with default data, but be aware they are completely masked at runtime when overlayed by a mount.
 
 When adding a volume at runtime, consider whether write access is really required.  As with the example above ``--volume /etc/passwd:/etc/passwd:ro`` ensures that the ``/etc/passwd`` file is read only in the container reducing the security concerns.
@@ -665,9 +667,9 @@ Named pipes, are straight forward as these are achieved through shared hostpath 
 ------------
 
 
-********************
-Standards CheatSheet
-********************
+******************************
+Container Standards CheatSheet
+******************************
 
 This section provides a condensed summary of the standards to be used as a checklist.
 
@@ -745,7 +747,7 @@ Running Containerised Applications
 
 * The containerised application developer must determine what **the application interface contract** based on the :ref:`touch points with resources<header-2-running-containerised-applications>` from the underlying host through the Container Engine.
 * Usage documentation for the image must describe the intended purpose of each configured resource, how they combine and what the defaults are with default behaviours.
-* Use ``VOLUMES`` statements for all directories to be mounted as it provides annotation of the image requirements.
+* Use ``VOLUME`` statements for all directories to be mounted as it provides annotation of the image requirements.
 * When adding a volume at runtime, consider whether write access is really required - add ``:ro`` liberally.
 * Containerised applications should avoid using ``--net=host`` (host only) based networking as this will push the container onto the running host network namespace monopolising any ports that it uses.
 * Where possible, a containerised application should run under a specific UIG/GID to avoid privilege escalation as an attack vector.
