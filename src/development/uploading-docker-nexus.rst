@@ -17,7 +17,7 @@ To explicitly tag a docker image run the following command.
 
 .. code:: bash
 
-  $ docker tag ubuntu:16.04 nexus.engageska-portugal.pt/<repository_name>/<image_name>/<tag_name>
+  $ docker tag <source_image> nexus.engageska-portugal.pt/<repository_name>/<image_name>/<tag_name>
 
 Uploading the docker image to *NEXUS*
 -------------------------------------
