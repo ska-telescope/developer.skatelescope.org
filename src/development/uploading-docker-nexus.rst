@@ -17,7 +17,7 @@ To explicitly tag a docker image run the following command:
 
 .. code:: bash
 
-  $ docker tag <source_image> nexus.engageska-portugal.pt/<repository_name>/<image_name>/<tag_name>
+  $ docker tag <source_image> nexus.engageska-portugal.pt/<repository_name>/<image_name>:<tag_name>
 
 This command will create an alias by the name of the :code:`<image_name>` that refers to the :code:`<source_image>`.
 
@@ -31,4 +31,4 @@ by executing the following command:
 
 .. code:: bash
 
-  $ docker push nexus.engageska-portugal.pt/<repository_name>/<image_name>/<tag_name>
+  $ docker push nexus.engageska-portugal.pt/<repository_name>/<image_name>:<tag_name>
