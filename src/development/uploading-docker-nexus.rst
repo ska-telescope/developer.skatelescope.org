@@ -21,7 +21,8 @@ To explicitly tag a docker image run the following command:
 
 This command will create an alias by the name of the :code:`<image_name>` that refers to the :code:`<source_image>`.
 
-**Note that naming and tagging conventions are outlined in the containerisation standards.**
+**Note that naming and tagging conventions are outlined in the containerisation standards. And those should follow
+the same semantic versioning used for the repository.**
 
 Uploading the docker image to *NEXUS*
 -------------------------------------
