@@ -151,6 +151,7 @@ The definition of done is used to guide teams in planning and estimating the siz
   development/containerisation-standards
   development/orchestration-guidelines
   development/python_package_release_procedure
+  development/uploading-docker-nexus
 
 
 Development guidelines
@@ -206,6 +207,14 @@ This details a procedure that all *SKA* developers shall follow to ensure that t
 existing CI/CD pipelines to automate the building of their software packages for release.
 
 - :doc:`development/python_package_release_procedure`
+
+Hosting a docker image on Nexus
+===============================
+
+This details steps that all *SKA* developers shall abide to when building and hosting their docker
+images on the Nexus registry.
+
+- :doc:`development/uploading-docker-nexus`
 
 
 .. PROJECTS SECTION ==================================================
