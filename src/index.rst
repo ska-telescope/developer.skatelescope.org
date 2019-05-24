@@ -148,11 +148,11 @@ The definition of done is used to guide teams in planning and estimating the siz
   development/fundamental_sw_requirements
   development/python-codeguide
   development/javascript-codeguide
+  development/vhdl-codeguide
   development/containerisation-standards
   development/orchestration-guidelines
   development/python_package_release_procedure
   development/uploading-docker-nexus
-  development/vhdl-guidelines
 
 
 Development guidelines
@@ -185,6 +185,13 @@ Python skeleton above its purpose is to enforce coding best practices and bootst
 setup for browser based javascript applications.
 
 - :doc:`development/javascript-codeguide`
+
+VHDL coding guidelines
+======================
+
+VHDL coding guidelines are described at: 
+
+- :doc:`development/vhdl-codeguide`
 
 Containerisation Standards
 ==========================
