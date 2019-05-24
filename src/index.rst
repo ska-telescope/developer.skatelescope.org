@@ -152,6 +152,7 @@ The definition of done is used to guide teams in planning and estimating the siz
   development/orchestration-guidelines
   development/python_package_release_procedure
   development/uploading-docker-nexus
+  development/vhdl-guidelines
 
 
 Development guidelines
