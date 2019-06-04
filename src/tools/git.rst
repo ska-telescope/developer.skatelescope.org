@@ -130,8 +130,8 @@ discussing it with the rest of the community.
 See a more detailed description of this workflow at https://guides.github.com/introduction/flow/
 
 
-Workin with Github
-------------------
+Working with Github
+-------------------
 
 Use institutional email
 =======================
