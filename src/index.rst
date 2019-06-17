@@ -257,6 +257,7 @@ Projects
   :hidden:
 
   services/ait_performance_env
+  services/nexus_repository
 
 
 Developer Services
