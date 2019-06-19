@@ -193,6 +193,16 @@ VHDL coding guidelines are described at:
 
 - :doc:`development/vhdl-codeguide`
 
+
+C++ Coding Standards
+==========================
+
+A CPP skeleton project is created for use within the SKA Telescope. The skeleton purpose is to demonstrate
+coding best practices, boostrap initial project set up within the SKA Continuous Integration (CI) Framework.
+
+- :doc:`development/cplusplus-codeguide`
+
+
 Containerisation Standards
 ==========================
 
