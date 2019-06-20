@@ -172,7 +172,7 @@ Where multi-line arguments are used, sort them for ease of reading, eg:
 
 .. code:: docker
 
-    RUN apt install -y \
+    RUN apt-get install -y \
             apache2-bin \
             binutils \
             cmake
@@ -211,8 +211,8 @@ Image builds tend to be highly information dense, therefore it is important to k
 .. code:: docker
 
     FROM python:latest
-    RUN apt install -y libpq-dev \
-                       postgresql-client-10
+    RUN apt-get install -y libpq-dev \
+                    postgresql-client-10
     RUN pip install psycopg2 \
                     sqlalchemy
 
@@ -286,9 +286,9 @@ When installing packages with the ``RUN`` directive, always clean the package ca
 
     ...
     RUN \
-        apt update && \
-        apt install -y the-package && \
-        apt clean && \
+        apt-get update && \
+        apt-get install -y the-package && \
+        apt-get clean && \
         rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
     ...
 
@@ -303,7 +303,7 @@ Consider the following:
 
     FROM python:latest
     ARG postgres_client "postgresql-client-10 libpq-dev"
-    RUN apt install -y $postgres_client
+    RUN apt-get install -y $postgres_client
     COPY requirements.txt .
     RUN pip3 install -r requirements.txt
     COPY ./app /app
@@ -311,7 +311,7 @@ Consider the following:
 
 Looking at the example above, during the intensive development build phase of an application, it is likely that the most volitile element is the ``./app`` itself, followed by the Python dependencies in the ``requirements.txt`` file, then finally the least changeable element is the specific postgresql client libraries (the base image is always at the top).
 
-Laying out the build process in this way ensures that the build exploits as much as possible the build cache that the Container Engine holds locally.  The cache calculates a hash of each element of the ``Dockerfile`` linked to all the previous elements.  If this hash has not changed then the build process will skip the rebuild of that layer and pull it from the cache instead.  If in the above example, the ``COPY ./app /app`` step was placed before the ``RUN apt install``, then the package install would be triggered every time the code changed in the application unnecessarily.
+Laying out the build process in this way ensures that the build exploits as much as possible the build cache that the Container Engine holds locally.  The cache calculates a hash of each element of the ``Dockerfile`` linked to all the previous elements.  If this hash has not changed then the build process will skip the rebuild of that layer and pull it from the cache instead.  If in the above example, the ``COPY ./app /app`` step was placed before the ``RUN apt-get install``, then the package install would be triggered every time the code changed in the application unnecessarily.
 
 Labels
 ~~~~~~
@@ -353,9 +353,9 @@ Use arguments via the ``ARG`` directive to parameterise elements such as the bas
 
     ARG base_image="python:latest"
     FROM $base_image
-    RUN apt install -y binutls cmake
+    RUN apt-get install -y binutls cmake
     ARG postgres_client="postgresql-client-10 libpq-dev"
-    RUN apt install -y $postgres_client
+    RUN apt-get install -y $postgres_client
     ...
 
 The ARGs referenced above can then be addressed at build time with:
@@ -368,7 +368,7 @@ The ARGs referenced above can then be addressed at build time with:
                  -f path/to/Dockerfile \
                  project/path/to/build/context
 
-Note: the ``ARG postgres_client`` is placed after the ``apt install -y binutls cmake`` as this will ensure that the variable is bound as late as possible without invalidating the layer cache of that package install.
+Note: the ``ARG postgres_client`` is placed after the ``apt-get install -y binutls cmake`` as this will ensure that the variable is bound as late as possible without invalidating the layer cache of that package install.
 
 .. _header-3-environment-variables:
 
@@ -543,9 +543,9 @@ Management of container resources is largely dependent on the specific Container
     FROM ubuntu:18.04
     ENV DEBIAN_FRONTEND noninteractive
     RUN \
-        apt update && \
-        apt install mplayer -y && \
-        apt clean && \
+        apt-get update && \
+        apt-get install mplayer -y && \
+        apt-get clean && \
         rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
     ENTRYPOINT ["/usr/bin/mplayer"]
@@ -698,7 +698,7 @@ Defining and Building Container Images
 * All directives and key words should be in upper case.
 * All element names should be in lower case - image labels and tags, and arguments (``ARG``) apart from environment variables (``ENV`` - upper case).
 * Liberally use comments (lines starting with ``#``) to explain each step of the build and describe any external dependencies.
-* Where multi-line arguments are used such as ``RUN apt install ...``, sort them for ease of reading.
+* Where multi-line arguments are used such as ``RUN apt-get install ...``, sort them for ease of reading.
 * The size of the build context should be minimised in order to speed up the build process.
 * Always be careful to exclude unnecessary and sensitive files from the image build context.
 * Break the build process into multiple images so that core and common builds can be shared with other applications.
@@ -708,7 +708,7 @@ Defining and Building Container Images
 * Stable image tags should be used for base images that include the Major and Minor version number of `Semantic Versioning <https://semver.org>`_ eg: ``python:3.7``.
 * Avoid installing unnecessary packages in your container image.
 * Create a derivative image from the standard production one explicitly for the purposes of debugging, and problem resolution.
-* Always clean the package cache afterward use of ``apt install ...`` to avoid the package archives and other temporary files becoming part of the new layer.
+* Always clean the package cache afterward use of ``apt-get install ...`` to avoid the package archives and other temporary files becoming part of the new layer.
 * Order the build directives specified in the ``Dockerfile``, to ensure that they are running from the lowest frequency changing to the highest to exploit the build cache.
 * Use the ``LABEL`` directive to add metadata to your image.
 * Use arguments (``ARG``) to parameterise elements such as the base image, and versions of key packages to be installed.
