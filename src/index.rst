@@ -149,6 +149,7 @@ The definition of done is used to guide teams in planning and estimating the siz
   development/python-codeguide
   development/javascript-codeguide
   development/vhdl-codeguide
+  development/cplusplus-codeguide
   development/containerisation-standards
   development/orchestration-guidelines
   development/python_package_release_procedure
