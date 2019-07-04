@@ -1,0 +1,116 @@
+# This file is a template, and might need editing before it works on your project.
+# use the official gcc image, based on debian
+# can use verions as well, like gcc:5.2
+# see https://hub.docker.com/_/gcc/
+#
+# This base image is based on debian:stretch-slim and contains:
+#  * gcc 6.2
+#  * clang 4.0
+#  * cmake 3.7.2
+#  * gcovr
+#  * iwyu
+#  * clang-tidy 4.0
+image: rtobar/cpp_build_system
+
+variables:
+  # Needed if you want automatic submodule checkout
+  # For details see https://docs.gitlab.com/ee/ci/yaml/README.html#git-submodule-strategy
+  GIT_SUBMODULE_STRATEGY: normal
+
+stages:
+  - build
+  - lint
+  - test
+  - deploy
+
+build_debug:
+  stage: build
+  # instead of calling g++ directly you can also use some build toolkit like make
+  # install the necessary build tools when needed
+  script:
+    - mkdir build
+    - cd build
+    - cmake .. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS="-coverage" -DCMAKE_EXE_LINKER_FLAGS="-coverage"
+    - make
+  artifacts:
+    paths:
+      - build
+
+build_release:
+  stage: build
+  script:
+    - mkdir build
+    - cd build
+    - cmake .. -DCMAKE_BUILD_TYPE=Release
+    - make
+  artifacts:
+    paths:
+      - build/src/src/top/nested/libHelloWorld.a
+      - build/src/apps/HelloWorld
+
+build_export_compile_commands:
+ stage: build
+ script:
+    - rm -rf build && mkdir build
+    - cd build
+    - cmake .. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_COMPILER=clang++-4.0
+ artifacts:
+    paths:
+      - build
+
+lint_clang_tidy:
+ stage: lint
+ dependencies:
+    - build_export_compile_commands
+ script:
+    - cd build
+    - run-clang-tidy-4.0.py -checks='cppcoreguidelines-*,performance-*,readibility-*,modernize-*,misc-*,clang-analyzer-*,google-*'
+
+lint_iwyu:
+ stage: lint
+ dependencies:
+    - build_export_compile_commands
+ script:
+    - cd build
+    - iwyu_tool -p .
+
+test:
+  stage: test
+  dependencies:
+    - build_debug
+  script:
+    - cd build
+    - ctest
+  artifacts:
+    paths:
+      - build/
+
+# A job that runs the tests under valgrid
+# It might take a while, so not always run by default
+test_memcheck:
+  stage: test
+  dependencies:
+    - build_debug
+  before_script:
+    - apt update && apt install -y valgrind
+  script:
+    - cd build
+    - ctest -T memcheck
+  only:
+    - tags
+    - schedules
+
+pages:
+  stage: deploy
+  dependencies:
+    - test
+  script:
+    - mkdir .public
+    - cd .public
+    - gcovr -r ../ -e '.*/external/.*' -e '.*/CompilerIdCXX/.*' -e '.*/tests/.*' --html --html-details -o index.html
+    - cd ..
+    - mv .public public
+  artifacts:
+    paths:
+      - public
+
