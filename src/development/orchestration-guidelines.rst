@@ -923,6 +923,58 @@ Helm tests, must be self contained are should be atomic and non-destructive as t
               value: databaseds-{{ template "tango-chart-example.name" . }}-{{ .Release.Name }}:10000
           restartPolicy: Never
 
+Integrating a chart into the k8s-integration repo
+-------------------------------------------------
+
+.. admonition:: Prerequisites
+
+  - `helm` has been installed, see `helm installation instructions <https://github.com/helm/helm>`_
+  - `minikube` is available to test the deployment
+  - The required docker images have been uploaded to and are available from `Nexus <https://nexus.engageska-portugal.pt/#browse/search/docker>`_, see `docker upload instructions <uploading-docker-nexus.html>`__
+
+To integrate a helm chart into the `k8s-integration` repo, follow these steps:
+
+Local steps
+~~~~~~~~~~~
+
+- Clone the `k8s-integration` repo, available `here <https://github.com/ska-telescope/k8s-integration>`_.
+
+- Add a directory in `charts` with a descriptive name
+
+- Add your helm chart and associated files within that directory
+
+- Check the validity of the chart
+
+    - Verify that the chart is formatted correctly
+
+      .. code:: bash
+
+          helm lint ./charts/<your_chart_directory>/
+
+    - Verify that the templates are rendered correctly and the output is as expected
+
+        .. code:: bash
+
+            helm install --dry-run --debug ./charts/<your_chart_directory>/
+
+        - For some debugging tips refer to: `debugging tips <https://github.com/helm/helm/blob/master/docs/chart_template_guide/debugging.md>`_.
+
+    - Check that your chart deploys locally (utilising minikube as per our standards) and behaves as expected
+
+      .. code:: bash
+
+        make deploy KUBE_NAMESPACE=integration
+        make deploy KUBE_NAMESPACE=integration HELM_CHART=./charts/<your_chart_directory>/
+
+- Once functionality has been confirmed, go ahead and commit and push the changes
+
+Gitlab
+~~~~~~
+
+Once the changes had been pushed it will be built in Gitlab as soon as it has synced from Github.
+Find the pipeline builds at `https://gitlab.com/ska-telescope/k8s-integration/pipelines <https://gitlab.com/ska-telescope/k8s-integration/pipelines>`_.
+
+If the pipeline completes successfully, the full integration environment will be available at `https://integration.engageska-portugal.pt <https://integration.engageska-portugal.pt>`_.
 
 Kubernetes primitives
 =====================
