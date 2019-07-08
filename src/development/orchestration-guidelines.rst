@@ -964,7 +964,7 @@ Local steps
       .. code:: bash
 
         make deploy KUBE_NAMESPACE=integration
-        make deploy KUBE_NAMESPACE=integration HELM_CHART=./charts/<your_chart_directory>/
+        make deploy KUBE_NAMESPACE=integration HELM_CHART=<your_chart_directory>
 
 - Once functionality has been confirmed, go ahead and commit and push the changes
 
