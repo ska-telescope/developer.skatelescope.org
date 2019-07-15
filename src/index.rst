@@ -145,6 +145,7 @@ The definition of done is used to guide teams in planning and estimating the siz
   :caption: Development guidelines
   :hidden:
 
+  development/getting_started
   development/fundamental_sw_requirements
   development/python-codeguide
   development/javascript-codeguide
