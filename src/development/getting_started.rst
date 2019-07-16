@@ -4,11 +4,10 @@ Getting Started
 I want to..
 --------------------------
 
-Deploy the TMC prototype and Webjive in kubernetes
-```````````````````````````````````````````````````
+Add a new project to SKA organisation
+`````````````````````````````````````
 
-* The integration github repository can be found at `<https://github.com/ska-telescope/k8s-integration>`_
-* Documentation on deployment can be found at `<https://developer.skatelescope.org/projects/k8s-integration/en/latest/README.html>`_
+* Our project details can be found in the `Projects <https://developer.skatelescope.org/en/latest/projects/create_new_project.html>`_ section below
 
 Develop a Tango device
 ``````````````````````
@@ -21,11 +20,6 @@ Containerise my solution
 
 * Our containerisation standards can be found in the `containerisation <https://developer.skatelescope.org/en/latest/development/containerisation-standards.html#container-standards-cheatsheet>`_ section below
 
-Add a project to SKA
-````````````````````
-
-* Our project details can be found in the `Projects <https://developer.skatelescope.org/en/latest/projects/create_new_project.html>`_ section below
-
 Incorporate my helm chart into the integration environment
 ``````````````````````````````````````````````````````````
 
@@ -36,3 +30,8 @@ Once your project is ready to form part of the integrated solution it needs to b
 * Add the helm chart to k8s-integration repository
     * `Integration instructions <https://developer.skatelescope.org/en/latest/development/orchestration-guidelines.html#integrating-a-chart-into-the-k8s-integration-repo>`_
 
+Deploy the TMC prototype and Webjive in kubernetes
+```````````````````````````````````````````````````
+
+* The integration github repository can be found at `<https://github.com/ska-telescope/k8s-integration>`_
+* Documentation on deployment can be found at `<https://developer.skatelescope.org/projects/k8s-integration/en/latest/README.html>`_
