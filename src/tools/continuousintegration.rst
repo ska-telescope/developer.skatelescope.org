@@ -218,6 +218,60 @@ Output
   The generated HTML containing the latest documentation.
 
 
+Using environment variables in the CI pipeline to upload to Nexus
+------------------------------------------------------------------
+
+There are several environment variables available in the CI pipeline that should be used when uploading Python packages and Docker images to Nexus.
+This will make these packages available to the rest of the SKA project.
+
+Python Modules
+______________
+
+The Nexus PYPI destination as well as a username and password is avialable.
+For a reference implementation see the `lmc-base-classes .gitlab-ci.yaml <https://github.com/ska-telescope/lmc-base-classes/blob/master/.gitlab-ci.yml>`_
+
+Note the following:
+ - The Nexus `PYPI_REPOSITORY_URL <https://nexus.engageska-portugal.pt/repository/pypi/>`_ is where the packages will be uploaded to.
+ - `twine` uses the local environment variables (`TWINE_USERNAME`, `TWINE_PASSWORD`) to authenticate the upload, therefore they are defined in the `variables` section.
+
+.. code-block:: yaml
+
+  publish to nexus:
+    stage: publish
+    tags:
+      - docker-executor
+    variables:
+      TWINE_USERNAME: $TWINE_USERNAME
+      TWINE_PASSWORD: $TWINE_PASSWORD
+    script:
+      # check metadata requirements
+      - scripts/validate-metadata.sh
+      - pip install twine
+      - twine upload --repository-url $PYPI_REPOSITORY_URL dist/*
+    only:
+      variables:
+        - $CI_COMMIT_MESSAGE =~ /^.+$/ # Confirm tag message exists
+        - $CI_COMMIT_TAG =~ /^((([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?)(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?)$/ # Confirm semantic versioning of tag
+
+
+
+Docker images
+_____________
+
+The Nexus Docker registery host and user is available.
+For a reference implementation see the `SKA docker gitlab-ci.yml <https://github.com/ska-telescope/ska-docker/blob/master/.gitlab-ci.yml>`_
+
+Note the following:
+ - The `DOCKER_REGISTRY_USER` corresponds to the folder where the images are uploaded, hence the `$DOCKER_REGISTRY_FOLDER` is used.
+
+.. code-block:: yaml
+
+  script:
+  - cd docker/tango/tango-cpp
+  - make DOCKER_BUILD_ARGS="--no-cache" DOCKER_REGISTRY_USER=$DOCKER_REGISTRY_FOLDER DOCKER_REGISTRY_HOST=$DOCKER_REGISTRY_HOST build
+  - make DOCKER_REGISTRY_USER=$DOCKER_REGISTRY_FOLDER DOCKER_REGISTRY_HOST=$DOCKER_REGISTRY_HOST push
+
+
 .. |image0| image:: media/image1.png
    :width: 6.27083in
    :height: 0.83333in
