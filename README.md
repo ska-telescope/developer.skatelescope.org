@@ -10,7 +10,7 @@ portal at developer.skatelescope.org
 
 This documentation details how software engineering practices in a number of
 scenarios are implemented for the SKA telescope. The github repository is
-owned by the *SAFe system team*, eveyone is ecnouraged to submit changes using
+owned by the *SAFe system team*, everyone is encouraged to submit changes using
 pull requests.
 
 ## Contributing
@@ -20,12 +20,12 @@ text files into html documentation. In order to contribute, you can
 clone the repository and test your changes locally:
 
 ```bash
-$ pip install -r requirements.txt
-$ make html
+$ pipenv install
+$ pipenv run make html
 $ browser build/html/index.html
 ```
 
 Once your local changes are compiling, you can request to update the documentation
 via a pull request.
-When the pull request gets merged, the online version of the wensite gets
+When the pull request gets merged, the online version of the website gets
 automatically updated to the most recent version.
