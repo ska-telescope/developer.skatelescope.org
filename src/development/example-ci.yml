@@ -3,14 +3,15 @@
 # can use verions as well, like gcc:5.2
 # see https://hub.docker.com/_/gcc/
 #
-# This base image is based on debian:stretch-slim and contains:
-#  * gcc 6.2
-#  * clang 4.0
-#  * cmake 3.7.2
-#  * gcovr
-#  * iwyu
-#  * clang-tidy 4.0
-image: rtobar/cpp_build_system
+# This base image is based on debian:buster-slim and contains:
+#  * gcc 8.3.0
+#  * clang 7.0.1
+#  * cmake 3.13.4
+#  * and more
+#
+# For details see https://github.com/ska-telescope/cpp_build_base
+#
+image: nexus.engageska-portugal.pt/ska-docker/cpp_build_base
 
 variables:
   # Needed if you want automatic submodule checkout
@@ -19,9 +20,9 @@ variables:
 
 stages:
   - build
-  - lint
+  - linting
   - test
-  - deploy
+  - pages
 
 build_debug:
   stage: build
@@ -53,26 +54,34 @@ build_export_compile_commands:
  script:
     - rm -rf build && mkdir build
     - cd build
-    - cmake .. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_COMPILER=clang++-4.0
+    - cmake .. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_COMPILER=clang++
  artifacts:
     paths:
       - build
 
 lint_clang_tidy:
- stage: lint
+ stage: linting
  dependencies:
     - build_export_compile_commands
  script:
     - cd build
-    - run-clang-tidy-4.0.py -checks='cppcoreguidelines-*,performance-*,readibility-*,modernize-*,misc-*,clang-analyzer-*,google-*'
+    - run-clang-tidy -checks='cppcoreguidelines-*,performance-*,readibility-*,modernize-*,misc-*,clang-analyzer-*,google-*'
 
 lint_iwyu:
- stage: lint
+ stage: linting
  dependencies:
     - build_export_compile_commands
  script:
     - cd build
     - iwyu_tool -p .
+
+lint_cppcheck:
+ stage: linting
+ dependencies:
+    - build_export_compile_commands
+ script:
+    - cd build
+    - cppcheck --project=compile_commands.json -q --std=c++14 -i $PWD/../external
 
 test:
   stage: test
@@ -80,10 +89,15 @@ test:
     - build_debug
   script:
     - cd build
-    - ctest
+    - ctest -T test --no-compress-output
+  after_script:
+    - cd build
+    - ctest2junit > ctest.xml
   artifacts:
     paths:
       - build/
+    reports:
+      junit: build/ctest.xml
 
 # A job that runs the tests under valgrid
 # It might take a while, so not always run by default
@@ -101,7 +115,7 @@ test_memcheck:
     - schedules
 
 pages:
-  stage: deploy
+  stage: pages
   dependencies:
     - test
   script:
@@ -113,4 +127,3 @@ pages:
   artifacts:
     paths:
       - public
-

@@ -1,0 +1,17 @@
+├── CMakeLists.txt
+├── HelloWorldConfig.h.in
+├── apps
+│   ├── CMakeLists.txt
+│   └── hello_world.cc
+└── top
+    └── nested
+        ├── CMakeLists.txt
+        ├── hello.cc
+        ├── hello.h
+        ├── tests
+        │   ├── CMakeLists.txt
+        │   └── twave.cc
+        ├── wave.cc
+        ├── wave.h
+        └── wave_impl.h
+
