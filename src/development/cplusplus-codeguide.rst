@@ -183,12 +183,15 @@ Runtime Dependencies
 
 
 Coding Style & Conventions
-------------------------
+--------------------------
 
 We are not advocating that software be restructured and rewritten before
 on-boarding - However we recommend that new software follow `The cplusplus Core
 Guidelines <http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines>`_.
 
+The clang compiler tools have an extension which can provide some direct criticism of your code for sylistic errors. For example in our lint step we suggest you run:: 
+
+    run-clang-tidy -checks='cppcoreguidelines-*,performance-*,readibility-*,modernize-*,misc-*,clang-analyzer-*,google-*'
 
 Unit testing
 ------------
