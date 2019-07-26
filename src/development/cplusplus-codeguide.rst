@@ -131,7 +131,10 @@ Building The Project
 
 The Image
 """""""""
-We recommend building using the cpp_base image that we have developed and stored in the image repository. This, or an image derived from it contains all the tools required to operate this CI pipeline and you should avoid the pain of installing and configuring dependencies.
+We recommend building using the cpp_base image that we have developed and
+stored in the image repository. This, or an image derived from it contains all
+the tools required to operate this CI pipeline and you should avoid the pain of
+installing and configuring dependencies.
 
 
 CMake Coding Conventions
@@ -144,12 +147,14 @@ would like (e.g. Eclipse and Xcode) from the same CMake files.
 Unfortunately there is even less consensus in the community as to the most
 effective way to write CMake files, thought there are a lot of opinions. We
 have found a good distillation of some effective ideas can be found `here
-<https://gist.github.com/mbinna/c61dbb39bca0e4fb7d1f73b0d66a4fd1>`_. 
+<https://gist.github.com/mbinna/c61dbb39bca0e4fb7d1f73b0d66a4fd1>`_. And GitLab
+has an introduction to `Modern CMake
+<https://cliutils.gitlab.io/modern-cmake/>`_.
 
-In general however we recommend a CMake minimum version of 3.0. A lot of legacy
+In general however we recommend Modern CMake (minimum version of 3.0). A lot of legacy
 projects will have used 2.8 - but we cannot recommend that new projects use
 this. It is no longer maintained and does not contain many features of modern
-(v3+ CMake). As far as we are aware CMake v3.0 is fully backward compatible
+(v3+ CMake). As far as we are aware CMake v3.0 is backward compatible
 with 2.8, so if you are onboarding code that uses 2.8 we strongly suggest you upgrade. 
 
 .. todo:: Maybe add some more advice? use targets not global settings etc ...
@@ -171,12 +176,18 @@ dependency to demonstrate one way to use external projects.
 
 .. warning:: We have used a git submodule to do this. There may be a formal recomendation that git subtrees be used instead.
 
-Coding Style/Conventions
+Runtime Dependencies
+""""""""""""""""""""
+
+.. todo:: Add a simple description of dependency and version listing
+
+
+Coding Style & Conventions
 ------------------------
 
-WE include a lint step in the YAML CI file. In our example we 
-A good place to start:
-* `The cplusplus Core Guidelines <http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines>`_.
+We are not advocating that software be restructured and rewritten before
+on-boarding - However we recommend that new software follow `The cplusplus Core
+Guidelines <http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines>`_.
 
 
 Unit testing
