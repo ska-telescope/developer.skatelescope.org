@@ -13,25 +13,7 @@ Access to the network using VPN
 ===============================
 At the moment, VPN credentials are sent individually and is required to send an email to Dzianis Bartashevich (bartashevich@av.it.pt) with the knowledge from Marco Bartolini (M.Bartolini@skatelescope.org).
 
-You will receive an .ovpn key to access the private network.
-
-In order to connect you will need an OpenVPN client:
-
-- Windows and Linux: https://openvpn.net/community-downloads/
-- MacOS: https://tunnelblick.net/
-
-Now just drag or add the .ovpn file to VPN the client. The follow tutorial is for tunnelblick, but it is similar to the other VPN clients.
-
-.. image:: openvpn_open.png
-.. image:: openvpn_more.png
-
-Now that you have configured the VPN credentials click on the VPN client icon located at the toolbar and connect to the private network.
-
-.. image:: openvpn_connect.png
-
-If all went okay, you are successfully connected.
-
-.. image:: openvpn_success.png
+- Guide on how to connect to the private network using VPN: https://engageska-portugal.pt/theme/files/vpn-guide.pdf
 
 Access to the OpenStack platform (Virtualization)
 =================================================
