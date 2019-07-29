@@ -285,7 +285,7 @@ But you can access the artifact from the pipeline.
 Summary
 =======
 
-This basic template available at demonstrates the following:
+This basic template project is available `on GitLab <https://gitlab.com/ska-telescope/cpp-template.git>`_. And demonstrates the following:
 
 1) Provides a base image on which to run C++ builds
 2) Describes example basic dependency management is possible at least based on CMake but way of CMake External projects and git submodules
