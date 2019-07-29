@@ -124,6 +124,7 @@ We have four stages of the CI
 * test
 * pages
 
+These stages are automatically run by the GitLab runners when you push to the repository. The pipeline halts and you are informed if any of the steps fail. There are some subtleties in the way the test results and test coverage are reported and we deal with them below as we go through the steps in more detail.
 
 Building The Project
 ^^^^^^^^^^^^^^^^^^^^
@@ -161,7 +162,7 @@ with 2.8, so if you are onboarding code that uses 2.8 we strongly suggest you up
 
 Including the version number
 """"""""""""""""""""""""""""
-There is a template configuration file that demonstates how to pull in the
+There is a template configuration file that demonstrates how to pull in the
 version number into the code base. We do this in a few  steps. First the Semantic
 Version number is held in plain text in version.txt. This is done so that it is
 easy to "bump" the version number on code changes. The second stage is the the
@@ -181,6 +182,13 @@ Runtime Dependencies
 
 .. todo:: Add a simple description of dependency and version listing
 
+We consider that there are two principles of dependency management we would dictate:
+
+1) Dependency installation should be unambigigous and repeatable. This requires dependencies to be listed, together with a minimum, or required version number. 
+
+2) Dependencies should be project specific, there should be no reason for developers to pollute their environment just to build your package.
+
+We do not advocate a solution here - there is not a dominant package management system for C++. Indeed you could just pull and build all your deopendencies via external projects as the our GoogleTest example. Another option would simply be to list the dependencies in a text file *dependencies.txt* and allow the developer to use their preferred pacakge management system to install them.
 
 Coding Style & Conventions
 --------------------------
@@ -189,21 +197,100 @@ We are not advocating that software be restructured and rewritten before
 on-boarding - However we recommend that new software follow `The cplusplus Core
 Guidelines <http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines>`_.
 
-The clang compiler tools have an extension which can provide some direct criticism of your code for sylistic errors. For example in our lint step we suggest you run:: 
+The clang/llvm compiler tools have an extension which can provide some direct
+criticism of your code for stylistic errors (and even automatically fix them). For example in our lint step we
+suggest you run:: 
 
     run-clang-tidy -checks='cppcoreguidelines-*,performance-*,readibility-*,modernize-*,misc-*,clang-analyzer-*,google-*'
 
+.. note:: The GoogleTest  macros generate a lot of warnings ... Google have their own code guidelines ...
+
+In the linting stage we also run cppcheck as a separate step. 
+
+.. warning:: The linting stage as presented here is spotting an error in the GTest macros. So we have explicitly removed the test directory from the cppcheck path. 
+
+
 Unit testing
 ------------
-* `The Google Test framework <https://github.com/google/googletest/>`_.
-* `Travis CI <https://travis-ci.org>`_.
 
-Deployment
-----------
+Setting Up The Tests 
+^^^^^^^^^^^^^^^^^^^^
+Within the template we give examples of how to write a Unit Test in `The Google Test framework <https://github.com/google/googletest/>`_.
+
+You will also see from the  CI script that we publish the test results in the following manner:
+
+.. code-block:: bash
+
+    stage: test
+    dependencies:
+        - build_debug
+    script:
+        - cd build
+        - ctest -T test --no-compress-output
+    after_script:
+        - cd build
+        - ctest2junit > ctest.xml
+    artifacts:
+        paths:
+        - build/
+    reports:
+      junit: build/ctest.xml
 
 
+How GitLab Can Use The Results
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The above directives publish the results to the GitLab JUnit test plugin, but
+the system is very minimal. Primarily it is used in examining merge requests.
+When you push to the GitLab repo your branch is built. On completion the test
+reqults are compared if tests fail you are warned, if they pass you are
+notified. For example. I have created a test branch for the repo that contains
+a new derived instance of an hello world. I have included a test and I checked
+locally that all the existing code built - after the merge request is started
+GitLab gives the following report:
+
+.. image:: merge-request.png
+
+You can see that there is not much detail - but the tests results are parsed and any differences are noted.
+
+Pages (or Publishing Artifacts)
+-------------------------------
+
+We use this step to run the test coverage tool gcov, and to publish the results:
+
+.. code-block:: bash
+
+  stage: pages
+  dependencies:
+    - test
+  script:
+    - mkdir .public
+    - cd .public
+    - gcovr -r ../ -e '.*/external/.*' -e '.*/CompilerIdCXX/.*' -e '.*/tests/.*' --html --html-details -o index.html
+    - cd ..
+    - mv .public public
+  artifacts:
+    paths:
+      - public
+
+Note that the atifacts step this allows the results to be accessed via the pipelines pages. Every build stores its artifacts from the test step and the pages step. 
+
+.. note:: As far as we know there is no plugin for the coverage artifacts generated by gcov
 
 
-Acknowledgements
-================
+.. image:: coverage.png
+
+But you can access the artifact from the pipeline.
+
+
+Summary
+=======
+
+This basic template available at demonstrates the following:
+
+1) Provides a base image on which to run C++ builds
+2) Describes example basic dependency management is possible at least based on CMake but way of CMake External projects and git submodules
+3) Presents a convention for defininig third party/external to project libs such that they are independent of the dependency management layer that will be supported by the systems team.  
+4) Proposes a C++ 14 language standard and related static code checking tools
+5) Outlines header naming conventions that follow namespace definitions
+6) Proposal of GoogleTest for a common C++ unit testing library
 
