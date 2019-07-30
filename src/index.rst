@@ -154,6 +154,7 @@ The definition of done is used to guide teams in planning and estimating the siz
   development/orchestration-guidelines
   development/python_package_release_procedure
   development/uploading-docker-nexus
+  development/k8s-verification-steps
 
 
 Development guidelines
@@ -225,6 +226,14 @@ images on the Nexus registry.
 
 - :doc:`development/uploading-docker-nexus`
 
+
+K8s Verification Steps
+======================
+
+This details steps that all *SKA* developers shall perform to ensure that the instructions for installing
+kubernetes where followed propertly and that they are able to start up the chart.
+
+- :doc:`development/k8s-verification-steps`
 
 .. PROJECTS SECTION ==================================================
 
