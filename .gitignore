@@ -5,3 +5,5 @@ build
 *~ 
 .vscode
 Pipfile.lock
+venv
+.idea
