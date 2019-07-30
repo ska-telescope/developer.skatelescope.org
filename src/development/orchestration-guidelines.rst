@@ -329,6 +329,8 @@ Using this labelling scheme enables filtering for all deployment related objects
         persistentvolumeclaim/webjive-integration-tmc-webui-test   Bound    webjive-integration-tmc-webui-test   1Gi        RWO            standard       55s
 
 
+.. _orchestration-guidelines-templating-application:
+
 Templating the Application
 --------------------------
 
@@ -923,13 +925,14 @@ Helm tests, must be self contained are should be atomic and non-destructive as t
               value: databaseds-{{ template "tango-chart-example.name" . }}-{{ .Release.Name }}:10000
           restartPolicy: Never
 
+.. _integrating-a-chart-into-the-k8s-integration-repo:
+
 Integrating a chart into the k8s-integration repo
 -------------------------------------------------
 
 .. admonition:: Prerequisites
 
-  - `helm` has been installed, see `helm installation instructions <https://github.com/helm/helm>`_
-  - `minikube` is available to test the deployment
+  - Verify that Docker, kubectl, Minikube and Helm are installed and working properly :doc:`k8s-verification-steps`
   - The required docker images have been uploaded to and are available from `Nexus <https://nexus.engageska-portugal.pt/#browse/search/docker>`_, see `docker upload instructions <uploading-docker-nexus.html>`__
 
 To integrate a helm chart into the `k8s-integration` repo, follow these steps:
@@ -979,7 +982,7 @@ If the pipeline completes successfully, the full integration environment will be
 Kubernetes primitives
 =====================
 
-The following focuses on the core Kubernetes primtives - Pod, Service, and Ingress.  These provide the core delivery chain of a networked application to the end consumer.
+The following focuses on the core Kubernetes primitives - Pod, Service, and Ingress.  These provide the core delivery chain of a networked application to the end consumer.
 
 The Pod
 -------
