@@ -5,13 +5,17 @@ Verifying the k8s installation on Linux
 =======================================
 
 As part of our efforts to provide developers with an easy way for them to integrate
-their TANGO devices into the kubernetes integration enviroment we have detailed some few steps
-a developer will need to execute in order to ensure that the integration environment was
-installed properly and that they are able to startup the helm chart.
+their TANGO devices into the `kubernetes integration <https://github.com/ska-telescope/k8s-integration>`_
+enviroment we have detailed some few steps a developer will need to execute in order to ensure that kubernetes
+was installed properly and that they are able to startup the helm chart.
 
 
 Docker
 ------
+
+The developer has to make sure that docker is installed on their machine, instructions on how to install integrate
+it can be found `here <https://docs.docker.com/install/linux/docker-ce/ubuntu>`_ . To confirm that the installation
+was a success, the developer can run the following shell command:
 
 .. code:: bash
 
@@ -21,6 +25,9 @@ Docker
 
 Minikube
 --------
+
+The generic installation instructions are available at https://kubernetes.io/docs/tasks/tools/install-minikube/. Minikube
+requires that you have kubectl installed.
 
 .. code:: bash
 
@@ -77,8 +84,6 @@ Test that the connectivity in the cluster works
   NAME                               READY   STATUS    RESTARTS   AGE
   coredns-86c58d9df4-5ztg8           1/1     Running   0          3m24s
   ...
-
-See first output block on https://github.com/ska-telescope/k8s-integration#minikube
 
 
 Helm
