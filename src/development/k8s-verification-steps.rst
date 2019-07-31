@@ -1,5 +1,3 @@
-.. _minikube: https://kubernetes.io/docs/setup/learning-environenment/minikube
-
 =======================================
 Verifying the k8s installation on Linux
 =======================================
