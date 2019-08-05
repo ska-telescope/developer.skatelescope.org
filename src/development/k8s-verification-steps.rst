@@ -11,9 +11,7 @@ was installed properly and that they are able to work with Helm.
 Docker
 ------
 
-The developer has to make sure that docker is installed on their machine, instructions on how to install integrate
-it can be found `here <https://docs.docker.com/install/linux/docker-ce/ubuntu>`_ . To confirm that the installation
-was a success, the developer can run the following shell command:
+Verify that `Docker is installed <https://docs.docker.com/install/linux/docker-ce/ubuntu>`_:
 
 .. code:: bash
 
@@ -24,8 +22,7 @@ was a success, the developer can run the following shell command:
 Minikube
 --------
 
-The generic installation instructions are available at https://kubernetes.io/docs/tasks/tools/install-minikube/. Minikube
-requires that you have kubectl installed.
+Minikube requires that you have kubectl installed. Installation instructions follow from the link below.
 
 .. code:: bash
 
@@ -35,13 +32,15 @@ requires that you have kubectl installed.
     GitTreeState:"clean", BuildDate:"2019-07-18T09:18:22Z", GoVersion:"go1.12.5", Compiler:"gc", Platform:"linux/amd64"}
     The connection to the server localhost:8080 was refused - did you specify the right host or port?
 
+Verify that `Minikube is installed <https://kubernetes.io/docs/tasks/tools/install-minikube/>`_.
+
 .. code:: bash
 
   $ minikube
 
     Minikube is a CLI tool that provisions and manages single-node Kubernetes clusters optimized for development workflows...
 
-Once you confirmed that minikube has been installed, check if you can start up correctly. Look out for `kubectl is now configured to use "minikube"` near the end:
+Once you confirmed that minikube has been installed, check if you can launch Kubernetes. Look out for `kubectl is now configured to use "minikube"` near the end:
 
 .. code:: bash   
 
@@ -86,6 +85,8 @@ Test that the connectivity in the cluster works
 
 Helm
 ----
+
+Verify that `Helm is installed <https://github.com/helm/helm>`_:
 
 .. code:: bash
 

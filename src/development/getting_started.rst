@@ -20,15 +20,15 @@ Containerise my solution
 
 * Our containerisation standards can be found in the `containerisation <https://developer.skatelescope.org/en/latest/development/containerisation-standards.html#container-standards-cheatsheet>`_ section below
 
-Incorporate my helm chart into the integration environment
+Incorporate my project into the integration environment
 ``````````````````````````````````````````````````````````
 
-Once your project is ready to form part of the integrated solution it needs to be incorporated
+Once your project is ready to form part of the integrated solution it needs to be incorporated. We use Kubernetes as orchestration layer - see :doc:`orchestration-guidelines`.
 
 * Develop a helm chart for your project
-    * `Helm instructions <https://developer.skatelescope.org/en/latest/development/orchestration-guidelines.html#templating-the-application>`_
+    * :ref:`Helm instructions <orchestration-guidelines-templating-application>`
 * Add the helm chart to k8s-integration repository
-    * `Integration instructions <https://developer.skatelescope.org/en/latest/development/orchestration-guidelines.html#integrating-a-chart-into-the-k8s-integration-repo>`_
+    * :ref:`Integration instructions <integrating-a-chart-into-the-k8s-integration-repo>`
 
 Deploy the TMC prototype and Webjive in kubernetes
 ```````````````````````````````````````````````````
