@@ -6,8 +6,8 @@ Verifying the k8s installation on Linux
 
 As part of our efforts to provide developers with an easy way for them to integrate
 their TANGO devices into the `kubernetes integration <https://github.com/ska-telescope/k8s-integration>`_
-enviroment we have detailed some few steps a developer will need to execute in order to ensure that kubernetes
-was installed properly and that they are able to startup the helm chart.
+environment we have detailed some few steps a developer will need to execute in order to ensure that kubernetes
+was installed properly and that they are able to work with Helm.
 
 
 Docker
@@ -43,7 +43,7 @@ requires that you have kubectl installed.
 
     Minikube is a CLI tool that provisions and manages single-node Kubernetes clusters optimized for development workflows...
 
-Once you confirm that minikube has been installed properly then check if you can start up properly:
+Once you confirmed that minikube has been installed, check if you can start up correctly. Look out for `kubectl is now configured to use "minikube"` near the end:
 
 .. code:: bash   
 
@@ -97,7 +97,7 @@ Helm
 
   To begin working with Helm, run the 'helm init' command:
 
-	    $ helm init
+  $ helm init
   ...
 
 
