@@ -100,8 +100,16 @@ Verify that Helm is installed `(instructions) <https://github.com/helm/helm>`_:
   ...
 
 
-k8s-integration
----------------
+k8s-integration project
+-----------------------
+
+Launch the integration environment 
+
+.. code:: bash
+
+  $  make deploy_all KUBE_NAMESPACE=integration
+
+and verify that the pods are able to startup without any errors.
 
 .. code:: bash
 
