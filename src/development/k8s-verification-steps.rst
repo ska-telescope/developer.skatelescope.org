@@ -11,7 +11,7 @@ was installed properly and that they are able to work with Helm.
 Docker
 ------
 
-Verify that `Docker is installed <https://docs.docker.com/install/linux/docker-ce/ubuntu>`_:
+Verify that Docker is installed - `Installation instructions <https://docs.docker.com/install/linux/docker-ce/ubuntu>`_:
 
 .. code:: bash
 
@@ -22,7 +22,7 @@ Verify that `Docker is installed <https://docs.docker.com/install/linux/docker-c
 Minikube
 --------
 
-Minikube requires that you have kubectl installed. Installation instructions follow from the link below.
+Minikube requires that you have kubectl installed. See `installation instructions<https://kubernetes.io/docs/tasks/tools/install-kubectl>`_.
 
 .. code:: bash
 
@@ -32,7 +32,7 @@ Minikube requires that you have kubectl installed. Installation instructions fol
     GitTreeState:"clean", BuildDate:"2019-07-18T09:18:22Z", GoVersion:"go1.12.5", Compiler:"gc", Platform:"linux/amd64"}
     The connection to the server localhost:8080 was refused - did you specify the right host or port?
 
-Verify that `Minikube is installed <https://kubernetes.io/docs/tasks/tools/install-minikube/>`_.
+The next step is to install Minikube. See `installation instructions <https://kubernetes.io/docs/tasks/tools/install-minikube/>`_. Verify by calling minikube:
 
 .. code:: bash
 
@@ -86,7 +86,7 @@ Test that the connectivity in the cluster works
 Helm
 ----
 
-Verify that `Helm is installed <https://github.com/helm/helm>`_:
+Verify that Helm is installed `(instructions) <https://github.com/helm/helm>`_:
 
 .. code:: bash
 
