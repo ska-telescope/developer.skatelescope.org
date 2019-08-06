@@ -77,10 +77,10 @@ A number of design decisions have been made here:
 
 What To Do With Namespaces
 """"""""""""""""""""""""""
-The structure follows the namespaces. We have defined a *top* and a *nested*
-namespace and the directory structure follows this structure. This allows code
+The directory structure follows the namespaces. We have defined a *top* and a *nested*
+namespace and the directory structure follows in kind. This allows code
 to be grouped together easily by namespace. Also the installation assumes this
-structure also. Therefore headers are included using their full namespaces.
+structure. Therefore headers are included using their full namespaces.
 This avoids pollution of the install tree.
 
 .. warning:: we have not decided yet whether all projects should have a top-level SKA namespace
