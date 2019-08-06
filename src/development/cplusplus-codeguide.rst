@@ -8,7 +8,7 @@
 ************************
 C++ Coding Guidelines
 ************************
-This section describes requirements and guidelines for development and testing of a new C++ project on GitLab. The COntinuous Integration tools are GitLab specific - but most of the processes could be easily moved to a Jenkins Pipeline if required. 
+This section describes requirements and guidelines for development and testing of a new C++ project on GitLab. The Continuous Integration tools are GitLab specific - but most of the processes could be easily moved to a Jenkins Pipeline if required. 
 
 .. contents:: Table of Contents
 
@@ -19,13 +19,13 @@ We have created a `skeleton C++ project
 <https://gitlab.com/steve-ord/cpp_template>`_. Which should provide a full introduction to the various
 recommendations and requirements for the development of C++. The philosophy behind the development of this
 template was to demonstrate one way to meet the project guidelines. There are probably as many ways to organise C++ projects
-as there are developers there are sure to be some contraversial design descisions made. 
+as there are developers there are sure to be some controversial design decisions made. 
 
 This projects demonstrates a recommended
 project layout. It also demonstrates how to implement the following recommended C++ project development features. 
 
-* Continous integration (CI) setup using Gitlab 
-* Cmake as a build tool.
+* Continuous integration (CI) setup using Gitlab 
+* CMake as a build tool.
 * GoogleTest framework and example unit testing.
 * C++ linting using clang for stylistic errors.
 * Also test running under valgrind for memory errors.
@@ -51,7 +51,7 @@ LICENSE
 
 README.md
 """""""""
-        Should at the very least provide a brief discription, installation
+        Should at the very least provide a brief description, installation
         instructions, pre-requisites
 
 src
@@ -64,12 +64,12 @@ version.txt
 """""""""""
         In this template the version file is parsed by the CMakeLists file during the 
         build process. This specific functionality is not required, but clear versioning is.
-        We recommend - but do not mandate `Semantic Versioning <https://semver.org>`_.
+        The SKA project mandates `Semantic Versioning <https://semver.org>`_.
 
 
 The Source Tree
 ^^^^^^^^^^^^^^^
-Our recomended source tree structure follows:
+Our recommended source tree structure follows:
 
 .. literalinclude:: source_tree.txt
         
@@ -87,8 +87,9 @@ This avoids pollution of the install tree.
 
 Headers
 """""""
-Header files are included with source. We have done this to make it easier
-to navigate the source tree.
+Header (.h) files are included with and template definitions (.tcc) and
+implementation files (.cpp). We have done this to make it easier to navigate
+the source tree. Having a separate include tree adds unnecessary complexity.
 
 Design Paradigms
 """"""""""""""""
