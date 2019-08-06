@@ -20,10 +20,8 @@ Containerise my solution
 
 Our containerisation standards can be found in the `containerisation <https://developer.skatelescope.org/en/latest/development/containerisation-standards.html#container-standards-cheatsheet>`_ section.
 
-Verify Docker installation
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Verify that `Docker is installed <https://docs.docker.com/install/linux/docker-ce/ubuntu>`_:
+* Verify Docker installation
+   * `Docker installation instructions <https://docs.docker.com/install/linux/docker-ce/ubuntu>`_:
 
 .. code:: bash
 
@@ -38,10 +36,8 @@ We use Kubernetes as orchestration layer - refer to our :doc:`orchestration-guid
 
 Once a project is ready to form part of the integrated solution, we need to verify that all prerequisites are installed and working properly.
 
-Verify minikube & kubectl installation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Minikube requires that kubectl is installed. Refer to the `kubectl installation instructions <https://kubernetes.io/docs/tasks/tools/install-kubectl/>`_.
+* Verify kubectl installation
+    * `kubectl installation instructions <https://kubernetes.io/docs/tasks/tools/install-kubectl/>`_.
 
 .. code:: bash
 
@@ -51,7 +47,8 @@ Minikube requires that kubectl is installed. Refer to the `kubectl installation 
     GitTreeState:"clean", BuildDate:"2019-07-18T09:18:22Z", GoVersion:"go1.12.5", Compiler:"gc", Platform:"linux/amd64"}
     The connection to the server localhost:8080 was refused - did you specify the right host or port?
 
-Verify that Minikube is installed. Refer to the `Minikube installation instructions <https://kubernetes.io/docs/tasks/tools/install-minikube/>`_.
+* Verify Minikube installation
+    * `Minikube installation instructions <https://kubernetes.io/docs/tasks/tools/install-minikube/>`_.
 
 .. code:: bash
 
@@ -59,7 +56,8 @@ Verify that Minikube is installed. Refer to the `Minikube installation instructi
 
     Minikube is a CLI tool that provisions and manages single-node Kubernetes clusters optimized for development workflows...
 
-Now launch Kubernetes. Look out for `kubectl is now configured to use "minikube"` near the end:
+* Launch Kubernetes.
+    * Look out for `kubectl is now configured to use "minikube"` near the end:
 
 .. code:: bash
 
@@ -102,10 +100,8 @@ Test that the connectivity in the cluster works
   ...
 
 
-Verify Helm installation
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-`Helm installation instructions <https://github.com/helm/helm>`_
+* Verify Helm installation
+    * `Helm installation instructions <https://github.com/helm/helm>`_
 
 .. code:: bash
 
@@ -130,10 +126,8 @@ Documentation on deployment can be found at `<https://developer.skatelescope.org
 
 Add the helm chart to k8s-integration repository: `Integration instructions <https://developer.skatelescope.org/en/latest/development/orchestration-guidelines.html#integrating-a-chart-into-the-k8s-integration-repo>`_.
 
-Verify k8s integration
-~~~~~~~~~~~~~~~~~~~~~~
-
-Launch the integration environment
+* Verify k8s integration
+    * Launch the integration environment
 
 .. code:: bash
 
