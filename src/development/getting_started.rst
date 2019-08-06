@@ -18,17 +18,19 @@ Develop a Tango device
 Containerise my solution
 ````````````````````````
 
-* Our containerisation standards can be found in the `containerisation <https://developer.skatelescope.org/en/latest/development/containerisation-standards.html#container-standards-cheatsheet>`_ section below
+* Our containerisation standards can be found in the `containerisation <https://developer.skatelescope.org/en/latest/development/containerisation-standards.html#container-standards-cheatsheet>`_ section.
 
 Incorporate my project into the integration environment
 ``````````````````````````````````````````````````````````
 
 Once your project is ready to form part of the integrated solution it needs to be incorporated. We use Kubernetes as orchestration layer - see :doc:`orchestration-guidelines`.
 
+* Verify your prerequisites are installed and working properly
+    * :doc:`k8s-verification-steps`
 * Develop a helm chart for your project
-    * :ref:`Helm instructions <orchestration-guidelines-templating-application>`
+    * `Helm instructions <https://developer.skatelescope.org/en/latest/development/orchestration-guidelines.html#templating-the-application>`_
 * Add the helm chart to k8s-integration repository
-    * :ref:`Integration instructions <integrating-a-chart-into-the-k8s-integration-repo>`
+    * `Integration instructions <https://developer.skatelescope.org/en/latest/development/orchestration-guidelines.html#integrating-a-chart-into-the-k8s-integration-repo>`_
 
 Deploy the TMC prototype and Webjive in kubernetes
 ```````````````````````````````````````````````````
