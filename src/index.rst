@@ -154,11 +154,18 @@ The definition of done is used to guide teams in planning and estimating the siz
   development/orchestration-guidelines
   development/python_package_release_procedure
   development/uploading-docker-nexus
-  development/k8s-verification-steps
 
 
 Development guidelines
 ----------------------
+
+
+Getting Started Guide
+=====================
+
+A pocket-guide to documentation on adding a new project, development, containerisation and integration.
+
+- :doc:`development/getting_started`
 
 Fundamental SKA Software & Hardware Description Language Standards
 ==================================================================
@@ -225,15 +232,6 @@ This details steps that all *SKA* developers shall abide to when building and ho
 images on the Nexus registry.
 
 - :doc:`development/uploading-docker-nexus`
-
-
-K8s Verification Steps
-======================
-
-This details steps that all *SKA* developers need to perform to ensure that the instructions for installing
-kubernetes where followed propertly and that they are able to start up the Helm chart.
-
-- :doc:`development/k8s-verification-steps`
 
 .. PROJECTS SECTION ==================================================
 
