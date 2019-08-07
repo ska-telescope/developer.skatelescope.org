@@ -159,6 +159,14 @@ The definition of done is used to guide teams in planning and estimating the siz
 Development guidelines
 ----------------------
 
+
+Getting Started Guide
+=====================
+
+A pocket-guide to documentation on adding a new project, development, containerisation and integration.
+
+- :doc:`development/getting_started`
+
 Fundamental SKA Software & Hardware Description Language Standards
 ==================================================================
 
@@ -224,7 +232,6 @@ This details steps that all *SKA* developers shall abide to when building and ho
 images on the Nexus registry.
 
 - :doc:`development/uploading-docker-nexus`
-
 
 .. PROJECTS SECTION ==================================================
 
