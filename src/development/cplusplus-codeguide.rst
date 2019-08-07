@@ -91,21 +91,24 @@ Header (.h) files are included with and template definitions (.tcc) and
 implementation files (.cpp). We have done this to make it easier to navigate
 the source tree. Having a separate include tree adds unnecessary complexity.
 
-Design Paradigms
-""""""""""""""""
-The example class structure follows the design *Pimpl* design paradigm but
+Design Patterns
+"""""""""""""""
+We recommend that project follow design patterns where applicable.
+The example class structure follows the *Pimpl* construction design pattern but
 there are many others. This has an abstract base class *hello* and a derived
 class *wave* which is a type of hello, but we are also including an
 implementation of a *wave*. We have done this as this scheme allows multiple
 implementations of a wave to be created without forcing a recompilation of
-every source file that inludes *wave.h*.
+every source file that includes *wave.h*. Some example patterns for different use
+cases can be found `here <https://en.wikibooks.org/wiki/C%2B%2B_Programming/Code/Design_Patterns>`_.
+
 
 Unit Test Locations
 """""""""""""""""""
 Tests are co-located at the  namespace level of the classes that they test.
 Another scheme would be to have a separate branch from the top level that
 maintains the same directory structure. We prefer this scheme for the same
-reasons as we prefer to colocate the headers and the source. Plus anything that
+reasons as we prefer to colocate the headers and the implementation. Plus anything that
 promotes the writing of unit tests at the same time as the classes are
 developed is a good thing
 
@@ -125,7 +128,10 @@ We have four stages of the CI
 * test
 * pages
 
-These stages are automatically run by the GitLab runners when you push to the repository. The pipeline halts and you are informed if any of the steps fail. There are some subtleties in the way the test results and test coverage are reported and we deal with them below as we go through the steps in more detail.
+These stages are automatically run by the GitLab runners when you push to the
+repository. The pipeline halts and you are informed if any of the steps fail.
+There are some subtleties in the way the test results and test coverage are
+reported and we deal with them below as we go through the steps in more detail.
 
 Building The Project
 ^^^^^^^^^^^^^^^^^^^^
@@ -136,15 +142,65 @@ The Image
 We recommend building using the cpp_base image that we have developed and
 stored in the image repository. This, or an image derived from it contains all
 the tools required to operate this CI pipeline and you should avoid the pain of
-installing and configuring dependencies.
+installing and configuring system tools.
 
 
-CMake Coding Conventions
-""""""""""""""""""""""""
+
+CMake for Beginners
+"""""""""""""""""""
 We recommend using CMake as a build tool. It is widely used, includes the
 ability to generate buildfiles for different development environments. 
 This allows developers the freedom to use whatever IDE they
 would like (e.g. Eclipse and Xcode) from the same CMake files.
+
+The CMake application parses the CMakeLists.txt file and generates a set of
+build scripts. An important element of the CMake philosophy is that you can
+build the application out-of-place, thereby supporting multiple build
+configurations from the same source tree. 
+
+This is the top level CMakeLists.txt file
+
+.. literalinclude:: TopCMake.txt
+
+This file defines the project, but the actual applications and libraries are found futher down the tree. An example CMake file in the template that is used to build the executeable is 
+
+.. literalinclude:: AppCMake.txt
+
+There are a number of beginner CMake tutorials on the web. The following commands should be all you need to build the HelloWorld project on your system.
+
+
+.. code-block:: bash
+
+
+    >cd cpp_template
+For an out-of-place build you make your build directory. This can be anywhere
+
+.. code-block:: bash
+
+    > mkdir build
+    > cd build
+Then you run *cmake* - you control where you want the installation to go by setting the install prefix. But you also need to point *cmake* to the directory containing your top level CMakeLists.txt file
+
+.. code-block:: bash
+
+    > cmake -DCMAKE_INSTALL_PREFIX=my_install_dir my_source_code
+
+CMake then runs, first attempting to resolve all the compile time dependencies
+that the project defines. Note you do not have to generate Makefiles, CMake
+alos supports XCode and Eclipse projects. Checkout the CMake manpage for the
+current list.
+
+After the build files have been generated you are free to build thr project. With the default Makefiles, you just need:
+
+.. code-block:: bash
+    >make install 
+
+If you are using Eclipse or XCode you will have to start the build within your environment.
+
+Withing the CI/CD control file above you can see that we invoke CMake with different *BUILD_TYPES* these add specific compiler flags. Please see the cmake documentation for more information. 
+ 
+CMake Coding Conventions
+""""""""""""""""""""""""
 
 Unfortunately there is even less consensus in the community as to the most
 effective way to write CMake files, thought there are a lot of opinions. We
