@@ -3,7 +3,7 @@
 ├── apps
 │   ├── CMakeLists.txt
 │   └── hello_world.cc
-└── top
+└── ska
     └── nested
         ├── CMakeLists.txt
         ├── hello.cc

@@ -81,7 +81,7 @@ lint_cppcheck:
     - build_export_compile_commands
  script:
     - cd build
-    - cppcheck --project=compile_commands.json -q --std=c++14 -i $PWD/../external
+    - cppcheck --error-exitcode=1 --project=compile_commands.json -q --std=c++14 -i $PWD/../external -i $PWD/../src/ska/nested/test
 
 test:
   stage: test

@@ -1,10 +1,6 @@
 .. doctest-skip-all
 .. _code-guide:
 
-.. todo::
-    - Pretty much everythin
-    - Actual code guides
-
 ************************
 C++ Coding Guidelines
 ************************
@@ -77,13 +73,13 @@ A number of design decisions have been made here:
 
 What To Do With Namespaces
 """"""""""""""""""""""""""
-The directory structure follows the namespaces. We have defined a *top* and a *nested*
-namespace and the directory structure follows in kind. This allows code
-to be grouped together easily by namespace. Also the installation assumes this
-structure. Therefore headers are included using their full namespaces.
-This avoids pollution of the install tree.
+The directory structure follows the namespaces. We have defined an uppermost
+*ska* namespace and require all projects providing specfic ska functionality do
+the same. We have also defined a *nested* namespace and the directory structure
+follows in kind. This allows code to be grouped together easily by namespace.
+Also the installation assumes this structure. Therefore headers are included
+using their full namespaces.  This avoids pollution of the install tree.
 
-.. warning:: we have not decided yet whether all projects should have a top-level SKA namespace
 
 Headers
 """""""
@@ -100,7 +96,7 @@ class *wave* which is a type of hello, but we are also including an
 implementation of a *wave*. We have done this as this scheme allows multiple
 implementations of a wave to be created without forcing a recompilation of
 every source file that includes *wave.h*. Some example patterns for different use
-cases can be found `here <https://en.wikibooks.org/wiki/C%2B%2B_Programming/Code/Design_Patterns>`_.
+cases can be found `in this article <https://en.wikibooks.org/wiki/C%2B%2B_Programming/Code/Design_Patterns>`_.
 
 
 Unit Test Locations
@@ -171,15 +167,18 @@ There are a number of beginner CMake tutorials on the web. The following command
 
 .. code-block:: bash
 
-
     >cd cpp_template
+
 For an out-of-place build you make your build directory. This can be anywhere
 
 .. code-block:: bash
 
     > mkdir build
     > cd build
-Then you run *cmake* - you control where you want the installation to go by setting the install prefix. But you also need to point *cmake* to the directory containing your top level CMakeLists.txt file
+
+Then you run *cmake* - you control where you want the installation to go by
+setting the install prefix. But you also need to point *cmake* to the directory
+containing your top level CMakeLists.txt file
 
 .. code-block:: bash
 
@@ -193,6 +192,7 @@ current list.
 After the build files have been generated you are free to build thr project. With the default Makefiles, you just need:
 
 .. code-block:: bash
+    
     >make install 
 
 If you are using Eclipse or XCode you will have to start the build within your environment.
@@ -217,6 +217,46 @@ with 2.8, so if you are onboarding code that uses 2.8 we strongly suggest you up
 
 .. todo:: Maybe add some more advice? use targets not global settings etc ...
 
+The SKA CMake Module Repository
+"""""""""""""""""""""""""""""""
+
+We recommend you include the CMake Module Repository as a git submodule.
+
+.. code-block:: bash
+
+    > cd external
+    > git submodule add https://gitlab.com/ska-telescope/cmake-modules.git
+    > cd <project_root>
+    > git add .gitmodules
+
+There are two issues with submodules that should be made clear. 
+
+1) When you clone your repository you do not get your submodules - in order to populate them you have to:
+
+.. code-block:: bash
+
+    >git submodule sync
+    >git submodule update --init
+
+2) The commit of the submodule that was originally added to the repository is
+the one that you get when you clone your parent. You can work on the submodule
+and push if you want. But the main project will only pick up the changes via
+the .gitmodule directory. Note that GitLab
+automates this process for CI/CD builds using the GIT_SUBMODULE_STRATEGY:
+normal. 
+
+This directory is linked into the CMake search path by adding:
+
+.. code-block:: bash
+
+    > set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/external/cmake-modules")
+
+to the top-level CMakeLists.txt. 
+
+This directory will be searched ahead of the
+CMake system installation for Find<Package>.cmake files. This will allow the
+sharing for MODULE and CONFIG files for common packages
+
 Including the version number
 """"""""""""""""""""""""""""
 There is a template configuration file that demonstrates how to pull in the
@@ -230,22 +270,54 @@ file containing the version number that can be included by the code.
 Including External Projects
 """""""""""""""""""""""""""
 We have including the GoogleTest framework as an external project, instead of a
-dependency to demonstrate one way to use external projects. 
+dependency to demonstrate one way to use external projects that you want, or need to 
+build from source. Most dependencies will not need to be built or included this way. The typical method 
+in CMake is to use its find_package() functionality to track down the location of a dependency installed locally.
+Note that there is no common or standard way of installing dependencies automatically.
 
-.. warning:: We have used a git submodule to do this. There may be a formal recomendation that git subtrees be used instead.
 
-Runtime Dependencies
-""""""""""""""""""""
+Dependencies
+""""""""""""
+As there is no standard we propose that for clarity any external packages that you require be listed in
+a *dependencies.txt* file the format of entries is this file is defined here to
+follow the format of the CMake find_package() method i.e.
 
-.. todo:: Add a simple description of dependency and version listing
+.. code-block:: bash
 
-We consider that there are two principles of dependency management we would dictate:
+    [install | find | both] <package> [version] [EXACT] [QUIET] [MODULE] [REQUIRED] [[COMPONENTS] [components...]] [OPTIONAL_COMPONENTS components...] [NO_POLICY_SCOPE])
+    
+for example
 
-1) Dependency installation should be unambigigous and repeatable. This requires dependencies to be listed, together with a minimum, or required version number. 
+.. code-block:: bash
 
-2) Dependencies should be project specific, there should be no reason for developers to pollute their environment just to build your package.
+    find cfitsio REQURIED
 
-We do not advocate a solution here - there is not a dominant package management system for C++. Indeed you could just pull and build all your deopendencies via external projects as the our GoogleTest example. Another option would simply be to list the dependencies in a text file *dependencies.txt* and allow the developer to use their preferred pacakge management system to install them.
+Except for the initial prefix (install, find or both) the other [] are optional, and are passed directly to the find_package() cmake function.
+
+We have added a *dependencies.cmake* function that will attempt to find all the
+dependencies listed using the find_package() functionality of CMake. Of course
+if the build depends upon an external dependency that is not present in the
+build image, automated CI *will* fail. 
+
+.. todo:: To avoid this we will add other macros to install the external dependencies using a package management tool. When one is downselected.  
+
+Therefore package-name is prefixed by one of *install*, *find*, or *both*. 
+
+* *install* is used as a keyword so you can parse the file for packages to install (using apt for example), 
+* *find* is used as a keyword for the dependencies function to use the find_package() functionality. It is possible, indeed likely that the package name for apt and for the cmake module will not be the same. Hence the separate keywords
+* *both* for the case where the package has the same name for both the install tool and the cmake module.
+
+Prior to defining a specific dependencies tool, and as apt does not take a list
+file as an argument, you could use something like this to parse the contents of
+the file and install the requirements.
+
+.. code-block:: bash
+
+    > cat dependencies.txt | grep -E '^install|^both' | awk '{print $2}' | xargs sudo apt-get
+
+.. todo:: Should such a line to the CI pipeline for the installation of cfitsio as an example, together with a Findcfitsio.cmake module in the ska cmake-modules repository.
+
+
 
 Coding Style & Conventions
 --------------------------
