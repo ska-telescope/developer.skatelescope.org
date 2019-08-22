@@ -18,6 +18,8 @@ variables:
   # For details see https://docs.gitlab.com/ee/ci/yaml/README.html#git-submodule-strategy
   GIT_SUBMODULE_STRATEGY: normal
 
+.common: {tags: [engageska, docker]}
+
 stages:
   - build
   - linting
@@ -25,6 +27,7 @@ stages:
   - pages
 
 build_debug:
+  extends: .common
   stage: build
   # instead of calling g++ directly you can also use some build toolkit like make
   # install the necessary build tools when needed
@@ -38,6 +41,7 @@ build_debug:
       - build
 
 build_release:
+  extends: .common
   stage: build
   script:
     - mkdir build
@@ -46,10 +50,10 @@ build_release:
     - make
   artifacts:
     paths:
-      - build/src/src/top/nested/libHelloWorld.a
-      - build/src/apps/HelloWorld
+      - build
 
 build_export_compile_commands:
+ extends: .common
  stage: build
  script:
     - rm -rf build && mkdir build
@@ -60,30 +64,34 @@ build_export_compile_commands:
       - build
 
 lint_clang_tidy:
- stage: linting
- dependencies:
+  extends: .common
+  stage: linting
+  dependencies:
     - build_export_compile_commands
- script:
+  script:
     - cd build
     - run-clang-tidy -checks='cppcoreguidelines-*,performance-*,readibility-*,modernize-*,misc-*,clang-analyzer-*,google-*'
 
 lint_iwyu:
- stage: linting
- dependencies:
+  extends: .common
+  stage: linting
+  dependencies:
     - build_export_compile_commands
- script:
+  script:
     - cd build
     - iwyu_tool -p .
 
 lint_cppcheck:
- stage: linting
- dependencies:
+  extends: .common
+  stage: linting
+  dependencies:
     - build_export_compile_commands
- script:
+  script:
     - cd build
-    - cppcheck --error-exitcode=1 --project=compile_commands.json -q --std=c++14 -i $PWD/../external -i $PWD/../src/ska/nested/test
+    - cppcheck --error-exitcode=1 --project=compile_commands.json -q --std=c++14 -i $PWD/../external -i $PWD/../src/ska/helloworld/test
 
 test:
+  extends: .common
   stage: test
   dependencies:
     - build_debug
@@ -99,9 +107,25 @@ test:
     reports:
       junit: build/ctest.xml
 
+test_installation:
+  extends: .common
+  stage: test
+  dependencies:
+    - build_release
+  script:
+    - cd build
+    - cmake . -DCMAKE_INSTALL_PREFIX=/opt
+    - make install
+    - cd ../examples/helloworld-user
+    - mkdir build
+    - cd build
+    - cmake .. -DCMAKE_PREFIX_PATH=/opt
+    - make all
+
 # A job that runs the tests under valgrid
 # It might take a while, so not always run by default
 test_memcheck:
+  extends: .common
   stage: test
   dependencies:
     - build_debug
@@ -115,6 +139,7 @@ test_memcheck:
     - schedules
 
 pages:
+  extends: .common
   stage: pages
   dependencies:
     - test
