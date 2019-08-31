@@ -1,0 +1,18 @@
+.
+├── CMakeLists.txt
+├── LICENSE
+├── README.md
+├── cmake
+│   └── HelloWorldConfig.cmake.in
+├── dependencies.txt
+├── examples
+│   └── helloworld-user
+├── external
+│   ├── cmake-modules
+│   └── gtest-1.8.1
+├── src
+│   ├── apps
+│   └── ska
+└── version.txt
+
+9 directories, 6 files

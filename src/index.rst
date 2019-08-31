@@ -150,6 +150,7 @@ The definition of done is used to guide teams in planning and estimating the siz
   development/python-codeguide
   development/javascript-codeguide
   development/vhdl-codeguide
+  development/cplusplus-codeguide
   development/containerisation-standards
   development/orchestration-guidelines
   development/python_package_release_procedure
@@ -201,6 +202,16 @@ VHDL coding guidelines
 VHDL coding guidelines are described at: 
 
 - :doc:`development/vhdl-codeguide`
+
+
+C++ Coding Standards
+==========================
+
+A CPP skeleton project is created for use within the SKA Telescope. The skeleton purpose is to demonstrate
+coding best practices, boostrap initial project set up within the SKA Continuous Integration (CI) Framework.
+
+- :doc:`development/cplusplus-codeguide`
+
 
 Containerisation Standards
 ==========================

@@ -1,0 +1,154 @@
+# This file is a template, and might need editing before it works on your project.
+# use the official gcc image, based on debian
+# can use verions as well, like gcc:5.2
+# see https://hub.docker.com/_/gcc/
+#
+# This base image is based on debian:buster-slim and contains:
+#  * gcc 8.3.0
+#  * clang 7.0.1
+#  * cmake 3.13.4
+#  * and more
+#
+# For details see https://github.com/ska-telescope/cpp_build_base
+#
+image: nexus.engageska-portugal.pt/ska-docker/cpp_build_base
+
+variables:
+  # Needed if you want automatic submodule checkout
+  # For details see https://docs.gitlab.com/ee/ci/yaml/README.html#git-submodule-strategy
+  GIT_SUBMODULE_STRATEGY: normal
+
+.common: {tags: [engageska, docker]}
+
+stages:
+  - build
+  - linting
+  - test
+  - pages
+
+build_debug:
+  extends: .common
+  stage: build
+  # instead of calling g++ directly you can also use some build toolkit like make
+  # install the necessary build tools when needed
+  script:
+    - mkdir build
+    - cd build
+    - cmake .. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS="-coverage" -DCMAKE_EXE_LINKER_FLAGS="-coverage"
+    - make
+  artifacts:
+    paths:
+      - build
+
+build_release:
+  extends: .common
+  stage: build
+  script:
+    - mkdir build
+    - cd build
+    - cmake .. -DCMAKE_BUILD_TYPE=Release
+    - make
+  artifacts:
+    paths:
+      - build
+
+build_export_compile_commands:
+ extends: .common
+ stage: build
+ script:
+    - rm -rf build && mkdir build
+    - cd build
+    - cmake .. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_COMPILER=clang++
+ artifacts:
+    paths:
+      - build
+
+lint_clang_tidy:
+  extends: .common
+  stage: linting
+  dependencies:
+    - build_export_compile_commands
+  script:
+    - cd build
+    - run-clang-tidy -checks='cppcoreguidelines-*,performance-*,readibility-*,modernize-*,misc-*,clang-analyzer-*,google-*'
+
+lint_iwyu:
+  extends: .common
+  stage: linting
+  dependencies:
+    - build_export_compile_commands
+  script:
+    - cd build
+    - iwyu_tool -p .
+
+lint_cppcheck:
+  extends: .common
+  stage: linting
+  dependencies:
+    - build_export_compile_commands
+  script:
+    - cd build
+    - cppcheck --error-exitcode=1 --project=compile_commands.json -q --std=c++14 -i $PWD/../external -i $PWD/../src/ska/helloworld/test
+
+test:
+  extends: .common
+  stage: test
+  dependencies:
+    - build_debug
+  script:
+    - cd build
+    - ctest -T test --no-compress-output
+  after_script:
+    - cd build
+    - ctest2junit > ctest.xml
+  artifacts:
+    paths:
+      - build/
+    reports:
+      junit: build/ctest.xml
+
+test_installation:
+  extends: .common
+  stage: test
+  dependencies:
+    - build_release
+  script:
+    - cd build
+    - cmake . -DCMAKE_INSTALL_PREFIX=/opt
+    - make install
+    - cd ../examples/helloworld-user
+    - mkdir build
+    - cd build
+    - cmake .. -DCMAKE_PREFIX_PATH=/opt
+    - make all
+
+# A job that runs the tests under valgrid
+# It might take a while, so not always run by default
+test_memcheck:
+  extends: .common
+  stage: test
+  dependencies:
+    - build_debug
+  before_script:
+    - apt update && apt install -y valgrind
+  script:
+    - cd build
+    - ctest -T memcheck
+  only:
+    - tags
+    - schedules
+
+pages:
+  extends: .common
+  stage: pages
+  dependencies:
+    - test
+  script:
+    - mkdir .public
+    - cd .public
+    - gcovr -r ../ -e '.*/external/.*' -e '.*/CompilerIdCXX/.*' -e '.*/tests/.*' --html --html-details -o index.html
+    - cd ..
+    - mv .public public
+  artifacts:
+    paths:
+      - public
