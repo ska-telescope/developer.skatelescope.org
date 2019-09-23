@@ -79,6 +79,69 @@ the button “Run pipeline” on a specific branch (i.e. master).
 
 |image5|
 
+Collecting code health metrics in the CI pipeline
+-------------------------------------------------
+As part of the CI/CD process all teams are expected to collect and consolidate the necessary code health metrics under a file named **codeMetrics.json** at the root of the repositories they have ownership over.
+
+The **codeMetrics.json** file is expect to be created automatically as part of the CI pipeline by the teams by collecting the relevant information from the *unit tests*, *coverage*, *linting* and *build status*.
+The file must be created and properly populated before the start of the marked :code:`# START: Gitlab CI badges creation` in the *pages* stage of the CI pipeline (**.gitlab-ci.yml** file).
+
+The metrics should be collected under the following structure:
+
+- build-status: *top level placeholder for the build process status*
+
+  - last: *placeholder about the last build process*
+
+    - status: (**string**) *failed or passed, stating that last build status*
+    - timestamp: (**float**) *the Unix timestamp with the date and time of the last build status*
+
+  .. - green: *placeholder about the last green build process*
+
+  ..   - timestamp: (**float**) *the Unix timestamp with the date and time of the last successful build status*
+
+- coverage: *placeholder about the unit test coverage*
+
+  - percentage: (**float**) *the coverage percentage of the unit tests*
+
+- tests: *placeholder about the unit tests*
+
+  - passed: (**int**) *number of successful tests*
+  - failed: (**int**) *number of failed tests*
+  - total: (**int**) *total number of tests*
+
+- tests: *placeholder about the linting (static code analysis)*
+
+  - errors: (**int**) *number of linting errors*
+  - failures: (**int**) *number of linting failures* - this denotes a serious error in the code that broke the linting process
+  - tests: (**int**) *total number of linting tests*
+
+**codeMetrics.json** example:
+
+.. code-block:: json
+
+  {
+      "build-status": {
+          "last": {
+              "status": "failed",
+              "timestamp": 1568202193.0
+          }
+      },
+      "coverage": {
+          "percentage": 60.00
+          },
+      "tests": {
+          "passed": 167,
+          "failed": 3,
+          "total": 170
+      },
+      "lint": {
+          "errors": 4,
+          "failures": 0,
+          "tests": 7
+      }
+  }
+
+
 Using a specific executor
 -------------------------
 
