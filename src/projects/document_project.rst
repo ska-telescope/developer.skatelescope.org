@@ -4,10 +4,10 @@ Documenting a project
 ---------------------
 
 Documenting a project is the key to make it usable, understandable 
-and maintanable, making the difference between a technically excellent 
-software and a successfull software. 
+and maintainable, making the difference between a technically excellent
+software and a successful software.
 SKA has defined a set of standards and practices that shall be 
-implented when developing software documentation. 
+implemented when developing software documentation.
 A more comprehensive set of resources can be found online at:
 
   * `A beginner guide to writing documentation <https://www.writethedocs.org/guide/writing/beginners-guide-to-docs/>`_
@@ -31,7 +31,7 @@ Public API
 ==========
 
 When it comes to software systems, such as services or libraries, it
-is of paramaount importance that the public API exposed by the software
+is of paramount importance that the public API exposed by the software
 component is clearly captured and documented. 
 
 How to document
@@ -57,7 +57,7 @@ package and `Restructured Text <http://docutils.sourceforge.net/rst.html>`_ .
 SKA provides a predefined sphinx template for this purpose in the 
 `SKA python skeleton <https://github.com/ska-telescope/ska-python-skeleton>`_ project. 
 Every project shall use the same ``docs`` folder as a starting point for assembling their 
-own documentaiton.
+own documentation.
 
 Sphinx can be used to generate text documents such as this portal, but it also provides 
 capabilities to automatically extract and parse code documentation.  
