@@ -29,6 +29,8 @@ Our containerisation standards can be found in the `containerisation <https://de
 
     Docker version 1.7.0, build 0baf609
 
+.. _verify-k8s:
+
 Incorporate my project into the integration environment
 ``````````````````````````````````````````````````````````
 

@@ -1,8 +1,18 @@
 Create a new project
 --------------------
 
-SKA developers are allowed to create new repositories under the SKA-telescope 
-organisation git server.
+The SKA code repositories are all stored on the SKA Gitlab account, on `gitlab.com/ska-telescope <http://gitlab.com/ska-telescope>`_.
+The SKA's repositories on Gitlab have to be created by a member of the Systems team.
+The process is as follows: go to the Slack channel `#team-system-support <https://skasoftware.slack.com/messages/CEMF9HXUZ>`_ and ask for a new repository to be created. Choose the name well (see below). Specify whether the project should be *public* (i.e. anyone can see it), *private* (i.e. accessible to anyone in the SKA Organisation), or *ip protected* (i.e. only for the specific user/team). Ask for any permissions to be granted to specific users.
+
+You will be given Maintainer privileges on this project. For more information about permissions on Gitlab, go to `https://docs.gitlab.com/ee/user/permissions.html <https://docs.gitlab.com/ee/user/permissions.html>`_.
+
+In early 2020 the creation of repositories on the SKA Gitlab instance may be supported.
+
+On groups in Gitlab
+===================
+The SKA Telescope group on Gitlab has two sub-groups, *SKA Developers* and *SKA Reporters*.  *SKA Reporters* is for people who have key knowledge but are leaving SKA organisation. *SKA Developers* is the sub-group to which everyone will be added automatically, with *Developer* privileges. If your team member requires access to our Gitlab organisation, make sure to hop over to Slack.
+
 When creating a new repo there is a number of aspects to be considered.
 
 Mono VS Multi repositories
@@ -27,7 +37,7 @@ Repository names shall clearly map to a particular element of the SKA software a
 as described in the SKA software design documentation. That is to say, someone familiar with the 
 SKA software architecture shuold be able to identify the content of a repository just by its name. 
 
-Names shall be all lowercase, multiple words shall be seprated by hypens. 
+Names shall be all lowercase, multiple words shall be separated by hyphens.
 
 
 .. _repository-checklist:
