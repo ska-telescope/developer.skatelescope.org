@@ -69,6 +69,7 @@ SKA software development is managed in an open and transparent way.
   :hidden:
 
   tools/git
+  tools/github2gitlab
   tools/continuousintegration
   tools/cidashboard
   tools/tango-devenv-setup
