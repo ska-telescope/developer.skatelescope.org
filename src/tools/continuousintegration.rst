@@ -88,7 +88,7 @@ the root of the repositories they have ownership over.
 The :code:`ci-metrics.json` file is expect to be created automatically as part
 of the CI pipeline by the teams by collecting the relevant information from the
 *unit tests*, *coverage*, *linting* and *build status*.
-**An important point to notice, is that :code:`ci-metrics.json` shouldn't exist
+**An important point to notice, is that** :code:`ci-metrics.json` **shouldn't exist
 as part of the repository, but, be created specifically as part of the CI
 pipeline.**
 The file must be created and properly populated before the start of the marked
