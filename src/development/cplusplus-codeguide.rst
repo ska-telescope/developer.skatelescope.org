@@ -1,5 +1,5 @@
 .. doctest-skip-all
-.. _code-guide:
+.. _cplusplus-code-guide:
 
 ************************
 C++ Coding Guidelines

@@ -1,5 +1,5 @@
 .. doctest-skip-all
-.. _code-guide:
+.. _python-code-guide:
 
 .. todo::
     - Testing Guidelines
