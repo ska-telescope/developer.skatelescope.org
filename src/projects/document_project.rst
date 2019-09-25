@@ -62,15 +62,20 @@ own documentaiton.
 Sphinx can be used to generate text documents such as this portal, but it also provides 
 capabilities to automatically extract and parse code documentation.  
 
-Integrating into Readthedocs
-============================
+Integrating into the Developer Portal
+=====================================
 
-The developer portal is hosted on readthedocs and 
-
-
+The developer portal is hosted on readthedocs and every project shall 
+upload the project specific documentation as a subproject of the 
+developer portal project. 
+This makes all the documentation accessible from the same base URL and 
+it also allows for global search-ability over the complete documentation
+of all SKA projects. 
 
 .. todo::
-  - using readthedocs as the ska-python-skeleton project
+  - adding the project to readthedocs as a developer portal subproject
+  - using readthedocs (directory structure, teamplates from ska-skeleton ... ) 
   - adding textual documentation
   - adding automatically extracted documentation
   - documenting the public API  
+
