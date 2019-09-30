@@ -1,17 +1,25 @@
+.. _create-new-project:
+
 Create a new project
 --------------------
 
 The SKA code repositories are all stored on the SKA Gitlab account, on `gitlab.com/ska-telescope <http://gitlab.com/ska-telescope>`_.
 The SKA's repositories on Gitlab have to be created by a member of the Systems team.
-The process is as follows: go to the Slack channel `#team-system-support <https://skasoftware.slack.com/messages/CEMF9HXUZ>`_ and ask for a new repository to be created. Choose the name well (see below). Specify whether the project should be *public* (i.e. anyone can see it), *private* (i.e. accessible to anyone in the SKA Organisation), or *ip protected* (i.e. only for the specific user/team). Ask for any permissions to be granted to specific users.
+If you need a repository simply go to the Slack channel `#team-system-support <https://skasoftware.slack.com/messages/CEMF9HXUZ>`_ and ask for a new repository to be created. Choose the name well (see below).
+Respositories will be created with public access by default. Other permissions schemes, such as private and IP protected repositories, are also possible upon request.
 
-You will be given Maintainer privileges on this project. For more information about permissions on Gitlab, go to `https://docs.gitlab.com/ee/user/permissions.html <https://docs.gitlab.com/ee/user/permissions.html>`_.
+You will be given Maintainer privileges on this project. This will make it possible for you to (among other things) add users to the project and edit their permissions. For more information about permissions on Gitlab, go to `https://docs.gitlab.com/ee/user/permissions.html <https://docs.gitlab.com/ee/user/permissions.html>`_.
 
-In early 2020 the creation of repositories on the SKA Gitlab instance may be supported.
+In early 2020 the creation of repositories by developers or team members on the SKA Gitlab instance may be supported.
 
-On groups in Gitlab
-===================
-The SKA Telescope group on Gitlab has two sub-groups, *SKA Developers* and *SKA Reporters*.  *SKA Reporters* is for people who have key knowledge but are leaving SKA organisation. *SKA Developers* is the sub-group to which everyone will be added automatically, with *Developer* privileges. If your team member requires access to our Gitlab organisation, make sure to hop over to Slack.
+.. admonition:: On groups in Gitlab
+
+    The SKA Telescope group on Gitlab has two sub-groups, *SKA Developers* and *SKA Reporters*.
+
+    Groups on Gitlab are like directory structures which inherit permissions, and users can be added to these groups with certain permissions. All users in the SKA are added to the main group as Guest users.
+
+    There are some repositories which are IP protected, that may not belong to one or either of the two subgroups. Users that need access to these repositories must be added individually - please ask the System team for assistance.
+
 
 When creating a new repo there is a number of aspects to be considered.
 
