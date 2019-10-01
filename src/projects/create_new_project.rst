@@ -1,8 +1,26 @@
+.. _create-new-project:
+
 Create a new project
 --------------------
 
-SKA developers are allowed to create new repositories under the SKA-telescope 
-organisation git server.
+The SKA code repositories are all stored on the SKA Gitlab account, on `gitlab.com/ska-telescope <http://gitlab.com/ska-telescope>`_.
+The SKA's repositories on Gitlab have to be created by a member of the Systems team.
+If you need a repository simply go to the Slack channel `#team-system-support <https://skasoftware.slack.com/messages/CEMF9HXUZ>`_ and ask for a new repository to be created. Choose the name well (see below).
+Respositories will be created with public access by default. Other permissions schemes, such as private and IP protected repositories, are also possible upon request.
+
+You will be given Maintainer privileges on this project. This will make it possible for you to (among other things) add users to the project and edit their permissions. For more information about permissions on Gitlab, go to `https://docs.gitlab.com/ee/user/permissions.html <https://docs.gitlab.com/ee/user/permissions.html>`_.
+
+In early 2020 the creation of repositories by developers or team members on the SKA Gitlab instance may be supported.
+
+.. admonition:: On groups in Gitlab
+
+    The SKA Telescope group on Gitlab has two sub-groups, *SKA Developers* and *SKA Reporters*.
+
+    Groups on Gitlab are like directory structures which inherit permissions, and users can be added to these groups with certain permissions. All users in the SKA are added to the main group as Guest users.
+
+    There are some repositories which are IP protected, that may not belong to one or either of the two subgroups. Users that need access to these repositories must be added individually - please ask the System team for assistance.
+
+
 When creating a new repo there is a number of aspects to be considered.
 
 Mono VS Multi repositories
@@ -27,7 +45,7 @@ Repository names shall clearly map to a particular element of the SKA software a
 as described in the SKA software design documentation. That is to say, someone familiar with the 
 SKA software architecture shuold be able to identify the content of a repository just by its name. 
 
-Names shall be all lowercase, multiple words shall be seprated by hypens. 
+Names shall be all lowercase, multiple words shall be separated by hyphens.
 
 
 .. _repository-checklist:

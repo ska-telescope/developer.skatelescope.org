@@ -1,5 +1,5 @@
 .. doctest-skip-all
-.. _code-guide:
+.. _orchestration-guide:
 
 .. raw:: html
 
@@ -932,7 +932,7 @@ Integrating a chart into the k8s-integration repo
 
 .. admonition:: Prerequisites
 
-  - Verify that Docker, kubectl, Minikube and Helm are installed and working properly :doc:`k8s-verification-steps`
+  - Verify that Docker, kubectl, Minikube and Helm are installed and working properly - refer to :ref:`verify-k8s`.
   - The required docker images have been uploaded to and are available from `Nexus <https://nexus.engageska-portugal.pt/#browse/search/docker>`_, see `docker upload instructions <uploading-docker-nexus.html>`__
 
 To integrate a helm chart into the `k8s-integration` repo, follow these steps:

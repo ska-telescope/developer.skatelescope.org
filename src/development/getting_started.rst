@@ -7,7 +7,7 @@ I want to..
 Add a new project to SKA organisation
 `````````````````````````````````````
 
-* Our project details can be found in the `Projects <https://developer.skatelescope.org/en/latest/projects/create_new_project.html>`_ section below
+* Our project details can be found in the section about how to :ref:`create-new-project`.
 
 Develop a Tango device
 ``````````````````````
@@ -29,10 +29,12 @@ Our containerisation standards can be found in the `containerisation <https://de
 
     Docker version 1.7.0, build 0baf609
 
+.. _verify-k8s:
+
 Incorporate my project into the integration environment
 ``````````````````````````````````````````````````````````
 
-We use Kubernetes as orchestration layer - refer to our :doc:`orchestration-guidelines`.
+We use Kubernetes as orchestration layer - refer to our :ref:`Orchestration Guidelines <orchestration-guide>`.
 
 Once a project is ready to form part of the integrated solution, we need to verify that all prerequisites are installed and working properly.
 
