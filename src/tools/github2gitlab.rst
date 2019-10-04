@@ -71,3 +71,13 @@ Therefore, you only have to write this in the terminal inside the project direct
 
   $ git remote set-url https://gitlab.com/ska-telescope/*project*.git
 
+Differences Between GitHub and GitLab
+--------------------------------------
+
+Since both GitHub and GitLab are built on top of Git, there are very few differences between the stwo systems. The first obvious difference is that GitLab has merge requests instead of pull requests. The function is pretty much identical, and the UI is pretty similar. GitLab provide an extensive tutorial on `merge requests
+<https://docs.gitlab.com/ee/user/project/merge_requests/>`_.
+
+The other major difference is that GitLab provides automatic `Continuous Integration Pipelines
+<https://docs.gitlab.com/ee/ci/>`_. If you have already used Jenkins, you'll find it pretty similar. There is an SKA guide to CI_.
+
+.. _continuousintegration:
