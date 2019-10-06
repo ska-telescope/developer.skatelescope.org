@@ -2,22 +2,38 @@
 Transition your Github Repo to Gitlab
 =====================================
 
+The SKA Software team decided to move from Github to the Gitlab platform
+as the main git-repository manager for its CI/CD tools. 
+This page is a simple walk-through of all the steps you have to do for this switch.
+
 Create Gitlab Account
 =====================
 
-..
-  gitlab.com > create account
+The fist step is the more obvious and the simplest one. You just have to go to https://gitlab.com/users/sign_in
+in your favorite browser and create a new account. For that, you have two main options: 
 
-Project Members
-===================
+1. Create an account with an email of your choice;
+2. Sign in with Github Credentials to automatically have the same account information on the new profile. (Recommended)
+
+
+Developers
+===========
 
 In the local development you must update the git files of each project to the new Gitlab repository.
 Therefore, you only have to write this in the terminal inside the project directory:
 
 .. code:: bash
 
-  $ git remote set-url https://gitlab.com/ska-telescope/*project*.git
+  $ git remote set-url origin https://gitlab.com/ska-telescope/*project*.git
 
+To check if everything went smoothly, type the command bellow and check if the both links 
+are the same as the Gitlab repo link that you just typed.
+
+.. code:: bash
+
+  $ git remote -v
+
+And it's done! You can now do everything that you are authorized to do on this Gitlab's repository.
 
 Project Owners
 ==================
@@ -25,13 +41,48 @@ Project Owners
 Create Gitlab Project
 ---------------------------
 
-  
-..
-  gitlab.com > new project >  import project > github > login > select the project you want to import
-
+*insert here Create Repository doc page link of Adriaan*
 
 Mirror Repository
 -----------------
+
+.. _figure-1-person-token:
+
+.. figure:: github_personal_token_2.png
+   :scale: 40%
+   :alt: Github Personal Token
+   :align: center
+   :figclass: figborder
+
+
+   Get Github Personal Token.
+
+.. _figure-2-mirror-setup:
+
+.. figure:: gitlab-setup-mirror.png
+   :scale: 40%
+   :alt: Gitlab Mirror Setup
+   :align: center
+   :figclass: figborder
+
+
+   The Gitlab mirror setup.
+
+.. _figure-2-mirror-dashboard:
+
+.. figure:: gitlab-mirror-successful.png
+   :scale: 40%
+   :alt: Gitlab Mirror Dashboard
+   :align: center
+   :figclass: figborder
+
+
+   Gitlab Mirror Dashboard.
+
+
+Create token
+Get username, group ID and project ID
+gitlab settings > repository > https://<your_github_username>@github.com/<your_github_group>/<your_github_project>.git.
 
 ..
   For an existing project, you can set up push mirroring as follows:
@@ -60,14 +111,4 @@ Read-Only GitHub Project
  ..
   https://help.github.com/en/articles/repository-permission-levels-for-an-organization
 
-  
-Local Development
-------------------
-
-In the local development you must update the git files of each project to the new Gitlab repository.
-Therefore, you only have to write this in the terminal inside the project directory:
-
-.. code:: bash
-
-  $ git remote set-url https://gitlab.com/ska-telescope/*project*.git
 
