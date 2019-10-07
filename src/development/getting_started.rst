@@ -122,11 +122,11 @@ Once Helm is installed, develop a helm chart for the project. Refer to `Helm ins
 Deploy the TMC prototype and Webjive in kubernetes
 ```````````````````````````````````````````````````
 
-The integration github repository can be found at `<https://github.com/ska-telescope/k8s-integration>`_.
+The integration github repository can be found at `<https://gitlab.com/ska-telescope/skampi>`_.
 
-Documentation on deployment can be found at `<https://developer.skatelescope.org/projects/k8s-integration/en/latest/README.html>`_
+Documentation on deployment can be found at `<https://developer.skatelescope.org/projects/skampi/en/latest/README.html>`_
 
-Add the helm chart to k8s-integration repository: `Integration instructions <https://developer.skatelescope.org/en/latest/development/orchestration-guidelines.html#integrating-a-chart-into-the-k8s-integration-repo>`_.
+Add the helm chart to the skampi repository: `Integration instructions <https://developer.skatelescope.org/en/latest/development/orchestration-guidelines.html#integrating-a-chart-into-the-skampi-repo>`_.
 
 * Verify k8s integration
     * Launch the integration environment

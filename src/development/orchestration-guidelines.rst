@@ -925,22 +925,22 @@ Helm tests, must be self contained are should be atomic and non-destructive as t
               value: databaseds-{{ template "tango-chart-example.name" . }}-{{ .Release.Name }}:10000
           restartPolicy: Never
 
-.. _integrating-a-chart-into-the-k8s-integration-repo:
+.. _integrating-a-chart-into-the-skampi-repo:
 
-Integrating a chart into the k8s-integration repo
--------------------------------------------------
+Integrating a chart into the SKAMPI repo
+----------------------------------------
 
 .. admonition:: Prerequisites
 
   - Verify that Docker, kubectl, Minikube and Helm are installed and working properly - refer to :ref:`verify-k8s`.
   - The required docker images have been uploaded to and are available from `Nexus <https://nexus.engageska-portugal.pt/#browse/search/docker>`_, see `docker upload instructions <uploading-docker-nexus.html>`__
 
-To integrate a helm chart into the `k8s-integration` repo, follow these steps:
+To integrate a helm chart into the `SKAMPI` repo, follow these steps:
 
 Local steps
 ~~~~~~~~~~~
 
-- Clone the `k8s-integration` repo, available `here <https://github.com/ska-telescope/k8s-integration>`_.
+- Clone the `SKAMPI` repo, available `here <https://gitlab.com/ska-telescope/skampi>`_.
 
 - Add a directory in `charts` with a descriptive name
 
@@ -975,7 +975,7 @@ Gitlab
 ~~~~~~
 
 Once the changes had been pushed it will be built in Gitlab as soon as it has synced from Github.
-Find the pipeline builds at `https://gitlab.com/ska-telescope/k8s-integration/pipelines <https://gitlab.com/ska-telescope/k8s-integration/pipelines>`_.
+Find the pipeline builds at `https://gitlab.com/ska-telescope/skampi/pipelines <https://gitlab.com/ska-telescope/skampi/pipelines>`_.
 
 If the pipeline completes successfully, the full integration environment will be available at `https://integration.engageska-portugal.pt <https://integration.engageska-portugal.pt>`_.
 
