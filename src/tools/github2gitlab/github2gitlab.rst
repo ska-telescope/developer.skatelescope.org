@@ -26,7 +26,7 @@ Therefore, you only have to write this in the terminal inside the project direct
 
   $ git remote set-url origin https://gitlab.com/ska-telescope/*project*.git
 
-To check if everything went smoothly, type the command bellow and check if the both links 
+To check if everything went smoothly, type the command below and check if the both links 
 are the same as the Gitlab repo link that you just typed.
 
 .. code:: bash
