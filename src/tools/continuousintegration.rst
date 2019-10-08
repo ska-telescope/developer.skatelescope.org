@@ -83,13 +83,14 @@ Collecting & consolidating CI health metrics as part of the CI pipeline
 -----------------------------------------------------------------------
 As part of the CI/CD process all teams are expected to collect and consolidate
 the necessary code health metrics under a file named :code:`ci-metrics.json` at
-the root of the repositories they have ownership over.
+created at Gitlab CI pipeline runtime under the root folder for that
+repository.
 
 The :code:`ci-metrics.json` file is expect to be created automatically as part
 of the CI pipeline by the teams by collecting the relevant information from the
 *unit tests*, *coverage*, *linting* and *build status*.
-**An important point to notice, is that** :code:`ci-metrics.json` **shouldn't exist
-as part of the repository, but, be created specifically as part of the CI
+**An important point to notice, is that** :code:`ci-metrics.json` **shouldn't
+exist as part of the repository, but, be created specifically as part of the CI
 pipeline.**
 The file must be created and properly populated before the start of the marked
 :code:`# START: Gitlab CI badges creation` in the **pages** stage of the CI
@@ -159,20 +160,18 @@ The metrics should be collected under the following structure:
 
 Besides the :code:`ci-metrics.json` the teams should provide the relevant
 output from the **test** and **linting** stage used to extract those metrics
-for the *unit test*, *coverage* and *linting* under specific files in JSON
-format for easy access as part of the published artifacts on the pages stage
-of the CI pipeline:
+for the *unit tests*, *code coverage* and *linting* under the following specific
+files in XML format for easy access as part of the published artifacts on the
+pages stage of the CI pipeline:
 
-- :code:`/public/reports/unit-tests.json`
-- :code:`/public/reports/code-coverage.json`
-- :code:`/public/reports/linting.json`
+- :code:`/build/reports/unit-tests.xml`: JUnit XML Format
+- :code:`/build/reports/code-coverage.xml`: Standard XML Format
+- :code:`/build/reports/linting.xml`: Standard XML Format
 
 It is up to the teams to decide the best way to generate these report files,
 and they are provided with the purpose of easy inspection of the results
 directly from their respective Gitlab repository by clicking on the respective
-badges. As such, their format doesn't need to be standardized, but only to
-follow the JSON file format.
-
+badges and for historical metrics collection.
 
 Using a specific executor
 -------------------------
