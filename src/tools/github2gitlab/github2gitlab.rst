@@ -1,25 +1,25 @@
 =====================================
-Transition your Github Repo to Gitlab
+Transition your GitHub Repo to GitLab
 =====================================
 
-The SKA Software team decided to move from Github to the Gitlab platform
+The SKA Software team decided to move from GitHub to the GitLab platform
 as the main git-repository manager for its CI/CD tools. 
 This page is a simple walk-through of all the steps you have to do for this switch.
 
-Create Gitlab Account
+Create GitLab Account
 =====================
 
 The fist step is the more obvious and the simplest one. You just have to go to https://gitlab.com/users/sign_in
 in your favorite browser and create a new account. For that, you have two main options: 
 
 1. Create an account with an email of your choice;
-2. Sign in with Github Credentials to automatically have the same account information on the new profile. (Recommended)
+2. Sign in with GitHub Credentials to automatically have the same account information on the new profile. (Recommended)
 
 
 Developers
 ===========
 
-In the local development you must update the git files of each project to the new Gitlab repository.
+In the local development you must update the git files of each project to the new GitLab repository.
 Therefore, you only have to write this in the terminal inside the project directory:
 
 .. code:: bash
@@ -27,18 +27,18 @@ Therefore, you only have to write this in the terminal inside the project direct
   $ git remote set-url origin https://gitlab.com/ska-telescope/*project*.git
 
 To check if everything went smoothly, type the command below and check if the both links 
-are the same as the Gitlab repo link that you just typed.
+are the same as the GitLab repo link that you just typed.
 
 .. code:: bash
 
   $ git remote -v
 
-And it's done! You can now do everything that you are authorized to do on this Gitlab's repository.
+And it's done! You can now do everything that you are authorized to do on this GitLab repository.
 
 Project Owners
 ==================
 
-Create Gitlab Project
+Create GitLab Project
 ---------------------------
 
 *insert here Create Repository doc page link of Adriaan*
@@ -50,34 +50,34 @@ Mirror Repository
 
 .. figure:: github_personal_token_2.png
    :scale: 40%
-   :alt: Github Personal Token
+   :alt: GitHub Personal Token
    :align: center
    :figclass: figborder
 
 
-   Get Github Personal Token.
+   Get GitHub Personal Token.
 
 .. _figure-2-mirror-setup:
 
 .. figure:: gitlab-setup-mirror.png
    :scale: 40%
-   :alt: Gitlab Mirror Setup
+   :alt: GitLab Mirror Setup
    :align: center
    :figclass: figborder
 
 
-   The Gitlab mirror setup.
+   The GitLab mirror setup.
 
 .. _figure-2-mirror-dashboard:
 
 .. figure:: gitlab-mirror-successful.png
    :scale: 40%
-   :alt: Gitlab Mirror Dashboard
+   :alt: GitLab Mirror Dashboard
    :align: center
    :figclass: figborder
 
 
-   Gitlab Mirror Dashboard.
+   GitLab Mirror Dashboard.
 
 
 Create token
@@ -115,10 +115,8 @@ Read-Only GitHub Project
 Differences Between GitHub and GitLab
 --------------------------------------
 
-Since both GitHub and GitLab are built on top of Git, there are very few differences between the stwo systems. The first obvious difference is that GitLab has merge requests instead of pull requests. The function is pretty much identical, and the UI is pretty similar. GitLab provide an extensive tutorial on `merge requests
+Since both GitHub and GitLab are built on top of Git, there are very few differences between the two systems. The first obvious difference is that GitLab has merge requests instead of pull requests. The function is pretty much identical, and the UI is pretty similar. GitLab provide an extensive tutorial on `merge requests
 <https://docs.gitlab.com/ee/user/project/merge_requests/>`_.
 
 The other major difference is that GitLab provides automatic `Continuous Integration Pipelines
-<https://docs.gitlab.com/ee/ci/>`_. If you have already used Jenkins, you'll find it pretty similar. There is an SKA guide to CI_.
-
-.. _continuousintegration:
+<https://docs.gitlab.com/ee/ci/>`_. If you have already used Jenkins, you'll find it pretty similar. There is an `SKA guide to CI <../continuousintegration.html>`_.
