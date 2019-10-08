@@ -62,20 +62,44 @@ own documentation.
 Sphinx can be used to generate text documents such as this portal, but it also provides 
 capabilities to automatically extract and parse code documentation.  
 
-Integrating into the Developer Portal
-=====================================
+Integrating a project's documentation into the Developer Portal
+===============================================================
 
-The developer portal is hosted on readthedocs and every project shall 
-upload the project specific documentation as a subproject of the 
-developer portal project. 
-This makes all the documentation accessible from the same base URL and 
-it also allows for global search-ability over the complete documentation
-of all SKA projects. 
+The developer portal is hosted on ReadTheDocs. On the :ref:`list` page a list of all the projects that are hosted on Github is available, with badges to show the build status of the project's documentation. Each badge is also a hyperlink to the project's documentation. Every SKA project's documentation is hosted on Readthedocs as a "subproject" of the developer portal, so that all projects have a common URL for easier search-ability.
 
+For example:
+Whereas the developer portal's URL is https://developer.skatelescope.org/en/latest/index.html, the ska_python_skeleton project is at https://developer.skatelescope.org/projects/ska-python-skeleton.
+
+Using ReadTheDocs
+=================
 .. todo::
-  - adding the project to readthedocs as a developer portal subproject
-  - using readthedocs (directory structure, teamplates from ska-skeleton ... ) 
   - adding textual documentation
   - adding automatically extracted documentation
-  - documenting the public API  
+  - documenting the public API
 
+
+In order to add the project's documentation as a subproject on Readthedocs, a project must first be imported into Readthedocs.
+
+Register on ReadTheDocs
+-----------------------
+
+* Log in with GitLab user
+* Log in with GitHub user
+* Accept
+
+Import project to ReadTheDocs
+-----------------------------
+
+
+Add project as a sub-project on ReadTheDocs
+-------------------------------------------
+
+ A sub-project must be added by a user with Maintainer privileges on the main project. Currently only the System Team members have these permissions. Please ask on the Slack channel `#team-system-support <https://skasoftware.slack.com/messages/CEMF9HXUZ>`_ to have your project added.
+For more information on how to add a subproject, go to `Read The Docs <https://docs.ReadTheDocs.io/en/stable/subprojects.html>`_
+
+
+General documentation guidelines
+--------------------------------
+
+* Textual documentation
+* Add docstrings to Readthedocs
