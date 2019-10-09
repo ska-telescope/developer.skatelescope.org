@@ -60,12 +60,12 @@ Every project shall use the same ``docs`` folder as a starting point for assembl
 own documentation.
 
 Sphinx can be used to generate text documents such as this portal, but it also provides 
-capabilities to automatically extract and parse code documentation, or docstrings.
+capabilities to automatically extract and parse code documentation, or docstrings. Refer to the :ref:`Python Coding Guidelines <python-code-guide>` for more information.
 
 Docstrings
 ==========
 
-The internet is full of information on how to write docstrings. A generic example of how to document the hello world module is provided in the `SKA Python skeleton <https://gitlab.com/ska-telescope/ska-skeleton>`_ project, and the output of the sphinx build can be seen `here <https://developer.skatelescope.org/projects/ska-python-skeleton/en/latest/?badge=latest>`_.
+.. The internet is full of information on how to write docstrings. A generic example of how to document the hello world module is provided in the `SKA Python skeleton <https://gitlab.com/ska-telescope/ska-skeleton>`_ project, and the output of the sphinx build can be seen `here <https://developer.skatelescope.org/projects/ska-python-skeleton/en/latest/?badge=latest>`_.
 
 .. todo::
     * add hello world class with parameters to the SKA Python Skeleton Project
