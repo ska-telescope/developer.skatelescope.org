@@ -55,7 +55,7 @@ Using sphinx
 Documentation must be realised using the `sphinx <http://www.sphinx-doc.org>`_  
 package and `Restructured Text <http://docutils.sourceforge.net/rst.html>`_ .
 SKA provides a predefined sphinx template for this purpose in the 
-`SKA Python skeleton <https://github.com/ska-telescope/ska-python-skeleton>`_ project.
+`SKA Python skeleton <https://gitlab.com/ska-telescope/ska-skeleton>`_ project.
 Every project shall use the same ``docs`` folder as a starting point for assembling their 
 own documentation.
 
@@ -65,7 +65,7 @@ capabilities to automatically extract and parse code documentation, or docstring
 Docstrings
 ==========
 
-The internet is full of information on how to write docstrings. A generic example of how to document the hello world module is provided in the `SKA Python skeleton <https://github.com/ska-telescope/ska-python-skeleton>`_ project, and the output of the sphinx build can be seen `here <https://developer.skatelescope.org/projects/ska-python-skeleton/en/latest/?badge=latest>`_.
+The internet is full of information on how to write docstrings. A generic example of how to document the hello world module is provided in the `SKA Python skeleton <https://gitlab.com/ska-telescope/ska-skeleton>`_ project, and the output of the sphinx build can be seen `here <https://developer.skatelescope.org/projects/ska-python-skeleton/en/latest/?badge=latest>`_.
 
 .. todo::
     * add hello world class with parameters to the SKA Python Skeleton Project
