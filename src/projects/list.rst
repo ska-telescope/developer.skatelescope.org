@@ -2,6 +2,8 @@
    for populating this page using Github APIs,
    Do not edit it
 
+.. _list:
+
 List of projects
 ----------------
 
