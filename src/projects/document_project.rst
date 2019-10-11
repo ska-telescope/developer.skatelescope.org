@@ -27,8 +27,8 @@ Based on the documentation provided everyone should be able to:
 In order to achieve this goal any structure can be used allowing free
 text as well as code-extracted documentation. 
 
-Public API
-==========
+Documenting the Public API
+==========================
 
 When it comes to software systems, such as services or libraries, it
 is of paramount importance that the public API exposed by the software
@@ -62,8 +62,8 @@ own documentation.
 Sphinx can be used to generate text documents such as this portal, but it also provides 
 capabilities to automatically extract and parse code documentation, or docstrings. Refer to the :ref:`Python Coding Guidelines <python-code-guide>` for more information.
 
-Docstrings
-==========
+Extracting documentation from code
+==================================
 
 .. The internet is full of information on how to write docstrings. A generic example of how to document the hello world module is provided in the `SKA Python skeleton <https://gitlab.com/ska-telescope/ska-skeleton>`_ project, and the output of the sphinx build can be seen `here <https://developer.skatelescope.org/projects/ska-python-skeleton/en/latest/?badge=latest>`_.
 
@@ -75,7 +75,7 @@ Docstrings
 Integrating into the Developer Portal
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The developer portal is hosted on ReadTheDocs. On the :ref:`list` page a list of all the projects that are hosted on Github is available, with badges to show the build status of the project's documentation. Each badge is also a hyperlink to the project's documentation.
+The developer portal is hosted on ReadTheDocs. On the :ref:`list` page a list of all the projects that are hosted on GitLab is available, with badges to show the build status of the project's documentation. Each badge is also a hyperlink to the project's documentation.
 
 Every SKA project's documentation is hosted on Readthedocs as a :ref:`subproject <sub-project>` of the developer portal, so that all projects have a common URL for easier search-ability. For example: whereas the developer portal's URL is https://developer.skatelescope.org, the ska_python_skeleton project is at https://developer.skatelescope.org/projects/ska-python-skeleton.
 
