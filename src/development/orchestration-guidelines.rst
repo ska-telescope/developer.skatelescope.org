@@ -974,7 +974,7 @@ Local steps
 Gitlab
 ~~~~~~
 
-Once the changes had been pushed it will be built in Gitlab as soon as it has synced from Github.
+Once the changes had been pushed it will be built in Gitlab.
 Find the pipeline builds at `https://gitlab.com/ska-telescope/skampi/pipelines <https://gitlab.com/ska-telescope/skampi/pipelines>`_.
 
 If the pipeline completes successfully, the full integration environment will be available at `https://integration.engageska-portugal.pt <https://integration.engageska-portugal.pt>`_.
