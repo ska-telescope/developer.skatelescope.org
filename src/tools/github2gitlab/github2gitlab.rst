@@ -46,6 +46,17 @@ Create GitLab Project
 Mirror Repository
 -----------------
 
+It was generally accepted that we still use Github to show our open-source projects 
+because we have more visibility there. So, to do that we have to setup a mirroring 
+process from Gitlab to Github.
+
+The first step is to create a personal access token on Github. 
+For this, just open their settings page and select "Developer Settings" 
+option from de side bar menu (direct link: https://github.com/settings/tokens).
+From there click on 'Personal Access Tokens", press 'Generate new token' and fill the token's name and 
+check the 'public_repo' option. Just like the picture below.
+
+
 .. _figure-1-person-token:
 
 .. figure:: github_personal_token_2.png
@@ -57,7 +68,16 @@ Mirror Repository
 
    Get GitHub Personal Token.
 
-.. _figure-2-mirror-setup:
+
+After you generate the token, go to your project settings page on Gitlab,
+click on 'Repository' section and fill the text boxes in the 'Mirroring repositories' like this:
+
+- Git repository URL: https://<your_github_username>@github.com/ska-telescope/<your_github_project>.git.
+- Mirror direction: Push
+- Authentication method: Password
+- Password: *Github_Password*
+
+.. _figure-2-mirror-setup: 
 
 .. figure:: gitlab-setup-mirror.png
    :scale: 40%
@@ -67,6 +87,9 @@ Mirror Repository
 
 
    The GitLab mirror setup.
+
+Finally, with the mirroring process finalized and with no errors, 
+you can start pushing and use the available dashboard to check if everything is working properly.
 
 .. _figure-2-mirror-dashboard:
 
@@ -79,10 +102,6 @@ Mirror Repository
 
    GitLab Mirror Dashboard.
 
-
-Create token
-Get username, group ID and project ID
-gitlab settings > repository > https://<your_github_username>@github.com/<your_github_group>/<your_github_project>.git.
 
 ..
   For an existing project, you can set up push mirroring as follows:
@@ -119,4 +138,5 @@ Since both GitHub and GitLab are built on top of Git, there are very few differe
 <https://docs.gitlab.com/ee/user/project/merge_requests/>`_.
 
 The other major difference is that GitLab provides automatic `Continuous Integration Pipelines
-<https://docs.gitlab.com/ee/ci/>`_. If you have already used Jenkins, you'll find it pretty similar. There is an `SKA guide to CI <../continuousintegration.html>`_.
+<https://docs.gitlab.com/ee/ci/>`_. If you have already used Jenkins, you'll find it pretty similar. There is an SKA guide to :ref:`CI`.
+
