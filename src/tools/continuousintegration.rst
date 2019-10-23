@@ -98,41 +98,43 @@ pipeline (:code:`.gitlab-ci.yml` file).
 
 The metrics should be collected under the following structure:
 
-- build-status: *top level placeholder for the build process status*
+- **commit-sha**: (string) *sha tag for the git commit*
+- **build-status**: *top level placeholder for the build process status*
 
-  - last: *placeholder about the last build process*
+  - **last**: *placeholder about the last build process*
 
-    - status: (**string**) *failed or passed, stating the last build status*
-    - timestamp: (**float**) *the Unix timestamp with the date and time of the
+    - **status**: (string) *failed or passed, stating the last build status*
+    - **timestamp**: (float) *the Unix timestamp with the date and time of the
       last build status*
 
-  - green: *placeholder about the last green build process*
+  - **green**: *placeholder about the last green build process*
 
-    - timestamp: (**float**) *the Unix timestamp with the date and time of the
+    - **timestamp**: (float) *the Unix timestamp with the date and time of the
       last successful build status*
 
-- coverage: *placeholder about the unit test coverage*
+- **coverage**: *placeholder about the unit test coverage*
 
-  - percentage: (**float**) *the coverage percentage of the unit tests*
+  - **percentage**: (float) *the coverage percentage of the unit tests*
 
-- tests: *placeholder about the unit tests*
+- **tests**: *placeholder about the unit tests*
 
-  - passed: (**int**) *number of successful tests*
-  - failed: (**int**) *number of failed tests*
-  - total: (**int**) *total number of tests*
+  - **passed**: (int) *number of successful tests*
+  - **failed**: (int) *number of failed tests*
+  - **total**: (int) *total number of tests*
 
-- tests: *placeholder about the linting (static code analysis)*
+- **tests**: *placeholder about the linting (static code analysis)*
 
-  - errors: (**int**) *number of linting errors*
-  - failures: (**int**) *number of linting failures* - this denotes a serious
-    error in the code that broke the linting process
-  - tests: (**int**) *total number of linting tests*
+  - **errors**: (int) *number of linting errors*
+  - **failures**: (int) *number of linting failures - this denotes a serious
+    error in the code that broke the linting process*
+  - **tests**: (int) *total number of linting tests*
 
 :code:`ci-metrics.json` example:
 
 .. code-block:: json
 
   {
+    "commit-sha": "cd07bea4bc8226b186dd02831424264ab0e4f822",
     "build-status": {
         "last": {
             "status": "failed",
