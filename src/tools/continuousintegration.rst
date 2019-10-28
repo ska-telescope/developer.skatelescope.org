@@ -58,8 +58,9 @@ The metrics should be collected under the following structure:
 
 - **tests**: *placeholder about the unit tests*
 
-  - **passed** (int): *number of successful tests*
-  - **failed** (int): *number of failed tests*
+  - **errors** (int): *number of test errors*
+  - **failures** (int): *number of test failures - this denotes a serious
+    error in the code that broke the testing process*
   - **total** (int): *total number of tests*
 
 - **lint**: *placeholder about the linting (static code analysis)*
@@ -67,7 +68,7 @@ The metrics should be collected under the following structure:
   - **errors** (int): *number of linting errors*
   - **failures** (int): *number of linting failures - this denotes a serious
     error in the code that broke the linting process*
-  - **tests** (int): *total number of linting tests*
+  - **total** (int): *total number of linting tests*
 
 :code:`ci-metrics.json` example:
 
@@ -88,14 +89,14 @@ The metrics should be collected under the following structure:
         "percentage": 60.00
         },
     "tests": {
-        "passed": 167,
-        "failed": 3,
+        "errors": 0,
+        "failures": 3,
         "total": 170
     },
     "lint": {
         "errors": 4,
         "failures": 0,
-        "tests": 7
+        "total": 7
     }
   }
 
