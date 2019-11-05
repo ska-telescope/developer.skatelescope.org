@@ -765,5 +765,6 @@ Logging
 
 * Stdout and stderr are sent straight to the Container Engine logging system.  In Docker, this is the `logging sub-system <https://docs.docker.com/config/containers/logging/configure/>`_ which combines the output for viewing purposes with ``docker logs ...``.  This is used as a defacto standard for containerised application logging.
 * Logging should be implemented so that  stdout/stderr is used, but is configurable to switch the emission to syslog
-* The SKA has adopted syslog - `RFC5424 <https://tools.ietf.org/html/rfc5424>`_ as the logging standard to be used by all SKA software.
-* Within the syslog standard, the message portion should be enriched with JSON structured data so that the universal logging solution integrated with the Container Engine and/or Orchestration solution can derive greater semantic meaning from the application logs
+* Logging to `stdout` or console so that the routing and handling of log messages can be handled by the container runtime (*dockerd*, *containerd*) or dynamic infrastructure platform (*Kubernetes*).
+* The SKA has adopted :doc:`logging-format` as the logging standard to be used by all SKA software.
+* Within the this standard, the message portion should be enriched with JSON structured data so that the universal logging solution integrated with the Container Engine and/or Orchestration solution can derive greater semantic meaning from the application logs
