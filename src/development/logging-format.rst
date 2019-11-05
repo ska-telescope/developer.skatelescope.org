@@ -14,26 +14,24 @@ Typically, a Python log message consists of two bits of information from the per
 
 The logging levels used can be any one of the five standard Python logging levels. For other language runtimes, the appropriate level that corresponds to the RFC5424 standard should be used.
 
-**Note**: the Syslog RFC is used as a reference format for mapping log levels only. The `Log Message Standard`_ (declared below) does not conform to RFC5424 and is not an extension of syslog. For reasoning behind this, see `Design Motivations`_ section.
+.. note:: The Syslog RFC is used as a reference format for mapping log levels only. The `Log Message Standard`_ does not conform to RFC5424 and is not an extension of syslog. For reasoning behind this, see `Design Motivations`_ section.
 
-Python Logging Levels to `RFC5424 <https://tools.ietf.org/html/rfc5424>`__ mapping
-----------------------------------------------------------------------------------
+Mapping of Logging Levels
+-------------------------
 
-+----------+------------------+-------------------------+-----------------------+
-| Python   | RFC5424 (Syslog) | RFC5424 Numerical Code  | Your language runtime |
-+==========+==================+=========================+=======================+
-| DEBUG    | Debug            |  7                      |  ?                    |
-+----------+------------------+-------------------------+-----------------------+
-| INFO     | Informational    |  6                      |  ?                    |
-+----------+------------------+-------------------------+-----------------------+
-| WARNING  | Warning          |  4                      |  ?                    |
-+----------+------------------+-------------------------+-----------------------+
-| ERROR    | Error            |  3                      |  ?                    |
-+----------+------------------+-------------------------+-----------------------+
-| CRITICAL | Critical         |  2                      |  ?                    |
-+----------+------------------+-------------------------+-----------------------+
+The table below maps Python logging levels to that of `RFC5424 <https://tools.ietf.org/html/rfc5424>`_ (syslog).
 
-For guidelines on when to use a particular log level, please refer to the `official Python logging HOWTO <https://docs.python.org/3/howto/logging.html>`__.
+======== ============= ====================== =====================
+Python   RFC5424       RFC5424 Numerical Code Your language runtime 
+======== ============= ====================== =====================
+DEBUG    Debug         7                      ?                    
+INFO     Informational 6                      ?                    
+WARNING  Warning       4                      ?                    
+ERROR    Error         3                      ?                    
+CRITICAL Critical      2                      ?                    
+======== ============= ====================== =====================
+
+For guidelines on when to use a particular log level, please refer to the `official Python logging HOWTO <https://docs.python.org/3/howto/logging.html>`_.
 
 Log Message Standard
 ====================
@@ -125,25 +123,27 @@ For a demonstration see: https://rubular.com/r/K3oWk6A5XHXCFB
 Design Motivations
 ==================
 
-The design of the log format above is a work in progress and a first attempt to introduce standardised logging practices. Some preliminary investigations were made to survey the current logging practices employed in different teams/components (see a report on this, `Investigation of Logging Practices <https://confluence.skatelescope.org/pages/viewpage.action?pageId=74740601>`__).
+The design of the log format above is a work in progress and a first attempt to introduce standardised logging practices. Some preliminary investigations were made to survey the current logging practices employed in different teams/components (see a report on this, `Investigation of Logging Practices <https://confluence.skatelescope.org/pages/viewpage.action?pageId=74740601>`_).
 
-+------------------------+-----------------------------------------------------------------------+
-| Assumption             | Implication                                                           |
-+========================+=======================================================================+
-| First-party components | Containerisation best practices with regards to logging should apply. |
-| to be integrated on a  | This means logging to `stdout` or console so that the routing and     |
-| system level will be   | handling of log messages can be handled by the container runtime      |
-| containerised          | (`dockerd`, `containerd`) or dynamic infrastructure platform (k8s).   |
-+------------------------+-----------------------------------------------------------------------+
-| A log ingestor         | A log ingestor is responsible for:                                    |
-| component will be      |                                                                       |
-| deployed as part of    | - fetching log data from a source, e.g. journald, file , socket, etc. |
-| logging architecture   | - processing it, e.g. parsing based on standardised format to extract |
-|                        |   key information and transform to other formats such as JSON to be   |
-|                        |   sent to a log datastore.                                            |
-|                        | - shipping it to a log datastore (elasticsearch) or another log       |
-|                        |   ingestor (logstash)                                                 |
-+------------------------+-----------------------------------------------------------------------+
+.. topic:: Assumption 1
+
+    First-party components to be integrated on a system level will be containerised.
+
+    **Implication**
+    
+    Containerisation best practices with regards to logging should apply. This means logging to `stdout` or console so that the routing and handling of log messages can be handled by the container runtime (`dockerd`, `containerd`) or dynamic infrastructure platform (k8s).
+
+.. topic:: Assumption 2
+
+    A log ingestor component will be deployed as part of logging architecture.
+
+    **Implication**
+
+    A log ingestor is responsible for:
+
+      - fetching log data from a source, e.g. journald, file , socket, etc.
+      - processing it, e.g. parsing based on standardised format to extract key information and transform to other formats such as JSON to be sent to a log datastore.
+      - shipping it to a log datastore (Elasticsearch) or another log ingestor (Logstash)
 
 Syslog (RFC5424)
 -----------------
@@ -158,7 +158,7 @@ As such we believe the most important features of a standard log message are:
    b. log level
    c. extensible tags - a mechanism to specify arbitrary tags [#first]_
    d. fully qualified name of call context (the function in source code that log comes from) [#first]_
-   e. filename where log call is situated*
+   e. filename where log call is situated [#first]_
    f. line number in file [#first]_
 
 2. should be easy to parse
@@ -166,8 +166,6 @@ As such we believe the most important features of a standard log message are:
 3. readability for local development
 
 Log messages that conform to a standard can always be transformed into syslog compliant loglines before being shipped to a log aggregator.
-
-.. [#first] Optional, since it won't apply to all contexts, e.g. third-party applications.
 
 Time stamps
 -----------
@@ -201,23 +199,30 @@ Standard Tags (LogViewer)
 
 A list of tags (identifiers) we want to add to log messages for easy filtering and semantic clarity
 
-+------------+----------------------------------------------------+-------------------------------------------------------+
-| Tag name   | Description                                        |Examples                                               |
-+============+====================================================+=======================================================+
-| deviceName | An identifier string in the form:                  |``MID-D0125/rx/controller``                            |
-|            | "<facility>/<family>/<device"                      |  - ``MID-D0125`` : ``0125`` ≡ Dish serial number      |
-|            | This corresponds with a Tango device name.         |  - ``rx`` : Dish Single Pixel Feed Receiver (SPFRx)   |
-|            |                                                    |  - ``controller`` : Dish SPFRx controller             |
-|            | - facility: The TANGO facility encodes the         |                                                       |
-|            |   specific telescope (LOW or MID) and the          |                                                       |
-|            |   telescope sub-system [#second]_ - refer [#third]_|                                                       |
-|            | - family: Family within facility - refer [#third]_ |                                                       |
-|            | - device: TANGO device name - refer [#third]_      |                                                       |
-+------------+----------------------------------------------------+-------------------------------------------------------+
-| subSystem  | For software that are not TANGO devices, the name  |``SDP``                                                |
-|            | of the telescope sub-system [#second]_             |                                                       |
-+------------+----------------------------------------------------+-------------------------------------------------------+
+========== ===========
+Tag name   Description
+========== ===========
+deviceName Identifier that corresponds to the TANGO device name,
+           a string in the form:  "<facility>/<family>/<device>".
+           
+           - facility : The TANGO facility encodes the telescope (LOW/MID)
+             and its sub-system [#second]_ (see [#third]_),
+           - family : Family within facility (see [#third]_),
+           - device : TANGO device name (see [#third]_).
 
-.. [#second] SaDT, TM, SDP, CSP, Dish, LFAA, INAU, INSA
+           Example:  ``MID-D0125/rx/controller``, where
+
+           - ``MID-D0125`` : Dish serial number,
+           - ``rx`` : Dish Single Pixel Feed Receiver (SPFRx),
+           - ``controller`` : Dish SPFRx controller.
+subSystem  For software that are not TANGO devices, the name of the telescope
+           sub-system [#second]_.
+
+           Example: ``SDP``
+========== ===========
+
+.. [#first] Optional, since it won't apply to all contexts, e.g. third-party applications.
+
+.. [#second] CSP, Dish, INAU, INSA, LFAA, SDP, SaDT, TM.   
 
 .. [#third] 000‐000000‐012, SKA1 TANGO Naming Convention (CS_GUIDELINES Volume2), Rev 01
