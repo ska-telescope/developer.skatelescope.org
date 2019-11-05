@@ -640,12 +640,12 @@ stdout and stderr are sent straight to the Container Engine logging system.  In 
 Logging
 -------
 
-The SKA has adopted syslog - `RFC5424 <https://tools.ietf.org/html/rfc5424>`_ as the logging standard to be used by all SKA software.  This should be considered a base line standard and will be decorated with additional data by an integrated logging solution (eg: `ElasticStack <https://www.elastic.co/products/>`_).
+The SKA has adopted :doc:`logging-format` as the logging standard to be used by all SKA software.  This should be considered a base line standard and will be decorated with additional data by an integrated logging solution (eg: `ElasticStack <https://www.elastic.co/products/>`_).
 
 The following recommendations are made:
 
  - when developing containerised applications, the development process should scale from the individual unit on the desktop up to the production deployment.  In order to do this, logging should be implemented so that  stdout/stderr is used, but is configurable to switch the emission to syslog
- - log formatting must adhere to syslog - RFC5424
+ - log formatting must adhere to :doc:`logging-format`
  - testing should include confirmation of integration with the host syslog, which is easily achieved through bind mounting ``/dev/log``
  - within the syslog standard, the message portion should be enriched with JSON structured data so that the universal logging solution integrated with the Container Engine and/or Orchestration solution can derive greater semantic meaning from the application logs
 
