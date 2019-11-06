@@ -41,7 +41,7 @@ Project Owners
 Create GitLab Project
 ---------------------------
 
-*insert here Create Repository doc page link of Adriaan*
+For the moment the only users on our GitLab that can create a repository, are the System Team members - please ask on the `#team-system-support <https://skasoftware.slack.com/messages/CEMF9HXUZ>`_ Slack channel. For more information on creating new projects, go to :ref:`this page<create-new-project>`.
 
 Mirror Repository
 -----------------
