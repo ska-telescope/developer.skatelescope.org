@@ -21,15 +21,20 @@ Mapping of Logging Levels
 
 The table below maps Python logging levels to that of `RFC5424 <https://tools.ietf.org/html/rfc5424>`_ (syslog).
 
-======== ============= ====================== =====================
-Python   RFC5424       RFC5424 Numerical Code Your language runtime 
-======== ============= ====================== =====================
-DEBUG    Debug         7                      ?                    
-INFO     Informational 6                      ?                    
-WARNING  Warning       4                      ?                    
-ERROR    Error         3                      ?                    
-CRITICAL Critical      2                      ?                    
-======== ============= ====================== =====================
+::
+
+    (This table is inside a block quote because when HTML is viewed in browser,
+    the table content gets replaced by a list of repositories.)
+
+    ======== ============= ====================== =====================
+    Python   RFC5424       RFC5424 Numerical Code Your language runtime
+    ======== ============= ====================== =====================
+    DEBUG    Debug         7                      ?
+    INFO     Informational 6                      ?
+    WARNING  Warning       4                      ?
+    ERROR    Error         3                      ?
+    CRITICAL Critical      2                      ?
+    ======== ============= ====================== =====================
 
 For guidelines on when to use a particular log level, please refer to the `official Python logging HOWTO <https://docs.python.org/3/howto/logging.html>`_.
 
@@ -125,21 +130,15 @@ Design Motivations
 
 The design of the log format above is a work in progress and a first attempt to introduce standardised logging practices. Some preliminary investigations were made to survey the current logging practices employed in different teams/components (see a report on this, `Investigation of Logging Practices <https://confluence.skatelescope.org/pages/viewpage.action?pageId=74740601>`_).
 
-.. topic:: Assumption 1
+Assumption 1:
+  First-party components to be integrated on a system level will be containerised.
 
-    First-party components to be integrated on a system level will be containerised.
+  **Implication**:  Containerisation best practices with regards to logging should apply. This means logging to `stdout` or console so that the routing and handling of log messages can be handled by the container runtime (`dockerd`, `containerd`) or dynamic infrastructure platform (k8s).
 
-    **Implication**
-    
-    Containerisation best practices with regards to logging should apply. This means logging to `stdout` or console so that the routing and handling of log messages can be handled by the container runtime (`dockerd`, `containerd`) or dynamic infrastructure platform (k8s).
+Assumption 2:
+  A log ingestor component will be deployed as part of logging architecture.
 
-.. topic:: Assumption 2
-
-    A log ingestor component will be deployed as part of logging architecture.
-
-    **Implication**
-
-    A log ingestor is responsible for:
+  **Implication**:  A log ingestor is responsible for:
 
       - fetching log data from a source, e.g. journald, file , socket, etc.
       - processing it, e.g. parsing based on standardised format to extract key information and transform to other formats such as JSON to be sent to a log datastore.
@@ -156,10 +155,10 @@ As such we believe the most important features of a standard log message are:
 
    a. timestamp
    b. log level
-   c. extensible tags - a mechanism to specify arbitrary tags [#first]_
-   d. fully qualified name of call context (the function in source code that log comes from) [#first]_
-   e. filename where log call is situated [#first]_
-   f. line number in file [#first]_
+   c. extensible tags - a mechanism to specify arbitrary tags [1]
+   d. fully qualified name of call context (the function in source code that log comes from) [1]
+   e. filename where log call is situated [1]
+   f. line number in file [1]
 
 2. should be easy to parse
 
@@ -197,32 +196,29 @@ Should MESSAGE have a size limit? What if we want to add an arbitrary data struc
 Standard Tags (LogViewer)
 =========================
 
-A list of tags (identifiers) we want to add to log messages for easy filtering and semantic clarity
+A list of tags (identifiers) we want to add to log messages for easy filtering and semantic clarity:
 
-========== ===========
-Tag name   Description
-========== ===========
-deviceName Identifier that corresponds to the TANGO device name,
-           a string in the form:  "<facility>/<family>/<device>".
-           
-           - facility : The TANGO facility encodes the telescope (LOW/MID)
-             and its sub-system [#second]_ (see [#third]_),
-           - family : Family within facility (see [#third]_),
-           - device : TANGO device name (see [#third]_).
+- Tag: deviceName
 
-           Example:  ``MID-D0125/rx/controller``, where
+  - Description: Identifier that corresponds to the TANGO device name, a string in the form:  "<facility>/<family>/<device>".
 
-           - ``MID-D0125`` : Dish serial number,
-           - ``rx`` : Dish Single Pixel Feed Receiver (SPFRx),
-           - ``controller`` : Dish SPFRx controller.
-subSystem  For software that are not TANGO devices, the name of the telescope
-           sub-system [#second]_.
+    - facility : The TANGO facility encodes the telescope (LOW/MID) and its sub-system [2] (see [3]),
+    - family : Family within facility (see [3]),
+    - device : TANGO device name (see [3]).
 
-           Example: ``SDP``
-========== ===========
+  - Example: ``MID-D0125/rx/controller``, where
 
-.. [#first] Optional, since it won't apply to all contexts, e.g. third-party applications.
+    - ``MID-D0125`` : Dish serial number,
+    - ``rx`` : Dish Single Pixel Feed Receiver (SPFRx),
+    - ``controller`` : Dish SPFRx controller.
 
-.. [#second] CSP, Dish, INAU, INSA, LFAA, SDP, SaDT, TM.   
+- Tag: subSystem
 
-.. [#third] 000‐000000‐012, SKA1 TANGO Naming Convention (CS_GUIDELINES Volume2), Rev 01
+  - Description: For software that are not TANGO devices, the name of the telescope sub-system [2].
+  - Example: ``SDP``
+
+[1] Optional, since it won't apply to all contexts, e.g. third-party applications.
+
+[2] CSP, Dish, INAU, INSA, LFAA, SDP, SaDT, TM.
+
+[3] 000‐000000‐012, SKA1 TANGO Naming Convention (CS_GUIDELINES Volume2), Rev 01
