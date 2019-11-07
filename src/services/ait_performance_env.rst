@@ -1,3 +1,5 @@
+.. _ait:
+
 AIT cluster
 ***********
 
@@ -115,6 +117,7 @@ OS_IMAGE_NAME
 
 OS_FLAVOR_NAME
   Virtual machine specification (vCPU, RAM, storage, ...)
+
 
   +------------+------+-----------+-------+
   | Flavor     | vCPU | Root Disk |  RAM  |

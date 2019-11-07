@@ -24,7 +24,7 @@ import sphinx_rtd_theme
 
 def setup(app):
     app.add_stylesheet('css/custom.css')
-    app.add_javascript('js/github.js')
+    app.add_javascript('js/gitlab.js')
 
 # -- General configuration ------------------------------------------------
 
