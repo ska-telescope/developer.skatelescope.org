@@ -414,8 +414,7 @@ shall include:
             Deployment may require the use of the host based software
             delivered as part of the LMC system.
 
-12. The ability to log diagnostic information using a RFC 5424 “Syslog”
-    protocol [RD5].
+12. The ability to log diagnostic information using :doc:`logging-format`.
 
 13. The ability, dynamically at runtime, to suppress or select logging
     of messages at different Syslog severity levels on at least a

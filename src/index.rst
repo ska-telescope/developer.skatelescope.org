@@ -156,6 +156,7 @@ The definition of done is used to guide teams in planning and estimating the siz
   development/orchestration-guidelines
   development/python_package_release_procedure
   development/uploading-docker-nexus
+  development/logging-format
 
 
 Development guidelines
@@ -244,6 +245,13 @@ This details steps that all *SKA* developers shall abide to when building and ho
 images on the Nexus registry.
 
 - :doc:`development/uploading-docker-nexus`
+
+Logging guidelines
+==================
+
+A standard logging format exists for logging in the evolutionary prototype into an ELK stack logging system designed for the SKA software.
+
+- :doc:`development/logging-format`
 
 .. PROJECTS SECTION ==================================================
 
