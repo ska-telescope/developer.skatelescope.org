@@ -12,7 +12,7 @@ An Example C++ Project
 ======================
 
 We have created a `skeleton C++ project
-<https://gitlab.com/ska-telescope/cpp_template>`_. Which should provide a full introduction to the various
+<https://gitlab.com/ska-telescope/cpp-template>`_. Which should provide a full introduction to the various
 recommendations and requirements for the development of C++. The philosophy behind the development of this
 template was to demonstrate one way to meet the project guidelines. There are probably as many ways to organise C++ projects
 as there are developers there are sure to be some controversial design decisions made. 
@@ -167,7 +167,14 @@ There are a number of beginner CMake tutorials on the web. The following command
 
 .. code-block:: bash
 
-    >cd cpp_template
+    > cd cpp-template
+
+Before running cmake the first time, you will also need to tell git to download the submodules referenced in the project.
+
+.. code-block:: bash
+
+    > git submodule init
+    > git submodule update
 
 For an out-of-place build you make your build directory. This can be anywhere
 
@@ -183,7 +190,7 @@ containing your top level CMakeLists.txt file
 .. code-block:: bash
 
     > cmake -DCMAKE_INSTALL_PREFIX=my_install_dir my_source_code
-
+    
 CMake then runs, first attempting to resolve all the compile time dependencies
 that the project defines. Note you do not have to generate Makefiles, CMake
 alos supports XCode and Eclipse projects. Checkout the CMake manpage for the
@@ -193,7 +200,7 @@ After the build files have been generated you are free to build thr project. Wit
 
 .. code-block:: bash
     
-    >make install 
+    > make install 
 
 If you are using Eclipse or XCode you will have to start the build within your environment.
 
