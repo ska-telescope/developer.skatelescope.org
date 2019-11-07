@@ -12,8 +12,25 @@ at [https://gitlab.com/ska-telescope]
 
 .. raw:: html
 
+   <div class="wy-table-responsive"><table class="docutils align-default">
+   <colgroup>
+   <col style="width: 37%">
+   <col style="width: 28%">
+   <col style="width: 35%">
+   </colgroup>
+   <thead>
+   <tr class="row-odd"><th class="head"><p>Github repository</p></th>
+   <th class="head"><p>Documentation</p></th>
+   <th class="head"><p>Description</p></th>
+   </tr>
+   </thead>
+   <tbody>
+      <tr><td><a alt="repo url on github" href="https://github.com/ska-telescope/CUDA_Degridder">CUDA_Degridder</a></td><td><a href="https://developer.skatelescope.org/projects/CUDA_Degridder/en/latest/?badge=latest"><img src="https://readthedocs.org/projects/CUDA_Degridder/badge/?version=latest" alt="Documentation Status"></a></td><td>Multi-threaded GPU based implementation of the SDP Imaging pipeline degridding module</td></tr><tr><td><a alt="repo url on github" href="https://github.com/ska-telescope/sdp-prototype">sdp-prototype</a></td><td><a href="https://developer.skatelescope.org/projects/sdp-prototype/en/latest/?badge=latest"><img src="https://readthedocs.org/projects/sdp-prototype/badge/?version=latest" alt="Documentation Status"></a></td><td>Prototype of SDP components required for configuration and execution of workflows</td></tr>
+   </tbody>
+   </table></div>
+
    <script type="text/javascript">
-   function(){
+   jQuery(function(){
        var github_v3_endpoint = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&order_by=name&sort=asc";
        //var list = $("#list-of-projects div table tbody");
        var list = $("tbody");
@@ -48,5 +65,6 @@ at [https://gitlab.com/ska-telescope]
        }else{ //if list not found
            console.log("list not found")
        }
+    });
 
    </script>

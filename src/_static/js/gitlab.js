@@ -1,4 +1,4 @@
-jQuery(
+jQuery(function(){
 	
 	var ci_dashboard = "https://ska-telescope.gitlab.io/ska_ci_dashboard/";
     var dashboard_table = $("#ci-dashboard > table");
