@@ -17,6 +17,6 @@ testgit           testdoc       test description
 testgit           testdoc       test description
 ================= ============= ===========
 
-.. raw:: html
+.. .. raw:: html
 
-   <script type="text/javascript" src="../_static/js/projects_list.js"></script>
+..   <script type="text/javascript" src="../_static/js/projects_list.js"></script>
