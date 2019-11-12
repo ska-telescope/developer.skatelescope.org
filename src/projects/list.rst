@@ -8,11 +8,15 @@ List of projects
 ----------------
 
 The following table is automatically extracted from our github organisation page
-at [https://github.com/ska-telescope]
+at [https://gitlab.com/ska-telescope]
 
 ================= ============= ===========
 Github repository Documentation Description
 ================= ============= ===========
-testgit           testdoc       test description 
-testgit           testdoc       test description 
+testgit           testdoc       test description
+testgit           testdoc       test description
 ================= ============= ===========
+
+.. .. raw:: html
+
+..   <script type="text/javascript" src="../_static/js/projects_list.js"></script>
