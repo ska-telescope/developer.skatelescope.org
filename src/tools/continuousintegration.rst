@@ -19,12 +19,59 @@ the button “Run pipeline” on a specific branch (i.e. master).
 
 |image5|
 
-Collecting & consolidating CI health metrics as part of the CI pipeline
------------------------------------------------------------------------
+.. _AutomatedMetrics:
+
+Automated Collection of CI health metrics as part of the CI pipeline
+--------------------------------------------------------------------
 As part of the CI/CD process all teams are expected to collect and consolidate
-the necessary code health metrics under a file named :code:`ci-metrics.json` at
-created at Gitlab CI pipeline runtime under the root folder for that
-repository.
+the required code health metrics. Namely **unit tests**, **linting (static
+code analysis)** and **coverage**.
+
+These metrics reports must pass the following requirements:
+
+1. These files must **not** be part of the repository, but be created under their respective steps (:code:`test`, :code:`llinting`) in the CI pipeline.
+2. Unit Tests report must be a JUnit XML file residing under :code:`./build/reports/unit-tests.xml`
+3. Linting report must be a JUnit XML file residing under :code:`./build/reports/linting.xml`
+4. Coverage report must be a XML file in the standard used by `Coverage.py` residing under :code:`./build/reports/code-coverage.xml`
+5. The XML format expected for the coverage is the standard XML output from `Coverage.py <https://pypi.org/project/coverage/>`_ for Python or from a similar tool like `Cobertura <https://github.com/cobertura/cobertura>`_ for Javascript with the :code:`line-rate` attribute specifying the coverage. See the example bellow.
+
+.. code-block:: xml
+
+  <?xml version="1.0" encoding="UTF-8"?>
+  <coverage branch-rate="0" branches-covered="0" branches-valid="0" complexity="0" line-rate="0.6861" lines-covered="765" lines-valid="1115" timestamp="1574079100055" version="4.5.4">
+
+
+In order to automate the process as much as possible for the teams, the
+`ci-metrics-utilities` repository was created and it will automate the all
+metrics collection, and badge creation as long as the 5 points above are
+observed.
+
+In order to use this automation, the following code must be added at the end of
+:code:`.gitlab-ci.yml`
+
+.. code-block:: yml
+
+  create ci metrics:
+    stage: .post
+    when: always
+    tags:
+      - docker-executor
+    script:
+      # Gitlab CI badges creation: START
+      - apt-get -y update
+      - apt-get install -y curl --no-install-recommends
+      - curl -s https://gitlab.com/ska-telescope/ci-metrics-utilities/raw/master/scripts/ci-badges-func.sh | sh
+      # Gitlab CI badges creation: END
+    artifacts:
+      paths:
+        - ./build
+
+
+Manual Collection of CI health metrics as part of the CI pipeline
+------------------------------------------------------------------
+The teams that prefer to create their own :code:`ci-metrics.json` file instead
+of using the provided automation, can do so. They are still expected to observe
+all the points described in AutomatedMetrics_.
 
 The :code:`ci-metrics.json` file is expect to be created automatically as part
 of the CI pipeline by the teams by collecting the relevant information from the
@@ -33,8 +80,7 @@ of the CI pipeline by the teams by collecting the relevant information from the
 exist as part of the repository, but, be created specifically as part of the CI
 pipeline.**
 The file must be created and properly populated before the start of the marked
-:code:`# START: Gitlab CI badges creation` in the **pages** stage of the CI
-pipeline (:code:`.gitlab-ci.yml` file).
+:code:`stage: .post` step in the  CI pipeline (:code:`.gitlab-ci.yml` file).
 
 The metrics should be collected under the following structure:
 
@@ -43,14 +89,8 @@ The metrics should be collected under the following structure:
 
   - **last**: *placeholder about the last build process*
 
-    - **status** (string): *failed or passed, stating the last build status*
     - **timestamp** (float): *the Unix timestamp with the date and time of the
       last build status*
-
-  - **green**: *placeholder about the last green build process*
-
-    - **timestamp** (float): *the Unix timestamp with the date and time of the
-      last successful build status*
 
 - **coverage**: *placeholder about the unit test coverage*
 
@@ -78,11 +118,7 @@ The metrics should be collected under the following structure:
     "commit-sha": "cd07bea4bc8226b186dd02831424264ab0e4f822",
     "build-status": {
         "last": {
-            "status": "failed",
             "timestamp": 1568202193.0
-        },
-        "green": {
-            "timestamp": 1568112133.0
         }
     },
     "coverage": {
@@ -99,22 +135,6 @@ The metrics should be collected under the following structure:
         "total": 7
     }
   }
-
-
-Besides the :code:`ci-metrics.json` the teams should provide the relevant
-output from the **test** and **linting** stage used to extract those metrics
-for the *unit tests*, *code coverage* and *linting* under the following specific
-files in XML format for easy access as part of the published artifacts on the
-pages stage of the CI pipeline:
-
-- :code:`/build/reports/unit-tests.xml`: JUnit XML Format
-- :code:`/build/reports/code-coverage.xml`: Standard XML Format
-- :code:`/build/reports/linting.xml`: Standard XML Format
-
-It is up to the teams to decide the best way to generate these report files,
-and they are provided with the purpose of easy inspection of the results
-directly from their respective Gitlab repository by clicking on the respective
-badges and for historical metrics collection.
 
 Using a specific executor
 -------------------------
