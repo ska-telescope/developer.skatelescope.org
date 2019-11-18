@@ -53,6 +53,7 @@ In order to use this automation, the following code must be added at the end of
 
   create ci metrics:
     stage: .post
+    image: nexus.engageska-portugal.pt/ska-docker/ska-python-buildenv:latest
     when: always
     tags:
       - docker-executor
