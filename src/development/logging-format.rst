@@ -47,7 +47,7 @@ In order for log messages to be ingested successfully into the logging system on
 
 ::
 
-  SKA-LOGMSG = VERSION "|" TIMESTAMP "|" [THREAD-ID] "|" [FUNCTION] "|" [LINE-LOC] "|" SEVERITY "|" [TAGS] "|" MESSAGE LF
+  SKA-LOGMSG = VERSION "|" TIMESTAMP "|" SEVERITY "|" [THREAD-ID] "|" [FUNCTION] "|" [LINE-LOC] "|" [TAGS] "|" MESSAGE LF
   VERSION    = 1*2DIGIT                                                   ; (compulsory) version of SKA log standard this log message implements - starts at 1
   TIMESTAMP  = FULL-DATE "T" FULL-TIME                                    ; (compulsory) ISO8601 compliant timestamp normalised to UTC
   THREAD-ID  = *32("-" / ALPHA / DIGIT)                                   ; (optional) thread id, e.g. "MainThread" or "Thread-1"
@@ -58,7 +58,7 @@ In order for log messages to be ingested successfully into the logging system on
   MESSAGE    = *OCTET                                                     ; message content (UTF-8 string) (should we think about constraining length?)
   FILENAME   = 1*64 (ALPHA / "." / "_" / "-" / DIGIT)                     ; from 1 up to 64 characters
   LINENO     = 1*5DIGIT                                                   ; up to 5 digits (hopefully no file has more than 99,999 loc)
-  TAG        = *(ALPHA / "-") ":" *CHAR                                   ; name-value pairs
+  TAG        = *(ALPHA / "-") ":" *VCHAR                                  ; name-value pairs
   FULL-DATE  = 4DIGIT "-" 2DIGIT "-" 2DIGIT                               ; e.g. 2019-12-31
   FULL-TIME  = 2DIGIT ":" 2DIGIT ":" 2DIGIT "." 3*6DIGIT "Z"              ; 23:42:50.523Z = 42 minutes and 50.523 seconds after the 23rd hour in UTC. Minimum subsecond precision should be 3 decimal points.
   OCTET      = %d00-255                                                   ; any byte
@@ -68,11 +68,11 @@ Examples:
 
 ::
 
-  1|2019-12-31T23:42.526Z||testpackage.testmodule.TestDevice.test_fn|test.py#1    |INFO    |is-tango:yes,devicename:testDevice| Regular information should be logged like this FYI
-  1|2019-12-31T23:45.328Z||testpackage.testmodule.TestDevice.test_fn|test.py#150  |DEBUG   || x = 67, y = 24
-  1|2019-12-31T23:49.543Z||testpackage.testmodule.TestDevice.test_fn|test.py#16   |WARNING || z is unspecified, defaulting to 0!
-  1|2019-12-31T23:50.124Z||testpackage.testmodule.TestDevice.test_fn|test.py#165  |ERROR   |site:Element| Could not connect to database!
-  1|2019-12-31T23:51.036Z||testpackage.testmodule.TestDevice.test_fn|test.py#16   |CRITICAL|| Invalid operation. Cannot continue.
+  1|2019-12-31T23:42.526Z|INFO||testpackage.testmodule.TestDevice.test_fn|test.py#1|tango-device:my/dev/name| Regular information should be logged like this FYI
+  1|2019-12-31T23:45.328Z|DEBUG||testpackage.testmodule.TestDevice.test_fn|test.py#150|| x = 67, y = 24
+  1|2019-12-31T23:49.543Z|WARNING||testpackage.testmodule.TestDevice.test_fn|test.py#16|| z is unspecified, defaulting to 0!
+  1|2019-12-31T23:50.124Z|ERROR||testpackage.testmodule.TestDevice.test_fn|test.py#165|site:Element| Could not connect to database!
+  1|2019-12-31T23:51.036Z|CRITICAL||testpackage.testmodule.TestDevice.test_fn|test.py#16|| Invalid operation. Cannot continue.
 
 Versioning
 ----------
@@ -85,13 +85,13 @@ Version 1:
 
 ::
 
-  1|2019-12-31T23:49.543Z||testpackage.testmodule.TestDevice.test_fn|test.py#16 |WARNING || z is unspecified, defaulting to 0!
+  1|2019-12-31T23:49.543Z|WARNING||testpackage.testmodule.TestDevice.test_fn|test.py#16|| z is unspecified, defaulting to 0!
 
 Version 2:
 
 ::
 
-  2|2019-12-31T23:49.543Z||test.py#16 |WARNING || z is unspecified, defaulting to 0!
+  2|2019-12-31T23:49.543Z|WARNING||test.py#16|| z is unspecified, defaulting to 0!
 
 Parsing
 -------
@@ -107,7 +107,7 @@ Python (str.split)
 
 ::
 
-  log_line = "1|2019-12-31T23:50.124Z||testpackage.testmodule.TestDevice.test_fn|test.py#165|ERROR |site:Element| Could not connect to database!"
+  log_line = "1|2019-12-31T23:50.124Z|ERROR||testpackage.testmodule.TestDevice.test_fn|test.py#165|site:Element| Could not connect to database!"
   structured_log = log_line.split('|')
   log_level = structured_log[5]
 
@@ -121,9 +121,9 @@ A more specific regex that leverages named capture to extract matches:
 
 ::
 
-  ^(?<version>\d+)[|](?<timestamp>[0-9TZ\-:.]+)[|](?<thread>[\w-]*)[|](?<function>[\w\-.]*)[|](?<lineloc>[\w\s.#]*)[|](?<level>[\w\s]+)[|](?<tags>[\w\:,-]*)[|](?<message>.*)$
+  ^(?<version>\d+)[|](?<timestamp>[0-9TZ\-:.]+)[|](?<level>[\w\s]+)[|](?<thread>[\w-]*)[|](?<function>[\w\-.]*)[|](?<lineloc>[\w\s.#]*)[|](?<tags>[\w\:,-]*)[|](?<message>.*)$
 
-For a demonstration see: https://rubular.com/r/K3oWk6A5XHXCFB
+For a demonstration see: https://rubular.com/r/e0njVOGCN59mtA
 
 Design Motivations
 ==================
