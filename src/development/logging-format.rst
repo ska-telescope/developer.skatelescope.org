@@ -58,7 +58,7 @@ In order for log messages to be ingested successfully into the logging system on
   MESSAGE    = *OCTET                                                     ; message content (UTF-8 string) (should we think about constraining length?)
   FILENAME   = 1*64 (ALPHA / "." / "_" / "-" / DIGIT)                     ; from 1 up to 64 characters
   LINENO     = 1*5DIGIT                                                   ; up to 5 digits (hopefully no file has more than 99,999 loc)
-  TAG        = *(ALPHA / "-") ":" *VCHAR                                   ; name-value pairs
+  TAG        = *(ALPHA / "-") ":" *VCHAR                                  ; name-value pairs
   FULL-DATE  = 4DIGIT "-" 2DIGIT "-" 2DIGIT                               ; e.g. 2019-12-31
   FULL-TIME  = 2DIGIT ":" 2DIGIT ":" 2DIGIT "." 3*6DIGIT "Z"              ; 23:42:50.523Z = 42 minutes and 50.523 seconds after the 23rd hour in UTC. Minimum subsecond precision should be 3 decimal points.
   OCTET      = %d00-255                                                   ; any byte
