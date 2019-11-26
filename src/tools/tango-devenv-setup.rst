@@ -44,7 +44,7 @@ Download a image of ubuntu 18.04 like the following one:
 
 Run the box and call the following commands:
 
-1. git clone https://github.com/ska-telescope/ansible-playbooks.git
+1. git clone https://gitlab.com/ska-telescope/ansible-playbooks
 2. cd ansible-playbooks
 3. apt-add-repository --yes --update ppa:ansible/ansible && apt-get install ansible
 4. ansible-playbook -i hosts deploy_tangoenv.yml 
@@ -63,5 +63,5 @@ Other information
 =================
 Please visit the following github pages for more information:
 
-1. https://github.com/ska-telescope/ansible-playbooks.
-2. https://github.com/ska-telescope/ska-docker
+1. https://gitlab.com/ska-telescope/ansible-playbooks.
+2. https://gitlab.com/ska-telescope/ska-docker
