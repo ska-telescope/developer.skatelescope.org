@@ -11,7 +11,7 @@ The following table is automatically extracted from our github organisation page
 at [https://gitlab.com/ska-telescope]
 
 ================= ============= ===========
-Github repository Documentation Description
+Gitlab repository Documentation Description
 ================= ============= ===========
 testgit           testdoc       test description
 testgit           testdoc       test description
