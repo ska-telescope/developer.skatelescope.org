@@ -85,13 +85,13 @@ Version 1:
 
 ::
 
-  1|2019-12-31T23:49.543Z|WARNING||testpackage.testmodule.TestDevice.test_fn|test.py#16|| z is unspecified, defaulting to 0!
+  1|2019-12-31T23:49:13.543Z|WARNING||testpackage.testmodule.TestDevice.test_fn|test.py#16|| z is unspecified, defaulting to 0!
 
 Version 2:
 
 ::
 
-  2|2019-12-31T23:49.543Z|WARNING||test.py#16|| z is unspecified, defaulting to 0!
+  2|2019-12-31T23:49:13.543Z|WARNING||test.py#16|| z is unspecified, defaulting to 0!
 
 Parsing
 -------
@@ -107,7 +107,7 @@ Python (str.split)
 
 ::
 
-  log_line = "1|2019-12-31T23:50.124Z|ERROR||testpackage.testmodule.TestDevice.test_fn|test.py#165|site:Element| Could not connect to database!"
+  log_line = "1|2019-12-31T23:50:17.124Z|ERROR||testpackage.testmodule.TestDevice.test_fn|test.py#165|site:Element| Could not connect to database!"
   structured_log = log_line.split('|')
   log_level = structured_log[5]
 
