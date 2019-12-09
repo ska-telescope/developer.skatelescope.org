@@ -68,11 +68,11 @@ Examples:
 
 ::
 
-  1|2019-12-31T23:42.526Z|INFO||testpackage.testmodule.TestDevice.test_fn|test.py#1|tango-device:my/dev/name| Regular information should be logged like this FYI
-  1|2019-12-31T23:45.328Z|DEBUG||testpackage.testmodule.TestDevice.test_fn|test.py#150|| x = 67, y = 24
-  1|2019-12-31T23:49.543Z|WARNING||testpackage.testmodule.TestDevice.test_fn|test.py#16|| z is unspecified, defaulting to 0!
-  1|2019-12-31T23:50.124Z|ERROR||testpackage.testmodule.TestDevice.test_fn|test.py#165|site:Element| Could not connect to database!
-  1|2019-12-31T23:51.036Z|CRITICAL||testpackage.testmodule.TestDevice.test_fn|test.py#16|| Invalid operation. Cannot continue.
+  1|2019-12-31T23:12:37.526Z|INFO||testpackage.testmodule.TestDevice.test_fn|test.py#1|tango-device:my/dev/name| Regular information should be logged like this FYI
+  1|2019-12-31T23:45:42.328Z|DEBUG||testpackage.testmodule.TestDevice.test_fn|test.py#150|| x = 67, y = 24
+  1|2019-12-31T23:49:53.543Z|WARNING||testpackage.testmodule.TestDevice.test_fn|test.py#16|| z is unspecified, defaulting to 0!
+  1|2019-12-31T23:50:17.124Z|ERROR||testpackage.testmodule.TestDevice.test_fn|test.py#165|site:Element| Could not connect to database!
+  1|2019-12-31T23:51:23.036Z|CRITICAL||testpackage.testmodule.TestDevice.test_fn|test.py#16|| Invalid operation. Cannot continue.
 
 Versioning
 ----------
