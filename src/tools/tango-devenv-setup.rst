@@ -13,8 +13,8 @@ Tools include:
  - g++ 7.3.0 (default ubuntu 18.04)
  - TANGO-controls '9.2.5a'
  - Visual Studio Code '1.30', PyCharm Community Edition 'community-2018.3.3'
- - ZEROMQ '4.0.5'
- - OMNIORB '4.2.1'
+ - ZEROMQ '4.0.8'
+ - OMNIORB '4.2.3'
  
 Processes include:
  - writing code,
