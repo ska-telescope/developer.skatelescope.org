@@ -58,8 +58,14 @@ errors should follow these rules:
 * For informational and debugging messages, one should always use
   ``log.info(message)`` and ``log.debug(message)``.
 
-The logging system should use the built-in Python `logging
-<https://docs.python.org/3/library/logging.html>`_ module.
+Logging implementation
+======================
+
+There is a standard `Python logging module <https://gitlab.com/ska-telescope/ska-logging>`_ for logging in SKA projects.
+This module ensures that messages are formatted correctly according to our formatting standards.
+
+For details on how to use the logging module with detailed examples, please refer to:
+https://gitlab.com/ska-telescope/ska-logging/tree/master#ska-logging-configuration-library
 
 
 Coding Style/Conventions
