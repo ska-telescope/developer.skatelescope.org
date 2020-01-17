@@ -72,6 +72,7 @@ SKA software development is managed in an open and transparent way.
   tools/github2gitlab/github2gitlab
   tools/continuousintegration
   tools/cidashboard
+  tools/bugtracking
   tools/tango-devenv-setup
   tools/pycharm/pycharm
   tools/vscode/vscode
@@ -95,6 +96,10 @@ Every team is tracking daily work in a team-based project on our JIRA server at 
 .. todo::
    - Create a new project
    - Link to issue tracker
+
+An overarching bug tracking system is used to file bugs emerging from integraiton activities: 
+
+- :doc:`tools/bugtracking`
 
 Development Environments
 ========================
@@ -124,17 +129,26 @@ PyTANGO development activities. You will find detailed instructions and how-tos 
   :caption: Agile practices followed at SKA
   :hidden:
 
-  agile_practices/definition_of_done
+  development_practices/ska_testing_policy_and_strategy
+  development_practices/definition_of_done
 
-Agile practices followed at SKA
---------------------------------
+Development practices followed at SKA
+-------------------------------------
+
+Testing policy and strategy
+===========================
+
+The SKA testing policy and strategy contains useful guidelines and practices to be 
+followed when developing software for the SKA project.
+
+- :doc:`development_practices/ska_testing_policy_and_strategy`
 
 Definition of Done
 ==================
 
 The definition of done is used to guide teams in planning and estimating the size of stories and features:
 
-- :doc:`agile_practices/definition_of_done`
+- :doc:`development_practices/definition_of_done`
 
 
 .. DEVELOPMENT GUIDELINES SECTION ==================================================
