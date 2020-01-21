@@ -1,16 +1,15 @@
 .. vim: syntax=rst
 
-SOFTWARE TESTING POLICY AND STRATEGY
+Software Testing Policy and Strategy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This is version
 
 .. toctree::
     :maxdepth: 1
     :numbered:
     :hidden:
 
-LIST OF ABBREVIATIONS
+List of abbreviations
 =====================
 
 ===== ===================================================
@@ -73,17 +72,19 @@ the event of conflict between the contents of the applicable documents
 and this document, the applicable documents shall take precedence.
 
 1. SKA-TEL-SKO-0000661 - Fundamental SKA Software and Hardware
-      Description Language Standards
+   Description Language Standards
 
 2. SKA-TEL-SKO-0001201 - ENGINEERING MANAGEMENT PLAN
+
+.. todo::
+   add the proper reference to the eng plan
 
 1.4 Reference documents
 -----------------------
 
 .. _ref-istqb-glossary:
 
-[RD1] International Software Testing Qualification Board -
-      Glossary https://glossary.istqb.org
+International Software Testing Qualification Board - Glossary https://glossary.istqb.org
 
 See other referenced material at the end of the document.
 
@@ -159,6 +160,11 @@ We plan to cover at least these practices:
 -  TDD and Test-First.
 -  Use of test doubles (mocks, stub, spies).
 -  Use and monitoring of code coverage metrics.
+   Code coverage should be monitored especially for understanding
+   which parts of the SUT have NOT been tested and if these are important
+   enough to be tested.
+   We suggest that branch coverage is used whenever possible (as opposed to
+   statement/line coverage).
 
 Another goal of this phase is **identifying the test training needs** for
 the organization and teams and start providing some support
@@ -176,6 +182,9 @@ process established in this initial phase should NOT:
    avoid creating stumbling blocks for teams;
 -  provide traceability of requirements and risks;
 -  be centered on “specification by example” yet.
+
+.. todo::
+   the sentence that says that no sctrict thresholds on coverage contradicts what is being written in the DoD.
 
 We will focus on these aspects in subsequent phases.
 
@@ -224,8 +233,7 @@ following definitions, mostly derived from :ref:`ISTQB Glossary <ref-istqb-gloss
 **Bug**
     A flaw in a component or system that can cause the component or
     system to fail to perform its required function, e.g. an incorrect
-    statement or data definition. A bug, if encountered during execution,
-    may cause a failure of the component or system. Synonyms: defect, fault
+    statement or data definition. Synonyms: defect, fault.
 
 **Failure**/**Symptom**
     Deviation of the component or system from its expected
@@ -249,6 +257,10 @@ beta-testers.
 4.3 Goals of testing
 --------------------
 
+The overarching goal of this version of the policy is **to establish a testing process that supports
+the teams.**
+
+
 With reference to the test quadrants (:ref:`Figure 1<figure-test-quadrants>`), this policy is restricted
 to tests supporting the teams and mostly those that are technology
 facing, hence quadrant Q1 (bottom left) and partly Q2 (top left), functional acceptance tests.
@@ -260,10 +272,8 @@ facing, hence quadrant Q1 (bottom left) and partly Q2 (top left), functional acc
    :align: center
    :figclass: figborder
 
-Test quadrants, picture taken from (Humble and Farley, Continuous Delivery, 2011).
+Figure 1: Test quadrants, picture taken from (Humble and Farley, Continuous Delivery, 2011).
 
-The overarching goal of this version of the policy is **to establish a testing process that supports
-the teams.**
 
 The expected results of applying this policy are that effective
 technical practices are performed regularly by each team (eg. TDD,
@@ -357,6 +367,10 @@ following (possibly in an automatic way):
 
 These metrics should be automatically computed and updated, and made available to every
 stakeholder in SKA.
+
+.. note::
+   Some of these metrics are already collected and displayed in https://argos.engageska-portugal.pt
+   (username=viewer, password=viewer).
 
 
 5 Testing strategy
@@ -537,33 +551,44 @@ more.
 
 Confirmation tests are run manually to confirm that a bug really exist.
 
+
 5.8 Bug management
 ------------------
+We recommend the following process for handling bugs.
 
-Bugs found by the team during a sprint for code developed during the
-same sprint are fixed on the fly, with no logging at all. If they cannot
-be fixed on the fly, soon after they are found they are logged on the
-team backlog.
+* Bugs found by the team during a sprint for code developed during the
+  same sprint are **fixed on the fly**, with no logging at all. If they cannot
+  be fixed on the fly, soon after they are found they are logged on the
+  team backlog.
 
-Bugs that are found by the team during a sprint but that are related to
-changes made in previous sprints, are always logged on the team backlog
-(this is useful for measuring the quality of the testing process, with a
-metric called defect-detection-rate).
+* Bugs that are found by the team during a sprint but that are related to
+  changes made in previous sprints, are **always logged** on the team backlog
+  (this is useful for measuring the quality of the testing process, with a
+  metric called defect-detection-rate).
 
-Bugs that are reported by third parties (eg. non SKA and SKA users,
-other teams, product managers) are always logged. For the time being
-these bugs will be notified to the relevant team via email or Slack
-messages, and the team is expected to promptly log them in their
-backlog. The team is then responsible to inform the reporter on the
-evolution of the ticket.
+* Bugs that are reported by third parties (eg. non SKA and SKA users,
+  other teams, product managers) are always logged, by whoever can do it, which
+  becomes the **bug-report owner**.
+  These bugs have to undergo a **triage stage** to confirm that they are a bug and find
+  the team that is most appropriate to deal with them. At that point the bugs appear
+  in the chosen team's backlog. When resolved, appropriate comments and workflow state
+  are updated in the team's backlog, and the original bug-report owner is notified as well,
+  who may decide to close the bug, to keep it open, to change it.
 
 Logging occurs in JIRA by adding a new issue of type Bug to the product
 backlog and prioritized by the PO as every other story/enabler/spike.
 The issue type Defect should not be used, as it is meant to indicate a
 deviation from SKA requirements.
+For system-wide bugs the JIRA project called TODO PROJECT TO BE IDENTIFIED AND CREATED
+is used. Triage of these bugs is done by the SYSTEM team with support by selected people.
+
+.. todo::
+   identify this project
+
+- `SKA Bug tracking project <https://jira.skatelescope.org/projects/SKB/summary>`_
 
 6 General references
-=================
+====================
 
 Relevant textbooks include:
 
