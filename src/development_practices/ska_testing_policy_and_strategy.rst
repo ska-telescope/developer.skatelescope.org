@@ -3,6 +3,8 @@
 SOFTWARE TESTING POLICY AND STRATEGY
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+This is version
+
 .. toctree::
     :maxdepth: 1
     :numbered:
@@ -25,11 +27,13 @@ SKAO  SKA Organisation
 TDD   Test Driven Development
 ===== ===================================================
 
-Introduction
-============
+1 Introduction
+==============
 
 What follows is the software testing policy and strategy produced by
 Testing Community of Practice.
+
+This is **version 1.0.0** of this document, completed on 2019-07-09.
 
 Purpose of the document
 -----------------------
@@ -53,12 +57,12 @@ followed, and therefore it is expected that the policy and the
 strategy will change often, likely at least twice per year until
 settled.
 
-The document will evolve more quickly during the SKA bridging phase
+The document will evolve quickly during the SKA Bridging phase
 in order to reach a good level of maturity prior to SKA1 construction
 starts.
 
 Each team is expected to comply with the policy and to adopt the
-strategy described here, or define a more specific strategy in cases
+strategy described here, or define and publish a more specific strategy in cases
 this one is not suitable.
 
 2. .. rubric:: References
@@ -79,10 +83,14 @@ and this document, the applicable documents shall take precedence.
 Reference documents
 -------------------
 
-1. International Software Testing Qualification Board -
-      Glossary\ https://glossary.istqb.org
+.. _ref-istqb-glossary:
 
-3 Adoption strategy
+[RD1] International Software Testing Qualification Board -
+      Glossary https://glossary.istqb.org
+
+See other referenced material at the end of the document.
+
+2 Adoption strategy
 ===================
 
 Testing within the SKA will be complex for many reasons, including a
@@ -105,29 +113,27 @@ maturity will evolve. Some team will lead in maturity; some other will
 struggle, either because facing difficult-to-test systems, complex test
 environments or because they started later.
 
-An important aspect we would like to achieve is that the definition of
+An important aspect we would like to achieve is that
 the testing process needs to support teams, not hinder them with
 difficult-to-achieve goals that might turn out to be barriers rather
 than drivers. Only after teams are properly supported by the testing
 process we will crank up the desired quality of the product and push
 harder on the effectiveness of tests.
 
-We envision 3 phases:
+We envision 3 major phases:
 
--  Enabling teams, from mid 2019 for 1-2 PIs
-
+-  Enabling teams, from mid 2019 for a few PIs
 -  Establishing a sustainable process, for a few subsequent PIs
+-  Keep improving, afterwards.
 
--  Keep improving, afterwards
-
-4 Phase 1: enabling teams
+3 Phase 1: Enabling Teams
 =========================
 
 This early phase should start now (June 2019) and should cover at least
 the next 1-2 Program Increments.
 
-The overarching goal is to establish a test process that supports the
-teams. In other terms this means that development teams will be the
+**The overarching goal is to establish a test process that supports the
+teams**. In other terms this means that development teams will be the
 major stakeholders benefiting by the testing activities that they will
 do. Testing should cover currently used technologies (which include
 Tango, Python, C++, Javascript), it should help uncovering risks related
@@ -153,13 +159,11 @@ that teams could adopt them.
 
 We plan to cover at least these practices:
 
--  TDD and Test-First
-
--  Use of test doubles (mocks, stub, spies)
-
+-  TDD and Test-First.
+-  Use of test doubles (mocks, stub, spies).
 -  Use and monitoring of code coverage metrics.
 
--  Another goal of this phase is identifying the test training needs for
+Another goal of this phase is **identifying the test training needs** for
 the organization and teams and start providing some support
 (bibliography, slides, seminars, coaching).
 
@@ -167,19 +171,16 @@ In order to focus on supporting the teams, we expect that the testing
 process established in this initial phase should NOT:
 
 -  set strict mandatory policies regarding levels of coverage of code
-      (regardless of the coverage criteria such as statements, branch,
-      variable usage-definition), of data, of requirements and of risks;
-
+   (regardless of the coverage criteria such as statements, branch, or
+   variable usage-definition), of data, of requirements and of risks;
 -  systematically cover system-testing;
-
 -  rely on exploratory testing (which will be introduced later on);
-
--  define strict entry/exit conditions on the different CI stages to
-      avoid creating stumbling blocks for teams;
-
+-  define strict entry/exit conditions for artefacts on the different CI stages to
+   avoid creating stumbling blocks for teams;
 -  provide traceability of requirements and risks;
-
 -  be centered on “specification by example” yet.
+
+We will focus on these aspects in subsequent phases.
 
 On the other hand, the testing process should help creating testable
 software products, it should lead to a well-designed test automation
@@ -187,9 +188,9 @@ architecture, teams should become exposed and should practice TDD,
 test-first, and adopt suitable test automation patterns.
 
 An easy-to-comply test policy is suggested, and a strategy promoting
-that testing should be done within the sprint, automated tests should be
+that testing should be applied during each sprint, automated tests should be
 regularly developed at different levels (unit, component, integration),
-regression testing should be regularly done, test first for bugs and
+regression testing should be regularly done, test-first for bugs and
 refactorings should be regularly done.
 
 Basic monitoring of the testing process will be done, to help teams
@@ -197,65 +198,74 @@ improve themselves and possibly to create competition across teams. Test
 metrics will include basic ones dealing with the testing process, the
 testing architecture and the product quality.
 
-5 Testing policy
+4 Testing policy
 ================
 
 This policy covers all sorts of software testing performed on the code
 bases developed by each of the SKA teams. There is only one policy, and
 it applies to all software developed within/for SKA.
 
-5.1 Key definitions
+4.1 Key definitions
 -------------------
 
 When dealing with software testing, many terms have been defined
-differently in different context. It is important to standardise the
+differently in different contexts. It is important to standardise the
 vocabulary used by SKA1 in this specific domain according to the
-following definitions, mostly derived by [RD1].
+following definitions, mostly derived by [:ref:`RD1 <ref-istqb-glossary>`].
 
-Testing: The process consisting of all lifecycle activities, both static
-and dynamic, concerned with planning, preparation and evaluation of
-software products and related work products to determine that they
-satisfy specified requirements, to demonstrate that they are fit for
-purpose and to detect bugs.
+**Testing**
+    The process consisting of all lifecycle activities, both static
+    and dynamic, concerned with planning, preparation and evaluation of
+    software products and related work products to determine that they
+    satisfy specified requirements, to demonstrate that they are fit for
+    purpose and to detect bugs.
 
-Debugging: The process of finding, analyzing and removing the causes of
-failures in software.
+**Debugging**
+    The process of finding, analyzing and removing the causes of
+    failures in software.
 
-Bug: A flaw in a component or system that can cause the component or
-system to fail to perform its required function, e.g. an incorrect
-statement or data definition. A bug, if encountered during execution,
-may cause a failure of the component or system. Synonyms: defect, fault
+**Bug**
+    A flaw in a component or system that can cause the component or
+    system to fail to perform its required function, e.g. an incorrect
+    statement or data definition. A bug, if encountered during execution,
+    may cause a failure of the component or system. Synonyms: defect, fault
 
-Failure: Deviation of the component or system from its expected
-delivery, service or result. Synonym: symptom
+**Failure**/**Symptom**
+    Deviation of the component or system from its expected
+    delivery, service or result.
 
-Error: A human action that produces an incorrect result (including
-inserting a bug in the code or writing the wrong specification).
+**Error**
+    A human action that produces an incorrect result (including
+    inserting a bug in the code or writing the wrong specification).
 
 NOTE: the purpose of defining both “testing” and “debugging” is so that
 readers get rid of the idea that one does testing while he or she is
 doing debugging. They are two distinct activities.
 
-5.2 Work organization
+4.2 Work organization
 ---------------------
 
 Testing is performed by the team who develops the software. There is no
 dedicated group of people who are in charge of testing, there are no
 beta-testers.
 
-5.3 Goals of testing
+4.3 Goals of testing
 --------------------
 
-With reference to the test quadrants (Fig 1), this policy is restricted
+With reference to the test quadrants (:ref:`Figure 1<figure-test-quadrants>`), this policy is restricted
 to tests supporting the teams and mostly those that are technology
-facing, hence quadrant Q1 (bottom left) and partly Q2 (top left).
+facing, hence quadrant Q1 (bottom left) and partly Q2 (top left), functional acceptance tests.
 
-|image2|
+.. _figure-test-quadrants:
 
-   Figure 1: Test quadrants, picture taken from (Humble and Farley,
-   Continuous Delivery, 2011)
+.. figure:: test-quadrants.png
+   :scale: 100%
+   :align: center
+   :figclass: figborder
 
-**The overarching goal is to establish a testing process that supports
+Test quadrants, picture taken from (Humble and Farley, Continuous Delivery, 2011).
+
+The overarching goal of this version of the policy is **to establish a testing process that supports
 the teams.**
 
 The expected results of applying this policy are that effective
@@ -269,42 +279,42 @@ patterns.
 The reason is that in this way the following higher level objectives can
 be achieved:
 
--  team members explore different test automation frameworks and learn
-      how to use them efficiently;
+*  team members explore different test automation frameworks and learn how to use them efficiently;
 
--  team members learn how to implement tests via techniques like test
-      driven development and test-first, how to use test doubles, how to
-      monitor code coverage levels, how to do pair programming and code
-      reviews;
+*  team members learn how to implement tests via techniques like test
+   driven development and test-first, how to use test doubles, how to
+   monitor code coverage levels, how to do pair programming and code
+   reviews;
 
--  as an effect of adopting some of those techniques, teams reduce
-      technical debt or keep it at bay; therefore they become more and
-      more efficient in code refactoring and in writing high quality
-      code;
+*  as an effect of adopting some of those techniques, teams reduce
+   technical debt or keep it at bay; therefore they become more and
+   more efficient in code refactoring and in writing high quality
+   code;
 
--  they will become more proficient in increasing quality of the testing
-      system, so that it becomes easily maintainable;
+*  they will become more proficient in increasing quality of the testing
+   system, so that it becomes easily maintainable;
 
--  by adopting some of those techniques, teams will develop systems that
-      are more and more testable; this will increase modularity,
-      extendability and understandability of the system, hence its
-      quality;
+*  by adopting some of those techniques, teams will develop systems that
+   are more and more testable; this will increase modularity,
+   extendability and understandability of the system, hence its
+   quality;
 
--  team members become used to developing automated tests within the
-      same sprint during which the tested code is written;
+*  team members become used to developing automated tests within the
+   same sprint during which the tested code is written;
 
--  reliance on automated tests will reduce the time needed for test
-      execution and enable regression testing to be performed several
-      times during a sprint (or even a day).
+*  reliance on automated tests will reduce the time needed for test
+   execution and enable regression testing to be performed several
+   times during a sprint (or even a day).
 
-Emphasis on quadrant 1, and low importance to the other quadrants, will
+Emphasis on quadrant 1 of :ref:`Figure 1<figure-test-quadrants>`,
+and low importance to the other quadrants, will
 allow the teams to be more focussed (within the realm of testing) and
-learn the basics. Some attention to Q2 will let teams start addressing
+learn the basics. Some attention to quadrant 2 will let teams start addressing
 tests at a higher level, which bring along aspects like traceability
 (relationships between tests and requirements) and integration between
 subsystems.
 
-Once testable systems are produced, a relatively large number of
+Expected outcomes are that once testable systems are produced, a relatively large number of
 unit/module tests will be automated, new tests will be regularly
 developed within sprints, refactorings will be “protected” by automated
 tests, and bug fixes will be confirmed by specific automated tests,
@@ -314,21 +324,19 @@ of the testing process, which will gradually cover also the other
 quadrants.
 
 In this phase we can still expect a number of bugs to still be present,
-have only partial assessment of “fitness for use”, test design
-techniques not to be mastered, non functional requirements not be
+to have only a partial assessment of “fitness for use”, test design
+techniques not to be mastered, non-functional requirements not be
 systematically covered, testing process not to be extensively monitored,
 systematic traceability of tests to requirements not to be covered, and
-monitoring of quality also not to be covered.
+monitoring of quality also not to be covered. These are objectives to be achieved
+in later phases, with enhancements of this policy.
 
-Resolving the issues mentioned in the paragraph above remain objectives
-to be achieved later on, with enhancements of this policy.
-
-5.4 Monitoring implementation of the policy
+4.4 Monitoring implementation of the policy
 -------------------------------------------
 
 Adoption of this policy needs to be monitored in a lightweight fashion.
 We suggest that each team regularly (such as at each sprint) reports the
-following:
+following (possibly in an automatic way):
 
 -  total number of test cases
 
@@ -344,18 +352,15 @@ following:
 
 -  number of new or refactored test cases/sprint
 
--  number of test cases that are labelled as “unstable” or that are
-      skipped
+-  number of test cases that are labelled as “unstable” or that are skipped
 
 -  code coverage (the “execution branch/decision coverage” criterion is
-      what we would like to monitor, for code that was written by the
-      team).
+   what we would like to monitor, for code that was written by the
+   team).
 
-| We would like that most of these metrics are automatically computed,
-  by gathering required data from the codebase itself and data collected
-  by the CI/CD pipelines. We will work with the SYSTEM team to make this
-  happen.
-| 
+These metrics should be automatically computed and updated, and made available to every
+stakeholder in SKA.
+
 
 6 Testing strategy
 ==================
