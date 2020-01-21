@@ -35,8 +35,8 @@ Testing Community of Practice.
 
 This is **version 1.0.0** of this document, completed on 2019-07-09.
 
-Purpose of the document
------------------------
+1.1 Purpose of the document
+----------------------------
 
 The purpose of the document is to specify the testing policy for SKA
 software, which answers the question “why should we test?”, and to
@@ -47,8 +47,8 @@ The policy should achieve alignment between all stakeholders
 regarding the expected benefit of testing. The strategy should help
 developers and testers to understand how to define a testing process.
 
-Scope of the document
----------------------
+1.2 Scope of the document
+-------------------------
 
 This policy and this strategy apply exclusively to software-only SKA
 artifacts that are developed by teams working within the SAFe
@@ -65,11 +65,8 @@ Each team is expected to comply with the policy and to adopt the
 strategy described here, or define and publish a more specific strategy in cases
 this one is not suitable.
 
-2. .. rubric:: References
-      :name: references
-
-3. .. rubric:: Applicable documents
-        :name: applicable-documents
+1.3 Applicable documents
+------------------------
 
 The following documents are applicable to the extent stated herein. In
 the event of conflict between the contents of the applicable documents
@@ -80,8 +77,8 @@ and this document, the applicable documents shall take precedence.
 
 2. SKA-TEL-SKO-0001201 - ENGINEERING MANAGEMENT PLAN
 
-Reference documents
--------------------
+1.4 Reference documents
+-----------------------
 
 .. _ref-istqb-glossary:
 
@@ -211,7 +208,7 @@ it applies to all software developed within/for SKA.
 When dealing with software testing, many terms have been defined
 differently in different contexts. It is important to standardise the
 vocabulary used by SKA1 in this specific domain according to the
-following definitions, mostly derived by [:ref:`RD1 <ref-istqb-glossary>`].
+following definitions, mostly derived from :ref:`ISTQB Glossary <ref-istqb-glossary>`].
 
 **Testing**
     The process consisting of all lifecycle activities, both static
@@ -362,80 +359,94 @@ These metrics should be automatically computed and updated, and made available t
 stakeholder in SKA.
 
 
-6 Testing strategy
+5 Testing strategy
 ==================
 
 A testing strategy describes how the test policy is implemented and it
 should help each team member to better understand what kind of test to
 write, how many and how to write them. This testing strategy refers to
-the testing policy for Phase 1.
+the testing policy described above, for Phase 1.
 
 Because of the diversity of SKA development teams and the diversity of
-the nature of the systems that they work upon [1]_, it seems reasonable
+the nature of the systems that they work upon (ranging
+from web-based UIs to embedded systems), it seems reasonable
 to start with a testing strategy that is likely to be suitable for most
 teams and let each team decide if a refined strategy is needed. In this
 case each team should explicitly define such a modified strategy and
 make it public.
 
-6.1 Key definitions and concepts
+5.1 Key definitions and concepts
 --------------------------------
 
-(Mostly derived from the ISTQB glossary:
-`www.istqb.org <http://www.istqb.org>`__\ )
+Mostly derived from the  :ref:`ISTQB glossary<ref-istqb-glossary>`.
 
 Testing levels refer to the granularity of the system-under-test (SUT):
 
--  unit testing: The testing of individual software components (as a
-      synonym of component testing). In a strict sense it means testing
-      methods or functions in such a way that it does not involve the
-      filesystem, the network, the database. Usually these tests are
-      fast (i.e. an execution of a test set provides feedback to the
-      programmer in a matter of seconds, perhaps a minute or two; each
-      test case runs for some milliseconds).
+**Unit testing**
+   The testing of individual software units. In a strict sense it means testing
+   methods or functions in such a way that it does not involve the
+   filesystem, the network, the database. Usually these tests are
+   fast (i.e. an execution of a test set provides feedback to the
+   programmer in a matter of seconds, perhaps a minute or two; each
+   test case runs for some milliseconds). Normally the unit under test is
+   isolated from its environment.
 
--  component/module testing: The testing of individual software
-      components which can be an aggregate of classes, a package, a set
-      of packages, a module. Notice that the word “component” here
-      refers to software modules or other static structures; it does not
-      mean runtime entities as meant in SEI “Views and Beyond”. Because
-      of this ambiguity we will adopt the term “module testing”.
+**Module testing**
+   The testing of an aggregate of classes, a package, a set
+   of packages, a module. Sometimes this is also called "component testing", but
+   to avoid ambiguity with the notion of component viewed as runtime entities according to the
+   SEI "Views and Beyond" we will use "module testing".
 
--  integration testing: Testing performed to expose defects in the
-      interfaces and in the interaction between integrated components or
-      systems. In a strict sense this level applies only to testing the
-      interface between 2+ components; in a wider sense it means testing
-      that covers a cluster of integrated subsystems.
+**Component testing**
+   Here the word "component" refers to deployment units, rather than software modules or
+   other static structures. Components can be binary artefacts such as jar, DLL or wheel
+   files run within
+   threads, processes, services or virtual docker components.
 
--  system testing: Testing an integrated system to verify that it meets
-      specified requirements.
+**Integration testing**
+   Testing performed to expose defects in the
+   interfaces and in the interaction between integrated components or
+   systems. In a strict sense this level applies only to testing the
+   interface between 2+ components; in a wider sense it means testing
+   that covers a cluster of integrated subsystems.
 
--  acceptance testing: Formal testing with respect to user needs,
-      requirements, and business processes conducted to determine
-      whether or not a system satisfies the acceptance criteria and to
-      enable the user, customers or other authorized entity to determine
-      whether or not to accept the system.
+**System testing**
+   Testing an integrated system to verify that it meets
+   specified requirements.
 
-..
+**Acceptance testing**
+   Formal testing with respect to user needs,
+   requirements, and business processes conducted to determine
+   whether or not a system satisfies the acceptance criteria and to
+   enable the user, customers or other authorized entity to determine
+   whether or not to accept the system.
 
-Test basis: All artifacts from which the requirements of a component or
-system can be inferred and the artifacts on which the test cases are
-based. For example, the source code; or a list of requirements; or a set
-of partitions of a data domain; or a set of configurations.
 
-Confirmation testing: Testing performed when handling a defect. Done
-before fixing it in order to replicate and characterise the failure.
-Done after fixing to make sure that the defect has been removed.
+Other definitions are:
 
-Regression testing: Testing of a previously tested program following
-modification to ensure that defects have not been introduced or
-uncovered in unchanged areas of the software, as a result of the changes
-made. It is performed when the software or its environment is changed.
+**Test basis**
+   All artifacts from which the requirements of a unit, module, component or
+   system can be inferred and the artifacts on which the test cases are
+   based. For example, the source code; or a list of requirements; or a set
+   of partitions of a data domain; or a set of configurations.
 
-Exploratory testing: An informal test design technique where the tester
-actively controls the design of the tests as those tests are performed
-and uses information gained while testing to design new and better
-tests. [it consists of simultaneous exploration of the system and
-checking that it does what it should]
+**Confirmation testing**
+   Testing performed when handling a defect. Done
+   before fixing it in order to replicate and characterise the failure.
+   Done after fixing to make sure that the defect has been removed.
+
+**Regression testing**
+   Testing of a previously tested program following
+   modification to ensure that defects have not been introduced or
+   uncovered in unchanged areas of the software, as a result of the changes
+   made. It is performed when the software or its environment is changed.
+
+**Exploratory testing**
+   An informal test design technique where the tester
+   actively designs the tests as those tests are performed
+   and uses information gained while testing to design new and better
+   tests. It consists of simultaneous exploration of the system and
+   checking that it does what it should.
 
 6.2 Scope, roles and responsibilities
 -------------------------------------
@@ -443,7 +454,8 @@ checking that it does what it should]
 This strategy applies to all the software that is being developed within
 the SKA.
 
-Each team should have at least a tester. Because of the specific skills
+Each team should have at least a tester, which is the "testing conscience" within the team.
+Because of the specific skills
 that are needed to write good tests and to manage the testing process,
 we expect that in the coming months a tester will become a dedicated
 person in each team. For the time being we see “tester” as being a
@@ -454,41 +466,20 @@ accountable for testing.
 In most cases, programmers are responsible for developing unit tests,
 programmers and testers together are responsible for designing and
 developing module and integration tests, testers and product owners are
-responsible for designing system and acceptance tests for user stories,
+responsible for designing component, system and acceptance tests for user stories,
 enablers, and features.
 
-Each team is responsible for system and acceptance testing of the
-systems they are working on, even when those systems are integrated with
-other ones. So, for example, if team P’ develops a system P that
-produces data used by another system C that consumes it and which is
-developed by team C’, then team C’ is in charge of system tests of the
-integrated system <P,C>. This is likely to happen through the API Int-C.
 
-However, team P’ is in charge of testing the subsystem P in isolation,
-likely through the common API; likewise team C’ is in charge of testing
-C and developing whatever stubs are needed to make C run. Both are in
-charge of testing the shared API, from either sides (P and C). Team P’
-is in charge of providing instances of P so that C’ can perform the
-system and acceptance tests of the integrated system <P,C>.
-
-|image3|
-
-Figure 2: Integration testing
-
-P’ is responsible for providing instances of P that can be used for
-testing. It is a good practice for C’ to create replicas of P (in the
-form of stubs or mocks) to be used for testing C.
-
-6.3 Test specification
+5.3 Test specification
 ----------------------
 
-Programmers adopt a TDD approach and almost all unit and module tests
+Programmers adopt a TDD or test-first approach and almost all unit and module tests
 are developed before production code on the basis of technical
 specifications or intended meaning of the new code. Testers can assist
 programmers in defining good test cases.
 
-In addition, when beginning to fix a bug programmers, possibly with the
-tester, define one or more unit/module/integration tests that confirm
+In addition, when beginning to fix a bug, programmers, possibly with the
+tester, define one or more unit/module tests that confirm
 that bug. This is done prior to fixing the bug.
 
 Furthermore, the product owner with a tester and a programmer define the
@@ -499,34 +490,38 @@ integration tests. Some of these acceptance tests are also associated
 features. All these tests are automated, possibly during the same sprint
 in which the user story is being developed.
 
-6.4 Test environment
+5.4 Test environment
 --------------------
 
-In this version of the strategy we do not cover sophisticated
+In this version of the strategy we do not cover provisioning of
 environments for running functional and performance tests of complex
-systems like the SDP. We expect those teams to come up with suggestions
+systems. We expect those teams to come up with suggestions
 and prototype solutions that could be included in this strategy later
 on.
 
-6.5 Test data
+5.5 Test data
 -------------
 
 In this version of the strategy we do not cover sophisticated mechanisms
 for handling data to support functional and performance tests of complex
-systems like the SDP. We expect those teams to come up with suggestions
+systems. We expect those teams to come up with suggestions
 and prototype solutions that could be included in this strategy later
 on.
 
-6.6 Test automation
+5.6 Test automation
 -------------------
 
 At the moment these elements are still under active investigation.
+As explained elsewhere in this portal, python developers generally rely on `pytest` and
+associated libraries (for assertions, for mocking); similarly
+developers uisng javascript rely on `Jest`. For component, system, and acceptance tests
+developers may rely also on Gherkin tests (aka, Behavior Driven Development tests).
 
-6.7 Confirmation and regression testing
+5.7 Confirmation and regression testing
 ---------------------------------------
 
 Regression testing is performed at least every time code is committed on
-any branch in the repository. This should be ensured by the CI/DI
+any branch in the source code repository. This should be ensured by the CI/DI
 pipeline.
 
 In order to implement an effective CI/CD pipeline, automated test cases
@@ -542,7 +537,7 @@ more.
 
 Confirmation tests are run manually to confirm that a bug really exist.
 
-6.8 Bug management
+5.8 Bug management
 ------------------
 
 Bugs found by the team during a sprint for code developed during the
@@ -567,33 +562,18 @@ backlog and prioritized by the PO as every other story/enabler/spike.
 The issue type Defect should not be used, as it is meant to indicate a
 deviation from SKA requirements.
 
-7 Book References
+6 General references
 =================
 
 Relevant textbooks include:
 
--  Managing the Testing Process: Practical Tools and Techniques for Managing Hardware and Software Testing, R. Black, John Wiley & Sons Inc, 2009
+-  **Managing the Testing Process**: Practical Tools and Techniques for Managing Hardware and Software Testing, R. Black, John Wiley & Sons Inc, 2009
 
--  Continuous Delivery: Reliable Software Releases Through Build, Test, and Deployment Automation, J. Humble and D. Farley, Addison-Wesley Professional, 2010
+-  **Continuous Delivery: Reliable Software Releases Through Build, Test, and Deployment Automation**, J. Humble and D. Farley, Addison-Wesley Professional, 2010
 
--  xUnit Test Patterns: Refactoring Test Code, G. Meszaros, Addison-Wesley Professional, 2007
+-  **xUnit Test Patterns: Refactoring Test Code**, G. Meszaros, Addison-Wesley Professional, 2007
 
--  Test Driven Development. By Example, Addison-Wesley Professional, K. Beck, 2002
+-  **Test Driven Development. By Example**, Addison-Wesley Professional, K. Beck, 2002
 
--  Agile Testing: A Practical Guide for Testers and Agile Teams, L. Crispin, Addison-Wesley Professional, 2008
+-  **Agile Testing: A Practical Guide for Testers and Agile Teams**, L. Crispin, Addison-Wesley Professional, 2008
 
-.. [1]
-   Ranging from web-based UIs to embedded systems.
-
-.. |image0| image:: media/image3.png
-   :width: 2.875in
-   :height: 1.82292in
-.. |image1| image:: media/image2.png
-   :width: 0.72632in
-   :height: 0.25391in
-.. |image2| image:: media/image1.png
-   :width: 5.73438in
-   :height: 3.45932in
-.. |image3| image:: media/image4.png
-   :width: 6.27083in
-   :height: 1.83333in
