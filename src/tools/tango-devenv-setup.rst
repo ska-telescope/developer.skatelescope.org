@@ -6,15 +6,11 @@ Definition
 The Development Environment is the set of processes and software tools used to create software.  
 
 Tools include:
- - python version 3.5
- - pip 19.0.2
- - pytest 4.1.0
- - pylint 0.13.0
- - g++ 7.3.0 (default ubuntu 18.04)
- - TANGO-controls '9.2.5a'
- - Visual Studio Code '1.30', PyCharm Community Edition 'community-2018.3.3'
- - ZEROMQ '4.0.5'
- - OMNIORB '4.2.1'
+ - python version 3.7
+ - TANGO-controls '9.3.3'
+ - Visual Studio Code, PyCharm Community Edition
+ - ZEROMQ '4.3.2'
+ - OMNIORB '4.2.3'
  
 Processes include:
  - writing code,
@@ -44,19 +40,24 @@ Download a image of ubuntu 18.04 like the following one:
 
 Run the box and call the following commands:
 
-1. git clone https://gitlab.com/ska-telescope/ansible-playbooks
-2. cd ansible-playbooks
-3. apt-add-repository --yes --update ppa:ansible/ansible && apt-get install ansible
-4. ansible-playbook -i hosts deploy_tangoenv.yml 
-5. reboot the box
+.. code:: bash
+
+    sudo apt -y install git
+    git clone https://gitlab.com/ska-telescope/ansible-playbooks
+    cd ansible-playbooks
+    sudo apt-add-repository --yes --update ppa:ansible/ansible && sudo apt -y install ansible
+    ansible-playbook -i hosts deploy_tangoenv.yml --extra-vars "ansible_become_pass=osboxes.org"
+    sudo reboot
 
 Start the tango system
 ======================
-Login into the box with username "tango" (password: "tango") and call the following commands:
+In order to start the tango system, just call the following commands:
 
-1. cd /usr/src/ska-docker/docker-compose
-2. make up
-3. make start tangotest
+.. code:: bash
+
+    cd /usr/src/ska-docker/docker-compose
+    make up
+    make start tangotest
 
 
 Other information
