@@ -869,6 +869,8 @@ On the ``PersistentVolumeClaim``:
 * Always specify the matching storage class eg: ``storageClassName: standard``, so that it will bind to the intended ``PersistentVolume`` storage class.
 * Where possible, always specify an explicit ``PersistentVolume`` with ``volumeName`` eg: ``volumeName: tangodb-tango-chart-example-test``.  This will force the ``PersistentVolumeClaim`` to bind to a specific ``PersistentVolume`` and storage class, avoiding the loosely binding issues that volumes can have.
 
+.. _helm-tests:
+
 Tests
 ~~~~~
 
@@ -970,6 +972,13 @@ Local steps
         make deploy KUBE_NAMESPACE=integration HELM_CHART=<your_chart_directory>
 
 - Once functionality has been confirmed, go ahead and commit and push the changes
+
+Testing SKAMPI
+~~~~~~~~~~~~~~
+
+While the general approach to testing Helm charts outlined in the section :ref:`above <helm-tests>` still do apply, there are some practices specific to
+SKAMPI prototype project that developers are encouraged to use. These can be found in the project-specific documentation you can at `Testing SKAMPI
+</projects/skampi/en/latest/testing.html>`_.
 
 Gitlab
 ~~~~~~
