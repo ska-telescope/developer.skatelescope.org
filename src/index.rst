@@ -72,7 +72,6 @@ SKA software development is managed in an open and transparent way.
   tools/github2gitlab/github2gitlab
   tools/continuousintegration
   tools/cidashboard
-  tools/bugtracking
   tools/tango-devenv-setup
   tools/pycharm/pycharm
   tools/vscode/vscode
@@ -97,9 +96,6 @@ Every team is tracking daily work in a team-based project on our JIRA server at 
    - Create a new project
    - Link to issue tracker
 
-An overarching bug tracking system is used to file bugs emerging from integraiton activities: 
-
-- :doc:`tools/bugtracking`
 
 Development Environments
 ========================
