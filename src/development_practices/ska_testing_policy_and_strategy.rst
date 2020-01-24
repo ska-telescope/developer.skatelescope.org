@@ -76,8 +76,6 @@ and this document, the applicable documents shall take precedence.
 
 2. SKA-TEL-SKO-0001201 - ENGINEERING MANAGEMENT PLAN
 
-.. todo::
-   add the proper reference to the eng plan
 
 1.4 Reference documents
 -----------------------
