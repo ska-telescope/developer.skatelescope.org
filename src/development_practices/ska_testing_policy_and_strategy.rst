@@ -574,11 +574,10 @@ Logging occurs in JIRA by adding a new issue of type Bug to the product
 backlog and prioritized by the PO as every other story/enabler/spike.
 The issue type Defect should not be used, as it is meant to indicate a
 deviation from SKA requirements.
-For system-wide bugs the JIRA project called TODO PROJECT TO BE IDENTIFIED AND CREATED
+
+For system-wide bugs the JIRA project called SKB (SKA bug tracking system) 
 is used. Triage of these bugs is done by the SYSTEM team with support by selected people.
 
-.. todo::
-   identify this project
 
 - `SKA Bug tracking project <https://jira.skatelescope.org/projects/SKB/summary>`_
 
