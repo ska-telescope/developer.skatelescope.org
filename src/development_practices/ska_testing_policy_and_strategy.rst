@@ -171,7 +171,7 @@ the organization and teams and start providing some support
 In order to focus on supporting the teams, we expect that the testing
 process established in this initial phase should NOT:
 
--  set strict mandatory policies regarding levels of coverage of code
+-  enforce strict mandatory policies regarding levels of coverage of code
    (regardless of the coverage criteria such as statements, branch, or
    variable usage-definition), of data, of requirements and of risks;
 -  systematically cover system-testing;
@@ -180,9 +180,6 @@ process established in this initial phase should NOT:
    avoid creating stumbling blocks for teams;
 -  provide traceability of requirements and risks;
 -  be centered on “specification by example” yet.
-
-.. todo::
-   the sentence that says that no sctrict thresholds on coverage contradicts what is being written in the DoD.
 
 We will focus on these aspects in subsequent phases.
 
