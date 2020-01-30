@@ -36,7 +36,7 @@ health metrics and have the badges created automatically as long as the output
 from their code health reports follows the requirements described bellow.
 As an alternative the teams can instead create the :code:`ci-metrics.json`
 file themselves according to what is described in
-`Manual Metrics <ManualMetrics>`_.
+:ref:`Manual Metrics <ManualMetrics>`.
 
 These metrics reports must pass the following requirements:
 
@@ -68,7 +68,7 @@ observed.
 In order to use this automation, the following code must be added at the end of
 :code:`.gitlab-ci.yml`
 
-.. code-block:: yml
+.. code-block:: yaml
 
   create ci metrics:
     stage: .post
@@ -92,7 +92,7 @@ Manual Collection of CI health metrics as part of the CI pipeline
 ------------------------------------------------------------------
 The teams that prefer to create their own :code:`ci-metrics.json` file instead
 of using the provided automation, can do so. They are still expected to observe
-all the points described in `Automated Metrics <AutomatedMetrics>`_.
+all the points described in :ref:`Automated Metrics <AutomatedMetrics>`.
 
 The :code:`ci-metrics.json` file is expect to be created automatically as part
 of the CI pipeline by the teams by collecting the relevant information from the
