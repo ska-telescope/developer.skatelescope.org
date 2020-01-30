@@ -1,7 +1,7 @@
 .. _ait:
 
-AIT cluster
-***********
+EngageSKA cluster
+*****************
 
 Cluster specs
 =============
