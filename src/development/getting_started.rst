@@ -120,8 +120,8 @@ Test that the connectivity in the cluster works
 Once Helm is installed, develop a helm chart for the project. Refer to `Helm instructions <https://developer.skatelescope.org/en/latest/development/orchestration-guidelines.html#templating-the-application>`_ for guidelines.
 
 
-Publish my application as a Helm chart on our repository
-````````````````````````````````````````````````````````
+Install Helm charts from our own repository
+```````````````````````````````````````````
 
 Working with a Helm chart repository is well-documented on `The Official Helm Chart Repository Guide <https://v2.helm.sh/docs/developing_charts/#the-chart-repository-guide>`_.
 
@@ -147,9 +147,22 @@ To browse through the repo to find the available charts, you can then say (if, f
  ska-repo/test-app     	0.1.0        	1.0        	A Helm chart for Kubernetes
  ska-repo/webjive      	0.1.0        	1.0        	A Helm chart for deploying the WebJive on Kuber...
 
-To install the test-app, you call **helm install lets-try-the-test-app ska-repo/test-app** to install it in the default namespace. Test this with **kubectl get pods -n default**.
+To install the test-app, you call **helm install the-app-i-want-to-test ska-repo/test-app** to install it in the default namespace. Test this with **kubectl get pods -n default**.
 
-Read the `Helm documentation <https://v2.helm.sh/docs/developing_charts/#the-chart-repository-guide>`_ in order to learn how to publish your application to the Helm repository. 
+Read the `Helm documentation <https://v2.helm.sh/docs/developing_charts/#the-chart-repository-guide>`_ in order to learn how to publish your application to a Helm repository. If you want to publish your chart, you can copy the CI pipeline job below, and push your work to a branch called **helm-publish** (note the **only:** tag). Keep in mind, if you have multiple charts in your repository, you will be uploading all of them as part of the pipeline - this may take some time, so don't overdo this.
+
+.. code:: yaml
+
+	publish-chart:
+	  stage: .post # recommended that you have a LOT of good tests in place that passes before you upload your chart.
+	  when: always # options: manual / always. If you say manual, this job will run after you've clicked somewhere on Gitlab.
+	  only: # This is the name of the branch from where you will be able to update the repo with your chart(s)
+		- helm-publish
+	  tags:   # Make sure to enable the helm-repoman Gitlab Runner to run this chart. On your project, go to
+		- helm-repoman
+	  script:
+		# - helm init --client-only # Because otherwise Helm complains
+		- curl -s https://gitlab.com/ska-telescope/stupid/raw/master/scripts/helm-repo-update.sh | sh
 
 .. note:: 
  Note that the link provided here is for Helm v2, which was the version of helm that we used at the time of writing this. Helm v3 was not yet working with our integration environment.
