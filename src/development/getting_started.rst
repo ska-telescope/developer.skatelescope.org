@@ -119,53 +119,17 @@ Test that the connectivity in the cluster works
 
 Once Helm is installed, develop a helm chart for the project. Refer to `Helm instructions <https://developer.skatelescope.org/en/latest/development/orchestration-guidelines.html#templating-the-application>`_ for guidelines.
 
+.. _Helm Chart Repository: https://nexus.engageska-portugal.pt/#browse/browse:helm-chart
+.. _SKAMPI: https://gitlab.com/ska-telescope/skampi
 
-Install Helm charts from our own repository
-```````````````````````````````````````````
+Publish Helm charts in our own repository
+`````````````````````````````````````````
 
-Working with a Helm chart repository is well-documented on `The Official Helm Chart Repository Guide <https://v2.helm.sh/docs/developing_charts/#the-chart-repository-guide>`_.
+The SKAMPI_ repository is in essence a configuration management repository, which basically just consists of a number of Helm charts and instructions for installing them on a kubernetes cluster.
 
-.. note:: 
- Our Helm chart repository URL is https://nexus.engageska-portugal.pt/repository/helm-chart 
- 
-In order to add the Helm chart repo to your local list of repos, run 
+Installing Helm charts from our own `Helm Chart Repository`_ is another option, specifically that enables installing different charts during run-time.
 
-.. code:: bash
-
- $ `helm repo add [REPONAME] https://nexus.engageska-portugal.pt/repository/helm-chart`
- 
- 
-where [REPONAME] is a name you choose to identify the repo on your local machine. 
-
-To browse through the repo to find the available charts, you can then say (if, for example, you decided to name the repo `ska-repo`), to see output similar to this:
-
-.. code:: bash
-
- $ helm search ska-repo
- NAME                  	CHART VERSION	APP VERSION	DESCRIPTION
- ska-repo/sdp-prototype	0.2.1        	1.0        	helm chart to deploy the SDP Prototype on Kuber...
- ska-repo/test-app     	0.1.0        	1.0        	A Helm chart for Kubernetes
- ska-repo/webjive      	0.1.0        	1.0        	A Helm chart for deploying the WebJive on Kuber...
-
-To install the test-app, you call **helm install the-app-i-want-to-test ska-repo/test-app** to install it in the default namespace. Test this with **kubectl get pods -n default**.
-
-Read the `Helm documentation <https://v2.helm.sh/docs/developing_charts/#the-chart-repository-guide>`_ in order to learn how to publish your application to a Helm repository. If you want to publish your chart, you can copy the CI pipeline job below, and push your work to a branch called **helm-publish** (note the **only:** tag). Keep in mind, if you have multiple charts in your repository, you will be uploading all of them as part of the pipeline - this may take some time, so don't overdo this.
-
-.. code:: yaml
-
-	publish-chart:
-	  stage: .post # recommended that you have a LOT of good tests in place that passes before you upload your chart.
-	  when: always # options: manual / always. If you say manual, this job will run after you've clicked somewhere on Gitlab.
-	  only: # This is the name of the branch from where you will be able to update the repo with your chart(s)
-		- helm-publish
-	  tags:   # Make sure to enable the helm-repoman Gitlab Runner to run this chart. On your project, go to
-		- helm-repoman
-	  script:
-		# - helm init --client-only # Because otherwise Helm complains
-		- curl -s https://gitlab.com/ska-telescope/stupid/raw/master/scripts/helm-repo-update.sh | sh
-
-.. note:: 
- Note that the link provided here is for Helm v2, which was the version of helm that we used at the time of writing this. Helm v3 was not yet working with our integration environment.
+Working with the Helm chart repository, including how to package and upload charts to our repository, is described :ref:`here in detail <helm_chart_repo>`.
 
 
 Deploy the TMC prototype and Webjive in kubernetes
