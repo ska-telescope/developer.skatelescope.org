@@ -170,11 +170,11 @@ To browse through the repo to find the available charts, you can then say (if, f
 
 .. code:: bash
 
- $ helm search skatelescope
- NAME                  	CHART VERSION	APP VERSION	DESCRIPTION
- skatelescope/sdp-prototype	0.2.1        	1.0        	helm chart to deploy the SDP Prototype on Kuber...
- skatelescope/test-app     	0.1.0        	1.0        	A Helm chart for Kubernetes
- skatelescope/webjive      	0.1.0        	1.0        	A Helm chart for deploying the WebJive on Kuber...
+  $ helm search skatelescope
+  NAME                      	CHART VERSION	APP VERSION	DESCRIPTION
+  skatelescope/sdp-prototype	0.2.1        	1.0        	helm chart to deploy the SDP Prototype on Kubernetes
+  skatelescope/test-app     	0.1.0        	1.0        	A Helm chart for Kubernetes
+  skatelescope/webjive      	0.1.0        	1.0        	A Helm chart for deploying the WebJive on Kubernetes
 
 To install the test-app, you call **helm install the-app-i-want-to-test skatelescope/test-app** to install it in the default namespace. Test this with **kubectl get pods -n default**.
 
@@ -236,12 +236,12 @@ If you now run ``helm repo update`` you (or your colleagues) should see your new
 
 .. code:: bash
 
- $ helm search skatelescope
-  NAME                  CHART VERSION	APP VERSION	DESCRIPTION
-  skatelescope/sdp-prototype	0.2.1        	1.0        	helm chart to deploy the SDP Prototype on  Kuber...
+  $ helm search skatelescope
+  NAME                      	CHART VERSION	APP VERSION	DESCRIPTION
+  skatelescope/sdp-prototype	0.2.1        	1.0        	helm chart to deploy the SDP Prototype on Kubernetes
   skatelescope/test-app     	0.1.0        	1.0        	A Helm chart for Kubernetes
-  skatelescope/webjive      	0.1.0        	1.0        	A Helm chart for deploying the WebJive on Kuber...
-  skatelescope/my-new-chart		0.1.0        	1.0        	A Helm chart for Kubernetes
+  skatelescope/webjive      	0.1.0        	1.0        	A Helm chart for deploying the WebJive on Kubernetes
+  skatelescope/my-new-chart    	0.1.0        	1.0        	A Helm chart for deploying the WebJive on Kubernetes
 
 .. _helm-with-gitlab:
 
