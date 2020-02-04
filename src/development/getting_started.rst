@@ -133,7 +133,7 @@ To add the SKA Helm chart repo to your local Helm, simply run
 
 .. code:: bash
 
- $ helm add repo https://nexus.engageska-portugal.pt/#browse/browse:helm-chart
+ $ helm repo add skatelescope https://nexus.engageska-portugal.pt/repository/helm-chart
 
 Working with the Helm chart repository, including how to package and upload charts to our repository, is described :ref:`here in detail <helm_chart_repo>`.
 

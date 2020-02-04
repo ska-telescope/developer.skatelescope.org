@@ -159,24 +159,24 @@ In order to add the Helm chart repo to your local list of repositories, run
 
 .. code:: bash
 
- $ `helm repo add [REPONAME] https://nexus.engageska-portugal.pt/repository/helm-chart`
+ $ helm repo add [REPONAME] https://nexus.engageska-portugal.pt/repository/helm-chart
 
-where [REPONAME] is a name you choose to identify the repo on your local machine.
+where [REPONAME] is a name you choose to identify the repo on your local machine. In order to standardise, we would recommend you use ``skatelescope``.
 
 Search available charts in a repo
 '''''''''''''''''''''''''''''''''
 
-To browse through the repo to find the available charts, you can then say (if, for example, you decided to name the repo `ska-repo`), to see output similar to this:
+To browse through the repo to find the available charts, you can then say (if, for example, you decided to name the repo `skatelescope`), to see output similar to this:
 
 .. code:: bash
 
- $ helm search ska-repo
+ $ helm search skatelescope
  NAME                  	CHART VERSION	APP VERSION	DESCRIPTION
- ska-repo/sdp-prototype	0.2.1        	1.0        	helm chart to deploy the SDP Prototype on Kuber...
- ska-repo/test-app     	0.1.0        	1.0        	A Helm chart for Kubernetes
- ska-repo/webjive      	0.1.0        	1.0        	A Helm chart for deploying the WebJive on Kuber...
+ skatelescope/sdp-prototype	0.2.1        	1.0        	helm chart to deploy the SDP Prototype on Kuber...
+ skatelescope/test-app     	0.1.0        	1.0        	A Helm chart for Kubernetes
+ skatelescope/webjive      	0.1.0        	1.0        	A Helm chart for deploying the WebJive on Kuber...
 
-To install the test-app, you call **helm install the-app-i-want-to-test ska-repo/test-app** to install it in the default namespace. Test this with **kubectl get pods -n default**.
+To install the test-app, you call **helm install the-app-i-want-to-test skatelescope/test-app** to install it in the default namespace. Test this with **kubectl get pods -n default**.
 
 Update the repo
 '''''''''''''''
@@ -236,12 +236,12 @@ If you now run ``helm repo update`` you (or your colleagues) should see your new
 
 .. code:: bash
 
- $ helm search ska-repo
-  NAME                  	CHART VERSION	APP VERSION	DESCRIPTION
-  ska-repo/sdp-prototype		0.2.1        	1.0        	helm chart to deploy the SDP Prototype on  Kuber...
-  ska-repo/test-app     		0.1.0        	1.0        	A Helm chart for Kubernetes
-  ska-repo/webjive      		0.1.0        	1.0        	A Helm chart for deploying the WebJive on Kuber...
-  ska-integr8/my-new-chart		0.1.0        	1.0        	A Helm chart for Kubernetes
+ $ helm search skatelescope
+  NAME                  CHART VERSION	APP VERSION	DESCRIPTION
+  skatelescope/sdp-prototype	0.2.1        	1.0        	helm chart to deploy the SDP Prototype on  Kuber...
+  skatelescope/test-app     	0.1.0        	1.0        	A Helm chart for Kubernetes
+  skatelescope/webjive      	0.1.0        	1.0        	A Helm chart for deploying the WebJive on Kuber...
+  skatelescope/my-new-chart		0.1.0        	1.0        	A Helm chart for Kubernetes
 
 .. _helm-with-gitlab:
 
