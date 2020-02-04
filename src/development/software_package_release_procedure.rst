@@ -166,7 +166,7 @@ where [REPONAME] is a name you choose to identify the repo on your local machine
 Search available charts in a repo
 '''''''''''''''''''''''''''''''''
 
-To browse through the repo to find the available charts, you can then say (if, for example, you decided to name the repo `skatelescope`), to see output similar to this:
+To browse through the repo to find the available charts, you can then say (if, for example, you decided to name the repo ``skatelescope``), to see output similar to this:
 
 .. code:: bash
 
