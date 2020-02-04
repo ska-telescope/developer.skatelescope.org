@@ -248,7 +248,7 @@ If you now run ``helm repo update`` you (or your colleagues) should see your new
 Bulk package and publish using Gitlab CI
 ''''''''''''''''''''''''''''''''''''''''
 
-Read the `Helm documentation <https://v2.helm.sh/docs/developing_charts/#the-chart-repository-guide>`_ in order to learn how to publish your application to a Helm repository. If you want to publish your chart, you can copy the CI pipeline job below, and push your work to a branch called **helm-publish** (note the **only:** tag). Keep in mind, if you have multiple charts in your repository, you will be uploading all of them as part of the pipeline - this may take some time, so don't overdo this.
+Read the `Helm documentation <https://v2.helm.sh/docs/developing_charts/#the-chart-repository-guide>`_ in order to learn how to publish your application to a Helm repository. If you want to publish your chart, you can copy the CI pipeline job below, and push your work to a branch called **helm-publish** (note the **only:** tag).
 
 .. code:: yaml
 
