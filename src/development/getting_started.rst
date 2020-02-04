@@ -122,15 +122,20 @@ Once Helm is installed, develop a helm chart for the project. Refer to `Helm ins
 .. _Helm Chart Repository: https://nexus.engageska-portugal.pt/#browse/browse:helm-chart
 .. _SKAMPI: https://gitlab.com/ska-telescope/skampi
 
-Publish Helm charts in our own repository
-`````````````````````````````````````````
+Install Helm charts from our own repository
+```````````````````````````````````````````
 
 The SKAMPI_ repository is in essence a configuration management repository, which basically just consists of a number of Helm charts and instructions for installing them on a kubernetes cluster.
 
 Installing Helm charts from our own `Helm Chart Repository`_ is another option, specifically that enables installing different charts during run-time.
 
-Working with the Helm chart repository, including how to package and upload charts to our repository, is described :ref:`here in detail <helm_chart_repo>`.
+To add the SKA Helm chart repo to your local Helm, simply run
 
+.. code:: bash
+
+ $ helm add repo https://nexus.engageska-portugal.pt/#browse/browse:helm-chart
+
+Working with the Helm chart repository, including how to package and upload charts to our repository, is described :ref:`here in detail <helm_chart_repo>`.
 
 Deploy the TMC prototype and Webjive in kubernetes
 ```````````````````````````````````````````````````
