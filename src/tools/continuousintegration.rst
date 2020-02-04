@@ -25,18 +25,34 @@ Automated Collection of CI health metrics as part of the CI pipeline
 --------------------------------------------------------------------
 As part of the CI/CD process all teams are expected to collect and consolidate
 the required code health metrics. Namely **unit tests**, **linting (static
-code analysis)** and **coverage**. Team have the option to follow the automated
-path as long as the output from these reports follows the requirements
-described bellow, or they might created the :code:`ci-metrics.json` themselves
-according to what is described in `Manual Metrics <ManualMetrics>`_.
+code analysis)** and **coverage**.
+
+Part of the CI/CD functionality is to add a quick glance of those metrics to
+each repository in the form of badges. These badges will always show the status
+of the **default** branch in each repository.
+
+Teams have the option to use the automatic parsing of their CI and code
+health metrics and have the badges created automatically as long as the output
+from their code health reports follows the requirements described bellow.
+As an alternative the teams can instead create the :code:`ci-metrics.json`
+file themselves according to what is described in
+:ref:`Manual Metrics <ManualMetrics>`.
 
 These metrics reports must pass the following requirements:
 
-1. These files must **not** be part of the repository, but be created under their respective steps (:code:`test`, :code:`llinting`) in the CI pipeline.
-2. Unit Tests report must be a JUnit XML file residing under :code:`./build/reports/unit-tests.xml`
-3. Linting report must be a JUnit XML file residing under :code:`./build/reports/linting.xml`
-4. Coverage report must be a XML file in the standard used by `Coverage.py` residing under :code:`./build/reports/code-coverage.xml`
-5. The XML format expected for the coverage is the standard XML output from `Coverage.py <https://pypi.org/project/coverage/>`_ for Python or from a similar tool like `Cobertura <https://github.com/cobertura/cobertura>`_ for Javascript with the :code:`line-rate` attribute specifying the coverage. See the example code bellow.
+1. These files must **not** be part of the repository, but be created under
+   their respective steps (:code:`test`, :code:`linting`) in the CI pipeline.
+2. Unit Tests report must be a JUnit XML file residing under
+   :code:`./build/reports/unit-tests.xml`
+3. Linting report must be a JUnit XML file residing under
+   :code:`./build/reports/linting.xml`
+4. Coverage report must be a XML file in the standard used by `Coverage.py`
+   residing under :code:`./build/reports/code-coverage.xml`
+5. The XML format expected for the coverage is the standard XML output from
+   `Coverage.py <https://pypi.org/project/coverage/>`_ for Python or from a
+   similar tool like `Cobertura <https://github.com/cobertura/cobertura>`_
+   for Javascript with the :code:`line-rate` attribute specifying the coverage.
+   See the example code bellow.
 
 .. code-block:: xml
 
@@ -52,7 +68,7 @@ observed.
 In order to use this automation, the following code must be added at the end of
 :code:`.gitlab-ci.yml`
 
-.. code-block:: yml
+.. code-block:: yaml
 
   create ci metrics:
     stage: .post
@@ -76,7 +92,7 @@ Manual Collection of CI health metrics as part of the CI pipeline
 ------------------------------------------------------------------
 The teams that prefer to create their own :code:`ci-metrics.json` file instead
 of using the provided automation, can do so. They are still expected to observe
-all the points described in `Automated Metrics <AutomatedMetrics>`_.
+all the points described in :ref:`Automated Metrics <AutomatedMetrics>`.
 
 The :code:`ci-metrics.json` file is expect to be created automatically as part
 of the CI pipeline by the teams by collecting the relevant information from the

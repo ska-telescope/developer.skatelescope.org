@@ -28,7 +28,8 @@
                         //"<td><a alt=\"docs url on readthedocs\" href=\"" + docs_url + "\">" + "docs" + "</a></td>" +
                         "<td>" + description + "</td>" +
                         "</tr>";
-                  $(item).appendTo(list);
+                  if (name != "dev.developer.skatelescope.org")
+                      $(item).appendTo(list);
                }); //end each
               console.log(i + " projects");
            }); //end getJSON
