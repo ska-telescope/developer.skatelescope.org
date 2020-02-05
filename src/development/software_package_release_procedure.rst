@@ -248,38 +248,55 @@ If you now run ``helm repo update`` you (or your colleagues) should see your new
 Bulk package and publish using Gitlab CI
 ''''''''''''''''''''''''''''''''''''''''
 
-Read the `Helm documentation <https://v2.helm.sh/docs/developing_charts/#the-chart-repository-guide>`_ (note: this link is for Helm v2 because we are still using it) in order to learn how to publish your application to a Helm repository. If you want to publish your chart, you can copy the CI pipeline job below, and push your work to a branch called **helm-publish** (note the **only:** tag).
+Read the `Helm documentation <https://v2.helm.sh/docs/developing_charts/#the-chart-repository-guide>`_ (note: this link is for Helm v2 because we are still using it) in order to learn how to publish your application to a Helm repository.
+This is an example of a branch-specific job in the CI pipeline with manual input required. See comments below the code block.
 
-.. code:: yaml
+.. code-block:: yaml
+	:linenos:
 
 	stages:
-		- helm-package
 		- helm-publish
 
 	...
 
-	package-chart:
-	  stage: helm-package
-	  when: manual # the script will require you to specify the name of the chart that you want to package - CHART_NAME
-	  only:
-		- helm-publish # if you want to limit the running of this job only to a branch called `helm-publish`, this is how
-	  tags:
-		- helm-repoman # the name of the runner where this job will be executed. This runner has minikube installed, and will execute the job from the shell.
-	  allow_failure: false
-	  script:
-		- cd charts
-		- if [ $CHART_NAME == 'all' ]; then for d in */; do helm package "$d"; done; else helm package $CHART_NAME; fi
-		- mv *.tgz ~/packages
-
 	publish-chart:
 	  stage: helm-publish
-	  when: always
+	  when: manual # the script will require you to specify the name of the chart that you want to package - CHART_NAME
 	  only:
 		- helm-publish
 	  tags:
 		- helm-repoman
 	  script:
-		- cd ~/packages
+		- cd charts
+		- if [ $CHART_NAME == 'all' ]; then for d in */; do helm package "$d"; done; else helm package $CHART_NAME; fi
 		- for f in *.tgz; do curl -v -u $RAW_USER:$RAW_PASS --upload-file $f $RAW_HOST/repository/helm-chart/$f; rm $f; done
 
+Here are a few comments, referring to the line numbers above:
+
+**ln 1**: Remember to add the stage at the top of your ``.gitlab-ci.yml``
+**ln 8**: Setting ``when: manual`` will cause the pipeline to wait for the user to trigger the job.
+
+.. _figure-1-gitlab-trigger:
+
+.. figure:: manual-trigger.png
+   :scale: 60%
+   :alt: Gitlab Manual Trigger
+   :align: center
+   :figclass: figborder
+
+When you try to run the blocked job for the first time, Gitlab will ask you to input variables - see next image. You need to specify ``CHART_NAME`` and use the exact name of the chart, for instance ``my-new-app``.
+
+You can either specify the chart name that is to be published, or input ``all`` so that every chart **in the top-level** ``charts/`` folder is published.
+
+.. _figure-2-gitlab-input:
+
+.. figure:: manual-input.png
+   :scale: 60%
+   :alt: Gitlab Manual Variable Input
+   :align: center
+   :figclass: figborder
+
+**ln 9**: Restricting the job to run only on the ``helm-publish`` branch is suggested because this job is run manually and thus will block a pipeline, waiting for manual input, which is not necessarily good for CI, especially if publishing new charts is not required.
+
+**ln 11**: The runner's name is ``helm-repoman`` - it's available for all projects in the SKA group.
 
