@@ -227,10 +227,10 @@ Now, in order to publish the chart, you can simply run a curl command with an ``
 
 .. code:: bash
 
- $ curl -v -u $USERNAME:$PASSWORD --upload-file new-helm-package-v-0.1.0.tgz --url https://nexus.engageska-portugal.pt//repository/helm-chart/
+ $ curl -v -u $HELM_USERNAME:$HELM_PASSWORD --upload-file new-helm-package-v-0.1.0.tgz --url https://nexus.engageska-portugal.pt//repository/helm-chart/
 
 .. note::
- You will of course need credentials (``$USERNAME`` and ``$PASSWORD``) to run the above ``curl`` command with, and this user should have privileges for reading and writing on the Repository. We have a Gitlab Runner already set up with a user that has the required privileges - see :ref:`how to do this <helm-with-gitlab>` below.
+ You will of course need credentials (``$HELM_USERNAME`` and ``$HELM_PASSWORD``) to run the above ``curl`` command with, and this user should have privileges for reading and writing on the Repository. We have a Gitlab Runner already set up with a user that has the required privileges - see :ref:`how to do this <helm-with-gitlab>` below.
 
 If you now run ``helm repo update`` you (or your colleagues) should see your new application also listed under the repo:
 
@@ -269,7 +269,7 @@ This is an example of a branch-specific job in the CI pipeline with manual input
 	  script:
 		- cd charts
 		- if [ $CHART_NAME == 'all' ]; then for d in */; do helm package "$d"; done; else helm package $CHART_NAME; fi
-		- for f in *.tgz; do curl -v -u $RAW_USER:$RAW_PASS --upload-file $f $RAW_HOST/repository/helm-chart/$f; rm $f; done
+		- for f in *.tgz; do curl -v -u $HELM_USERNAME:$HELM_PASSWORD --upload-file $f $HELM_HOST/repository/helm-chart/$f; rm $f; done
 
 Here are a few comments, referring to the line numbers above:
 
