@@ -248,20 +248,38 @@ If you now run ``helm repo update`` you (or your colleagues) should see your new
 Bulk package and publish using Gitlab CI
 ''''''''''''''''''''''''''''''''''''''''
 
-Read the `Helm documentation <https://v2.helm.sh/docs/developing_charts/#the-chart-repository-guide>`_ in order to learn how to publish your application to a Helm repository. If you want to publish your chart, you can copy the CI pipeline job below, and push your work to a branch called **helm-publish** (note the **only:** tag).
+Read the `Helm documentation <https://v2.helm.sh/docs/developing_charts/#the-chart-repository-guide>`_ (note: this link is for Helm v2 because we are still using it) in order to learn how to publish your application to a Helm repository. If you want to publish your chart, you can copy the CI pipeline job below, and push your work to a branch called **helm-publish** (note the **only:** tag).
 
 .. code:: yaml
 
-	publish-chart:
-	  stage: .post # recommended that you have a LOT of good tests in place that passes before you upload your chart.
-	  when: always # options: manual / always. If you say manual, this job will run after you've clicked somewhere on Gitlab.
-	  only: # This is the name of the branch from where you will be able to update the repo with your chart(s)
+	stages:
+		- helm-package
 		- helm-publish
-	  tags:   # Make sure to enable the helm-repoman Gitlab Runner to run this chart. On your project, go to
+
+	...
+
+	package-chart:
+	  stage: helm-package
+	  when: manual # the script will require you to specify the name of the chart that you want to package - CHART_NAME
+	  only:
+		- helm-publish # if you want to limit the running of this job only to a branch called `helm-publish`, this is how
+	  tags:
+		- helm-repoman # the name of the runner where this job will be executed. This runner has minikube installed, and will execute the job from the shell.
+	  allow_failure: false
+	  script:
+		- cd charts
+		- if [ $CHART_NAME == 'all' ]; then for d in */; do helm package "$d"; done; else helm package $CHART_NAME; fi
+		- mv *.tgz ~/packages
+
+	publish-chart:
+	  stage: helm-publish
+	  when: always
+	  only:
+		- helm-publish
+	  tags:
 		- helm-repoman
 	  script:
-		- curl -s https://gitlab.com/ska-telescope/stupid/raw/master/scripts/helm-repo-update.sh | sh
+		- cd ~/packages
+		- for f in *.tgz; do curl -v -u $RAW_USER:$RAW_PASS --upload-file $f $RAW_HOST/repository/helm-chart/$f; rm $f; done
 
-.. note::
- Note that the link provided here is for Helm v2, which was the version of helm that we used at the time of writing this. Helm v3 was not yet working with our integration environment.
 
