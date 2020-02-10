@@ -1,5 +1,5 @@
 .. this title is converted into a DOM id and used
-   for populating this page using Github APIs,
+   for populating this page using Gitlab APIs,
    Do not edit it
 
 .. _list:
@@ -7,7 +7,7 @@
 List of projects
 ----------------
 
-The following table is automatically extracted from our github organisation page
+The following table is automatically extracted from our gitlab organisation repository
 at [https://gitlab.com/ska-telescope]
 
 ================= ============= ===========

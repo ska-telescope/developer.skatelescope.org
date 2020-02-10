@@ -1,11 +1,11 @@
    jQuery(function(){
-       var github_v3_endpoint = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&order_by=name&sort=asc&simple=true";
+       var gitlab_v4_endpoint = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&order_by=name&sort=asc&simple=true";
        var list = $("#list-of-projects tbody");
        var i = 1;
        //console.log(list);
        if( list.length ){
            list.empty();
-           $.getJSON(github_v3_endpoint, function(data){
+           $.getJSON(gitlab_v4_endpoint, function(data){
                $.each(data, function(key, val){
 //                  console.log(val);
                   i = i+1;
@@ -15,7 +15,8 @@
                       description = "";
                   gitlab_url = val["web_url"];
                   name = val["name"];
-                  docs_name = name.replace(/\./g,"");
+                  path = val["path"];
+                  docs_name = path.replace(/\./g,"");
                   if(name == "developer.skatelescope.org")
                       docs_url = "https://developer.skatelescope.org";
                    else
