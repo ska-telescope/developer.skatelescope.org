@@ -163,6 +163,8 @@ We plan to cover at least these practices:
    enough to be tested.
    We suggest that branch coverage is used whenever possible (as opposed to
    statement/line coverage).
+-  Develop system-level tests to cover acceptance criteria (of
+   capabilities and features that are related to the entire system).
 
 Another goal of this phase is **identifying the test training needs** for
 the organization and teams and start providing some support
@@ -174,12 +176,10 @@ process established in this initial phase should NOT:
 -  enforce strict mandatory policies regarding levels of coverage of code
    (regardless of the coverage criteria such as statements, branch, or
    variable usage-definition), of data, of requirements and of risks;
--  systematically cover system-testing;
 -  rely on exploratory testing (which will be introduced later on);
 -  define strict entry/exit conditions for artefacts on the different CI stages to
    avoid creating stumbling blocks for teams;
--  provide traceability of requirements and risks;
--  be centered on “specification by example” yet.
+-  provide traceability risks.
 
 We will focus on these aspects in subsequent phases.
 
@@ -199,10 +199,6 @@ improve themselves and possibly to create competition across teams. Test
 metrics will include basic ones dealing with the testing process, the
 testing architecture and the product quality.
 
-.. todo::
-    say something regarding phase 2
-    - system end-to-end testing
-    - component/service testing
 
 4 Testing policy
 ================
@@ -266,11 +262,10 @@ the teams.**
 
 
 With reference to the test quadrants (:ref:`Figure 1<figure-test-quadrants>`), this policy is restricted
-to tests supporting the teams,  and mostly those that are technology
-facing, hence quadrant Q1 (bottom left) and partly Q2 (top left), functional acceptance tests.
+to tests supporting the teams,  and it includes both quadrants on the left of the picture:
+tests that are technology
+facing, hence quadrant Q1 (bottom left) and functional acceptance tests, in Q2 (top left).
 
-.. todo::
-    include also Q2
 
 .. _figure-test-quadrants:
 
@@ -288,10 +283,9 @@ test-first, test automation). The testing process that will be
 established should help creating testable software products, it should
 lead to a well-designed test automation architecture, it should push
 teams to practice TDD, test-first, and adopt suitable test automation
-patterns.
+patterns. The process should also lead to a substantial set of automated tests
+for testing the system, mostly in the form of Gherkin tests.
 
-.. todo::
-    include also system and component/service tests
 
 The reason is that in this way the following higher level objectives can
 be achieved:
@@ -323,21 +317,19 @@ be achieved:
    execution and enable regression testing to be performed several
    times during a sprint (or even a day).
 
-.. todo::
-    say something regarding the support that e2e tests give to individual teams that
-    develop a service and the support they give in identifying system-level failures.
-    Include a word also on smoke tests.
+*  System-level tests are needed to verify acceptance criteria of features and capabilities
+   that are related to the system (as opposed to individual components or services).
+   Writing them in Gherkin has the added value of providing the means to establish
+   a **living documentation**, that is using test cases as a documentation of the
+   business logic and policies implemented by the system.
 
-Emphasis on quadrant 1 of :ref:`Figure 1<figure-test-quadrants>`,
-and low importance to the other quadrants, will
-allow the teams to be more focussed (within the realm of testing) and
-learn the basics. Some attention to quadrant 2 will let teams start addressing
-tests at a higher level, which bring along aspects like traceability
-(relationships between tests and requirements) and integration between
-subsystems.
+*  System-level tests are also linked to higher level requirements (L1, L2, IF
+   requirements, in addition to
+   acceptance criteria). In this way we can provide traceability of tests to
+   requirements, and easily determine what is the degree of satisfaction of certain
+   requirements based on test execution data.
 
-.. todo::
-    adjust the text above to add Q2
+
 
 Expected outcomes are that once testable systems are produced, a relatively large number of
 unit/module tests will be automated, new tests will be regularly
@@ -356,9 +348,6 @@ systematic traceability of tests to requirements not to be covered, and
 monitoring of quality also not to be covered. These are objectives to be achieved
 in later phases, with enhancements of this policy.
 
-.. todo::
-
-    remove the sentence on traceability not being done
 
 4.4 Monitoring implementation of the policy
 -------------------------------------------
