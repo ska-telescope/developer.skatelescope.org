@@ -126,7 +126,7 @@ We envision 3 major phases:
 =========================
 
 This early phase should start now (June 2019) and should cover at least
-the next 1-2 Program Increments.
+the next few Program Increments.
 
 **The overarching goal is to establish a test process that supports the
 teams**. In other terms this means that development teams will be the
@@ -380,7 +380,7 @@ These metrics should be automatically computed and updated, and made available t
 stakeholder in SKA.
 
 .. note::
-   Some of these metrics are already collected and displayed in https://argos.engageska-portugal.pt
+   Some of these metrics are collected and displayed in https://argos.engageska-portugal.pt
    (username=viewer, password=viewer).
 
 
@@ -390,7 +390,7 @@ stakeholder in SKA.
 A testing strategy describes how the test policy is implemented and it
 should help each team member to better understand what kind of test to
 write, how many and how to write them. This testing strategy refers to
-the testing policy described above, for Phase 1 and 2.
+the testing policy described above.
 
 Because of the diversity of SKA development teams and the diversity of
 the nature of the systems that they work upon (ranging
@@ -426,7 +426,7 @@ Testing levels refer to the granularity of the system-under-test (SUT):
 **Component testing**
    Here the word "component" refers to deployment units, rather than software modules or
    other static structures. Components can be binary artefacts such as jar, DLL or wheel
-   files run within threads, processes, services or virtual docker components.
+   files, and their "containers" like threads, processes, services or virtual docker components.
 
 **Integration testing**
    Testing performed to expose defects in the
@@ -483,7 +483,7 @@ Each team should have at least a tester, which is the "testing conscience" withi
 Because of the specific skills
 that are needed to write good tests and to manage the testing process,
 we expect that in the coming months a tester will become a dedicated
-person in each team. For the time being we see “tester” as being a
+person in each team. We see “tester” as being a
 function within the team rather than a job role. Each team member should
 contribute to this function although one specific person should be held
 accountable for testing.
@@ -494,11 +494,18 @@ developing module and integration tests, testers and product owners are
 responsible for designing component, system and acceptance tests for user stories,
 enablers, and features.
 
-.. todo::
+System-level tests are to be designed, implemented and maintained
+by groups of testers belonging to different teams, as opposed by a dedicated
+group or team. Testers should come from the teams that contributed one or more
+components making up the system.
 
-    say that system tests are to be designed implemented and maintained
-    by testers belonmging to different teams based on the teams that own
-    the components constituting the system
+Somebody (the Product Owner of the System Team, or a feature owner) might
+act as a coordinator of the development.
+
+Malfunctions in the testware implementing system-level tests should be treated as
+bugs of high priority.
+
+
 
 5.3 Test specification
 ----------------------
@@ -532,14 +539,20 @@ in which the user story is being developed.
     diagnosing failures, delays in deployment, damage to stored data, malfunctions
     to other components
 
-.. todo::
 
-    say that for system tests they are to be developed based on acceptance
-    criteria of features and capabilities
-    and that they should linked to L1/L2/IF/Verification requirements
-    as shown and explained in CONFLUENCE PAGE
-    all acceptance criteria should be covered, including happy and sad paths
-    of the use case scenarios entailed by the criteria.
+System-level tests are derived from acceptance criteria of epics, capabilities or features.
+Appropriate tags should be added to tests and scenarios so that they can be
+linked to epics, capabilities and features.
+
+All acceptance criteria should be covered by 1+ tests/scenarios, including happy and sad paths
+of the use case entailed by the criteria.
+
+System-level tests should also be linked (for traceability purposes) to high-level requirements (L1/L2/L3,
+Interface requirements) of the telescope software. They should also be present in Jira.
+
+Some preliminary information on how to implement Gherkin scenarios is shown in
+https://confluence.skatelescope.org/display/SE/How+to+implement+BDD+tests.
+
 
 5.4 Test environment
 --------------------
