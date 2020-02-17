@@ -1,6 +1,9 @@
 Getting Started
 ===============
 
+There is a core set of base technologies needed to work with the SKA Telescope
+Manager development that are described under the :ref:`need_to_know`.
+
 I want to..
 --------------------------
 

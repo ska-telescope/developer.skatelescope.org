@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-.. HOME SECTION ==================================================
+.. HOME SECTION ==============================================================
 
 .. Hidden toctree to manage the sidebar navigation.
 
@@ -36,7 +36,7 @@ SKA developer community
 
 SKA software development is managed in an open and transparent way.
 
-.. COMMUNITY SECTION ==================================================
+.. COMMUNITY SECTION =========================================================
 
 .. Hidden toctree to manage the sidebar navigation.
 
@@ -81,16 +81,18 @@ Development tools
 Working with git
 ================
 
-Git is adopted as distributed version control system, and all SKA code shall be hosted in a git repository.
-The github organization *ska-telescope* can be found at https://github.com/ska-telescope . All SKA developers
-must have a github account and be added to the organization as part of a team.
+Git is adopted as distributed version control system, and all SKA code shall be
+hosted in a git repository. The github organization *ska-telescope* can be
+found at https://github.com/ska-telescope . All SKA developers must have a
+github account and be added to the organization as part of a team.
 
 - :doc:`tools/git`
 
 Working with SKA Jira
 =====================
 
-Every team is tracking daily work in a team-based project on our JIRA server at [https://jira.skatelescope.org]
+Every team is tracking daily work in a team-based project on our JIRA server
+at [https://jira.skatelescope.org].
 
 .. todo::
    - Create a new project
@@ -103,20 +105,21 @@ Development Environments
 Python and Tango development
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A completely configured development environment can be set up very easily. This will include 
-TANGO, PyTANGO, docker and properly configured IDEs.
+A completely configured development environment can be set up very easily.
+This will include TANGO, PyTANGO, docker and properly configured IDEs.
 
 - :doc:`tools/tango-devenv-setup`
 
 
-PyCharm and VSCode are two IDEs that can be configured to support python and 
-PyTANGO development activities. You will find detailed instructions and how-tos at:
+PyCharm and VSCode are two IDEs that can be configured to support python and
+PyTANGO development activities. You will find detailed instructions and
+how-tos at:
 
 - :doc:`tools/pycharm/pycharm`
 - :doc:`tools/vscode/vscode`
 
 
-.. AGILE PRACTICES FOLLOWED AT SKA SECTION ==================================================
+.. AGILE PRACTICES FOLLOWED AT SKA SECTION ====================================
 
 .. Hidden toctree to manage the sidebar navigation.
 
@@ -134,20 +137,21 @@ Development practices followed at SKA
 Testing policy and strategy
 ===========================
 
-The SKA testing policy and strategy contains useful guidelines and practices to be 
-followed when developing software for the SKA project.
+The SKA testing policy and strategy contains useful guidelines and practices to
+be followed when developing software for the SKA project.
 
 - :doc:`development_practices/ska_testing_policy_and_strategy`
 
 Definition of Done
 ==================
 
-The definition of done is used to guide teams in planning and estimating the size of stories and features:
+The definition of done is used to guide teams in planning and estimating the
+size of stories and features:
 
 - :doc:`development_practices/definition_of_done`
 
 
-.. DEVELOPMENT GUIDELINES SECTION ==================================================
+.. DEVELOPMENT GUIDELINES SECTION =============================================
 
 .. Hidden toctree to manage the sidebar navigation.
 
@@ -156,6 +160,7 @@ The definition of done is used to guide teams in planning and estimating the siz
   :caption: Development guidelines
   :hidden:
 
+  development/need_to_know
   development/getting_started
   development/fundamental_sw_requirements
   development/python-codeguide
@@ -172,18 +177,27 @@ The definition of done is used to guide teams in planning and estimating the siz
 Development guidelines
 ----------------------
 
+Need to Know
+============
+
+A reference guide with links to documentation and a set of tutorials about
+the basic technologies used by the SKA project, that every developer needs to
+understand before starting to collaborate in writing code.
+
+- :doc:`development/need_to_know`
 
 Getting Started Guide
 =====================
 
-A pocket-guide to documentation on adding a new project, development, containerisation and integration.
+A pocket-guide to documentation on adding a new project, development,
+containerisation and integration.
 
 - :doc:`development/getting_started`
 
 Fundamental SKA Software & Hardware Description Language Standards
 ==================================================================
 
-These standards underpin all SKA software development. The canonical copy is 
+These standards underpin all SKA software development. The canonical copy is
 `held in eB <https://ska-aw.bentley.com/SKAProd/Search/QuickLink.aspx?n=SKA-TEL-SKO-0000661&t=3&d=&sc=Global&i=view>`_,
 but the essential information is here:
 
@@ -193,18 +207,20 @@ but the essential information is here:
 Python coding guidelines
 ========================
 
-A Python skeleton project is created for use within the SKA Telescope. This skeleton purpose is to
-enforce coding best practices and bootstrap the initial project setup. Any development should start
-by forking this skeleton project and change the appropriate files.
+A Python skeleton project is created for use within the SKA Telescope. This
+skeleton purpose is to enforce coding best practices and bootstrap the initial
+project setup. Any development should start by forking this skeleton project
+and change the appropriate files.
 
 - :doc:`development/python-codeguide`
 
 Javascript coding guidelines
 ============================
 
-A React based javascript skeleton project is created for use within the SKA Telescope. Similar to the 
-Python skeleton above its purpose is to enforce coding best practices and bootstrap the initial project 
-setup for browser based javascript applications.
+A React based javascript skeleton project is created for use within the SKA
+Telescope. Similar to the Python skeleton above its purpose is to enforce
+coding best practices and bootstrap the initial project setup for browser
+based javascript applications.
 
 - :doc:`development/javascript-codeguide`
 
@@ -219,8 +235,9 @@ VHDL coding guidelines are described at:
 C++ Coding Standards
 ==========================
 
-A CPP skeleton project is created for use within the SKA Telescope. The skeleton purpose is to demonstrate
-coding best practices, boostrap initial project set up within the SKA Continuous Integration (CI) Framework.
+A CPP skeleton project is created for use within the SKA Telescope. The
+skeleton purpose is to demonstrate coding best practices, boostrap initial
+project set up within the SKA Continuous Integration (CI) Framework.
 
 - :doc:`development/cplusplus-codeguide`
 
@@ -228,42 +245,45 @@ coding best practices, boostrap initial project set up within the SKA Continuous
 Containerisation Standards
 ==========================
 
-A set of standards, conventions and guidelines for building, integrating and maintaining Container
-technologies.
+A set of standards, conventions and guidelines for building, integrating and
+maintaining Container technologies.
 
 - :doc:`development/containerisation-standards`
 
 Container Orchestration Guidelines
 ==================================
 
-A set of standards, conventions and guidelines for deploying application suites on Container Orchestration technologies.
+A set of standards, conventions and guidelines for deploying application suites
+on Container Orchestration technologies.
 
 - :doc:`development/orchestration-guidelines`
 
 SKA Software Packaging Procedure
 ================================
 
-This details a procedure that all *SKA* developers shall follow to ensure that they make use of the
-existing CI/CD pipelines to automate the building of their software packages for release.
+This details a procedure that all *SKA* developers shall follow to ensure that
+they make use of the existing CI/CD pipelines to automate the building of their
+software packages for release.
 
 - :doc:`development/software_package_release_procedure`
 
 Hosting a docker image on Nexus
 ===============================
 
-This details steps that all *SKA* developers shall abide to when building and hosting their docker
-images on the Nexus registry.
+This details steps that all *SKA* developers shall abide to when building and
+hosting their docker images on the Nexus registry.
 
 - :doc:`development/uploading-docker-nexus`
 
 Logging guidelines
 ==================
 
-A standard logging format exists for logging in the evolutionary prototype into an ELK stack logging system designed for the SKA software.
+A standard logging format exists for logging in the evolutionary prototype into
+an ELK stack logging system designed for the SKA software.
 
 - :doc:`development/logging-format`
 
-.. PROJECTS SECTION ==================================================
+.. PROJECTS SECTION ==========================================================
 
 .. Hidden toctree to manage the sidebar navigation.
 
@@ -285,7 +305,7 @@ Projects
 - :doc:`projects/document_project`
 - :doc:`projects/licensing`
 
-.. SERVICES SECTION ==================================================
+.. SERVICES SECTION ==========================================================
 
 .. Hidden toctree to manage the sidebar navigation.
 
@@ -302,7 +322,7 @@ Developer Services
 
 - :doc:`services/ait_performance_env`
 
-.. SHARE SECTION ==================================================
+.. SHARE SECTION =============================================================
 
 .. Hidden toctree to manage the sidebar navigation.
 
@@ -311,7 +331,7 @@ Developer Services
   :caption: Share Your Knowledge
   :hidden:
 
-  community/share_your_knowledge  
+  community/share_your_knowledge
 
 
 Share Your Knowledge
@@ -321,14 +341,15 @@ Share Your Knowledge
 Commitment to opensource
 ------------------------
 
-As defined in SKA software standard, SKA software development is committed to opensource,
-and an open source licensing model is always preferred within SKA software development.
+As defined in SKA software standard, SKA software development is committed to
+opensource, and an open source licensing model is always preferred within SKA
+software development.
 
 .. todo::
    - Committment to opensource
    - Exceptions
 
-.. RECOMMENDED READING SECTION ==================================================
+.. RECOMMENDED READING SECTION ===============================================
 
 .. Hidden toctree to manage the sidebar navigation.
 
@@ -341,7 +362,7 @@ and an open source licensing model is always preferred within SKA software devel
   recommended_reading/programming
   recommended_reading/programming_languages
 
-.. FOLLOW US SECTION ==================================================
+.. FOLLOW US SECTION =========================================================
 
 .. Hidden toctree to manage the sidebar navigation.
 
