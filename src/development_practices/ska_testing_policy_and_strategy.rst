@@ -426,7 +426,7 @@ Testing levels refer to the granularity of the system-under-test (SUT):
 **Component testing**
    Here the word "component" refers to deployment units, rather than software modules or
    other static structures. Components can be binary artefacts such as jar, DLL or wheel
-   files, and their "containers" like threads, processes, services or virtual docker components.
+   files, and their "containers" like threads, processes, services, Docker containers or virtual machines.
 
 **Integration testing**
    Testing performed to expose defects in the
