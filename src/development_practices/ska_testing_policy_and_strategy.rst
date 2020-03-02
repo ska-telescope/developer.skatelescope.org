@@ -249,7 +249,7 @@ following definitions, mostly derived from :ref:`ISTQB Glossary <ref-istqb-gloss
 4.2 Work organization
 ---------------------
 
-Testing is **performed by the team(s) who develops the software**. There is no
+Testing is **performed by the team(s) who develop the software**. There is no
 dedicated group of people who are in charge of testing, there are no
 beta-testers.
 
