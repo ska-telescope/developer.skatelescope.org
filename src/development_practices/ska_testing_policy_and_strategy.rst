@@ -253,7 +253,7 @@ Testing is **performed by the team(s) who develop the software**. There is no
 dedicated group of people who are in charge of testing, there are no
 beta-testers.
 
-Some testing is performed by a **temporary team of testers**, individuals coming from
+Some testing is performed by a **temporary team of testers**, composed by individuals from different ```
 existing teams. This testing is typically system or integration testing that covers 2
 or more artefacts that are developed by 2 or more teams.
 Selected testers come from these teams.
