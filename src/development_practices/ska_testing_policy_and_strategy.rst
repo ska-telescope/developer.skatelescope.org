@@ -59,8 +59,8 @@ strategy will change often, likely at least twice per year until
 settled.
 
 The document will evolve quickly during the SKA Bridging phase
-in order to reach a good level of maturity prior to SKA1 construction
-starts.
+in order to reach a good level of maturity prior to the SKA1 construction
+start.
 
 Each team is expected to comply with the policy and to adopt the
 strategy described here, or define and publish a more specific strategy in cases
@@ -127,7 +127,7 @@ We envision 3 major phases:
 3 Phase 1: Enabling Teams
 =========================
 
-This early phase should start now (June 2019) and should cover at least
+This early phase should start in June 2019 and should cover at least
 the next few Program Increments.
 
 **The overarching goal is to establish a test process that supports the
@@ -249,7 +249,7 @@ following definitions, mostly derived from :ref:`ISTQB Glossary <ref-istqb-gloss
 4.2 Work organization
 ---------------------
 
-Testing is **performed by the team who develops the software**. There is no
+Testing is **performed by the team(s) who develops the software**. There is no
 dedicated group of people who are in charge of testing, there are no
 beta-testers.
 
@@ -482,8 +482,9 @@ Other definitions are:
    These are system, acceptance or component tests that use as observation and control points
    an API whose entrypoints are all at the same abstraction level, and tests
    exercise all or most of the components of the SUT. End-to-end tests are different than
-   other system tests that control the SUT from one API and observe some of its
-   components, for example.
+   other system tests;  examples of non-e2e tests are tests that control the SUT
+   from a high level interface and observe some of its
+   components through a lower-level, component-specific, interface for example.
 
 6.2 Scope, roles and responsibilities
 -------------------------------------
@@ -498,7 +499,8 @@ we expect that in the coming months a tester will become a dedicated
 person in each team. We see “tester” as being a
 function within the team rather than a job role. Each team member should
 contribute to this function although one specific person should be held
-accountable for testing.
+accountable for testing and join the
+`SKA Testing Community of Practice <https://confluence.skatelescope.org/pages/viewpage.action?spaceKey=SE&title=Testing+Community+of+Practice>`_.
 
 In most cases, **programmers are responsible** for developing unit tests,
 programmers and testers together are responsible for designing and
@@ -507,11 +509,11 @@ responsible for designing component, system and acceptance tests for user storie
 enablers, and features.
 
 System-level tests are to be designed, implemented and maintained
-by **groups of testers belonging to different teams**, as opposed by a dedicated
-group or team. Testers should come from the teams that contributed one or more
+by development teams and/or groups of testers belonging to different teams.
+In the latter case, testers should come from the teams that contributed one or more
 components making up the system.
 
-The **product owner** of the System Team or a **feature owner** might
+The **product owner of the System Team** or a **feature/capability owner** might
 act as a coordinator of the development.
 
 Malfunctions in the testware implementing system-level tests should be treated as
@@ -522,7 +524,7 @@ Malfunctions in the testware implementing system-level tests should be treated a
 5.3 Test specification
 ----------------------
 
-Programmers adopt a TDD or test-first approach and almost all unit and module tests
+Programmers adopt a TDD, BDD or test-first approach and almost all unit and module tests
 are developed before production code on the basis of technical
 specifications or intended meaning of the new code. Testers can assist
 programmers in defining good test cases.
@@ -530,6 +532,19 @@ programmers in defining good test cases.
 In addition, when beginning to fix a bug, programmers, possibly with the
 tester, define one or more unit/module tests that confirm
 that bug. This is done prior to fixing the bug.
+
+
+For unit and module testing, code coverage figures should be monitored,
+especially **branch/condition coverage** (as opposed to statement coverage).
+In particular the tester should analyse what part of the code is not being covered by tests,
+assess how important those fragments are, and decide if they are worth
+being covered. If so, new tests should be designed.
+
+Importance should be assessed in terms of possible failures and their
+impact on the project: reduction of value of the system, difficulty in
+diagnosing failures, delays in deployment, damage to stored data, malfunctions
+to other components, impact on users.
+
 
 Furthermore, the product owner with a tester and a programmer define the
 acceptance criteria of a user story and on this basis the tester with
@@ -539,17 +554,10 @@ integration tests. Some of these acceptance tests are also **associated**
 features. All these tests are automated, possibly during the same sprint
 in which the user story is being developed.
 
-For unit and module testing code coverage figures should be monitored,
-especially **branch/condition coverage** (as opposed to statement coverage).
-In particular the tester should analyse what is not being covered by tests,
-assess how important are those fragments, and decide if they are worth
-being covered. If so, new tests should be designed.
-
-Importance should be assessed in terms of possible failures and their
-impact on the project: reduction of value of the system, difficulty in
-diagnosing failures, delays in deployment, damage to stored data, malfunctions
-to other components, impact on users.
-
+During a PI, testers together with feature and capability owners define the acceptance criteria
+and corresponding tests (either in Gherkin or other format). These tests are defined as the development
+of the feature proceeds, in a test-first fashion. In this way team(s) working on the feature
+will be able to check when their code passes the acceptance criteria.
 
 System-level tests are derived from acceptance criteria of epics, capabilities or features.
 Appropriate tags should be added to tests and scenarios so that they can be
@@ -605,7 +613,8 @@ https://confluence.skatelescope.org/display/SE/How+to+use+mocks+with+Tango.
 
 Another important approach to write unit/module tests in a way that they don't depend on the Tango infrastructure
 is to apply the **Humble Object** design pattern, that is extracting the domain logic from Tango-related code and move
-it to a separate python object that can be tested in isolation. See some preliminary examples in https://confluence.skatelescope.org/x/MA0xBQ.
+it to a separate python object that can be tested in isolation from Tango.
+See some preliminary examples in https://confluence.skatelescope.org/x/MA0xBQ.
 
 Other routes have been followed to implement system-level tests using Gherkin:
 https://confluence.skatelescope.org/display/SE/How+to+implement+BDD+tests.
@@ -645,7 +654,7 @@ should be classified also (in addition to belonging to one or more test
 sets) in terms of their speed of execution, like “fast”, “medium”,
 “slow”. In this way a programmer that wants a quick feedback (less than
 1 minute) would run only the fast tests, the same programmer that is
-about to commit his/her code at the end of the day might want to run
+about to commit/push his/her code at the end of the day might want to run
 fast and medium tests and be willing to wait some 10 minutes to get
 feedback, and finally a programmer ready to merge a branch into master
 might want to run all tests, and be willing to wait half an hour or
