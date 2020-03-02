@@ -326,7 +326,7 @@ be achieved:
    a **living documentation**, that is using test cases as a documentation of the
    business logic and policies implemented by the system.
 
-*  System-level tests are also linked to higher level requirements (L1, L2, IF
+*  System-level tests can be linked to higher level requirements (L1, L2, IF
    requirements, in addition to
    acceptance criteria). In this way we can provide **traceability** of tests to
    requirements, and easily determine what is the degree of satisfaction of certain
