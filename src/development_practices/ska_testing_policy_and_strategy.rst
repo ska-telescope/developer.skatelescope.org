@@ -256,7 +256,6 @@ beta-testers.
 Some testing is performed by a **temporary team of testers**, composed by individuals from different ```
 existing teams. This testing is typically system or integration testing that covers 2
 or more artefacts that are developed by 2 or more teams.
-Selected testers come from these teams.
 
 4.3 Goals of testing
 --------------------
