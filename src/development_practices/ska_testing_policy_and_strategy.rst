@@ -286,7 +286,7 @@ test-first, test automation). The testing process that will be
 established should help creating testable software products, it should
 lead to a well-designed test automation architecture, it should push
 teams to practice TDD, test-first, and adopt suitable test automation
-patterns. The process should also lead to a substantial set of automated tests
+patterns. The process should also lead to collect a substantial set of automated tests
 for testing the system, mostly in the form of Gherkin tests.
 
 
