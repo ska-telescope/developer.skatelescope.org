@@ -491,7 +491,7 @@ Other definitions are:
 This strategy applies to all the software that is being developed within
 the SKA.
 
-Each team should have at least a **tester**, which is the "testing conscience" within the team.
+Each team should have at least one **tester**, who acts as the "testing conscience" within the team.
 Because of the specific skills
 that are needed to write good tests and to manage the testing process,
 we expect that in the coming months a tester will become a dedicated
