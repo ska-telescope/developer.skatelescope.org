@@ -243,7 +243,7 @@ following definitions, mostly derived from :ref:`ISTQB Glossary <ref-istqb-gloss
 
 .. note::
    The purpose of defining both “testing” and “debugging” is so that
-   readers get rid of the idea that one does testing while he or she is
+   readers get rid of the idea that one does testing while they are
    doing debugging. They are two distinct activities.
 
 4.2 Work organization
