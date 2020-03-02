@@ -330,7 +330,7 @@ be achieved:
    requirements, in addition to
    acceptance criteria). In this way we can provide **traceability** of tests to
    requirements, and easily determine what is the degree of satisfaction of certain
-   requirements based on test execution data.
+   requirements based on test results.
 
 
 
