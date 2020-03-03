@@ -19,6 +19,22 @@ the button “Run pipeline” on a specific branch (i.e. master).
 
 |image5|
 
+Using a specific executor
+-------------------------
+
+The pipeline by default will run with a shared runner made available from GitLab.
+It is also possible to assign specific SKA runners to the project (by adding the `tags <https://docs.gitlab.com/ee/ci/yaml/README.html#tags>`__). 
+To do that the option must be enabled:
+
+|image6|
+
+The EngageSKA cluster located at the Datacenter of Institute of Telecommunication (IT) in Aveiro provides some virtual machines available adding the tag "engageska" or "docker-executor" as shown `here <https://github.com/ska-telescope/ska-python-skeleton/blob/master/.gitlab-ci.yml>`__.
+
+.. note::
+  In order to have the SKA runners available, a project *must* be under the `SKA Telescope <https://github.com/ska-telescope/>`_ group. Currently projects can only be added to the SKA group by the System Team - refer to our guide to :ref:`create-new-project`.
+
+The typically used SKA CI Pipeline stages are being documented as they are developed and improved. The currently available documentation on this is discussed under :ref:`ci-pipeline-stages`. The following section deals with the required CI metrics that need to be included in the pipeline.
+
 .. _AutomatedMetrics:
 
 Automated Collection of CI health metrics as part of the CI pipeline
@@ -157,16 +173,7 @@ The metrics should be collected under the following structure:
     }
   }
 
-Using a specific executor
--------------------------
-
-The pipeline by default will run with a shared runner made available from GitLab.
-It is also possible to assign specific ska runner to the project (by adding the `tags <https://docs.gitlab.com/ee/ci/yaml/README.html#tags>`__). 
-To do that the option must be enabled:
-
-|image6|
-
-The EngageSKA cluster located at the Datacenter of Institute of Telecommunication (IT) in Aveiro provides some virtual machines available adding the tag "engageska" or "docker-executor" as shown `here <https://github.com/ska-telescope/ska-python-skeleton/blob/master/.gitlab-ci.yml>`__.
+.. _ci-pipeline-stages:
 
 CI pipeline stage descriptions
 ------------------------------
