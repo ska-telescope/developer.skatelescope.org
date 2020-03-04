@@ -510,7 +510,7 @@ enablers, and features.
 System-level tests are to be designed, implemented and maintained
 by development teams and/or groups of testers belonging to different teams.
 In the latter case, testers should come from the teams that contributed one or more
-components making up the system.
+components of the system under test.
 
 The **product owner of the System Team** or a **feature/capability owner** might
 act as a coordinator of the development.
