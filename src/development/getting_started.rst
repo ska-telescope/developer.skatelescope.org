@@ -12,7 +12,7 @@ Add a new project to SKA organisation
 Develop a Tango device
 ``````````````````````
 
-* A sample PyTango device project that can be forked can be found at `<https://github.com/ska-telescope/tango-example/>`_
+* A sample PyTango device project that can be forked can be found at `<https://gitlab.com/ska-telescope/tango-example/>`_
 * Documentation for it can be found at `<https://developer.skatelescope.org/projects/tango-example/en/latest/?badge=latest>`_
 
 Containerise my solution
@@ -140,7 +140,7 @@ Working with the Helm chart repository, including how to package and upload char
 Deploy the TMC prototype and Webjive in kubernetes
 ```````````````````````````````````````````````````
 
-The integration github repository can be found at `<https://gitlab.com/ska-telescope/skampi>`_.
+The integration gitlab repository can be found at `<https://gitlab.com/ska-telescope/skampi>`_.
 
 Documentation on deployment can be found at `<https://developer.skatelescope.org/projects/skampi/en/latest/README.html>`_
 
