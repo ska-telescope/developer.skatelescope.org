@@ -262,4 +262,4 @@ Acknowledgements
 ================
 
 The present document's coding guidelines are derived from project
-`Astropy's codding guidelines <http://docs.astropy.org/en/stable/development/codeguide.html>`_.
+`Astropy's coding guidelines <http://docs.astropy.org/en/stable/development/codeguide.html>`_.
