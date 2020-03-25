@@ -1,6 +1,10 @@
 SKA developer community decision making process
 -----------------------------------------------
 
+.. note::
+
+  This page reports the main outcome of `ADR-1 <https://confluence.skatelescope.org/display/SWSI/ADR-1+Architectural+Decision+Process>`_ . More detailed discussion happened on confluence and jira as described below. 
+
 **Everyone** in the SAFe development teams is empowered and encouraged to reason about the architecture of the system, and to make decisions about it.
 
 An **Architectural Decision Record**  (ADR from now on) captures one single architectural decision, defining its scope, the rationale behind it, and its architectural relevance.
