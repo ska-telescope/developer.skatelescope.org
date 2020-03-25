@@ -55,9 +55,8 @@ SKA software development is managed in an open and transparent way.
 - :doc:`community/teams_responsibilities`
 - :doc:`community/decision_making`
 
-.. todo::
-   - SAFe process implementation
-   - Community forum
+A list of the tools we are using to collaborate, together with guidance on how to use them can be found at this confluence page: `SKA Guidelines to Remote Working <https://confluence.skatelescope.org/display/SKAIT/SKA+Guidelines+to+Remote+Working>`_ (requires an SKA Confluence account).
+
 
 .. DEVELOPMENT TOOLS SECTION ==================================================
 
