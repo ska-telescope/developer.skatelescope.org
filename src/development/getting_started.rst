@@ -12,7 +12,7 @@ Add a new project to SKA organisation
 Develop a Tango device
 ``````````````````````
 
-* A sample PyTango device project that can be forked can be found at `<https://github.com/ska-telescope/tango-example/>`_
+* A sample PyTango device project that can be forked can be found at `<https://gitlab.com/ska-telescope/tango-example/>`_
 * Documentation for it can be found at `<https://developer.skatelescope.org/projects/tango-example/en/latest/?badge=latest>`_
 
 Containerise my solution
