@@ -167,6 +167,7 @@ The definition of done is used to guide teams in planning and estimating the siz
   development/software_package_release_procedure
   development/uploading-docker-nexus
   development/logging-format
+  development/gitlab-variables
 
 
 Development guidelines
@@ -256,12 +257,20 @@ images on the Nexus registry.
 
 - :doc:`development/uploading-docker-nexus`
 
-Logging guidelines
+Logging Guidelines
 ==================
 
 A standard logging format exists for logging in the evolutionary prototype into an ELK stack logging system designed for the SKA software.
 
 - :doc:`development/logging-format`
+
+GitLab Variables
+================
+
+Enumeration and description of the global variables defined on GitLab used in the
+CI/CD infrastructure.
+
+- :doc:`development/gitlab-variables`
 
 .. PROJECTS SECTION ==================================================
 
