@@ -82,7 +82,7 @@ Working with git
 
 Git is adopted as distributed version control system, and all SKA code shall be hosted in a git repository.
 The github organization *ska-telescope* can be found at https://github.com/ska-telescope . All SKA developers
-must have a github account and be added to the organization as part of a team.
+must have a gitlab account and be added to the organization as part of a team.
 
 - :doc:`tools/git`
 
@@ -90,6 +90,8 @@ Working with SKA Jira
 =====================
 
 Every team is tracking daily work in a team-based project on our JIRA server at [https://jira.skatelescope.org]
+
+- :doc:`tools/jira`
 
 .. todo::
    - Create a new project
