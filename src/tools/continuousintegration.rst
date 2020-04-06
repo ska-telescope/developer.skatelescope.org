@@ -11,7 +11,7 @@ To enable the Gitlab automation, it is needed to insert a
 `configuration
 file <https://docs.gitlab.com/ee/ci/yaml/README.html>`_ that must be placed in the root of the repository and called ".gitlab-ci.yml". It mainly contains definitions of how your project should be built. An example of
 it can be found within the project "ska-python-skeleton" available
-`here <https://github.com/ska-telescope/ska-python-skeleton/blob/master/.gitlab-ci.yml>`__.
+`here <https://gitlab.com/ska-telescope/templates/ska-python-skeleton>`__.
 Once the file is in the root directory, it is possible to run the CI pipeline manually
 (creating a pipeline) or with a commit in github as soon as the
 mirroring finishes. The following pipeline was created manually pressing
