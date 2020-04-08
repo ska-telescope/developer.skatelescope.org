@@ -74,6 +74,7 @@ A list of the tools we are using to collaborate, together with guidance on how t
   tools/tango-devenv-setup
   tools/pycharm/pycharm
   tools/vscode/vscode
+  tools/jira
 
 Development tools
 -----------------
