@@ -2,23 +2,10 @@
    for populating this page using Gitlab APIs,
    Do not edit it
 
-.. _list:
+Project Templates
+-----------------
 
-List of projects
-----------------
-
-.. toctree::
-  :maxdepth: 2
-  :caption: Software Defined Infrastructure
-  :hidden:
-
-  sdi_list
-  templates_list
-
-
-The following tables are automatically extracted from our gitlab organisation repository
-at [https://gitlab.com/ska-telescope]
-
+The following table lists all our template projects that can be used to bootstrap Gitlab repositories at [https://gitlab.com/ska-telescope/templates]
 
 ================= ============= ================
 Gitlab repository Documentation Description
@@ -29,4 +16,4 @@ testgit           testdoc       test description
 
 .. .. raw:: html
 
-..   <script type="text/javascript" src="../_static/js/projects_list.js"></script>
+..   <script type="text/javascript" src="../_static/js/templates_list.js"></script>
