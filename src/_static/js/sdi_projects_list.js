@@ -26,11 +26,8 @@ jQuery(function(){
                     "<td><a href=\"" + docs_url + "/en/latest/?badge=latest\" >" +
                         "<img src=\"https://readthedocs.org/projects/" + docs_name + "/badge/?version=latest\" alt='Documentation Status' />" +
                     "</a></td>" +
-                     //"<td><a alt=\"docs url on readthedocs\" href=\"" + docs_url + "\">" + "docs" + "</a></td>" +
                      "<td>" + description + "</td>" +
                      "</tr>";
-               if (name != "dev.developer.skatelescope.org")
-                   $(item).appendTo(list);
             }); //end each
            console.log(i + " projects");
         }); //end getJSON

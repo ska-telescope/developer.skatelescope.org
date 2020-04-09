@@ -2,7 +2,7 @@
        var gitlab_v4_endpoint = "https://gitlab.com/api/v4/groups/5901724/projects?per_page=100&order_by=name&sort=asc&simple=true";
        var list = $("#project-templates tbody");
        var i = 1;
-       //console.log(list);
+       
        if( list.length ){
            list.empty();
            $.getJSON(gitlab_v4_endpoint, function(data){
