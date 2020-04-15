@@ -380,7 +380,7 @@ The Helm community have a well defined set of `best practices <https://helm.sh/d
 
 .. warning:: **Helm 2 vs Helm 3**
 
-  It should be noted that we have now migrated to using Helm 3. Feel free to upgrade Helm in your development environments using our Ansible Playbook ``upgrade_helm.yml`` found in the `SKA Ansible Playbooks repository <>`_.
+  It should be noted that we have now migrated to using Helm 3. Feel free to upgrade Helm in your development environments using our Ansible Playbook ``upgrade_helm.yml`` found in the `SKA Ansible Playbooks repository <https://developer.skatelescope.org/projects/ansible-playbooks/en/latest/playbooks/upgrade_helm.html>`_.
   
   There are a few changes that may impact specific cases, to read up on them please read up at `This blog post <https://dev.to/ridaehamdani/some-changes-between-helm-v2-and-helm-v3-that-you-should-know-32ga>`_, as well as on Helm's own `FAQ page <https://helm.sh/docs/faq/>`_.
 
