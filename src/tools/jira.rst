@@ -23,7 +23,7 @@ If you mention that **a commit or MR ‘closes’, ‘resolves’, or ‘fixes�
 
   *Example Commit Message:* ``closes SKA-34``
 
-Also, You can do other things like adding comments to Jira issues, time-tracking and transitioning Jira issue states directly from GitLab commits. 
+Also, You can do other things like adding comments to Jira issues, time-tracking and transitioning Jira issue states directly from GitLab commits. You can find more about it in `Jira Smart Commits`_.
 
 *More info could be found at* |gitlab_jira_integration_link|_
 
