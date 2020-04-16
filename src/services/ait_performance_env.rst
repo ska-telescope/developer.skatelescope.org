@@ -23,7 +23,7 @@ Access to the OpenStack platform (Virtualization)
 
 The OpenStack platform requires authentication in order to use it.
 
-At the moment, OpenStack credentials are sent individually and it is required to send an email to Dzianis Bartashevich (bartashevich@av.it.pt with the knowledge from Marco Bartolini (M.Bartolini@skatelescope.org). In the next phase, OpenStack could support GitHub authentication.
+At the moment, OpenStack credentials are sent individually and it is required to send an email to Dzianis Bartashevich (bartashevich@av.it.pt with the knowledge from Marco Bartolini (M.Bartolini@skatelescope.org). In the next phase, OpenStack could support Gitlab authentication.
 
 To access the OpenStack platform go to http://192.168.93.215/dashboard (require VPN) and login with your credentials.
 

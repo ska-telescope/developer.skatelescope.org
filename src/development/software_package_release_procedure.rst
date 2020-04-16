@@ -54,7 +54,7 @@ in the repository:
 
 * Package name
 * Package version
-* Github repo url
+* Gitlab repo url
 * Description of the package
 * Classifiers
 
