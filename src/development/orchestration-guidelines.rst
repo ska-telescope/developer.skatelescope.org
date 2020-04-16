@@ -28,10 +28,10 @@ standards and tooling.  The main references are:
 
 * `Cloud Native Computing Foundation <https://www.cncf.io/>`_.
 * `Docker v2 Registry API Specification <https://docs.docker.com/registry/spec/api/>`_.
-* `Container Network Interface <https://github.com/containernetworking/cni>`_.
-* `Container Storage Interface <https://github.com/container-storage-interface/spec>`_.
-* `Open Container Initiative image specification <https://github.com/opencontainers/image-spec/releases/tag/v1.0.0>`_.
-* `Open Container Initiative run-time specification <https://github.com/opencontainers/runtime-spec/releases/tag/v1.0.0>`_.
+* `Container Network Interface <https://gitlab.com/containernetworking/cni>`_.
+* `Container Storage Interface <https://gitlab.com/container-storage-interface/spec>`_.
+* `Open Container Initiative image specification <https://gitlab.com/opencontainers/image-spec/releases/tag/v1.0.0>`_.
+* `Open Container Initiative run-time specification <https://gitlab.com/opencontainers/runtime-spec/releases/tag/v1.0.0>`_.
 
 The standards are broken down into the following areas:
 
@@ -43,7 +43,7 @@ The standards are broken down into the following areas:
 
 Throughout this documentation, `Kubernetes <https://kubernetes.io/>`_ in conjunction with `Helm <https://helm.sh/>`_ is used as the reference implementation with the canonical versions being Kubernetes v1.14.1 and Helm v2.13.1, however the aim is to target compliance with the OCI specifications and CNF guidelines so it is possible to substitute in alternative Container Orchestration solutions, and tooling.
 
-A set of example Helm Charts are provided in the repository `container-orchestration-chart-examples <https://github.com/ska-telescope/container-orchestration-chart-examples>`_.  These can be used to get an overall idea of how the components of a chart function together, and how the life cycle and management of a chart can be managed with ``make``.
+A set of example Helm Charts are provided in the repository `container-orchestration-chart-examples <https://gitlab.com/ska-telescope/container-orchestration-chart-examples>`_.  These can be used to get an overall idea of how the components of a chart function together, and how the life cycle and management of a chart can be managed with ``make``.
 
 
 Structuring application suites for Orchestration
@@ -210,7 +210,7 @@ Defining and building cloud native application suites
 
 All Kubernetes resource objects are described through the `REST based API <https://kubernetes.io/docs/reference/>`_.  The representations of the API documents are in either JSON or YAML, however the preference is for YAML as the description language as this tends to be more human readable.  The API representations are declarative, specifying the end desired state.  It is up to the Kubernetes scheduler to make this a reality.
 
-It is important to use generic syntax and Kubernetes resource types.  Specialised resource types reduce portability of resource descriptors and templates, and increase dependency on 3rd party integrations.  This could lead to upgrade paralysis because the SDLC is out of our control.  An example of this might be using a non-standard 3rd party Database Operator for MySQL instead of the official `Oracle <https://github.com/oracle/mysql-operator>`_ one.
+It is important to use generic syntax and Kubernetes resource types.  Specialised resource types reduce portability of resource descriptors and templates, and increase dependency on 3rd party integrations.  This could lead to upgrade paralysis because the SDLC is out of our control.  An example of this might be using a non-standard 3rd party Database Operator for MySQL instead of the official `Oracle <https://gitlab.com/oracle/mysql-operator>`_ one.
 
 Metadata
 --------
@@ -391,7 +391,7 @@ Example ``Chart.yaml`` file:
     home: https://www.skatelescope.org/
     icon: http://www.skatelescope.org/wp-content/uploads/2016/07/09545_NEW_LOGO_2014.png
     sources:
-    - https://github.com/ska-telescope/my-app
+    - https://gitlab.com/ska-telescope/my-app
     maintainers:
     - name: myaccount
       email: myacount@skatelescope.org
@@ -960,7 +960,7 @@ Local steps
 
             helm install --dry-run --debug ./charts/<your_chart_directory>/
 
-        - For some debugging tips refer to: `debugging tips <https://github.com/helm/helm/blob/master/docs/chart_template_guide/debugging.md>`_.
+        - For some debugging tips refer to: `debugging tips <https://gitlab.com/helm/helm/blob/master/docs/chart_template_guide/debugging.md>`_.
 
     - Check that your chart deploys locally (utilising minikube as per our standards) and behaves as expected
 
@@ -1183,7 +1183,7 @@ The following shows the registered probes and their status for the :ref:`sidecar
             /usr/share/nginx/html from shared-data (rw)
         ...
 
-While probes can be a `command <https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#define-a-liveness-command>`_, it is better to make health checks an http service that is combined with an application `metrics handler <https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md>`_ so that external applications can use the same feature to do health checking (eg: `Prometheus <https://prometheus.io/>`_, or `Icinga <https://icinga.com/>`_).
+While probes can be a `command <https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#define-a-liveness-command>`_, it is better to make health checks an http service that is combined with an application `metrics handler <https://gitlab.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md>`_ so that external applications can use the same feature to do health checking (eg: `Prometheus <https://prometheus.io/>`_, or `Icinga <https://icinga.com/>`_).
 
 Sharing, Networking, Devices, Host Resource Access
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1460,7 +1460,7 @@ The following example demonstrates how to share memory over POSIX IPC between co
               # get and build the ipc shmem tool
               - name: builder-container
                 image: golang:1.11
-                command: ['sh', '-c', "export GOPATH=/src; go get github.com/ghetzel/shmtool"]
+                command: ['sh', '-c', "export GOPATH=/src; go get gitlab.com/ghetzel/shmtool"]
                 volumeMounts:
                 - name: shared-data
                   mountPath: /src
@@ -1944,7 +1944,7 @@ The SKA has adopted :doc:`logging-format` as the logging standard to be used by 
 Metrics
 -------
 
-Each ``Pod`` should have an application metrics handler that emits the `adopted container standard format <https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md>`_. For efficency purposes this should be amalgamated with the ``livenessProbe`` and ``readinessProbe``.
+Each ``Pod`` should have an application metrics handler that emits the `adopted container standard format <https://gitlab.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md>`_. For efficency purposes this should be amalgamated with the ``livenessProbe`` and ``readinessProbe``.
 
 
 Scheduling

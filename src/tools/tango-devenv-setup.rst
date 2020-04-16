@@ -62,7 +62,7 @@ In order to start the tango system, just call the following commands:
 
 Other information
 =================
-Please visit the following github pages for more information:
+Please visit the following gitlab pages for more information:
 
 1. https://gitlab.com/ska-telescope/ansible-playbooks.
 2. https://gitlab.com/ska-telescope/ska-docker

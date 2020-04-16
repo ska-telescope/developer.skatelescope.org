@@ -34,9 +34,9 @@ The SKA Scrum Masters are also responsible for:
 
   * Setup and maintain a slack channel for the team according to the slack usage guidelines.
 
-  * Setup and maintain a github team including all team members under the `SKA organization github account <https://github.com/ska-telescope>`_.
+  * Setup and maintain a gitlab team including all team members under the `SKA organization gitlab account <https://gitlab.com/ska-telescope>`_.
 
-  * Manage permissions on github repositories the team is working on.
+  * Manage permissions on gitlab repositories the team is working on.
 
   * Maintain consistency between the team composition on the various tools and platforms, and make sure that team members are using those in an appropriate way.
 

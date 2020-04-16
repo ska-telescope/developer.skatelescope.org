@@ -11,15 +11,15 @@ Prerequisites:
 
 As a javascript developer you will need the following:
 
-* An account on GitHub
-* Access to the SKA github account (https://github.com/ska-telescope)
+* An account on gitlab
+* Access to the SKA gitlab account (https://gitlab.com/ska-telescope)
 * Access to git (e.g. Git Bash if on Windows environment (https://gitforwindows.org/)
 * Access to node and the node package manager (npm)
 
 Setting up a new web project
 ============================
 
-Each new web project should start by creating a new SKA GitHub project as a fork of the 
+Each new web project should start by creating a new SKA gitlab project as a fork of the 
 ska-telescope/ska-react-webapp-skeleton project.  
 
 * The readme file will need updated to reflect the nature of the new web project
@@ -31,7 +31,7 @@ JavaScript has many code style guides. For the SKA Projects we have settled
 on the `AirBnB JavaScript Style Guide`_. Any differences to what is presented by AirBnB 
 should be documented here:
 
-.. _`AirBnB JavaScript Style Guide`: https://github.com/airbnb/javascript/
+.. _`AirBnB JavaScript Style Guide`: https://gitlab.com/airbnb/javascript/
 
 As a developer it is worth familiarizing yourself with the AirBnB guide above, and some of the background 
 reading that they suggest.
@@ -85,7 +85,7 @@ Dependencies
 * Take care to differentiate between dependencies and devDependencies when installing packages. The ‘dependencies’ section should only include the dependencies required to run the code. The devDependencies should be used for any packages required to build, test or to deploy the code. 
 * Only install packages for a reason. Adding any new third party dependency should be a team decision, and preferably discussed with the system team.
 * Remove unused packages 
-* Prefer popular packages. Sites such as  https://www.npmjs.com/search and https://npms.io can be used to get an analysed ranking, as well as checking out the number of stars on github.
+* Prefer popular packages. Sites such as  https://www.npmjs.com/search and https://npms.io can be used to get an analysed ranking, as well as checking out the number of stars on gitlab.
 * Prefer packages with a good coverage of working tests provided
 * Any 3rd party packages used should be compatible with the SKA BSD-3  Licence terms. 
 
@@ -122,7 +122,7 @@ Data and Configuration Files
 
 * Use proxies and relative paths where possible. Avoid hard coded URLs.  
   Any explicit paths should be derived from a consistent configuration source. 
-  (See for example https://facebook.github.io/create-react-app/docs/proxying-api-requests-in-development#configuring-the-proxy-manually
+  (See for example https://facebook.gitlab.io/create-react-app/docs/proxying-api-requests-in-development#configuring-the-proxy-manually
 
 Console output, warnings and errors
 ===================================

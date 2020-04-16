@@ -13,7 +13,7 @@ file <https://docs.gitlab.com/ee/ci/yaml/README.html>`_ that must be placed in t
 it can be found within the project "ska-python-skeleton" available
 `here <https://gitlab.com/ska-telescope/templates/ska-python-skeleton>`__.
 Once the file is in the root directory, it is possible to run the CI pipeline manually
-(creating a pipeline) or with a commit in github as soon as the
+(creating a pipeline) or with a commit in gitlab as soon as the
 mirroring finishes. The following pipeline was created manually pressing
 the button “Run pipeline” on a specific branch (i.e. master).
 
@@ -28,10 +28,10 @@ To do that the option must be enabled:
 
 |image6|
 
-The EngageSKA cluster located at the Datacenter of Institute of Telecommunication (IT) in Aveiro provides some virtual machines available adding the tag "engageska" or "docker-executor" as shown `here <https://github.com/ska-telescope/ska-python-skeleton/blob/master/.gitlab-ci.yml>`__.
+The EngageSKA cluster located at the Datacenter of Institute of Telecommunication (IT) in Aveiro provides some virtual machines available adding the tag "engageska" or "docker-executor" as shown `here <https://gitlab.com/ska-telescope/ska-python-skeleton/blob/master/.gitlab-ci.yml>`__.
 
 .. note::
-  In order to have the SKA runners available, a project *must* be under the `SKA Telescope <https://github.com/ska-telescope/>`_ group. Currently projects can only be added to the SKA group by the System Team - refer to our guide to :ref:`create-new-project`.
+  In order to have the SKA runners available, a project *must* be under the `SKA Telescope <https://gitlab.com/ska-telescope/>`_ group. Currently projects can only be added to the SKA group by the System Team - refer to our guide to :ref:`create-new-project`.
 
 The typically used SKA CI Pipeline stages are being documented as they are developed and improved. The currently available documentation on this is discussed under :ref:`ci-pipeline-stages`. The following section deals with the required CI metrics that need to be included in the pipeline.
 
@@ -66,7 +66,7 @@ These metrics reports must pass the following requirements:
    residing under :code:`./build/reports/code-coverage.xml`
 5. The XML format expected for the coverage is the standard XML output from
    `Coverage.py <https://pypi.org/project/coverage/>`_ for Python or from a
-   similar tool like `Cobertura <https://github.com/cobertura/cobertura>`_
+   similar tool like `Cobertura <https://gitlab.com/cobertura/cobertura>`_
    for Javascript with the :code:`line-rate` attribute specifying the coverage.
    See the example code bellow.
 
@@ -313,7 +313,7 @@ Python Modules
 ______________
 
 The Nexus PYPI destination as well as a username and password is avialable.
-For a reference implementation see the `lmc-base-classes .gitlab-ci.yaml <https://github.com/ska-telescope/lmc-base-classes/blob/master/.gitlab-ci.yml>`_
+For a reference implementation see the `lmc-base-classes .gitlab-ci.yaml <https://gitlab.com/ska-telescope/lmc-base-classes/blob/master/.gitlab-ci.yml>`_
 
 Note the following:
  - The Nexus `PYPI_REPOSITORY_URL <https://nexus.engageska-portugal.pt/repository/pypi/>`_ is where the packages will be uploaded to.
@@ -344,7 +344,7 @@ Docker images
 _____________
 
 The Nexus Docker registery host and user is available.
-For a reference implementation see the `SKA docker gitlab-ci.yml <https://github.com/ska-telescope/ska-docker/blob/master/.gitlab-ci.yml>`_
+For a reference implementation see the `SKA docker gitlab-ci.yml <https://gitlab.com/ska-telescope/ska-docker/blob/master/.gitlab-ci.yml>`_
 
 Note the following:
  - The `DOCKER_REGISTRY_USER` corresponds to the folder where the images are uploaded, hence the `$DOCKER_REGISTRY_FOLDER` is used.

@@ -70,7 +70,7 @@ Once a project is ready to form part of the integrated solution, we need to veri
 
   ⚠️  The 'none' driver provides limited isolation and may reduce system security and reliability.
   ⚠ ️  For more information, see:
-  👉  https://github.com/kubernetes/minikube/blob/master/docs/vmdriver-none.md
+  👉  https://gitlab.com/kubernetes/minikube/blob/master/docs/vmdriver-none.md
 
   ⚠️  kubectl and minikube configuration will be stored in /home/ubuntu
   ⚠️  To use kubectl or minikube commands as your own user, you may
@@ -103,7 +103,7 @@ Test that the connectivity in the cluster works
 
 
 * Verify Helm installation
-    * `Helm installation instructions <https://github.com/helm/helm>`_
+    * `Helm installation instructions <https://gitlab.com/helm/helm>`_
 
 .. code:: bash
 
