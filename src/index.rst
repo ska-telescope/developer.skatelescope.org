@@ -82,7 +82,7 @@ Working with git
 ================
 
 Git is adopted as distributed version control system, and all SKA code shall be hosted in a git repository.
-The github organization *ska-telescope* can be found at https://github.com/ska-telescope . All SKA developers
+The gitlab organization *ska-telescope* can be found at https://gitlab.com/ska-telescope . All SKA developers
 must have a gitlab account and be added to the organization as part of a team.
 
 - :doc:`tools/git`
