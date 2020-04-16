@@ -127,7 +127,7 @@ Whenever a team deviates from one of the recommended policy, it is important
 that the team captures its decision and publicly describe its policy,
 discussing it with the rest of the community.
 
-See a more detailed description of this workflow at https://guides.github.com/introduction/flow/
+See a more detailed description of this workflow at https://guides.gitlab.com/introduction/flow/
 
 
 Working with GitLab
