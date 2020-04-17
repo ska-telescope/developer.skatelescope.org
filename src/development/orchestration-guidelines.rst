@@ -869,6 +869,54 @@ On the ``PersistentVolumeClaim``:
 * Always specify the matching storage class eg: ``storageClassName: standard``, so that it will bind to the intended ``PersistentVolume`` storage class.
 * Where possible, always specify an explicit ``PersistentVolume`` with ``volumeName`` eg: ``volumeName: tangodb-tango-chart-example-test``.  This will force the ``PersistentVolumeClaim`` to bind to a specific ``PersistentVolume`` and storage class, avoiding the loosely binding issues that volumes can have.
 
+
+Storage In Kubernetes Clusters Managed by the Systems Team
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+In any of the existing deployed Kubernetes clusters there are a number of default StorageClasses available, that are backed by `Ceph <https://ceph.io/>`_, and integrated using `Rook <https://rook.io/>`_.  The ``StorageClass`` es expose
+``RDB`` block devices and ``CephFS`` Network File System based storage to Kubernetes.
+
+
+The StorageClasses are as follows:
+
+
+  +------------+----------------+--------------------------------------------+
+  | Classname  |  Maps to       |  Usage                                     |
+  +============+================+============================================+
+  | nfss1      | CephFS         | Shared Network Filesystem - ReadWriteMany  |
+  +------------+----------------+--------------------------------------------+
+  | nfs        | alias to nfss1 | Shared Network Filesystem - ReadWriteMany  |
+  +------------+----------------+--------------------------------------------+
+  | bds1       | RBD            | Single concurrent use ext4 - ReadWriteOnce |
+  +------------+----------------+--------------------------------------------+
+  | block      | alias to bds1  | Single concurrent use ext4 - ReadWriteOnce |
+  +------------+----------------+--------------------------------------------+
+
+
+StorageClass naming convention follows the following pattern:
+
+``<xxx type><x class><n version>[-<location>]``
+
+* xxx type - bd=block device, nfs=network filesystem
+* x class - s=standard,i=iops optimised (could be ssd/nvme), t=throughput optimised (could be hdd, or cheaper ssd)
+* n version - 1=first version,...
+* location - future tag for denoting location context, rack, dc, etc
+
+Current classes:
+
+* bds1
+  - block device - single mount (ReadWriteOnce)
+  - standard
+  - version 1
+* nfss1
+  - network filesystem enabled storage (ReadWriteMany)
+  - standard
+  - version 1
+* block = shortcut for bds1
+* nfs = shortcut for nfss1
+
+
 Tests
 ~~~~~
 
