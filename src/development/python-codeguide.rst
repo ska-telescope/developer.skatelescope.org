@@ -13,7 +13,7 @@ Python Coding Guidelines
 This section describes requirements and guidelines.
 
 An Example Python Project
-======================
+=========================
 
 We have created a `skeleton Python project
 <https://gitlab.com/ska-telescope/templates/ska-python-skeleton>`_ which should provide a full introduction to the various
