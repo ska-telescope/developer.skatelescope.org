@@ -54,9 +54,10 @@ Repository contents
 ===================
 
 All software repositories shall host whatever is necessary to download and run the code
-they contain. This does not only include code, but also documentation, dependencies and 
-configuration data. Can someone external to the project point at your repository and 
-have all the means to run your code? 
+they contain. This does not only include code, but also documentation, dependencies and
+configuration data. The repository should enforce an SKA namespace for the package structure as
+recommended `here <https://blog.ionelmc.ro/2014/05/25/python-packaging/#the-structure>`_. Can someone
+external to the project point at your repository and have all the means to run your code?
 A software repository shall contain: 
 
 .. admonition:: Repository Checklist
