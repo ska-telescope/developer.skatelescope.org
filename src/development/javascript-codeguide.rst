@@ -31,7 +31,7 @@ JavaScript has many code style guides. For the SKA Projects we have settled
 on the `AirBnB JavaScript Style Guide`_. Any differences to what is presented by AirBnB 
 should be documented here:
 
-.. _`AirBnB JavaScript Style Guide`: https://gitlab.com/airbnb/javascript/
+.. _`AirBnB JavaScript Style Guide`: https://github.com/airbnb/javascript/
 
 As a developer it is worth familiarizing yourself with the AirBnB guide above, and some of the background 
 reading that they suggest.
@@ -122,7 +122,7 @@ Data and Configuration Files
 
 * Use proxies and relative paths where possible. Avoid hard coded URLs.  
   Any explicit paths should be derived from a consistent configuration source. 
-  (See for example https://facebook.gitlab.io/create-react-app/docs/proxying-api-requests-in-development#configuring-the-proxy-manually
+  (See for example https://facebook.github.io/create-react-app/docs/proxying-api-requests-in-development#configuring-the-proxy-manually
 
 Console output, warnings and errors
 ===================================
