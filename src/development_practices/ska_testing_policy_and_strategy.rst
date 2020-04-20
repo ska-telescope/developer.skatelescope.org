@@ -596,15 +596,15 @@ Different projects have different needs. What follows is a list of test automati
 and support libraries:
 
 - for developers using Python: `pytest <https://docs.pytest.org/en/latest/>`_,
-  `pytest-bdd <https://gitlab.com/pytest-dev/pytest-bdd>`_,
-  `assertpy <https://gitlab.com/ActivisionGameScience/assertpy>`_,
+  `pytest-bdd <https://github.com/pytest-dev/pytest-bdd>`_,
+  `assertpy <https://github.com/ActivisionGameScience/assertpy>`_,
   `mock <https://docs.python.org/3/library/unittest.mock.html>`_
 
 - for developers using Javascript: `Jest <https://jestjs.io/>`_
 
 - for testers that have to develop end-to-end tests: `Selenium <https://en.wikipedia.org/wiki/Selenium_(software)>`_
 
-- for developers using c or c++: `googletest <https://gitlab.com/google/googletest>`_
+- for developers using c or c++: `googletest <https://github.com/google/googletest>`_
 
 Developing unit/module/integration tests for Tango devices might be particularly challenging.
 So far, teams have devised creative ways to use mocks in Python to cope with the problem:
