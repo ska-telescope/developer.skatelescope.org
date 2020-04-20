@@ -28,7 +28,7 @@ To do that the option must be enabled:
 
 |image6|
 
-The EngageSKA cluster located at the Datacenter of Institute of Telecommunication (IT) in Aveiro provides some virtual machines available adding the tag "engageska" or "docker-executor" as shown `here <https://github.com/ska-telescope/ska-python-skeleton/blob/master/.gitlab-ci.yml>`__.
+The EngageSKA cluster located at the Datacenter of Institute of Telecommunication (IT) in Aveiro provides some virtual machines available adding the tag "engageska" or "docker-executor" as shown `here <https://gitlab.com/ska-telescope/templates/ska-python-skeleton/>`__.
 
 .. note::
   In order to have the SKA runners available, a project *must* be under the `SKA Telescope <https://gitlab.com/ska-telescope/>`_ group. Currently projects can only be added to the SKA group by the System Team - refer to our guide to :ref:`create-new-project`.
