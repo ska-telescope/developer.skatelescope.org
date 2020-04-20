@@ -1,0 +1,37 @@
+.
+├── CHANGELOG.rst
+├── docker-requirements.txt
+├── docs
+│   ├── Makefile
+│   └── src
+│       ├── conf.py
+│       ├── index.rst
+│       ├── package
+│       │   └── guide.rst
+│       ├── README.md -> ../../README.md
+│       ├── _static
+│       │   ├── css
+│       │   │   └── custom.css
+│       │   ├── img
+│       │   │   ├── favicon.ico
+│       │   │   ├── logo.jpg
+│       │   │   └── logo.svg
+│       │   └── js
+│       │       └── github.js
+│       └── _templates
+│           ├── footer.html
+│           └── layout.html
+├── LICENSE
+├── Makefile
+├── Pipfile
+├── README.md
+├── setup.cfg
+├── setup.py
+├── src
+│   └── ska
+│       └── skeleton
+│           ├── example.py
+│           └── __init__.py
+└── tests
+    ├── __init__.py
+    └── test_example.py
