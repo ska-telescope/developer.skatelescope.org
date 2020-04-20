@@ -1014,7 +1014,7 @@ Local steps
 
             helm install --dry-run --debug ./charts/<your_chart_directory>/
 
-        - For some debugging tips refer to: `debugging tips <https://github.com/helm/helm/blob/master/docs/chart_template_guide/debugging.md>`_.
+        - For some debugging tips refer to: `debugging tips <https://helm.sh/docs/chart_template_guide/debugging/>`_.
 
     - Check that your chart deploys locally (utilising minikube as per our standards) and behaves as expected
 

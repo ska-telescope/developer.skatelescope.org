@@ -73,7 +73,7 @@ We suggest that whenever possible you verify your code style and patterns in you
 Instructions for how to install plugins to support this do this for Visual Studio (VS Code) 
 and JetBrains (WebStorm, IntelliJ IDEA etc.) are include in the ska-react-webapp-skeleton readme_ file.
 
-.. _readme: ska-telescope/ska-react-webapp-skeleton
+.. _readme: https://gitlab.com/ska-telescope/ska-react-webapp-skeleton
 
 Dependencies
 ============

@@ -598,7 +598,7 @@ Configuration of a containerised application should be managed primarily by:
 
 Avoid passing large numbers of configuration options on the command line, and service connection information that could contain secrets such as keys and passwords should not be passed as options, as these can appear in the host OS process table.
 
-Configuration passed into a container should not directly rely on a 3rd party secret/configuration service integration such as `vault <https://www.vaultproject.io/>`_, `consul <https://www.consul.io/>`_ or `etcd <https://etcd.readthedocs.io/en/latest/>`_.  If integration with these services are required, then a sidecar configuration provider architecture should be adopted that specifically handles these environment specific issues.
+Configuration passed into a container should not directly rely on a 3rd party secret/configuration service integration such as `vault <https://www.vaultproject.io/>`_, `consul <https://www.consul.io/>`_ or `etcd <https://www.etcd.io/>`_.  If integration with these services are required, then a sidecar configuration provider architecture should be adopted that specifically handles these environment specific issues.
 
 Appropriate configuration defaults should be defined in the image build as described in the earlier section on :ref:`image environment variables<header-3-environment-variables>`, along with default configuration files. These defaults should be enough to launch the application into it's minimal state unaided by specifics from the user.  If this is not possible then the default action of the container should be to run the application with the ``--help`` option to start the process of informing the user what to do next.
 

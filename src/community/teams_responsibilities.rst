@@ -6,7 +6,7 @@ SKA software development is organized in agile teams.
 Development team
 ================
 
-See https://www.scaledagileframework.com/dev-team/
+See https://www.scaledagileframework.com/agile-teams/
 
 .. todo::
 

@@ -203,7 +203,7 @@ Build
 """""
 The build stage packages/compiles the software project into distributable units of software.
 The project will be checked out at the git commit hash. This specific version of the code must then be built. Failing the build stage will stop the further steps from being executed. Where possible Semantic Versioning should be used.
-To create a release a git tag should be used. `See Release Procedure <http://developer.skatelescope.org/en/latest/development/python_package_release_procedure.html>`_.
+To create a release a git tag should be used. `See Release Procedure <http://developer.skatelescope.org/en/latest/development/software_package_release_procedure.html>`_.
 
 Input
   Git commit hash
