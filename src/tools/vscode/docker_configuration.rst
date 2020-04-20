@@ -61,7 +61,7 @@ Clone the tango-example project and get VSCode to recognize it
 
 #. Open VSCode from inside the *tango-example* folder.
 
-.. _`tango-example repository`: https://github.com/ska-telescope/tango-example
+.. _`tango-example repository`: https://gitlab.com/ska-telescope/tango-example
 
 
 Build the application image (this step is optional)

@@ -397,7 +397,7 @@ Example ``Chart.yaml`` file:
     home: https://www.skatelescope.org/
     icon: http://www.skatelescope.org/wp-content/uploads/2016/07/09545_NEW_LOGO_2014.png
     sources:
-    - https://github.com/ska-telescope/my-app
+    - https://gitlab.com/ska-telescope/my-app
     maintainers:
     - name: myaccount
       email: myacount@skatelescope.org
@@ -1014,7 +1014,7 @@ Local steps
 
             helm install --dry-run --debug ./charts/<your_chart_directory>/
 
-        - For some debugging tips refer to: `debugging tips <https://github.com/helm/helm/blob/master/docs/chart_template_guide/debugging.md>`_.
+        - For some debugging tips refer to: `debugging tips <https://helm.sh/docs/chart_template_guide/debugging/>`_.
 
     - Check that your chart deploys locally (utilising minikube as per our standards) and behaves as expected
 
@@ -1514,7 +1514,7 @@ The following example demonstrates how to share memory over POSIX IPC between co
               # get and build the ipc shmem tool
               - name: builder-container
                 image: golang:1.11
-                command: ['sh', '-c', "export GOPATH=/src; go get github.com/ghetzel/shmtool"]
+                command: ['sh', '-c', "export GOPATH=/src; go get gitlab.com/ghetzel/shmtool"]
                 volumeMounts:
                 - name: shared-data
                   mountPath: /src

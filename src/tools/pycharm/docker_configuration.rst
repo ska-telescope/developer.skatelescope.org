@@ -49,7 +49,7 @@ you've downloaded.
 4. Click Clone, then click Yes in the subsequent confirmation dialog to create a PyCharm project based on the sources
    you have cloned.
 
-.. _`tango-example repository`: https://github.com/ska-telescope/tango-example
+.. _`tango-example repository`: https://gitlab.com/ska-telescope/tango-example
 
 
 Build the application image
@@ -263,7 +263,7 @@ Troubleshooting
   Unit tests that create a new DeviceTestContext per test must run each DeviceTestContext in a new process to avoid
   SegmentationFault errors. For more info, see:
 
-  - https://github.com/tango-controls/pytango/pull/77
+  - https://gitlab.com/tango-controls/pytango/pull/77
   - http://www.tango-controls.org/community/forum/c/development/python/testing-tango-devices-using-pytest/?page=1#post-3761
 
 - **Errors when mixing test types**

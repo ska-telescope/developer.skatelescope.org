@@ -12,7 +12,7 @@ An Example C++ Project
 ======================
 
 We have created a `skeleton C++ project
-<https://gitlab.com/ska-telescope/cpp_template>`_. Which should provide a full introduction to the various
+<https://gitlab.com/ska-telescope/templates/cpp-template>`_. Which should provide a full introduction to the various
 recommendations and requirements for the development of C++. The philosophy behind the development of this
 template was to demonstrate one way to meet the project guidelines. There are probably as many ways to organise C++ projects
 as there are developers there are sure to be some controversial design decisions made. 

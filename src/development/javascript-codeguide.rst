@@ -11,15 +11,15 @@ Prerequisites:
 
 As a javascript developer you will need the following:
 
-* An account on GitHub
-* Access to the SKA github account (https://github.com/ska-telescope)
+* An account on gitlab
+* Access to the SKA gitlab account (https://gitlab.com/ska-telescope)
 * Access to git (e.g. Git Bash if on Windows environment (https://gitforwindows.org/)
 * Access to node and the node package manager (npm)
 
 Setting up a new web project
 ============================
 
-Each new web project should start by creating a new SKA GitHub project as a fork of the 
+Each new web project should start by creating a new SKA gitlab project as a fork of the 
 ska-telescope/ska-react-webapp-skeleton project.  
 
 * The readme file will need updated to reflect the nature of the new web project
@@ -73,7 +73,7 @@ We suggest that whenever possible you verify your code style and patterns in you
 Instructions for how to install plugins to support this do this for Visual Studio (VS Code) 
 and JetBrains (WebStorm, IntelliJ IDEA etc.) are include in the ska-react-webapp-skeleton readme_ file.
 
-.. _readme: ska-telescope/ska-react-webapp-skeleton
+.. _readme: https://gitlab.com/ska-telescope/ska-react-webapp-skeleton
 
 Dependencies
 ============
@@ -85,7 +85,7 @@ Dependencies
 * Take care to differentiate between dependencies and devDependencies when installing packages. The ‘dependencies’ section should only include the dependencies required to run the code. The devDependencies should be used for any packages required to build, test or to deploy the code. 
 * Only install packages for a reason. Adding any new third party dependency should be a team decision, and preferably discussed with the system team.
 * Remove unused packages 
-* Prefer popular packages. Sites such as  https://www.npmjs.com/search and https://npms.io can be used to get an analysed ranking, as well as checking out the number of stars on github.
+* Prefer popular packages. Sites such as  https://www.npmjs.com/search and https://npms.io can be used to get an analysed ranking, as well as checking out the number of stars on gitlab.
 * Prefer packages with a good coverage of working tests provided
 * Any 3rd party packages used should be compatible with the SKA BSD-3  Licence terms. 
 
