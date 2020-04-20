@@ -103,7 +103,7 @@ Test that the connectivity in the cluster works
 
 
 * Verify Helm installation
-    * `Helm installation instructions <https://gitlab.com/helm/helm>`_
+    * `Helm installation instructions <https://github.com/helm/helm>`_
 
 .. code:: bash
 
