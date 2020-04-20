@@ -12,7 +12,7 @@ An Example C++ Project
 ======================
 
 We have created a `skeleton C++ project
-<https://gitlab.com/ska-telescope/cpp_template>`_. Which should provide a full introduction to the various
+<https://github.com/ska-telescope/cpp_template>`_. Which should provide a full introduction to the various
 recommendations and requirements for the development of C++. The philosophy behind the development of this
 template was to demonstrate one way to meet the project guidelines. There are probably as many ways to organise C++ projects
 as there are developers there are sure to be some controversial design decisions made. 
@@ -205,7 +205,7 @@ CMake Coding Conventions
 Unfortunately there is even less consensus in the community as to the most
 effective way to write CMake files, thought there are a lot of opinions. We
 have found a good distillation of some effective ideas can be found `here
-<https://gist.gitlab.com/mbinna/c61dbb39bca0e4fb7d1f73b0d66a4fd1>`_. And GitLab
+<https://gist.github.com/mbinna/c61dbb39bca0e4fb7d1f73b0d66a4fd1>`_. And GitLab
 has an introduction to `Modern CMake
 <https://cliutils.gitlab.io/modern-cmake/>`_.
 
@@ -324,7 +324,7 @@ Coding Style & Conventions
 
 We are not advocating that software be restructured and rewritten before
 on-boarding - However we recommend that new software follow `The cplusplus Core
-Guidelines <http://isocpp.gitlab.io/CppCoreGuidelines/CppCoreGuidelines>`_.
+Guidelines <http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines>`_.
 
 The clang/llvm compiler tools have an extension which can provide some direct
 criticism of your code for stylistic errors (and even automatically fix them). For example in our lint step we
@@ -344,7 +344,7 @@ Unit testing
 
 Setting Up The Tests 
 ^^^^^^^^^^^^^^^^^^^^
-Within the template we give examples of how to write a Unit Test in `The Google Test framework <https://gitlab.com/google/googletest/>`_.
+Within the template we give examples of how to write a Unit Test in `The Google Test framework <https://github.com/google/googletest/>`_.
 
 You will also see from the  CI script that we publish the test results in the following manner:
 
