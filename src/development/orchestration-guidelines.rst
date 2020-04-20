@@ -41,7 +41,7 @@ The standards are broken down into the following areas:
 * Scheduling and running cloud native application suites - scheduling, execution, monitoring, logging, diagnostics, security considerations
 
 
-Throughout this documentation, `Kubernetes <https://kubernetes.io/>`_ in conjunction with `Helm <https://helm.sh/>`_ is used as the reference implementation with the canonical versions being Kubernetes v1.14.1 and Helm v2.13.1, however the aim is to target compliance with the OCI specifications and CNF guidelines so it is possible to substitute in alternative Container Orchestration solutions, and tooling.
+Throughout this documentation, `Kubernetes <https://kubernetes.io/>`_ in conjunction with `Helm <https://helm.sh/>`_ is used as the reference implementation with the canonical versions being Kubernetes v1.16.2 and Helm v3.1.2, however the aim is to target compliance with the OCI specifications and CNF guidelines so it is possible to substitute in alternative Container Orchestration solutions, and tooling.
 
 A set of example Helm Charts are provided in the repository `container-orchestration-chart-examples <https://gitlab.com/ska-telescope/container-orchestration-chart-examples>`_.  These can be used to get an overall idea of how the components of a chart function together, and how the life cycle and management of a chart can be managed with ``make``.
 
@@ -353,10 +353,10 @@ The general structure of a Chart should follow:
 .. code:: bash
 
     charts/myapp/
-            Chart.yaml          # A YAML file containing information about the chart
+            Chart.yaml          # A YAML file containing information about the chart and listing
+                                # dependencies for the chart (refer to Helm 2 vs Helm 3 differences).
             LICENSE             # OPTIONAL: A plain text file containing the license for the chart
             README.md           # OPTIONAL: A human-readable README file
-            requirements.yaml   # OPTIONAL: A YAML file listing dependencies for the chart
             values.yaml         # The default configuration values for this chart
             charts/             # A directory containing any charts upon which this chart depends.
             templates/          # A directory of templates that, when combined with values,
@@ -377,6 +377,12 @@ The Helm community have a well defined set of `best practices <https://helm.sh/d
 * ``name``, ``version``, ``description``, ``home``, ``maintainers`` and ``sources`` must be included.
 * ``version`` must follow the `Semantic Versioning <https://semver.org>`_ standards.
 * the chart must pass the ``helm lint charts/<chart-name>`` test.
+
+.. warning:: **Helm 2 vs Helm 3**
+
+  It should be noted that we have now migrated to using Helm 3. Feel free to upgrade Helm in your development environments using our Ansible Playbook ``upgrade_helm.yml`` found in the `SKA Ansible Playbooks repository <https://developer.skatelescope.org/projects/ansible-playbooks/en/latest/playbooks/upgrade_helm.html>`_.
+  
+  There are a few changes that may impact specific cases, to read up on them please read up at `This blog post <https://dev.to/ridaehamdani/some-changes-between-helm-v2-and-helm-v3-that-you-should-know-32ga>`_, as well as on Helm's own `FAQ page <https://helm.sh/docs/faq/>`_.
 
 Example ``Chart.yaml`` file:
 
@@ -868,6 +874,54 @@ On the ``PersistentVolumeClaim``:
 
 * Always specify the matching storage class eg: ``storageClassName: standard``, so that it will bind to the intended ``PersistentVolume`` storage class.
 * Where possible, always specify an explicit ``PersistentVolume`` with ``volumeName`` eg: ``volumeName: tangodb-tango-chart-example-test``.  This will force the ``PersistentVolumeClaim`` to bind to a specific ``PersistentVolume`` and storage class, avoiding the loosely binding issues that volumes can have.
+
+
+Storage In Kubernetes Clusters Managed by the Systems Team
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+In any of the existing deployed Kubernetes clusters there are a number of default StorageClasses available, that are backed by `Ceph <https://ceph.io/>`_, and integrated using `Rook <https://rook.io/>`_.  The ``StorageClass`` es expose
+``RDB`` block devices and ``CephFS`` Network File System based storage to Kubernetes.
+
+
+The StorageClasses are as follows:
+
+
+  +------------+----------------+--------------------------------------------+
+  | Classname  |  Maps to       |  Usage                                     |
+  +============+================+============================================+
+  | nfss1      | CephFS         | Shared Network Filesystem - ReadWriteMany  |
+  +------------+----------------+--------------------------------------------+
+  | nfs        | alias to nfss1 | Shared Network Filesystem - ReadWriteMany  |
+  +------------+----------------+--------------------------------------------+
+  | bds1       | RBD            | Single concurrent use ext4 - ReadWriteOnce |
+  +------------+----------------+--------------------------------------------+
+  | block      | alias to bds1  | Single concurrent use ext4 - ReadWriteOnce |
+  +------------+----------------+--------------------------------------------+
+
+
+StorageClass naming convention follows the following pattern:
+
+``<xxx type><x class><n version>[-<location>]``
+
+* xxx type - bd=block device, nfs=network filesystem
+* x class - s=standard,i=iops optimised (could be ssd/nvme), t=throughput optimised (could be hdd, or cheaper ssd)
+* n version - 1=first version,...
+* location - future tag for denoting location context, rack, dc, etc
+
+Current classes:
+
+* bds1
+  - block device - single mount (ReadWriteOnce)
+  - standard
+  - version 1
+* nfss1
+  - network filesystem enabled storage (ReadWriteMany)
+  - standard
+  - version 1
+* block = shortcut for bds1
+* nfs = shortcut for nfss1
+
 
 Tests
 ~~~~~

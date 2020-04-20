@@ -67,7 +67,7 @@ The Source Tree
 ^^^^^^^^^^^^^^^
 Our recommended source tree structure follows:
 
-.. literalinclude:: source_tree.txt
+.. literalinclude:: cpp_source_tree.txt
         
 A number of design decisions have been made here:
 

@@ -103,18 +103,19 @@ Test that the connectivity in the cluster works
 
 
 * Verify Helm installation
-    * `Helm installation instructions <https://github.com/helm/helm>`_
+    * `Helm installation instructions <https://helm.sh/docs/intro/install/>`_
 
 .. code:: bash
 
-  $ helm
+  $ helm version
+  version.BuildInfo{Version:"v3.1.2", GitCommit:"d878d4d45863e42fd5cff6743294a11d28a9abce", GitTreeState:"clean", GoVersion:"go1.13.8"}
 
-  The Kubernetes package manager
-
-  To begin working with Helm, run the 'helm init' command:
-
-  $ helm init
   ...
+
+.. note:: 
+  Until recently, we have been using Helm 2 in all our Ansible Playbooks for provisioning machines and development environments. Helm 2 used Tiller as a deployment service, and would be started in your environment by running the ``helm init`` command. **This is no longer the case with Helm 3.** `More info here <https://dev.to/ridaehamdani/some-changes-between-helm-v2-and-helm-v3-that-you-should-know-32ga>`_ .
+
+  Use this `ansible playbook <https://developer.skatelescope.org/projects/ansible-playbooks/en/latest/playbooks/upgrade_helm.html>`_ to upgrade your existing Helm 2 to Helm 3.
 
 
 Once Helm is installed, develop a helm chart for the project. Refer to `Helm instructions <https://developer.skatelescope.org/en/latest/development/orchestration-guidelines.html#templating-the-application>`_ for guidelines.
