@@ -12,6 +12,19 @@ Python Coding Guidelines
 
 This section describes requirements and guidelines.
 
+An Example Python Project
+=========================
+
+We have created a `skeleton Python project
+<https://gitlab.com/ska-telescope/templates/ska-python-skeleton>`_ which should provide a full introduction to the various
+recommendations and requirements for the development of Python. The philosophy behind the development of this
+template was to demonstrate one way to meet the project guidelines and demonstrate a
+`recommended <https://blog.ionelmc.ro/2014/05/25/python-packaging/#the-structure>`_ project layout.
+
+The recommended project layout is as follows:
+
+.. literalinclude:: python_source_tree.txt
+
 Interface and Dependencies
 ==========================
 
