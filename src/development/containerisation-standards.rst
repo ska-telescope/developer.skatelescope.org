@@ -29,10 +29,10 @@ standards and tooling.  The main references are:
 
 * `Docker v2 Registry API Specification <https://docs.docker.com/registry/spec/api/>`_.
 * `Dockerfile best practices <https://docs.docker.com/develop/develop-images/dockerfile_best-practices/>`_.
-* `Container Network Interface <https://gitlab.com/containernetworking/cni>`_.
-* `Container Storage Interface <https://gitlab.com/container-storage-interface/spec>`_.
-* `Open Container Initiative image specification <https://gitlab.com/opencontainers/image-spec/releases/tag/v1.0.0>`_.
-* `Open Container Initiative run-time specification <https://gitlab.com/opencontainers/runtime-spec/releases/tag/v1.0.0>`_.
+* `Container Network Interface <https://github.com/containernetworking/cni>`_.
+* `Container Storage Interface <https://github.com/container-storage-interface/spec>`_.
+* `Open Container Initiative image specification <https://github.com/opencontainers/image-spec/releases/tag/v1.0.0>`_.
+* `Open Container Initiative run-time specification <https://github.com/opencontainers/runtime-spec/releases/tag/v1.0.0>`_.
 
 The standards are broken down into the following areas:
 
@@ -87,7 +87,7 @@ Container Image
 
 The Linux Kernel features make it possible for the container virtualisation to take place in the Kernel, and to have controls placed on the runtime of processes within that virtualisation.  The container image is the first corner stone of the software contract between the developer of a containerised application and the Container Engine that implements the Virtualisation.  The image is used to encapsulate all the dependencies of the target application including executables, libraries, static configuration and sometimes static data.
 
-The `OCI Image specification <https://gitlab.com/opencontainers/image-spec/releases/tag/v1.0.0>`_ defines a standard for constructing the root file-system that a containerised application is to be launched from.  The file-system layout of the image is just like the running application would expect and need as an application running on a virtual server.  This can be as little as an empty ``/`` (root) directory for a fully statically linked executable, or it could be a complete OS file-system layout including ``/etc``, ``/usr``, ``/bin``, ``/lib`` etc. - whatever the target application needs.
+The `OCI Image specification <https://github.com/opencontainers/image-spec/releases/tag/v1.0.0>`_ defines a standard for constructing the root file-system that a containerised application is to be launched from.  The file-system layout of the image is just like the running application would expect and need as an application running on a virtual server.  This can be as little as an empty ``/`` (root) directory for a fully statically linked executable, or it could be a complete OS file-system layout including ``/etc``, ``/usr``, ``/bin``, ``/lib`` etc. - whatever the target application needs.
 
 According to the OCI specification, these images are built up out of layers that typically start with a minimal OS such as `AlpineLinux <https://alpinelinux.org/>`_, with successive layers of modification that add libraries, configuration and other application dependencies.
 
@@ -102,7 +102,7 @@ Different Container Engines deal with networking in varying ways at runtime, but
 * host networking - the host OS network stack is pushed into the container
 * a separate virtual network is constructed and `bridged <https://wiki.archlinux.org/index.php/Network_bridge>`_ into the container namespace
 
-There are variations available within Docker based on overlay, macvlan and custom network plugins that conform to the `CNI <https://gitlab.com/containernetworking/cni>`_ specification.
+There are variations available within Docker based on overlay, macvlan and custom network plugins that conform to the `CNI <https://github.com/containernetworking/cni>`_ specification.
 
 Hostname, and DNS resolution is managed by bind mounting a custom /etc/hosts and /etc/resolv.conf into the container at runtime, and manipulating the `UTS namespace <https://en.wikipedia.org/wiki/Linux_namespaces#UTS>`_.
 
@@ -110,7 +110,7 @@ Hostname, and DNS resolution is managed by bind mounting a custom /etc/hosts and
 Storage Integration
 -------------------
 
-External storage required at runtime by the containerised application is mapped into the container using bind mounting.  This takes a directory location that is already present on the host system, and maps it into the specified location within the container file-system tree.  This can be either files or directories.  The details of how specialised storage is made available to the container is abstracted by the Container Engine which should support the `CSI specification <https://gitlab.com/container-storage-interface/spec>`_ for drivers integrating storage solutions.  This is the same mechanism used to share specialised devices eg: ``/dev/nvidia0`` into a container.
+External storage required at runtime by the containerised application is mapped into the container using bind mounting.  This takes a directory location that is already present on the host system, and maps it into the specified location within the container file-system tree.  This can be either files or directories.  The details of how specialised storage is made available to the container is abstracted by the Container Engine which should support the `CSI specification <https://github.com/container-storage-interface/spec>`_ for drivers integrating storage solutions.  This is the same mechanism used to share specialised devices eg: ``/dev/nvidia0`` into a container.
 
 
 Structuring Containerised Applications
@@ -129,7 +129,7 @@ A containerised application should not need a specialised multi-process init pro
 
 Take special care with signal handling - the Container Engine propagates signals to init process which should be the application (using the EXEC for of entry point).  If not it will be necessary to ensure that what ever  wrapper (executable, shell script etc.) is used propagates signals correctly to the actual application in the container.  This is particularly important at termination time where the Engine will typically send a SIGHUP waiting for a specified timeout and then following up with a SIGKILL.  This could be harmful to stateful applications such as databases, message queues, or anything that requires an orderly shutdown.
 
-A container image among other things, is a software packaging solution, so it is natural for it to follow the same Software Development Life Cycle as the application held inside.  This also means that it is good practice for the released container image versions to map to the released application versions.  An example of this in action is the `NGiNX Ingress Controller releases <https://gitlab.com/kubernetes/ingress-nginx/releases>`_.  By extension, this also leads to having one Git repository and container image per application in order to correctly manage independent release cycles.
+A container image among other things, is a software packaging solution, so it is natural for it to follow the same Software Development Life Cycle as the application held inside.  This also means that it is good practice for the released container image versions to map to the released application versions.  An example of this in action is the `NGiNX Ingress Controller releases <https://github.com/kubernetes/ingress-nginx/releases>`_.  By extension, this also leads to having one Git repository and container image per application in order to correctly manage independent release cycles.
 
 
 Defining and Building Container Images
@@ -473,7 +473,7 @@ This way anyone who looks at the image repository will have an idea of the conte
 Image Tools
 -----------
 
-Any image build tool is acceptable so long as it adheres to the OCI image specification v1.0.0.  The canonical tool used for this standards document is Docker 18.09.4 API version 1.39, but other tools maybe used such as `BuildKit <https://gitlab.com/moby/buildkit>`_ and `img <https://gitlab.com/genuinetools/img>`_.
+Any image build tool is acceptable so long as it adheres to the OCI image specification v1.0.0.  The canonical tool used for this standards document is Docker 18.09.4 API version 1.39, but other tools maybe used such as `BuildKit <https://github.com/moby/buildkit>`_ and `img <https://github.com/genuinetools/img>`_.
 
 Development tools
 -----------------
