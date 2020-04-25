@@ -153,6 +153,10 @@ SKA Organization
 SKA Organization can be found on GitLab at https://gitlab.com/ska-telescope. 
 Send a request to the System Team on Slack (*team-system-support* channel) to link your account to the SKA Gitlab group.
 
+Code Snippets
+=============
+
+You can share code snippets (code blocks) within the SKA Organization using the *ska-snippets* repository, and also you can always share code snippets with the project members using project level snippets *(If they are enabled)*
 
 Working with Github (Deprecated)
 --------------------------------
