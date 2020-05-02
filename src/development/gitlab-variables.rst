@@ -58,3 +58,16 @@ Variables Description
 +------------------------------+-------------------------------------------------------------------+-------------------------------+
 | ``RAW_PASS``                 | Password for uploading to the Raw file hosting on Nexus           |                               |
 +------------------------------+-------------------------------------------------------------------+-------------------------------+
+
+
+Historical Variable Use
+=======================
+
+The following variables have been used historically to drive behaviour in the pipelines, but must be set at the individual repository level:
+
++------------------------------+------------------------------------+--------------------------------------------------------------+
+|             Key              |                  Description       |                          Notes                               |
++==============================+====================================+==============================================================+
+| ``DOCKER_REGISTRY_FOLDER``   | specify the base path prefixed     | Used to produce the image path: with                         |
+|                              | for an image eg: ``ska-docker``    | ``DOCKER_REGISTRY_HOST/DOCKER_REGISTRY_FOLDER/<image-name>`` |
++------------------------------+------------------------------------+--------------------------------------------------------------+
