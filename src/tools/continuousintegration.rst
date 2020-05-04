@@ -308,6 +308,8 @@ Using environment variables in the CI pipeline to upload to Nexus
 
 There are several environment variables available in the CI pipeline that should be used when uploading Python packages and Docker images to Nexus.
 This will make these packages available to the rest of the SKA project.
+This section describes some of these variables.
+A :ref:`full list <gitlab-variables>` is also available.
 
 Python Modules
 ______________
