@@ -1,3 +1,24 @@
+/**
+ * Function to sort alphabetically an array of objects by some specific key.
+ * 
+ * @param {String} property Key of the object to sort.
+ */
+function dynamicSort(property) {
+    var sortOrder = 1;
+
+    if(property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
+    }
+
+    return function (a,b) {
+        if(sortOrder == -1){
+            return b[property].localeCompare(a[property]);
+        }else{
+            return a[property].localeCompare(b[property]);
+        }        
+    }
+}
    jQuery(function(){
        var ska = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&order_by=name&sort=asc&simple=true";
        var templ = "https://gitlab.com/api/v4/groups/5901724/projects?per_page=100&order_by=name&sort=asc&simple=true";
@@ -16,6 +37,7 @@
             $.getJSON(templ, function(data2){
              $.getJSON(ska, function(data3){
                data = data1.concat(data2,data3);
+               data.sort(dynamicSort("name"));
                $.each(data, function(key, val){
 //                  console.log(val);
                   i = i+1;
