@@ -21,7 +21,7 @@ When working on a development project, it is important to stick to these simple
 commit rules:
 
 * Commit often.
-* Have the **Jira story ID** at the beginning of your commit messages. (You can also use Gitlab and JIRA integration defined in doc:`tools/jira`)
+* Have the **Jira story ID** at the beginning of your commit messages. (You can also use Gitlab and JIRA integration defined in :doc:`jira`)
 * Git logs shall be human readable in sequence, describing the development activity.
 * Use imperative forms in the commit message.
 
