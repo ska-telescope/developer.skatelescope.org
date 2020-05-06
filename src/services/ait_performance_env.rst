@@ -9,11 +9,16 @@ Cluster specs
 
 Access the cluster
 ==================
-The EngageSKA cluster locates at the Datacenter of Institute of Telecommunication (IT) in Aveiro. To have access to the cluster, it is required to be inside the facilities or have VPN credentials to access the IT network remotely.
+The EngageSKA cluster locates at the Datacenter of Institute of
+Telecommunication (IT) in Aveiro. To have access to the cluster, it is required
+to be inside the facilities or have VPN credentials to access the IT network
+remotely.
 
 Access to the network using VPN
 ===============================
-At the moment, VPN credentials are sent individually and is required to send an email to Dzianis Bartashevich (bartashevich@av.it.pt) with the knowledge from Marco Bartolini (M.Bartolini@skatelescope.org).
+At the moment, VPN credentials are sent individually and is required to send an
+email to Domingos Nunes (dfsn@ua.pt) with the knowledge from Piers Harding
+(piers@ompka.net).
 
 - Guide on how to connect to the private network using VPN: https://engageska-portugal.pt/theme/files/vpn-guide.pdf
 
@@ -23,9 +28,15 @@ Access to the OpenStack platform (Virtualization)
 
 The OpenStack platform requires authentication in order to use it.
 
-At the moment, OpenStack credentials are sent individually and it is required to send an email to Dzianis Bartashevich (bartashevich@av.it.pt with the knowledge from Marco Bartolini (M.Bartolini@skatelescope.org). In the next phase, OpenStack could support Gitlab authentication.
+At the moment, OpenStack credentials are sent individually and it is required
+to send an email to  Domingos Nunes (dfsn@ua.pt) with the knowledge from Piers
+Harding (piers@ompka.net). In the next phase, OpenStack could support Gitlab
+authentication.
 
-To access the OpenStack platform go to http://192.168.93.215/dashboard (require VPN) and login with your credentials.
+To access the OpenStack platform go to http://192.168.93.215/dashboard
+(requires VPN) and login with your credentials. These credentials should be
+the same used for your VPN authentication. The **Domain** to use is
+**default**.
 
 Virtual machine deployment
 --------------------------
@@ -33,13 +44,15 @@ Virtual machine deployment
 
 .. image:: openstack_project_compute_instance.png
 
-- At this stage a menu will pop-up and will ask to specify virtual machine caracteristics, chose an name for virtual machine:
+- At this stage a menu will pop-up and will ask to specify virtual machine characteristics, chose an name for virtual machine:
 
 .. image:: openstack_vm_chars.png
 
 - Select the Operating System you want your VM to have:
 
-**NOTE: Please choose the option "Yes" at "Delete Volume on Instance Delete" so when you decide to delete the instance the volume will be also deleted and not occupy unnecessary space**
+**NOTE: Please choose the option "Yes" at "Delete Volume on Instance Delete"
+so when you decide to delete the instance the volume will be also deleted and
+not occupy unnecessary space**
 
 .. image:: openstack_vm_os.png
 .. image:: openstack_vm_os2.png
@@ -74,11 +87,12 @@ Virtual machine deployment
 .. image:: openstack_floating_add2.png
 .. image:: openstack_floating_ip.png
 
-- Now using any SSH client connect to the instance through VPN using the Floating IP address
+- Now using any SSH client connect to the instance through VPN using the Floating IP address. The login user is **ubuntu** when using the Ubuntu base images and **centos** for the CentOS ones.
 
 Docker machine deployment
 -------------------------
-Official docker-machine documentation: https://docs.docker.com/machine/overview/
+Official docker-machine documentation:
+https://docs.docker.com/machine/overview/
 
 1. Instalation
 ^^^^^^^^^^^^^^
@@ -86,10 +100,12 @@ Guide: https://docs.docker.com/machine/install-machine/
 
 2. Configuration
 ^^^^^^^^^^^^^^^^
-In order to use the OpenStack integration you need to export OpenStack Authentication credentials.
+In order to use the OpenStack integration you need to export OpenStack
+Authentication credentials.
 
-For the future use, create an executable file which will export environmental variables automatically. For example you can call file "openstackrc" and the content of the file be:
-
+For the future use, create an executable file which will export environmental
+variables automatically. For example you can call file "openstackrc" and the
+content of the file be:
 
 ::
 
@@ -165,7 +181,8 @@ OS_AUTH_URL
 3. Usage
 ^^^^^^^^
 
-**Complete documentation about docker-machine CLI commands can be found here: https://docs.docker.com/machine/reference/**
+**Complete documentation about docker-machine CLI commands can be found here:
+https://docs.docker.com/machine/reference/**
 
 3.1 Run the enviromental variable file
 """"""""""""""""""""""""""""""""""""""
@@ -175,7 +192,9 @@ OS_AUTH_URL
 
 3.2 Create docker-machine
 """""""""""""""""""""""""
-Create a machine. Requires the --driver flag to indicate which provider (OpenStack) the machine should be created on, and an argument to indicate the name of the created machine.
+Create a machine. Requires the --driver flag to indicate which provider
+(OpenStack) the machine should be created on, and an argument to indicate the
+name of the created machine.
 
 ::
 
@@ -197,13 +216,16 @@ Create a machine. Requires the --driver flag to indicate which provider (OpenSta
 	Setting Docker configuration on the remote daemon...
 	Checking connection to Docker...
 	Docker is up and running!
-	To see how to connect your Docker Client to the Docker Engine running on this virtual machine, run: docker-machine env MACHINE-NAME
+	To see how to connect your Docker Client to the Docker Engine running on
+	this virtual machine, run: docker-machine env MACHINE-NAME
 
-In this step docker-machine will create VM inside OpenStack. As soon as the ssh connection to VM is available the Docker service will be installed.
+In this step docker-machine will create VM inside OpenStack. As soon as the
+ssh connection to VM is available the Docker service will be installed.
 
 3.3 Set docker-machine environment
 """"""""""""""""""""""""""""""""""
-Set environment variables to dictate that docker should run a command against a particular machine.
+Set environment variables to dictate that docker should run a command against
+a particular machine.
 ::
 
 	$ docker-machine env MACHINE-NAME
@@ -217,12 +239,14 @@ Set environment variables to dictate that docker should run a command against a 
 
 3.4 Configure shell to use your docker-machine
 """"""""""""""""""""""""""""""""""""""""""""""
-After this, when you execute "docker" command it will be executed remotely
+After this, when you execute "docker" command it will be executed remotely.
+
 ::
 
 	$ eval $(docker-machine env MACHINE-NAME)
 
-Now if you run "docker-machine ls" you see that your machine is active and ready to use.
+Now if you run "docker-machine ls" you see that your machine is active and
+ready to use.
 ::
 
 	$ docker-machine ls
@@ -248,14 +272,16 @@ Now if you run "docker-machine ls" you see that your machine is active and ready
 
 3.6 Remove docker-machine
 """""""""""""""""""""""""
-Remove a machine. This removes the local reference and deletes it on the cloud provider or virtualization management platform.
+Remove a machine. This removes the local reference and deletes it on the cloud 
+rr or virtualization management platform.
 ::
 
 	$ docker-machine rm MACHINE-NAME (-f if need force)
 
 3.7 Docker-machine IP
 """""""""""""""""""""
-Get the IP address of one or more machines
+Get the IP address of one or more machines.
+
 ::
 
 	$ docker-machine ip MACHINE-NAME
@@ -264,7 +290,8 @@ Get the IP address of one or more machines
 
 3.8 Docker-machine list
 """""""""""""""""""""""
-List currently deployed docker-machines
+List currently deployed docker-machines.
+
 ::
 
 	$ docker-machine ls
@@ -274,7 +301,8 @@ List currently deployed docker-machines
 
 3.9 Docker-machine upgrade
 """"""""""""""""""""""""""
-Upgrade a machine to the latest version of Docker. How this upgrade happens depends on the underlying distribution used on the created instance.
+Upgrade a machine to the latest version of Docker. How this upgrade happens
+depends on the underlying distribution used on the created instance.
 ::
 
 	$ docker-machine upgrade MACHINE-NAME
@@ -286,7 +314,8 @@ Upgrade a machine to the latest version of Docker. How this upgrade happens depe
 
 3.10 Docker-machine stop
 """"""""""""""""""""""""
-Stops running docker-machine
+Stops running docker-machine.
+
 ::
 
 	$ docker-machine stop MACHINE-NAME
@@ -296,7 +325,8 @@ Stops running docker-machine
 
 3.11 Docker-machine restart
 """""""""""""""""""""""""""
-Restarts docker-machine
+Restarts docker-machine.
+
 ::
 
 	$ docker-machine restart MACHINE-NAME
@@ -304,11 +334,13 @@ Restarts docker-machine
 	Restarting "MACHINE-NAME"...
 	Waiting for SSH to be available...
 	Detecting the provisioner...
-	Restarted machines may have new IP addresses. You may need to re-run the `docker-machine env` command.
+	Restarted machines may have new IP addresses. You may need to re-run the
+	`docker-machine env` command.
 
 3.12 Docker-machine start
 """""""""""""""""""""""""
-Starts docker-machine
+Starts docker-machine.
+
 ::
 
 	$ docker-machine start MACHINE-NAME
@@ -317,11 +349,13 @@ Starts docker-machine
 	Machine "MACHINE-NAME" was started.
 	Waiting for SSH to be available...
 	Detecting the provisioner...
-	Started machines may have new IP addresses. You may need to re-run the `docker-machine env` command.
+	Started machines may have new IP addresses. You may need to re-run the
+	`docker-machine env` command.
 
 3.13 Docker-machine ssh
 """""""""""""""""""""""
 Log into or run a command on a machine using SSH.
+
 ::
 
 	$ docker-machine ssh MACHINE-NAME
@@ -344,10 +378,7 @@ Log into or run a command on a machine using SSH.
 
 	ubuntu@MACHINE-NAME:~$ 
 
-
-
-
-
 Access to the bare metal
 ========================
-In this stage, this option is very restrictive and only in a well-justified situation is allowed.
+In this stage, this option is very restrictive and only in a well-justified
+situation is allowed.
