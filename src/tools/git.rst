@@ -51,20 +51,19 @@ commit rules:
 * Git logs shall be human readable in sequence, describing the development activity.
 * Use imperative forms in the commit message.
 
-Configure git
+Configure Git
 =============
 
-Set GIT institutional email address
+Set Git institutional email address
 +++++++++++++++++++++++++++++++++++
 
-Setup git so that it uses your institutional email account to sign commits,
-this can be done in your global git configuration:
+Setup Git so that it uses your institutional email account to sign commits,
+this can be done in your global Git configuration:
 
 .. code:: bash
 
   $ git config --global user.email "your@institutional.email"
-  $ git config --global user.email
-  your@institutional.email
+
 
 Or you can configure the mail address on a project basis.
 
@@ -72,8 +71,7 @@ Or you can configure the mail address on a project basis.
 
   $ cd your/git/project
   $ git config user.email "your@institutional.email"
-  $ git config user.email
-  your@institutional.email
+
 
 
 Branching policy
