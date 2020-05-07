@@ -13,6 +13,32 @@ how to use it. These online resources are a good starting point:
   * Official git reference at: https://git-scm.com/docs
   * Interactive Git cheatsheet: http://www.ndpsoftware.com/git-cheatsheet.html
 
+GitLab as Git repository manager
+================================
+
+The SKA Software team decided to adopt the GitLab platform as the main Git repository manager for its 
+CI/CD tools. For those using the GitHub platform the steps for the switch to GitLab are described 
+:ref:`here<github2gitlab>`.
+
+Use institutional email
++++++++++++++++++++++++
+
+Create a GitLab account using your **institutional email** address at
+https://gitlab.com/users/sign_in. If you already have an account on
+GitLab, you shall have your institutional email added to your profile: click on
+your user icon on the top right corner and select *Settings->Emails->Add email
+address* .
+
+Setup SSH key
++++++++++++++
+
+Associate your ssh-key to your user at *Settings->SSH keys*.
+
+SKA Organization
+++++++++++++++++
+
+SKA Organization can be found on GitLab at https://gitlab.com/ska-telescope. 
+Send a request to the System Team on Slack (*team-system-support* channel) to link your account to the SKA Gitlab group.
 
 Committing code
 ===============
@@ -129,31 +155,5 @@ discussing it with the rest of the community.
 
 See a more detailed description of this workflow at https://guides.github.com/introduction/flow/
 
-GitLab as Git repository manager
-================================
-
-The SKA Software team decided to adopt the GitLab platform as the main Git repository manager for its 
-CI/CD tools. For those using the GitHub platform the steps for the switch to GitLab are described 
-:ref:`here<github2gitlab>`.
-
-Use institutional email
-+++++++++++++++++++++++
-
-Create a GitLab account using your **institutional email** address at
-https://gitlab.com/users/sign_in. If you already have an account on
-GitLab, you shall have your institutional email added to your profile: click on
-your user icon on the top right corner and select *Settings->Emails->Add email
-address* .
-
-Setup SSH key
-+++++++++++++
-
-Associate your ssh-key to your user at *Settings->SSH keys*.
-
-SKA Organization
-++++++++++++++++
-
-SKA Organization can be found on GitLab at https://gitlab.com/ska-telescope. 
-Send a request to the System Team on Slack (*team-system-support* channel) to link your account to the SKA Gitlab group.
 
 
