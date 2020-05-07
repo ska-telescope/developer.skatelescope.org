@@ -118,8 +118,8 @@ the precedence over any other activity on the repository.
 Master based development
 ++++++++++++++++++++++++
 
-We suggest teams to start developing adopting a master-based development
-approach, where each developer commits code into the master branch at least
+Teams may adopt a particular Git workflow designated as Master based development approach, 
+where each developer commits code into the master branch at least
 daily. While this practice may seem counter intuitive, there is good evidence
 in literature that it leads to a better performing system. Branches are
 reduced to a minimum in this model, and the discipline of daily commits into
