@@ -104,8 +104,8 @@ If you want to replace a series of small commits with a single commit or if you 
 Branching policy
 ================
 
-Albeit the SKA organisation does not want to be prescriptive about git
-workflows, two concepts are important to the SKA way of using GIT:
+Albeit the SKA organisation does not want to be prescriptive about Git
+workflows, two concepts are important to the SKA way of using Git:
 
   1. The master branch of a repository shall always be stable.
   2. Branches shall be short lived, merging into master as often as possible.
