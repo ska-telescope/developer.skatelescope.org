@@ -140,8 +140,8 @@ directly from our master branch with the click of a button.
 Story based branching
 +++++++++++++++++++++
 
-We support adopting a story-based branching model, often referred to as
-**feature branching**. This workflow effectively leverages **pull requests** enabling code reviews and continuous branch testing, but it
+The SKA organisation advocates adopting a story-based branching model, often referred to as
+**feature branching**. This workflow effectively leverages **Merge Requests** enabling code reviews and continuous branch testing, but it
 is important to stress the importance of having short lived branches. It is
 easy to abuse this policy and have long living branches resulting in painful
 merge activities and dead or stale development lines.
@@ -169,7 +169,7 @@ would follow these steps:
 
   $ git push -u origin my-story-id
 
-* A pull request is created on the DVCS server to merge the story branch into the master branch.
+* A Merge Request is created on the DVCS server to merge the story branch into the master branch.
 * Reviewers interact with comments on the pull request until all conflicts are resolved and reviewers accept the pull request.
 * Pull request is merged into Master.
 * The CI pipeline is executed successfully on the master branch by the CI server.
@@ -178,7 +178,7 @@ Whenever a team deviates from one of the recommended policy, it is important
 that the team captures its decision and publicly describe its policy,
 discussing it with the rest of the community.
 
-See a more detailed description of this workflow at https://guides.github.com/introduction/flow/
+See a more detailed description of this workflow at https://docs.gitlab.com/ee/topics/gitlab_flow.html
 
 
 
