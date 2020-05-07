@@ -180,5 +180,23 @@ discussing it with the rest of the community.
 
 See a more detailed description of this workflow at https://docs.gitlab.com/ee/topics/gitlab_flow.html
 
+Merge requests
+++++++++++++++
 
+When the story is ready for acceptance a Merge Request should be created on GitLab to 
+merge the story branch into the master branch. The Merge Request UI on GitLab includes a platform for the discussion
+threads of the people collaborating with that Merge Requests, and indeed an important purpose of the merge request is to provide an online place to discuss the 
+change and review the code before doing the actual merge.
+
+A new merge request will include, among others, the following options:
+
+* Select one or more assignees for review. 
+* Add approval rules. 
+* Delete source branch when merge request is accepted.
+* Squash commits when merge request is accepted.
+
+At the moment the SKA organisation does not enforce approval rules, but it is recommended as good practice to involve other team members as assignee for the project. 
+
+As part of best practices it is important to delete feature branches on merge or after merging them to keep your repository clean showing only work in progress.
+It is not recommended to squash commits submitted to the remote server, in particular if using GitLab and JIRA integration, so enabling squash commits should be left unchecked.
 
