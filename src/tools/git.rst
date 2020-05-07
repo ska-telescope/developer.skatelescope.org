@@ -154,31 +154,3 @@ SKA Organization can be found on GitLab at https://gitlab.com/ska-telescope.
 Send a request to the System Team on Slack (*team-system-support* channel) to link your account to the SKA Gitlab group.
 
 
-Working with Github (Deprecated)
---------------------------------
-
-Use institutional email
-=======================
-
-Create a github account using your **institutional email** address at
-https://github.com/join?source=login . If you already have an account on
-github, you shall have your institutional email added to your profile: click on
-your user icon on the top right corner and select *Settings->Emails->Add email
-address* .
-
-Setup SSH key
-=============
-
-Associate your ssh-key to your user at *Settings->SSH and GPG keys* .
-
-Join SKA Organisation
-=====================
-
-SKA Organisation can be found on github at https://github.com/ska-telescope/ , The scrum master of your team will make sure you can access it.
-
-Desktop client
-==============
-
-Less experienced developers can use the github desktop client at:
-https://desktop.github.com/
-This definitely lowers the barrier of using git for a number of different users.
