@@ -1,3 +1,5 @@
+.. _github2gitlab:
+
 =====================================
 Transition your GitHub Repo to GitLab
 =====================================
