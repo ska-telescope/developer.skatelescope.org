@@ -93,6 +93,14 @@ The passphrase of your GPG key will then be asked. To avoid having to type the -
 
   $ git config --global commit.gpgsign true
 
+Squashing commits
+++++++++++++++++++++++++
+
+If you want to replace a series of small commits with a single commit or if you want to make their order more logical you can use an interactive rebase (git rebase -i) to squash multiple commits into one or reorder them. When squashing commits it is important to consider the following:
+
+* You should never rebase commits you have pushed to a remote server. 
+* You should also never rebase commits authored by other people. 
+
 Branching policy
 ================
 
