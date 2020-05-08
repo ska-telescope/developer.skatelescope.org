@@ -5,15 +5,15 @@ About git
 =========
 
 Git is the version control system of choice used by SKA. Describing the basics
-of how to use git is out of the scope of this developer portal, but it is
-fundamental that all developers contributing to SKA get familiar with git and
+of how to use Git is out of the scope of this developer portal, but it is
+fundamental that all developers contributing to SKA get familiar with Git and
 how to use it. These online resources are a good starting point:
 
   * Learn git interactively: https://learngitbranching.js.org/
   * Official git reference at: https://git-scm.com/docs
   * Interactive Git cheatsheet: http://www.ndpsoftware.com/git-cheatsheet.html
 
-GitLab as Git repository manager
+GitLab as the Git repository manager
 ================================
 
 The SKA Software team decided to adopt the GitLab platform as the main Git repository manager for its 
@@ -25,7 +25,7 @@ Use institutional email
 
 Create a GitLab account using your **institutional email** address at
 https://gitlab.com/users/sign_in. If you already have an account on
-GitLab, you shall have your institutional email added to your profile: click on
+GitLab, you should have your institutional email added to your profile: click on
 your user icon on the top right corner and select *Settings->Emails->Add email
 address* .
 
@@ -147,7 +147,7 @@ easy to abuse this policy and have long living branches resulting in painful
 merge activities and dead or stale development lines.
 Bearing in mind that a *story* by definition is some
 piece of work a developer should conclude in the time of a sprint, the workflow
-would follow these steps:
+should follow these steps:
 
 * As a developer starts working from master on a new story, she creates a new branch.
 * The new branch shall be named as the story, i.e. *story-AT1-26*.
@@ -184,19 +184,17 @@ Merge requests
 ++++++++++++++
 
 When the story is ready for acceptance a Merge Request should be created on GitLab to 
-merge the story branch into the master branch. The Merge Request UI on GitLab includes a platform for the discussion
-threads of the people collaborating with that Merge Requests, and indeed an important purpose of the merge request is to provide an online place to discuss the 
-change and review the code before doing the actual merge.
+merge the story branch into the master branch. The Merge Request UI on GitLab includes a platform for the discussion threads, and indeed an important purpose of the Merge Request is to provide an online place forthe team to discuss the change and review the code before doing the actual merge.
 
 A new merge request will include, among others, the following options:
 
-* Select one or more assignees for review. 
 * Add approval rules. 
+* Select one or more assignees for review. 
 * Delete source branch when merge request is accepted.
 * Squash commits when merge request is accepted.
 
-At the moment the SKA organisation does not enforce approval rules, but it is recommended as good practice to involve other team members as assignee for the project. 
+At the moment the SKA organisation does not enforce approval rules, but it is recommended as good practice to involve other team members as assignees for the Merge Request. 
 
-As part of best practices it is important to delete feature branches on merge or after merging them to keep your repository clean showing only work in progress.
-It is not recommended to squash commits submitted to the remote server, in particular if using GitLab and JIRA integration, so enabling squash commits should be left unchecked.
+As part of best practices it is important to delete feature branches on merge or after merging them to keep your repository clean, showing only work in progress.
+It is not recommended to squash commits submitted to the remote server, in particular if using GitLab and JIRA integration, so the enabling squash commits option should be left unchecked.
 
