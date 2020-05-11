@@ -18,7 +18,7 @@ Access to the network using VPN
 ===============================
 At the moment, VPN credentials are sent individually and is required to send an
 email to Domingos Nunes (dfsn@ua.pt) with the knowledge from Piers Harding
-(piers@ompka.net).
+(P.Harding@skatelescope.org).
 
 - Guide on how to connect to the private network using VPN: https://engageska-portugal.pt/theme/files/vpn-guide.pdf
 
