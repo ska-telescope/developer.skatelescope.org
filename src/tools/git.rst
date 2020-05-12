@@ -14,11 +14,13 @@ how to use it. These online resources are a good starting point:
   * Interactive Git cheatsheet: http://www.ndpsoftware.com/git-cheatsheet.html
 
 GitLab as the Git repository manager
-================================
+====================================
 
-The SKA Software team decided to adopt the GitLab platform as the main Git repository manager for its 
-CI/CD tools. For those using the GitHub platform the steps for the switch to GitLab are described 
+The SKA Software team have adopted the GitLab social coding platform as the main Git repository manager for its
+CI/CD tools.  For those using the GitHub platform the steps for the switch to GitLab are described
 :ref:`here<github2gitlab>`.
+
+The following describes how to access the service, and how to setup the basic working environment to integrate with GitLab for the SKA.
 
 Use institutional email
 +++++++++++++++++++++++
@@ -27,18 +29,18 @@ Create a GitLab account using your **institutional email** address at
 https://gitlab.com/users/sign_in. If you already have an account on
 GitLab, you should have your institutional email added to your profile: click on
 your user icon on the top right corner and select *Settings->Emails->Add email
-address* .
+address* .  It is recommended that 2FA (two-factor authentication) is enabled.  There are a variety of OTP (One Time Pin) applications available for mobile phones with instructions available here https://docs.gitlab.com/ee/user/profile/account/two_factor_authentication.html .
 
 Setup SSH key
 +++++++++++++
 
-Associate your ssh-key to your user at *Settings->SSH keys*.
+To enable `git+ssh` based authentication for clients, associate your ssh-key to your user at *Settings->SSH keys* (https://gitlab.com/profile/keys).
 
 SKA Organization
 ++++++++++++++++
 
-SKA Organization can be found on GitLab at https://gitlab.com/ska-telescope. 
-Send a request to the System Team on Slack (*team-system-support* channel) to link your account to the SKA Gitlab group.
+SKA Organization can be found on GitLab at https://gitlab.com/ska-telescope.
+Send a request to the System Team on Slack (*team-system-support* channel) to link your account to the SKA Gitlab group, and assist with creation of repositories and integrating CI.
 
 Committing code
 ===============
@@ -46,10 +48,28 @@ Committing code
 When working on a development project, it is important to stick to these simple
 commit rules:
 
+* Work in feature branches where possible (see :ref:`branching-policy`)
 * Commit often.
 * Have the **Jira story ID** at the beginning of your commit messages. (You can also use Gitlab and JIRA integration defined in :doc:`jira`)
 * Git logs shall be human readable in sequence, describing the development activity.
-* Use imperative forms in the commit message.
+* Use imperative forms in the commit message:
+
+.. code:: bash
+
+  ST-320 - make fluentd,kibana,elasticsearch optional
+
+  * add a pipeline example for disabling ELK
+  * add enabled checks
+  * filebeat,journalbeat support added to clusters
+
+  # Please enter the commit message for your changes. Lines starting
+  # with '#' will be ignored, and an empty message aborts the commit.
+  #
+  # Date:      Tue May 12 11:24:17 2020 +1200
+  #
+  # On branch st-320-swap-out-fluentd
+  # Your branch is up-to-date with 'origin/st-320-swap-out-fluentd'.
+
 
 Configure Git
 =============
@@ -75,10 +95,10 @@ Or you can configure the mail address on a project basis.
 Signing commits with GPG
 ++++++++++++++++++++++++
 
-Developers are strongly encouraged to use a GPG key to sign Git commits. 
-The procedure to
-obtain a GPG key and uploading it to the GitLab account is described at
-https://docs.gitlab.com/ee/user/project/repository/gpg_signed_commits/
+Developers are strongly encouraged to use a GPG key to sign Git commits.
+The procedure for
+obtaining a GPG key and uploading it to the GitLab account is described at
+https://docs.gitlab.com/ee/user/project/repository/gpg_signed_commits/, or got straight to uploading at https://gitlab.com/profile/gpg_keys.
 
 
 The only difference from a non signed commit is the addition of the -S flag:
@@ -94,20 +114,22 @@ The passphrase of your GPG key will then be asked. To avoid having to type the -
   $ git config --global commit.gpgsign true
 
 Squashing commits
-++++++++++++++++++++++++
++++++++++++++++++
 
 If you want to replace a series of small commits with a single commit or if you want to make their order more logical you can use an interactive rebase (git rebase -i) to squash multiple commits into one or reorder them. When squashing commits it is important to consider the following:
 
-* You should never rebase commits you have pushed to a remote server. 
-* You should also never rebase commits authored by other people. 
+* You should never rebase commits you have pushed to a remote server.
+* You should also never rebase commits authored by other people.
+
+.. _branching-policy:
 
 Branching policy
 ================
 
-Albeit the SKA organisation does not want to be prescriptive about Git
-workflows, two concepts are important to the SKA way of using Git:
+The preference within the SKA is that a `feature branch workflow <https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow>`_ be adopted, however it is recognised that there are multiple workflows in use, and team requirements and composition vary.
+Regardless of the adopted workflow employed, two concepts are important to the SKA way of using Git:
 
-  1. The master branch of a repository shall always be stable.
+  1. The master branch of a repository shall always be stable, and tested.
   2. Branches shall be short lived, merging into master as often as possible.
 
 Stable means that the master branch shall always compile and build correctly,
@@ -115,19 +137,24 @@ and executing automated tests with success. Every time a master branch results
 in a condition of instability, reverting to a condition of stability shall have
 the precedence over any other activity on the repository.
 
+The following sections discuss the two of the most common workflows:
+
+* Master or trunk based development
+* Feature based branching
+
 Master based development
 ++++++++++++++++++++++++
 
-Teams may adopt a particular Git workflow designated as Master based development approach, 
-where each developer commits code into the master branch at least
-daily. While this practice may seem counter intuitive, there is good evidence
+Teams may adopt a particular Git workflow designated as Master based development approach,
+where each developer commits code into the master branch on a
+daily basis. While this practice may seem counter intuitive, there is good evidence
 in literature that it leads to a better performing system. Branches are
 reduced to a minimum in this model, and the discipline of daily commits into
 master greatly enhances the communication within the team and the modularity
 of the software system under construction. The workflow follows these steps:
 
-  * As a developer starts working on a story, all his commits related to the story shall contain the story Jira ID in the message. i.e. *AT-51 method stubs*
-  * The developer continues working on his local master branch with multiple commits on the same story.
+  * As a developer starts working on a story, all their commits related to the story shall contain the story Jira ID in the message. i.e. *AT-51 method stubs*
+  * The developer continues working on their local master branch with multiple commits on the same story.
   * Each day the local master pulls the remote and incorporates changes from others.
   * The local master is tested successfully.
   * The local commits are pushed onto the remote master.
@@ -135,43 +162,61 @@ of the software system under construction. The workflow follows these steps:
 
 Implemented correctly, this practice leads to having an integrated, tested,
 working system at the end of each  development interval, that can be shipped
-directly from our master branch with the click of a button.
+directly from the master branch.
 
-Story based branching
-+++++++++++++++++++++
+However, this workflow relies on great discipline, and tends to suit small teams with a highly controlled work funnel that ensures work can be completed and tested on a daily iteration, with well defined and highly independent work packages.  There is no buffer against integration failures, so the discipline must extend to dropping all other tasks until the master branch is stable again should there be issues, which will have associated productivity costs against the entire team.
+
+Feature based branching
++++++++++++++++++++++++
 
 The SKA organisation advocates adopting a story-based branching model, often referred to as
-**feature branching**. This workflow effectively leverages **Merge Requests** enabling code reviews and continuous branch testing, but it
+**feature branching**. This workflow effectively leverages GitLab **Merge Requests** enabling code reviews and continuous branch testing, but it
 is important to stress the importance of having short lived branches. It is
 easy to abuse this policy and have long living branches resulting in painful
 merge activities and dead or stale development lines.
-Bearing in mind that a *story* by definition is some
+Bearing in mind that a *story* by definition is a
 piece of work a developer should conclude in the time of a sprint, the workflow
 should follow these steps:
 
-* As a developer starts working from master on a new story, she creates a new branch.
-* The new branch shall be named as the story, i.e. *story-AT1-26*.
+* As a developer starts working from master on a new story, they create a new branch.
+* The new branch shall be named after the story, i.e. *at1-26-the-new-widget*.  Note: branch names are by convention all lower case.
 
 .. code:: bash
 
+  $ git clone git@gitlab.com:ska-telescope/skampi.git
+  $ cd skampi
   $ git branch
   * master
-  $ git checkout -b my-story-id
+  $ git checkout -b at1-26-the-new-widget
   $ git branch
   master
-  * my-story-id
+  * at1-26-the-new-widget
 
-* All the commit messages contributing to the development of the story begin with the story ID, i.e. *AT1-26 basic testing*.
-* The developer makes sure that all tests execute correctly on her local story branch.
+* All the commit messages contributing to the development of the story begin with the story ID, i.e. *AT1-26 - basic testing*.
+* The developer makes sure that all tests execute correctly on their local story branch.
 * When the story is ready for acceptance the developer pushes the story branch upstream.
 
 .. code:: bash
 
-  $ git push -u origin my-story-id
+  $ git push -u origin at1-26-the-new-widget
+  Enumerating objects: 48, done.
+  Counting objects: 100% (48/48), done.
+  Delta compression using up to 12 threads
+  Compressing objects: 100% (23/23), done.
+  Writing objects: 100% (25/25), 4.80 KiB | 614.00 KiB/s, done.
+  Total 25 (delta 14), reused 0 (delta 0)
+  remote:
+  remote: To create a merge request for at1-26-the-new-widget, visit:
+  remote:   https://gitlab.com/ska-telescope/skampi/-/merge_requests/new?merge_request%5Bsource_branch%5D=at1-26-the-new-widget
+  remote:
+  To gitlab.com:ska-telescope/skampi.git
+  * [new branch]      at1-26-the-new-widget -> at1-26-the-new-widget
+  Branch 'at1-26-the-new-widget' set up to track remote branch 'at1-26-the-new-widget' from 'origin'.
 
-* A Merge Request is created on the DVCS server to merge the story branch into the master branch.
-* Reviewers interact with comments on the pull request until all conflicts are resolved and reviewers accept the pull request.
-* Pull request is merged into Master.
+* The branch CI pipeline is automatically triggered.
+* A Merge Request is created on GitLab to merge the story branch into the master branch.  The above commit reponse shows a conveniently supplied URL to start this process.
+* Reviewers interact with comments on the Merge Request until all conflicts are resolved and reviewers accept the Merge Request.
+* The Merge Request is merged into Master.
 * The CI pipeline is executed successfully on the master branch by the CI server.
 
 Whenever a team deviates from one of the recommended policy, it is important
@@ -183,17 +228,19 @@ See a more detailed description of this workflow at https://docs.gitlab.com/ee/t
 Merge requests
 ++++++++++++++
 
-When the story is ready for acceptance a Merge Request should be created on GitLab to 
+When the story is ready for acceptance a Merge Request should be created on GitLab to
 merge the story branch into the master branch. The Merge Request UI on GitLab includes a platform for the discussion threads, and indeed an important purpose of the Merge Request is to provide an online place for the team to discuss the changes and review the code before doing the actual merge.
 
-A new merge request will include, among others, the following options:
+It is recommended that A new merge request will include, among others, the following options:
 
-* Add approval rules. 
-* Select one or more assignees for review. 
+* The Merge Request Title should always include the related JIRA issue id - this will be automatic following the above branching naming convention.
+* Merge Request Description should include a coincise, brief description about the issue.
+* Add approval rules.
+* Select one or more assignees for review, and include anyone who has worked in the Merge Request.
 * Delete source branch when merge request is accepted.
-* Squash commits when merge request is accepted.
+* Do not Squash commits when merge request is accepted.
 
-At the moment the SKA organisation does not enforce approval rules, but it is recommended as good practice to involve other team members as assignees for the Merge Request. 
+At the moment the SKA organisation does not enforce approval rules, but it is recommended as good practice to involve other team members as assignees for the Merge Request, and ensure that there is code review.
 
 As part of best practices it is important to delete feature branches on merge or after merging them to keep your repository clean, showing only work in progress.
 It is not recommended to squash commits submitted to the remote server, in particular if using GitLab and JIRA integration, so the enabling squash commits option should be left unchecked.
