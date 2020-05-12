@@ -219,7 +219,18 @@ should follow these steps:
 * The Merge Request is merged into Master.
 * The CI pipeline is executed successfully on the master branch by the CI server.
 
-Whenever a team deviates from one of the recommended policy, it is important
+There are some considerations with Feature Branching:
+
+* continually branching and merging is an overhead for small teams and very short work packages where there is a high prevalence of one-commit to one-merge-request
+* branching requires discipline in that they should be short lived and developers need to remember to delete them after use
+* stale and orphaned branches can pollute the repository
+* developers must resolve merge conflicts with master before pushing changes, so there can be a race to merge to avoid these issues
+
+
+Alternate Strategy
+++++++++++++++++++
+
+Whenever a team deviates from one of the recommended policies, it is important
 that the team captures its decision and publicly describe its policy,
 discussing it with the rest of the community.
 
