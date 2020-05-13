@@ -49,14 +49,14 @@ When working on a development project, it is important to stick to these simple
 commit rules:
 
 * Work in feature branches where possible (see :ref:`branching-policy`)
-* Commit often.
+* Commit early, commit often.
 * Have the **Jira story ID** at the beginning of your commit messages. (You can also use Gitlab and JIRA integration defined in :doc:`jira`)
 * Git logs shall be human readable in sequence, describing the development activity.
 * Use imperative forms in the commit message:
 
 .. code:: bash
 
-  ST-320 - make fluentd,kibana,elasticsearch optional
+  ST-320 make fluentd,kibana,elasticsearch optional
 
   * add a pipeline example for disabling ELK
   * add enabled checks
@@ -70,6 +70,8 @@ commit rules:
   # On branch st-320-swap-out-fluentd
   # Your branch is up-to-date with 'origin/st-320-swap-out-fluentd'.
 
+
+You can find additional information on `how to write a good commit message`_.
 
 Configure Git
 =============
@@ -273,3 +275,5 @@ There are more additional settings in GitLab that only project maintainers could
    
    
 Note that the System team may from time to time batch update all of the SKA projects' settings as to confirm with the policies and recommendations.
+
+.. _how to write a good commit message: https://chris.beams.io/posts/git-commit/
