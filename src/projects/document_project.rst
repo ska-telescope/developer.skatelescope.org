@@ -75,7 +75,7 @@ Extracting documentation from code
 Integrating into the Developer Portal
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The developer portal is hosted on ReadTheDocs. On the :ref:`list` page a list of all the projects that are hosted on GitLab is available, with badges to show the build status of the project's documentation. Each badge is also a hyperlink to the project's documentation.
+The developer portal is hosted on ReadTheDocs. On the :ref:`list` page a list of all the projects that are hosted on GitLab is available, with badges to show the build status of the project's documentation. Each badge is also a hyperlink to the project's documentation that you can click on.
 
 Every SKA project's documentation is hosted on Readthedocs as a :ref:`subproject <sub-project>` of the developer portal, so that all projects have a common URL for easier search-ability. For example: whereas the developer portal's URL is https://developer.skatelescope.org, the ska_python_skeleton project is at https://developer.skatelescope.org/projects/ska-python-skeleton.
 
@@ -111,7 +111,7 @@ As of October 2019, most developers are also registered on the SKA GitHub, and s
 Import project to ReadTheDocs
 =============================
 
-After signing in, one lands on the Dashboard, and the steps for importing a project are pretty self-explanatory from here.
+After signing in, one lands on the Dashboard, and the steps for importing a project are pretty self-explanatory from here. While importing the project **name** should be the `ska-telescope-` and project's gitlab slug (part in the url after https://gitlab.com/ska-telescope/), i.e. `ska-telescope-ska-python-skeleton`. After the project is imported successfully, name should be changed to the name of the project as listed in Gitlab project site. Project name could be changed in the *Admin* page of Read the Docs project site. As a last step, `kurtcobain-19` account should be added to the project as a maintainer for the system team to manage the documentation later on.
 
 .. _sub-project:
 
