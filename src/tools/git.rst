@@ -256,3 +256,20 @@ At the moment the SKA organisation does not enforce approval rules, but it is re
 As part of best practices it is important to delete feature branches on merge or after merging them to keep your repository clean, showing only work in progress.
 It is not recommended to squash commits submitted to the remote server, in particular if using GitLab and JIRA integration, so the enabling squash commits option should be left unchecked.
 
+*Additional Settings*
+^^^^^^^^^^^^^^^^^^^^^
+
+There are more additional settings in GitLab that only project maintainers could tune. The following settings are configured for the developer portal itself and they are the recommended settings for the projects in the SKA organisation. Normally, these settings would not be needed to change. 
+
+.. _figure-gitlab_mergerequest_settings:
+
+.. figure:: media/gitlab_mergerequest_settings.png
+   :scale: 80%
+   :alt: GitLab Merge Request Settings
+   :align: center
+   :figclass: figborder
+
+   GitLab Merge Request Settings.
+   
+   
+Note that the System team may from time to time batch update all of the SKA projects' settings as to confirm with the policies and recommendations.
