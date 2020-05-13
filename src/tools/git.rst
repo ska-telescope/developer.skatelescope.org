@@ -71,7 +71,7 @@ commit rules:
   # Your branch is up-to-date with 'origin/st-320-swap-out-fluentd'.
 
 
-You can find additional information on `how to write a good commit message`_.
+You can find additional information on how to write a good commit message `here <https://chris.beams.io/posts/git-commit/>`_.
 
 Configure Git
 =============
@@ -114,6 +114,16 @@ The passphrase of your GPG key will then be asked. To avoid having to type the -
 .. code:: bash
 
   $ git config --global commit.gpgsign true
+
+
+When working in a remote repository by ssh connection, you need to create new GPG key and add it as explained above or you can forward your existing gpg key to the remote machine following the instructions below. 
+You can find more information `here <https://wiki.gnupg.org/AgentForwarding>`_.
+
+* Find your local socket: :code:`gpgconf --list-dir agent-extra-socket` 
+* Find your remote socket: :code:`gpgconf --list-dir agent-socket`
+* Configure your SSH configuration file by adding the following line after your host settings: :code:`RemoteForward <socket_on_remote_box>  <extra_socket_on_local_box>`. Note that you need to reconnect to the remote machine to apply the changes.
+* Add :code:`StreamLocalBindUnlink yes` into :code:`/etc/ssh/sshd_config` in the remote machine and restart the sshd service to close the gpg forwarding socket when closing the ssh connection.
+
 
 Squashing commits
 +++++++++++++++++
@@ -275,5 +285,3 @@ There are more additional settings in GitLab that only project maintainers could
    
    
 Note that the System team may from time to time batch update all of the SKA projects' settings as to confirm with the policies and recommendations.
-
-.. _how to write a good commit message: https://chris.beams.io/posts/git-commit/
