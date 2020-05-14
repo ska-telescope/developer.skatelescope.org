@@ -42,6 +42,11 @@ SKA Organization
 SKA Organization can be found on GitLab at https://gitlab.com/ska-telescope.
 Send a request to the System Team on Slack (*team-system-support* channel) to link your account to the SKA Gitlab group, and assist with creation of repositories and integrating CI.
 
+Code Snippets
++++++++++++++
+
+You can share code snippets (code blocks) within the SKA Organization using the *ska-snippets* repository, and also you can always share code snippets with the project members using project level snippets *(If they are enabled)*
+
 Committing code
 ===============
 
@@ -255,13 +260,6 @@ Merge requests
 When the story is ready for acceptance a Merge Request should be created on GitLab to
 merge the story branch into the master branch. The Merge Request UI on GitLab includes a platform for the discussion threads, and indeed an important purpose of the Merge Request is to provide an online place for the team to discuss the changes and review the code before doing the actual merge.
 
-
-Code Snippets
-=============
-
-You can share code snippets (code blocks) within the SKA Organization using the *ska-snippets* repository, and also you can always share code snippets with the project members using project level snippets *(If they are enabled)*
->>>>>>> master
-
 It is recommended that A new merge request will include, among others, the following options:
 
 * The Merge Request Title should always include the related JIRA issue id - this will be automatic following the above branching naming convention.
@@ -276,8 +274,8 @@ At the moment the SKA organisation does not enforce approval rules, but it is re
 As part of best practices it is important to delete feature branches on merge or after merging them to keep your repository clean, showing only work in progress.
 It is not recommended to squash commits submitted to the remote server, in particular if using GitLab and JIRA integration, so the enabling squash commits option should be left unchecked.
 
-*Additional Settings*
-^^^^^^^^^^^^^^^^^^^^^
+*Gitlab MR Settings for Project Maintainers*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There are more additional settings in GitLab that only project maintainers could tune. The following settings are configured for the developer portal itself and they are the recommended settings for the projects in the SKA organisation. Normally, these settings would not be needed to change. 
 
