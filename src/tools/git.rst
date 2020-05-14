@@ -133,6 +133,7 @@ If you want to replace a series of small commits with a single commit or if you 
 * You should never rebase commits you have pushed to a remote server.
 * You should also never rebase commits authored by other people.
 In general the squashing of commits is discouraged for SKA repositories.
+
 .. _branching-policy:
 
 Branching policy
