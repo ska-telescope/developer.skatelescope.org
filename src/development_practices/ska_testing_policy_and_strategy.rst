@@ -32,9 +32,8 @@ TDD   Test Driven Development
 What follows is the software testing policy and strategy produced by
 Testing Community of Practice.
 
-This is **version 1.2.0** of this document, completed on 2020-02-29.
+This is **version 1.2.1** of this document, completed on 2020-06-05.
 
-.. todo:: check completion date
 
 1.1 Purpose of the document
 ----------------------------
@@ -127,8 +126,7 @@ We envision 3 major phases:
 3 Phase 1: Enabling Teams
 =========================
 
-This early phase should start in June 2019 and should cover at least
-the next few Program Increments.
+This early phase started in June 2019 and covers several Program Increments.
 
 **The overarching goal is to establish a test process that supports the
 teams**. In other terms this means that development teams will be the
@@ -253,7 +251,7 @@ Testing is **performed by the team(s) who develop the software**. There is no
 dedicated group of people who are in charge of testing, there are no
 beta-testers.
 
-Some testing is performed by a **temporary team of testers**, composed by individuals from different ```
+Some testing is performed by a **temporary team of testers**, composed by individuals from different
 existing teams. This testing is typically system or integration testing that covers 2
 or more artefacts that are developed by 2 or more teams.
 
@@ -564,12 +562,12 @@ linked to epics, capabilities and features.
 
 All acceptance criteria should be covered by one or more tests/scenarios, including happy and sad paths
 of the use case entailed by the criteria.
+Each feature should be covered by **at least one acceptance test** written in Gherkin.
 
-System-level tests should also be linked (for traceability purposes) to high-level requirements (L1/L2/L3,
-Interface requirements) of the telescope software. They should also be present in Jira.
+System-level tests could also be linked (for traceability purposes) to high-level requirements (L1/L2/L3,
+Interface requirements) of the telescope software. They could also be present in Jira.
+The call is on the feature/capability owner to decide when this is appropriate.
 
-Some preliminary information on how to implement Gherkin scenarios is shown in
-https://confluence.skatelescope.org/display/SE/How+to+implement+BDD+tests.
 
 
 5.4 Test environment
@@ -699,6 +697,18 @@ is used. Triage of these bugs is done by the SYSTEM team with support by selecte
 6 General references
 ====================
 
+Relevant "How To Pages" are:
+
+- `How to mock Tango devices <https://confluence.skatelescope.org/display/SE/How+to+use+mocks+with+Tango>`_
+
+- `How to test asynchronous code <https://confluence.skatelescope.org/display/SE/On+testing+asynchronous+code>`_
+
+- `How to implement BDD tests <https://confluence.skatelescope.org/display/SE/How+to+implement+BDD+tests>`_
+
+- `Examples of unit tests - OET <https://confluence.skatelescope.org/display/SE/Quality+of+test+cases+-+OET>`_
+
+- `Examples of unit tests - SKABaseClasses <https://confluence.skatelescope.org/pages/viewpage.action?pageId=87100720>`_
+
 Relevant textbooks include:
 
 -  **Managing the Testing Process**: Practical Tools and Techniques for Managing Hardware and Software Testing, R. Black, John Wiley & Sons Inc, 2009
@@ -710,4 +720,6 @@ Relevant textbooks include:
 -  **Test Driven Development. By Example**, Addison-Wesley Professional, K. Beck, 2002
 
 -  **Agile Testing: A Practical Guide for Testers and Agile Teams**, L. Crispin, Addison-Wesley Professional, 2008
+
+-  **Growing Object-Oriented Software Guided by Tests**, S. Freeman and N. Pryce, Addison-Wesley Professional, 2009
 
