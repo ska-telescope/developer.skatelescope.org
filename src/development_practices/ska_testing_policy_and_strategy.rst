@@ -26,6 +26,33 @@ SKAO  SKA Organisation
 TDD   Test Driven Development
 ===== ===================================================
 
+0 Flashcard
+=============
+
+.. Important::
+    This is a quick summary of the do's and don't do's entailed by this document.
+
+MUST-DO
+~~~~~~~
+
+* Each team should have a tester. But each developer is responsible for testing within the team.
+* Product/feature/capability owners are responsible for making sure that appropriate testing is done.
+* Malfunctions in testware are high priority fixes to do.
+* Each acceptance criterion (of capabilities, features, stories) is covered by at least one test.
+* Each feature should have at least one BDD/Gherkin test.
+* Log bugs in some backlog (team backlog, global one, SKAMPI).
+* The only source of truth are the tests running in the CI pipeline. "It works for me" is a no go.
+
+SHOULD-DO
+~~~~~~~~~~
+
+* Pay attention to code coverage: understand if what is not tested is important.
+* Practice a test-first/TDD approach: first the tests, then the production code.
+* Whenever possible, test at the lowest possible level (better unit than integration than system tests).
+* All test levels are needed in any case.
+* Relentlessly improve the quality of testware.
+* BDD/Gherkin tests should also be  stored in Jira and linked to requirements.
+
 1 Introduction
 ==============
 
@@ -516,7 +543,9 @@ act as a coordinator of the development.
 Malfunctions in the testware implementing system-level tests should be treated as
 **high priority bugs**.
 
-
+.. important::
+    - part 1
+    - part 2
 
 5.3 Test specification
 ----------------------
