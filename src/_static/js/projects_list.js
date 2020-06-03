@@ -24,6 +24,7 @@ function dynamicSort(property) {
        var templ = "https://gitlab.com/api/v4/groups/5901724/projects?per_page=100&order_by=name&sort=asc&simple=true";
        var sdi = "https://gitlab.com/api/v4/groups/7480052/projects?per_page=100&order_by=name&sort=asc&simple=true";
        var gitlab_v4_endpoint = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&order_by=name&sort=asc&simple=true";
+       var readthedocs_prepend="ska-telescope-" // all the readthedocs projects start with ska-telescope- next to their name
        var list = $("#list-of-projects tbody");
        var i = 1;
        //console.log(list);
@@ -64,7 +65,7 @@ function dynamicSort(property) {
                   item ="<tr>" +
                         "<td><a alt=\"repo url on gitlab\" href=\"" + gitlab_url + "\">" + name + "</a></td>" +
                        "<td><a href=\"" + docs_url + "/en/latest/?badge=latest\" >" +
-                           "<img src=\"https://readthedocs.org/projects/" + docs_name + "/badge/?version=latest\" alt='Documentation Status' />" +
+                           "<img src=\"https://readthedocs.org/projects/" + readthedocs_prepend + docs_name + "/badge/?version=latest\" alt='Documentation Status' />" +
                        "</a></td>" +
                         //"<td><a alt=\"docs url on readthedocs\" href=\"" + docs_url + "\">" + "docs" + "</a></td>" +
                         "<td>" + description + "</td>" +
