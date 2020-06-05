@@ -15,10 +15,11 @@ This section describes requirements and guidelines.
 Interface and Dependencies
 ==========================
 
-* All code must be compatible with Python 3.5 and later.
+* All code must be compatible with Python 3.7 and later.
 
 * The new Python 3 formatting style should be used (i.e.
-  ``"{0:s}".format("spam")`` instead of ``"%s" % "spam"``).
+  ``"{0:s}".format("spam")`` instead of ``"%s" % "spam"``),
+  or use format strings ``f"{spam}"`` if variable ``spam="spam"`` is in scope.
 
 
 Documentation and Testing
@@ -256,6 +257,195 @@ might read::
 This ensures that ``from submodule import *`` only imports ``':func:`foo'``
 and ``':class:`AClass'``, but not ``':class:`numpy.array'`` or
 ``':func:`numpy.linspace'``.
+
+
+. _python-packaging:
+
+Packaging
+=========
+
+SKA python packages use `setuptools <https://setuptools.readthedocs.io>`_ to 
+assemble the packages
+
+
+Apart from the standard arguments to :meth:`~setuptools.setup`, several extra 
+enhancements are used.
+
+Running tests out of the top-level directory can lead to conflicts when the 
+package is a direct child. It is best to put the package code in a subdirectory 
+e.g. ``src``
+
+``package_dir={"": "src"}``
+
+Package layout:
+
+.. code-block:: none
+
+    setup.py
+    setup.cfg
+    requirements.txt
+    requirements-test.txt
+    src/ska/foo/__init__.py
+    src/ska/foo/bardevice.py
+    tests/__init__.py
+    tests/test_bardevice.py
+    docs/requirements.txt
+    docs/source/conf.py
+    docs/source/index.rst
+
+
+Namespace
+---------
+
+It is recommended to use the ``ska`` namespace package for modules developed 
+in Python which are directly related to SKA. 
+`Namespace packages <https://docs.python.org/3/glossary.html#term-namespace-package>`_
+in python3 are native and distinguish themselves as directories without ``__init__.py``
+files. They have to be declared by using the output of 
+:meth:`setuptools.find_namespace_packages` to supply to the ``packages`` 
+keyword in :meth:`~setuptools.setup`
+
+Requirements
+------------
+
+There are many ways to handle the installation of dependencies in ``python``.
+`pip` 
+Best practice though is to put direct dependencies into `install_requires` 
+usually with a lower compatibility bound, but not explicit, e.g.
+
+.. code-block:: python
+
+       install_requires=[
+            "pytango >= 9.3.2",
+            "lmcbaseclasses >= 0.5.4"
+        ]
+
+For testing a package there is better to use and explicit `requirements.txt` file
+rather than  ``setup(test_requires=)``.
+A typical development scenario could look like::
+
+  pip install -e . # pulls in dependencies via install_requires
+  pip install -r requirements-test.txt
+  pytest tests
+
+Entry points
+------------
+
+If your code contains scripts or `main` functions in your module, these can 
+automatically wrapped as executables in the deployed package. For example 
+Tango ``Device Classes`` can be exposed without adding wrapper scripts
+
+``entry_points=``
+
+Sample ``setup.py``
+-------------------
+
+Here is a sample for the `foo` module in the ``ska`` namespace package:
+
+.. code-block:: python
+   :emphasize-lines: 18-26
+
+    setuptools.setup(
+        name="foo.bar",
+        description="Foo stuff",
+        version=0.0.1,
+        author="Prof Dr Dr Foo",
+        author_email="foo AT bar DOT org",
+        license="IP here",
+        url="https://foo.bar.org",
+        classifiers=[
+            "Development Status :: 3 - Alpha",
+            "Intended Audience :: Developers",
+            "License :: Other/Proprietary License",
+            "Operating System :: OS Independent",
+            "Programming Language :: Python",
+            "Topic :: Software Development :: Libraries :: Python Modules",
+            "Topic :: Scientific/Engineering :: Astronomy"],
+        platforms=["OS Independent"],
+        package_dir={"": "src"},
+        packages=setuptools.find_namespace_packages(where="src"),
+        entry_points={
+            "console_scripts": [
+                "FooDevice=ska.foo.bar_device:main",
+            ]
+        },        
+        include_package_data=True,
+        install_requires=[
+            # should be pulled in by lmcbaseclasses but isn't
+            "pytango >= 9.3.2",
+            "lmcbaseclasses >= 0.5.4"
+        ],
+        keywords="foo tango ska",
+        zip_safe=False
+    )
+
+
+Reproducible workflow
+---------------------
+
+.. todo:: 
+
+  This section is still evolving
+
+While testing in a local environment is quick and easy it doesn't fully guarantee
+independence of the system. A widely used way to abstract environment handling is
+tox_, which can control your testing workflow through several stages similar
+to what various continuous integration pipelines do.
+
+Simply install via ``pip install tox``
+
+Here is a SKA pytango package example tox.ini:
+
+.. code-block:: ini
+
+  [tox]
+  envlist = py37
+
+  [testenv]
+  setenv = PIP_DISABLE_VERSION_CHECK = 1
+  install_command = python -m pip install --extra-index-url https://nexus.engageska-portugal.pt/repository/pypi/simple {opts} {packages}
+  deps = 
+      -rrequirements.txt  # runtime requirements
+      -rrequirements-test.txt   # test/development requirements
+  commands =
+      # this ugly hack is here because:
+      # https://github.com/tox-dev/tox/issues/149
+      python -m pip install -U --extra-index-url https://nexus.engageska-portugal.pt/repository/pypi/simple -r{toxinidir}/requirements.txt
+      # 
+      python -m pytest {posargs}
+  # use system site-packages for pytango (and c++ library dependencies)
+  sitepackages = true
+
+  [testenv:docs]
+  description = build documentation
+  basepython = python3
+  sitepackages = false # we want to run docs without pytango, as that isn't available on RTD
+  skip_install = true
+  install_command = python -m pip install -U {opts} {packages}
+  deps = -rdocs/requirements.txt
+  commands = 
+      sphinx-build -E -W -c docs/source/ -b html docs/source/ docs/build/html
+
+  [testenv:lint]
+  basepython = python3
+  skip_install = true
+  description = report linting 
+  whitelist_externals = mkdir
+  deps = -rrequirements-tst.txt
+  commands = 
+      - mkdir -p build/reports
+      - python -m flake8 --max-line-length=88 --format=junit-xml --output-file=build/reports/linting.xml
+      python -m flake8 --max-line-length=88 --statistics --show-source
+
+To use `tox` simple invoke as follows::
+
+  tox -e py37
+  tox -e lint
+  ...
+
+.. _tox: https://tox.readthedocs.io/en/latest/
+
+
 
 
 Acknowledgements
