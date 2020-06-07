@@ -26,32 +26,32 @@ SKAO  SKA Organisation
 TDD   Test Driven Development
 ===== ===================================================
 
-0 Flashcard
-=============
+0 In a nutshell
+===============
 
 .. Important::
     This is a quick summary of the do's and don't do's entailed by this document.
 
 MUST-DO
-~~~~~~~
+-----------
 
-* Each team should have a tester. But each developer is responsible for testing within the team.
-* Product/feature/capability owners are responsible for making sure that appropriate testing is done.
+* Each team must have a tester. But each developer is responsible for testing within the team.
+* Product/feature/enabler/capability owners are responsible for making sure that appropriate testing is done.
 * Malfunctions in testware are high priority fixes to do.
-* Each acceptance criterion (of capabilities, features, stories) is covered by at least one test.
-* Each feature should have at least one BDD/Gherkin test.
-* Log bugs in some backlog (team backlog, global one, SKAMPI).
+* Each acceptance criterion (of capabilities, features, enablers, stories) is covered by at least one test.
+* Each feature/enabler must have 1+ acceptance tests, possibly expressed as BDD/Gherkin test.
+* Bugs are logged in some backlog (team backlog, global one, SKAMPI).
 * The only source of truth are the tests running in the CI pipeline. "It works for me" is a no go.
 
 SHOULD-DO
-~~~~~~~~~~
+-----------
 
 * Pay attention to code coverage: understand if what is not tested is important.
 * Practice a test-first/TDD approach: first the tests, then the production code.
 * Whenever possible, test at the lowest possible level (better unit than integration than system tests).
-* All test levels are needed in any case.
+* Unit/module and system levels are both needed in any case.
 * Relentlessly improve the quality of testware.
-* BDD/Gherkin tests should also be  stored in Jira and linked to requirements.
+* BDD/Gherkin tests should be stored in Jira and linked to requirements as well as in gitlab repos.
 
 1 Introduction
 ==============
@@ -59,7 +59,7 @@ SHOULD-DO
 What follows is the software testing policy and strategy produced by
 Testing Community of Practice.
 
-This is **version 1.2.1** of this document, completed on 2020-06-05.
+This is **version 1.2.1** of this document, completed on 2020-06-08.
 
 
 1.1 Purpose of the document
@@ -191,7 +191,7 @@ We plan to cover at least these practices:
    We suggest that branch coverage is used whenever possible (as opposed to
    statement/line coverage).
 -  Develop system-level tests to cover acceptance criteria (of
-   capabilities and features that are related to the entire system).
+   capabilities and features/enablers that are related to the entire system).
 
 Another goal of this phase is **identifying the test training needs** for
 the organization and teams and start providing some support
@@ -345,7 +345,7 @@ be achieved:
    execution and **enable regression testing** to be performed several
    times during a sprint (or even a day).
 
-*  System-level tests are needed to verify **acceptance criteria** of features and capabilities
+*  System-level tests are needed to verify **acceptance criteria** of features, enablers and capabilities
    that are related to the system (as opposed to individual components or services).
    Writing them in Gherkin has the added value of providing the means to establish
    a **living documentation**, that is using test cases as a documentation of the
@@ -537,15 +537,12 @@ by development teams and/or groups of testers belonging to different teams.
 In the latter case, testers should come from the teams that contributed one or more
 components of the system under test.
 
-The **product owner of the System Team** or a **feature/capability owner** might
+The **product owner of the System Team** or a **feature/enabler/capability owner** might
 act as a coordinator of the development.
 
 Malfunctions in the testware implementing system-level tests should be treated as
 **high priority bugs**.
 
-.. important::
-    - part 1
-    - part 2
 
 5.3 Test specification
 ----------------------
@@ -577,25 +574,29 @@ acceptance criteria of a user story and on this basis the tester with
 the assistance of programmers designs acceptance, system, and
 integration tests. Some of these acceptance tests are also **associated**
 (with tags, links or else) **to acceptance criteria** of corresponding
-features. All these tests are automated, possibly during the same sprint
+features/enablers. All these tests are automated, possibly during the same sprint
 in which the user story is being developed.
 
-During a PI, testers together with feature and capability owners define the acceptance criteria
+During a PI, testers together with feature/enabler and capability owners define the acceptance criteria
 and corresponding tests (either in Gherkin or other format). These tests are defined as the development
-of the feature proceeds, in a test-first fashion. In this way team(s) working on the feature
+of the feature/enabler proceeds, in a test-first fashion. In this way team(s) working on the feature/enabler
 will be able to check when their code passes the acceptance criteria.
 
-System-level tests are derived from acceptance criteria of epics, capabilities or features.
+System-level tests are derived from acceptance criteria of epics, capabilities or features/enablers.
 Appropriate tags should be added to tests and scenarios so that they can be
-linked to epics, capabilities and features.
+linked to epics, capabilities and features/enablers.
 
 All acceptance criteria should be covered by one or more tests/scenarios, including happy and sad paths
 of the use case entailed by the criteria.
-Each feature should be covered by **at least one acceptance test** written in Gherkin.
+Each feature/enabler should be covered by **at least one acceptance test**, possibly written in Gherkin.
+In general it is the Feature Owner's call to decide which acceptance tests need to be written in Gherkin.
+The **decision criterion** is based on who are the stakeholders of the tests: if they are developers,
+then Gherkin is probably not needed. If they are non-developers (eg. management, astronomers, architects) then
+Gherkin might be useful.
 
 System-level tests could also be linked (for traceability purposes) to high-level requirements (L1/L2/L3,
 Interface requirements) of the telescope software. They could also be present in Jira.
-The call is on the feature/capability owner to decide when this is appropriate.
+The call is on the feature/enabler/capability owner to decide when this is appropriate.
 
 
 
@@ -619,7 +620,7 @@ that can be used by test cases. When applicable, test data should be versioned.
 5.6 Test automation
 -------------------
 
-Different projects have different needs. What follows is a list of test automation frameworks
+Different projects have different needs. What follows is a non-exhaustive list of test automation frameworks
 and support libraries:
 
 - for developers using Python: `pytest <https://docs.pytest.org/en/latest/>`_,
@@ -646,6 +647,17 @@ Other routes have been followed to implement system-level tests using Gherkin:
 https://confluence.skatelescope.org/display/SE/How+to+implement+BDD+tests.
 
 See additional details on `Pytest configuration <https://developer.skatelescope.org/projects/skampi/en/latest/testing.html#pytest-configuration>`_.
+
+In any case attention should be payed to the quality of the testware: code of the test cases,
+code of assertions and fixtures, for data handling, code implementing tools used for testing.
+Pay attention to messages in assertions and for debugging.
+
+The important thing is that **tests should clearly convey the intention**: what do they do.
+Details regarding "how they work" should be hidden inside appropriate abstraction layers
+(auxiliary fixtures, methods, classes, variables, configurations).
+In this way tests can be used as a source of documentation (written in a programming language
+rather than plain English) which is extremely useful for integration testing.
+
 
 5.7 Continuous integration
 ---------------------------------------
@@ -737,6 +749,8 @@ Relevant "How To Pages" are:
 - `Examples of unit tests - OET <https://confluence.skatelescope.org/display/SE/Quality+of+test+cases+-+OET>`_
 
 - `Examples of unit tests - SKABaseClasses <https://confluence.skatelescope.org/pages/viewpage.action?pageId=87100720>`_
+
+- `On Test-Driven Development <https://confluence.skatelescope.org/display/SE/On+Test-Driven+Development>`_
 
 Relevant textbooks include:
 
