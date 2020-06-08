@@ -32,26 +32,27 @@ TDD   Test Driven Development
 .. Important::
     This is a quick summary of the do's and don't do's entailed by this document.
 
-MUST-DO
------------
+For developers and teams
+---------------------------
 
-* Each team must have a tester. But each developer is responsible for testing within the team.
-* Product/feature/enabler/capability owners are responsible for making sure that appropriate testing is done.
-* Malfunctions in testware are high priority fixes to do.
-* Each acceptance criterion (of capabilities, features, enablers, stories) is covered by at least one test.
-* Each feature/enabler must have 1+ acceptance tests, possibly expressed as BDD/Gherkin test.
-* Bugs are logged in some backlog (team backlog, global one, SKAMPI).
+* Each team should have a role responsible for the quality of the tests delivered by the team.
+* All developers within a team are responsible for creating tests.
 * The only source of truth are the tests running in the CI pipeline. "It works for me" is a no go.
-
-SHOULD-DO
------------
-
-* Pay attention to code coverage: understand if what is not tested is important.
-* Practice a test-first/TDD approach: first the tests, then the production code.
-* Whenever possible, test at the lowest possible level (better unit than integration than system tests).
-* Unit/module and system levels are both needed in any case.
+* Pay attention to code coverage: you should be able to defend why the parts not covered by
+  tests are not creating a significant risk.
+* Unit/module and system levels tests are both needed.
 * Relentlessly improve the quality of testware.
-* BDD/Gherkin tests should be stored in Jira and linked to requirements as well as in gitlab repos.
+* Each team (typically via the role above) must work with the Testing CoP to increase the quality level of the whole codebase by sharing experiences and developing new standards.
+* Practice a test-first/TDD approach: first the tests, then the production code.
+
+For Product/Feature/Capability Owners
+-----------------------------------------
+
+* Each story/feature/capability must have at least 1 automated acceptance test expressed in an appropriate,
+  comprehensible way that is automated (possibly a BDD/Gherkin test).
+* Product/feature/enabler/capability owners must ensure testing reflects the requirements of the story/feature/enabler/capability.
+* Malfunctions in testware are high priority fixes to do.
+* Bugs are logged in some backlog (team backlog, global one, SKAMPI).
 
 1 Introduction
 ==============
@@ -59,7 +60,7 @@ SHOULD-DO
 What follows is the software testing policy and strategy produced by
 Testing Community of Practice.
 
-This is **version 1.2.1** of this document, completed on 2020-06-08.
+This is **version 1.2.1** of this document, completed on 2020-06-09.
 
 
 1.1 Purpose of the document
@@ -180,7 +181,7 @@ given to testing by upper management. Means to implement a testing
 process are provided (tools, training, practices, guidelines) so
 that teams can adopt them.
 
-We plan to cover at least these practices:
+We cover these practices:
 
 -  TDD and Test-First.
 -  Use of test doubles (mocks, stub, spies).
@@ -190,8 +191,8 @@ We plan to cover at least these practices:
    enough to be tested.
    We suggest that branch coverage is used whenever possible (as opposed to
    statement/line coverage).
--  Develop system-level tests to cover acceptance criteria (of
-   capabilities and features/enablers that are related to the entire system).
+-  Development of system-level tests to cover acceptance criteria (of
+   capabilities and features/enablers/capabilities that are related to the entire system).
 
 Another goal of this phase is **identifying the test training needs** for
 the organization and teams and start providing some support
@@ -561,7 +562,9 @@ For unit and module testing, code coverage figures should be monitored,
 especially **branch/condition coverage** (as opposed to statement coverage).
 In particular the tester should analyse what part of the code is not being covered by tests,
 assess how important those fragments are, and decide if they are worth
-being covered. If so, new tests should be designed.
+being covered. If so, new tests should be designed. If not
+**the team should be able to defend** why the parts not covered by
+tests are deemed not being important.
 
 Importance should be assessed in terms of possible failures and their
 impact on the project: reduction of value of the system, difficulty in
