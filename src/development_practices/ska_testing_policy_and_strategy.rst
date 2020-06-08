@@ -657,7 +657,7 @@ Details regarding "how they work" should be hidden inside appropriate abstractio
 (auxiliary fixtures, methods, classes, variables, configurations).
 In this way tests can be used as a source of documentation (written in a programming language
 rather than plain English) which is extremely useful for integration testing.
-
+However, for complex tests, some commenting may still be useful to guide subsequent test maintainers.
 
 5.7 Continuous integration
 ---------------------------------------
