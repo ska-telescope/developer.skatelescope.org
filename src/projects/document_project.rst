@@ -90,8 +90,8 @@ Developers working on the SKA are members of the ska-telescope organisation on G
 Sign up / sign in with GitLab account
 =====================================
 
-.. figure:: login_rtd.png
-   :scale: 40%
+.. figure:: login_rtd.jpg
+   :scale: 60%
    :alt: Login on Readthedocs
    :align: center
    :figclass: figborder
@@ -111,7 +111,38 @@ As of October 2019, most developers are also registered on the SKA GitHub, and s
 Import project to ReadTheDocs
 =============================
 
-After signing in, one lands on the Dashboard, and the steps for importing a project are pretty self-explanatory from here. While importing the project **name** should be the `ska-telescope-` and project's gitlab slug (part in the url after https://gitlab.com/ska-telescope/), i.e. `ska-telescope-ska-python-skeleton`. After the project is imported successfully, name should be changed to the name of the project as listed in Gitlab project site. Project name could be changed in the *Admin* page of Read the Docs project site. As a last step, `kurtcobain-19` account should be added to the project as a maintainer for the system team to manage the documentation later on.
+After signing in, one lands on the Dashboard. To import a project so that it is automatically built by Readthedocs, click on the dropdown next to your name at the top right and choose **My Projects**, then **Import a Project**:
+
+.. figure:: rtd_my_projects_import.jpg
+   :scale: 80%
+   :alt: My Projects >> Import Project
+   :align: center
+   :figclass: figborder
+
+Find the project you want to import. You can filter the projects using the list on the right, or if you cannot find your project, import manually.
+
+.. figure:: rtd_import.jpg
+   :scale: 80%
+   :alt: Import a Project
+   :align: center
+   :figclass: figborder
+
+
+When importing the project, the **name** should have SKA Telescope (or ska-telescope-, if the project name is in this format) as a prefix. Project name could be changed in the *Admin* page of Read the Docs project site. 
+
+.. figure:: rtd_prefix.jpg
+   :scale: 80%
+   :alt: Import a Project
+   :align: center
+   :figclass: figborder
+
+Importantly, the `kurtcobain-19`'s account should be added to the project as a Maintainer so that the System Team can add it as a Sub-project (see next step).
+
+.. figure:: kurtcobain.jpg
+   :scale: 60%
+   :alt: Import a Project
+   :align: center
+   :figclass: figborder
 
 .. _sub-project:
 
