@@ -26,15 +26,42 @@ SKAO  SKA Organisation
 TDD   Test Driven Development
 ===== ===================================================
 
+0 In a nutshell
+===============
+
+.. Important::
+    This is a quick summary of the do's and don't do's entailed by this document.
+
+For developers and teams
+---------------------------
+
+* Each team should have a role responsible for the quality of the tests delivered by the team.
+* All developers within a team are responsible for creating tests.
+* The only source of truth are the tests running in the CI pipeline. "It works for me" is a no go.
+* Pay attention to code coverage: you should be able to defend why the parts not covered by
+  tests are not creating a significant risk.
+* Unit/module and system levels tests are all needed.
+* Relentlessly improve the quality of testware.
+* Each team (typically via the role above) must work with the Testing CoP to increase the quality level of the whole codebase by sharing experiences and developing new standards.
+* Practice a test-first/TDD approach: first the tests, then the production code.
+
+For Product/Feature/Capability Owners
+-----------------------------------------
+
+* Each feature/capability must have at least 1 automated acceptance test expressed in an appropriate,
+  comprehensible way that is automated (possibly a BDD/Gherkin test).
+* Product/feature/enabler/capability owners must ensure testing reflects the requirements of the feature/enabler/capability.
+* Malfunctions in testware are high priority fixes to do.
+* Bugs are logged in some backlog (team backlog, global one, SKAMPI).
+
 1 Introduction
 ==============
 
 What follows is the software testing policy and strategy produced by
 Testing Community of Practice.
 
-This is **version 1.2.0** of this document, completed on 2020-02-29.
+This is **version 1.2.1** of this document, completed on 2020-06-09.
 
-.. todo:: check completion date
 
 1.1 Purpose of the document
 ----------------------------
@@ -127,8 +154,7 @@ We envision 3 major phases:
 3 Phase 1: Enabling Teams
 =========================
 
-This early phase should start in June 2019 and should cover at least
-the next few Program Increments.
+This early phase started in June 2019 and covers several Program Increments.
 
 **The overarching goal is to establish a test process that supports the
 teams**. In other terms this means that development teams will be the
@@ -155,7 +181,7 @@ given to testing by upper management. Means to implement a testing
 process are provided (tools, training, practices, guidelines) so
 that teams can adopt them.
 
-We plan to cover at least these practices:
+We cover these practices:
 
 -  TDD and Test-First.
 -  Use of test doubles (mocks, stub, spies).
@@ -165,8 +191,8 @@ We plan to cover at least these practices:
    enough to be tested.
    We suggest that branch coverage is used whenever possible (as opposed to
    statement/line coverage).
--  Develop system-level tests to cover acceptance criteria (of
-   capabilities and features that are related to the entire system).
+-  Development of system-level tests to cover acceptance criteria (of
+   capabilities and features/enablers/capabilities that are related to the entire system).
 
 Another goal of this phase is **identifying the test training needs** for
 the organization and teams and start providing some support
@@ -253,7 +279,7 @@ Testing is **performed by the team(s) who develop the software**. There is no
 dedicated group of people who are in charge of testing, there are no
 beta-testers.
 
-Some testing is performed by a **temporary team of testers**, composed by individuals from different ```
+Some testing is performed by a **temporary team of testers**, composed by individuals from different
 existing teams. This testing is typically system or integration testing that covers 2
 or more artefacts that are developed by 2 or more teams.
 
@@ -320,7 +346,7 @@ be achieved:
    execution and **enable regression testing** to be performed several
    times during a sprint (or even a day).
 
-*  System-level tests are needed to verify **acceptance criteria** of features and capabilities
+*  System-level tests are needed to verify **acceptance criteria** of features, enablers and capabilities
    that are related to the system (as opposed to individual components or services).
    Writing them in Gherkin has the added value of providing the means to establish
    a **living documentation**, that is using test cases as a documentation of the
@@ -512,12 +538,11 @@ by development teams and/or groups of testers belonging to different teams.
 In the latter case, testers should come from the teams that contributed one or more
 components of the system under test.
 
-The **product owner of the System Team** or a **feature/capability owner** might
+The **product owner of the System Team** or a **feature/enabler/capability owner** might
 act as a coordinator of the development.
 
 Malfunctions in the testware implementing system-level tests should be treated as
 **high priority bugs**.
-
 
 
 5.3 Test specification
@@ -537,7 +562,9 @@ For unit and module testing, code coverage figures should be monitored,
 especially **branch/condition coverage** (as opposed to statement coverage).
 In particular the tester should analyse what part of the code is not being covered by tests,
 assess how important those fragments are, and decide if they are worth
-being covered. If so, new tests should be designed.
+being covered. If so, new tests should be designed. If not
+**the team should be able to defend** why the parts not covered by
+tests are deemed not being important.
 
 Importance should be assessed in terms of possible failures and their
 impact on the project: reduction of value of the system, difficulty in
@@ -550,26 +577,30 @@ acceptance criteria of a user story and on this basis the tester with
 the assistance of programmers designs acceptance, system, and
 integration tests. Some of these acceptance tests are also **associated**
 (with tags, links or else) **to acceptance criteria** of corresponding
-features. All these tests are automated, possibly during the same sprint
+features/enablers. All these tests are automated, possibly during the same sprint
 in which the user story is being developed.
 
-During a PI, testers together with feature and capability owners define the acceptance criteria
+During a PI, testers together with feature/enabler and capability owners define the acceptance criteria
 and corresponding tests (either in Gherkin or other format). These tests are defined as the development
-of the feature proceeds, in a test-first fashion. In this way team(s) working on the feature
+of the feature/enabler proceeds, in a test-first fashion. In this way team(s) working on the feature/enabler
 will be able to check when their code passes the acceptance criteria.
 
-System-level tests are derived from acceptance criteria of epics, capabilities or features.
+System-level tests are derived from acceptance criteria of epics, capabilities or features/enablers.
 Appropriate tags should be added to tests and scenarios so that they can be
-linked to epics, capabilities and features.
+linked to epics, capabilities and features/enablers.
 
 All acceptance criteria should be covered by one or more tests/scenarios, including happy and sad paths
 of the use case entailed by the criteria.
+Each feature/enabler should be covered by **at least one acceptance test**, possibly written in Gherkin.
+In general it is the Feature Owner's call to decide which acceptance tests need to be written in Gherkin.
+The **decision criterion** is based on who are the stakeholders of the tests: if they are developers,
+then Gherkin is probably not needed. If they are non-developers (eg. management, astronomers, architects) then
+Gherkin might be useful.
 
-System-level tests should also be linked (for traceability purposes) to high-level requirements (L1/L2/L3,
-Interface requirements) of the telescope software. They should also be present in Jira.
+System-level tests could also be linked (for traceability purposes) to high-level requirements (L1/L2/L3,
+Interface requirements) of the telescope software. They could also be present in Jira.
+The call is on the feature/enabler/capability owner to decide when this is appropriate.
 
-Some preliminary information on how to implement Gherkin scenarios is shown in
-https://confluence.skatelescope.org/display/SE/How+to+implement+BDD+tests.
 
 
 5.4 Test environment
@@ -592,13 +623,14 @@ that can be used by test cases. When applicable, test data should be versioned.
 5.6 Test automation
 -------------------
 
-Different projects have different needs. What follows is a list of test automation frameworks
+Different projects have different needs. What follows is a non-exhaustive list of test automation frameworks
 and support libraries:
 
 - for developers using Python: `pytest <https://docs.pytest.org/en/latest/>`_,
   `pytest-bdd <https://github.com/pytest-dev/pytest-bdd>`_,
   `assertpy <https://github.com/ActivisionGameScience/assertpy>`_,
   `mock <https://docs.python.org/3/library/unittest.mock.html>`_
+  `tox <https://tox.readthedocs.io/en/latest/>`_
 
 - for developers using Javascript: `Jest <https://jestjs.io/>`_
 
@@ -619,6 +651,17 @@ Other routes have been followed to implement system-level tests using Gherkin:
 https://confluence.skatelescope.org/display/SE/How+to+implement+BDD+tests.
 
 See additional details on `Pytest configuration <https://developer.skatelescope.org/projects/skampi/en/latest/testing.html#pytest-configuration>`_.
+
+In any case attention should be payed to the quality of the testware: code of the test cases,
+code of assertions and fixtures, for data handling, code implementing tools used for testing.
+Pay attention to messages in assertions and for debugging.
+
+The important thing is that **tests should clearly convey the intention**: what do they do.
+Details regarding "how they work" should be hidden inside appropriate abstraction layers
+(auxiliary fixtures, methods, classes, variables, configurations).
+In this way tests can be used as a source of documentation (written in a programming language
+rather than plain English) which is extremely useful for integration testing.
+However, for complex tests, some commenting may still be useful to guide subsequent test maintainers.
 
 5.7 Continuous integration
 ---------------------------------------
@@ -699,6 +742,20 @@ is used. Triage of these bugs is done by the SYSTEM team with support by selecte
 6 General references
 ====================
 
+Relevant "How To Pages" are:
+
+- `How to mock Tango devices <https://confluence.skatelescope.org/display/SE/How+to+use+mocks+with+Tango>`_
+
+- `How to test asynchronous code <https://confluence.skatelescope.org/display/SE/On+testing+asynchronous+code>`_
+
+- `How to implement BDD tests <https://confluence.skatelescope.org/display/SE/How+to+implement+BDD+tests>`_
+
+- `Examples of unit tests - OET <https://confluence.skatelescope.org/display/SE/Quality+of+test+cases+-+OET>`_
+
+- `Examples of unit tests - SKABaseClasses <https://confluence.skatelescope.org/pages/viewpage.action?pageId=87100720>`_
+
+- `On Test-Driven Development <https://confluence.skatelescope.org/display/SE/On+Test-Driven+Development>`_
+
 Relevant textbooks include:
 
 -  **Managing the Testing Process**: Practical Tools and Techniques for Managing Hardware and Software Testing, R. Black, John Wiley & Sons Inc, 2009
@@ -710,4 +767,6 @@ Relevant textbooks include:
 -  **Test Driven Development. By Example**, Addison-Wesley Professional, K. Beck, 2002
 
 -  **Agile Testing: A Practical Guide for Testers and Agile Teams**, L. Crispin, Addison-Wesley Professional, 2008
+
+-  **Growing Object-Oriented Software Guided by Tests**, S. Freeman and N. Pryce, Addison-Wesley Professional, 2009
 
