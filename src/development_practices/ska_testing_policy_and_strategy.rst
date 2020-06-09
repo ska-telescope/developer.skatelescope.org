@@ -630,6 +630,7 @@ and support libraries:
   `pytest-bdd <https://github.com/pytest-dev/pytest-bdd>`_,
   `assertpy <https://github.com/ActivisionGameScience/assertpy>`_,
   `mock <https://docs.python.org/3/library/unittest.mock.html>`_
+  `tox <https://tox.readthedocs.io/en/latest/>`_
 
 - for developers using Javascript: `Jest <https://jestjs.io/>`_
 
