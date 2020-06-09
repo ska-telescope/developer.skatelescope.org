@@ -40,7 +40,7 @@ For developers and teams
 * The only source of truth are the tests running in the CI pipeline. "It works for me" is a no go.
 * Pay attention to code coverage: you should be able to defend why the parts not covered by
   tests are not creating a significant risk.
-* Unit/module and system levels tests are both needed.
+* Unit/module and system levels tests are all needed.
 * Relentlessly improve the quality of testware.
 * Each team (typically via the role above) must work with the Testing CoP to increase the quality level of the whole codebase by sharing experiences and developing new standards.
 * Practice a test-first/TDD approach: first the tests, then the production code.
@@ -48,9 +48,9 @@ For developers and teams
 For Product/Feature/Capability Owners
 -----------------------------------------
 
-* Each story/feature/capability must have at least 1 automated acceptance test expressed in an appropriate,
+* Each feature/capability must have at least 1 automated acceptance test expressed in an appropriate,
   comprehensible way that is automated (possibly a BDD/Gherkin test).
-* Product/feature/enabler/capability owners must ensure testing reflects the requirements of the story/feature/enabler/capability.
+* Product/feature/enabler/capability owners must ensure testing reflects the requirements of the feature/enabler/capability.
 * Malfunctions in testware are high priority fixes to do.
 * Bugs are logged in some backlog (team backlog, global one, SKAMPI).
 
