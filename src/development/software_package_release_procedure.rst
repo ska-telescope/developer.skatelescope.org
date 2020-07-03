@@ -139,6 +139,13 @@ the following section(s), for example:
   [packages]
   'skaskeleton' = {version='*', index='nexus'}
 
+When using `Pipenv <https://pipenv.readthedocs.io/en/latest/>`_ this is sufficient to resolve Nexus packages. Otherwise, pip option ``extra-index-url`` needs to be specified. This can be automated by adding it to ``$USER/.pip/pip.conf``.
+
+.. code:: pipconf
+
+  [global]
+  extra-index-url = https://nexus.engageska-portugal.pt/repository/pypi/simple
+
 .. _helm_chart_repo:
 
 Helm Chart Packaging, Publishing and Sharing
