@@ -314,7 +314,7 @@ A :ref:`full list <gitlab-variables>` is also available.
 Python Modules
 ______________
 
-The Nexus PYPI destination as well as a username and password is available.
+The Nexus PYPI destination as well as a username and password is avialable.
 For a reference implementation see the `lmc-base-classes .gitlab-ci.yaml <https://gitlab.com/ska-telescope/lmc-base-classes/blob/master/.gitlab-ci.yml>`_
 
 Note the following:
@@ -361,7 +361,7 @@ Note the following:
 Migrating to new Runner Infrastructure
 ------------------------------------------------------------------
 
-Compose is a commonly used tool for defining and running multi-container Docker applications. It works in all environments including CI workflows and requires a three-step process:
+Compose is a comonly used tool for defining and running multi-container Docker applications. It works in all environments including CI workflows and requires a three-step process:
 
 #.  Prepare your Dockerfile.
 #.  Define the services that make up your app in :code:`docker-compose.yml`.
@@ -369,7 +369,7 @@ Compose is a commonly used tool for defining and running multi-container Docker 
 
 The SKA is currently promoting migration to Kubernetes as the container orchestrator, and this requires for applications developed with docker-compose to be converted into the new runner infrastructure. In principle there is no need to make any changes if one is not using docker-compose. 
 
-The conversion tool allowing the migration is Kompose. A detailed guide for changing from docker-compose to kubernetes can be found at https://kubernetes.io/docs/tasks/configure-pod-container/translate-compose-kubernetes/
+The conversion tool allowing a relatively simple migration is kompose. A detailed guide for changing from docker-compose to kubernetes can be found at https://kubernetes.io/docs/tasks/configure-pod-container/translate-compose-kubernetes/
 
 The conversion process is relatively straightforward, requiring two steps:
 
