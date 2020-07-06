@@ -45,8 +45,11 @@ Run the box and call the following commands:
     sudo apt -y install git
     git clone https://gitlab.com/ska-telescope/ansible-playbooks
     cd ansible-playbooks
-    sudo apt-add-repository --yes --update ppa:ansible/ansible && sudo apt -y install ansible
-    ansible-playbook -i hosts deploy_tangoenv.yml --extra-vars "ansible_become_pass=osboxes.org"
+    sudo apt-add-repository --yes --update ppa:ansible/ansible && \
+        sudo apt -y install ansible
+    ansible-playbook -i hosts deploy_tangoenv.yml \
+        --extra-vars "ansible_become_pass=osboxes.org" \
+        -e ansible_python_interpreter=/usr/bin/python 
     sudo reboot
 
 Start the tango system
