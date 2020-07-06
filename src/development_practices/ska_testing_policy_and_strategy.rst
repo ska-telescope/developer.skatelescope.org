@@ -267,6 +267,17 @@ following definitions, mostly derived from :ref:`ISTQB Glossary <ref-istqb-gloss
     A human action that produces an incorrect result (including
     inserting a bug in the code or writing the wrong specification).
 
+**Test case/Test script**
+    A "test case" is a set of preconditions, inputs, actions (where applicable), 
+    expected results and postconditions, developed based on test conditions. 
+    A "test script" is an implementation of a test case in some programming
+    language and test automation framework.
+
+**Test condition**
+    A testable aspect of a component or system identified as a basis for testing. 
+    More informally, a test condition expresses how the SUT will be exercised and
+    how it will be verified.
+
 .. note::
    The purpose of defining both “testing” and “debugging” is so that
    readers get rid of the idea that one does testing while they are
