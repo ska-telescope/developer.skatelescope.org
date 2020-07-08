@@ -76,7 +76,7 @@ commit rules:
   # Your branch is up-to-date with 'origin/st-320-swap-out-fluentd'.
 
 
-You can find additional information on how to write a good commit message `here <https://chris.beams.io/posts/git-commit/>`_.
+You can find additional information on how to write a good commit message `here <https://chris.beams.io/posts/git-commit/>`__.
 
 Configure Git
 =============
@@ -122,7 +122,7 @@ The passphrase of your GPG key will then be asked. To avoid having to type the -
 
 
 When working in a remote repository by ssh connection, you need to create new GPG key and add it as explained above or you can forward your existing gpg key to the remote machine following the instructions below. 
-You can find more information `here <https://wiki.gnupg.org/AgentForwarding>`_.
+You can find more information `here <https://wiki.gnupg.org/AgentForwarding>`__.
 
 * Find your local socket: :code:`gpgconf --list-dir agent-extra-socket` 
 * Find your remote socket: :code:`gpgconf --list-dir agent-socket`
