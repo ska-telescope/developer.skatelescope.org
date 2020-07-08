@@ -25,10 +25,10 @@ In order to access the dashboards, first you should add below lines to your `hos
 Some of the dashboards are password protected. To get the current passwords please contact the system team.
 
 
-* `SKA Infrastructure <https://monitoring.engageska-portugal.pt/dashboards>`_: Monitoring metrics such as Kubernetes, GitLab Runners, Elasticstack, cadvisor etc.
-* `Tango Devices <http://grafana.integration.engageska-portugal.pt/dashboards>`_: Example grafana dashboards for Tango Devices, attributes, states , databases etc.
-* `Prometheus Alerts <https://alerts.engageska-portugal.pt/alerts>`_: Prometheus alerts for the core kubernetes cluster and infrastructure VMs
-* `Kibana Logs <https://kibana.engageska-portugal.pt/app/logs>`_: Kibana Logs for the core cluster
-* `Webjive <http://integration.engageska-portugal.pt/testdb/devices>`_: Webjive dashboard for the Tango Devices
-* `Argos  <https://argos.engageska-portugal.pt/argos/dashboards>`_: Argos grafana dashboard for Testing purposes for the repositories test metrics such as coverage, number of executed tests, mean values etc. Note: this dashboard has only some repositories at the moment for prototyping
+* `SKA Infrastructure <https://monitoring.engageska-portugal.pt/dashboards>`__: Monitoring metrics such as Kubernetes, GitLab Runners, Elasticstack, cadvisor etc.
+* `Tango Devices <http://grafana.integration.engageska-portugal.pt/dashboards>`__: Example grafana dashboards for Tango Devices, attributes, states , databases etc.
+* `Prometheus Alerts <https://alerts.engageska-portugal.pt/alerts>`__: Prometheus alerts for the core kubernetes cluster and infrastructure VMs
+* `Kibana Logs <https://kibana.engageska-portugal.pt/app/logs>`__: Kibana Logs for the core cluster
+* `Webjive <http://integration.engageska-portugal.pt/testdb/devices>`__: Webjive dashboard for the Tango Devices
+* `Argos  <https://argos.engageska-portugal.pt/argos/dashboards>`__: Argos grafana dashboard for Testing purposes for the repositories test metrics such as coverage, number of executed tests, mean values etc. Note: this dashboard has only some repositories at the moment for prototyping
 
