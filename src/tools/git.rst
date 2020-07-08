@@ -29,7 +29,8 @@ Create a GitLab account using your **institutional email** address at
 https://gitlab.com/users/sign_in. If you already have an account on
 GitLab, you should have your institutional email added to your profile: click on
 your user icon on the top right corner and select *Settings->Emails->Add email
-address* .  It is recommended that 2FA (two-factor authentication) is enabled.  There are a variety of OTP (One Time Pin) applications available for mobile phones with instructions available here https://docs.gitlab.com/ee/user/profile/account/two_factor_authentication.html .
+address* .  It is recommended that 2FA (two-factor authentication) is enabled.  There are a variety of OTP (One Time Pin) applications available for mobile phones with instructions available
+`here <https://docs.gitlab.com/ee/user/profile/account/two_factor_authentication.html>`__.
 
 Setup SSH key
 +++++++++++++
