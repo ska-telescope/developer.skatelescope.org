@@ -18,7 +18,7 @@ GitLab as the Git repository manager
 
 The SKA Software team have adopted the GitLab social coding platform as the main Git repository manager for its
 CI/CD tools.  For those using the GitHub platform the steps for the switch to GitLab are described
-:ref:`here<github2gitlab>`.
+:ref:`here <github2gitlab>`.
 
 The following describes how to access the service, and how to setup the basic working environment to integrate with GitLab for the SKA.
 
@@ -29,7 +29,8 @@ Create a GitLab account using your **institutional email** address at
 https://gitlab.com/users/sign_in. If you already have an account on
 GitLab, you should have your institutional email added to your profile: click on
 your user icon on the top right corner and select *Settings->Emails->Add email
-address* .  It is recommended that 2FA (two-factor authentication) is enabled.  There are a variety of OTP (One Time Pin) applications available for mobile phones with instructions available here https://docs.gitlab.com/ee/user/profile/account/two_factor_authentication.html .
+address* .  It is recommended that 2FA (two-factor authentication) is enabled.  There are a variety of OTP (One Time Pin) applications available for mobile phones with instructions available
+`here <https://docs.gitlab.com/ee/user/profile/account/two_factor_authentication.html>`__.
 
 Setup SSH key
 +++++++++++++
@@ -76,7 +77,7 @@ commit rules:
   # Your branch is up-to-date with 'origin/st-320-swap-out-fluentd'.
 
 
-You can find additional information on how to write a good commit message `here <https://chris.beams.io/posts/git-commit/>`_.
+You can find additional information on how to write a good commit message `here <https://chris.beams.io/posts/git-commit/>`__.
 
 Configure Git
 =============
@@ -122,7 +123,7 @@ The passphrase of your GPG key will then be asked. To avoid having to type the -
 
 
 When working in a remote repository by ssh connection, you need to create new GPG key and add it as explained above or you can forward your existing gpg key to the remote machine following the instructions below. 
-You can find more information `here <https://wiki.gnupg.org/AgentForwarding>`_.
+You can find more information `here <https://wiki.gnupg.org/AgentForwarding>`__.
 
 * Find your local socket: :code:`gpgconf --list-dir agent-extra-socket` 
 * Find your remote socket: :code:`gpgconf --list-dir agent-socket`
@@ -137,6 +138,7 @@ If you want to replace a series of small commits with a single commit or if you 
 
 * You should never rebase commits you have pushed to a remote server.
 * You should also never rebase commits authored by other people.
+
 In general the squashing of commits is discouraged for SKA repositories.
 
 .. _branching-policy:

@@ -28,7 +28,7 @@ before_script:
 pages:
   script:
   - pip install -r requirements.txt
-  - make html
+  - make html SPHINXOPTS="-W --keep-going"
   - ls build/html
   - mkdir .public
   - cp -r build/html/* .public

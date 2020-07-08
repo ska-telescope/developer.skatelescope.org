@@ -90,7 +90,7 @@ must have a gitlab account and be added to the organization as part of a team.
 Working with SKA Jira
 =====================
 
-Every team is tracking daily work in a team-based project on our JIRA server at [https://jira.skatelescope.org]
+Every team is tracking daily work in a team-based project on our JIRA server at https://jira.skatelescope.org.
 
 - :doc:`tools/jira`
 

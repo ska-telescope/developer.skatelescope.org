@@ -85,8 +85,6 @@ Register on ReadTheDocs
 =======================
 Developers working on the SKA are members of the ska-telescope organisation on GitLab. Registering an account using the OAuth credentials on ReadTheDocs is recommended, because then the integration between the SKA GitLab and SKA ReadTheDocs services is done automatically. The integrations can also be set up manually later, and is not difficult.
 
-.. _figure-1-person-token:
-
 Sign up / sign in with GitLab account
 =====================================
 
