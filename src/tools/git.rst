@@ -18,7 +18,7 @@ GitLab as the Git repository manager
 
 The SKA Software team have adopted the GitLab social coding platform as the main Git repository manager for its
 CI/CD tools.  For those using the GitHub platform the steps for the switch to GitLab are described
-:ref:`here<github2gitlab>`.
+:ref:`here <github2gitlab>`.
 
 The following describes how to access the service, and how to setup the basic working environment to integrate with GitLab for the SKA.
 
