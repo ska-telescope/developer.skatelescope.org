@@ -306,12 +306,14 @@ Projects
   :hidden:
 
   services/ait_performance_env
+  services/monitoring-dashboards
 
 
 Developer Services
 ------------------
 
 - :doc:`services/ait_performance_env`
+- :doc:`services/monitoring-dashboards`
 
 .. SHARE SECTION ==================================================
 
