@@ -18,7 +18,6 @@ In order to access the dashboards, first you should add below lines to your `hos
     192.168.93.102 tango.rest.integration.engageska-portugal.pt
     192.168.93.102 grafana.integration.engageska-portugal.pt
     192.168.93.102 tangogql-proxy.integration.engageska-portugal.pt
-    192.168.93.26:3000 alerts.engageska-portugal.pt
     193.136.93.245 kibana.engageska-portugal.pt monitoring.engageska-portugal.pt
 
 
