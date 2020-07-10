@@ -262,7 +262,7 @@ Merge requests
 When the story is ready for acceptance a Merge Request should be created on GitLab to
 merge the story branch into the master branch. The Merge Request UI on GitLab includes a platform for the discussion threads, and indeed an important purpose of the Merge Request is to provide an online place for the team to discuss the changes and review the code before doing the actual merge.
 
-It is recommended that A new merge request will include, among others, the following options:
+It is recommended that a new merge request will include, among others, the following options:
 
 * The Merge Request Title should always include the related JIRA issue id - this will be automatic following the above branching naming convention.
 * Merge Request Description should include a coincise, brief description about the issue.
@@ -275,6 +275,51 @@ At the moment the SKA organisation does not enforce approval rules, but it is re
 
 As part of best practices it is important to delete feature branches on merge or after merging them to keep your repository clean, showing only work in progress.
 It is not recommended to squash commits submitted to the remote server, in particular if using GitLab and JIRA integration, so the enabling squash commits option should be left unchecked.
+
+*Gitlab MR Template for Projects*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+It is recommended that the following template is included in the project for merge requests.
+
+1. Go to your project’s Settings.
+2. Click Expand under the Merge requests header.
+3. Fill in the Default description template for merge requests text area with the below block. 
+4. (Optional) Also, create a new file named `default_merge_request.md` under `.gitlab/merge_request_templates/` in `master(default branch)` branch with the contents of below block. 
+5. (Optional) Add different MR templates (for documentation, test/feature requests etc.) to the above directory to be selected while creating a merge request.
+ 
+.. code-block:: md
+
+  <!-- Provide a general summary of your changes in the Title above -->
+
+  # Description
+
+  <!--
+  Describe your changes in detail. Please include the purpose of the MR, what was changed, how does it impact other code and how it has been tested.
+  -->
+
+  ## Relevant tickets and issues
+
+  <!--
+  List any relevant tickets and issues
+  -->
+
+  ## Checklist
+
+  <!-- Please follow this checklist and put an x in each of the boxes, like this: [x]. -->
+  - [ ] This code meets [SKA Definition of Done](https://developer.skatelescope.org/en/latest/development_practices/definition_of_done.html)
+  - [ ] This code conforms to the SKA Coding Standards (see [Python](https://developer.skatelescope.org/en/latest/development/python-codeguide.html), [Javascript](https://developer.skatelescope.org/en/latest/development/javascript-codeguide.html), [VHDL](https://developer.skatelescope.org/en/latest/development/vhdl-codeguide.html), [C++](https://developer.skatelescope.org/en/latest/development/cplusplus-codeguide.html))
+  - [ ] Unit tests has been added/updated to cover all changes and the resulting test coverage has not decreased
+  - [ ] Component and/or interface tests have been added for any new externally facing APIs (preferably using a BDD style)
+  - [ ] All end-to-end system tests pass when run in a recognised SKA integration environment
+  - [ ] All related tests follow [SKA Testing Policy and Strategy](https://developer.skatelescope.org/en/latest/development_practices/ska_testing_policy_and_strategy.html)
+  - [ ] Project's pipeline is not broken
+  - [ ] This code has been documented according to [SKA Documentation Guidelines](https://developer.skatelescope.org/en/latest/projects/document_project.html)
+  - [ ] Relevant user documentation has been updated
+  - [ ] Commit messages follow [SKA Commit Guidelines](https://developer.skatelescope.org/en/latest/tools/git.html#committing-code)
+
+
+
+For more information about how to define templates, visit `here <https://docs.gitlab.com/ee/user/project/description_templates.html#creating-merge-request-templates>`__.
+
 
 *Gitlab MR Settings for Project Maintainers*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
