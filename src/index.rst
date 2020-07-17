@@ -331,6 +331,40 @@ Share Your Knowledge
 --------------------
 - :doc:`community/share_your_knowledge`
 
+.. DEPENDENCIES MANAGEMENT ==================================================
+
+.. Hidden toctree to manage the sidebar navigation.
+
+.. toctree::
+  :maxdepth: 1
+  :caption: Dependencies Management
+  :hidden:
+
+  dependencies/base_dev_env
+  dependencies/listing_project_dependencies
+  dependencies/base
+  dependencies/ska-skeleton
+  dependencies/developer.skatelescope.org
+
+Dependencies Management
+-----------------------
+
+Defines the guidelines for *dependency listing* and *base system* definition as
+well as list the dependencies for every SKA's Telescope project.
+
+Base Development Environment
+============================
+
+Defines the standard environment (OS, libraries, packages and tool specific
+dependencies) on which development is expected to take place and thereby
+supported.
+
+- :doc:`dependencies/base_dev_env`
+- :doc:`dependencies/listing_project_dependencies`
+- :doc:`dependencies/base`
+- :doc:`dependencies/ska-skeleton`
+- :doc:`dependencies/developer.skatelescope.org`
+
 Commitment to opensource
 ------------------------
 
