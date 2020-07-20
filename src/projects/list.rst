@@ -26,7 +26,7 @@ List of projects
 ================
 
 The following table is automatically extracted from our gitlab organisation repository
-at [https://gitlab.com/ska-telescope] and it contains the full list of projects, including those residing at the root of ska-telescope and those already housed in one of the subgroups shown in the table above.
+at [https://gitlab.com/ska-telescope] and it contains the full list of projects, including those residing at the root of ska-telescope and those already housed in the subgroups shown in the table above.
 
 ================= ============= ===========
 Gitlab repository Documentation Description
