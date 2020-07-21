@@ -9,18 +9,14 @@ Subgroups and projects
 
 The majority of the SKA projects are currently housed at the root of our gitlab organisation repository at [https://gitlab.com/ska-telescope] but the SKA encourages the use of Gitlab subgroups to house closely related repositories.
 
+
 List of subgroups
 =================
 
 The following subgroup table is automatically extracted from our gitlab organisation repository
 at [https://gitlab.com/ska-telescope] and it contains the list of all currently available subgroups.
 
-================= ===========
-Gitlab subgroup   Description
-================= ===========
-testgit           test description
-testgit           test description
-================= =========== 
+Subgroups: Science Data Challanges, Software Defined Infrastructure, templates-
 
 List of projects
 ================
@@ -28,12 +24,12 @@ List of projects
 The following table is automatically extracted from our gitlab organisation repository
 at [https://gitlab.com/ska-telescope] and it contains the full list of projects, including those residing at the root of ska-telescope and those already housed in the subgroups shown in the table above.
 
-================= ============= ===========
-Gitlab repository Documentation Description
-================= ============= ===========
-testgit           testdoc       test description
-testgit           testdoc       test description
-================= ============= ===========
+   ============= =================
+   Documentation Gitlab repository 
+   ============= =================
+   testdoc       testgit       
+   testdoc       testgit       
+   ============= ================= 
 
 .. .. raw:: html
 

@@ -20,9 +20,9 @@ function dynamicSort(property) {
     }
 }
    jQuery(function(){
-       var pg1 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=50&order_by=name&sort=asc&simple=true&include_subgroups=true";
-       var pg2 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=50&order_by=name&sort=asc&simple=true&include_subgroups=true&page=2";
-       var pg3 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=50&order_by=name&sort=asc&simple=true&include_subgroups=true&page=3";
+       var pg1 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&order_by=name&sort=asc&simple=true&include_subgroups=true";
+       var pg2 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&order_by=name&sort=asc&simple=true&include_subgroups=true&page=2";
+       var pg3 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&order_by=name&sort=asc&simple=true&include_subgroups=true&page=3";
        var readthedocs_prepend="ska-telescope-" // all the readthedocs projects start with ska-telescope- next to their name
        var list = $("#list-of-projects tbody");
        var i = 1;
@@ -61,12 +61,10 @@ function dynamicSort(property) {
                    else
                        docs_url = "https://developer.skatelescope.org/projects/" + docs_name;
                   item ="<tr>" +
-                        "<td><a alt=\"repo url on gitlab\" href=\"" + gitlab_url + "\">" + name + "</a></td>" +
                        "<td><a href=\"" + docs_url + "/en/latest/?badge=latest\" >" +
-                           "<img src=\"https://readthedocs.org/projects/" + readthedocs_prepend + docs_name + "/badge/?version=latest\" alt='Documentation Status' />" +
-                       "</a></td>" +
-                        //"<td><a alt=\"docs url on readthedocs\" href=\"" + docs_url + "\">" + "docs" + "</a></td>" +
-                        "<td>" + description + "</td>" +
+                           "<img src=\"https://readthedocs.org/projects/" + readthedocs_prepend + docs_name + "/badge/?version=latest\" alt='Documentation Status' style='height:150%;' /> " +  "</a></td>" +
+                        "<td><a alt=\"repo url on gitlab\" href=\"" + gitlab_url + "\">" + name + "</a><br>" + description +
+                       "</td>" +
                         "</tr>";
                   if (name != "dev.developer.skatelescope.org")
                       $(item).appendTo(list);

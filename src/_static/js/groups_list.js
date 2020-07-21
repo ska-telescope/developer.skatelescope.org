@@ -24,8 +24,7 @@ function dynamicSort(property) {
        var pg2 = "https://gitlab.com/api/v4/groups/3180705/subgroups?per_page=50&order_by=name&sort=asc&simple=true&page=2";
        var pg3 = "https://gitlab.com/api/v4/groups/3180705/subgroups?per_page=50&order_by=name&sort=asc&simple=true&page=3";
        var readthedocs_prepend="ska-telescope-" // all the readthedocs projects start with ska-telescope- next to their name
-       var list = $("#list-of-subgroups tbody");
-       var i = 1;
+       var list = $("#list-of-subgroups p:eq(1)");
        //console.log(list);
        //
        if( list.length ){
@@ -39,7 +38,6 @@ function dynamicSort(property) {
                data.sort(dynamicSort("name"));
                $.each(data, function(key, val){
 //                  console.log(val);
-                  i = i+1;
                   if(val["description"])
                       description = val["description"];
                   else
@@ -47,18 +45,16 @@ function dynamicSort(property) {
                   gitlab_url = val["web_url"];
                   name = val["name"];
                   path = val["path"];
-                        item ="<tr>" +
-                        "<td><a alt=\"repo url on gitlab\" href=\"" + gitlab_url + "\">" + name + "</a></td>" +
-                        "<td>" + description + "</td>" +
-                        "</tr>";
+                        item ="<p>" +
+                        "<a alt=\"repo url on gitlab\" href=\"" +
+                        gitlab_url + "\">" + name + "</a><br>" +
+                        description + "</p>" ;
                   if (name != "dev.developer.skatelescope.org")
                       $(item).appendTo(list);
                }); //end each
-              console.log(i + " projects");
            }); //end getJSON
            }); //end getJSON
            }); //end getJSON
        }else{ //if list not found
-           console.log("list not found")
        }
     });
