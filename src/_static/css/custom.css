@@ -47,6 +47,9 @@ SKA Earth Green: rgb(166, 206, 57)
       padding-top: 40px;
 }
 
+.wy-table-responsive table td {
+white-space: normal;
+}
 .ska-logo, ska-logo:hover{
 	background-attachment: scroll;
 	background-clip: border-box;

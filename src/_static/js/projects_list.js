@@ -20,23 +20,21 @@ function dynamicSort(property) {
     }
 }
    jQuery(function(){
-       var ska = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&order_by=name&sort=asc&simple=true";
-       var templ = "https://gitlab.com/api/v4/groups/5901724/projects?per_page=100&order_by=name&sort=asc&simple=true";
-       var sdi = "https://gitlab.com/api/v4/groups/7480052/projects?per_page=100&order_by=name&sort=asc&simple=true";
-       var gitlab_v4_endpoint = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&order_by=name&sort=asc&simple=true";
+       var pg1 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&order_by=name&sort=asc&simple=true&page=1";
+       var pg2 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&order_by=name&sort=asc&simple=true&page=2";
+       var pg3 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&order_by=name&sort=asc&simple=true&page=3";
        var readthedocs_prepend="ska-telescope-" // all the readthedocs projects start with ska-telescope- next to their name
-       var list = $("#list-of-projects tbody");
+       var list = $("#list-of-non-grouped-projects tbody");
        var i = 1;
        //console.log(list);
        //
        if( list.length ){
            list.empty();
-           // this nested approach works fine and it is easy to understand but if there are more urls involved 
-           // then it should be changed to use $.when 
+           // add all pages
            //
-           $.getJSON(sdi, function(data1){
-            $.getJSON(templ, function(data2){
-             $.getJSON(ska, function(data3){
+           $.getJSON(pg1, function(data1){
+            $.getJSON(pg2, function(data2){
+             $.getJSON(pg3, function(data3){
                data = data1.concat(data2,data3);
                data.sort(dynamicSort("name"));
                $.each(data, function(key, val){
@@ -63,21 +61,20 @@ function dynamicSort(property) {
                    else
                        docs_url = "https://developer.skatelescope.org/projects/" + docs_name;
                   item ="<tr>" +
-                        "<td><a alt=\"repo url on gitlab\" href=\"" + gitlab_url + "\">" + name + "</a></td>" +
                        "<td><a href=\"" + docs_url + "/en/latest/?badge=latest\" >" +
-                           "<img src=\"https://readthedocs.org/projects/" + readthedocs_prepend + docs_name + "/badge/?version=latest\" alt='Documentation Status' />" +
-                       "</a></td>" +
-                        //"<td><a alt=\"docs url on readthedocs\" href=\"" + docs_url + "\">" + "docs" + "</a></td>" +
-                        "<td>" + description + "</td>" +
+                           "<img src=\"https://readthedocs.org/projects/" + readthedocs_prepend + 
+                         docs_name + "/badge/?version=latest\" alt='Documentation Status' style='height:125%;' /> " +  "</a></td>" +
+                        "<td><a alt=\"repo url on gitlab\" href=\"" + gitlab_url + "\">" + name + "</a><br>" + description +
+                       "</td>" +
                         "</tr>";
                   if (name != "dev.developer.skatelescope.org")
                       $(item).appendTo(list);
                }); //end each
-              console.log(i + " projects");
+              //console.log(i + " projects");
            }); //end getJSON
            }); //end getJSON
            }); //end getJSON
        }else{ //if list not found
-           console.log("list not found")
+           //console.log("list not found")
        }
     });
