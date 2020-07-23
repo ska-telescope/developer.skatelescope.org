@@ -20,11 +20,11 @@ function dynamicSort(property) {
     }
 }
    jQuery(function(){
-       var pg1 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&order_by=name&sort=asc&simple=true&include_subgroups=true";
-       var pg2 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&order_by=name&sort=asc&simple=true&include_subgroups=true&page=2";
-       var pg3 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&order_by=name&sort=asc&simple=true&include_subgroups=true&page=3";
+       var pg1 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&order_by=name&sort=asc&simple=true&page=1";
+       var pg2 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&order_by=name&sort=asc&simple=true&page=2";
+       var pg3 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&order_by=name&sort=asc&simple=true&page=3";
        var readthedocs_prepend="ska-telescope-" // all the readthedocs projects start with ska-telescope- next to their name
-       var list = $("#list-of-projects tbody");
+       var list = $("#list-of-non-grouped-projects tbody");
        var i = 1;
        //console.log(list);
        //
@@ -62,18 +62,19 @@ function dynamicSort(property) {
                        docs_url = "https://developer.skatelescope.org/projects/" + docs_name;
                   item ="<tr>" +
                        "<td><a href=\"" + docs_url + "/en/latest/?badge=latest\" >" +
-                           "<img src=\"https://readthedocs.org/projects/" + readthedocs_prepend + docs_name + "/badge/?version=latest\" alt='Documentation Status' style='height:150%;' /> " +  "</a></td>" +
+                           "<img src=\"https://readthedocs.org/projects/" + readthedocs_prepend + 
+                         docs_name + "/badge/?version=latest\" alt='Documentation Status' style='height:125%;' /> " +  "</a></td>" +
                         "<td><a alt=\"repo url on gitlab\" href=\"" + gitlab_url + "\">" + name + "</a><br>" + description +
                        "</td>" +
                         "</tr>";
                   if (name != "dev.developer.skatelescope.org")
                       $(item).appendTo(list);
                }); //end each
-              console.log(i + " projects");
+              //console.log(i + " projects");
            }); //end getJSON
            }); //end getJSON
            }); //end getJSON
        }else{ //if list not found
-           console.log("list not found")
+           //console.log("list not found")
        }
     });
