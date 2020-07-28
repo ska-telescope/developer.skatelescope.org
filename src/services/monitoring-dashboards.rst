@@ -10,7 +10,7 @@ In order to access the dashboards, first you should add below lines to your `hos
 *Note that IP addresses of the dashboards are subject to change anytime. If there are any problems with the below dashboards please contact the system team.*
 
 
-.. code-block::
+.. code::
 
     # hosts file ("/etc/hosts" for linux/unix, "%WINDIR%\System32\drivers\etc\hosts" for Windows)
     # Dashboards
