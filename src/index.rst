@@ -105,13 +105,13 @@ Development Environments
 Python and Tango development
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A completely configured development environment can be set up very easily. This will include 
+A completely configured development environment can be set up very easily. This will include
 TANGO, PyTANGO, docker and properly configured IDEs.
 
 - :doc:`tools/tango-devenv-setup`
 
 
-PyCharm and VSCode are two IDEs that can be configured to support python and 
+PyCharm and VSCode are two IDEs that can be configured to support python and
 PyTANGO development activities. You will find detailed instructions and how-tos at:
 
 - :doc:`tools/pycharm/pycharm`
@@ -136,7 +136,7 @@ Development practices followed at SKA
 Testing policy and strategy
 ===========================
 
-The SKA testing policy and strategy contains useful guidelines and practices to be 
+The SKA testing policy and strategy contains useful guidelines and practices to be
 followed when developing software for the SKA project.
 
 - :doc:`development_practices/ska_testing_policy_and_strategy`
@@ -166,6 +166,7 @@ The definition of done is used to guide teams in planning and estimating the siz
   development/cplusplus-codeguide
   development/containerisation-standards
   development/orchestration-guidelines
+  development/kubernetes-introduction
   development/software_package_release_procedure
   development/uploading-docker-nexus
   development/logging-format
@@ -186,7 +187,7 @@ A pocket-guide to documentation on adding a new project, development, containeri
 Fundamental SKA Software & Hardware Description Language Standards
 ==================================================================
 
-These standards underpin all SKA software development. The canonical copy is 
+These standards underpin all SKA software development. The canonical copy is
 `held in eB <https://ska-aw.bentley.com/SKAProd/Search/QuickLink.aspx?n=SKA-TEL-SKO-0000661&t=3&d=&sc=Global&i=view>`_,
 but the essential information is here:
 
@@ -205,8 +206,8 @@ by forking this skeleton project and change the appropriate files.
 Javascript coding guidelines
 ============================
 
-A React based javascript skeleton project is created for use within the SKA Telescope. Similar to the 
-Python skeleton above its purpose is to enforce coding best practices and bootstrap the initial project 
+A React based javascript skeleton project is created for use within the SKA Telescope. Similar to the
+Python skeleton above its purpose is to enforce coding best practices and bootstrap the initial project
 setup for browser based javascript applications.
 
 - :doc:`development/javascript-codeguide`
@@ -214,7 +215,7 @@ setup for browser based javascript applications.
 VHDL coding guidelines
 ======================
 
-VHDL coding guidelines are described at: 
+VHDL coding guidelines are described at:
 
 - :doc:`development/vhdl-codeguide`
 
@@ -324,7 +325,7 @@ Developer Services
   :caption: Share Your Knowledge
   :hidden:
 
-  community/share_your_knowledge  
+  community/share_your_knowledge
 
 
 Share Your Knowledge

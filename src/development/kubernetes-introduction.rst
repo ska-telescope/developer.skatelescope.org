@@ -1,7 +1,7 @@
 A Quick Introduction to Kubernetes
 ==================================
 
-This page is based on a talk given by Piers Harding in July 2020, and provides an SKA-specific overview of `kubernetes <https:// https://kubernetes.io/`. Further details can be found in :ref:`containerisation-standards`.
+This page is based on a talk given by Piers Harding in July 2020, and provides an SKA-specific overview of `Kubernetes <https:// https://kubernetes.io/>`_. Further details can be found in   `Container Standards  <containerisation-standards.html>`_.
 
 What is Kubernetes?
 --------------------
@@ -15,7 +15,7 @@ Similarly, as part of the inbuilt health checking, Kubernetes will, if it finds 
 Compute
 ----------
 
-From a compute point of view, the basic unit is the container, and the Pod is made up of one or more containers. Those containers in that Pod are effectively blessed into the same network namespace (the cluster namespace), and the actual process namespace can be shared as well. When a Pod is defined, kubernetes starts an initial process within the namespace, and this is the "head" of what a Pod is. So if any containers attached within this namespace fail, the whole application doesn't fall over, because that head process is guaranteed to remain. So the list of the containers you define in a Pod gets booted up in the associated namespace given to that Pod. 
+From a compute point of view, the basic unit is the container, and the Pod is made up of one or more containers. Those containers in that Pod are effectively blessed into the same network namespace (the cluster namespace), and the actual process namespace can be shared as well. When a Pod is defined, kubernetes starts an initial process within the namespace, and this is the "head" of what a Pod is. So if any containers attached within this namespace fail, the whole application doesn't fall over, because that head process is guaranteed to remain. So the list of the containers you define in a Pod gets booted up in the associated namespace given to that Pod.
 
 Quick Note on Kubernetes Namespaces
 ````````````````````````````````````
@@ -55,11 +55,11 @@ A Pod *can* communicate with another pod without putting a service in front of i
 
 Because there are no guarantees of naming within Pods, the labelling schemes allow Services to provide a bridge between the Pods and the fixed IP front end within the cluster. Typically, a Service will have a cluster IP address (there are other ways of doing it, but we'll stick to this method) which you can use to communicate with the Pods managed by the Service. This address is resolved by DNS (Domain Name Services) within the cluster. On top of this you get load-balancing schemes, such as random, round-robin, or even sticky (this isn't usually a good idea, but may be needed for some legacy applications).
 
-The Service load-balancer means that if a Pod fails, the Kubernetes components in the Service will automatically notice (via health checking)  and drop it from the load balander, so you don't get dead ends. 
+The Service load-balancer means that if a Pod fails, the Kubernetes components in the Service will automatically notice (via health checking)  and drop it from the load balander, so you don't get dead ends.
 
 However, Services are primarily for communication within the cluster. So to communicate with the outside world (whether the internet, a VPN, basically anything that isn't your Kubernetes cluster), you need an Ingress Controller. An Ingress Controller is a point of entry or exit to the outside world within the cluster. You do a further mapping exercise based on the Service name and port names to define which Services within the cluster should be exposed to the outside world, and how they should be exposed. This is http-based.
 
-How does this impact latency? Historically, this was done with ``iptables`` rules (rules that control communication and routing for the Pod network), and it's moving to IVPS (basically, like iptables, but faster). This is because the iptables rulesets get very big. The bigger the cluster, and the more stuff you're running, the more enormous they get. 
+How does this impact latency? Historically, this was done with ``iptables`` rules (rules that control communication and routing for the Pod network), and it's moving to IVPS (basically, like iptables, but faster). This is because the iptables rulesets get very big. The bigger the cluster, and the more stuff you're running, the more enormous they get.
 
 Mostly, the cluster network is controlled by 3rd party solutions. We're using Calico, which works quite efficiently with a flat network. These solutions mean that if you try to route between two Pods on the same node, the iptables should encode this, and make sure that the route between those two Pods never goes off-node. If there's a hop between hosts, iptables should also encode this. Calico is an intelligent routing service, and it will route in the most efficient way it can. It's an overlay network.
 
@@ -67,28 +67,30 @@ If latency is a problem, you can use affinity rules to place the Pods on the sam
 
 Storage
 -------
-A PersistentVolume is an abstraction from the actual physical implementation of the underlying storage solution. This abstraction is manifested though StorageClass names. So when you create a PersistentVolumeClaim, you specify a StorageClass, which is an abstract concept and the underlying storage engine will go away and allocate that piece of storage and then mount it wherever it needs to be. Then the Pod which wants to use that storage can find it and access it as a filesystem. 
+A PersistentVolume is an abstraction from the actual physical implementation of the underlying storage solution. This abstraction is manifested though StorageClass names. So when you create a PersistentVolumeClaim, you specify a StorageClass, which is an abstract concept and the underlying storage engine will go away and allocate that piece of storage and then mount it wherever it needs to be. Then the Pod which wants to use that storage can find it and access it as a filesystem.
 
 The StorageClasses can have different characteristics. So within the syscore of the Kubernetes cluster on EngageSKA, we have two fundamental storage types. One is block, and you can only mount that for :ref:`read-write once`, so its primary use case would be running something like a database, and then you write to storage from with the database engine.
 
-The other storage type we're supporting is nfs (network file system). Currently, we implement both types using Ceph, but there's nothing stopping us taking our deployment to AWS or Google Cloud Platform, and using their storage solutions and creating alias StorageClass names for nsf and block, and deploying our workloads on there. We wouldn't have to change our resource descriptions, because we have this abstraction between what we call storage and the characteristics we want to have for that type of storage, and how it's actually physically implemented on the platform. 
+The other storage type we're supporting is nfs (network file system). Currently, we implement both types using Ceph, but there's nothing stopping us taking our deployment to AWS or Google Cloud Platform, and using their storage solutions and creating alias StorageClass names for nsf and block, and deploying our workloads on there. We wouldn't have to change our resource descriptions, because we have this abstraction between what we call storage and the characteristics we want to have for that type of storage, and how it's actually physically implemented on the platform.
 
 Some older storage engines require you to define a PersistentVolume, which is a low-level addressing of a lump of storage (e.g. a StorageClass). A PersistentVolumeClaim is a claim to mount that lump of storage which turns the abstract StorageClass into a reality. This may not have been the best idea. The Ceph implementation doesn't use the PersistentVolume concept at all -- you just do a PersistentVolumeClaim, declaring the StorageClass you want and how much storage you want there to be, and basically it does it all in one operation.
 
 Then the volume you've created becomes available to the Pod. So the nfs sorage is read-write many. That's ideal for web-based or horizontally scaling applications, where you need many instances of the application running, all needing concurrent access to that storage to read-write (like they all need to access the content for web pages). Block storage gives raw access, nfs is through a posix-style interface. So there are tradeoffs to the different types of storage.
 
 .. _read-write once:
+
 What is read-write once versus read-write many?
-`````````````````````````````````````````````````
+```````````````````````````````````````````````
+
 Read-write once/many refers to the number of times you can mount that piece of storage into a running container. So for a database, it makes sense to mount that storage once, to the container running the database engine. Read-write many means that multiple containers can mount the storage, so you can have multiple Pods all reading out content for your web page, for example.
 
 Resource Management
 -------------------
 
-We can put limits on CPU, memory, and storage, so that we can control resource usage across the cluster. 
+We can put limits on CPU, memory, and storage, so that we can control resource usage across the cluster.
 
-At the Pod level, you can set two things: a request, and a limit. Request is usually set to lower than the limit. The request is what you expect the Pod to need in normal usage -- i.e. the Pod's normal consumption of resources -- and the limit is the upper bound. If the Pod hits the limit, you expect that there is something wrong, and it's thus a Pod health issue. So if the Pod exceeds those limits, the Kubernetes scheduler would mark the Pod for eviction and then evict it. The kubelet on each host monitors this. When the kubelet gets the scheduling requirements from the kube-controller, it knows what the limits are for the Pod it's about to launch, and then it monitors that Pod. 
+At the Pod level, you can set two things: a request, and a limit. Request is usually set to lower than the limit. The request is what you expect the Pod to need in normal usage -- i.e. the Pod's normal consumption of resources -- and the limit is the upper bound. If the Pod hits the limit, you expect that there is something wrong, and it's thus a Pod health issue. So if the Pod exceeds those limits, the Kubernetes scheduler would mark the Pod for eviction and then evict it. The kubelet on each host monitors this. When the kubelet gets the scheduling requirements from the kube-controller, it knows what the limits are for the Pod it's about to launch, and then it monitors that Pod.
 
-Eviction doesn't happen instantaneously. There are global policies about when something gets evicted. But things that do exceed their resource limits will get evicted in a certain amount of time. We do have monitoring, so you can look at the resources your Pod is using.  
+Eviction doesn't happen instantaneously. There are global policies about when something gets evicted. But things that do exceed their resource limits will get evicted in a certain amount of time. We do have monitoring, so you can look at the resources your Pod is using.
 
 
