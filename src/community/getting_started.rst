@@ -141,7 +141,7 @@ First of all, you should familiarise yourself with the `SKA Definition of Done <
 Understanding more about the SKA
 --------------------------------
 
-* Have a look at the `SKA organisation chart <>`_, and find out where you fit in.
+* Have a look at the SKA organisation chart *Coming Soon!*, and find out where you fit in.
 * Find out about your ART (Agile Release Train). An overview of the `structure <https://confluence.skatelescope.org/display/SE/Agile+Release+Trains>`_ will give a general picture. Then you should look at one or other of
 
   * the `DP ART <https://confluence.skatelescope.org/x/CXx0B>`_
@@ -231,7 +231,7 @@ Remember that we have `training pages on Confluence <https://confluence.skateles
 * Learn about the `SKA Quality Assurance processes <https://confluence.skatelescope.org/display/SE/Software+Quality+Assurance>`_, and how SAFe supports these.
 * Continue with your training plan, using the skills matrix!
 * Make sure you know where to get help. This was covered in week one, but some revision may be helpful.
-* Have a look at the various `Monitoring Dashboards https://developer.skatelescope.org/en/latest/services/monitoring-dashboards.html>`_ for the EngageSKA Cluster, so you can see what things look like when our prototype is running, and what data we are collecting about it.
+* Have a look at the various `Monitoring Dashboards <https://developer.skatelescope.org/en/latest/services/monitoring-dashboards.html>`_ for the EngageSKA Cluster, so you can see what things look like when our prototype is running, and what data we are collecting about it.
 * Learn about the SKA naming conventions for code, repositories, containers, etc. We need to make our code and the artefacts built from it easy to understand, so we have some standards to adhere to, and some recommendations.
 
 This is the end of your formal onboarding! 
