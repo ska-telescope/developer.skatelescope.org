@@ -1,5 +1,5 @@
 Onboarding: Welcome to the SKA developer community
---------------------------------------------------
+**************************************************
 
 Welcome! This page is designed to help people who have just started working on SKA software find out more about the Square Kilometre Array (SKA), the way the SKA project is being run, and how to develop software for the SKA.
 This page consists of links to relevant information, and a suggested timeline to guide you.
@@ -22,28 +22,23 @@ First Day
 
 This section is designed to get you up and running, with all the accounts you'll need and the main places to go to get further information.
 
-.. note:: Scrum Master Action Needed
+.. note:: Scrum Master Action Needed!
    Scrum Masters: you should try to arrange accounts for new team members ahead of time, if you know they will be joining.
    You will also need to budget a fair amount of time to help new people integrate with your team; you may want to create stories or features to help with this!
 
-* Get SKA accounts. You should set up these accounts with your institutional email address. Please provide this email address to your Scrum Master if they don't have it already!
-  You'll need the following accounts:
+* Get SKA accounts. You should set up these accounts with your institutional email address. Please provide this email address to your Scrum Master if they don't have it already! You'll need the following accounts:
+
   * `JIRA <https://jira.skatelescope.org>`_ and `Confluence <https://confluence.skatelescope.org>`_ login (both sites are configured to authenticate you with the same username and password).
   * `Slack <https://skasoftware.slack.com>`_
-  * Google Drive. 
-    You may need to create an account associated with your institutional email address. 
-    This makes it easier for us to know who is using that Google account.
-  * `GitLab <https://gitlab.com/>`_ (If you're not going to be contributing code or documentation, this step may be omitted or postponed.
-    Please make sure your institutional email address is associated with your GitLab ID if you've already got a GitLab account. 
-    See https://developer.skatelescope.org/en/latest/tools/git.html#use-institutional-email for instructions on how to do this.
+  * Google Drive. You may need to create an account associated with your institutional email address. This makes it easier for us to know who is using that Google account.
+  * `GitLab <https://gitlab.com/>`_ (If you're not going to be contributing code or documentation, this step may be omitted or postponed. Please make sure your institutional email address is associated with your GitLab ID if you've already got a GitLab account. See https://developer.skatelescope.org/en/latest/tools/git.html#use-institutional-email for instructions on how to do this.
 
 Now you've got some accounts, you should log in to:
-* JIRA. JIRA is a ticket tracking system; we use it to organise the SKA software work.
-* Confluence. This is the SKA's internal wiki.
-  You may want to look at the `Software Engineering <https://confluence.skatelescope.org/display/SE/Software+Engineering>`_ pages. 
-* Slack - visit your team channel! You will be added to the SKA's default slack channels: #announcements and #rand-chats.
-  Reading the 'Pinned' items on the #announcements channel will help you in using the SKA Slack workspace more effectively. 
 
+* JIRA. JIRA is a ticket tracking system; we use it to organise the SKA software work.
+* Confluence. This is the SKA's internal wiki. You may want to look at the `Software Engineering <https://confluence.skatelescope.org/display/SE/Software+Engineering>`_ pages. 
+* Slack - visit your team channel! You will be added to the SKA's default slack channels: #announcements and #rand-chats. Reading the 'Pinned' items on the #announcements channel will help you in using the SKA Slack workspace more effectively. 
+ 
 You should read the `SKA Code of Conduct <https://www.skatelescope.org/ska-organisation/ska-organisation-code-of-conduct-for-meetings/>`_.
 The SKA is an inclusive organisation, and we want to make sure that everyone is respected and has a pleasant experience working for SKA.
 We therefore have a Code of Conduct, and reading, understanding, and adhering to that Code is a key part of your onboarding and your future work at SKA.
@@ -60,31 +55,32 @@ Information about the SKA
 -------------------------
 
 * What is the SKA?
+
   * Have a look at the `SKA website <https://skatelescope.org>`_.
-  * Read `these slides <https://confluence.skatelescope.org/download/attachments/113803312/DG%20SKA%20Induction%206%20May2020.pptx?version=1&modificationDate=1595231195850&api=v2>`_ about the SKA and its history.
+  * Read `about the SKA and its history <https://confluence.skatelescope.org/download/attachments/113803312/DG%20SKA%20Induction%206%20May2020.pptx?version=1&modificationDate=1595231195850&api=v2>`_.
+
 * How does the SKA operate? How is it meant to work?
+ 
   * Read `these slides <https://confluence.skatelescope.org/download/attachments/113803312/SKA_Programmes_Induction_v2020.1.pdf?version=1&modificationDate=1595231309607&api=v2>`_ on the SKA operational programme.
+
 * What is Radio Astronomy?
+ 
   * Our Project Scientist, Robert Laing, recorded `some lectures <https://confluence.skatelescope.org/display/SE/Lectures+on+Radio+Interferometry?src=contextnavpagetreemode>`_. We suggest that you listen to the first and possibly the second lecture now. If you're interested or need to know more about radio interferometry, you can look at the other lectures in the next few months. Or come back later on -- you may discover a need to know more about how radio telescopes work in a few years!
+
 * What is SAFe? 
+ 
   * This is a very good question! We have some slides to tell you `what SAFe is <https://confluence.skatelescope.org/download/attachments/113803312/SKA%20SAFe%20Introduction%20-%20July%2020.pptx?version=1&modificationDate=1595231478869&api=v2>`_. 
-  * You should also visit the `Training Events <https://confluence.skatelescope.org/display/SE/Training+Events>`_ Confluence page, and discover when the next appropriate SAFe training sessions will happen. 
-    You will probably want to attend the SAFe for Teams training, but please discuss this with your Scrum Master. 
-    The training could happen at any point in the next three months, and some of it will be revision of what you've learnt from reading the slides.
-* What are we building?
-  The `Solution Intent <https://confluence.skatelescope.org/display/SWSI>`_ Confluence pages describe the software architecture of the SKA. It also describes the direction in which we intend the architecture to evolve. We suggest you look at the top-level views, and then look at the specific views for the part of the system that your team is working on. 
-  Again, at this stage, you're only looking at a small section of the information. 
-  You can return later to get a better idea of the wider context. 
-  Your Scrum Master will help you identify the relevant pages.
+  * You should also visit the `Training Events <https://confluence.skatelescope.org/display/SE/Training+Events>`_ Confluence page, and discover when the next appropriate SAFe training sessions will happen. You will probably want to attend the SAFe for Teams training, but please discuss this with your Scrum Master. The training could happen at any point in the next three months, and some of it will be revision of what you've learnt from reading the slides.
+* What are we building? The `Solution Intent <https://confluence.skatelescope.org/display/SWSI>`_ Confluence pages describe the software architecture of the SKA. It also describes the direction in which we intend the architecture to evolve. We suggest you look at the top-level views, and then look at the specific views for the part of the system that your team is working on. Again, at this stage, you're only looking at a small section of the information. You can return later to get a better idea of the wider context. Your Scrum Master will help you identify the relevant pages.
 * You'll also want to look at the `Operations Context <https://confluence.skatelescope.org/display/SWSI/Operations+Context>`_, to find out how the software fits in to the operational environment of the running telescope.
 * Check out the `timeline <https://confluence.skatelescope.org/display/SE/Bridging+Vision+and+Roadmap#BridgingVisionandRoadmap-SolutionRoadmapTowardsT%E2%82%80>`_ of the software project, so you know roughly what the SKA is planning to do when, and where we are in the process of building a world-leading Radio Astronomy Observatory.
 * Coming soon: the SKA Software Security policy!
+ 
   * We encourage you to use ssh to push your changes GitLab. GitLab tells you how to `set up ssh keys <https://docs.gitlab.com/ee/ssh/>`_.
   * We also expect you to sign your commits. GitLab provides instructions on `how to create a GPG key and use it to sign your commits <https://docs.gitlab.com/ee/user/project/repository/gpg_signed_commits/>`_. 
     If you already have a GPG key, the same page tells you how to associate it with your GitLab account. 
-* Finally, there's a `Glossary <https://confluence.skatelescope.org/display/SE/Glossary>`_. 
-  This lists many of the terms and acronyms in use in SKA. 
-  Also, don't be afraid to ask your team on Slack, or ask questions in meetings if you don't understand. 
+
+* Finally, there's a `Glossary <https://confluence.skatelescope.org/display/SE/Glossary>`_. This lists many of the terms and acronyms in use in SKA. Also, don't be afraid to ask your team on Slack, or ask questions in meetings if you don't understand. 
 
 Information about People
 ------------------------
@@ -101,14 +97,11 @@ Information about your Team
 ---------------------------
 
 Your Scrum Master should give you links to:
+
 * Your team's Google Drive space
-* Your team's Confluence area. 
-  Each team has a space in Confluence. All of the teams are listed in the `Agile Release Train <https://confluence.skatelescope.org/display/SE/Agile+Release+T,rains>`_ pages.
+* Your team's Confluence area. Each team has a space in Confluence. All of the teams are listed in the `Agile Release Train <https://confluence.skatelescope.org/display/SE/Agile+Release+T,rains>`_ pages.
 * Key SKA `Confluence Calendars <https://confluence.skatelescope.org/calendar/mycalendar.action>`_ and `instructions on how to copy them to your own calendar <https://confluence.skatelescope.org/display/SC/SKA+Calendar+Home>`_.
-* The main Slack channels in use.
-  You should join your team's slack channel. 
-  We also suggest that you join some of the help channels, #announcements, #system-demos-buzz and #rand-chats.
-  You may find other channels to join later on!
+* The main Slack channels in use. You should join your team's slack channel. We also suggest that you join some of the help channels (they all start #help-) , #announcements, #system-demos-buzz and #rand-chats. You may find other channels to join later on!
 
 If you are not employed by the SKA Organisation, you'll probably want to set up a Zoom account.
 While you *can* use Zoom from your web browser, we use Zoom so much that you'll probably find it easier to `have your own account <https://zoom.us/freesignup>`_.
@@ -149,18 +142,15 @@ Understanding more about the SKA
 --------------------------------
 
 * Have a look at the `SKA organisation chart <>`_, and find out where you fit in.
-* Find out about your ART (Agile Release Train).
-  An overview of the `structure <https://confluence.skatelescope.org/display/SE/Agile+Release+Trains>`_ will give a general picture.
-  Then you should look at either
+* Find out about your ART (Agile Release Train). An overview of the `structure <https://confluence.skatelescope.org/display/SE/Agile+Release+Trains>`_ will give a general picture. Then you should look at one or other of
+
   * the `DP ART <https://confluence.skatelescope.org/x/CXx0B>`_
-  or
   * the `OMC ART <https://confluence.skatelescope.org/x/nH10B>`_.
   * Have a look at the pages on `Program Increment and Cadence <https://confluence.skatelescope.org/display/SE/Program+Increments+%28PIs%29+and+cadence>`_; they will tell you about the regular planning and evaluation cycles of the SKA.
-  * And look at the `operational flow <https://confluence.skatelescope.org/display/SE/Observation+Management+and+Controls+Agile+Release+Train?preview=/74743196/74743245/OperationalFlow-v2.pdf>`_.
-  The goal here is to find out where your team fits in the organisation, but with a bit more detail than we had time for in week one.
+  * And look at the `operational flow <https://confluence.skatelescope.org/display/SE/Observation+Management+and+Controls+Agile+Release+Train?preview=/74743196/74743245/OperationalFlow-v2.pdf>`_. The goal here is to find out where your team fits in the organisation, but with a bit more detail than we had time for in week one.
+
 * Look at the `Module Decomposition <https://confluence.skatelescope.org/display/SWSI/Views%3A+Module>`_ of the SKA, and learn how this maps to the different `GitLab project <https://developer.skatelescope.org/en/latest/projects/list.html>`_.
-* Read the `Architectural Decision Process <https://developer.skatelescope.org/en/latest/community/decision_making.html>`_. 
-  This process is how we can change and update our architecture, as we find out more about the system we're implementing, or as we need to adopt new technology.  All developers are able to reason about the architecture of the system; you'll need to know the process.
+* Read the `Architectural Decision Process <https://developer.skatelescope.org/en/latest/community/decision_making.html>`_. This process is how we can change and update our architecture, as we find out more about the system we're implementing, or as we need to adopt new technology.  All developers are able to reason about the architecture of the system; you'll need to know the process.
 
 What are your skills?
 ---------------------
@@ -191,19 +181,13 @@ Suggested Activities
 These are some things we think you might want to do.
 Discuss this with your Scrum Master to see which ones are most appropriate for you.
 
-* Join a Community of Practice (CoP).
-  CoPs span the two Agile Release Trains (ARTs), and are a good way of sharing expertise, connecting with the wider community and making a contribution.
+* Join a Community of Practice (CoP). CoPs span the two Agile Release Trains (ARTs), and are a good way of sharing expertise, connecting with the wider community and making a contribution.
 * Continue watching the `Radio Interferometry lectures <https://confluence.skatelescope.org/display/SE/Lectures+on+Radio+Interferometry>`_.
-* Get involved in a team's feature.
-  This may be as a developer, reviewer, tester, by shadowing a Feature owner, helping with a demo, or something else!
-* Learn about (or get!) access to the `EngageSKA Cluster <https://developer.skatelescope.org/en/latest/services/ait_performance_env.html>`_, or `access to HPC facilities <https://confluence.skatelescope.org/display/SE/HPC+access>`_ for testing, prototyping and performance testing.
-  People on the DP ART are more likely to need to access the HPC facilities for performance testing; most developers will need to be aware of how the EngageSKA cluster is used for testing.
-  You may also need to arrange access to the `SKA Data Store <https://confluence.skatelescope.org/display/SE/Working+with+Google+Cloud+Platfom+%28GCP%29+storage>`_.
+* Get involved in a team's feature. This may be as a developer, reviewer, tester, by shadowing a Feature owner, helping with a demo, or something else!
+* Learn about (or get!) access to the `EngageSKA Cluster <https://developer.skatelescope.org/en/latest/services/ait_performance_env.html>`_, or `access to HPC facilities <https://confluence.skatelescope.org/display/SE/HPC+access>`_ for testing, prototyping and performance testing. People on the DP ART are more likely to need to access the HPC facilities for performance testing; most developers will need to be aware of how the EngageSKA cluster is used for testing. You may also need to arrange access to the `SKA Data Store <https://confluence.skatelescope.org/display/SE/Working+with+Google+Cloud+Platfom+%28GCP%29+storage>`_.
 * Create or amend some SKA documentation, whether on the Developer Portal, Confluence, or in a specific GitLab project.
-* Attend a system demo.
-  You can find out more about demos in the #system-demos-buzz Slack channel, or in the `Demos <https://confluence.skatelescope.org/pages/viewpage.action?pageId=68715218>`_ pages in Confluence.
-* Sign up for some SKA-organised training.
-  We expect that you'll need to attend some SAFe training; now is a good time to sign up!
+* Attend a system demo. You can find out more about demos in the #system-demos-buzz Slack channel, or in the `Demos <https://confluence.skatelescope.org/pages/viewpage.action?pageId=68715218>`_ pages in Confluence.
+* Sign up for some SKA-organised training. We expect that you'll need to attend some SAFe training; now is a good time to sign up!
 * Watch some parts of videos of recent demos that describe the part of the system you're working on; your Scrum Master should be able to recommend suitable demos.
 
 Suggested activities for new developers
@@ -211,15 +195,12 @@ Suggested activities for new developers
 This section is primarily aimed at new developers. 
 Your Scrum Master may create tickets in JIRA; this will help you get used to managing your work via JIRA if this is new to you.
 
-* Commit to an SKA project on GitLab.
-  This may be as simple as fixing a typo in some documentation.
-  We recommend that projects, especially projects where we expect external people to contribute, keep a list of easy issues to fix, as they're a good way in to a project.
-  You'll need to look at `how to branch your code <https://developer.skatelescope.org/en/latest/tools/git.html#branching-policy>`_.
-  That page will tell you how to name your branch. 
-* Create a Merge Request (MR) on GitLab. 
-  You'll need to do that if you've committed a change!
+* Commit to an SKA project on GitLab. This may be as simple as fixing a typo in some documentation. We recommend that projects, especially projects where we expect external people to contribute, keep a list of easy issues to fix, as they're a good way in to a project. You'll need to look at `how to branch your code <https://developer.skatelescope.org/en/latest/tools/git.html#branching-policy>`_. That page will tell you how to name your branch. 
+* Create a Merge Request (MR) on GitLab. You'll need to do that if you've committed a change!
+  
   * Include the JIRA ticket number in the commit
   * Write a good `commit message <https://developer.skatelescope.org/en/latest/tools/git.html#committing-code>`_!
+
 * Review someone else's code on GitLab.
 * Read your team's documentation for the main project you're working on.
 
@@ -246,15 +227,12 @@ Remember that we have `training pages on Confluence <https://confluence.skateles
 * Attend an SKA Onboarding session.
 * Attend SAFe for Teams training.
 * Give a demo or lightning talk!
-* Learn about `ECPs (Engineering Change Proposals) <https://confluence.skatelescope.org/pages/viewpage.action?pageId=5767262>`_.
-  These are often required for major architectural changes, so it's useful to understand the purpose and process of ECPs.
+* Learn about `ECPs (Engineering Change Proposals) <https://confluence.skatelescope.org/pages/viewpage.action?pageId=5767262>`_. These are often required for major architectural changes, so it's useful to understand the purpose and process of ECPs.
 * Learn about the `SKA Quality Assurance processes <https://confluence.skatelescope.org/display/SE/Software+Quality+Assurance>`_, and how SAFe supports these.
 * Continue with your training plan, using the skills matrix!
-* Make sure you know where to get help.
-  This was covered in week one, but some revision may be helpful.
+* Make sure you know where to get help. This was covered in week one, but some revision may be helpful.
 * Have a look at the various `Monitoring Dashboards https://developer.skatelescope.org/en/latest/services/monitoring-dashboards.html>`_ for the EngageSKA Cluster, so you can see what things look like when our prototype is running, and what data we are collecting about it.
-* Learn about the SKA naming conventions for code, repositories, containers, etc.
-  We need to make our code and the artefacts built from it easy to understand, so we have some standards to adhere to, and some recommendations.
+* Learn about the SKA naming conventions for code, repositories, containers, etc. We need to make our code and the artefacts built from it easy to understand, so we have some standards to adhere to, and some recommendations.
 
 This is the end of your formal onboarding! 
 We hope that you've now got an idea of what the SKA is, what we're doing, and how you fit in.
