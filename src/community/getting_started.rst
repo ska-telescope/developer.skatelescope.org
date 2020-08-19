@@ -141,7 +141,7 @@ First of all, you should familiarise yourself with the `SKA Definition of Done <
 Understanding more about the SKA
 --------------------------------
 
-* Have a look at the SKA organisation chart *Coming Soon!*, and find out where you fit in.
+* Have a look at the SKA organisation chart (it's linked on the bottom of the right-hand sidebar on the `staff page <https://www.skatelescope.org/skao-staff/>`_, and find out where you fit in.
 * Find out about your ART (Agile Release Train). An overview of the `structure <https://confluence.skatelescope.org/display/SE/Agile+Release+Trains>`_ will give a general picture. Then you should look at one or other of
 
   * the `DP ART <https://confluence.skatelescope.org/x/CXx0B>`_
