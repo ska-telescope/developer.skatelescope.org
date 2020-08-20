@@ -3,15 +3,26 @@ Onboarding: Welcome to the SKA developer community
 
 Welcome! This page is designed to help people who have just started working on SKA software find out more about the Square Kilometre Array (SKA), the way the SKA project is being run, and how to develop software for the SKA.
 This page consists of links to relevant information, and a suggested timeline to guide you.
+
 If you're working in an SKA Agile Team, then your Scrum Master will assist you in getting involved in the daily development work of the SKA.
+
 If you're working at the program or solution level, the Solution Engineer or your Release Train Engineer will take the lead.
+
 If you're joining as a Scrum Master, either the team's existing Scrum Master or the Release Train Engineer will help you.
+
 If you're an external contributor, then please look at the `SKA Code of Conduct <https://www.skatelescope.org/ska-organisation/ska-organisation-code-of-conduct-for-meetings/>`_ and the Contribution Guidelines for the GitLab project you intend to contribute to.
+
 You may also wish to read through the relevant coding guidelines, testing policy, and some of the information on CI/CD.
 
 Don't worry if many of the terms in the previous paragraphy don't make sense -- by the time you've covered all the material on this onboarding page, you will at least know where to look up such terms, even if you can't immediately give a definition!
 
-This page shows you things to do (or try to do!) on your first day, then things to do in your first week, first month, and first three months. The list gets less prescriptive as time goes on -- we expect that you'll be working with your team to set goals, assess further training needs and so on. You may want to print this out, and also take a copy of the `skills matrix spreadsheet <https://docs.google.com/spreadsheets/d/1aKpe-mbUdVUFIEMw5bQ1Uhs6CVmolKzIItm6-w_9r5o/edit?usp=sharing>`_, so that you can track what you've done and what remains to be done. 
+This page shows you things to do (or try to do!) on your first day, then things to do in your first week, first month, and first three months. 
+The list gets less prescriptive as time goes on -- we expect that you'll be working with your team to set goals, assess further training needs and so on.
+You may want to print this out, and also take a copy of the `skills matrix spreadsheet <https://docs.google.com/spreadsheets/d/1aKpe-mbUdVUFIEMw5bQ1Uhs6CVmolKzIItm6-w_9r5o/edit?usp=sharing>`_, so that you can track what you've done and what remains to be done. 
+Your Scrum Master may create JIRA tickets to help you and your team organise and track this work.
+Your Scrum Master will usually be your first port of call when you have questions; you'll learn other ways of getting your questions answered as you go through the onboarding process. 
+
+
 
 In this page, we talk about your Scrum Master doing various things -- if your onboarding isn't led by a Scrum Master, then this should be done by whoever is leading your onboarding. 
 
@@ -31,7 +42,7 @@ This section is designed to get you up and running, with all the accounts you'll
   * `JIRA <https://jira.skatelescope.org>`_ and `Confluence <https://confluence.skatelescope.org>`_ login (both sites are configured to authenticate you with the same username and password).
   * `Slack <https://skasoftware.slack.com>`_
   * Google Drive. You may need to create an account associated with your institutional email address. This makes it easier for us to know who is using that Google account.
-  * `GitLab <https://gitlab.com/>`_ (If you're not going to be contributing code or documentation, this step may be omitted or postponed. Please make sure your institutional email address is associated with your GitLab ID if you've already got a GitLab account. See https://developer.skatelescope.org/en/latest/tools/git.html#use-institutional-email for instructions on how to do this.
+  * `GitLab <https://gitlab.com/>`_ (If you're not going to be contributing code or documentation, this step may be omitted or postponed.) Please make sure your institutional email address is associated with your GitLab ID if you've already got a GitLab account. See https://developer.skatelescope.org/en/latest/tools/git.html#use-institutional-email for instructions on how to do this.
 
 Now you've got some accounts, you should log in to:
 
@@ -71,10 +82,16 @@ Information about the SKA
  
   * This is a very good question! We have some slides to tell you `what SAFe is <https://confluence.skatelescope.org/download/attachments/113803312/SKA%20SAFe%20Introduction%20-%20July%2020.pptx?version=1&modificationDate=1595231478869&api=v2>`_. 
   * You should also visit the `Training Events <https://confluence.skatelescope.org/display/SE/Training+Events>`_ Confluence page, and discover when the next appropriate SAFe training sessions will happen. You will probably want to attend the SAFe for Teams training, but please discuss this with your Scrum Master. The training could happen at any point in the next three months, and some of it will be revision of what you've learnt from reading the slides.
-* What are we building? The `Solution Intent <https://confluence.skatelescope.org/display/SWSI>`_ Confluence pages describe the software architecture of the SKA. It also describes the direction in which we intend the architecture to evolve. We suggest you look at the top-level views, and then look at the specific views for the part of the system that your team is working on. Again, at this stage, you're only looking at a small section of the information. You can return later to get a better idea of the wider context. Your Scrum Master will help you identify the relevant pages.
-* You'll also want to look at the `Operations Context <https://confluence.skatelescope.org/display/SWSI/Operations+Context>`_, to find out how the software fits in to the operational environment of the running telescope.
-* Check out the `timeline <https://confluence.skatelescope.org/display/SE/Bridging+Vision+and+Roadmap#BridgingVisionandRoadmap-SolutionRoadmapTowardsT%E2%82%80>`_ of the software project, so you know roughly what the SKA is planning to do when, and where we are in the process of building a world-leading Radio Astronomy Observatory.
-* Coming soon: the SKA Software Security policy!
+
+* What are we building? 
+  * The `Solution Intent <https://confluence.skatelescope.org/display/SWSI>`_ Confluence pages describe the software architecture of the SKA. It also describes the direction in which we intend the architecture to evolve. We suggest you look at the top-level views, and then look at the specific views for the part of the system that your team is working on. Again, at this stage, you're only looking at a small section of the information. You can return later to get a better idea of the wider context. Your Scrum Master will help you identify the relevant pages.
+
+* How are we building it?
+
+  * We have a guide to the `way SKA currently works to develop software <https://confluence.skatelescope.org/display/SE/Improving+the+context-awareness+of+our+teams+and+collaborators>`_. This tells you a bit about what teams we have and what we are doing. 
+  * You'll also want to look at the `Operations Context <https://confluence.skatelescope.org/display/SWSI/Operations+Context>`_, to find out how the software fits in to the operational environment of the running telescope.
+  * Check out the `timeline <https://confluence.skatelescope.org/display/SE/Bridging+Vision+and+Roadmap#BridgingVisionandRoadmap-SolutionRoadmapTowardsT%E2%82%80>`_ of the software project, so you know roughly what the SKA is planning to do when, and where we are in the process of building a world-leading Radio Astronomy Observatory.
+  * Coming soon: the SKA Software Security policy!
  
   * We encourage you to use ssh to push your changes GitLab. GitLab tells you how to `set up ssh keys <https://docs.gitlab.com/ee/ssh/>`_.
   * We also expect you to sign your commits. GitLab provides instructions on `how to create a GPG key and use it to sign your commits <https://docs.gitlab.com/ee/user/project/repository/gpg_signed_commits/>`_. 
