@@ -26,7 +26,7 @@ Your Scrum Master will usually be your first port of call when you have question
 
 In this page, we talk about your Scrum Master doing various things -- if your onboarding isn't led by a Scrum Master, then this should be done by whoever is leading your onboarding. 
 
-We welcome feedback on this page - please tell us what worked and what didn't! You can leave comments in the #proj-onboarding slack channel, or you can contribute changes to the deverloper.skatelescope GitLab project, or you can mail the Solution Engineer or Release Train Engineers with feedback.
+We welcome feedback on this page - please tell us what worked and what didn't! You can leave comments in the `#proj-onboarding <https://skasoftware.slack.com/archives/C016VGRJWVC>`_ slack channel, or you can contribute changes to the `developer.skatelescope <https://gitlab.com/ska-telescope/developer.skatelescope.org>`_ GitLab project, or you can mail the Solution Engineer or Release Train Engineers with feedback.
 
 First Day
 =========
@@ -97,7 +97,7 @@ Information about the SKA
   * We also expect you to sign your commits. GitLab provides instructions on `how to create a GPG key and use it to sign your commits <https://docs.gitlab.com/ee/user/project/repository/gpg_signed_commits/>`_. 
     If you already have a GPG key, the same page tells you how to associate it with your GitLab account. 
 
-* Finally, there's a `Glossary <https://confluence.skatelescope.org/display/SE/Glossary>`_. This lists many of the terms and acronyms in use in SKA. Also, don't be afraid to ask your team on Slack, or ask questions in meetings if you don't understand. 
+* Finally, there's a `Glossary <https://confluence.skatelescope.org/display/GLOS/Glossary>`_. This lists many of the terms and acronyms in use in SKA. Also, don't be afraid to ask your team on Slack, or ask questions in meetings if you don't understand. 
 
 Information about People
 ------------------------
