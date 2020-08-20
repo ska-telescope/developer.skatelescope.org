@@ -14,7 +14,7 @@ If you're an external contributor, then please look at the `SKA Code of Conduct 
 
 You may also wish to read through the relevant coding guidelines, testing policy, and some of the information on CI/CD.
 
-Don't worry if many of the terms in the previous paragraphy don't make sense -- by the time you've covered all the material on this onboarding page, you will at least know where to look up such terms, even if you can't immediately give a definition!
+Don't worry if many of the terms in the previous paragraphs don't make sense -- by the time you've covered all the material on this onboarding page, you will at least know where to look up such terms, even if you can't immediately give a definition!
 
 This page shows you things to do (or try to do!) on your first day, then things to do in your first week, first month, and first three months. 
 The list gets less prescriptive as time goes on -- we expect that you'll be working with your team to set goals, assess further training needs and so on.
