@@ -15,7 +15,7 @@ This page shows you things to do (or try to do!) on your first day, then things 
 
 In this page, we talk about your Scrum Master doing various things -- if your onboarding isn't led by a Scrum Master, then this should be done by whoever is leading your onboarding. 
 
-We welcome feedback on this page - please tell us what worked and what didn't! You can leave comments in the #proj-onboarding slack channel, or you can contribute changes to the deverloper.skatelescope GitLab project, or you can mail the Solution Engineer or Release Train Engineers with feedback.
+We welcome feedback on this page - please tell us what worked and what didn't! You can leave comments in the `#proj-onboarding <https://skasoftware.slack.com/archives/C016VGRJWVC>`_ slack channel, or you can contribute changes to the `developer.skatelescope <https://gitlab.com/ska-telescope/developer.skatelescope.org>`_ GitLab project, or you can mail the Solution Engineer or Release Train Engineers with feedback.
 
 First Day
 =========
