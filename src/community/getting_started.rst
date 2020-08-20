@@ -245,7 +245,6 @@ Remember that we have `training pages on Confluence <https://confluence.skateles
 * Attend SAFe for Teams training.
 * Give a demo or lightning talk!
 * Learn about `ECPs (Engineering Change Proposals) <https://confluence.skatelescope.org/pages/viewpage.action?pageId=5767262>`_. These are often required for major architectural changes, so it's useful to understand the purpose and process of ECPs.
-* Learn about the `SKA Quality Assurance processes <https://confluence.skatelescope.org/display/SE/Software+Quality+Assurance>`_, and how SAFe supports these.
 * Continue with your training plan, using the skills matrix!
 * Make sure you know where to get help. This was covered in week one, but some revision may be helpful.
 * Have a look at the various `Monitoring Dashboards <https://developer.skatelescope.org/en/latest/services/monitoring-dashboards.html>`_ for the EngageSKA Cluster, so you can see what things look like when our prototype is running, and what data we are collecting about it.
