@@ -76,7 +76,7 @@ Information about the SKA
 
 * What is Radio Astronomy?
  
-  * Our Project Scientist, Robert Laing, recorded `some lectures <https://confluence.skatelescope.org/display/SE/Lectures+on+Radio+Interferometry?src=contextnavpagetreemode>`_. We suggest that you listen to the first and possibly the second lecture now. If you're interested or need to know more about radio interferometry, you can look at the other lectures in the next few months. Or come back later on -- you may discover a need to know more about how radio telescopes work in a few years!
+  * Our Senior System Scientist, Robert Laing, recorded `some lectures <https://confluence.skatelescope.org/display/SE/Lectures+on+Radio+Interferometry?src=contextnavpagetreemode>`_. We suggest that you listen to the first and possibly the second lecture now. If you're interested or need to know more about radio interferometry, you can look at the other lectures in the next few months. Or come back later on -- you may discover a need to know more about how radio telescopes work in a few years!
 
 * What is SAFe? 
  
