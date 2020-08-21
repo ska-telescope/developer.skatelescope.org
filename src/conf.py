@@ -111,6 +111,7 @@ html_theme_options = {
     #'logo_only' : False,
     #'logo_only' : 'ska_logo.jpg',
     #'logo' : 'ska_logo.jpg',
+    # "vcs_pageview_mode": "edit" # Does not work see:h ttps://github.com/readthedocs/sphinx_rtd_theme/issues/701
 }
 
 html_context = {
@@ -122,6 +123,7 @@ html_context = {
     "gitlab_repo": "developer.skatelescope.org",  # Repo name
     "gitlab_version": "master",  # Version
     "conf_py_path": "/src/",  # Path in the checkout to the docs root
+    "theme_vcs_pageview_mode": "edit" # workaround for https://github.com/readthedocs/sphinx_rtd_theme/issues/701
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
