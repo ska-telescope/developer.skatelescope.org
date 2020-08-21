@@ -1,0 +1,38 @@
+{% extends "!breadcrumbs.html" %}
+
+{% block breadcrumbs_aside %}
+    <li class="wy-breadcrumbs-aside">
+    {% if hasdoc(pagename) %}
+        {% if display_github %}
+        {% if check_meta and 'github_url' in meta %}
+            <!-- User defined GitHub URL -->
+            <a href="{{ meta['github_url'] }}" class="fa fa-github"> {{ _('Edit on GitHub') }}</a>
+        {% else %}
+            <a href="https://{{ github_host|default("github.com") }}/{{ github_user }}/{{ github_repo }}/{{ theme_vcs_pageview_mode|default("blob") }}/{{ github_version }}{{ conf_py_path }}{{ pagename }}{{ suffix }}" class="btn btn-neutral" title="{{ _('Edit Page on GitHub') }}" rel="{{ _('Edit Page on GitHub') }}"><span style="padding-left: 0.5em" >Edit on<i style="margin-left: 0.5em" class="fa fa-github"></i></span></a>
+            <a href="https://{{ github_host|default("github.com") }}/{{ github_user }}/{{ github_repo }}/commits/{{ github_version }}{{ conf_py_path }}{{ pagename }}{{ suffix }}" class="btn btn-neutral" title="{{ _('Page History') }}" rel="{{ _('Page History') }}"><span class="fa fa-clock-o"></span></a>
+            <a href="https://{{ github_host|default("github.com") }}/{{ github_user }}/{{ github_repo }}/blame/{{ github_version }}{{ conf_py_path }}{{ pagename }}{{ suffix }}" class="btn btn-neutral" title="{{ _('Page Contributors') }}" rel="{{ _('Page Contributors') }}"><span class="fa fa-users"></span></a>
+        {% endif %}
+        {% elif display_bitbucket %}
+        {% if check_meta and 'bitbucket_url' in meta %}
+            <!-- User defined Bitbucket URL -->
+            <a href="{{ meta['bitbucket_url'] }}" class="fa fa-bitbucket"> {{ _('Edit on Bitbucket') }}</a>
+        {% else %}
+            <a href="https://bitbucket.org/{{ bitbucket_user }}/{{ bitbucket_repo }}/src/{{ bitbucket_version}}{{ conf_py_path }}{{ pagename }}{{ suffix }}?mode={{ theme_vcs_pageview_mode|default("view") }}" class="fa fa-bitbucket"> {{ _('Edit on Bitbucket') }}</a>
+        {% endif %}
+        {% elif display_gitlab %}
+        {% if check_meta and 'gitlab_url' in meta %}
+            <!-- User defined GitLab URL -->
+            <a href="{{ meta['gitlab_url'] }}" class="fa fa-gitlab"> {{ _('Edit on GitLab') }}</a>
+        {% else %}
+            <a href="https://{{ gitlab_host|default("gitlab.com") }}/{{ gitlab_user }}/{{ gitlab_repo }}/{{ theme_vcs_pageview_mode|default("blob") }}/{{ gitlab_version }}{{ conf_py_path }}{{ pagename }}{{ suffix }}" class="btn btn-neutral" title="{{ _('Edit Page on GitLab') }}" rel="{{ _('Edit Page on GitLab') }}"><span style="padding-left: 0.5em" >Edit on<i style="margin-left: 0.5em" class="fa fa-gitlab"></i></span></a>
+            <a href="https://{{ gitlab_host|default("gitlab.com") }}/{{ gitlab_user }}/{{ gitlab_repo }}/commits/{{ gitlab_version }}{{ conf_py_path }}{{ pagename }}{{ suffix }}" class="btn btn-neutral" title="{{ _('Page History') }}" rel="{{ _('Page History') }}"><span class="fa fa-clock-o"></span></a>
+            <a href="https://{{ gitlab_host|default("gitlab.com") }}/{{ gitlab_user }}/{{ gitlab_repo }}/blame/{{ gitlab_version }}{{ conf_py_path }}{{ pagename }}{{ suffix }}" class="btn btn-neutral" title="{{ _('Page Contributors') }}" rel="{{ _('Page Contributors') }}"><span class="fa fa-users"></span></a>
+        {% endif %}
+        {% elif show_source and source_url_prefix %}
+        <a href="{{ source_url_prefix }}{{ pagename }}{{ suffix }}">{{ _('View page source') }}</a>
+        {% elif show_source and has_source and sourcename %}
+        <a href="{{ pathto('_sources/' + sourcename, true)|e }}" rel="nofollow"> {{ _('View page source') }}</a>
+        {% endif %}
+    {% endif %}
+    </li>
+{% endblock %}
