@@ -113,11 +113,11 @@ html_context = {
     'favicon': 'img/favicon.ico',
     'logo': 'img/logo.jpg',
     'theme_logo_only' : True,
-    'display_github': True, # Integrate GitHub
-    'github_user': 'flyingfrog81', # Username
-    'github_repo': 'developer.skatelescope.org', # Repo name
-    'github_version': 'master', # Version
-    'conf_py_path': '/src/', # Path in the checkout to the docs root
+    "display_gitlab": True, # Integrate Gitlab
+    "gitlab_user": "ska-telescope", # Username
+    "gitlab_repo": "developer.skatelescope.org", # Repo name
+    "gitlab_version": "master", # Version
+    "conf_py_path": "/src/", # Path in the checkout to the docs root
 
 }
 
