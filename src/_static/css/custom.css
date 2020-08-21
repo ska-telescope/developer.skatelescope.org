@@ -166,7 +166,7 @@ white-space: normal;
 		padding-top: 10px;
 		padding-bottom: 5px;
 		margin-bottom: -5px;
-		border-left: 7px solid rgb(255, 255, 255);
+		border-left: 7px solid #EFEFEF;
 	}
 
 	#local-table-of-contents ul {
@@ -174,7 +174,7 @@ white-space: normal;
 	}
 
 	#local-table-of-contents > ul {
-		border-left: 7px solid rgb(255, 255, 255);
+		border-left: 7px solid #EFEFEF;
 		padding-bottom: 10px;
 	}
 
