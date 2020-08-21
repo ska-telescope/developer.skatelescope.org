@@ -43,37 +43,21 @@ end of original content #}
 #}
 
 {# right side TOC from https://github.com/readthedocs/sphinx_rtd_theme/pull/919/ #}
-<body class="wy-body-for-nav">
-      <div class="wy-nav-content">
-      {%- block content %}
-        {% if theme_style_external_links|tobool %}
-        <div class="rst-content style-external-links">
-        {% else %}
-        <div class="rst-content">
-        {% endif %}
-          {% include "breadcrumbs.html" %}
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-          {%- block document %}
-           <div itemprop="articleBody">
-            {% if toc|length > title|length + 75 %}
-            <nav id="local-table-of-contents" role="navigation" aria-labelledby="local-table-of-contents-title">
-              <h4 id="local-table-of-contents-title">On This Page</h4>
-              {{ toc }}
-            </nav>
-            {% endif %}
-            {% block body %}{% endblock %}
-           </div>
-           {% if self.comments()|trim %}
-           <div class="articleComments">
-            {% block comments %}{% endblock %}
-           </div>
-           {% endif%}
-          </div>
-          {%- endblock %}
-          {% include "footer.html" %}
-        </div>
-      {%- endblock %}
-      </div>
-
-    </section>
-</body>
+{%- block document %}
+<div itemprop="articleBody">
+{% if toc|length > title|length + 75 %}
+<nav id="local-table-of-contents" role="navigation" aria-labelledby="local-table-of-contents-title">
+    <h4 id="local-table-of-contents-title">On This Page</h4>
+    {{ toc }}
+</nav>
+{% endif %}
+{% block body %}
+{% endblock %}
+</div>
+{% if self.comments()|trim %}
+<div class="articleComments">
+{% block comments %}{% endblock %}
+</div>
+{% endif%}
+</div>
+{%- endblock %}
