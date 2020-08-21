@@ -118,7 +118,8 @@ white-space: normal;
     margin-block-end: 0em;
 }
 #local-table-of-contents {
-	padding-bottom: 20px;
+    padding-bottom: 20px;
+    display: none;
 }
 
 #local-table-of-contents #local-table-of-contents-title {
