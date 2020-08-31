@@ -28,6 +28,7 @@ def setup(app):
     app.add_js_file("js/gitlab.js")
     app.add_js_file("js/projects_list.js")
     app.add_js_file("js/groups_list.js")
+    app.add_js_file("js/feedback.js")
 
 
 # -- General configuration ------------------------------------------------

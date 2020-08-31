@@ -1,48 +1,131 @@
+<form
+  class="pre-footer"
+  onsubmit="return fillFeedback();"
+  action="https://gitlab.com/ska-telescope/developer.skatelescope.org/-/issues/new"
+  method="GET"
+>
+  <!--https://gitlab.com/api/v4/projects/9070656/issues
+    https://gitlab.com/ska-telescope/developer.skatelescope.org/-/issues/new?
+    issue[title]=Validate%20new%20concept&issue[description]=Research%20idea
+    -->
+  <hr />
+  <h2>Feedback</h2>
+  <p>Was this page helpful?</p>
 
-{% extends "!footer.html" %}
-{% block extrafooter %}
+  <button
+    class="btn btn-neutral btn-feedback feedback-yes"
+    type="button"
+    onclick="show('feedback-yes'); disableButtons();"
+  >
+    Yes
+  </button>
+  <button
+    class="btn btn-neutral btn-feedback feedback-no"
+    type="button"
+    onclick="show('feedback-no'); disableButtons();"
+  >
+    No
+  </button>
 
-<a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
-    <img alt="Creative Commons Licence"
-         style="border-width:0"
-         src="https://i.creativecommons.org/l/by/4.0/88x31.png" />
-</a>
+  <p class="feedback-response" id="feedback-no" style="width: 480px">
+    <label for="feedback-comment">
+      <span>Let us know what we can do better:</span>
+      <span style="float: right; color: gray; font: lighter">Optional</span>
+    </label>
+    <textarea
+      name="feedback-comment"
+      id="feedback-comment"
+      name="description"
+      rows="3"
+    ></textarea>
+    <button
+      class="btn btn-primary"
+      type="submit"
+      style="float: right; margin-top: 0.2em"
+    >
+      Send
+    </button>
+  </p>
+
+  <p class="feedback-response" id="feedback-yes" style="width: 480px">
+    <span>We are glad you liked it!</span>
+    <label for="feedback-comment">
+      <span
+        >If there is anything we can improve, please let us know below:</span
+      >
+      <span style="float: right; color: gray; font: lighter">Optional</span>
+    </label>
+    <textarea
+      name="feedback-comment"
+      id="feedback-comment"
+      name="description"
+      rows="3"
+    ></textarea>
+    <button
+      class="btn btn-primary"
+      type="submit"
+      style="float: right; margin-top: 0.2em"
+    >
+      Send
+    </button>
+  </p>
+
+  <!-- <input type="hidden" name="assignee_ids" value="3049864"/> -->
+  <!-- <input type="hidden" name="labels" value="feedback" /> -->
+  <input type="hidden" name="issue[title]" id="issue[title]" value="" />
+  <input
+    type="hidden"
+    name="issue[description]"
+    id="issue[description]"
+    value=""
+  />
+  <input
+    type="hidden"
+    name="issue[confidential]"
+    id="issue[confidential]"
+    value="true"
+  />
+  <br />
+  <hr />
+</form>
+
+{% extends "!footer.html" %} {% block extrafooter %}
+
 <br />
-<span xmlns:dct="http://purl.org/dc/terms/"
-      property="dct:title">
-          SKA developer documentation
+<span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
+  SKA developer documentation
 </span>
 by
-<a xmlns:cc="http://creativecommons.org/ns#"
-   href="developer.skatelscope.org"
-   property="cc:attributionName"
-   rel="cc:attributionURL">
-       SKA organisation
+<a
+  xmlns:cc="http://creativecommons.org/ns#"
+  href="developer.skatelscope.org"
+  property="cc:attributionName"
+  rel="cc:attributionURL"
+>
+  SKA organisation
 </a>
 is licensed under a
-<a rel="license"
-   href="http://creativecommons.org/licenses/by/4.0/">
-      Creative Commons Attribution 4.0 International License
-</a>.
-<br />Based on a work at
-<a xmlns:dct="http://purl.org/dc/terms/"
-   href="https://gilab.com/ska-telescope/developer.skatelescope.org"
-   rel="dct:source">
-       gitlab.com/ska-telescope/developer.skatelescope.org
-</a>.
-<br /><br />
-This work is inspired by the
-<a href="https://developer.lsst.io/">
-    LSST developer guide
-</a> © Copyright 2016-2018 Association of Universities for Research in Astronomy, licensed under a
-<a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
-
-
-<br /><br />
-This work is inspired by the
-<a href="https://www.apache.org/dev/">
-    Apache developer information
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+  Creative Commons Attribution 4.0 International License
+  <img
+    alt="Creative Commons Licence"
+    style="border-width: 0"
+    src="https://i.creativecommons.org/l/by/4.0/88x31.png"
+  />
 </a>
+<br /><br />
+This work is inspired by the
+<a href="https://developer.lsst.io/"> LSST developer guide </a> © Copyright
+2016-2018 Association of Universities for Research in Astronomy, licensed under
+a
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"
+  >Creative Commons Attribution 4.0 International License</a
+>.
+
+<br /><br />
+This work is inspired by the
+<a href="https://www.apache.org/dev/"> Apache developer information </a>
 Copyright © 2018 The Apache Software Foundation, Licensed under the
-<a rel="license" href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
-{% endblock %}
+<a rel="license" href="http://www.apache.org/licenses/LICENSE-2.0"
+  >Apache License, Version 2.0</a
+>. {% endblock %}
