@@ -50,7 +50,11 @@ extensions = [
     "sphinx.ext.ifconfig",
     "sphinx.ext.viewcode",
     "sphinx.ext.githubpages",
+    "sphinx_gitstamp",
 ]
+
+# Date format for git timestamps
+gitstamp_fmt = "%b %d, %Y"
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
@@ -124,7 +128,7 @@ html_context = {
     "gitlab_repo": "developer.skatelescope.org",  # Repo name
     "gitlab_version": "master",  # Version
     "conf_py_path": "/src/",  # Path in the checkout to the docs root
-    "theme_vcs_pageview_mode": "edit" # workaround for https://github.com/readthedocs/sphinx_rtd_theme/issues/701
+    "theme_vcs_pageview_mode": "edit",  # workaround for https://github.com/readthedocs/sphinx_rtd_theme/issues/701
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
@@ -241,4 +245,3 @@ epub_exclude_files = ["search.html"]
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {"https://docs.python.org/": None}
-

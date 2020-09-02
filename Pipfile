@@ -15,6 +15,7 @@ Sphinx = ">=1.6.3"
 sphinx_rtd_theme = ">=0.2.4"
 doc8 = "*"
 rstcheck = "*"
+sphinx-gitstamp = "*"
 
 [dev-packages]
 
