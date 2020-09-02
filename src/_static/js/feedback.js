@@ -31,11 +31,11 @@ function fillFeedback() {
         "\n\nThis is a auto created issue from RTD Feedback form\n\n/label ~feedback\n/assign @limonkufu";
 
     if (pressedButton == "yes") {
-        title.value = "[RTD Feedback] - Positive: " + currPage;
+        title.value = "[RTD Feedback :pencil2:] - :+1: :" + currPage;
         temp = temp + "\n/award :+1:";
         desc.value = temp;
     } else if (pressedButton == "no") {
-        title.value = "[RTD Feedback] - Negative: " + currPage;
+        title.value = "[RTD Feedback :pencil2:] - :thumbsdown: : " + currPage;
         temp = temp + "\n/award :disappointed:";
         desc.value = feedback + temp;
     }
