@@ -92,6 +92,8 @@
 {% extends "!footer.html" %} {% block extrafooter %}
 
 <br />
+{%- if gitstamp %} This page was last updated on {{ gitstamp }}. {%- endif %}
+<br /> <br />
 <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
   SKA developer documentation
 </span>
