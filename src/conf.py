@@ -51,7 +51,15 @@ extensions = [
     "sphinx.ext.viewcode",
     "sphinx.ext.githubpages",
     "sphinx_gitstamp",
+    "notfound.extension",
 ]
+
+# 404 page configuration
+notfound_context = {
+    "body": "<h3>Unfortunately, we couldn't locate the object you are searching for, yet!</h3> <p> In the meantime, please feel free to explore the rest of the Portal!</p>",
+}
+
+notfound_no_urls_prefix = True
 
 # Date format for git timestamps
 gitstamp_fmt = "%b %d, %Y"
@@ -245,3 +253,5 @@ epub_exclude_files = ["search.html"]
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {"https://docs.python.org/": None}
+
+# %%
