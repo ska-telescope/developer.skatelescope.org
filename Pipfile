@@ -16,6 +16,7 @@ sphinx_rtd_theme = ">=0.2.4"
 doc8 = "*"
 rstcheck = "*"
 sphinx-gitstamp = "*"
+sphinx-notfound-page = "*"
 
 [dev-packages]
 

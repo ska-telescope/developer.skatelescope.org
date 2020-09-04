@@ -36,3 +36,4 @@ sphinxcontrib-websupport==1.2.4
 stevedore==3.2.1
 tornado==6.0.4
 urllib3==1.25.10
+sphinx-notfound-page==0.5
