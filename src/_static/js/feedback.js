@@ -33,7 +33,7 @@ function fillFeedback() {
     if (pressedButton == "yes") {
         title.value = "[RTD Feedback :pencil2:] - :+1: :" + currPage;
         temp = temp + "\n/award :+1:";
-        desc.value = temp;
+        desc.value = feedback + temp;
     } else if (pressedButton == "no") {
         title.value = "[RTD Feedback :pencil2:] - :thumbsdown: : " + currPage;
         temp = temp + "\n/award :disappointed:";
