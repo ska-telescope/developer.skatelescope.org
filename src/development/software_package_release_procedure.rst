@@ -225,4 +225,5 @@ The line to change directory can be the first line of the ``script`` section. If
 
 The shell script packages the chart in a temporary directory and pushes it to the SKA repository. Note the output of the CI job - one of the last output lines mentions the changes that were brought about by this publish step and is meant to verify whether or not an update has been added to the chart repository correctly.
 
-NOTE: A chart has a ``version`` number and an ``appVersion``. Updating only the appVersion number will *not* result in an update to the chart repository - if you want a new version of the application to be uploaded, you *must* update the chart version as well.
+.. note::
+  A chart has a ``version`` number and an ``appVersion``. Updating only the appVersion number will *not* result in an update to the chart repository - if you want a new version of the application to be uploaded, you *must* update the chart version as well.
