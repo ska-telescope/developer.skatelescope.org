@@ -147,7 +147,7 @@ Helm Chart Packaging, Publishing and Sharing
 Working with a Helm Repository
 ==============================
 
-Working with a Helm chart repository is well-documented on `The Official Helm Chart Repository Guide <https://v2.helm.sh/docs/developing_charts/#the-chart-repository-guide>`_.
+Working with a Helm chart repository is well-documented on `The Official Helm Chart Repository Guide <https://helm.sh/docs/topics/chart_repository/>`_.
 
 Adding (our) repository
 '''''''''''''''''''''''
@@ -191,112 +191,43 @@ Note: this will update *ALL* your local repositories' index files.
 Package and publish Helm Charts to the SKA Helm Chart Repository
 ================================================================
 
-Package a chart
-'''''''''''''''
-Packaging a chart is relatively trivial. Let's say you create a chart called ``my-new-chart``, with the following directory structure:
+The process of packaging and publishing Helm charts to the SKA repository is very simple. A few lines are needed in the ``.gitlab-ci.yml`` file, and the project needs to have a ``charts`` directory under the root of the project, that contains all your project's charts. If the ``charts`` folder is not under the project root, a line can be added in the CI job to first change to the directory containing this ``charts`` directory, however this is discouraged. For further information on best practices with regards to specifically the folder structure of charts, refer to `The Chart Best Practices Guide <https://helm.sh/docs/chart_best_practices/>`_, and also to our own set of :ref:`helm-best-practices`.
+
+As an example, let's take the following project structure:
 
 .. code:: bash
 
- $ tree
-   my-new-chart/
-   ├── Chart.yaml
-   ├── charts
-   ├── templates
-   │   ├── NOTES.txt
-   │   ├── _helpers.tpl
-   │   ├── deployment.yaml
-   │   ├── ingress.yaml
-   │   ├── service.yaml
-   │   └── tests
-   │       └── test-connection.yaml
-   └── values.yaml
+  .
+  ├── my-project
+  │   ├── charts
+  │   |   └── my-first-chart
+  │   |   └── my-second-chart
+  │   ├── .gitlab-ci.yml
+  │   └── README.md
 
-You can now package it with the simple command ``helm package my-new-chart`` and it will create the package file:
+Refer to the Helm repository guide to understand how to package a chart, but to package and publish the two charts in the above example, simply add the following code to your ``.gitlab-ci.yml`` file:
 
-.. code:: bash
+.. code:: yaml
 
- $ helm package my-new-chart
- $ tree
-   my-new-chart-0.1.0.tgz
-   my-new-chart/
-   ├── Chart.yaml
-	...
-   └── values.yaml
+  publish-chart:
+    # variables:
+    #   CHARTS_TO_PUBLISH: my-first-chart my-second-chart
+    stage: helm-publish
+    when: always
+    # only:
+    #   - helm-publish
+    tags:
+      - docker-executor
+    script:
+      - apt-get -y update
+      - apt-get install -y curl ca-certificates --no-install-recommends
+      - curl -s https://gitlab.com/ska-telescope/stupid/raw/master/scripts/publish-charts.sh | bash
 
-Now, in order to publish the chart, you can simply run a curl command with an ``--upload-file`` flag:
+The line to change directory can be the first line of the ``script`` section. If you uncomment the ``only`` section and name the branch where this should occur, the publishing job will *only* run when a commit is pushed to that named branch - in the commented out example the branch name is ``helm-publish`` but this is up to the developer / team. Of course, adding some tagging and testing as seperate jobs is also a good idea.
 
-.. code:: bash
+In case you only want to publish a sub-set of the charts in your project, you can uncomment and use the top two lines in the job specifying the CHARTS_TO_PUBLISH variable. Note that the above example is redundant, since the default behaviour is to publish all the charts found in the ``charts/`` folder.
 
- $ curl -v -u $HELM_USERNAME:$HELM_PASSWORD --upload-file new-helm-package-v-0.1.0.tgz --url https://nexus.engageska-portugal.pt//repository/helm-chart/
+The shell script packages the chart in a temporary directory and pushes it to the SKA repository. Note the output of the CI job - one of the last output lines mentions the changes that were brought about by this publish step and is meant to verify whether or not an update has been added to the chart repository correctly. If chart packages were uploaded but there is no *diff* output, it may mean you forgot to update the chart version - see below note.
 
 .. note::
- You will of course need credentials (``$HELM_USERNAME`` and ``$HELM_PASSWORD``) to run the above ``curl`` command with, and this user should have privileges for reading and writing on the Repository. We have a Gitlab Runner already set up with a user that has the required privileges - see :ref:`how to do this <helm-with-gitlab>` below.
-
-If you now run ``helm repo update`` you (or your colleagues) should see your new application also listed under the repo:
-
-.. code:: bash
-
-  $ helm search skatelescope
-  NAME                      	CHART VERSION	APP VERSION	DESCRIPTION
-  skatelescope/sdp-prototype	0.2.1        	1.0        	helm chart to deploy the SDP Prototype on Kubernetes
-  skatelescope/test-app     	0.1.0        	1.0        	A Helm chart for Kubernetes
-  skatelescope/webjive      	0.1.0        	1.0        	A Helm chart for deploying the WebJive on Kubernetes
-  skatelescope/my-new-chart    	0.1.0        	1.0        	A Helm chart for deploying the WebJive on Kubernetes
-
-.. _helm-with-gitlab:
-
-Bulk package and publish using Gitlab CI
-''''''''''''''''''''''''''''''''''''''''
-
-Read the `Helm documentation <https://v2.helm.sh/docs/developing_charts/#the-chart-repository-guide>`_ (note: this link is for Helm v2 because we are still using it) in order to learn how to publish your application to a Helm repository.
-This is an example of a branch-specific job in the CI pipeline with manual input required. See comments below the code block.
-
-.. code-block:: yaml
-	:linenos:
-
-	stages:
-		- helm-publish
-
-	...
-
-	publish-chart:
-	  stage: helm-publish
-	  when: manual # the script will require you to specify the name of the chart that you want to package - CHART_NAME
-	  only:
-		- helm-publish
-	  tags:
-		- helm-repoman
-	  script:
-		- cd charts
-		- if [ $CHART_NAME == 'all' ]; then for d in */; do helm package "$d"; done; else helm package $CHART_NAME; fi
-		- for f in *.tgz; do curl -v -u $HELM_USERNAME:$HELM_PASSWORD --upload-file $f $HELM_HOST/repository/helm-chart/$f; rm $f; done
-
-Here are a few comments, referring to the line numbers above:
-
-**ln 1**: Remember to add the stage at the top of your ``.gitlab-ci.yml``
-**ln 8**: Setting ``when: manual`` will cause the pipeline to wait for the user to trigger the job.
-
-.. _figure-1-gitlab-trigger:
-
-.. figure:: manual-trigger.png
-   :scale: 60%
-   :alt: Gitlab Manual Trigger
-   :align: center
-   :figclass: figborder
-
-When you try to run the blocked job for the first time, Gitlab will ask you to input variables - see next image. You need to specify ``CHART_NAME`` and use the exact name of the chart, for instance ``my-new-app``.
-
-You can either specify the chart name that is to be published, or input ``all`` so that every chart **in the top-level** ``charts/`` folder is published.
-
-.. _figure-2-gitlab-input:
-
-.. figure:: manual-input.png
-   :scale: 60%
-   :alt: Gitlab Manual Variable Input
-   :align: center
-   :figclass: figborder
-
-**ln 9**: Restricting the job to run only on the ``helm-publish`` branch is suggested because this job is run manually and thus will block a pipeline, waiting for manual input, which is not necessarily good for CI, especially if publishing new charts is not required.
-
-**ln 11**: The runner's name is ``helm-repoman`` - it's available for all projects in the SKA group.
-
+  A chart has a ``version`` number and an ``appVersion``. Updating only the appVersion number will *not* result in an update to the chart repository - if you want a new version of the application to be uploaded, you *must* update the chart version as well. If something changed in the chart, but you did not update the version, the index may point at the wrong file so be careful.
