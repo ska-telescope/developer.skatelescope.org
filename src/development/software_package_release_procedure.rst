@@ -191,7 +191,7 @@ Note: this will update *ALL* your local repositories' index files.
 Package and publish Helm Charts to the SKA Helm Chart Repository
 ================================================================
 
-The process of packaging and publishing Helm charts to the SKA repository is very simple. A few lines are needed in the ``.gitlab-ci.yml`` file, and the project needs to have a ``charts`` directory under the root of the project, that contains all your project's charts. If the ``charts`` folder is not under the project root, a line can be added in the CI job to first change to the directory containing this ``charts`` directory.
+The process of packaging and publishing Helm charts to the SKA repository is very simple. A few lines are needed in the ``.gitlab-ci.yml`` file, and the project needs to have a ``charts`` directory under the root of the project, that contains all your project's charts. If the ``charts`` folder is not under the project root, a line can be added in the CI job to first change to the directory containing this ``charts`` directory, however this is discouraged. For further information on best practices with regards to specifically the folder structure of charts, refer to `The Chart Best Practices Guide <https://helm.sh/docs/chart_best_practices/>`_. 
 
 As an example, let's take the following project structure:
 
