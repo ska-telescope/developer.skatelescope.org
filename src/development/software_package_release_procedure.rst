@@ -191,7 +191,7 @@ Note: this will update *ALL* your local repositories' index files.
 Package and publish Helm Charts to the SKA Helm Chart Repository
 ================================================================
 
-The process of packaging and publishing Helm charts to the SKA repository is very simple. A few lines are needed in the ``.gitlab-ci.yml`` file, and the project needs to have a ``charts`` directory under the root of the project, that contains all your project's charts. If the ``charts`` folder is not under the project root, a line can be added in the CI job to first change to the directory containing this ``charts`` directory, however this is discouraged. For further information on best practices with regards to specifically the folder structure of charts, refer to `The Chart Best Practices Guide <https://helm.sh/docs/chart_best_practices/>`_. 
+The process of packaging and publishing Helm charts to the SKA repository is very simple. A few lines are needed in the ``.gitlab-ci.yml`` file, and the project needs to have a ``charts`` directory under the root of the project, that contains all your project's charts. If the ``charts`` folder is not under the project root, a line can be added in the CI job to first change to the directory containing this ``charts`` directory, however this is discouraged. For further information on best practices with regards to specifically the folder structure of charts, refer to `The Chart Best Practices Guide <https://helm.sh/docs/chart_best_practices/>`_, and also to our own set of :ref:`helm-best-practices`.
 
 As an example, let's take the following project structure:
 
@@ -210,6 +210,8 @@ Refer to the Helm repository guide to understand how to package a chart, but to 
 .. code:: yaml
 
   publish-chart:
+    # variables:
+    #   CHARTS_TO_PUBLISH: my-first-chart my-second-chart
     stage: helm-publish
     when: always
     # only:
@@ -223,7 +225,9 @@ Refer to the Helm repository guide to understand how to package a chart, but to 
 
 The line to change directory can be the first line of the ``script`` section. If you uncomment the ``only`` section and name the branch where this should occur, the publishing job will *only* run when a commit is pushed to that named branch - in the commented out example the branch name is ``helm-publish`` but this is up to the developer / team. Of course, adding some tagging and testing as seperate jobs is also a good idea.
 
-The shell script packages the chart in a temporary directory and pushes it to the SKA repository. Note the output of the CI job - one of the last output lines mentions the changes that were brought about by this publish step and is meant to verify whether or not an update has been added to the chart repository correctly.
+In case you only want to publish a sub-set of the charts in your project, you can uncomment and use the top two lines in the job specifying the CHARTS_TO_PUBLISH variable. Note that the above example is redundant, since the default behaviour is to publish all the charts found in the ``charts/`` folder.
+
+The shell script packages the chart in a temporary directory and pushes it to the SKA repository. Note the output of the CI job - one of the last output lines mentions the changes that were brought about by this publish step and is meant to verify whether or not an update has been added to the chart repository correctly. If chart packages were uploaded but there is no *diff* output, it may mean you forgot to update the chart version - see below note.
 
 .. note::
-  A chart has a ``version`` number and an ``appVersion``. Updating only the appVersion number will *not* result in an update to the chart repository - if you want a new version of the application to be uploaded, you *must* update the chart version as well.
+  A chart has a ``version`` number and an ``appVersion``. Updating only the appVersion number will *not* result in an update to the chart repository - if you want a new version of the application to be uploaded, you *must* update the chart version as well. If something changed in the chart, but you did not update the version, the index may point at the wrong file so be careful.
