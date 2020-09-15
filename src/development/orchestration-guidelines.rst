@@ -368,6 +368,7 @@ All template files in the ``templates/`` directory should be named in a readily 
 
 
 .. _helm-best-practices:
+
 Helm Best Practices
 ~~~~~~~~~~~~~~~~~~~
 
