@@ -205,13 +205,14 @@ As an example, let's take the following project structure:
   │   ├── .gitlab-ci.yml
   │   └── README.md
 
-Refer to the Helm repository guide to understand how to package a chart, but to package and publish the two charts in the above example, simply add the following code to your ``.gitlab-ci.yml`` file:
+Refer to the Helm repository guide to understand how to package a chart, but to package and publish the two charts in the above example, simply add the following code to your ``.gitlab-ci.yml`` file and also ensure that your pipeline has a `publish` stage:
 
 .. code:: yaml
 
   # variables:
     # CHARTS_TO_PUBLISH: my-first-chart my-second-chart 
 
+  # Ensure your .gitlab-ci.yml has "publish" stage defined!
   include:
     - project: 'ska-telescope/templates-repository'
       file: 'gitlab-ci/includes/helm_publish.yml'
