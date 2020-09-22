@@ -52,6 +52,7 @@ extensions = [
     "sphinx.ext.githubpages",
     "sphinx_gitstamp",
     "notfound.extension",
+    "sphinx_copybutton",
 ]
 
 # 404 page configuration

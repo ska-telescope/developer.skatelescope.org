@@ -17,6 +17,7 @@ doc8 = "*"
 rstcheck = "*"
 sphinx-gitstamp = "*"
 sphinx-notfound-page = "*"
+sphinx-copybutton = "*"
 
 [dev-packages]
 
