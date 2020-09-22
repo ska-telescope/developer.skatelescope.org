@@ -209,25 +209,20 @@ Refer to the Helm repository guide to understand how to package a chart, but to 
 
 .. code:: yaml
 
-  publish-chart:
-    # variables:
-    #   CHARTS_TO_PUBLISH: my-first-chart my-second-chart
-    stage: helm-publish
-    when: always
-    # only:
-    #   - helm-publish
-    tags:
-      - docker-executor
-    script:
-      - apt-get -y update
-      - apt-get install -y curl ca-certificates --no-install-recommends
-      - curl -s https://gitlab.com/ska-telescope/stupid/raw/master/scripts/publish-charts.sh | bash
+  # variables:
+    # CHARTS_TO_PUBLISH: my-first-chart my-second-chart 
 
-The line to change directory can be the first line of the ``script`` section. If you uncomment the ``only`` section and name the branch where this should occur, the publishing job will *only* run when a commit is pushed to that named branch - in the commented out example the branch name is ``helm-publish`` but this is up to the developer / team. Of course, adding some tagging and testing as seperate jobs is also a good idea.
+  include:
+    - project: 'ska-telescope/templates-repository'
+      file: 'gitlab-ci/includes/helm_publish.yml'
 
-In case you only want to publish a sub-set of the charts in your project, you can uncomment and use the top two lines in the job specifying the CHARTS_TO_PUBLISH variable. Note that the above example is redundant, since the default behaviour is to publish all the charts found in the ``charts/`` folder.
 
-The shell script packages the chart in a temporary directory and pushes it to the SKA repository. Note the output of the CI job - one of the last output lines mentions the changes that were brought about by this publish step and is meant to verify whether or not an update has been added to the chart repository correctly. If chart packages were uploaded but there is no *diff* output, it may mean you forgot to update the chart version - see below note.
+In case you only want to publish a sub-set of the charts in your project, you can uncomment and use the top two lines in the job specifying the CHARTS_TO_PUBLISH variable. Note that the list in the above example is redundant, since the default behaviour is to publish all the charts found in the ``charts/`` folder, and in this case there are only those two charts.
+
+
+The CI job that is included using the above lines of code takes care of packaging the chart in a temporary directory and pushes it to the SKA repository. The job runs manually, which means that you need to trigger it on the Gitlab web UI. Note, triggering the job, you can specify the ``CHARTS_TO_PUBLISH`` variable before the job executes again, however, re-running this job will not use the variables again and will result in an attempt to publish all the charts under the ``charts/`` folder.
+
+If no new versions of charts are found (i.e. if the version of the chart that you are trying to publish is already listed in the SKA Helm repository), none will be uploaded. All the changes will be listed at the end of the CI Pipeline job.
 
 .. note::
-  A chart has a ``version`` number and an ``appVersion``. Updating only the appVersion number will *not* result in an update to the chart repository - if you want a new version of the application to be uploaded, you *must* update the chart version as well. If something changed in the chart, but you did not update the version, the index may point at the wrong file so be careful.
+  A chart has a ``version`` number and an ``appVersion``. Updating only the appVersion number will *not* result in an update to the chart repository - if you want a new version of the application to be uploaded, you *must* update the chart version as well. Read more on the Helm documentation.
