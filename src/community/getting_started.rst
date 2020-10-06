@@ -39,10 +39,12 @@ This section is designed to get you up and running, with all the accounts you'll
 
 * Get SKA accounts. You should set up these accounts with your institutional email address. Please provide this email address to your Scrum Master if they don't have it already! You'll need the following accounts:
 
-  * `JIRA <https://jira.skatelescope.org>`_ and `Confluence <https://confluence.skatelescope.org>`_ login (both sites are configured to authenticate you with the same username and password). These should be requested through the `New account request <https://helpdesk.skatelescope.org/portal/page/13-new-account-request>`_ option.
+  * `JIRA <https://jira.skatelescope.org>`_ and `Confluence <https://confluence.skatelescope.org>`_ login (both sites are configured to authenticate you with the same username and password).
   * `Slack <https://skasoftware.slack.com>`_ If the person you are trying to add does not have an institutional email address, please drop by `#team-slack-admins <https://skasoftware.slack.com/archives/CVD3RNCR0>`_ and indicate why the account needs to be done on a non-institutional email address.
   * Google Drive. You may need to create an account associated with your institutional email address. This makes it easier for us to know who is using that Google account.
   * `GitLab <https://gitlab.com/>`_ (If you're not going to be contributing code or documentation, this step may be omitted or postponed.) Please make sure your institutional email address is associated with your GitLab ID if you've already got a GitLab account. See https://developer.skatelescope.org/en/latest/tools/git.html#use-institutional-email for instructions on how to do this.
+
+Please be aware of the `Tool Access page <https://confluence.skatelescope.org/display/SE/Tool+Access>`_, where the processes for requesting access to these tools is outlined.
 
 Now you've got some accounts, you should log in to:
 
