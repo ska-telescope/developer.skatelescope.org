@@ -56,7 +56,7 @@ You should read the `SKA Code of Conduct <https://www.skatelescope.org/ska-organ
 The SKA is an inclusive organisation, and we want to make sure that everyone is respected and has a pleasant experience working for SKA.
 We therefore have a Code of Conduct, and reading, understanding, and adhering to that Code is a key part of your onboarding and your future work at SKA.
 
-And you should visit the `developer portal <https://developer.skatelescope.org/>`_! (You may be reading this on the developer portal; this is a reminder to Scrum Masters that they should provide you with the link!
+And you should visit the `developer portal <https://developer.skatelescope.org/>`_! (You may be reading this on the developer portal; this is a reminder to Scrum Masters that they should provide you with the link!)
 
 First Week
 ==========
