@@ -451,7 +451,7 @@ The chosen solution is an hybrid approach which enables a single level hierarchy
 * Every chart can be deployed with its own tango eco-system
 * Every chart can have tango-base, webjive and the archiver as dependencies
 
-.. _figure-subcharts-2:
+.. _figure-subcharts-3:
 
 .. figure:: tmc_shared_charts.png
    :scale: 60%
@@ -464,7 +464,7 @@ The chosen solution is an hybrid approach which enables a single level hierarchy
 
 Every dependency must have a common condition on it, so that it will be possible to disable the shared charts if they are included in the parent umbrella. For instance if there is the need (for testing purposes) to have the TMC and the OET charts together the result will be: 
 
-.. _figure-subcharts-3:
+.. _figure-subcharts-4:
 
 .. figure:: tmc_oet_umbrella.png
    :scale: 60%
@@ -477,7 +477,7 @@ Every dependency must have a common condition on it, so that it will be possible
 
 The initial model will become: 
 
-.. _figure-subcharts-4:
+.. _figure-subcharts-5:
 
 .. figure:: umbrella_skampi.png
    :scale: 60%
@@ -493,11 +493,11 @@ Gitlab Helm/k8s testing pipeline
 
 In order to enable the GitLab pipeline to deploy and test the specific component each ska-telescope repository must: 
 
-* contain at least one helm chart (i.e. starting point is skampi charts): `link to example <https://gitlab.com/ska-telescope/tango-example/-/tree/master/charts>`_
-* have an environment (i.e. test): `link to example <https://gitlab.com/ska-telescope/tango-example/-/environments>`_
-* adopt the Makefile for k8s testing: `link to example <­https://gitlab.com/ska-telescope/tango-example/-/blob/master/.make/k8s.mk>`_
-* use the environment keywords: `link to example <­https://gitlab.com/ska-telescope/tango-example/-/blob/master/.gitlab-ci.yml#L108>`_
-* have a common publish chart CI job step: `link to example <­https://gitlab.com/ska-telescope/tango-example/-/blob/master/.gitlab-ci.yml#L122>`_
+* contain at least one helm chart (i.e. starting point is skampi charts): `link to example <https://gitlab.com/ska-telescope/tango-example/-/tree/master/charts>`__
+* have an environment (i.e. test): `link to example <https://gitlab.com/ska-telescope/tango-example/-/environments>`__
+* adopt the Makefile for k8s testing: `link to example <­https://gitlab.com/ska-telescope/tango-example/-/blob/master/.make/k8s.mk>`__
+* use the environment keywords: `link to example <­https://gitlab.com/ska-telescope/tango-example/-/blob/master/.gitlab-ci.yml#L108>`__
+* have a common publish chart CI job step: `link to example <­https://gitlab.com/ska-telescope/tango-example/-/blob/master/.gitlab-ci.yml#L122>`__
 
 Note also that each project/repository in the ska-telescope group has a `Kubernetes cluster already enabled <https://gitlab.com/ska-telescope/tango-example/-/clusters>`_. 
 
@@ -553,7 +553,7 @@ A library chart is a type of Helm chart that defines chart primitives or definit
 
 The following diagram shows the data model for the harmonized values file:
 
-.. _figure-subcharts-5:
+.. _figure-subcharts-6:
 
 .. figure:: values_data_model.png
    :scale: 100%
