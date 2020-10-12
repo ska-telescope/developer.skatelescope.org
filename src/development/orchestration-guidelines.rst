@@ -432,10 +432,10 @@ Considering the `Module Views <https://confluence.skatelescope.org/display/SWSI/
 
    Simple skampi diagram
 
-All charts depend on the tango-base and, in general, all charts could need the archiver and the webjive interface. At the moment, this is modelled in the repository skampi where all charts are Subcharts of a parent one called skampi and they are installed with helm templating instead of the normal installation. 
+All charts depend on the tango-base and, in general, all charts could need the archiver and the webjive interface. At the moment, this is modelled in skampi repository where there is one parent chart called skampi and all other charts are its subcharts. They are installed with Helm templating instead of normal installation
 There are a number of disadvantages in this model specifically:
 
-* Common testing, one place for all integration testing and not a clear distinction between system and integration tests
+* Common testing: one place for all integration testing. No clear distinction between system and integration tests
 * Not easy to find logs: many tests on the same namespace
 * Same namespace for many deployments
 * No versioning: charts are not versioned
@@ -499,7 +499,7 @@ In order to enable the GitLab pipeline to deploy and test the specific component
 * use the environment keywords: `link to example <­https://gitlab.com/ska-telescope/tango-example/-/blob/master/.gitlab-ci.yml#L108>`__
 * have a common publish chart CI job step: `link to example <­https://gitlab.com/ska-telescope/tango-example/-/blob/master/.gitlab-ci.yml#L122>`__
 
-Note also that each project/repository in the ska-telescope group has a `Kubernetes cluster already enabled <https://gitlab.com/ska-telescope/tango-example/-/clusters>`_. 
+Also, note that each project/repository in the ska-telescope group has a `Kubernetes cluster already enabled <https://gitlab.com/ska-telescope/tango-example/-/clusters>`_. 
 
 The test job of the GitLab pipeline needs to be: 
 
@@ -594,6 +594,7 @@ Elements:
 
 
 Rationale:
+
 * Almost all helm charts in the Skampi repository are device server configurations so it appears natural to start the modelling from that concept
 * The depends_on relationship has been added so that it is possible to extract the dependency map of the MVP prototype
 * Every chart of the ska-telescope can have the shared charts in the dependency list 
