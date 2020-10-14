@@ -366,6 +366,252 @@ The general structure of a Chart should follow:
 
 All template files in the ``templates/`` directory should be named in a readily identifiable way after the component that it contains, and if further clarification is required then it should be suffixed with the ``Kind`` of resource eg: ``tangodb.yaml`` contains the ``StatefulSet`` for the Tango database, and ``tangodb-pv.yaml`` contains the ``PersistentVolume`` declaration for the Tango database.  ``ConfigMaps`` should be clustered in ``configmaps.yaml`` and ``Secrets`` in ``secrets.yaml``.  The aim is to make it easy for others to understand the layout of application suite being deployed.
 
+Helm sub-chart architecture
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Introduction to subcharts
+*************************
+A chart can have one or more dependencies charts, called sub-charts. According to the `helm documentation <https://helm.sh/docs/chart_template_guide/subcharts_and_globals/>`_: 
+
+* a chart is stand-alone (cannot depend on a parent chart),
+* a sub-chart cannot access the values of its parent,
+* a parent sub-chart can override values for its sub-charts and
+* all charts (parent and sub-chart) can access the global values.
+
+Let's consider two charts, A and B where A depends on B. The file Chart.yaml for the chart A will specify the dependency and in the values file it is possible for chart A to override any value of chart B. The following figure shows how to do it: 
+
+.. _figure-subcharts-1:
+
+.. figure:: A_parent_B.png
+   :scale: 60%
+   :alt: A parent of B
+   :align: center
+   :figclass: figborder
+
+
+   Chart A parent of chart B
+
+It is also important to consider the `operational aspects of using dependencies <https://helm.sh/docs/topics/charts/#helm>`_ which state that when Helm installs/upgrades a chart, the Kubernetes objects from the chart and all its dependencies are
+
+* aggregated into a single set; then
+* sorted by type followed by name; and then
+* created/updated in that order.
+
+This means that if chart A defines the following k8s resources: 
+
+* namespace "A-Namespace"
+* statefulset "A-StatefulSet"
+* service "A-Service"
+* and chart B defines the following k8s resources: 
+
+* namespace “B-Namespace"
+* statefulset “B-ReplicaSet"
+* service “B-Service"
+
+Then the result of the helm install command for chart A will be: 
+
+* A-Namespace
+* B-Namespace
+* A-Service
+* B-Service
+* B-ReplicaSet
+* A-StatefulSet.
+
+Subcharts architecture
+**********************
+Considering the `Module Views <https://confluence.skatelescope.org/display/SWSI/Module+Views>`_ for the evolutionary prototype (section "Primary representation: MVP Uses in Kubernetes Deployment"), a partial dependency diagram for the helm charts available within the gitlab.com/ska-telescope group can be represented by the following diagram:
+
+.. _figure-subcharts-2:
+
+.. figure:: simple_skampi.png
+   :scale: 60%
+   :alt: Simple skampi diagram
+   :align: center
+   :figclass: figborder
+
+
+   Simple skampi diagram
+
+All charts depend on the tango-base and, in general, all charts could need the archiver and the webjive interface. At the moment, this is modelled in skampi repository where there is one parent chart called skampi and all other charts are its subcharts. They are installed with Helm templating instead of normal installation
+There are a number of disadvantages in this model specifically:
+
+* Common testing: one place for all integration testing. No clear distinction between system and integration tests
+* Not easy to find logs: many tests on the same namespace
+* Same namespace for many deployments
+* No versioning: charts are not versioned
+
+Three solutions have been proposed and described in the `Supporting model <https://confluence.skatelescope.org/display/SWSI/Supporting+model>`_ page:
+
+#. One parent chart (umbrella) that contains everything needed and Subcharts with no dependency
+#. Charts with dependencies and Subcharts enabled by levels
+#. Charts with dependencies and Subcharts enabled with conditions and tags
+
+The chosen solution is an hybrid approach which enables a single level hierarchy for the shared charts and umbrella charts for charts composition (i.e. specific deployment or testing purpose). The rational is: 
+
+* Every chart can be deployed with its own tango eco-system
+* Every chart can have tango-base, webjive and the archiver as dependencies
+
+.. _figure-subcharts-3:
+
+.. figure:: tmc_shared_charts.png
+   :scale: 60%
+   :alt: Chart TMC with shared charts
+   :align: center
+   :figclass: figborder
+
+
+   Chart TMC with shared charts
+
+Every dependency must have a common condition on it, so that it will be possible to disable the shared charts if they are included in the parent umbrella. For instance if there is the need (for testing purposes) to have the TMC and the OET charts together the result will be: 
+
+.. _figure-subcharts-4:
+
+.. figure:: tmc_oet_umbrella.png
+   :scale: 60%
+   :alt: Umbrella chart with tmc and oet
+   :align: center
+   :figclass: figborder
+
+
+   Umbrella chart with tmc and oet charts
+
+The initial model will become: 
+
+.. _figure-subcharts-5:
+
+.. figure:: umbrella_skampi.png
+   :scale: 60%
+   :alt: Umbrella chart for skampi
+   :align: center
+   :figclass: figborder
+
+
+   Umbrella chart for skampi: initial model refactored
+
+Gitlab Helm/k8s testing pipeline
+********************************
+
+In order to enable the GitLab pipeline to deploy and test the specific component each ska-telescope repository must: 
+
+* contain at least one helm chart (i.e. starting point is skampi charts): `link to example <https://gitlab.com/ska-telescope/tango-example/-/tree/master/charts>`__
+* have an environment (i.e. test): `link to example <https://gitlab.com/ska-telescope/tango-example/-/environments>`__
+* adopt the Makefile for k8s testing: `link to example <­https://gitlab.com/ska-telescope/tango-example/-/blob/master/.make/k8s.mk>`__
+* use the environment keywords: `link to example <­https://gitlab.com/ska-telescope/tango-example/-/blob/master/.gitlab-ci.yml#L108>`__
+* have a common publish chart CI job step: `link to example <­https://gitlab.com/ska-telescope/tango-example/-/blob/master/.gitlab-ci.yml#L122>`__
+
+Also, note that each project/repository in the ska-telescope group has a `Kubernetes cluster already enabled <https://gitlab.com/ska-telescope/tango-example/-/clusters>`_. 
+
+The test job of the GitLab pipeline needs to be: 
+
+.. code:: yaml
+
+    test:
+    stage: test
+    tags:
+      - docker-executor
+    image: nexus.engageska-portugal.pt/ska-docker/deploy:0.4.1
+    script:
+      - kubectl version
+      - make install-chart
+      - make wait
+      - make smoketest
+      - make test
+    after_script:
+      - make uninstall-chart
+      - make delete_namespace
+    environment:
+      name: test
+      kubernetes:
+        namespace: ci-$CI_PROJECT_NAME-$CI_COMMIT_SHORT_SHA
+    artifacts:
+      name: "$CI_PROJECT_NAME-$CI_JOB_ID"
+      paths:
+        - "charts/build"
+      reports:
+        junit: charts/build/report.xml
+
+
+where:
+
+* make install:  installs the chart in the namespace specified in the environment tag
+* make wait: wait for all jobs to be completed and all pods to be running
+* make smoketest: checks that no containers are waiting
+* make test: 
+
+  1. Create a pod into the specified namespace
+  2. Run pytests
+  3. Return the tests results
+
+* after_script: remove everything after tests
+
+The artifacts are the output of the tests and it will have the report both in xml and json but also other information like the pytest output.
+
+Tango-util library chart
+************************
+
+A library chart is a type of Helm chart that defines chart primitives or definitions which can be shared by Helm templates in other charts. In SKAMPI, many charts are a collections of device servers so it is possible to harmonize their definition with a library so to keep charts `DRY <https://it.wikipedia.org/wiki/Don%27t_repeat_yourself>`_.
+
+The following diagram shows the data model for the harmonized values file:
+
+.. _figure-subcharts-6:
+
+.. figure:: values_data_model.png
+   :scale: 100%
+   :alt: Data model for the values file
+   :align: center
+   :figclass: figborder
+
+
+   Data model for the values file
+
+Elements: 
+
++--------------------------+-----------------------------------------------------------------------------------------------+
+| Element                  | Description                                                                                   |
++--------------------------+-----------------------------------------------------------------------------------------------+
+| Chart                    | collection of files that describe a related set of Kubernetes resources                       |
++--------------------------+-----------------------------------------------------------------------------------------------+
+| Values                   | built-in objects of helm which provides access to values passed into the chart for templating |
++--------------------------+-----------------------------------------------------------------------------------------------+
+| DsConfig                 | dsconfig file configuration                                                                   |
++--------------------------+-----------------------------------------------------------------------------------------------+
+| DeviceServer             | TANGO Device Server                                                                           |
++--------------------------+-----------------------------------------------------------------------------------------------+
+| Device                   | TANGO device                                                                                  |
++--------------------------+-----------------------------------------------------------------------------------------------+
+| Global                   | Global values accessible by all charts                                                        |
++--------------------------+-----------------------------------------------------------------------------------------------+
+| Labels                   | to be added to all Kubernetes resources                                                       |
++--------------------------+-----------------------------------------------------------------------------------------------+
+| Environment variables    | Name/Value pair available in shell                                                            |
++--------------------------+-----------------------------------------------------------------------------------------------+
+| Image                    | Detail of the docker image to be used                                                         |
++--------------------------+-----------------------------------------------------------------------------------------------+
+| ResourceRequestandLimits | struct for characterise the resource requests and limits for a device server                  |
++--------------------------+-----------------------------------------------------------------------------------------------+
+| DB                       | struct for characterise a DB software application                                             |
++--------------------------+-----------------------------------------------------------------------------------------------+
+
+
+Rationale:
+
+* Almost all helm charts in the Skampi repository are device server configurations so it appears natural to start the modelling from that concept
+* The depends_on relationship has been added so that it is possible to extract the dependency map of the MVP prototype
+* Every chart of the ska-telescope can have the shared charts in the dependency list 
+* The annotations block has been added to enable GitLab’s Deploy Boards
+* The DeviceServer struct specifies the shell args so that it is possible to start the related container instance of the linked image
+
+Advantages
+**********
+
+With this architecture, a number of advantages can be obtained: 
+
+* By using a separate deployment (i.e. Namespace) for each test, searching for all the logs of a particular test will be easy: example
+* Requires teams to create versions of docker images and charts
+* Avoids the use of docker-compose in favour of Kubernetes testing
+* Harmonized values yml files (for «common» definitions i.e. TANGO device servers)
+* Unit and integration testing within the repositories of teams
+* Skampi testing becomes system testing
 
 .. _helm-best-practices:
 
