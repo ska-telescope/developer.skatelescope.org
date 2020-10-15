@@ -82,25 +82,14 @@ metrics collection, and badge creation as long as the 5 points above are
 observed.
 
 In order to use this automation, the following code must be added at the end of
-:code:`.gitlab-ci.yml`
+:code:`.gitlab-ci.yml`.
 
 .. code-block:: yaml
 
-  create ci metrics:
-    stage: .post
-    image: nexus.engageska-portugal.pt/ska-docker/ska-python-buildenv:latest
-    when: always
-    tags:
-      - docker-executor
-    script:
-      # Gitlab CI badges creation: START
-      - apt-get -y update
-      - apt-get install -y curl --no-install-recommends
-      - curl -s https://gitlab.com/ska-telescope/ci-metrics-utilities/raw/master/scripts/ci-badges-func.sh | sh
-      # Gitlab CI badges creation: END
-    artifacts:
-      paths:
-        - ./build
+  # Create Gitlab CI badges from CI metrics
+  # https://developer.skatelescope.org/en/latest/tools/continuousintegration.html#automated-collection-of-ci-health-metrics-as-part-of-the-ci-pipeline
+  - project: 'ska-telescope/templates-repository'
+    file: 'gitlab-ci/includes/post_step.yml'
 
 .. _ManualMetrics:
 
