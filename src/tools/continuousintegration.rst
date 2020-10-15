@@ -77,7 +77,7 @@ These metrics reports must pass the following requirements:
 
 
 In order to automate the process as much as possible for the teams, the
-`templates repository https://gitlab.com/ska-telescope/templates-repository/-/tree/master/gitlab-ci/includes`_ repository was created and it will automate the all
+`templates repository <https://gitlab.com/ska-telescope/templates-repository/-/tree/master/gitlab-ci/includes>`_ repository was created and it will automate the all
 metrics collection, and badge creation as long as the 5 points above are
 observed.
 
