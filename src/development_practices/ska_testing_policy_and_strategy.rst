@@ -746,11 +746,8 @@ backlog and prioritized by the Product Owner in the same way other story/enabler
 The issue type Defect should not be used, as it is meant to indicate a
 deviation from SKA requirements.
 
-For system-wide bugs the JIRA project called SKB (SKA bug tracking system)
-is used. Triage of these bugs is done by the SYSTEM team with support by selected people.
+For system-wide bugs the JIRA project called `SKB (SKA bug tracking system) <https://jira.skatelescope.org/projects/SKB/summary>`_ is used. Triage of these bugs is done by the SYSTEM team with support by selected people.
 
-
-- `SKA Bug tracking project <https://jira.skatelescope.org/projects/SKB/summary>`_
 
 6 General references
 ====================
