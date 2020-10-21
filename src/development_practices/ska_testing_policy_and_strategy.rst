@@ -276,7 +276,7 @@ following definitions, mostly derived from :ref:`ISTQB Glossary <ref-istqb-gloss
     Please, note the difference with "Test Case". See also "Test Condition".
 
 **Test Condition**
-    A testable aspect of a component or system identified as a basis for testing. 
+    A testable aspect of a component or system identified as a basis for testing.
     More informally, a test condition expresses how the SUT will be exercised and
     how it will be verified.
 
@@ -722,8 +722,8 @@ Confirmation tests are run manually to confirm that a bug really exist.
 ------------------
 We recommend the following process for handling bugs.
 
-* Bugs found by the team during a sprint for code developed during the
-  same sprint are **fixed on the fly**, with no logging at all. If they cannot
+* Bugs found by the team during a sprint for code developed are **fixed on the fly** during the
+  same sprint, with no logging at all. If they cannot
   be fixed on the fly, soon after they are found they are logged on the
   team backlog.
 
@@ -739,14 +739,14 @@ We recommend the following process for handling bugs.
   the team that is most appropriate to deal with them. At that point the bugs appear
   in the chosen team's backlog. When resolved, appropriate comments and workflow state
   are updated in the team's backlog, and the original bug-report owner is notified as well,
-  who may decide to close the bug, to keep it open, to change it.
+  who may decide to close the bug, to keep it open, or to change it.
 
 Logging occurs in JIRA by adding a new issue of type Bug to the product
-backlog and prioritized by the PO as every other story/enabler/spike.
+backlog and prioritized by the Product Owner in the same way other story/enabler/spike work is managed.
 The issue type Defect should not be used, as it is meant to indicate a
 deviation from SKA requirements.
 
-For system-wide bugs the JIRA project called SKB (SKA bug tracking system) 
+For system-wide bugs the JIRA project called SKB (SKA bug tracking system)
 is used. Triage of these bugs is done by the SYSTEM team with support by selected people.
 
 
