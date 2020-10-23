@@ -75,6 +75,30 @@ These metrics reports must pass the following requirements:
   <?xml version="1.0" encoding="UTF-8"?>
   <coverage branch-rate="0" branches-covered="0" branches-valid="0" complexity="0" line-rate="0.6861" lines-covered="765" lines-valid="1115" timestamp="1574079100055" version="4.5.4">
 
+**Note:** To always ensure these requirements are fulfilled, you should copy/move the files 
+in the `after_script` part of your job definition instead of `script` part after running tests etc. 
+since if the tests/linting fails then the files won't be copied. For example:
+
+.. code-block:: yaml
+
+  # Do not use this:
+  job:
+    ...
+    script:
+      ...
+      - python3 -m pytest ...
+      - cp unit-tests.xml report.json cucumber.json ../build/reports/
+      ...
+
+  # Use this instead:
+  job:
+    ...
+    script:
+      ...
+      - python3 -m pytest ...
+    after_script:
+      - cp unit-tests.xml report.json cucumber.json ../build/reports/
+      ...
 
 In order to automate the process as much as possible for the teams, the
 `templates repository <https://gitlab.com/ska-telescope/templates-repository/-/tree/master/gitlab-ci/includes>`_ repository was created and it will automate the all
@@ -90,28 +114,6 @@ In order to use this automation, the following code must be added at the end of
   # https://developer.skatelescope.org/en/latest/tools/continuousintegration.html#automated-collection-of-ci-health-metrics-as-part-of-the-ci-pipeline
   - project: 'ska-telescope/templates-repository'
     file: 'gitlab-ci/includes/post_step.yml'
-
-In any project, the test results may end up in different locations. Since the above script expects files in certain places, a step could also be included just for moving the test artifacts to the correct folders. As an example, this is how it was implemented in the :code:`tango-example` repository:
-
-.. code-block:: yaml
-
-  # *********************************************
-  # The ci badges are generated from the test results found in specified paths.
-  # First we need to copy the test result files to the correct paths:
-  move-test-artifacts:
-    stage: publish
-    tags:
-      - k8srunner
-    image: nexus.engageska-portugal.pt/ska-docker/deploy:0.4.3
-    script:
-      - mkdir build/reports
-      - mv build/report.xml build/reports/unit-tests.xml
-      - mv build/coverage.xml build/reports/code-coverage.xml
-      - mv build/linting.xml build/reports/linting.xml
-      - cat build/reports/linting.xml
-    artifacts:
-      paths:
-        - build
 
 .. _ManualMetrics:
 
