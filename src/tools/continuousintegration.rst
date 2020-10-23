@@ -77,41 +77,30 @@ These metrics reports must pass the following requirements:
 
 
 In order to automate the process as much as possible for the teams, the
-`templates repository <https://gitlab.com/ska-telescope/templates-repository/-/tree/master/gitlab-ci/includes>`_ repository was created and it will automate the all
+`ci-metrics-utilities` repository was created and it will automate the all
 metrics collection, and badge creation as long as the 5 points above are
 observed.
 
 In order to use this automation, the following code must be added at the end of
-:code:`.gitlab-ci.yml`.
+:code:`.gitlab-ci.yml`
 
 .. code-block:: yaml
 
-  # Create Gitlab CI badges from CI metrics
-  # https://developer.skatelescope.org/en/latest/tools/continuousintegration.html#automated-collection-of-ci-health-metrics-as-part-of-the-ci-pipeline
-  - project: 'ska-telescope/templates-repository'
-    file: 'gitlab-ci/includes/post_step.yml'
-
-In any project, the test results may end up in different locations. Since the above script expects files in certain places, a step could also be included just for moving the test artifacts to the correct folders. As an example, this is how it was implemented in the :code:`tango-example` repository:
-
-.. code-block:: yaml
-
-  # *********************************************
-  # The ci badges are generated from the test results found in specified paths.
-  # First we need to copy the test result files to the correct paths:
-  move-test-artifacts:
-    stage: publish
+  create ci metrics:
+    stage: .post
+    image: nexus.engageska-portugal.pt/ska-docker/ska-python-buildenv:latest
+    when: always
     tags:
-      - k8srunner
-    image: nexus.engageska-portugal.pt/ska-docker/deploy:0.4.3
+      - docker-executor
     script:
-      - mkdir build/reports
-      - mv build/report.xml build/reports/unit-tests.xml
-      - mv build/coverage.xml build/reports/code-coverage.xml
-      - mv build/linting.xml build/reports/linting.xml
-      - cat build/reports/linting.xml
+      # Gitlab CI badges creation: START
+      - apt-get -y update
+      - apt-get install -y curl --no-install-recommends
+      - curl -s https://gitlab.com/ska-telescope/ci-metrics-utilities/raw/master/scripts/ci-badges-func.sh | sh
+      # Gitlab CI badges creation: END
     artifacts:
       paths:
-        - build
+        - ./build
 
 .. _ManualMetrics:
 
