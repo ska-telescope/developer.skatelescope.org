@@ -105,17 +105,21 @@ In order to automate the process as much as possible for the teams, the
 metrics collection, and badge creation as long as the 5 points above are
 observed.
 
-In order to use this automation, the following code must be added at the end of
+In order to use this automation, the `post_step` from the `templates-repository` must be included, i.e.:
 :code:`.gitlab-ci.yml`.
 
 .. code-block:: yaml
 
   # Create Gitlab CI badges from CI metrics
   # https://developer.skatelescope.org/en/latest/tools/continuousintegration.html#automated-collection-of-ci-health-metrics-as-part-of-the-ci-pipeline
-  - project: 'ska-telescope/templates-repository'
-    file: 'gitlab-ci/includes/post_step.yml'
-
+  include:
+    - project: 'ska-telescope/templates-repository'
+      file: 'gitlab-ci/includes/post_step.yml'
 .. _ManualMetrics:
+
+**Note:** You can't redefine the `.post` step in your CI code, or it will break the functionality.
+In case you need to use the `.post` step for the CI pipeline then you must use the manual method for
+generating the badges.
 
 Manual Collection of CI health metrics as part of the CI pipeline
 ------------------------------------------------------------------
