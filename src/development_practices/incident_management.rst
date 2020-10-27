@@ -1,12 +1,16 @@
 Incident Management
 ===================
 
-These guidelines are developed from the `Manageing Incidents <https://landing.google.com/sre/sre-book/chapters/managing-incidents/>`_ section of the Google SRE Book, and the GitLab `GitLab Incident management Handbook <https://about.gitlab.com/handbook/engineering/infrastructure/incident-management/>`_ .
+These guidelines are developed from the `Manageing Incidents <https://landing.google.com/sre/sre-book/chapters/managing-incidents/>`_ section of the Google SRE Book, and the GitLab `GitLab Incident management Handbook <https://about.gitlab.com/handbook/engineering/infrastructure/incident-management/>`_ .  They form the basis of an Incident Response Plan, that all teams should be familar with.
 
 Incidents come in all shapes and sizes, therefore it follows that the response mounted to remediate the associated problems will be highly variable too.  The Incident Management practices outlined here are meant to serve as guidelines to developing good habits and practices around dealing with the unexpected.
 
 Identifying an Incident
 -----------------------
+
+An **Incident** is defined as:
+
+anomolous system conditions that lead to some form of service outage, unexpected system behaviour or degraded system performance that significantly impacts the delivery of correctly functioning services to the end user.
 
 As a general rule of thumb, do not invoke a full response for something that is easily recognisable as taking 30 minutes to solve, and has limited impact.  However, if it will take longer to solve and/or has significant impact on your user community such as Nexus, Confluence or Jira then consider a more focused response.  It is better to declare an Incident and then find a simple fix for it than for something that appears minor at first glance to spiral out of control into a large problem due to things quickly unravelling.  The bottom line is to exercise common sense, and be willing to postmortem the process with external stakeholers to evaluate the problem and the process in the pursuit of relentless improvment.
 
@@ -15,15 +19,11 @@ Incident Workflow
 
 The following sections describe a framework for working through an incident, the roles and duties of key personnel involved, and the tools used for managing effective communications throughout.
 
-An **Incident** is defined as:
-
-anomolous system conditions that lead to some form of service outage, unexpected system behaviour or degraded system performance that significantly impacts the delivery of correctly functioning services to the end user.
-
 Responding effectively to these kinds of issues is key to restoring degraded or lost service, and learning from the experience so that repeat occurances are eliminated or minimised.
 
 Central to responding effectively is not just having a clearly defined plan for how to respond in emergency, but also rehersing and putting the plan into action.
 
-These guidelines are written using Systems Team examples, however they are generally applicable and should be used by all teams within the SKA Project to formulate their own Incident Response processes.
+These guidelines are written using Systems Team examples, however they are generally applicable and should be used by all teams within the SKA Project to when formulating and practicing their own Incident Response.
 
 
 Have a clear channel of communication with your user community
@@ -38,7 +38,7 @@ Communication should be based on the most convenient and readily monitored solut
 
 * The `#team-system-support <https://skasoftware.slack.com/archives/CEMF9HXUZ>`_ channel for System Team specific services such as Nexus, ElasticStack, Prometheus, GitLab Runners, Kubernetes and OpenStack
 * If the issue impacts on teams ability to do integration testing then it is `#proj-mvp <https://skasoftware.slack.com/archives/CKBDRGCKB>`_
-* For major outages that are likely to have impact project wide then the general all hands channel `#announcements <https://skasoftware.slack.com/archives/C1T3Q725R>`_ can be used (use wisely and sparingly)
+* For major outages that are likely to have impact project wide then consider making announcements in multiple related channels to capture all the affected user communities.
 
 It maybe necessary to use multiple forms of communication, and/or channels.  What spread of these channels are required will be part of the ongoing impact assessment as the Incident unfolds.
 
@@ -58,15 +58,15 @@ Once the problem/s is identified, then line up the team and resources that will 
 Incident Response
 -----------------
 
-* Tackle the immediate problem/s i.e. restore service whether it is fixing the failing system or enacting the recovery/fail over plan. Preserve the evidence of any system components involved in order to support the RCA and Postmortem.
+* Tackle the immediate problem/s i.e. restore service whether it is fixing the failing system or enacting the recovery/fail over plan. Preserve the evidence of any system components involved in order to support the Postmortem.
 
-* Separation of responsibilities and actions - having clearly defined roles and responsibilities during an Incident limits the chances of confusion as to who is doing what and frees the Ops lead up to concentrate on creating and delivering the solution for resolving the Incident issues.
+* Apply separation of responsibilities and actions - having clearly defined roles and responsibilities during an Incident limits the chances of confusion as to who is doing what and frees the Ops lead up to concentrate on creating and delivering the solution for resolving the Incident issues.
 
 * Command - a clear structure of authority and responsibility means that the Ops Team can focus on solving the problems, and freeing them from managing logistical issues.
 
 * Operations work - the Ops Team are solely responsible for making changes to the system to correct the situation.  This includes ensuring any other conflicting system support activities are halted as coordinated by the Incident Commander.
 
-* Live Incident State Document - Create a ticket (SKB) that is periodically (half hourly) updated with a distilation of how the Incident unfolds from identifaction to resolution, and then through on to the RCA and Postmortem.  The ticket is closed out only when the RCA and Postmortem is concluded.
+* Live Incident State Document - Create a ticket (SKB) that is periodically (half hourly) updated with a distilation of how the Incident unfolds from identifaction to resolution, and then through on to the Postmortem.  The ticket is closed out only when the Postmortem is concluded.
 
 * Communication - after the initial Incident appraisal, breakout a new slack channel (and link to it as appropriate) to compartmentalise the conversation around the response, and to create a chronological record of how the Incident unfolds from identification through to resolution.  Cross link to any other communication channels to create as complete a picture as possible of what is happening.  This also forms a virtual Incident Command Post for the Incident response team to gather round.  This can be augmented with a dedicated Zoom Room published in the channel, but it must be backed up with written in channel notes that track decisions, and discoveries.
 
@@ -76,7 +76,7 @@ Incident Response
 
 * Cleanup - organise the removal of temporary measures, and reverting services and system management to standard operational practices.  Ensure that all relevent data is preserved and offloaded to safe storage.
 
-* Root Cause Analysis and Postmortem - when the Incident is over, perform a RCA and Postmortem to understand what went wrong and what corrective measures should be put in place to reduce/eliminate further occurances.
+* Postmortem - when the Incident is over, perform a Postmortem to understand what went wrong and what corrective measures should be put in place to reduce/eliminate further occurances.
 
 
 Roles
@@ -86,17 +86,17 @@ The roles separate the responsibilities for the mounted response to the Incident
 
 All people assigned to the Incident treat the response as the highest priority task in their schedule.
 
-* Incident Commander - there is only one person in charge of the response to an incident, and the responsibility and authority for organising the response team, and other resources (even hardware) and directing the high level strategy.  The Incident Commander organises the resourcing of other team members, assigning roles and handles the liason between the Ops team members and other internal or external stake holders.  The Incident Commander ensures that there is complete separation of responsibilities so that there is no risk of overlap or confusion around inflight tasks.  The Incident Commander is the sole maintainer of the Live Incident State Document and is the authority on the current state of the operation.
+* Incident Commander - is the person in charge of the response to an incident, with the responsibility and authority for organising the response team, and other resources (even hardware) and directing the high level strategy.  The Incident Commander organises the resourcing of other team members, assigning roles and handles the liason between the Ops team members and other internal or external stake holders.  The Incident Commander ensures that there is complete separation of responsibilities so that there is no risk of overlap or confusion around inflight tasks.  The Incident Commander is the sole maintainer of the Live Incident State Document and is the authority on the current state of the operation.
 
 * Ops Lead - is the lead technical expert evaluating the Incident, diagnosing the issues, formulating the response.
 
-* Ops Team Member and/or Subject Matter Expert provides support for the Ops Lead and follows the Ops Leads direction for working through the problem resolution.
+* Ops Team Member and/or Subject Matter Experts (sourced from other teams where necessary) provides support for the Ops Lead and follows the Ops Leads direction for working through the problem resolution.
 
 * Comms - formulates and executes the plan for communication of the Incident and response to the affected user community, and the public message if required.
 
 * Planner - supports Ops by tracking changes being made (system divergence that can evolve due to emergency action), filing bug reports, plotting the path for any system state cleanup required.
 
-* RCA and Postmortem Team - stake holders including user community representatives, and the Incident Response Team.
+* Postmortem Team - stake holders including user community representatives, and the Incident Response Team.
 
 
 Supporting Resources
@@ -108,11 +108,11 @@ Throughout the Incident Response, there maybe additional resources required rang
 Preparation, Planning and Practice
 ----------------------------------
 
-Your teams Incident Response Plan is only as effective as it is workable and relevent.  This operation of the plan needs to be tested, and your team needs to practice fulfilling the various roles in the plan so that when it needs to swing into action all players understand what needs to happen and how to do it.
+Relative to your team, the Incident Response Plan is only as effective as it is workable and relevent.  The operation of the plan needs to be tested, and your team needs to practice fulfilling the various roles in the plan so that when it needs to swing into action all players understand what needs to happen and can purely focus on the problem at hand.
 
 
 Incident Reports & the Postmortem
 ---------------------------------
 
-When the Incident is over, gather the RCA and Postmortem Team and follow the SKA Post Incident `Postmortem <https://confluence.skatelescope.org/display/SE/Incident+Management>`_ review process.
+When the Incident is over, gather the Postmortem Team and follow the SKA Post Incident `Postmortem <https://confluence.skatelescope.org/display/SE/Incident+Management>`_ review process.
 
