@@ -45,7 +45,7 @@ Communication should be based on the most convenient and readily monitored solut
 * If the issue impacts on teams ability to do integration testing then it is `#proj-mvp <https://skasoftware.slack.com/archives/CKBDRGCKB>`_
 * For major outages that are likely to have impact project wide then consider making announcements in multiple related channels to capture all the affected user communities.
 
-It maybe necessary to use multiple forms of communication, and/or channels.  What spread of these channels are required will be part of the ongoing impact assessment as the Incident unfolds.
+It may be necessary to use multiple forms of communication, and/or channels.  What spread of these channels is required will be part of the ongoing impact assessment as the Incident unfolds. It is also important to gather all the incident related to communication in one place so that it is shared and discussed from a central location. This may be a temporary slack channel linked to JIRA ticket as long as it is shared with other ways of communications to give/take updates on the incident.
 
 
 Identify the problem and assemble the team and resources
