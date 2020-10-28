@@ -1,5 +1,12 @@
+
+*******************
 Incident Management
-===================
+*******************
+
+This section a set of guidelines for managing Incidents within the context of SKA Systems and Software.
+
+.. contents:: Table of Contents
+
 
 These guidelines are developed from the `Manageing Incidents <https://landing.google.com/sre/sre-book/chapters/managing-incidents/>`_ section of the Google SRE Book, and the GitLab `GitLab Incident management Handbook <https://about.gitlab.com/handbook/engineering/infrastructure/incident-management/>`_ .  They form the basis of an Incident Response Plan, that all teams should be familar with.
 
@@ -15,7 +22,7 @@ anomolous system conditions that lead to some form of service outage, unexpected
 As a general rule of thumb, do not invoke a full response for something that is easily recognisable as taking 30 minutes to solve, and has limited impact.  However, if it will take longer to solve and/or has significant impact on your user community such as Nexus, Confluence or Jira then consider a more focused response.  It is better to declare an Incident and then find a simple fix for it than for something that appears minor at first glance to spiral out of control into a large problem due to things quickly unravelling.  The bottom line is to exercise common sense, and be willing to postmortem the process with external stakeholers to evaluate the problem and the process in the pursuit of relentless improvment.
 
 Incident Workflow
-=================
+-----------------
 
 The following sections describe a framework for working through an incident, the roles and duties of key personnel involved, and the tools used for managing effective communications throughout.
 
