@@ -25,10 +25,11 @@ Central to responding effectively is not just having a clearly defined plan for 
 
 These guidelines are written using Systems Team examples, however they are generally applicable and should be used by all teams within the SKA Project to when formulating and practicing their own Incident Response.
 The overall incident workflow could be summarised in steps like below:
- - Have a clear channel of communication with your user community
- - Identify the problem and assemble the team and resources
- - Incident Response
- - Incident Reports & the Postmortem
+
+- Have a clear channel of communication with your user community
+- Identify the problem and assemble the team and resources
+- Incident Response
+- Incident Reports & the Postmortem
 
 
 Have a clear channel of communication with your user community
