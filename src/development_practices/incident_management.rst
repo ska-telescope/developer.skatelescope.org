@@ -87,7 +87,7 @@ Incident Response
 Roles
 ------
 
-The roles separate the responsibilities for the mounted response to the Incident.  The roles are inherently scalable, meaning that an individual may fulfil more than one role (the Commander, Comms, and Planning roles are typically combined), and most roles can be inhabited by more than one person, however the Ops Lead role must always be separated from the remaining roles as it is critical that the Ops Lead is freed from all other responsibilities (and distractions) in order to concentrate on solving the problems at hand.  Depending on the size of the Incident, it maybe necessary to have an Ops Lead that is coordinating a team across disciplines, offices and timezones to mount an effective response.
+The roles separate the responsibilities for the mounted response to the Incident.  The roles are inherently scalable, meaning that an individual may fulfil more than one role (the Commander, Comms, and Planning roles are typically combined), and most roles can be inhabited by more than one person, however the Ops Lead role must always be separated from the remaining roles as it is critical that the Ops Lead is freed from all other responsibilities (and distractions) in order to concentrate on solving the problems at hand and it is coordinating a team across disciplines, offices and timezones to mount an effective response.
 
 All people assigned to the Incident treat the response as the highest priority task in their schedule.
 
