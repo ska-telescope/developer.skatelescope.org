@@ -113,7 +113,7 @@ Throughout the Incident Response, there maybe additional resources required rang
 Preparation, Planning and Practice
 ----------------------------------
 
-Relative to your team, the Incident Response Plan is only as effective as it is workable and relevent.  The operation of the plan needs to be tested, and your team needs to practice fulfilling the various roles in the plan so that when it needs to swing into action all players understand what needs to happen and can purely focus on the problem at hand.
+Relative to your team, the Incident Response Plan is only as effective as it is workable and relevant.  The operation of the plan needs to be tested, and your team needs to practice fulfilling the various roles in the plan so that when it needs to swing into action all players understand what needs to happen and can purely focus on the problem at hand.
 
 
 Incident Reports & the Postmortem
