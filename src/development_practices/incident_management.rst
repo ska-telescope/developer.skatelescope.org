@@ -119,5 +119,5 @@ Relative to your team, the Incident Response Plan is only as effective as it is 
 Incident Reports & the Postmortem
 ---------------------------------
 
-When the Incident is over, gather the Postmortem Team and follow the SKA Post Incident `Postmortem <https://confluence.skatelescope.org/display/SE/Incident+Management>`_ review process.
+When the Incident is over, gather the Postmortem Team and follow the SKA Post Incident `Postmortem <https://confluence.skatelescope.org/display/SE/Incident+Management>`_ review process. To capture the relevant stakeholders and information fresh before they disperse it is important to finish the postmortem as soon as possible so the incident is served out of the oven.
 
