@@ -75,7 +75,7 @@ Incident Response
 
 * Communication - after the initial Incident appraisal, breakout a new slack channel (and link to it as appropriate) to compartmentalise the conversation around the response, and to create a chronological record of how the Incident unfolds from identification through to resolution.  Cross link to any other communication channels to create as complete a picture as possible of what is happening.  This also forms a virtual Incident Command Post for the Incident response team to gather round.  This can be augmented with a dedicated Zoom Room published in the channel, but it must be backed up with written in channel notes that track decisions, and discoveries.
 
-* Planning - track the changes made to the system, triage what are filed as bug reports, and what needs to be unwound during post-incident clean up.
+* Planning - track the changes made to the system, triage what are filed as bug reports, and what needs to be unwound (and how) during post-incident clean up.
 
 * Clear, Live Handoff - long running Incidents may require resolution over multiple shifts and days.  There must be a coherrent handing over of  at shift boundaries
 
