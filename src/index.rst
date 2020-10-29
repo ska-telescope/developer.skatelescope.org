@@ -129,6 +129,7 @@ PyTANGO development activities. You will find detailed instructions and how-tos 
 
   development_practices/ska_testing_policy_and_strategy
   development_practices/definition_of_done
+  development_practices/incident_management
 
 Development practices followed at SKA
 -------------------------------------
@@ -147,6 +148,13 @@ Definition of Done
 The definition of done is used to guide teams in planning and estimating the size of stories and features:
 
 - :doc:`development_practices/definition_of_done`
+
+Incident Management
+===================
+
+The incident management workflow is used to guide teams in dealing with anomolous conditions that lead to some form of service outage, unexpected system behaviour or degraded system performance:
+
+- :doc:`development_practices/incident_management`
 
 
 .. DEVELOPMENT GUIDELINES SECTION ==================================================
