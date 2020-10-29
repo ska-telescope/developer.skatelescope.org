@@ -73,9 +73,9 @@ Incident Response
 
 * Tackle the immediate problem/s i.e. restore service whether it is fixing the failing system or enacting the recovery/fail over plan. Preserve the evidence of any system components involved in order to support the Postmortem.
 
-* Apply separation of responsibilities and actions - having clearly defined roles and responsibilities during an Incident limits the chances of confusion as to who is doing what and frees the Ops lead up to concentrate on creating and delivering the solution for resolving the Incident issues.
+* Apply separation of responsibilities and actions - having clearly defined roles and responsibilities during an Incident limits the chances of confusion as to who is doing what and frees the Ops lead (the technical or expert lead) up to concentrate on creating and delivering the solution for resolving the Incident issues.
 
-* Command - a clear structure of authority and responsibility means that the Ops Team can focus on solving the problems, and freeing them from managing logistical issues.
+* Command - a clear structure of authority and responsibility means that the Ops Team (the subject matter experts) can focus on solving the problems, and freeing them from managing logistical issues.
 
 * Operations work - the Ops Team are solely responsible for making changes to the system to correct the situation.  This includes ensuring any other conflicting system support activities are halted as coordinated by the Incident Commander.
 
@@ -101,7 +101,7 @@ All people assigned to the Incident treat the response as the highest priority t
 
 * Incident Commander - is the person in charge of the response to an incident, with the responsibility and authority for organising the response team, and other resources (even hardware) and directing the high level strategy.  The Incident Commander organises the resourcing of other team members, assigning roles and handles the liason between the Ops team members and other internal or external stake holders.  The Incident Commander ensures that there is complete separation of responsibilities so that there is no risk of overlap or confusion around inflight tasks.  The Incident Commander is the sole maintainer of the Live Incident State Document and is the authority on the current state of the operation.
 
-* Ops Lead - is the lead technical expert evaluating the Incident, diagnosing the issues, formulating the response.
+* Ops Lead - is the lead technical or subject matter expert evaluating the Incident, diagnosing the issues, formulating the response.  Ops in this sense, is Operation Support for the system/solution/environment context where the Incident is taking place.
 
 * Ops Team Member and/or Subject Matter Experts (sourced from other teams where necessary) provides support for the Ops Lead and follows the Ops Leads direction for working through the problem resolution.
 
