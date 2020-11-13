@@ -118,7 +118,7 @@ Information about your Team
 Your Scrum Master should give you links to:
 
 * Your team's Google Drive space
-* Your team's Confluence area. Each team has a space in Confluence. All of the teams are listed in the `Agile Release Train <https://confluence.skatelescope.org/display/SE/Agile+Release+T,rains>`_ pages.
+* Your team's Confluence area. Each team has a space in Confluence. All of the teams are listed in the `Agile Release Train <https://confluence.skatelescope.org/display/SE/Agile+Release+Trains>`_ pages.
 * Key SKA `Confluence Calendars <https://confluence.skatelescope.org/calendar/mycalendar.action>`_ and `instructions on how to copy them to your own calendar <https://confluence.skatelescope.org/display/SC/SKA+Calendar+Home>`_.
 * The main Slack channels in use. You should join your team's slack channel. We also suggest that you join some of the help channels (they all start #help-) , #announcements, #system-demos-buzz and #rand-chats. You may find other channels to join later on!
 
