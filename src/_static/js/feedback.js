@@ -21,24 +21,40 @@ function disableButtons() {
 }
 
 function fillFeedback() {
-    var currPage = window.location.href;
 
-    var title = document.getElementById("issue[title]");
-    var desc = document.getElementById("issue[description]");
-
-    var feedback = document.getElementById("feedback-comment").value;
-    var temp =
-        "\n\nThis is a auto created issue from RTD Feedback form\n\n/label ~feedback\n/assign @limonkufu";
-
-    if (pressedButton == "yes") {
-        title.value = "[RTD Feedback :pencil2:] - :+1: :" + currPage;
-        temp = temp + "\n/award :+1:";
-        desc.value = feedback + temp;
-    } else if (pressedButton == "no") {
-        title.value = "[RTD Feedback :pencil2:] - :thumbsdown: : " + currPage;
-        temp = temp + "\n/award :disappointed:";
-        desc.value = feedback + temp;
+    // Json Fields
+    var data = {
+        "summary": "summary",
+        "description": "description"
     }
 
+    // Current page of the feedback
+    var currPage = window.location.href;
+
+    // Feedback from text field
+    var feedback = document.getElementById("feedback-comment").value;
+
+    if (pressedButton == "yes") {
+        data.summary = "Positive Feedback"
+        data.description = feedback + "\n\n" + currPage
+    } else if (pressedButton == "no") {
+        data.summary = "Negative Feedback"
+        data.description = feedback + "\n\n" + currPage
+    }
+
+    fetch('http://ff197d804cd8.ngrok.io/feedback', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
     return true;
 }

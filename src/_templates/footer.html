@@ -1,13 +1,10 @@
 <form
+  id="feedback-form"
   class="pre-footer"
-  onsubmit="return fillFeedback();"
-  action="https://gitlab.com/ska-telescope/developer.skatelescope.org/-/issues/new"
-  method="GET"
+  onsubmit="event.preventDefault(); return fillFeedback();"
+  action=""
+  method="POST"
 >
-  <!--https://gitlab.com/api/v4/projects/9070656/issues
-    https://gitlab.com/ska-telescope/developer.skatelescope.org/-/issues/new?
-    issue[title]=Validate%20new%20concept&issue[description]=Research%20idea
-    -->
   <hr />
   <h2>Feedback</h2>
   <p>Was this page helpful?</p>
@@ -69,23 +66,6 @@
       Send
     </button>
   </p>
-
-  <!-- <input type="hidden" name="assignee_ids" value="3049864"/> -->
-  <!-- <input type="hidden" name="labels" value="feedback" /> -->
-  <input type="hidden" name="issue[title]" id="issue[title]" value="" />
-  <input
-    type="hidden"
-    name="issue[description]"
-    id="issue[description]"
-    value=""
-  />
-  <input
-    type="hidden"
-    name="issue[confidential]"
-    id="issue[confidential]"
-    value="true"
-  />
-  <br />
   <hr />
 </form>
 
@@ -93,7 +73,8 @@
 
 <br />
 {%- if gitstamp %} This page was last updated on {{ gitstamp }}. {%- endif %}
-<br /> <br />
+<br />
+<br />
 <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">
   SKA developer documentation
 </span>
