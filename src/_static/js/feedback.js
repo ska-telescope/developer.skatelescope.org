@@ -42,7 +42,7 @@ function fillFeedback() {
         data.description = feedback + "\n\n" + currPage
     }
 
-    fetch('http://ff197d804cd8.ngrok.io/feedback', {
+    fetch('https://ff197d804cd8.ngrok.io/feedback', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
