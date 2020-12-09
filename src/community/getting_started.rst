@@ -44,7 +44,7 @@ This section is designed to get you up and running, with all the accounts you'll
   * Google Drive. You may need to create an account associated with your institutional email address. This makes it easier for us to know who is using that Google account.
   * `GitLab <https://gitlab.com/>`_ (If you're not going to be contributing code or documentation, this step may be omitted or postponed.) Please make sure your institutional email address is associated with your GitLab ID if you've already got a GitLab account. See https://developer.skatelescope.org/en/latest/tools/git.html#use-institutional-email for instructions on how to do this.
 
-Please be aware of the `Tool Access page <https://confluence.skatelescope.org/display/SE/Tool+Access>`_, where the processes for requesting access to these tools is outlined.
+Please be aware of the `Tool Access page <https://confluence.skatelescope.org/display/SE/Tool+Access>`_, where the processes for requesting access to these tools is outlined. There is also very informative `Guidance <https://confluence.skatelescope.org/display/SKAIT/Guidance>`_ page created by the SKAO IT team that you might want to consult.
 
 Now you've got some accounts, you should log in to:
 
