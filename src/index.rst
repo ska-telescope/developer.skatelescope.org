@@ -173,6 +173,7 @@ The incident management workflow is used to guide teams in dealing with anomolou
   development/vhdl-codeguide
   development/cplusplus-codeguide
   development/containerisation-standards
+  development/docker-proxy-cache
   development/orchestration-guidelines
   development/kubernetes-introduction
   development/software_package_release_procedure
@@ -244,6 +245,13 @@ A set of standards, conventions and guidelines for building, integrating and mai
 technologies.
 
 - :doc:`development/containerisation-standards`
+
+Working with Docker: Proxy Cache
+================================
+
+When working with the public Docker Registry service (Docker Hub), it can be necessary to use a Container Image caching mechanism to avoid pull request rate limiting problems.
+
+- :doc:`development/docker-proxy-cache`
 
 Container Orchestration Guidelines
 ==================================
