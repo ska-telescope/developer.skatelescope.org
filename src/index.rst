@@ -300,6 +300,7 @@ CI/CD infrastructure.
   :caption: Projects
   :hidden:
 
+  projects/sdp
   projects/list
   projects/create_new_project
   projects/document_project
@@ -308,6 +309,7 @@ CI/CD infrastructure.
 Projects
 --------
 
+- :doc:`projects/sdp`
 - :doc:`projects/list`
 - :doc:`projects/create_new_project`
 - :doc:`projects/document_project`
