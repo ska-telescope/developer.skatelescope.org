@@ -19,4 +19,13 @@ The Docker images depend on libraries containing common code.
 
 More Details on SDP Design and on how to run SDP locally or on an integration environment can be found here (documentation link).
 
+SDP Module View
++++++++++++++++
+
+.. figure:: sdp/images/sdp_module_view.svg
+  :align: center
+
+
+
+
 
