@@ -1,31 +1,30 @@
 SDP Execution Control
 ---------------------
 
+SDP Local Monitoring and Control
+++++++++++++++++++++++++++++++++
 
-sdp-lmc
-+++++++
-Tango devices for local monitoring and control.
+The SDP Master Tango Device is intended to provide the top-level control of SDP services.
+The SDP Subarray Tango Devices control the processing associated with SKA Subarrays.
 
-The SDP Master Tango Device is intended to provide the top-level control of SDP services. The SDP Subarray Tango Devices control the processing associated with SKA Subarrays.
-More details can be found here (documentation link).
+More details about the devices can be found `here <https://developer.skatelescope.org/projects/sdp-lmc/en/latest/index.html>`_
 
-sdp-proccontrol
-+++++++++++++++
+SDP Processing Controller
++++++++++++++++++++++++++
 
-The Processing Controller controls the execution of Processing Blocks.
-It detects them by monitoring the Configuration Database.
-To execute a Processing Block, it requests the deployment of the corresponding Workflow by
-creating an entry in the Configuration Database. More details can be found here (documentation link).
+The Processing Controller controls the execution of Processing Blocks and detects them by monitoring the Configuration Database.
+More details can be found `here <https://developer.skatelescope.org/projects/sdp-proccontrol/en/latest/?badge=latest>`_
 
-sdp-configdb
-++++++++++++
+SDP Configuration Library
++++++++++++++++++++++++++
 
 The Configuration Database is the central store of configuration information in the SDP.
-It is the means by which the components communicate with each other.
-More details can be found here (documentation link).
+It provides ways for SDP controller and processing
+components to discover and manipulate the intended state of the
+system. More information can be found `here <https://developer.skatelescope.org/projects/sdp-config/en/latest/?badge=latest>`_
 
-sdp-console
+SDP Console
 +++++++++++
 
-Console used to interact with the configuration database. More details can be found here (documentation link).
+Console used to interact with the configuration database. Repository can be found `here <https://gitlab.com/ska-telescope/sdp/ska-sdp-console>`_
 

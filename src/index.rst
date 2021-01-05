@@ -357,7 +357,7 @@ As defined in SKA software standard, SKA software development is committed to op
 and an open source licensing model is always preferred within SKA software development.
 
 .. todo::
-   - Committment to opensource
+   - Commitment to opensource
    - Exceptions
 
 .. RECOMMENDED READING SECTION ==================================================

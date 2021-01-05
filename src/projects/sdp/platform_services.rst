@@ -5,9 +5,9 @@ SDP Helm deployer
 +++++++++++++++++
 
 This Helm deployer is a prototype of a platform controller for SDP.
-It installs/updates/uninstalls Helm releases depending on information in the SDP configuration. More details can be found here (documentation link).
+Details can be found `here <https://developer.skatelescope.org/projects/sdp-helmdeploy/en/latest/?badge=latest>`_
 
 SDP Helm deployer charts
 ++++++++++++++++++++++++
 
-More details can be found here (documentation link).
+All the helm deployer charts can be accessed from the following `repository <https://gitlab.com/ska-telescope/sdp-helmdeploy-charts>`_
