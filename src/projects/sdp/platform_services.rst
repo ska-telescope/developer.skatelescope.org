@@ -5,7 +5,8 @@ SDP Helm deployer
 +++++++++++++++++
 
 This Helm deployer is a prototype of a platform controller for SDP.
-Details can be found `here <https://developer.skatelescope.org/projects/sdp-helmdeploy/en/latest/?badge=latest>`_
+
+- `Details can be found here <https://developer.skatelescope.org/projects/sdp-helmdeploy/en/latest/?badge=latest>`_
 
 SDP Helm deployer charts
 ++++++++++++++++++++++++
