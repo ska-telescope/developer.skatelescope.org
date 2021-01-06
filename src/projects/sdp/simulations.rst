@@ -22,13 +22,13 @@ such as those envisaged for the Square Kilometre Array.
 SKA-Mid Simulations
 +++++++++++++++++++
 
-This package collects scripts for various ska-mid simulations: direction-dependent effects, PSI simulations and observation sizing.
+This package collects scripts for various ska-mid simulations: direction-dependent effects, Prototype System Integration (PSI) simulations and observation sizing.
 
 - `SKA-Mid Documentation <https://developer.skatelescope.org/projects/ska-mid-simulations/en/latest/?badge=latest>`_
 
 SKA-Low Simulations
 +++++++++++++++++++
 
-This package collects scripts for various ska-low simulations: direction-dependent effects and low-level RFI
+This package collects scripts for various ska-low simulations: direction-dependent effects and low-level Radio Frequency Interference (RFI).
 
 - `SKA-Low Documentation <https://developer.skatelescope.org/projects/ska-low-simulations/en/latest/?badge=latest>`_
