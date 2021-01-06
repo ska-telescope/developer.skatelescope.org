@@ -24,8 +24,3 @@ SDP Module View
 
 .. figure:: sdp/images/sdp_module_view.svg
   :align: center
-
-
-
-
-

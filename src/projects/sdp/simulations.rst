@@ -1,7 +1,6 @@
 Simulations
 -----------
 
-
 RASCIL
 ++++++
 
@@ -12,7 +11,6 @@ python and numpy.
 - `RASCIL documentation <https://developer.skatelescope.org/projects/rascil/en/latest/?badge=latest>`_
 - `RASCIL Example <https://gitlab.com/ska-telescope/rascil-examples>`_
 
-
 OSKAR
 +++++
 
@@ -21,14 +19,12 @@ such as those envisaged for the Square Kilometre Array.
 
 - `OSKAR Python documentation <https://fdulwich.github.io/oskarpy-doc/>`_
 
-
 SKA-Mid Simulations
 +++++++++++++++++++
 
 This package collects scripts for various ska-mid simulations: direction-dependent effects, PSI simulations and observation sizing.
 
 - `SKA-Mid Documentation <https://developer.skatelescope.org/projects/ska-mid-simulations/en/latest/?badge=latest>`_
-
 
 SKA-Low Simulations
 +++++++++++++++++++
