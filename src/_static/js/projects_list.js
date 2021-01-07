@@ -20,9 +20,9 @@ function dynamicSort(property) {
     }
 }
    jQuery(function(){
-       var pg1 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&order_by=name&sort=asc&simple=true&page=1";
-       var pg2 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&order_by=name&sort=asc&simple=true&page=2";
-       var pg3 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&order_by=name&sort=asc&simple=true&page=3";
+       var pg1 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&order_by=name&sort=asc&simple=true&archived=false&page=1";
+       var pg2 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&order_by=name&sort=asc&simple=true&archived=false&page=2";
+       var pg3 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&order_by=name&sort=asc&simple=true&archived=false&page=3";
        var readthedocs_prepend="ska-telescope-" // all the readthedocs projects start with ska-telescope- next to their name
        var list = $("#list-of-non-grouped-projects tbody");
        var i = 1;
