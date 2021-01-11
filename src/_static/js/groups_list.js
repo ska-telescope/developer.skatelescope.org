@@ -27,10 +27,10 @@ function dynamicSort(property) {
                  "<th class=\"head\"><p>Gitlab repository</p></th></tr></thead><tbody>" ;
        var readthedocs_prepend="ska-telescope-" // all the readthedocs projects start with ska-telescope- next to their name
        // this will query the gitlab api for the subgroup list
-       var sbg = "https://gitlab.com/api/v4/groups/3180705/subgroups?per_page=100&order_by=name&sort=asc&simple=true&page=1";
+       var sbg = "https://gitlab.com/api/v4/groups/3180705/subgroups?per_page=20&order_by=name&skip_groups=6051706,6429070,6051772&sort=asc&simple=true&page=1";
        // these will query the api for the project list, including those in subgroups, we call it twice since the api
        // limits the return list to 100 and currently we have more than 100 projects
-       var pg1 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&order_by=name&sort=asc&simple=true&archived=false&include_subgroups=true";
+       var pg1 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&order_by=name&sort=asc&simple=true&archived=false&include_subgroups=true&page=1";
        var pg2 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&order_by=name&sort=asc&simple=true&archived=false&include_subgroups=true&page=2";
        //
        // replacement will be made on the second paragraph of this subsection, be careful to not change this in the document
