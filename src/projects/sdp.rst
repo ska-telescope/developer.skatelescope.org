@@ -17,7 +17,7 @@ The Science Data Processor (SDP) is part of the evolutionary prototype of the SK
 The components of the system are built as Docker images which are deployed on a kubernetes cluster using a Helm chart.
 The Docker images depend on libraries containing common code.
 
-More Details on SDP Design and on how to run SDP locally or on an integration environment can be found `here <https://developer.skatelescope.org/projects/sdp-integration/en/latest/?badge=latest>`_.
+More Details on SDP Design and on how to run SDP locally or on an integration environment can be found `here <https://developer.skatelescope.org/projects/ska-sdp-integration/en/latest/>`_.
 
 SDP Module View
 +++++++++++++++
