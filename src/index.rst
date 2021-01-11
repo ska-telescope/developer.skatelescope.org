@@ -180,7 +180,7 @@ The incident management workflow is used to guide teams in dealing with anomolou
   development/uploading-docker-nexus
   development/logging-format
   development/gitlab-variables
-
+  development/multitenancy
 
 Development guidelines
 ----------------------
@@ -290,6 +290,14 @@ Enumeration and description of the global variables defined on GitLab used in th
 CI/CD infrastructure.
 
 - :doc:`development/gitlab-variables`
+
+Multitenancy
+================
+
+Multi-tenant Skampi development and access processes are documented
+
+- :doc:`development/multitenancy`
+
 
 .. PROJECTS SECTION ==================================================
 
