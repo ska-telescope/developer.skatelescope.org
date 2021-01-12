@@ -3,7 +3,7 @@
 Multitenancy
 ************
 
-The SKA adopts Kubernetes as the orchestration layer. The Kubernetes Clusters Managed by the Systems Team serve multiple projects and can host multiple deployments of the some project at the same time. Those clusters are thus configured to ensure that each job runs isolated from the others and that the cluster resources are fairly allocated among the different jobs. This is what is called multitenancy.
+The SKA adopts Kubernetes as the orchestration layer. The Kubernetes Clusters Managed by the Systems Team serve multiple projects and can host multiple deployments of the same project at the same time. Those clusters are thus configured to ensure that each job runs isolated from the others and that the cluster resources are fairly allocated among the different jobs. This is what is called multitenancy.
 
 Multitenancy implemented at the Namespace level
 ===============================================
