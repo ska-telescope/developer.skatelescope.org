@@ -1,3 +1,5 @@
+.. _simulations:
+
 Simulations
 -----------
 
@@ -8,8 +10,10 @@ The Radio Astronomy Simulation, Calibration and Imaging Library
 expresses radio interferometry calibration and imaging algorithms in
 python and numpy.
 
-- `RASCIL documentation <https://developer.skatelescope.org/projects/rascil/en/latest/?badge=latest>`_
+- `RASCIL Documentation <https://developer.skatelescope.org/projects/rascil/en/latest/?badge=latest>`_
 - `RASCIL Example <https://gitlab.com/ska-telescope/rascil-examples>`_
+- `RASCIL Docker Images <https://gitlab.com/ska-telescope/rascil-docker>`_
+
 
 OSKAR
 +++++
@@ -17,7 +21,9 @@ OSKAR
 OSKAR has been designed to produce simulated visibility data from radio telescopes containing aperture arrays,
 such as those envisaged for the Square Kilometre Array.
 
-- `OSKAR Python documentation <https://fdulwich.github.io/oskarpy-doc/>`_
+- `OSKAR Github Repository <https://github.com/OxfordSKA/OSKAR>`_
+- `OSKAR Documentation <https://github.com/OxfordSKA/OSKAR/releases>`_
+- `OSKAR Python Interface Documentation <https://fdulwich.github.io/oskarpy-doc/>`_
 
 SKA-Mid Simulations
 +++++++++++++++++++

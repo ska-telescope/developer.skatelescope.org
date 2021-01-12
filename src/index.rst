@@ -301,6 +301,7 @@ CI/CD infrastructure.
   :hidden:
 
   projects/sdp
+  projects/simulations
   projects/list
   projects/create_new_project
   projects/document_project
@@ -310,6 +311,7 @@ Projects
 --------
 
 - :doc:`projects/sdp`
+- :doc:`projects/simulations`
 - :doc:`projects/list`
 - :doc:`projects/create_new_project`
 - :doc:`projects/document_project`
