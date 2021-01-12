@@ -72,6 +72,12 @@ Enabling a Resource Quota in a namespace means that users **must** specify reque
 If requests and limits are defined in the Helm Charts used for deployment they will override the values in the Limit Ranges for those containers.
 
 Currently in the Kubernetes Clusters maintained by the Systems Team multitenancy is implemented only in the SKAMPI pipelines, but the scripts developed for the SKAMPI project can be easily adapted for use with other pipelines. Multitenancy is implemented for SKAMPI not only in the *permanent* namespaces used to run the integration and staging environments, but also on the temporary pipelines used in feature branch development. 
+ 
+
+Access Pipeline Namespaces
+==========================
+
+Branch pipelines in the Kubernetes Clusters maintained by the System Team are short lived; they are erased after 24 hours. Also, they are named automatically and as such users must be aware of the naming scheme. The name for the pipeline Namespace is of the form ``ci-<project name>-<branch name>``. For SKAMPI a ``-low`` or a ``-mid`` is appended at the end of the name depending on the telescope. For example, for a SKAMPI project branch named *at-51* and for a deployment involving  the MID telescope the corresponding Namespace name would be ``ci-skampi-at-51-mid``. We note that it is important to keep branch names reasonably short since Kubernates truncates Namespace names at 63 characters.
 
 .. note::
 
@@ -79,12 +85,6 @@ Currently in the Kubernetes Clusters maintained by the Systems Team multitenancy
 
     ``url: "http://$INGRESS_HOST/ci-$CI_PROJECT_NAME/taranta"`` is not multitenant, all namespaces     would share the same url.
     ``url: "http://$INGRESS_HOST/ci-$CI_PROJECT_NAME-$CI_COMMIT_BRANCH-mid/taranta"`` insures multitenancy.
- 
-
-Access Pipeline Namespaces
-==========================
-
-Branch pipelines in the Kubernetes Clusters maintained by the System Team are short lived; they are erased after 24 hours. Also, they are named automatically and as such users must be aware of the naming scheme. The name for the pipeline Namespace is of the form ``ci-<project name>-<branch name>``. For SKAMPI a ``-low`` or a ``-mid`` is appended at the end of the name depending on the telescope. For example, for a SKAMPI project branch named *at-51* and for a deployment involving  the MID telescope the corresponding Namespace name would be ``ci-skampi-at-51-mid``. We note that it is important to keep branch names reasonably short since Kubernates truncates Namespace names at 63 characters.
 
 Multitenancy of the branch pipelines allows for the owners of a given job to access logs, investigate problems, test things, without worrying that the performance of other jobs running in the cluster is affected. In order to achieve this users need to be able to retrieve a kubeconfig file giving access to the cluster. Such a file is generated automatically by the pipelines running on SKAMPI  providing access only to the namespace specific for that pipeline, thus assuring that users will not interfere with other jobs running in the cluster.
 
