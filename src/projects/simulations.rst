@@ -11,8 +11,8 @@ expresses radio interferometry calibration and imaging algorithms in
 python and numpy.
 
 - `RASCIL Documentation <https://developer.skatelescope.org/projects/rascil/en/latest/?badge=latest>`_
-- `RASCIL Example <https://gitlab.com/ska-telescope/rascil-examples>`_
 - `RASCIL Docker Images <https://gitlab.com/ska-telescope/rascil-docker>`_
+- `RASCIL Example <https://gitlab.com/ska-telescope/rascil-examples>`_
 
 
 OSKAR
