@@ -21,46 +21,61 @@ A Resource Quota constrains aggregate resource usage. It can limit:
 
 An example of the content of a ``yaml`` file defining Resource Quotas is:
 
-::
+.. container:: toggle
 
- apiVersion: v1
- kind: ResourceQuota
- metadata:
-   name: compute-resources
- spec:
-   hard:
-     pods: "250"
-     requests.cpu: 12000m
-     requests.memory: 16Gi
-     requests.ephemeral-storage: 25Gi
-     limits.cpu: 24000m
-     limits.memory: 32Gi
-     limits.ephemeral-storage: 50Gi
+    .. container:: header
+
+        ResourceQuota description
+
+    .. code:: yaml
+
+      apiVersion: v1
+      kind: ResourceQuota
+      metadata:
+        name: compute-resources
+      spec:
+        hard:
+          pods: "250"
+          requests.cpu: 12000m
+          requests.memory: 16Gi
+          requests.ephemeral-storage: 25Gi
+          limits.cpu: 24000m
+          limits.memory: 32Gi
+          limits.ephemeral-storage: 50Gi
 
 Enabling a Resource Quota in a namespace means that users **must** specify requests and limits for all the containers inside the pods deployed in that Namespace. If requests or limits are not defined in the Helm Charts used for deployment, we can nonetheless prevent the quota system from rejecting pod creation by specifying default values at the container level, the Limit Ranges. An example of the content of a ``yaml`` file defining Limit Ranges for a Namespace is:
 
-::
+.. container:: toggle
 
- apiVersion: v1
- kind: LimitRange
- metadata:
-   name: limit-range
- spec:
-   limits:
-   - default:
-       memory: 256Mi
-       cpu: 200m
-       ephemeral-storage: 256Mi
-     defaultRequest:
-       memory: 64Mi
-       cpu: 65m
-       ephemeral-storage: 256Mi
-     type: Container
+    .. container:: header
+
+       LimitRange description
+
+    .. code:: yaml
+
+        apiVersion: v1
+        kind: LimitRange
+        metadata:
+          name: limit-range
+        spec:
+          limits:
+          - default:
+              memory: 256Mi
+              cpu: 200m
+              ephemeral-storage: 256Mi
+            defaultRequest:
+              memory: 64Mi
+              cpu: 65m
+              ephemeral-storage: 256Mi
+            type: Container
 
 If requests and limits are defined in the Helm Charts used for deployment they will override the values in the Limit Ranges for those containers.
 
 Currently in the Kubernetes Clusters maintained by the Systems Team multitenancy is implemented only in the SKAMPI pipelines, but the scripts developed for the SKAMPI project can be easily adapted for use with other pipelines. Multitenancy is implemented for SKAMPI not only in the *permanent* namespaces used to run the integration and staging environments, but also on the temporary pipelines used in feature branch development. 
 
+.. note::
+
+    It is important for users to develop appropriately for the multitenant environment. The  Helm Charts used for deploying SKAMPI should avoid accessing resources in other namespaces. Cluster globals should also be avoided, for example ingress hostnames should be globally unique. This can be achieved for example by using a url which includes the namespace designation.  
 
 Access Pipeline Namespaces
 ==========================
