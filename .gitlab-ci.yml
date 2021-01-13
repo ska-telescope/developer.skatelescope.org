@@ -32,10 +32,10 @@ pages:
   - ls build/html
   - mkdir .public
   - cp -r build/html/* .public
-  - mv .public public
   - mkdir .public/$CI_COMMIT_REF_NAME/
   - rm -r .public/$CI_COMMIT_REF_NAME/*
   - cp -r build/html/* .public/$CI_COMMIT_REF_NAME/
+  - mv .public public
   - mv .public/$CI_COMMIT_REF_NAME/ public/$CI_COMMIT_REF_NAME/
   # "tags" is used to select specific Runners from the list of all Runners that are allowed to run this project
   #tags:
