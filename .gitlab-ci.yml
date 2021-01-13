@@ -63,7 +63,7 @@ deploy_review:
     - echo "Deploy a review app"
   environment:
     name: review/$CI_COMMIT_REF_NAME
-    url: https://ska-telescope.gitlab.io/developer.skatelescope.org/$CI_COMMIT_REF_NAME
+    url: https://ska-telescope.gitlab.io/developer.skatelescope.org/$CI_COMMIT_REF_NAME/
   only:
     - branches
   except:
