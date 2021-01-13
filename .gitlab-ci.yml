@@ -12,6 +12,7 @@ cache:
   paths:
     - .cache/pip
     - venv/
+    - public # cache folder to keep all branch updates
 
 before_script:
   - apt-get update
@@ -31,16 +32,19 @@ pages:
   - make html SPHINXOPTS="-W --keep-going"
   - ls build/html
   - mkdir .public
-  - cp -r build/html/* .public
   - mkdir .public/$CI_COMMIT_REF_NAME/
+  - rm -rf .public/$CI_COMMIT_REF_NAME/ # clean if the folder already exists
   - cp -r build/html/* .public/$CI_COMMIT_REF_NAME/
   - mv .public public
   # "tags" is used to select specific Runners from the list of all Runners that are allowed to run this project
   #tags:
   #  - ska
   artifacts:
+    name: "$CI_COMMIT_REF_NAME"
     paths:
     - public
+    expire_in: 5 days
+
  # only:
  # - master
 
