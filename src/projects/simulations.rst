@@ -6,35 +6,50 @@ Simulations
 RASCIL
 ++++++
 
-The Radio Astronomy Simulation, Calibration and Imaging Library
-expresses radio interferometry calibration and imaging algorithms in
-python and numpy.
+The Radio Astronomy Simulation, Calibration and Imaging Library expresses radio
+interferometry calibration and imaging algorithms in Python and Numpy.
 
-- `RASCIL Documentation <https://developer.skatelescope.org/projects/rascil/en/latest/?badge=latest>`_
-- `RASCIL Docker Images <https://gitlab.com/ska-telescope/rascil-docker>`_
-- `RASCIL Example <https://gitlab.com/ska-telescope/rascil-examples>`_
+RASCIL
+
+- `Repository <https://gitlab.com/ska-telescope/rascil>`__
+- `Documentation <https://ska-telescope.gitlab.io/rascil/>`__
+
+RASCIL Docker images
+
+- `Repository <https://gitlab.com/ska-telescope/rascil-docker>`__
+
+RASCIL examples
+
+- `Repository <https://gitlab.com/ska-telescope/rascil-examples>`__
 
 
 OSKAR
 +++++
 
-OSKAR has been designed to produce simulated visibility data from radio telescopes containing aperture arrays,
-such as those envisaged for the Square Kilometre Array.
+OSKAR is designed to simulate visibility data from radio telescopes containing
+aperture arrays, such as SKA-Low.
 
-- `OSKAR Github Repository <https://github.com/OxfordSKA/OSKAR>`_
-- `OSKAR Documentation <https://github.com/OxfordSKA/OSKAR/releases>`_
-- `OSKAR Python Interface Documentation <https://fdulwich.github.io/oskarpy-doc/>`_
+OSKAR
 
-SKA-Mid Simulations
-+++++++++++++++++++
+- `Repository <https://github.com/OxfordSKA/OSKAR>`__
+- `Documentation <https://github.com/OxfordSKA/OSKAR/releases>`__
 
-This package collects scripts for various ska-mid simulations: direction-dependent effects, Prototype System Integration (PSI) simulations and observation sizing.
+OSKAR Python interface
 
-- `SKA-Mid Documentation <https://developer.skatelescope.org/projects/ska-mid-simulations/en/latest/?badge=latest>`_
+- `Documentation <https://fdulwich.github.io/oskarpy-doc/>`__
 
 SKA-Low Simulations
 +++++++++++++++++++
 
-This package collects scripts for various ska-low simulations: direction-dependent effects and low-level Radio Frequency Interference (RFI).
+This repository contains scripts for generating SKA-Low simulations.
 
-- `SKA-Low Documentation <https://developer.skatelescope.org/projects/ska-low-simulations/en/latest/?badge=latest>`_
+- `Repository <https://gitlab.com/ska-telescope/sim/ska-sim-low>`__
+- `Documentation <https://developer.skatelescope.org/projects/ska-sim-low/en/latest/>`__
+
+SKA-Mid Simulations
++++++++++++++++++++
+
+This repository contains scripts for generating SKA-Mid simulations.
+
+- `Repository <https://gitlab.com/ska-telescope/sim/ska-sim-mid>`__
+- `Documentation <https://developer.skatelescope.org/projects/ska-sim-mid/en/latest/>`__

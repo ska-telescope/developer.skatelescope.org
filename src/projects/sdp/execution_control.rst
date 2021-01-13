@@ -1,40 +1,46 @@
-SDP Execution Control
----------------------
+Execution Control
+-----------------
 
-SDP Local Monitoring and Control
-++++++++++++++++++++++++++++++++
+Local Monitoring and Control
+++++++++++++++++++++++++++++
 
-Tango Devices are the objects which implement the microservices of a Tango System.
-Devices belong to a Device Class and are in a Device Server. These devices implement the Tango control system used by the SKA telescope for system control.
-The SDP Master Tango Device is intended to provide the top-level control of SDP services.
-The SDP Subarray Tango Devices control the processing associated with SKA Subarrays.
+The local monitoring and control is the interface between the telescope control
+system and the SDP. It consists of Tango device servers which control different
+aspects of the system. The SDP Master device provides the top-level control of
+the system. The SDP Subarray device controls the processing associated with a
+telescope subarray.
 
 - `Repository <https://gitlab.com/ska-telescope/sdp/ska-sdp-lmc>`__
-- `Documentation <https://developer.skatelescope.org/projects/ska-sdp-lmc/en/latest/index.html>`__
+- `Documentation <https://developer.skatelescope.org/projects/ska-sdp-lmc/en/latest/>`__
 
-SDP Processing Controller
-+++++++++++++++++++++++++
+Processing Controller
++++++++++++++++++++++
 
-The Processing Controller controls the execution of Processing Blocks.
-The processing blocks define the workflows to be run and the parameters to be passed to the workflows.
-It detects processing blocks by monitoring the Configuration Database.
+The processing controller controls the execution of processing blocks. The
+processing blocks define the workflows to be run and the parameters to be
+passed to the workflows. It detects processing blocks by monitoring the
+configuration database.
 
 - `Repository <https://gitlab.com/ska-telescope/sdp/ska-sdp-proccontrol>`__
-- `Documentation <https://developer.skatelescope.org/projects/ska-sdp-proccontrol/en/latest/?badge=latest>`__
+- `Documentation <https://developer.skatelescope.org/projects/ska-sdp-proccontrol/en/latest/>`__
 
-SDP Configuration Library
-++++++++++++++++++++++++++
+Configuration Library
+++++++++++++++++++++++
 
-The SDP Configuration Library is the interface to the Configuration Database, which is the central store of configuration information in the SDP.
-This package defines the schema for the entries in the Configuration Database.
-It provides ways for SDP controller and processing components to discover and manipulate the intended state of the system.
+The configuration library is the interface to the configuration database. The
+database is the central store of configuration data in the SDP and it is used
+to coordinate actions between the components of the system. The configuration
+library defines the schema for the entries in the database and it provides ways
+for controller and processing components to discover and manipulate the
+intended state of the system.
 
 - `Repository <https://gitlab.com/ska-telescope/sdp/ska-sdp-config>`__
-- `Documentation <https://developer.skatelescope.org/projects/ska-sdp-config/en/latest/index.html>`__
+- `Documentation <https://developer.skatelescope.org/projects/ska-sdp-config/en/latest/>`__
 
-SDP Console
-+++++++++++
+Console
++++++++
 
-The SDP Console is used to interact with the configuration database.
+The console provides an environment for interacting with the configuration
+database.
 
 - `Repository <https://gitlab.com/ska-telescope/sdp/ska-sdp-console>`__

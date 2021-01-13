@@ -1,18 +1,19 @@
 Platform Services
 -----------------
 
-SDP Helm deployer
-+++++++++++++++++
+Helm Deployer
++++++++++++++
 
-This Helm deployer is a prototype of a platform controller for SDP. This prototype assumes that we are deploying the SDP on a kubernetes cluster.
+The Helm deployer is a prototype of a platform controller for the SDP. It
+dynamically allocates processing and buffer resources on a Kubernetes cluster.
 
 - `Repository <https://gitlab.com/ska-telescope/sdp/ska-sdp-helmdeploy>`__
-- `Documentation <https://developer.skatelescope.org/projects/ska-sdp-helmdeploy/en/latest/?badge=latest>`__
+- `Documentation <https://developer.skatelescope.org/projects/ska-sdp-helmdeploy/en/latest/>`__
 
 
-SDP Helm deployer charts
-++++++++++++++++++++++++
+Helm Deployer Charts
+++++++++++++++++++++
 
-All the helm deployer charts can be accessed from the following repository.
+The charts used by the Helm deployer are maintained in this repository.
 
 - `Repository <https://gitlab.com/ska-telescope/sdp-helmdeploy-charts>`__
