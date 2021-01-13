@@ -63,4 +63,6 @@ deploy_review:
     name: review/$CI_COMMIT_REF_NAME
     url: https://ska-telescope.gitlab.io/developer.skatelescope.org-$CI_COMMIT_REF_NAME
   only:
-    - merge_requests
+    - branches
+  except:
+    - master
