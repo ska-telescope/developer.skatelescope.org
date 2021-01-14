@@ -36,7 +36,8 @@ pages:
   - rm -rf public/$CI_COMMIT_REF_NAME
   - mkdir .public/$CI_COMMIT_REF_NAME
   - cp -r build/html/* .public/$CI_COMMIT_REF_NAME
-  - mv .public public
+  - mkdir -p public # create folder if not exists (if cache is deleted)
+  - cp -r .public/* public/
   # "tags" is used to select specific Runners from the list of all Runners that are allowed to run this project
   #tags:
   #  - ska
