@@ -308,6 +308,8 @@ Multi-tenant Skampi development and access processes are documented
   :caption: Projects
   :hidden:
 
+  projects/sdp
+  projects/simulations
   projects/list
   projects/create_new_project
   projects/document_project
@@ -316,6 +318,8 @@ Multi-tenant Skampi development and access processes are documented
 Projects
 --------
 
+- :doc:`projects/sdp`
+- :doc:`projects/simulations`
 - :doc:`projects/list`
 - :doc:`projects/create_new_project`
 - :doc:`projects/document_project`
@@ -363,7 +367,7 @@ As defined in SKA software standard, SKA software development is committed to op
 and an open source licensing model is always preferred within SKA software development.
 
 .. todo::
-   - Committment to opensource
+   - Commitment to opensource
    - Exceptions
 
 .. RECOMMENDED READING SECTION ==================================================
