@@ -16,7 +16,6 @@ In order to access the dashboards, first you should add below lines to your `hos
     # Dashboards
     192.168.93.102 integration.engageska-portugal.pt
     192.168.93.102 tango.rest.integration.engageska-portugal.pt
-    192.168.93.102 grafana.integration.engageska-portugal.pt
     192.168.93.102 tangogql-proxy.integration.engageska-portugal.pt
     193.136.93.245 kibana.engageska-portugal.pt monitoring.engageska-portugal.pt
 
@@ -25,7 +24,6 @@ Some of the dashboards are password protected. To get the current passwords plea
 
 
 * `SKA Infrastructure <https://monitoring.engageska-portugal.pt/dashboards>`__: Monitoring metrics such as Kubernetes, GitLab Runners, Elasticstack, cadvisor etc.
-* `Tango Devices <http://grafana.integration.engageska-portugal.pt/dashboards>`__: Example grafana dashboards for Tango Devices, attributes, states , databases etc.
 * `Prometheus Alerts <https://alerts.engageska-portugal.pt/alerts>`__: Prometheus alerts for the core kubernetes cluster and infrastructure VMs
 * `Kibana Logs <https://kibana.engageska-portugal.pt/app/logs>`__: Kibana Logs for the core cluster
 * `Webjive <http://integration.engageska-portugal.pt/testdb/devices>`__: Webjive dashboard for the Tango Devices
