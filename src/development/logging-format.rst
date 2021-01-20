@@ -217,6 +217,9 @@ A list of tags (identifiers) we want to add to log messages for easy filtering a
   - Description: For software that are not TANGO devices, the name of the telescope sub-system [2].
   - Example: ``SDP``
 
+Ska Tags
+========
+
 [1] Optional, since it won't apply to all contexts, e.g. third-party applications.
 
 [2] CSP, Dish, INAU, INSA, LFAA, SDP, SaDT, TM.
