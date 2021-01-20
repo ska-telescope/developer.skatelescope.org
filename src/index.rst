@@ -18,42 +18,42 @@ SKA telescope developer portal
 Welcome to the `Square Kilometre Array <http://www.skatelescope.org>`_ software
 documentation portal. Whether you are a developer involved in SKA or you are
 simply one of our many users, all of our software processes and projects are
-documented in this portal.
+documented or linked to in this portal.
 
-Scope
-=====
+The portal is frequently updated as the project evolves; if you feel that something is missing, please have a look at our :doc:`guide to contributing to the developer portal </contributor/contribute>`
 
-This documentation applies to the bridging phase of the SKA project, further
-updates and scope changes will be published on this website.
-Part of the bridging phase goals will be to consolidate and enrich this portal
-with more detailed information. It is thus anticipated that in this phase
-the change rate of the documentation will be very frequent.
+If you're new to developing the SKA, please have a look at :doc:`our Onboarding material </getting_started/getting_started>` and the :doc:`guideance on setting up your development environment </getting_started/devenv_setup>`.
+
+.. note::
+   Please also read the :doc:`/policies/code_of_conduct`, which governs all SKA interactions. 
+
+What follows is a brief guide to the headings you'll find in the left-hand sidebar of this site. Feel free to explore!
 
 
+Getting Started and the SKA Developer Community
+-----------------------------------------------
 
-SKA developer community
------------------------
+This section is about getting you up and running. It contains the onboarding material for all new SKA developers, the general contribution guidelines when working on SKA projects, guidance on setting up your development environment, and a list of projects, so you know what the SKA is working on. There is also a wealth of information about our development tools and practices, which you can read as you start development work.
 
-SKA software development is managed in an open and transparent way.
 
-.. COMMUNITY SECTION ==================================================
+.. GETTING STARTED SECTION ==================================================
 
 .. Hidden toctree to manage the sidebar navigation.
 
 .. toctree::
   :maxdepth: 1
-  :caption: Community
+  :caption: Getting Started
   :hidden:
 
-  community/code_of_conduct
-  community/getting_started
-  community/teams_responsibilities
-  community/decision_making
+  getting_started/getting_started
+  getting_started/contrib_guidelines
+  getting_started/devenv_setup
+  getting_started/projects
 
-- :doc:`community/code_of_conduct`
-- :doc:`community/getting_started`
-- :doc:`community/teams_responsibilities`
-- :doc:`community/decision_making`
+- :doc:`getting_started/getting_started`
+- :doc:`getting_started/contrib_guidelines`
+- :doc:`getting_started/devenv_setup`
+- :doc:`getting_started/projects`
 
 A list of the tools we are using to collaborate, together with guidance on how to use them can be found at this confluence page: `SKA Guidelines to Remote Working <https://confluence.skatelescope.org/display/SKAIT/SKA+Guidelines+to+Remote+Working>`_ (requires an SKA Confluence account).
 
@@ -68,16 +68,22 @@ A list of the tools we are using to collaborate, together with guidance on how t
   :hidden:
 
   tools/git
-  tools/github2gitlab/github2gitlab
-  tools/continuousintegration
-  tools/cidashboard
-  tools/tango-devenv-setup
-  tools/pycharm/pycharm
-  tools/vscode/vscode
+  
+  tools/ci_cd
   tools/jira
+  tools/test_infrastructure
+  tools/containers
+  tools/documentation
+  tools/software_package_release_procedure
+  tools/testing
+  tools/monitoring_dashboards/monitoring_dashboards
+  tools/logging_format
+  tools/reporting_bugs
+  tools/codeguides
+  tools/devfaq
 
-Development tools
------------------
+Development tools and practices
+-------------------------------
 Working with git
 ================
 

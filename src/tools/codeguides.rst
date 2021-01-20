@@ -1,0 +1,4 @@
+:: _codeguides:
+
+Coding guidelines
+*****************
