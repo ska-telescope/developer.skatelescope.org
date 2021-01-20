@@ -32,8 +32,6 @@ Variables Description
 +------------------------------+-------------------------------------------------------------------+-------------------------------+
 |             Key              |                            Description                            |             Notes             |
 +==============================+===================================================================+===============================+
-| ``DOCKER_AUTH_CONFIG``       | Configuration snippet for the Nexus Docker registry authorization | Not in use                    |
-+------------------------------+-------------------------------------------------------------------+-------------------------------+
 | ``DOCKER_REGISTRY_HOST``     | Fully qualified hostname of the Nexus Docker registry             |                               |
 +------------------------------+-------------------------------------------------------------------+-------------------------------+
 | ``DOCKER_REGISTRY_PASSWORD`` | Password for uploading to the Nexus Docker registry               |                               |
