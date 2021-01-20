@@ -383,19 +383,38 @@ and an open source licensing model is always preferred within SKA software devel
   recommended_reading/programming
   recommended_reading/programming_languages
 
-.. FOLLOW US SECTION ==================================================
+.. ABOUT SECTION ==================================================
 
 .. Hidden toctree to manage the sidebar navigation.
 
 .. toctree::
   :maxdepth: 1
-  :caption: Follow us
+  :caption: About the SKA
   :hidden:
 
-  follow_us/followus_env
+  community/share_your_knowledge
 
-Follow Us
-----------
+About the SKA
+-------------
+
 
 - :doc:`follow_us/followus_env`
 
+
+.. CONTRIBUTOR SECTION ==================================================
+
+.. Hidden toctree to manage the sidebar navigation.
+
+.. toctree::
+  :maxdepth: 1
+  :caption: Contribute to the Developer Portal
+  :hidden:
+
+  contributor/contribute
+
+Contribute to the SKA Developer Portal
+--------------------------------------
+
+We encourage all members of the development community to submit improvements to the Developer Portal. These pages describe how you can contribute changes to the Developer Portal.
+
+- :doc:`contributor/contribute`
