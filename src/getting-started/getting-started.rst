@@ -1,3 +1,5 @@
+.. _getting_started:
+
 Onboarding: Welcome to the SKA developer community
 **************************************************
 

@@ -1,4 +1,4 @@
-:: _testing:
+BDD testing guide
+*****************
 
-Testing
-*******
+Coming soon.
