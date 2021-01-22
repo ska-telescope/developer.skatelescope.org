@@ -217,11 +217,58 @@ A list of tags (identifiers) we want to add to log messages for easy filtering a
   - Description: For software that are not TANGO devices, the name of the telescope sub-system [2].
   - Example: ``SDP``
 
-Ska Tags
-========
-
 [1] Optional, since it won't apply to all contexts, e.g. third-party applications.
 
 [2] CSP, Dish, INAU, INSA, LFAA, SDP, SaDT, TM.
 
 [3] 000‐000000‐012, SKA1 TANGO Naming Convention (CS_GUIDELINES Volume2), Rev 01
+
+Ska Tags (Kibana)
+=================
+
+To see the logs generated with message log format go to kibana (http://192.168.93.94:5601/app/logs/ (requires VPN)).
+When on kibana there is a list of logs messages with new messages appearing every couple of seconds, therefore the importance of filtering this messages to only appear the ones that the developer is interested to see.
+
+The fields that represent the message are defined mostly with the use of grok parsers.
+This fields can be used to filter the messages that contains them.
+
+To view all fields related to the message open the view details menu:
+
+.. image:: images/kibana_view_details.png
+
+Tags are parsed to a field named ``ska_tags`` and on this field there can be one or more device properties separated by commas.
+The field ``ska_tags`` will also be parsed but in this case by a KV parser, being that this parsers allows dynamic parsing. 
+Because a different number of devices will be present on different messages it is needed to use a parser that allows us to parse strings dynamically.
+
+The content of an kv parser to parse ``ska_tags`` is like this:
+
+.. container:: toggle
+
+    .. container:: header
+
+        KV parser ska tags
+
+    .. code:: JSON
+
+      "kv": {
+                "field": "ska_tags",
+                "target_field": "ska_tags_field",
+                "field_split": ",",
+                "value_split": ":"  
+            }
+
+Making an example where ``ska_tags:`` value is ``tango-device:ska_low/tm_central/central_node,notango-device:ska_mid/tm_central/central_node`` what the parser 
+will do is separate ``tango-device:ska_low/tm_central/central_node`` and  ``notango-device:ska_mid/tm_central/central_node`` to different fields 
+where the field name is what is behind the ":" appended to the ``target_field`` name given as parameter on the kv parser.
+
+So the result field names will be ``ska_tags_field.tango-device`` and ``ska_tags_field.notango-device`` with their respective values.
+
+It is possible to see this implemented on kibana. In the case of the figure below there is only one device referred on the tag.
+
+
+.. image:: images/kibana_log_fields.png
+
+To filter the log search only for the intended device name it is possible to click on the "view event with filter" button (represented on the image above with a circle), this button will create a query where only the logs that have this field value on the message will appear:  
+
+.. image:: images/kibana_tag_query.png
+
