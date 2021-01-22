@@ -7,7 +7,7 @@ Coming soon
 .. toctree::
   :maxdepth: 1
   
-  projects/create_new_project
+  projects/create-new-project
   projects/licensing
   projects/list
   projects/area

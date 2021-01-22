@@ -1,3 +1,5 @@
+.. _devenv-setup
+
 Tango Development Environment set up
 ------------------------------------
 

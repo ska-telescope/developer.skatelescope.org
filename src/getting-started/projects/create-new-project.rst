@@ -1,4 +1,4 @@
-.. _create-new-project:
+.. _projects:
 
 Create a new project
 --------------------

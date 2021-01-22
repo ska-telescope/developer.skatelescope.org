@@ -1,3 +1,5 @@
+.. _pycharm:
+
 PyCharm
 *******
 
@@ -13,8 +15,8 @@ be downloaded from the `PyCharm download page`_.
   :caption: Development tools
   :hidden:
 
-  docker_configuration
-  docker_compose_configuration
+  docker-configuration
+  docker-compose-configuration
 
-- :doc:`docker_configuration`
-- :doc:`docker_compose_configuration`
+- :doc:`docker-configuration`
+- :doc:`docker-compose-configuration`

@@ -1,3 +1,5 @@
+.. _vscode:
+
 Visual Studio Code
 ******************
 
@@ -14,8 +16,8 @@ Visual Studio Code is an open source project and available for free from the
   :caption: Development tools
   :hidden:
 
-  docker_configuration
+  docker-configuration
 
-- :doc:`docker_configuration`
+- :doc:`docker-configuration`
 
-.. - :doc:`docker_compose_configuration`
+.. - :doc:`docker-compose-configuration`

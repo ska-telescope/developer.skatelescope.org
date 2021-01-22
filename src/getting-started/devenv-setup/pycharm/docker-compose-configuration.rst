@@ -94,12 +94,12 @@ defined. Set the environment variables to look like this:
 
 .. _`configure Docker Compose as a remote interpreter`: https://www.jetbrains.com/help/pycharm/using-docker-compose-as-a-remote-interpreter.html#docker-compose-remote
 
-.. image:: docker_compose_environment_variables.png
+.. image:: docker-compose-environment-variables.png
     :align: center
 
 The final Configure Remote Python Interpreter dialog should look like this:
 
-.. image:: docker_compose_remote_interpreter.png
+.. image:: docker-compose-remote-interpreter.png
     :align: center
 
 Click 'OK' to apply your changes.
@@ -126,7 +126,7 @@ menu that appears, select Python to add a new Python execution configuration. In
 
 The final Run/Debug dialog should look like this:
 
-.. image:: docker_compose_run_configuration.png
+.. image:: docker-compose-run-configuration.png
     :align: center
 
 Press OK to apply your changes.
@@ -135,7 +135,7 @@ From the main menu, choose Run | Run... and select the configuration that you ju
 The PowerSupply device will launch alongside the partner containers defined in docker-compose.yml. PyCharm's Run
 panel will display output like this, showing the device is executing and ready to accept requests.
 
-.. image:: docker_compose_run_powersupply.png
+.. image:: docker-compose-run-powersupply.png
     :align: center
 
 
@@ -206,7 +206,7 @@ From the main menu, choose Run | Debug... and select the PowerSupply run configu
 will be launched and the PyCharm debugger attached to the session. The Debug panel of PyCharm should look similar to
 this:
 
-.. image:: docker_compose_debug_panel.png
+.. image:: docker-compose-debug-panel.png
     :align: center
 
 Returning to the interactive session, run the unit tests that exercise the live Tango device. For the tango-example
@@ -259,7 +259,7 @@ Restart the debugging configuration for the code change to take effect and re-ex
 session. This time, the breakpoint is respected and execution is frozen, allowing program state to be examined in
 PyCharm. The debug panel in PyCharm will look something like this, showing that execution is frozen:
 
-.. image:: docker_compose_working_breakpoint.png
+.. image:: docker-compose-working-breakpoint.png
     :align: center
 
 
@@ -271,7 +271,7 @@ Troubleshooting
     If you see an error message like the one below, then the device is unregistered and needs to be registered manually.
     Follow the steps in `Registering the device server`_.
 
-    .. image:: device_unregistered.png
+    .. image:: device-unregistered.png
         :align: center
 
 
@@ -280,7 +280,7 @@ Troubleshooting
     If you see an error message like the one below, then you forgot to define the environment variables for the
     remote interpreter. Edit the variables section in your PyCharm docker-compose configuration and try again.
 
-    .. image:: docker_compose_environment_error.png
+    .. image:: docker-compose-environment-error.png
         :align: center
 
 

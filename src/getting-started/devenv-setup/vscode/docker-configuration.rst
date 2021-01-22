@@ -73,7 +73,7 @@ environment which will we will later connect to VSCode.
 
 Start a terminal session inside VSCode:
 
-.. image:: vscode_terminal.png
+.. image:: vscode-terminal.png
     :align: center
 
 
@@ -81,7 +81,7 @@ On the terminal tab build the image by typing ``make build``. *This step is
 optional since the ``make interactive`` command described bellow, takes
 care of this task if needed*:
 
-.. image:: vscode_build.png
+.. image:: vscode-build.png
     :align: center
 
 
@@ -94,14 +94,14 @@ in interactive mode and are ready to debug.
 * On the terminal tab start the container interactively with
   ``make interactive``:
 
-.. image:: vscode_interactive.png
+.. image:: vscode-interactive.png
     :align: center
 
 * Debug a particular file using the ``vscode-debug.sh`` utility inside
   the docker image. For instance
   ``./vscode-debug.sh powersupply/powersupply.py``:
 
-.. image:: vscode_connect.png
+.. image:: vscode-connect.png
     :align: center
 
 Notice that the terminal shell now shows a message stating that it is waiting
@@ -115,13 +115,13 @@ for the debugger attachment:
 * You can now set breakpoints inside the VSCode editor (or use previously set
   ones):
 
-.. image:: vscode_breakpoints.png
+.. image:: vscode-breakpoints.png
     :align: center
 
 * Start the debugger from whitin VSCode by pressing ``F5`` or the *debug*
   button under the debug tab:
 
-.. image:: vscode_debug.png
+.. image:: vscode-debug.png
     :align: center
 
 

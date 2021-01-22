@@ -1,3 +1,5 @@
+.. _about:
+
 Agile teams and responsibilities
 --------------------------------
 

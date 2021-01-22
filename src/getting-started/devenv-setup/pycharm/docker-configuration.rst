@@ -43,7 +43,7 @@ you've downloaded.
 #. In the Directory field, specify the path where the folder for your local Git repository will be created into which
    the remote repository will be cloned. The dialog should now look similar to this:
 
-.. image:: clone_repository.png
+.. image:: clone-repository.png
     :align: center
 
 4. Click Clone, then click Yes in the subsequent confirmation dialog to create a PyCharm project based on the sources
@@ -139,12 +139,12 @@ created. The 'Add Python Interpreter' dialog should look similar to this:
 
 .. _`configure Docker as a remote interpreter`: https://www.jetbrains.com/help/pycharm/using-docker-as-a-remote-interpreter.html#config-docker
 
-.. image:: add_python_interpreter.png
+.. image:: add-python-interpreter.png
     :align: center
 
 As a result, the Python interpreter Preferences dialog should look something like this:
 
-.. image:: preferences_docker_interpreter.png
+.. image:: preferences-docker-interpreter.png
     :align: center
 
 Click 'OK' to apply your changes.
@@ -185,7 +185,7 @@ From the main menu, choose Run | Edit Configurations... and click on the '+' but
 menu that appears, select Python tests | pytest to add a new pytest test configuration. The menu selection looks like
 this:
 
-.. image:: add_new_pytest_configuration.png
+.. image:: add-new-pytest-configuration.png
     :align: center
 
 #. Change the Target radio button to 'Module Name'. Click '...' to select the target, choosing
@@ -199,7 +199,7 @@ this:
 
 The configuration dialog should look like similar to this:
 
-.. image:: devicetestcontext_configuration.png
+.. image:: devicetestcontext-configuration.png
     :align: center
 
 Click 'OK' to accept your changes.
@@ -207,7 +207,7 @@ Click 'OK' to accept your changes.
 From the main menu, choose Run | Run..., then from the Run dialog that opens, select the configuration you just created.
 The unit tests will execute, with the results displayed in PyCharm's Run panel. The results will look like this:
 
-.. image:: devicetestcontext_test_results.png
+.. image:: devicetestcontext-test-results.png
     :align: center
 
 

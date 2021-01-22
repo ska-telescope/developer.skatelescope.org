@@ -76,7 +76,7 @@ Information about the SKA
 
 * How does the SKA operate? How is it meant to work?
  
-  * Read `these slides <https://confluence.skatelescope.org/download/attachments/113803312/SKA_Programmes_Induction_v2020.1.pdf?version=1&modificationDate=1595231309607&api=v2>`_ on the SKA operational programme.
+  * Read `about the SKA Operational Programme<https://confluence.skatelescope.org/download/attachments/113803312/SKA_Programmes_Induction_v2020.1.pdf?version=1&modificationDate=1595231309607&api=v2>`_.
 
 * What is Radio Astronomy?
  
@@ -157,7 +157,7 @@ First Month
 This month is about getting you to the stage where you're able to contribute to your team's work. 
 In each subsection, items are approximately ordered by priority, so things earlier in the list should usually be done before things later in the list.
 
-First of all, you should familiarise yourself with the `SKA Definition of Done <https://developer.skatelescope.org/en/latest/development_practices/definition_of_done.html>`_. 
+First of all, you should familiarise yourself with the :doc:`SKA Definition of Done </policies/definition-of-done>`
 
 Understanding more about the SKA
 --------------------------------
@@ -171,7 +171,7 @@ Understanding more about the SKA
   * And look at the `operational flow <https://confluence.skatelescope.org/display/SE/Observation+Management+and+Controls+Agile+Release+Train?preview=/74743196/74743245/OperationalFlow-v2.pdf>`_. The goal here is to find out where your team fits in the organisation, but with a bit more detail than we had time for in week one.
 
 * Look at the `Module Decomposition <https://confluence.skatelescope.org/display/SWSI/Views%3A+Module>`_ of the SKA, and learn how this maps to the different `GitLab project <https://developer.skatelescope.org/en/latest/projects/list.html>`_.
-* Read the `Architectural Decision Process <https://developer.skatelescope.org/en/latest/community/decision_making.html>`_. This process is how we can change and update our architecture, as we find out more about the system we're implementing, or as we need to adopt new technology.  All developers are able to reason about the architecture of the system; you'll need to know the process.
+* Read the `Architectural Decision Process </policies/decision-making>`. This process is how we can change and update our architecture, as we find out more about the system we're implementing, or as we need to adopt new technology.  All developers are able to reason about the architecture of the system; you'll need to know the process.
 
 What are your skills?
 ---------------------
@@ -205,7 +205,7 @@ Discuss this with your Scrum Master to see which ones are most appropriate for y
 * Join a Community of Practice (CoP). CoPs span the two Agile Release Trains (ARTs), and are a good way of sharing expertise, connecting with the wider community and making a contribution.
 * Continue watching the `Radio Interferometry lectures <https://confluence.skatelescope.org/display/SE/Lectures+on+Radio+Interferometry>`_.
 * Get involved in a team's feature. This may be as a developer, reviewer, tester, by shadowing a Feature owner, helping with a demo, or something else!
-* Learn about (or get!) access to the `EngageSKA Cluster <https://developer.skatelescope.org/en/latest/services/ait_performance_env.html>`_, or `access to HPC facilities <https://confluence.skatelescope.org/display/SE/HPC+access>`_ for testing, prototyping and performance testing. People on the DP ART are more likely to need to access the HPC facilities for performance testing; most developers will need to be aware of how the EngageSKA cluster is used for testing. You may also need to arrange access to the `SKA Data Store <https://confluence.skatelescope.org/display/SE/Working+with+Google+Cloud+Platfom+%28GCP%29+storage>`_.
+* Learn about (or get!) access to the `EngageSKA Cluster </tools/test-infrastructure>`, or `access to HPC facilities <https://confluence.skatelescope.org/display/SE/HPC+access>`_ for testing, prototyping and performance testing. People on the DP ART are more likely to need to access the HPC facilities for performance testing; most developers will need to be aware of how the EngageSKA cluster is used for testing. You may also need to arrange access to the `SKA Data Store <https://confluence.skatelescope.org/display/SE/Working+with+Google+Cloud+Platfom+%28GCP%29+storage>`_.
 * Create or amend some SKA documentation, whether on the Developer Portal, Confluence, or in a specific GitLab project.
 * Attend a system demo. You can find out more about demos in the #system-demos-buzz Slack channel, or in the `Demos <https://confluence.skatelescope.org/pages/viewpage.action?pageId=68715218>`_ pages in Confluence.
 * Sign up for some SKA-organised training. We expect that you'll need to attend some SAFe training; now is a good time to sign up!
@@ -251,7 +251,7 @@ Remember that we have `training pages on Confluence <https://confluence.skateles
 * Learn about `ECPs (Engineering Change Proposals) <https://confluence.skatelescope.org/pages/viewpage.action?pageId=5767262>`_. These are often required for major architectural changes, so it's useful to understand the purpose and process of ECPs.
 * Continue with your training plan, using the skills matrix!
 * Make sure you know where to get help. This was covered in week one, but some revision may be helpful.
-* Have a look at the various `Monitoring Dashboards <https://developer.skatelescope.org/en/latest/services/monitoring-dashboards.html>`_ for the EngageSKA Cluster, so you can see what things look like when our prototype is running, and what data we are collecting about it.
+* Have a look at the various `Monitoring Dashboards <https://developer.skatelescope.org/en/latest/tools/monitoring-dashboards.html>`_ for the EngageSKA Cluster, so you can see what things look like when our prototype is running, and what data we are collecting about it.
 * Learn about the SKA naming conventions for code, repositories, containers, etc. We need to make our code and the artefacts built from it easy to understand, so we have some standards to adhere to, and some recommendations.
 
 This is the end of your formal onboarding! 

@@ -1,3 +1,5 @@
+.. _about:
+
 Follow us on social media
 =========================
 
