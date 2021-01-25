@@ -222,7 +222,7 @@ Filtering the Logs on Kibana
 
 Log messages from  the core syscore cluster can be checked in our monitoring platform at https://kibana.engageska-portugal.pt/app/logs
 
-Kibana allows for filtering on log messages on the basis of a series of fields. These fields can be added as columns to the displayed information using the **Settings** option, and filtering based on the values of those fields can be done directly on the **Search** box or by selecting the **View details** menu:
+Kibana allows for filtering on log messages on the basis of a series of fields. These fields can be added as columns to display information using the **Settings** option, and filtering based on the values of those fields can be done directly on the **Search** box or by selecting the **View details** menu:
 
 .. image:: images/kibana_ns0.png
 
@@ -230,7 +230,7 @@ In the example above in order to retrieve only the log messages relevant for the
 
 .. image:: images/kibana_ns1.png
 
-There many other field options using kubernetes information, for example ``kubernetes.node.name`` and ``kubernetes.pod.name`` that can be used for efficient filtering. 
+There are many other field options using kubernetes information, for example ``kubernetes.node.name`` and ``kubernetes.pod.name`` that can be used for efficient filtering. 
 
 The fact the SKA logging format allows for simple key-value pairs (SKA Tags) to be included in log messages let us refine the filtering. Tags are parsed to a field named ``ska_tags`` and on this field there can be one or more device properties separated by commas.
 
