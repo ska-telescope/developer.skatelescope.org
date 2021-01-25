@@ -217,58 +217,34 @@ A list of tags (identifiers) we want to add to log messages for easy filtering a
   - Description: For software that are not TANGO devices, the name of the telescope sub-system [2].
   - Example: ``SDP``
 
+Filtering the Logs on Kibana
+============================
+
+Log messages from  the core syscore cluster can be checked in our monitoring platform at https://kibana.engageska-portugal.pt/app/logs
+
+Kibana allows for filtering on log messages on the basis of a series of fields. These fields can be added as columns to the displayed information using the **Settings** option, and filtering based on the values of those fields can be done directly on the **Search** box or by selecting the **View details** menu:
+
+.. image:: images/kibana_ns0.png
+
+In the example above in order to retrieve only the log messages relevant for the skampi development pipeline ``ci-skampi-st-605-mid`` one should then select the corresponding ``kubernetes.namespace`` field value. 
+
+.. image:: images/kibana_ns1.png
+
+There many other field options using kubernetes information, for example ``kubernetes.node.name`` and ``kubernetes.pod.name`` that can be used for efficient filtering. 
+
+The fact the SKA logging format allows for simple key-value pairs (SKA Tags) to be included in log messages let us refine the filtering. Tags are parsed to a field named ``ska_tags`` and on this field there can be one or more device properties separated by commas.
+
+.. image:: images/kibana_tag0.png
+
+The field ``ska_tags`` is also parsed so that the key is added to a ``ska_tags_field`` prefix that will store the value. For the example above, this means filtering the messages using the value of the ``ska_tags_field.tango-device`` field.
+
+.. image:: images/kibana_tag1.png
+
+Making the selection illustrated above means that only messages with the value ``ska_mid/tm_leaf_node/d0003`` for the ``ska_tags_field.tango-device`` field would be displayed.
+
 [1] Optional, since it won't apply to all contexts, e.g. third-party applications.
 
 [2] CSP, Dish, INAU, INSA, LFAA, SDP, SaDT, TM.
 
 [3] 000‐000000‐012, SKA1 TANGO Naming Convention (CS_GUIDELINES Volume2), Rev 01
-
-Ska Tags (Kibana)
-=================
-
-To see the logs generated with message log format go to kibana (http://192.168.93.94:5601/app/logs/ (requires VPN)).
-When on kibana there is a list of logs messages with new messages appearing every couple of seconds, therefore the importance of filtering this messages to only appear the ones that the developer is interested to see.
-
-The fields that represent the message are defined mostly with the use of grok parsers.
-This fields can be used to filter the messages that contains them.
-
-To view all fields related to the message open the view details menu:
-
-.. image:: images/kibana_view_details.png
-
-Tags are parsed to a field named ``ska_tags`` and on this field there can be one or more device properties separated by commas.
-The field ``ska_tags`` will also be parsed but in this case by a KV parser, being that this parsers allows dynamic parsing. 
-Because a different number of devices will be present on different messages it is needed to use a parser that allows us to parse strings dynamically.
-
-The content of an kv parser to parse ``ska_tags`` is like this:
-
-.. container:: toggle
-
-    .. container:: header
-
-        KV parser ska tags
-
-    .. code:: JSON
-
-      "kv": {
-                "field": "ska_tags",
-                "target_field": "ska_tags_field",
-                "field_split": ",",
-                "value_split": ":"  
-            }
-
-Making an example where ``ska_tags:`` value is ``tango-device:ska_low/tm_central/central_node,notango-device:ska_mid/tm_central/central_node`` what the parser 
-will do is separate ``tango-device:ska_low/tm_central/central_node`` and  ``notango-device:ska_mid/tm_central/central_node`` to different fields 
-where the field name is what is behind the ":" appended to the ``target_field`` name given as parameter on the kv parser.
-
-So the result field names will be ``ska_tags_field.tango-device`` and ``ska_tags_field.notango-device`` with their respective values.
-
-It is possible to see this implemented on kibana. In the case of the figure below there is only one device referred on the tag.
-
-
-.. image:: images/kibana_log_fields.png
-
-To filter the log search only for the intended device name it is possible to click on the "view event with filter" button (represented on the image above with a circle), this button will create a query where only the logs that have this field value on the message will appear:  
-
-.. image:: images/kibana_tag_query.png
 
