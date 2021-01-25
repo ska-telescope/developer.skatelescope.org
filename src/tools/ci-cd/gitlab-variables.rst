@@ -1,4 +1,3 @@
-.. doctest-skip-all
 .. _gitlab-variables:
 
 ***********************
@@ -17,7 +16,7 @@ The variables are set under the
 
 .. _figure-1-gitlab-variables:
 
-.. figure:: images/gitlab-variables.png
+.. figure:: ../images/gitlab-variables.png
    :scale: 55%
    :alt: GitLab Variables
    :align: center

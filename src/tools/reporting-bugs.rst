@@ -1,3 +1,5 @@
+.. _tools:
+
 Reporting Bugs
 **************
 

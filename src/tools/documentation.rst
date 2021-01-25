@@ -27,6 +27,8 @@ Based on the documentation provided everyone should be able to:
 In order to achieve this goal any structure can be used allowing free
 text as well as code-extracted documentation. 
 
+.. _API:
+
 Documenting the Public API
 ==========================
 
@@ -71,8 +73,9 @@ Extracting documentation from code
     * add hello world class with parameters to the SKA Python Skeleton Project
     * add code snippet here as an example of additional documentation which is decoupled from code, and describe the pitfalls of separating documentation from the code.
 
+.. _dev-portal-integration:
 
-Integrating into the Developer Portal
+Integration into the Developer Portal
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The developer portal is hosted on ReadTheDocs. On the :ref:`list` page a list of all the projects that are hosted on GitLab is available, with badges to show the build status of the project's documentation. Each badge is also a hyperlink to the project's documentation that you can click on.
@@ -88,7 +91,7 @@ Developers working on the SKA are members of the ska-telescope organisation on G
 Sign up / sign in with GitLab account
 =====================================
 
-.. figure:: login_rtd.png
+.. figure:: images/login-rtd.png
    :scale: 40%
    :alt: Login on Readthedocs
    :align: center
@@ -99,7 +102,7 @@ Log in with OAuth
 
 As of October 2019, most developers are also registered on the SKA GitHub, and some may sign in using the OAuth credentials provided by GitHub, when signing into GitLab. This will be the preferred route.
 
-.. figure:: login_oauth.png
+.. figure:: images/login-oauth.png
    :scale: 40%
    :alt: Login on GitLab
    :align: center

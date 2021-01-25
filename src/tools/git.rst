@@ -1,3 +1,5 @@
+.. _tools:
+
 Working with git
 ----------------
 
@@ -17,8 +19,7 @@ GitLab as the Git repository manager
 ====================================
 
 The SKA Software team have adopted the GitLab social coding platform as the main Git repository manager for its
-CI/CD tools.  For those using the GitHub platform the steps for the switch to GitLab are described
-:ref:`here <github2gitlab>`.
+CI/CD tools.  
 
 The following describes how to access the service, and how to setup the basic working environment to integrate with GitLab for the SKA.
 
@@ -29,8 +30,8 @@ Create a GitLab account using your **institutional email** address at
 https://gitlab.com/users/sign_in. If you already have an account on
 GitLab, you should have your institutional email added to your profile: click on
 your user icon on the top right corner and select *Settings->Emails->Add email
-address* .  It is recommended that 2FA (two-factor authentication) is enabled.  There are a variety of OTP (One Time Pin) applications available for mobile phones with instructions available
-`here <https://docs.gitlab.com/ee/user/profile/account/two_factor_authentication.html>`__.
+address* .  It is recommended that 2FA (two-factor authentication) is enabled.  There are a variety of OTP (One Time Pin) applications available for mobile phones with instructions available:
+https://docs.gitlab.com/ee/user/profile/account/two_factor_authentication.html.
 
 Setup SSH key
 +++++++++++++
@@ -56,7 +57,7 @@ commit rules:
 
 * Work in feature branches where possible (see :ref:`branching-policy`)
 * Commit early, commit often.
-* Have the **Jira story ID** at the beginning of your commit messages. (You can also use Gitlab and JIRA integration defined in :doc:`jira`)
+* Have the **Jira story ID** at the beginning of your commit messages. (You can also use Gitlab and JIRA integration defined in :doc:`/tools/jira`)
 * Git logs shall be human readable in sequence, describing the development activity.
 * Use imperative forms in the commit message:
 
@@ -256,6 +257,8 @@ discussing it with the rest of the community.
 
 See a more detailed description of this workflow at https://docs.gitlab.com/ee/topics/gitlab_flow.html
 
+.. _merge-request:
+
 Merge requests
 ++++++++++++++
 
@@ -265,7 +268,7 @@ merge the story branch into the master branch. The Merge Request UI on GitLab in
 It is recommended that A new merge request will include, among others, the following options:
 
 * The Merge Request Title should always include the related JIRA issue id - this will be automatic following the above branching naming convention.
-* Merge Request Description should include a coincise, brief description about the issue.
+* Merge Request Description should include a concise, brief description about the issue.
 * Add approval rules.
 * Select one or more assignees for review, and include anyone who has worked in the Merge Request.
 * Delete source branch when merge request is accepted.
@@ -281,9 +284,9 @@ It is not recommended to squash commits submitted to the remote server, in parti
 
 There are more additional settings in GitLab that only project maintainers could tune. The following settings are configured for the developer portal itself and they are the recommended settings for the projects in the SKA organisation. Normally, these settings would not be needed to change. 
 
-.. _figure-gitlab_mergerequest_settings:
+.. _figure-gitlab-mergerequest-settings:
 
-.. figure:: media/gitlab_mergerequest_settings.png
+.. figure:: media/gitlab-mergerequest-settings.png
    :scale: 80%
    :alt: GitLab Merge Request Settings
    :align: center

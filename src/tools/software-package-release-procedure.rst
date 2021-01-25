@@ -139,7 +139,7 @@ the following section(s), for example:
   [packages]
   'skaskeleton' = {version='*', index='nexus'}
 
-.. _helm_chart_repo:
+.. _helm-chart-repo:
 
 Helm Chart Packaging, Publishing and Sharing
 --------------------------------------------

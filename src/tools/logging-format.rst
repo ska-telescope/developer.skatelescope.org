@@ -1,4 +1,4 @@
-.. _`SKA Log Message Format`:
+.. _tools:
 
 SKA Log Message Format
 **********************

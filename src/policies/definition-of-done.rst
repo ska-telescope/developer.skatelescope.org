@@ -1,3 +1,5 @@
+.. _policies:
+
 Definition of Done
 ==================
 
@@ -11,28 +13,28 @@ Issue Type          Definition of Done
 =================== =========================================================================================================================
 **Story/Enabler**   **Code**
 
-                    * Supplied with an `acceptable license <https://developer.skatelescope.org/en/latest/projects/licensing.html?#licensing-a-project>`_
-                    * Adheres to SKA language `specific style <https://developer.skatelescope.org/en/latest/search.html?q=coding%2Bguidelines>`_
-                    * Checked into SKA repository with `reference <https://developer.skatelescope.org/en/latest/tools/jira.html>`_ to a Jira issue ID
-                    * Passes the CI/CD pipeline including compiling cleanly and being linted with no `warnings <https://developer.skatelescope.org/en/latest/tools/continuousintegration.html?#linting>`_
-                    * Unit and module `tests <https://developer.skatelescope.org/en/latest/tools/continuousintegration.html?#test>`_ pass with adequate coverage (>= 75% with appropriate exclusions for boiler-plate code)
-                    * Component, integration and system `tests <https://developer.skatelescope.org/en/latest/tools/continuousintegration.html?#test>`_ (appropriate for the context) pass
-                    * Regression `tests <https://developer.skatelescope.org/en/latest/tools/continuousintegration.html?#test>`_ pass
+                    * Supplied with an :ref:`ok-licenses`.
+                    * Adheres to SKA language :doc:`specific style </tools/codeguides>`.
+                    * Checked into SKA repository with a :doc:`reference </tools/jira>` to a JIRA ticket ID.
+                    * Passes the CI/CD pipeline including compiling cleanly and being linted with no warnings: :ref:`linting`. 
+                    * Unit and module :ref:`tests <tests>` pass with adequate coverage (>= 75% with appropriate exclusions for boiler-plate code).
+                    * Component, integration and system :ref:`tests <tests>` (appropriate for the context) pass.
+                    * Regression :ref:`tests <tests>` pass. 
 
-                    `Code Documentation <https://developer.skatelescope.org/en/latest/projects/document_project.html#documenting-a-project>`_
+                    :doc:`Code Documentation </tools/documentation>`
 
-                    * Exposed `Public API <https://developer.skatelescope.org/en/latest/projects/document_project.html#documenting-the-public-api>`_ (where applicable) is cleanly documented
-                    * Documented inline according to `language specific standards <https://developer.skatelescope.org/en/latest/search.html?q=coding%2Bguidelines>`_
-                    * Deployed to externally visible website accessible via the `developer portal <https://developer.skatelescope.org/en/latest/projects/document_project.html#integrating-into-the-developer-portal>`_
+                    * Exposed Public :ref:`API <API>` (where applicable) is cleanly documented.
+                    * Documented inline according to :doc:`language specific standards </tools/codeguides>`.
+                    * Deployed to externally visible website accessible via the :ref:`dev-portal-integration`.
 
                     **Integration**
 
-                    * Deployed to a `continuous integration <https://developer.skatelescope.org/en/latest/tools/continuousintegration.html#continuous-integration>`_ environment (staging environment during Construction)
-                    * `Migrations <https://developer.skatelescope.org/en/latest/projects/create_new_project.html?highlight=migration#repository-contents>`_ are implemented with defined automated processes for roll-forward and rollback as appropriate
+                    * Deployed to a :doc:`/tools/ci-cd/continuous-integration` environment (staging environment during Construction).
+                    * Migrations are implemented with defined automated processes for roll-forward and rollback as appropriate.
 
                     **Process**
 
-                    * Peer-reviewed and integrated into the main branch via Gitlab `merge-request <https://developer.skatelescope.org/en/latest/tools/git.html#merge-requests>`_ process
+                    * Peer-reviewed and integrated into the main branch via GitLab :ref:`merge-request`. 
                     * Relevant `NFRs <https://confluence.skatelescope.org/display/SWSI/Requirements>`_ are met
                     * Satisfies acceptance criteria
                     * Accepted by Product Owner
@@ -56,11 +58,11 @@ Issue Type          Definition of Done
 =================== =========================================================================================================================
 **Feature/Enabler** **Child Stories/Enablers**
 
-                    * Completed by all teams and integrated in an `integration environment <https://developer.skatelescope.org/en/latest/development/getting_started.html#incorporate-my-project-into-the-integration-environment>`_ (staging environment during Construction)
+                    * Completed by all teams and integrated in an :ref:`integration environment <verify-k8s>`  (staging environment during Construction).
 
                     **Documentation**
 
-                    * `Solution Intent <https://confluence.skatelescope.org/display/SWSI/Solution+Intent+Home>`_ updated to reflect the actual implementation
+                    * `Solution Intent <https://confluence.skatelescope.org/display/SWSI/Solution+Intent+Home>`_ or project documentation updated to reflect the actual implementation.
 
                     **Process**
 
@@ -88,11 +90,11 @@ Issue Type             Definition of Done
 ====================== =========================================================================================================================
 **Capability/Enabler** **Child Stories/Enablers**
 
-                       * Completed by all ARTs and integrated in an `integration environment <https://developer.skatelescope.org/en/latest/development/getting_started.html#incorporate-my-project-into-the-integration-environment>`_ (staging environment during Construction)
+                       * Completed by all ARTs and integrated in an :ref:`integration environment <verify-k8s>` (staging environment during Construction)
 
                        **Documentation**
 
-                       * `Solution Intent <https://confluence.skatelescope.org/display/SWSI/Solution+Intent+Home>`_ updated to reflect the actual implementation
+                       * `Solution Intent <https://confluence.skatelescope.org/display/SWSI/Solution+Intent+Home>`_ or project documentation updated to reflect the actual implementation
 
                        **Process**
 

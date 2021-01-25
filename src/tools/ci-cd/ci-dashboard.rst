@@ -18,3 +18,5 @@ True   False  True
 False  True   True 
 True   True   True 
 =====  =====  ======
+
+..   <script type="text/javascript" src="../_static/js/gitlab.js"></script>

@@ -425,6 +425,7 @@ stakeholder in SKA.
    Some of these metrics are collected and displayed by the ARGOS system
    in https://argos.engageska-portugal.pt
    (username=viewer, password=viewer).
+   See :doc:`/tools/monitoring-dashboards/monitoring-dashboards` for more information.
 
 
 5 Testing strategy

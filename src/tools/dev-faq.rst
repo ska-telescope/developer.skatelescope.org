@@ -1,5 +1,7 @@
-Getting Started
-===============
+.. _tools:
+
+Frequently Asked Questions
+==========================
 
 I want to..
 --------------------------
@@ -7,7 +9,7 @@ I want to..
 Add a new project to SKA organisation
 `````````````````````````````````````
 
-* Our project details can be found in the section about how to :ref:`create-new-project`.
+* :doc:`/getting-started/projects/create-new-project` 
 
 Develop a Tango device
 ``````````````````````
@@ -18,7 +20,7 @@ Develop a Tango device
 Containerise my solution
 ````````````````````````
 
-Our containerisation standards can be found in the `containerisation <https://developer.skatelescope.org/en/latest/development/containerisation-standards.html#container-standards-cheatsheet>`_ section.
+A summary of our containerisation standards can be found in the :ref:`container-cheat-sheet`.
 
 * Verify Docker installation
    * `Docker installation instructions <https://docs.docker.com/install/linux/docker-ce/ubuntu>`_:
@@ -34,7 +36,7 @@ Our containerisation standards can be found in the `containerisation <https://de
 Incorporate my project into the integration environment
 ``````````````````````````````````````````````````````````
 
-We use Kubernetes as orchestration layer - refer to our :ref:`Orchestration Guidelines <orchestration-guide>`.
+We use Kubernetes as an orchestration layer - refer to our :doc:`Orchestration Guidelines </tools/containers/orchestration-guidelines>`.
 
 Once a project is ready to form part of the integrated solution, we need to verify that all prerequisites are installed and working properly.
 
@@ -118,7 +120,7 @@ Test that the connectivity in the cluster works
   Use this `ansible playbook <https://developer.skatelescope.org/projects/ansible-playbooks/en/latest/playbooks/upgrade_helm.html>`_ to upgrade your existing Helm 2 to Helm 3.
 
 
-Once Helm is installed, develop a helm chart for the project. Refer to `Helm instructions <https://developer.skatelescope.org/en/latest/development/orchestration-guidelines.html#templating-the-application>`_ for guidelines.
+Once Helm is installed, develop a helm chart for the project. Refer to :ref:`Helm instructions <orchestration-guidelines-templating-application>` for guidelines.
 
 .. _Helm Chart Repository: https://nexus.engageska-portugal.pt/#browse/browse:helm-chart
 .. _SKAMPI: https://gitlab.com/ska-telescope/skampi
@@ -136,7 +138,7 @@ To add the SKA Helm chart repo to your local Helm, simply run
 
  $ helm repo add skatelescope https://nexus.engageska-portugal.pt/repository/helm-chart
 
-Working with the Helm chart repository, including how to package and upload charts to our repository, is described :ref:`here in detail <helm_chart_repo>`.
+Working with the Helm chart repository, including how to package and upload charts to our repository, is described :ref:`here in detail <helm-chart-repo>`.
 
 Deploy the TMC prototype and Webjive in kubernetes
 ```````````````````````````````````````````````````
@@ -145,7 +147,7 @@ The integration gitlab repository can be found at `<https://gitlab.com/ska-teles
 
 Documentation on deployment can be found at `<https://developer.skatelescope.org/projects/skampi/en/latest/README.html>`_
 
-Add the helm chart to the skampi repository: `Integration instructions <https://developer.skatelescope.org/en/latest/development/orchestration-guidelines.html#integrating-a-chart-into-the-skampi-repo>`_.
+Add the helm chart to the skampi repository: :ref:`integrating-a-chart-into-the-skampi-repo`. 
 
 * Verify k8s integration
     * Launch the integration environment

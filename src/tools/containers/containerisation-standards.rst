@@ -42,6 +42,8 @@ The standards are broken down into the following areas:
 
 Throughout this documentation, `Docker <https://docs.docker.com/>`_ is used as the reference implementation with the canonical version being Docker 18.09.4 CE API version 1.39, however the aim is to target compliance with the OCI specifications so it is possible to substitute in alternative Container Engines, and image build tools that are compatible.
 
+.. _container-cheat-sheet:
+
 Cheatsheet
 ==========
 
