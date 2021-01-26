@@ -97,17 +97,6 @@ Sign up / sign in with GitLab account
    :align: center
    :figclass: figborder
 
-Log in with OAuth
-=================
-
-As of October 2019, most developers are also registered on the SKA GitHub, and some may sign in using the OAuth credentials provided by GitHub, when signing into GitLab. This will be the preferred route.
-
-.. figure:: images/login-oauth.png
-   :scale: 40%
-   :alt: Login on GitLab
-   :align: center
-   :figclass: figborder
-
 
 Import project to ReadTheDocs
 =============================

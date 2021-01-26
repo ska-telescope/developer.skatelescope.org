@@ -7,6 +7,7 @@ Containers: containerisation and deployment
   :maxdepth: 1
    
   containers/containerisation-standards
+  containers/container-cheat-sheet
   containers/docker-proxy-cache
   containers/kubernetes-introduction
   containers/multitenancy
