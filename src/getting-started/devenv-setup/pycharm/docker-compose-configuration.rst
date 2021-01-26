@@ -96,11 +96,13 @@ defined. Set the environment variables to look like this:
 
 .. image:: docker-compose-environment-variables.png
     :align: center
+    :alt: Environment variables dialog box, showing that the DOCKER_REGISTRY_HOST variable is set to ska-registry.av.it.pt and the DOCKER_REGISTRY_USER variable is set to tango-example. The "Include parent environment variables" box is ticked.
 
 The final Configure Remote Python Interpreter dialog should look like this:
 
 .. image:: docker-compose-remote-interpreter.png
     :align: center
+    :alt: Configure Remote Python Interpreter dialog box, showing that the Docker Compose radio button is selected. The Server drop-down is set to "Docker", the Configuration file(s) are set to "./docker-compose.yaml". Service is set to "powersupply". The Environment variables are set from the previous dialog box. 
 
 Click 'OK' to apply your changes.
 
@@ -128,6 +130,7 @@ The final Run/Debug dialog should look like this:
 
 .. image:: docker-compose-run-configuration.png
     :align: center
+    :alt: Run/Debug dialog box, showing the module name set to "powersupply.powersupply", and the Working directory set to point to the relevant code directory.
 
 Press OK to apply your changes.
 
@@ -137,7 +140,7 @@ panel will display output like this, showing the device is executing and ready t
 
 .. image:: docker-compose-run-powersupply.png
     :align: center
-
+    :alt: PyCharm Run panel showing output: "Attaching to tango-example_powersupply_1". There is then a shell-style prompt that indicates that powersupply_1 is "Ready to accept request".
 
 Debugging configuration and limitations
 =======================================
@@ -208,6 +211,7 @@ this:
 
 .. image:: docker-compose-debug-panel.png
     :align: center
+    :alt: PyCharm Debug panel, showing output saying that it is "Connected to pydev debugger".
 
 Returning to the interactive session, run the unit tests that exercise the live Tango device. For the tango-example
 project, these tests are found in the file *test_2_test_server_using_client.py*.
@@ -261,6 +265,7 @@ PyCharm. The debug panel in PyCharm will look something like this, showing that 
 
 .. image:: docker-compose-working-breakpoint.png
     :align: center
+    :alt: PyCharm Debug panel, showing frozen execution and breakpoints.
 
 
 Troubleshooting
@@ -273,6 +278,7 @@ Troubleshooting
 
     .. image:: device-unregistered.png
         :align: center
+        :alt: PyCharm Run panel showing output including "The device server PowerSupply/test is not defined in database. Exiting!" and also "Process finished with exit code 255".
 
 
 - **The DOCKER_REGISTRY_HOST variable is not set**
@@ -282,5 +288,5 @@ Troubleshooting
 
     .. image:: docker-compose-environment-error.png
         :align: center
-
+        :alt: Warning dialog box stating that: "The DOCKER_REGISTRY_HOST variable is not set. Defaulting to a blank string."
 

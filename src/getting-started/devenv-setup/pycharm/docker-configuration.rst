@@ -45,6 +45,7 @@ you've downloaded.
 
 .. image:: clone-repository.png
     :align: center
+    :alt: Clone Repository dialog box, specifying the path to the folder into which the repository should be cloned.
 
 4. Click Clone, then click Yes in the subsequent confirmation dialog to create a PyCharm project based on the sources
    you have cloned.
@@ -141,11 +142,13 @@ created. The 'Add Python Interpreter' dialog should look similar to this:
 
 .. image:: add-python-interpreter.png
     :align: center
+    :alt: Add Python Interpreter dialog box, showing the Server dropdown set to "Docker", the Image name set to: ska-registry.av.it.pt/tango-example/powersupply:latest, and the Python Interpreter path set.
 
 As a result, the Python interpreter Preferences dialog should look something like this:
 
 .. image:: preferences-docker-interpreter.png
     :align: center
+    :alt: the Python Interpreter Preferences dialog box, showing the list of packages in the tango-example image.
 
 Click 'OK' to apply your changes.
 
@@ -187,6 +190,7 @@ this:
 
 .. image:: add-new-pytest-configuration.png
     :align: center
+    :alt: PyCharm configuration menus, showing Python tests Configuration
 
 #. Change the Target radio button to 'Module Name'. Click '...' to select the target, choosing
    *test_1_server_in_devicetestcontext* as the module to be tested.
@@ -201,6 +205,7 @@ The configuration dialog should look like similar to this:
 
 .. image:: devicetestcontext-configuration.png
     :align: center
+    :alt: Run/Debug Configurations dialog box.
 
 Click 'OK' to accept your changes.
 
@@ -209,7 +214,7 @@ The unit tests will execute, with the results displayed in PyCharm's Run panel. 
 
 .. image:: devicetestcontext-test-results.png
     :align: center
-
+    :alt: PyCharm Run panel, showing pytest output.
 
 Debugging Configuration
 =======================
