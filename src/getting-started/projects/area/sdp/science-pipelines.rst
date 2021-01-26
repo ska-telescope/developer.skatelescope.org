@@ -1,3 +1,5 @@
+.. _sdp:
+
 Science Pipeline Workflows
 --------------------------
 

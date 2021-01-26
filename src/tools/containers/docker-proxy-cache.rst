@@ -1,5 +1,4 @@
-.. doctest-skip-all
-.. _code-guide:
+.. _containers:
 
 .. raw:: html
 
@@ -54,7 +53,7 @@ For the supporting services hosted on the Engage SKA OpenStack cluster including
 
 .. _figure-1-docker-caching-proxy:
 
-.. figure:: docker-caching-proxy.png
+.. figure:: ../images/docker-caching-proxy.png
    :scale: 80%
    :alt: Pulling an OCI Image - interaction with cache
    :align: center
@@ -233,7 +232,7 @@ Once the script has completed, you can then login to the Repository Manager at  
 
 .. _figure-2-nexus-repositories:
 
-.. figure:: nexus-repositories.png
+.. figure:: ../images/nexus-repositories.png
    :scale: 40%
    :alt: The Docker group repository
    :align: center

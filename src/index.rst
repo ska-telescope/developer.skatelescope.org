@@ -106,7 +106,7 @@ CI/CD is at the heart of SKA development, and we use GitLab's automation extensi
 Testing
 =======
 
-Tests are a key part of producing working software. We suggest you look at our :doc:`polices/ska-testing-policy-and-strategy`, and our :doc:`tools/testing`.
+Tests are a key part of producing working software. We suggest you look at our :doc:`policies/ska-testing-policy-and-strategy`, and our :doc:`tools/testing`.
  
 Test Infrastructure
 ===================
@@ -114,7 +114,7 @@ Test Infrastructure
 To support our testing and CI/CD pipelines, we have the EngageSKA and other clusters configured to allow testing to happen. 
 
 - :doc:`tools/test-infrastructure`
-- :doc:`tools/monitoring-dashboards/ait-performance-env.rst`
+- :doc:`tools/monitoring-dashboards/ait-performance-env`
 
 Containerisation
 ================
@@ -173,7 +173,7 @@ Guidelines to the coding standards we apply in the SKA. Not available for all la
 - :doc:`tools/codeguides/cplusplus-codeguide`
 - :doc:`tools/codeguides/javascript-codeguide`
 - :doc:`tools/codeguides/python-codeguide`
-- :doc:`tools/codeguides/vdhl-codeguide`
+- :doc:`tools/codeguides/vhdl-codeguide`
 
 FAQ
 ===
@@ -203,7 +203,7 @@ Definition of Done
 
 The definition of done is used to guide teams in planning and estimating the size of stories and features:
 
-- :doc:`development-practices/definition-of-done`
+- :doc:`policies/definition-of-done`
 
 Fundamental SKA Software & Hardware Description Language Standards
 ==================================================================
@@ -212,7 +212,7 @@ These standards underpin all SKA software development. The canonical copy is
 `held in eB <https://ska-aw.bentley.com/SKAProd/Search/QuickLink.aspx?n=SKA-TEL-SKO-0000661&t=3&d=&sc=Global&i=view>`-,
 but the essential information is here:
 
-- :doc:`development/fundamental-sw-requirements`
+- :doc:`policies/fundamental-sw-requirements`
 
 
 Incident Management
@@ -256,7 +256,7 @@ For information about the SKA, have a look at this section.
 - :doc:`about/ska-org`
 - :doc:`about/safe-for-ska`
 - :doc:`about/followus-env`
-- :doc:`about/teams-responsibilities
+- :doc:`about/teams-responsibilities`
 
 
 - :doc:`about/followus-env`

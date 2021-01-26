@@ -1,7 +1,9 @@
+.. _containers:
+
 A Quick Introduction to Kubernetes
 ==================================
 
-This page is based on a talk given by Piers Harding in July 2020, and provides an SKA-specific overview of `Kubernetes <https:// https://kubernetes.io/>`_. Further details can be found in   `Container Standards  <containerisation-standards.html>`_.
+This page is based on a talk given by Piers Harding in July 2020, and provides an SKA-specific overview of `Kubernetes <https:// https://kubernetes.io/>`_. Further details can be found in  :doc:`Container Standards <containerisation-standards>` and :doc:`orchestration-guidelines`.
 
 What is Kubernetes?
 --------------------
@@ -69,7 +71,7 @@ Storage
 -------
 A PersistentVolume is an abstraction from the actual physical implementation of the underlying storage solution. This abstraction is manifested though StorageClass names. So when you create a PersistentVolumeClaim, you specify a StorageClass, which is an abstract concept and the underlying storage engine will go away and allocate that piece of storage and then mount it wherever it needs to be (Node). Then the Pod which wants to use that storage can find it and access it as a filesystem.
 
-The StorageClasses can have different characteristics. So within the syscore of the Kubernetes cluster on EngageSKA, we have two fundamental storage types. One is block, and you can only mount that for :ref:`read-write once`, so its primary use case would be running something like a database, and then you write to storage from within the database engine.
+The StorageClasses can have different characteristics. So within the syscore of the Kubernetes cluster on EngageSKA, we have two fundamental storage types. One is block, and you can only mount that for :ref:`read-write-once`, so its primary use case would be running something like a database, and then you write to storage from within the database engine.
 
 The other storage type we're supporting is NFS (network file system). Currently, we implement both types using Ceph, but there's nothing stopping us taking our deployment to AWS or the Google Cloud Platform, and using their storage solutions and creating alias StorageClass names for NFS and block, and deploying our workloads there. We wouldn't have to change our resource descriptions, because we have this abstraction between what we call storage and the characteristics we want to have for that type of storage, and how it's actually physically implemented on the platform.
 
@@ -77,7 +79,7 @@ Some older storage engines require you to define a PersistentVolume, which is a 
 
 Then the volume you've created becomes available to the Pod. So the NFS storage is read-write many. That's ideal for web-based or horizontally scaling applications, where you need many instances of the application running, all needing concurrent access to that storage to read-write (like they all need to access the content for web pages). Block storage gives raw access, NFS is through a posix-style interface. So there are tradeoffs to the different types of storage and performance characteristics.
 
-.. _read-write once:
+.. _read-write-once:
 
 What is read-write once versus read-write many?
 ```````````````````````````````````````````````

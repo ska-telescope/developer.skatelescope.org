@@ -16,7 +16,7 @@ to run it locally or in the integration environment can be found in the
 `documentation
 <https://developer.skatelescope.org/projects/ska-sdp-integration/en/latest/>`_.
 
-.. figure:: sdp/images/sdp_module_view.svg
+.. figure:: sdp/images/sdp-module-view.svg
   :align: center
 
   SDP module view
@@ -28,6 +28,6 @@ so far are part of:
 .. toctree::
   :maxdepth: 1
 
-  sdp/execution_control
-  sdp/science_pipelines
-  sdp/platform_services
+  sdp/execution-control
+  sdp/science-pipelines
+  sdp/platform-services

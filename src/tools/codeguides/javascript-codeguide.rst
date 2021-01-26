@@ -1,5 +1,4 @@
-.. doctest-skip-all
-.. _javascript-code-guide:
+.. _codeguides:
 
 
 ********************************

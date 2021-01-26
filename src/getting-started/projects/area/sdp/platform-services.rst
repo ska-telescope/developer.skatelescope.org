@@ -1,3 +1,5 @@
+.. _sdp:
+
 Platform Services
 -----------------
 

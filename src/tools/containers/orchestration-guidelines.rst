@@ -1,5 +1,4 @@
-.. doctest-skip-all
-.. _orchestration-guide:
+.. _containers:
 
 .. raw:: html
 
@@ -73,7 +72,7 @@ Why Cloud Native SDLC (Software Development Life Cycle)?
 
 .. _figure-1-kubernetes-sdlc:
 
-.. figure:: Kubernetes-SDLC.dio.png
+.. figure:: ../images/Kubernetes-SDLC.dio.png
    :scale: 60%
    :alt: Cloud Native SDLC
    :align: center
@@ -100,7 +99,7 @@ At the core of Cloud Native is the container orchestration platform.  For the pu
 
 .. _figure-2-kubernetes-architecture:
 
-.. figure:: Kubernetes-Architecture.dio.png
+.. figure:: ../images/Kubernetes-Architecture.dio.png
    :scale: 60%
    :alt: Kubernetes Architecture
    :align: center
@@ -111,7 +110,7 @@ At the core of Cloud Native is the container orchestration platform.  For the pu
 
 Kubernetes provides an abstraction layer from hardware infrastructure resources enabling compute, network, storage, and other dependent services (other applications) to be treated as abstract concepts.  A computing cluster is not a collection of machines but instead is an opaque pool of resources, that are advertised for availability through a consistent REST based API. These resources can be customised to provide access to and accounting of specialised devices such as GPUs.
 
-Through the Kubernetes API, the necessary resources that make up an application suite (compute, network, storage) are addressed as objects in an idempotent way that declares the desired state eg: this number of Pods running these containers, backed by this storage, on that network.  The scheduler will constantly move the cluster towards this desired state including in the event of application or node/hardware failure.  This builds in robustness and auto-healing.
+Through the Kubernetes API, the necessary resources that make up an application suite (compute, network, storage) are addressed as objects in an idempotent way that declares the desired state eg: this number of Pods running these containers, backed by this storage, on that network.  The scheduler will constantly move the cluster towards this desired state including in the event of application or node/hardware failure.  This builds in robustness and auto-healing. See :doc:`kubernetes-introduction` for a general introduction.
 
 Both platform and service resources can be classified by performance characteristics and reservation criteria using labelling, which in turn are used by scheduling algorithms to determine optimum placement of workloads across the cluster.  All applications are deployed as sets of one or more containers in a minimum configuration called a `Pod <https://kubernetes.io/docs/concepts/workloads/pods/pod/>`_.  Pods are the minimum scalable unit that are distributed and replicated across the cluster according to the scheduling algorithm.  A Pod is essentially a single Kernel namespace holding one or more containers.  It only makes sense to put together containers that are essentially tightly coupled and logically indivisible by design.  These Pods can be scheduled in a number of patterns using `Controllers (full list) <https://kubernetes.io/docs/concepts/workloads/controllers/>`_ including bare Pod (a single Pod instance), `Deployment <https://kubernetes.io/docs/concepts/workloads/controllers/deployment/>`_ (a replicated Pod set), `StatefulSet <https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/>`_ (a Deployment with certain guarantees about naming and ordering of replicated units), `DaemonSets <https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/>`_ (one Pod per scheduled compute node), and `Job/CronJob <https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/>`_ (run to completion applications).
 
@@ -121,7 +120,7 @@ A detailed discussion of these features can be found in the main Kubernetes docu
 Structuring Application Suites
 ------------------------------
 
-Architecting software to run in an orchestration environment builds on the guidelines given in the `Container Standards 'Structuring Containerised Applications' <containerisation-standards.html#structuring-containerised-applications>`_ section.  The key concepts of treating run time containers as immutable and atomic applications where any application state is explicitly dealt with through connections to storage mechanisms, is key.
+Architecting software to run in an orchestration environment builds on the guidelines given in the :ref:`Container Standards 'Structuring Containerised Applications' <container-structure>` section.  The key concepts of treating run time containers as immutable and atomic applications where any application state is explicitly dealt with through connections to storage mechanisms, is key.
 
 The application should be broken into components that represent:
 
@@ -134,11 +133,11 @@ The application should be broken into components that represent:
 
 Above all, design software to scale horizontally through a UNIX process model so that individual components that have independent scaling characteristics can be replicated independently.
 
-The application interface should be through the standard `container run time <containerisation-standards.html#running-containerised-applications>`_ interface contract:
+The application interface should be through the standard :ref:`container run time <header-2-running-containerised-applications>` interface contract:
 
 * inputs come via a configurable Port
 * outputs go to a configurable network service
-* logging goes to stdout/stderr and syslog and uses JSON to enrich metadata (see `Container Standards 'Logging' <containerisation-standards.html#logging>`_)
+* logging goes to stdout/stderr and syslog and uses JSON to enrich metadata (see :ref:`Container Standards 'Logging' <container-logging>`)
 * metrics are advertised via a standard such as `Prometheus Exporters <https://prometheus.io/docs/instrumenting/writing_exporters/>`_, or emit metrics in a JSON format over TCP consumable by `ETL <https://en.wikipedia.org/wiki/Extract,_transform,_load>`_ services such as `LogStash <https://www.elastic.co/products/logstash>`_
 * configuration is passed in using environment variables, and simple configuration files (eg: ini, or key/value pairs).
 * POSIX compliant storage IO is facilitated by bind mounted volumes.
@@ -382,7 +381,7 @@ Let's consider two charts, A and B where A depends on B. The file Chart.yaml for
 
 .. _figure-subcharts-1:
 
-.. figure:: A_parent_B.png
+.. figure:: ../images/A-parent-B.png
    :scale: 60%
    :alt: A parent of B
    :align: center
@@ -423,7 +422,7 @@ Considering the `Module Views <https://confluence.skatelescope.org/display/SWSI/
 
 .. _figure-subcharts-2:
 
-.. figure:: simple_skampi.png
+.. figure:: ../images/simple-skampi.png
    :scale: 60%
    :alt: Simple skampi diagram
    :align: center
@@ -453,7 +452,7 @@ The chosen solution is an hybrid approach which enables a single level hierarchy
 
 .. _figure-subcharts-3:
 
-.. figure:: tmc_shared_charts.png
+.. figure:: ../images/tmc-shared-charts.png
    :scale: 60%
    :alt: Chart TMC with shared charts
    :align: center
@@ -466,7 +465,7 @@ Every dependency must have a common condition on it, so that it will be possible
 
 .. _figure-subcharts-4:
 
-.. figure:: tmc_oet_umbrella.png
+.. figure:: ../images/tmc-oet-umbrella.png
    :scale: 60%
    :alt: Umbrella chart with tmc and oet
    :align: center
@@ -479,7 +478,7 @@ The initial model will become:
 
 .. _figure-subcharts-5:
 
-.. figure:: umbrella_skampi.png
+.. figure:: ../images/umbrella-skampi.png
    :scale: 60%
    :alt: Umbrella chart for skampi
    :align: center
@@ -555,7 +554,7 @@ The following diagram shows the data model for the harmonized values file:
 
 .. _figure-subcharts-6:
 
-.. figure:: values_data_model.png
+.. figure:: ../images/values-data-model.png
    :scale: 100%
    :alt: Data model for the values file
    :align: center
@@ -2660,16 +2659,16 @@ For obs6, a StatefulSet that has nodeSelector:
 
 The result shows that of the two nodes (ks-master-0, and k8s-minion-0) in rack01, only k8s-minion-0 is available for these Pods.
 
-obs7 - add tolleration
+obs7 - add toleration
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Repeat obs6 as obs7 but add a tolleration to the NoSchedule taint:
+Repeat obs6 as obs7 but add a toleration to the NoSchedule taint:
 
 .. container:: toggle
 
     .. container:: header
 
-        node select rack01, with Tolleration to Taint NoSchedule
+        node select rack01, with Toleration to Taint NoSchedule
 
     .. code:: yaml
 
@@ -2677,7 +2676,7 @@ Repeat obs6 as obs7 but add a tolleration to the NoSchedule taint:
         apiVersion: apps/v1
         kind: StatefulSet
         metadata:
-          name: obs7-rack01-taint-and-tolleration
+          name: obs7-rack01-taint-and-toleration
           labels:
             group: scheduling-examples
             app: obs7
@@ -2697,7 +2696,7 @@ Repeat obs6 as obs7 but add a tolleration to the NoSchedule taint:
             spec:
               containers:
               - image: busybox:1.28.3
-                name: obs7-rack01-taint-and-tolleration
+                name: obs7-rack01-taint-and-toleration
                 command: ["sleep", "365d"]
               nodeSelector:
                 rack: rack01
@@ -2708,17 +2707,17 @@ Repeat obs6 as obs7 but add a tolleration to the NoSchedule taint:
                 effect: "NoSchedule"
 
 
-Now with the added a Tolleration to the Taint, we have the following:
+Now with the added a Toleration to the Taint, we have the following:
 
 
 .. code:: bash
 
     NAME                                READY STATUS RESTARTS AGE IP              NODE NOMINATED NODE
-    obs7-rack01-taint-and-tolleration-0 1/1   Running 0       33s 192.168.105.184 k8s-minion-0 <none>
-    obs7-rack01-taint-and-tolleration-1 1/1   Running 0       32s 192.168.72.27   k8s-master-0 <none>
-    obs7-rack01-taint-and-tolleration-2 1/1   Running 0       31s 192.168.105.182 k8s-minion-0 <none>
+    obs7-rack01-taint-and-toleration-0 1/1   Running 0       33s 192.168.105.184 k8s-minion-0 <none>
+    obs7-rack01-taint-and-toleration-1 1/1   Running 0       32s 192.168.72.27   k8s-master-0 <none>
+    obs7-rack01-taint-and-toleration-2 1/1   Running 0       31s 192.168.105.182 k8s-minion-0 <none>
 
-For a StatefulSet that has nodeSelector and Tollerations:
+For a StatefulSet that has nodeSelector and Tolerations:
 
 .. code:: yaml
 

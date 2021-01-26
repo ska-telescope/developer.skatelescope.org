@@ -1,5 +1,4 @@
-.. doctest-skip-all
-.. _code-guide:
+.. _containers:
 
 .. raw:: html
 
@@ -73,7 +72,7 @@ The **file-system magic** performed with pivot_root recasts the root of the file
 
 .. _figure-1-container-anatomy:
 
-.. figure:: container-anatomy.png
+.. figure:: ../images/container-anatomy.png
    :scale: 40%
    :alt: Basic anatomy of a container
    :align: center
@@ -114,6 +113,7 @@ Storage Integration
 
 External storage required at runtime by the containerised application is mapped into the container using bind mounting.  This takes a directory location that is already present on the host system, and maps it into the specified location within the container file-system tree.  This can be either files or directories.  The details of how specialised storage is made available to the container is abstracted by the Container Engine which should support the `CSI specification <https://github.com/container-storage-interface/spec>`_ for drivers integrating storage solutions.  This is the same mechanism used to share specialised devices eg: ``/dev/nvidia0`` into a container.
 
+.. _container-structure:
 
 Structuring Containerised Applications
 --------------------------------------
@@ -638,6 +638,7 @@ The primary use case for stdin is where the container is launched replacing the 
 
 stdout and stderr are sent straight to the Container Engine logging system.  In Docker, this is the `logging sub-system <https://docs.docker.com/config/containers/logging/configure/>`_ which combines the output for viewing purposes with ``docker logs ...``.  Because these logging systems are configurable, and can be syndicated into unviversal logging solutions, using stdout/stderr is used as a defacto standard for logging.
 
+.. _container-logging:
 
 Logging
 -------
@@ -769,4 +770,4 @@ Logging
 * Logging should be implemented so that  stdout/stderr is used, but is configurable to switch the emission to syslog
 * Logging to `stdout` or console so that the routing and handling of log messages can be handled by the container runtime (*dockerd*, *containerd*) or dynamic infrastructure platform (*Kubernetes*).
 * The SKA has adopted :doc:`logging-format` as the logging standard to be used by all SKA software.
-* Within the this standard, the message portion should be enriched with JSON structured data so that the universal logging solution integrated with the Container Engine and/or Orchestration solution can derive greater semantic meaning from the application logs
+* Within the this standard, the message portion should be enriched with JSON structured data so that the universal logging solution integrated with the Container Engine and/or Orchestration solution can derive greater semantic meaning from the application logs.

@@ -1,4 +1,4 @@
-.. _projects:
+.. _projects-team:
 
 Projects by Team
 ****************

@@ -1,5 +1,4 @@
-.. doctest-skip-all
-.. _code-guide:
+.. _codeguides:
 
 
 .. note::

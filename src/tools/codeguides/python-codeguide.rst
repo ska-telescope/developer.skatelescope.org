@@ -1,5 +1,4 @@
-.. doctest-skip-all
-.. _python-code-guide:
+.. _codeguides:
 
 .. todo::
     - Testing Guidelines
@@ -23,7 +22,7 @@ template was to demonstrate one way to meet the project guidelines and demonstra
 
 The recommended project layout is as follows:
 
-.. literalinclude:: python_source_tree.txt
+.. literalinclude:: python-source-tree.txt
 
 Interface and Dependencies
 ==========================

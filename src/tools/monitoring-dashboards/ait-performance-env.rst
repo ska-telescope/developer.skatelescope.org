@@ -1,11 +1,11 @@
-.. _ait:
+.. _monitoring-dashboards:
 
 EngageSKA cluster
 *****************
 
 Cluster specs
 =============
-.. image:: cluster.png
+.. image:: ../images/cluster.png
 
 Access the cluster
 ==================
@@ -24,7 +24,7 @@ email to Domingos Nunes (dfsn@ua.pt) with the knowledge from Piers Harding
 
 Access to the OpenStack platform (Virtualization)
 =================================================
-.. image:: openstack_login.png
+.. image:: ../images/openstack-login.png
 
 The OpenStack platform requires authentication in order to use it.
 
@@ -42,11 +42,11 @@ Virtual machine deployment
 --------------------------
 - At the sidebar, go to Project -> Compute -> Instances and click on the "Launch Instance" button:
 
-.. image:: openstack_project_compute_instance.png
+.. image:: ../images/openstack-project-compute-instance.png
 
 - At this stage a menu will pop-up and will ask to specify virtual machine characteristics, chose an name for virtual machine:
 
-.. image:: openstack_vm_chars.png
+.. image:: ../images/openstack-vm-chars.png
 
 - Select the Operating System you want your VM to have:
 
@@ -54,38 +54,38 @@ Virtual machine deployment
 so when you decide to delete the instance the volume will be also deleted and
 not occupy unnecessary space**
 
-.. image:: openstack_vm_os.png
-.. image:: openstack_vm_os2.png
+.. image:: ../images/openstack-vm-os.png
+.. image:: ../images/openstack-vm-os2.png
 
 - Select the flavor which you want your VM to have:
 
-.. image:: openstack_flavor.png
-.. image:: openstack_flavor2.png
+.. image:: ../images/openstack-flavor.png
+.. image:: ../images/openstack-flavor2.png
 
 - Select private network (int-net):
 
-.. image:: openstack_network.png
-.. image:: openstack_network2.png
+.. image:: ../images/openstack-network.png
+.. image:: ../images/openstack-network2.png
 
 - Create or use ssh key to enable ssh access to the VM:
 
-.. image:: openstack_sshkeys.png
+.. image:: ../images/openstack-sshkeys.png
 
 - In the end press on "Launch Instance" button at the bottom. This initiates the virtual machine deployment. It could take a while:
 
-.. image:: openstack_launch_instance.png
+.. image:: ../images/openstack-launch-instance.png
 
 - When the Power State become "Running", the virtual machine has been successfully deployed and is ready to be used:
 
-.. image:: openstack_running_intance.png
+.. image:: ../images/openstack-running-intance.png
 
 - Since the VM is deployed inside private network you will need to associate Floating IP from your network have the access:
 
-.. image:: openstack_running_intance.png
-.. image:: openstack_floating_choose.png
-.. image:: openstack_floating_add.png
-.. image:: openstack_floating_add2.png
-.. image:: openstack_floating_ip.png
+.. image:: ../images/openstack-running-intance.png
+.. image:: ../images/openstack-floating-choose.png
+.. image:: ../images/openstack-floating-add.png
+.. image:: ../images/openstack-floating-add2.png
+.. image:: ../images/openstack-floating-ip.png
 
 - Now using any SSH client connect to the instance through VPN using the Floating IP address. The login user is **ubuntu** when using the Ubuntu base images and **centos** for the CentOS ones.
 
@@ -94,8 +94,8 @@ Docker machine deployment
 Official docker-machine documentation:
 https://docs.docker.com/machine/overview/
 
-1. Instalation
-^^^^^^^^^^^^^^
+1. Installation
+^^^^^^^^^^^^^^^
 Guide: https://docs.docker.com/machine/install-machine/
 
 2. Configuration
