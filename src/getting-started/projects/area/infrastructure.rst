@@ -1,4 +1,4 @@
-.. _area:
+.. _infrastructure:
 
 Software Infrastructure Projects
 ********************************

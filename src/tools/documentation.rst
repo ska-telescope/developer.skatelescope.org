@@ -62,7 +62,7 @@ Every project shall use the same ``docs`` folder as a starting point for assembl
 own documentation.
 
 Sphinx can be used to generate text documents such as this portal, but it also provides 
-capabilities to automatically extract and parse code documentation, or docstrings. Refer to the :ref:`Python Coding Guidelines <python-code-guide>` for more information.
+capabilities to automatically extract and parse code documentation, or docstrings. Refer to the :doc:`Python Coding Guidelines </tools/codeguides/python-codeguide>` for more information.
 
 Extracting documentation from code
 ==================================

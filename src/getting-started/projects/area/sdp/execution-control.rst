@@ -1,4 +1,3 @@
-.. _sdp:
 
 Execution Control
 -----------------

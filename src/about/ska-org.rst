@@ -1,4 +1,3 @@
-.. _about:
 
 The SKA Organisation
 ********************

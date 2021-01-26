@@ -1,4 +1,3 @@
-.. _containers:
 
 A Quick Introduction to Kubernetes
 ==================================

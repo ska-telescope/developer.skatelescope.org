@@ -1,4 +1,3 @@
-.. _policies:
 
 Definition of Done
 ==================

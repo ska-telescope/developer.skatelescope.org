@@ -1,4 +1,3 @@
-.. _policies:
 
 SKA Code of Conduct
 -------------------

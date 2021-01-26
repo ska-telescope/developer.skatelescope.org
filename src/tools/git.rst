@@ -1,4 +1,4 @@
-.. _tools:
+.. _git:
 
 Working with git
 ----------------

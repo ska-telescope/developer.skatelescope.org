@@ -1,4 +1,4 @@
-.. _about:
+.. _follow-us: 
 
 Follow us on social media
 =========================

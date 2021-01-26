@@ -1,4 +1,3 @@
-.. _containers:
 
 .. raw:: html
 
@@ -2240,7 +2239,7 @@ Containers should be designed to cleanly crash - the main process should exit on
 Logging
 -------
 
-The SKA has adopted :doc:`logging-format` as the logging standard to be used by all SKA software.  This should be considered a base line standard and will be decorated with additional data by an infrastructure wide integrated logging solution (eg: `ElasticStack <https://www.elastic.co/products/>`_).  To ensure compliance with this, all containers must log to ``stdout/stderr`` and/or be configured to log to ``syslog``.  Connection to ``syslog`` should be configurable using :ref:`standard container mechanisms  <managing-configuration>` such as mounted files (handled by ``ConfigMaps``) or environment variables.  This will ensure that any deployed application can be automatically plugged into the infrastructure wide logging and monitoring solution.  A simple way to achieve this is to use a logging client library that is dynamically configurable for output destination such as ``import logging`` for ``Python``.
+The SKA has adopted :doc:`/tools/logging-format` as the logging standard to be used by all SKA software.  This should be considered a base line standard and will be decorated with additional data by an infrastructure wide integrated logging solution (eg: `ElasticStack <https://www.elastic.co/products/>`_).  To ensure compliance with this, all containers must log to ``stdout/stderr`` and/or be configured to log to ``syslog``.  Connection to ``syslog`` should be configurable using :ref:`standard container mechanisms  <managing-configuration>` such as mounted files (handled by ``ConfigMaps``) or environment variables.  This will ensure that any deployed application can be automatically plugged into the infrastructure wide logging and monitoring solution.  A simple way to achieve this is to use a logging client library that is dynamically configurable for output destination such as ``import logging`` for ``Python``.
 
 Metrics
 -------

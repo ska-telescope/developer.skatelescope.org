@@ -1,4 +1,4 @@
-.. _projects:
+.. _area:
 
 Projects listed by area
 ***********************

@@ -1,4 +1,3 @@
-.. _tools:
 
 EngageSKA: CI/CD & Testing Infrastructure
 *****************************************

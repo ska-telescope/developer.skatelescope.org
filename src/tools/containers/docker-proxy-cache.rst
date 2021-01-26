@@ -1,4 +1,3 @@
-.. _containers:
 
 .. raw:: html
 

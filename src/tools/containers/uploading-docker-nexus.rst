@@ -1,4 +1,3 @@
-.. _containers:
 
 .. _registry: https://nexus.engageska-portugal.pt/#browse/search/docker
 

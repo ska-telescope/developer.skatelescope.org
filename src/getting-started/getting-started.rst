@@ -76,7 +76,7 @@ Information about the SKA
 
 * How does the SKA operate? How is it meant to work?
  
-  * Read `about the SKA Operational Programme<https://confluence.skatelescope.org/download/attachments/113803312/SKA_Programmes_Induction_v2020.1.pdf?version=1&modificationDate=1595231309607&api=v2>`_.
+  * Read `about the SKA Operational Programme <https://confluence.skatelescope.org/download/attachments/113803312/SKA_Programmes_Induction_v2020.1.pdf?version=1&modificationDate=1595231309607&api=v2>`_.
 
 * What is Radio Astronomy?
  

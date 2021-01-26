@@ -31,7 +31,7 @@ To do that the option must be enabled:
 The EngageSKA cluster located at the Datacenter of Institute of Telecommunication (IT) in Aveiro provides some virtual machines available adding the tag "engageska" or "docker-executor" as shown `here <https://gitlab.com/ska-telescope/templates/ska-python-skeleton/>`__.
 
 .. note::
-  In order to have the SKA runners available, a project *must* be under the `SKA Telescope <https://gitlab.com/ska-telescope/>`_ group. Currently projects can only be added to the SKA group by the System Team - refer to our guide to :ref:`create-new-project`.
+  In order to have the SKA runners available, a project *must* be under the `SKA Telescope <https://gitlab.com/ska-telescope/>`_ group. Currently projects can only be added to the SKA group by the System Team - refer to our guide to :doc:`/getting-started/projects/create-new-project`.
 
 The typically used SKA CI Pipeline stages are being documented as they are developed and improved. The currently available documentation on this is discussed under :ref:`ci-pipeline-stages`. The following section deals with the required CI metrics that need to be included in the pipeline.
 
@@ -220,7 +220,7 @@ Build
 """""
 The build stage packages/compiles the software project into distributable units of software.
 The project will be checked out at the git commit hash. This specific version of the code must then be built. Failing the build stage will stop the further steps from being executed. Where possible Semantic Versioning should be used.
-To create a release a git tag should be used. See :doc:`/tools/software-release-package-procedure` for details. 
+To create a release a git tag should be used. See :doc:`/tools/software-package-release-procedure` for details. 
 
 Input
   Git commit hash
@@ -241,6 +241,7 @@ Input
 
 Output
   Quality analysis results in JUnit format.
+
 .. _tests:
 
 Test

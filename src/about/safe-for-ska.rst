@@ -1,4 +1,3 @@
-.. _about:
 
 SAFe for SKA
 ************
