@@ -6,6 +6,7 @@ EngageSKA cluster
 Cluster specs
 =============
 .. image:: ../images/cluster.png
+  :alt: Rack diagram: whole cluster has Compute:232C/464T, Memory:2.5TB RAM, SSD: 21.76TB, HDD: 33.60TB, 10GB top of rack switch with redundancy. Two compute node types: one with 512GB RAM, the other with 128GB RAM, both with 2x Intel Xeon E5-2650 chips and 2x 400GB SSD in RAID 0, and 2x 10GB and 2x 1GB links. One Controller node with redundancy, with 64GB RAM and 4x 600GB SAS in RAID 4, with the same links as the compute nodes. Two flavours of storage node: SSD and SAS.
 
 Access the cluster
 ==================
@@ -25,6 +26,7 @@ email to Domingos Nunes (dfsn@ua.pt) with the knowledge from Piers Harding
 Access to the OpenStack platform (Virtualization)
 =================================================
 .. image:: ../images/openstack-login.png
+  :alt: Openstack login dialog box. Dialog boxes are labelled in Portuguese.
 
 The OpenStack platform requires authentication in order to use it.
 
@@ -43,10 +45,11 @@ Virtual machine deployment
 - At the sidebar, go to Project -> Compute -> Instances and click on the "Launch Instance" button:
 
 .. image:: ../images/openstack-project-compute-instance.png
-
+  :alt: OpenStack Horizon interface, with the left-hand sidebar highlighted, and the "Launch Instance" button highlighted in blue.
 - At this stage a menu will pop-up and will ask to specify virtual machine characteristics, chose an name for virtual machine:
 
 .. image:: ../images/openstack-vm-chars.png
+  :alt: OpenStack Launch Instance dialog box
 
 - Select the Operating System you want your VM to have:
 
@@ -55,37 +58,58 @@ so when you decide to delete the instance the volume will be also deleted and
 not occupy unnecessary space**
 
 .. image:: ../images/openstack-vm-os.png
+   :alt: OpenStack Launch Instance dialog box, on the Source tab, highlighting in red the Delete Volume on Instance Delete buttons.
+
 .. image:: ../images/openstack-vm-os2.png
+  :alt: Openstack Launch Instance dialog box, on the Source tab, showing the Delete Volume on Instance Delete button set to Yes, and the CentOS7 OS allocated.
 
 - Select the flavor which you want your VM to have:
 
 .. image:: ../images/openstack-flavor.png
+  :alt: OpenStack Launch Instance dialog box, showing the Flavor tab
+
 .. image:: ../images/openstack-flavor2.png
+  :alt: OpenStack Launch Instance dialog box, showing the Flavor tab, with a Flavor selected.
 
 - Select private network (int-net):
 
 .. image:: ../images/openstack-network.png
+  :alt: OpenStack Launch Instance dialog box, showing the Networks tab
+
 .. image:: ../images/openstack-network2.png
+  :alt: OpenStack Launch Instance dialog box, showing the int_net network selected.
 
 - Create or use ssh key to enable ssh access to the VM:
 
 .. image:: ../images/openstack-sshkeys.png
+  :alt:  OpenStack Launch Instance dialog box, showing the Key Pair tab
 
 - In the end press on "Launch Instance" button at the bottom. This initiates the virtual machine deployment. It could take a while:
 
 .. image:: ../images/openstack-launch-instance.png
+  :alt: OpenStack Launch Instance dialog box, with the "Launch Instance" button highlighted in red.
 
 - When the Power State become "Running", the virtual machine has been successfully deployed and is ready to be used:
 
 .. image:: ../images/openstack-running-intance.png
+  :alt: OpenStack Instances tab, showing the newly-created instance
 
 - Since the VM is deployed inside private network you will need to associate Floating IP from your network have the access:
 
 .. image:: ../images/openstack-running-intance.png
+  :alt: OpenStack Instances tab, showing the newly-created instance, with the dropdown box to the right of the instance status line highlighted
+
 .. image:: ../images/openstack-floating-choose.png
+  :alt: OpenStack instance dropdown, with the "Associate Floating IP" option highlighted in red
+
 .. image:: ../images/openstack-floating-add.png
+  :alt: OpenStack Manage Floating IP Associations dialog box
+
 .. image:: ../images/openstack-floating-add2.png
+  :alt: OpenStack Manage Floating IP Associations dialog box with all options selected. The "Associate" button is highlighted in red
+
 .. image:: ../images/openstack-floating-ip.png
+  :alt: OpenStack Instances tab, highlighting with red underline the newly-associated IP address.
 
 - Now using any SSH client connect to the instance through VPN using the Floating IP address. The login user is **ubuntu** when using the Ubuntu base images and **centos** for the CentOS ones.
 

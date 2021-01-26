@@ -47,7 +47,7 @@ the Jira issue, merge requests will be called “pull requests”).
 
 .. figure:: media/jira-dev-panel.png
    :scale: 60%
-   :alt: Example Jira Development Panel
+   :alt: Example Jira Development Panel, on the right of the usual issue screen, showing the number of branches, commits and pull requests (with status)
    :align: center
    :figclass: figborder
 

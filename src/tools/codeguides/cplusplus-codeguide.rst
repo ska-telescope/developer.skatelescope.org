@@ -376,6 +376,7 @@ locally that all the existing code built - after the merge request is started
 GitLab gives the following report:
 
 .. image:: ../images/merge-request.png
+  :alt: GitLab merge request page
 
 You can see that there is not much detail - but the tests results are parsed and any differences are noted.
 
@@ -405,6 +406,7 @@ Note that the atifacts step this allows the results to be accessed via the pipel
 
 
 .. image:: ../images/coverage.png
+  :alt: GCC code coverage report
 
 But you can access the artifact from the pipeline.
 

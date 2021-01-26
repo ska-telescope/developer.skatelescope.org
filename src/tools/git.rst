@@ -288,7 +288,7 @@ There are more additional settings in GitLab that only project maintainers could
 
 .. figure:: media/gitlab-mergerequest-settings.png
    :scale: 80%
-   :alt: GitLab Merge Request Settings
+   :alt: GitLab Merge Request Settings, showing the default settings for SKA Organisation projects
    :align: center
    :figclass: figborder
 
