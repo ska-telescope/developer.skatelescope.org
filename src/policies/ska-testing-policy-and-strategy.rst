@@ -316,6 +316,7 @@ facing, hence quadrant Q1 (bottom left) and functional acceptance tests, in Q2 (
    :align: center
    :figclass: figborder
    :alt: A 4x4 matrix. The top row is labelled "Business facing". Bottom row labelled "Technology facing". Left column labelled "Support programming". Right column labelled "Critique Project". Top left quadrant labeled "Automated. Functional Acceptance tests". Top right quadrant labelled "Manual. Showcases; Usability testing; Exploratory tests". Bottom left quadrant labelled: "Automated. Unit tests; Integration tests; System tests". Bottom right quadrant labelled: "Manual/Automated. Nonfunctional acceptance tests (capacity, security, ...).
+
 Figure 1: Test quadrants, picture taken from (Humble and Farley, Continuous Delivery, 2011).
 
 

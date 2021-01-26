@@ -46,6 +46,7 @@ Virtual machine deployment
 
 .. image:: ../images/openstack-project-compute-instance.png
   :alt: OpenStack Horizon interface, with the left-hand sidebar highlighted, and the "Launch Instance" button highlighted in blue.
+
 - At this stage a menu will pop-up and will ask to specify virtual machine characteristics, chose an name for virtual machine:
 
 .. image:: ../images/openstack-vm-chars.png
