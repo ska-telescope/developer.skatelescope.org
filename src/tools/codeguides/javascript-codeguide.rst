@@ -1,5 +1,3 @@
-.. _codeguides:
-
 
 ********************************
 SKA Javascript Coding Guidelines

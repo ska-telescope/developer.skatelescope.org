@@ -1,4 +1,3 @@
-.. _codeguides:
 
 ************************
 C++ Coding Guidelines

@@ -1,5 +1,3 @@
-.. _codeguides:
-
 .. todo::
     - Testing Guidelines
     - Writing Command-Line Scripts
