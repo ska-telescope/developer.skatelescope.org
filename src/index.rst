@@ -220,6 +220,7 @@ Incident Management
 
 The incident management workflow is used to guide teams in dealing with anomolous conditions that lead to some form of service outage, unexpected system behaviour or degraded system performance:
 
+- :doc:`policies/incident-management`
 
 .. RECOMMENDED READING SECTION ==================================================
 
