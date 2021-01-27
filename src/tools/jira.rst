@@ -25,7 +25,7 @@ If you mention that **a commit or MR ‘closes’, ‘resolves’, or ‘fixes�
 
 Also, You can do other things like adding comments to Jira issues, time-tracking and transitioning Jira issue states directly from GitLab commits. You can find more about it in `Jira Smart Commits`_.
 
-*More info could be found at* |gitlab_jira_integration_link|_
+*More info could be found at* |gitlab-jira-integration-link|_
 
 Jira to GitLab Integration
 --------------------------
@@ -45,19 +45,19 @@ the Jira issue, merge requests will be called “pull requests”).
 
 .. _figure-1-jira-dev-panel:
 
-.. figure:: media/jira_dev_panel.png
+.. figure:: media/jira-dev-panel.png
    :scale: 60%
-   :alt: Example Jira Development Panel
+   :alt: Example Jira Development Panel, on the right of the usual issue screen, showing the number of branches, commits and pull requests (with status)
    :align: center
    :figclass: figborder
 
    Jira Development Panel.
 
-*More info could be found at* |jira_development_panel_link|_
+*More info could be found at* |jira-development-panel-link|_
 
-.. _gitlab_jira_integration_link: https://docs.gitlab.com/ee/user/project/integrations/jira.html
-.. |gitlab_jira_integration_link| replace:: *GitLab to Jira Integration*
+.. _gitlab-jira-integration-link: https://docs.gitlab.com/ee/user/project/integrations/jira.html
+.. |gitlab-jira-integration-link| replace:: *GitLab to Jira Integration*
 .. _Jira Smart Commits: https://confluence.atlassian.com/fisheye/using-smart-commits-960155400.html
 .. _disabled: https://docs.gitlab.com/ee/user/project/integrations/jira.html#disabling-comments-on-jira-issues
-.. _jira_development_panel_link: https://docs.gitlab.com/ee/integration/jira_development_panel.html
-.. |jira_development_panel_link| replace:: *Jira to GitLab Integration* 
+.. _jira-development-panel-link: https://docs.gitlab.com/ee/integration/jira_development_panel.html
+.. |jira-development-panel-link| replace:: *Jira to GitLab Integration* 
