@@ -15,7 +15,7 @@
 SKA telescope developer portal
 ------------------------------
 
-Welcome to the `Square Kilometre Array <http://www.skatelescope.org>`- software
+Welcome to the `Square Kilometre Array <http://www.skatelescope.org>`_ software
 documentation portal. Whether you are a developer involved in SKA or you are
 simply one of our many users, all of our software processes and projects are
 documented or linked to in this portal.
@@ -55,7 +55,7 @@ This section is about getting you up and running. It contains the onboarding mat
 - :doc:`getting-started/devenv-setup`
 - :doc:`getting-started/projects`
 
-A list of the tools we are using to collaborate, together with guidance on how to use them can be found at this confluence page: `SKA Guidelines to Remote Working <https://confluence.skatelescope.org/display/SKAIT/SKA+Guidelines+to+Remote+Working>`- (requires an SKA Confluence account).
+A list of the tools we are using to collaborate, together with guidance on how to use them can be found at this confluence page: `SKA Guidelines to Remote Working <https://confluence.skatelescope.org/display/SKAIT/SKA+Guidelines+to+Remote+Working>`_ (requires an SKA Confluence account).
 
 
 .. DEVELOPMENT TOOLS SECTION ==================================================
@@ -209,7 +209,7 @@ Fundamental SKA Software & Hardware Description Language Standards
 ==================================================================
 
 These standards underpin all SKA software development. The canonical copy is
-`held in eB <https://ska-aw.bentley.com/SKAProd/Search/QuickLink.aspx?n=SKA-TEL-SKO-0000661&t=3&d=&sc=Global&i=view>`-,
+`held in eB <https://ska-aw.bentley.com/SKAProd/Search/QuickLink.aspx?n=SKA-TEL-SKO-0000661&t=3&d=&sc=Global&i=view>`_,
 but the essential information is here:
 
 - :doc:`policies/fundamental-sw-requirements`

@@ -3,12 +3,15 @@
 Contribute to the developer portal
 **********************************
 
-# Sphinx documentation
+Sphinx documentation
+====================
 
 
-## Quick start 
+Quick start 
+-----------
 
-### Direct Contribution
+Direct Contribution
+~~~~~~~~~~~~~~~~~~~
 
 You can use the `Edit on GitLab` (TODO: need to add a picture!) button to directly contribute to a page. After logging in, this will open GitLab's edit page window in which depending on your permissions:
 
@@ -18,7 +21,8 @@ You can use the `Edit on GitLab` (TODO: need to add a picture!) button to direct
 Then, you can follow the Merge Request page for status updates, make new contributions directly or by setting up your local development as described below.
 
 
-### Static build
+Static build
+~~~~~~~~~~~~
 
 
 First install dependencies:
