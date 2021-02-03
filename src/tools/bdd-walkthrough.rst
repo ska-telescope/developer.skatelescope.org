@@ -1,7 +1,7 @@
 BDD Walkthrough
 ***************
 
-This is a small adaptation of material by Giorgio Brahnik. For background on how BDD tests work, please read :doc:`bdd-test-context`.
+This is a small adaptation of material by Giorgio Brajnik. For background on how BDD tests work, please read :doc:`bdd-test-context`.
 
 * Identify an SKA requirement. This may be an existing requirement, such as an interface requirement, or, if you are working on system verification, you may create a new requirement, such as `VTS-221 <https://jira.skatelescope.com/browse/VTS-221/>`_.
    
@@ -28,7 +28,7 @@ Then provide the test details:
       * Cucumber type: scenario
       * Cucmber scenario: write your Gherkin (given, when, then) steps here.
 
-   * Link your test to the relevent Test Set or Test Sets. If you wish to link an existing test to a new Test Set, that's encouraged, and yuo can skip the test creation steps.
+   * Link your test to the relevent Test Set or Test Sets. If you wish to link an existing test to a new Test Set, that's encouraged, and you can skip the test creation steps.
 
 * Once all the tests for the Test Set are defined, you can export the ``.feature`` file. 
    * Find the relevant Test Set.
@@ -46,3 +46,6 @@ Then provide the test details:
    * Define a pytest fixture. This creates an empty dictionary that is used to communicate data between steps. 
    * Annotate the test case with the relevant scenario.
    * Write your tests, annotating the methods with the Gherkin keywords. These methods can be reused by your tests (e.g. the same "given" step can be reused by several tests).
+
+.. note::
+   We strongly recommend only using the JIRA integration on repositories such as skampi, that do a lot of integration. We further recommend only using the JIRA integration on the main/master branch. If you like the BDD testing style, you can just use ``pytest-bdd`` and get test outcomes as part of the usual CI/CD pipeline. 
