@@ -465,7 +465,7 @@ While it is customary for th Docker community at large to support image variants
 .. |python:<version>-slim| replace:: ``python:<version>-slim``
 .. _python:<version>-slim: https://hub.docker.com/_/python/
 
-Within the SKA hosted Continuous Integration infrastructure, development and test images will be periodically purged from the `repository <https://nexus.engageska-portugal.pt/>`_ after N months, leaving the last version built.  All production images are kept indefinitely.
+Within the SKA hosted Continuous Integration infrastructure, development and test images will be periodically purged from the `repository <https://artefact.skatelescope.org/>`_ after N months, leaving the last version built.  All production images are kept indefinitely.
 
 This way anyone who looks at the image repository will have an idea of the context of a particular image version and can trace it back to the source.
 
@@ -483,7 +483,7 @@ Debuging tools, profilers, and any tools not essential to the running of the tar
 Image Storage
 -------------
 
-All images should be stored in a Docker v2 Registry API compliant repository, protected by HTTPS.  The SKA supported and hosted repositories are based on the `Nexus Container Registry <https://help.sonatype.com/repomanager3/private-registry-for-docker>`_ available at `nexus.engageska-portugal.pt <https://nexus.engageska-portugal.pt/#browse/search/docker>`_ .
+All images should be stored in a Docker v2 Registry API compliant repository, protected by HTTPS.  The SKA supported and hosted repositories are based on the `Central Artefact Repository Container Registry <https://help.sonatype.com/repomanager3/private-registry-for-docker>`_ available at `artefact.skatelescope.org <https://artefact.skatelescope.org/#browse/search/docker>`_ .
 
 All containerised software used within the SKA, will be served out of the hosted repository service.  This will ensure that images are quality assured and always remain available beyond the maintenance life-cycle of third party and COTs software.
 
@@ -495,14 +495,14 @@ All images pushed to the SKA hosted repository must be signed.  This will ensure
 .. code:: bash
 
     $docker trust inspect --pretty \
-       nexus.engageska-portugal.pt/ska-docker/ska-python-runtime:1.2.3
+       artefact.skatelescope.org/ska-tango-images/ska-python-runtime:1.2.3
 
-    Signatures for nexus.engageska-portugal.pt/ska-docker/ska-python-runtime:1.2.3
+    Signatures for artefact.skatelescope.org/ska-tango-images/ska-python-runtime:1.2.3
 
     SIGNED TAG          DIGEST                                                             SIGNERS
     1.2.3               3f8bb7c750e86d031dd14c65d331806105ddc0c6f037ba29510f9b9fbbb35960   (Repo Admin)
 
-    Administrative keys for nexus.engageska-portugal.pt/ska-docker/ska-python-runtime:1.2.3
+    Administrative keys for artefact.skatelescope.org/ska-tango-images/ska-python-runtime:1.2.3
 
       Repository Key:	abdd8255df05a14ddc919bc43ee34692725ece7f57769381b964587f3e4decac
       Root Key:	a1bbec595228fa5fbab2016f6918bbf16a572df61457c9580355002096bb58e1

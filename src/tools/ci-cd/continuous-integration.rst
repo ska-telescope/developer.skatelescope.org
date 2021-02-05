@@ -23,7 +23,7 @@ Using a specific executor
 -------------------------
 
 The pipeline by default will run with a shared runner made available from GitLab.
-It is also possible to assign specific SKA runners to the project (by adding the `tags <https://docs.gitlab.com/ee/ci/yaml/README.html#tags>`__). 
+It is also possible to assign specific SKA runners to the project (by adding the `tags <https://docs.gitlab.com/ee/ci/yaml/README.html#tags>`__).
 To do that the option must be enabled:
 
 |image6|
@@ -75,8 +75,8 @@ These metrics reports must pass the following requirements:
   <?xml version="1.0" encoding="UTF-8"?>
   <coverage branch-rate="0" branches-covered="0" branches-valid="0" complexity="0" line-rate="0.6861" lines-covered="765" lines-valid="1115" timestamp="1574079100055" version="4.5.4">
 
-**Note:** To always ensure these requirements are fulfilled, you should copy/move the files 
-in the `after_script` part of your job definition instead of `script` part after running tests etc. 
+**Note:** To always ensure these requirements are fulfilled, you should copy/move the files
+in the `after_script` part of your job definition instead of `script` part after running tests etc.
 since if the tests/linting fails then the files won't be copied. For example:
 
 .. code-block:: yaml
@@ -220,7 +220,7 @@ Build
 """""
 The build stage packages/compiles the software project into distributable units of software.
 The project will be checked out at the git commit hash. This specific version of the code must then be built. Failing the build stage will stop the further steps from being executed. Where possible Semantic Versioning should be used.
-To create a release a git tag should be used. See :doc:`/tools/software-package-release-procedure` for details. 
+To create a release a git tag should be used. See :doc:`/tools/software-package-release-procedure` for details.
 
 Input
   Git commit hash
@@ -324,10 +324,10 @@ Output
   The generated HTML containing the latest documentation.
 
 
-Using environment variables in the CI pipeline to upload to Nexus
-------------------------------------------------------------------
+Using environment variables in the CI pipeline to upload to the Central Artefact Repository
+-------------------------------------------------------------------------------------------
 
-There are several environment variables available in the CI pipeline that should be used when uploading Python packages and Docker images to Nexus.
+There are several environment variables available in the CI pipeline that should be used when uploading Python packages and Docker images to the Central Artefact Repository.
 This will make these packages available to the rest of the SKA project.
 This section describes some of these variables.
 A :ref:`full list <gitlab-variables>` is also available.
@@ -335,11 +335,11 @@ A :ref:`full list <gitlab-variables>` is also available.
 Python Modules
 ______________
 
-The Nexus PYPI destination as well as a username and password is available.
+The Central Artefact Repository PYPI destination as well as a username and password is available.
 For a reference implementation see the `lmc-base-classes .gitlab-ci.yaml <https://gitlab.com/ska-telescope/lmc-base-classes/blob/master/.gitlab-ci.yml>`_
 
 Note the following:
- - The Nexus `PYPI_REPOSITORY_URL <https://nexus.engageska-portugal.pt/repository/pypi/>`_ is where the packages will be uploaded to.
+ - The Central Artefact Repository `CAR_PYPI_REPOSITORY_URL <https://artefact.skatelescope.org/repository/pypi-internal/>`_ is where the packages will be uploaded to.
  - `twine` uses the local environment variables (`TWINE_USERNAME`, `TWINE_PASSWORD`) to authenticate the upload, therefore they are defined in the `variables` section.
 
 .. code-block:: yaml
@@ -349,13 +349,13 @@ Note the following:
     tags:
       - docker-executor
     variables:
-      TWINE_USERNAME: $TWINE_USERNAME
-      TWINE_PASSWORD: $TWINE_PASSWORD
+      TWINE_USERNAME: $CAR_PYPI_USERNAME
+      TWINE_PASSWORD: $CAR_PYPI_PASSWORD
     script:
       # check metadata requirements
       - scripts/validate-metadata.sh
       - pip install twine
-      - twine upload --repository-url $PYPI_REPOSITORY_URL dist/*
+      - twine upload --repository-url $CAR_PYPI_REPOSITORY_URL dist/*
     only:
       variables:
         - $CI_COMMIT_MESSAGE =~ /^.+$/ # Confirm tag message exists
@@ -366,21 +366,22 @@ Note the following:
 Docker images
 _____________
 
-The Nexus Docker registery host and user is available.
-For a reference implementation see the `SKA docker gitlab-ci.yml <https://gitlab.com/ska-telescope/ska-docker/blob/master/.gitlab-ci.yml>`_
+The Central Artefact Repository Docker registery host and user is available.
+For a reference implementation see the `SKA docker gitlab-ci.yml <https://gitlab.com/ska-telescope/ska-tango-images/blob/master/.gitlab-ci.yml>`_
 
 Note the following:
- - The `DOCKER_REGISTRY_USER` corresponds to the folder where the images are uploaded, hence the `$DOCKER_REGISTRY_FOLDER` is used.
+ - The `DOCKER_REGISTRY_USER` corresponds to the folder where the images are uploaded, hence the `$CAR_OCI_REGISTRY_USERNAME` is used.
 
 .. code-block:: yaml
 
   script:
   - cd docker/tango/tango-cpp
-  - make DOCKER_BUILD_ARGS="--no-cache" DOCKER_REGISTRY_USER=$DOCKER_REGISTRY_FOLDER DOCKER_REGISTRY_HOST=$DOCKER_REGISTRY_HOST build
-  - make DOCKER_REGISTRY_USER=$DOCKER_REGISTRY_FOLDER DOCKER_REGISTRY_HOST=$DOCKER_REGISTRY_HOST push
+  - echo ${CAR_OCI_REGISTRY_PASSWORD} | docker login --username ${CAR_OCI_REGISTRY_USERNAME} --password-stdin ${CAR_OCI_REGISTRY_HOST}
+  - make DOCKER_BUILD_ARGS="--no-cache" DOCKER_REGISTRY_USER=$CAR_OCI_REGISTRY_USERNAME DOCKER_REGISTRY_HOST=$CAR_OCI_REGISTRY_HOST build
+  - make DOCKER_REGISTRY_USER=$CAR_OCI_REGISTRY_USERNAME DOCKER_REGISTRY_HOST=$CAR_OCI_REGISTRY_HOST push
 
 Kubernetes based Runners Architecture
-------------------------------------------------------------------
+-------------------------------------
 GitLab runners are orchestrated by Kubernetes cluster. They could be deployed to any Kubernetes clusters with following the instructions on deploy-gitlab-runners repository. The main architecture is illustrated below.
 
 |runners-on-kubernetes|
@@ -419,7 +420,7 @@ Compose is a commonly used tool for defining and running multi-container Docker 
 #.  Define the services that make up your app in :code:`docker-compose.yml`.
 #.  Run :code:`docker-compose up`.
 
-The SKA is currently promoting migration to Kubernetes as the container orchestrator, and this requires for applications developed with docker-compose to be converted into the new runner infrastructure. In principle there is no need to make any changes if one is not using docker-compose. 
+The SKA is currently promoting migration to Kubernetes as the container orchestrator, and this requires for applications developed with docker-compose to be converted into the new runner infrastructure. In principle there is no need to make any changes if one is not using docker-compose.
 
 The conversion tool allowing the migration is Kompose. A detailed guide for changing from docker-compose to kubernetes can be found at https://kubernetes.io/docs/tasks/configure-pod-container/translate-compose-kubernetes/
 
