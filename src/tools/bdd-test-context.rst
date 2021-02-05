@@ -1,7 +1,7 @@
 BDD testing guide
 *****************
 
-This is based off work originally done by Giorgio Brajnik and Ross Lipscombe. It focuses on the architecture of our BDD system, and the context of BDD testing. For a checklist to use when working with BDD tests, see :doc:`bdd-walkthrough`.
+This is based off work originally done by Giorgio Brajnik and Ross Lipscomb. It focuses on the architecture of our BDD system, and the context of BDD testing. For a checklist to use when working with BDD tests, see :doc:`bdd-walkthrough`.
 
 
 What is BDD testing?
@@ -9,7 +9,7 @@ What is BDD testing?
 
 BDD stands for Behaviour Driven Development. Thus BDD testing describe a way of testing that concentrates on describing and evaluating how the System Under Test (SUT) behaves in response to specified inputs. BDD testing typically focuses on component interactions or other system-level tests. (For more on the different levels of testing, see :doc:`/policies/ska-testing-policy-and-strategy`).
 
-BDD tests are defined using simple natural language formulations, so BDD tests can be understood by people who aren't programmers (though these people will typically have a good understanding of the domain that's being tested). Tests are defined using "given", "when", and "then" steps; this uses the Gherkin specification language. We'll look at a short example::
+BDD tests are defined using simple natural language formulations, so BDD tests can be understood by people who aren't programmers (though these people will typically have a good understanding of the domain that's being tested). Tests are defined using "given", "when", and "then" steps; this uses the `Gherkin specification language <https://cucumber.io/docs/gherkin/reference/>`_. We'll look at a short example::
   
    Given the SKA Community Confluence website
    And I am not logged in
@@ -28,7 +28,7 @@ Why do BDD tests for the SKA?
 
 The SKA does not just need software to work. There is a vast amount of hardware to run, and the software and hardware must be integrated, as well as the various software components. The SKA has a large number of formal requirements, which specify what the telescope is and what it should do. We have L1 requirements on the whole telescope or observatory, L2 requirements on the various sub-systems, interface requirements on the interfaces between the sub-systems, and verification requirements, which help demonstrate the correct operation of the SKA telescopes. 
 
-BDD tests, with their plain language description, thus can provide living documentation of the current capabilities of the system. BDD tests can help provide a traceability report, which fits in well with an engineering culture that needs to meet formal requirements. Because we can integrate BDD tests into our standard software CI/CD pipelines, we can run these tests automatically, and thus verify new features and also provide assurance that that there's been no regression. We can use JIRA to collate the output of the CI/CD pipeline, and to link tests to requirements.
+BDD tests, with their plain language description, thus can provide living documentation of the current capabilities of the system. BDD tests can help provide a traceability report, which fits in well with an engineering culture that needs to meet formal requirements. Because we can integrate BDD tests into our standard software CI/CD pipelines, we can run these tests automatically, and thus verify new features and also provide assurance that there's been no regression. We can use JIRA to collate the output of the CI/CD pipeline, and to link tests to requirements.
 
 BDD JIRA integration
 --------------------
@@ -45,7 +45,7 @@ We start with the ICDs (Interface Control Documents) and requirements that were 
 
    A VTS ticket, showing the test status of the verification requirement.
 
-In JIRA, we define a Gherkin test (using the Given, When, Then steps) in the `XTP project <https://jira.skatelescope.org/XTP/issues/>`_. We then link it to the requirement (explained in more detail later). We export the Gherkin tests to a ``.feature`` file, which we store in the relevant code repository on GitLab. We write the code to implement the tests, and run the tests using the usual CI/CD pipeline, using the ``pytest-bdd`` extension. The CI/CD pipeline outputs the test result to JIRA, where they can be viewed on a `custom Dashboard <https://jira.skatelescope.org/secure/Dashboard.jspa?selectPageId=12700>`_. 
+In JIRA, we define a BDD Gherkin test (using the Given, When, Then steps) in the `XTP project <https://jira.skatelescope.org/XTP/issues/>`_. We then link it to the requirement (explained in more detail later). We export the Gherkin tests to a ``.feature`` file, which we store in the relevant code repository on GitLab. We write the code to implement the tests, and run the tests using the usual CI/CD pipeline, using the ``pytest-bdd`` extension. The CI/CD pipeline outputs the test result to JIRA, where they can be viewed on a `custom Dashboard <https://jira.skatelescope.org/secure/Dashboard.jspa?selectPageId=12700>`_. 
 
 There are a few issues with this process at the moment. We haven't got a clear process for integrating new verification requirements with JAMA yet, nor a way of identifying which verification requirements need to go through this formal process. Exporting the ``.feature`` file from JIRA is currently a manual step, and we'd prefer to automate this. It's also possible to generate thousands of JIRA tickets when running tests; we plan to only keep a certain number of test runs in JIRA, but we also want to be tactical about how many tickets we generate in the first place.  
 
@@ -63,7 +63,7 @@ Writing good BDD tests takes practice. This section is a summary of `a presentat
 
 Your formulation of the Gherkin steps should be as consistent as possible. This facilitates reuse of steps. So check out the existing tests in JIRA to see what they say. This make it easier to reuse more of the underlying test infrastructure. 
 
-We expect that Feature and Product Owners will have the domain knowledge to write good BDD tests, with help from their AIV colleagues and developers. These tests help close the loop between the formal requirements and our implementation, to verify correct implementation. 
+We expect that Feature and Product Owners will have the domain knowledge to write good BDD tests, with help from their verification colleagues and  and developers. These tests help close the loop between the formal requirements and our implementation, to verify correct implementation. 
 
 JIRA organisation for BDD tests
 -------------------------------
@@ -81,7 +81,7 @@ This ticket is linked to a Test Set, `XTP-494 <https://jira.skatelescope.org/bro
 .. image:: images/xtp-494-linked-to.png
    :alt: the tickets XTP-494 is linked to
 
-It is from the Test Set XTP-494 that we export the Cucumber ``.feature`` file, for adding to our repository. It is the Test Set that defines the collection - the set of tests - needed to verify VTS-221. The individual tests linked to the Test Set can be reused, and linked to other Test Sets. Similarly, we can associate multiple Test Sets to a requirement, and the same Test Set can be associated with multiple requierments. 
+It is from the Test Set XTP-494 that we export the ``.feature`` file, for adding to our repository. It is the Test Set that defines the collection - the set of tests - needed to verify VTS-221. The individual tests linked to the Test Set can be reused, and linked to other Test Sets. Similarly, we can associate multiple Test Sets to a requirement, and the same Test Set can be associated with multiple requierments. 
 
 We can create Test Plans, such as `XTP-478 <https://jira.skatelescope.org/browse/XTP-478/>`_, which can be associated with Test Sets. Test Plans are most usefully used for manual test executions. We can describe test conditions in Test Plans, which is most useful for people configuring the test environment by hand; they are less useful for fully automated tests that happen as part of the CI/CD pipeline. A Test Execution JIRA ticket can then be created to record the results. 
 
@@ -101,7 +101,7 @@ These results are what are passed to the requirements ticket, such as VTS-221, a
 CI/CD integration
 -----------------
 
-The actual tests are defined using an extension to ``pytest`` - ``pytest-bdd``.  This module runs the tests, and uses the ``.feature`` file plus annotations to output a ``.json`` file as part of the CI/CD pipeline. A post-test step in the ``.gitlab-ci.yml`` file for the repository pushes the ``.json`` file which contains the ticket metadata to JIRA, where it's parsed by the `XRay JIRA plugin <https://docs.getxray.app/site/xray/>`_. XRay then creates Test Execution tickets, and updates the statuses of the Test and Requirements tickets to show the test result. JIRA statuses can be used in the sual way to build dashboards and other reports on the status of requirements.  Failures are reported as well as successes, provided the CI/CD pipeline completes. 
+The actual tests are defined using an extension to ``pytest`` - ``pytest-bdd``.  This module runs the tests, and uses the ``.feature`` file plus annotations to output a ``.json`` file as part of the CI/CD pipeline. A post-test step in the ``.gitlab-ci.yml`` file for the repository pushes the ``.json`` file which contains the ticket metadata to JIRA, where it's parsed by the `XRay JIRA plugin <https://docs.getxray.app/site/xray/>`_. XRay then creates Test Execution tickets, and updates the statuses of the Test and Requirements tickets to show the test result. JIRA statuses can be used in the usual way to build dashboards and other reports on the status of requirements.  Failures are reported as well as successes, provided the CI/CD pipeline completes. 
 
 A feature file can be very simple:: 
   
