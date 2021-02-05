@@ -9,7 +9,7 @@ I want to..
 Add a new project to SKA organisation
 `````````````````````````````````````
 
-* :doc:`/getting-started/projects/create-new-project` 
+* :doc:`/projects/create-new-project` 
 
 Develop a Tango device
 ``````````````````````
