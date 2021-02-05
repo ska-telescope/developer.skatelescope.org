@@ -48,15 +48,48 @@ This section is about getting you up and running. It contains the onboarding mat
   getting-started/getting-started
   getting-started/contrib-guidelines
   getting-started/devenv-setup
-  getting-started/projects
 
 - :doc:`getting-started/getting-started`
 - :doc:`getting-started/contrib-guidelines`
 - :doc:`getting-started/devenv-setup`
-- :doc:`getting-started/projects`
 
 A list of the tools we are using to collaborate, together with guidance on how to use them can be found at this confluence page: `SKA Guidelines to Remote Working <https://confluence.skatelescope.org/display/SKAIT/SKA+Guidelines+to+Remote+Working>`_ (requires an SKA Confluence account).
 
+SKA Repositories
+----------------
+
+.. PROJECTS SECTION ==========================================================
+
+.. Hidden toctree to manage sidebar navigation
+
+.. toctree::
+  :maxdepth: 1
+  :caption: Projects
+  :hidden:
+
+  projects/skampi
+  projects/astro-lib
+  projects/control
+  projects/csp
+  projects/dish
+  projects/emulators
+  projects/infrastructure
+  projects/lfaa
+  projects/mccs
+  projects/metrics
+  projects/models
+  projects/obs-mgt
+  projects/platforms
+  projects/pss
+  projects/sci-data-challenge
+  projects/sdp
+  projects/sdp-algorithms
+  projects/simulations
+  projects/tools-projects
+  projects/team
+  projects/list
+  projects/create-new-project
+  projects/licensing
 
 .. DEVELOPMENT TOOLS SECTION ==================================================
 
