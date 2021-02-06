@@ -270,14 +270,14 @@ It is recommended that A new merge request will include, among others, the follo
 * The Merge Request Title should always include the related JIRA issue id - this will be automatic following the above branching naming convention.
 * Merge Request Description should include a concise, brief description about the issue.
 * Add approval rules.
-* Select one or more assignees for review, and include anyone who has worked in the Merge Request.
+* Select one or more people for review (use the Reviewer field in the MR to differentiate between assignees and reviewers) and include anyone who has worked in the Merge Request.
 * Delete source branch when merge request is accepted.
 * Do not Squash commits when merge request is accepted.
 
-At the moment the SKA organisation does not enforce approval rules, but it is recommended as good practice to involve other team members as assignees for the Merge Request, and ensure that there is code review.
+At the moment the SKA organisation does not enforce approval rules, but it is recommended as good practice to involve other team members as assignees/reviewers for the Merge Request, and ensure that there is code review.
 
 As part of best practices it is important to delete feature branches on merge or after merging them to keep your repository clean, showing only work in progress.
-It is not recommended to squash commits submitted to the remote server, in particular if using GitLab and JIRA integration, so the enabling squash commits option should be left unchecked.
+It is not recommended to squash commits submitted to the remote server, in particular if using GitLab and JIRA integration, so the enabling squash commits option should be left unchecked. However you can arrange your commits before pushing them to remote.
 
 *Gitlab MR Settings for Project Maintainers*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
