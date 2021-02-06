@@ -8,7 +8,10 @@ Software Package Release Procedure
 
 Whilst source code related to software artefacts are hosted on `GitLab <https://gitlab.com/ska-telescope>`_ , the delivered runtime artefacts for the SKAO are maintained and curated in the `*Central Artefact Repository* <https://artefact.skatelescope.org>`_.  It is here that they will navigate through the process of verification and testing with the aim of finally being promoted to a state ready for production release.
 
+.. contents:: Table of Contents
 
+
+###########################
 Central Artefact Repository
 ###########################
 
@@ -18,6 +21,7 @@ An Artefact Repository is essentially a content management system for software a
 
 The purpose of the Central Artefact Repository within the context of the SKAO, is to provide a controlled single source of truth for all artefacts that enter the software delivery and verification processes through to the curation and maintenance of approved software artefacts available for production deployment and historical reference for the life time of the Observatory.  This means that the Central Artefact Repository not only holds the canonical reference versions of all artefacts within the SKAO landscape, but it also holds the stateful context of these artefacts as they progress through their continuous life-cycle from development to production deployment, to decommissioning.  
 
+##########
 Deployment
 ##########
 
@@ -94,7 +98,7 @@ While the Central Artefact Repository is available for anonymous browsing and pu
 
 
 OCI Image
----------
+~~~~~~~~~
 
 The OCI Image repository is locate at https://artefact.skatelescope.org/#browse/browse:docker-internal . 
 
@@ -116,10 +120,10 @@ Example: publish an OCI Image for the tango-cpp base image from ska-tango-images
 .. _helm-chart-repo:
 
 Helm Chart
-----------
+~~~~~~~~~~
 
 Package and publish Helm Charts to the SKAO Helm Chart Repository
-=================================================================
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 The process of packaging and publishing Helm charts to the SKAO repository is very simple. A few lines are needed in the ``.gitlab-ci.yml`` file, and the project needs to have a ``charts`` directory under the root of the project, that contains all your project's charts. If the ``charts`` folder is not under the project root, a line can be added in the CI job to first change to the directory containing this ``charts`` directory, however this is discouraged. For further information on best practices with regards to specifically the folder structure of charts, refer to `The Chart Best Practices Guide <https://helm.sh/docs/chart_best_practices/>`_, and also to our own set of :ref:`helm-best-practices`.
 
@@ -161,12 +165,12 @@ If no new versions of charts are found (i.e. if the version of the chart that yo
 
 
 Working with a Helm Repository
-==============================
+""""""""""""""""""""""""""""""
 
 Working with a Helm chart repository is well-documented on `The Official Helm Chart Repository Guide <https://helm.sh/docs/topics/chart_repository/>`_.
 
 Adding the SKAO repository
-''''''''''''''''''''''''''
+""""""""""""""""""""""""""
 
 The Helm Chart index is here `https://artefact.skatelescope.org/#browse/search/helm <https://artefact.skatelescope.org/#browse/search/helm>`_ .  This consists of the hosted repository *helm-internal* and the upstream proxy of `https://charts.helm.sh/stable <https://charts.helm.sh/stable>`_. 
 
@@ -177,7 +181,7 @@ In order to add the Helm chart repo to your local list of repositories, run
  $ helm repo add skao https://nexus.engageska-portugal.pt/repository/helm-chart
 
 Search available charts in a repo
-'''''''''''''''''''''''''''''''''
+"""""""""""""""""""""""""""""""""
 
 To browse through the repo to find the available charts, you can then say (if, for example, you decided to name the repo ``skatelescope``), to see output similar to this:
 
@@ -192,7 +196,8 @@ To browse through the repo to find the available charts, you can then say (if, f
 To install the test-app, you call **helm install the-app-i-want-to-test skatelescope/test-app** to install it in the default namespace. Test this with **kubectl get pods -n default**.
 
 Update the repo
-'''''''''''''''
+"""""""""""""""
+
 Almost like a **git fetch** command, you can update your local repositories' indexes by running
 
 .. code:: bash
@@ -202,10 +207,10 @@ Almost like a **git fetch** command, you can update your local repositories' ind
 Note: this will update *ALL* your local repositories' index files.
 
 PyPi and Python Packaging
--------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Creating a Version
-==================
+""""""""""""""""""
 
 A developer should make use of the git annotated tags to indicate that this
 current commit is to serve as a release. For example:
@@ -224,7 +229,7 @@ After that is complete, then the tag needs to be published to the origin:
 .. caution:: The format of the tag must observe semantic versioning eg: N.N.N
 
 Minimum Metadata requirements
-=============================
+"""""""""""""""""""""""""""""
 
 For proper Python packaging, the following metadata must be present
 in the repository:
@@ -245,7 +250,7 @@ Additional metadata files that should be included in the root directory, are:
 * LICENSE - A text file with the relevant license
 
 Building Python Packages
-========================
+""""""""""""""""""""""""
 
 The following command will be executed in order to build a wheel
 for a Python package:
@@ -272,11 +277,13 @@ This will build a *Python* wheel that can then be published to the Central Artef
 command line option with ``-b+dev.$CI_COMMIT_SHORT_SHA`` to have the wheel built on each commit.
 
 Publishing packages to *Nexus*
-==============================
+""""""""""""""""""""""""""""""
 
 Provided that the release branch has been tagged precisely as described in the above sections
 then the CI job will be triggered by the availability of the tag to publish the *Python* wheel
 to the *SKAO* pypi registry on *Nexus*.
+
+Publishing using ``setup.py``:
 
 .. code:: yaml
 
@@ -295,6 +302,11 @@ to the *SKAO* pypi registry on *Nexus*.
       variables:
          - $CI_COMMIT_MESSAGE =~ /^.+$/ # Confirm tag message exists
          - $CI_COMMIT_TAG =~ /^((([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?)(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?)$/ # Confirm semantic versioning of tag
+
+
+Publishing using ``poetry``:
+
+.. code:: yaml
 
   # with poetry and project.toml
   publish-python:
@@ -324,7 +336,7 @@ to the *SKAO* pypi registry on *Nexus*.
 
 
 Installing a package from *Nexus*
-=================================
+"""""""""""""""""""""""""""""""""
 
 The Python Package Index is located at https://artefact.skatelescope.org/#browse/search/pypi .  A combined PyPi index of pypi-internal and pypi.python.org is available from https://artefact.skatelescope.org/repository/pypi-all/ .
 
@@ -346,7 +358,7 @@ the following section(s), for example:
 
 
 Ansible Roles and Collections
------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Ansible roles and collections are held in a Raw format repository *helm-internal* .  These are uploaded as individual files following the ADR-25 conventions of `<repository>/<role/collection name>` .
 
@@ -360,7 +372,7 @@ The following example is for common systems role collections:
 
 
 Raw
----
+~~~
 
 Raw artefacts are typically `tar.gz` files, images, reports, data files, and specific repositories that do not have direct functional support in Nexus (same as for Ansible roles and collections).  These are hosted here `raw-internal <https://artefact.skatelescope.org/#browse/search/raw>`_ .  Note that the artefact directory structure must be prefixed by the related repository, but can be flexible but meaningful after that.
 
