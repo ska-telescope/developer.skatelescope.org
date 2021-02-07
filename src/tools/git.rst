@@ -296,3 +296,45 @@ There are more additional settings in GitLab that only project maintainers could
    
    
 Note that the System team may from time to time batch update all of the SKA projects' settings as to confirm with the policies and recommendations.
+
+Merge Request Quality Checks
+============================
+
+To ensure the guidelines and policies described in this Developer Portal is followed for a consistent and robust development/security/review and QA processes for SKA repositories, there are a series of automated checks in place.
+The result of the checks are reported back to the developers in the main Merge Request page on GitLab.
+It is advised to look for this comment and respond to any issue arisen.
+
+A check is either a:
+
+* Failure (🚫): The Merge Request is violating the SKA guidelines and it should be fixed by following the mitigation defined in the check
+* Warning (⚠): The Merge Request is following anti patterns/non-advised guidelines/policies and it would be better if it is fixed by the mitigation defined in the check
+* Information (📖): You should be aware of the information conveyed in this Merge Request
+
+Each check has a brief description that explains what it does and a mitigation/explanation (depending on check type) which gives detail information about check on how to fix it or explains its findings more. You can find a detailed list of each check below.
+
+Workflow
+++++++++
+
+When a new Merge Request is created, a webhook triggers the SKA MR Service to carry out the checks described below and **Marvin the Paranoid Android** (*username: marvin-42*) happily reports back to the Merge Request by adding a comment (probably the first comment). The comment includes a table (like the example below) with each check information.
+
+For the subsequent changes in the Merge Request, the comment is updated to reflect the latest status of the Merge Request.
+
+.. todo::
+    * Add example screenshot of table
+
+Checks
+++++++
+
+
+.. todo::
+    * Fill the table below
+
++---------+------------------+----------------------------------------------+
+| Type    | Description      | Mitigation Strategy                          |
++=========+==================+==============================================+
+| Failure | Missing Assignee | Please assign at least one person for the MR |
++---------+------------------+----------------------------------------------+
+|         |                  |                                              |
++---------+------------------+----------------------------------------------+
+|         |                  |                                              |
++---------+------------------+----------------------------------------------+
