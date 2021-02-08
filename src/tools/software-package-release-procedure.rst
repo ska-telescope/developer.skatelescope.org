@@ -1,12 +1,20 @@
 .. _Semver: https://semver.org
-.. _Helm Chart Repository: https://nexus.engageska-portugal.pt/#browse/browse:helm-chart
+.. _Helm Chart Repository: https://artefact.skatelescope.org/#browse/browse:helm-internal
 .. _SKAMPI: https://gitlab.com/ska-telescope/skampi
 
 ==================================
 Software Package Release Procedure
 ==================================
 
-Whilst source code related to software artefacts are hosted on `GitLab <https://gitlab.com/ska-telescope>`_ , the delivered runtime artefacts for the SKAO are maintained and curated in the `*Central Artefact Repository* <https://artefact.skatelescope.org>`_.  It is here that they will navigate through the process of verification and testing with the aim of finally being promoted to a state ready for production release.
+Whilst source code related to software artefacts are hosted on `GitLab <https://gitlab.com/ska-telescope>`_, the delivered runtime artefacts for the SKAO are maintained and curated in the `Central Artefact Repository <https://artefact.skatelescope.org>`_.  It is here that they will navigate through the process of verification and testing with the aim of finally being promoted to a state ready for production release.
+
+Artefacts that are candidates for promotion to the Central Artefact Repository will need to follow the
+`ADR-25 - Software naming conventions <https://confluence.skatelescope.org/display/SWSI/ADR-25+General+software+naming+convention>`_, and must conform to the :ref:`Definition of Done <definition-of-done>`.
+
+These conventions are designed to integrate with the leading packaging and deployment tools commonly available for each artefact type.
+
+For intermediate artefacts, it is recommended that the builtin `packages <https://docs.gitlab.com/ee/user/packages/>`_ (repository) features available in GitLab are used.  These can be accessed directly in the GitLab CI/CD pipeline.  Examples of these are given below for OCI Images, PyPi packages, and Raw (Generic) artefact artefacts.
+
 
 .. contents:: Table of Contents
 
@@ -116,11 +124,33 @@ Example: publish an OCI Image for the tango-cpp base image from ska-tango-images
   This image has been published at https://artefact.skatelescope.org/#browse/browse:docker-internal:v2%2Fska-tango-images%2Ftango-cpp%2Ftags%2F9.3.4
 
 
+Using the GitLab OCI Registry
+"""""""""""""""""""""""""""""
+
+The `GitLab OCI Registry <https://docs.gitlab.com/ee/user/packages/container_registry/index.html>`_ is a useful service for storing intermediate images, that are required between job steps within a Pipeline or between piplines (eg: where base images are used and subsequent pipeline triggers).  The following is an example of interacting with a project specific repository:
+
+.. code:: yaml
+
+  build oci image:
+    image: docker:19.03.12
+    stage: build
+    services:
+      - docker:19.03.12-dind
+    variables:
+      IMAGE_TAG: $CI_REGISTRY_IMAGE:$SEMANTIC_VERSION
+    script:
+      - echo "$CI_JOB_TOKEN $CI" | docker login -u $CI_JOB_USER --password-stdin $CI_REGISTRY
+      - docker build -t $IMAGE_TAG .
+      - docker push $IMAGE_TAG
+
 
 .. _helm-chart-repo:
 
 Helm Chart
 ~~~~~~~~~~
+
+Helm Charts are published to the Central Artefact Repository in a native repository, however (at the time of writing) there is a move in the Cloud Native community to extend the storage of Charts to OCI compliant repositories.  This support has been made available in ```helm``` and is supported by both Nexus and the GitLab Container Registry.
+
 
 Package and publish Helm Charts to the SKAO Helm Chart Repository
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -168,6 +198,35 @@ Working with a Helm Repository
 """"""""""""""""""""""""""""""
 
 Working with a Helm chart repository is well-documented on `The Official Helm Chart Repository Guide <https://helm.sh/docs/topics/chart_repository/>`_.
+
+
+Using the GitLab Registry for Helm Charts
+"""""""""""""""""""""""""""""""""""""""""
+
+Helm now has experimental (February, 2021) support for using OCI Registries as a Helm Chart Repository.   This makes it possible to use GitLab as an intermediate store within CI/CD pipelines.
+The basic steps are:
+
+* enable OCI Registry
+* activate GPG support
+* login to registry
+* save chart (package)
+* push chart to registry
+
+Example:
+
+.. code:: yaml
+
+  helm publish to gitlb registry:
+    stage: build
+    variables:
+      - HELM_EXPERIMENTAL_OCI: 1
+    tags:
+      - docker-executor
+    script:
+      - curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+      - echo "$CI_JOB_TOKEN $CI" | helm registry login -u $CI_JOB_USER $CI_REGISTRY
+      - helm chart save charts/<chart>/ $CI_REGISTRY/<chart>:<semantic_version>
+      - helm chart push $CI_REGISTRY/<chart>:<semantic_version>
 
 Adding the SKAO repository
 """"""""""""""""""""""""""
@@ -335,6 +394,28 @@ Publishing using ``poetry``:
         - $CI_COMMIT_TAG =~ /^((([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?)(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?)$/
 
 
+
+Publishing to the `GitLab Project PyPi <https://docs.gitlab.com/ee/user/packages/pypi_repository/index.html>`_ package repository:
+
+.. code:: yaml
+
+  # with poetry and project.toml
+  publish-python-gitlab:
+    stage: build
+    tags:
+      - k8srunner
+    variables:
+      POETRY_HTTP_BASIC_PYPI_USERNAME: gitlab-ci-token
+      POETRY_HTTP_BASIC_PYPI_PASSWORD: $CI_JOB_TOKEN
+    before_script:
+      - pip install poetry
+      - poetry config virtualenvs.create false
+      - poetry install --no-root
+      - poetry config repositories.gitlab https://gitlab.com/api/v4/projects/${CI_PROJECT_ID}/packages/pypi
+    script:
+      - poetry build
+      - poetry publish -r gitlab
+
 Installing a package from *Nexus*
 """""""""""""""""""""""""""""""""
 
@@ -355,6 +436,23 @@ the following section(s), for example:
 
   [packages]
   'skaskeleton' = {version='*', index='skao'}
+
+
+Installing a package from *GitLab*
+""""""""""""""""""""""""""""""""""
+
+The Python Package Index is located at  ```https://__token__:${CI_JOB_TOKEN}@gitlab.com/api/v4/projects/${CI_PROJECT_ID}/packages/pypi/simple```.  This can be configured in the ```~/.pypirc``` files as follows within the CI/CD pipeline:
+
+.. code:: ini
+
+  [distutils]
+  index-servers = gitlab
+
+  [gitlab]
+  repository = https://gitlab.example.com/api/v4/projects/${env.CI_PROJECT_ID}/packages/pypi
+  username = gitlab-ci-token
+  password = ${env.CI_JOB_TOKEN}
+  ...
 
 
 Ansible Roles and Collections
@@ -383,3 +481,26 @@ The following example shows the publishing of an external dependency library for
   curl -u ${CAR_RAW_USERNAME}:${CAR_RAW_PASSWORD} \
     --upload-file tango-9.3.4.tar.gz \
     ${CAR_RAW_REPOSITORY_URL}/ska-tango-images/libraries/tango-9.3.4.tar.gz
+
+GitLab Generic Package Repository
+"""""""""""""""""""""""""""""""""
+
+The `GitLab Generic Repository <https://docs.gitlab.com/ee/user/packages/generic_packages/index.html>`_ can be used to store arbitrary artefacts between job steps (as an alternative to the gitlab runner `cache <https://docs.gitlab.com/ee/ci/caching/>`_) or between pipelines.
+
+Upload artefacts in CI/CD with:
+
+.. code:: yaml
+
+  upload:
+    stage: upload
+    script:
+      - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file path/to/really_important.tar.gz "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/${YOUR_PACKAGE_NAME}/${SEMANTIC_VERSION}/really_important.tar.gz"'
+
+These can later be retrieved with:
+
+.. code:: yaml
+
+  download:
+    stage: download
+    script:
+      - 'wget --header="JOB-TOKEN: $CI_JOB_TOKEN" ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/${YOUR_PACKAGE_NAME}/${SEMANTIC_VERSION}/really_important.tar.gz'
