@@ -1,4 +1,0 @@
-Astronomy Library projects
-**************************
-
-

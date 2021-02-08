@@ -58,35 +58,16 @@ A list of the tools we are using to collaborate, together with guidance on how t
 SKA Repositories
 ----------------
 
-.. PROJECTS SECTION ==========================================================
+.. REPOSITORIES SECTION ========================================================
 
 .. Hidden toctree to manage sidebar navigation
 
 .. toctree::
   :maxdepth: 1
-  :caption: Projects
+  :caption: Repositories
   :hidden:
 
-  projects/skampi
-  projects/astro-lib
-  projects/control
-  projects/csp
-  projects/dish
-  projects/emulators
-  projects/infrastructure
-  projects/lfaa
-  projects/mccs
-  projects/metrics
-  projects/models
-  projects/obs-mgt
-  projects/platforms
-  projects/pss
-  projects/sci-data-challenge
-  projects/sdp
-  projects/sdp-algorithms
-  projects/simulations
-  projects/tools-projects
-  projects/team
+  projects/area
   projects/list
   projects/create-new-project
   projects/licensing
