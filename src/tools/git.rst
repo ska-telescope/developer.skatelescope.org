@@ -19,7 +19,7 @@ GitLab as the Git repository manager
 ====================================
 
 The SKA Software team have adopted the GitLab social coding platform as the main Git repository manager for its
-CI/CD tools.  
+CI/CD tools.
 
 The following describes how to access the service, and how to setup the basic working environment to integrate with GitLab for the SKA.
 
@@ -48,6 +48,8 @@ Code Snippets
 +++++++++++++
 
 You can share code snippets (code blocks) within the SKA Organization using the *ska-snippets* repository, and also you can always share code snippets with the project members using project level snippets *(If they are enabled)*
+
+.. _committing-code:
 
 Committing code
 ===============
@@ -123,10 +125,10 @@ The passphrase of your GPG key will then be asked. To avoid having to type the -
   $ git config --global commit.gpgsign true
 
 
-When working in a remote repository by ssh connection, you need to create new GPG key and add it as explained above or you can forward your existing gpg key to the remote machine following the instructions below. 
+When working in a remote repository by ssh connection, you need to create new GPG key and add it as explained above or you can forward your existing gpg key to the remote machine following the instructions below.
 You can find more information `here <https://wiki.gnupg.org/AgentForwarding>`__.
 
-* Find your local socket: :code:`gpgconf --list-dir agent-extra-socket` 
+* Find your local socket: :code:`gpgconf --list-dir agent-extra-socket`
 * Find your remote socket: :code:`gpgconf --list-dir agent-socket`
 * Configure your SSH configuration file by adding the following line after your host settings: :code:`RemoteForward <socket_on_remote_box>  <extra_socket_on_local_box>`. Note that you need to reconnect to the remote machine to apply the changes.
 * Add :code:`StreamLocalBindUnlink yes` into :code:`/etc/ssh/sshd_config` in the remote machine and restart the sshd service to close the gpg forwarding socket when closing the ssh connection.
@@ -162,6 +164,8 @@ The following sections discuss the two of the most common workflows:
 
 * Master or trunk based development
 * Feature based branching
+
+.. _master-based-development:
 
 Master based development
 ++++++++++++++++++++++++
@@ -265,24 +269,26 @@ Merge requests
 When the story is ready for acceptance a Merge Request should be created on GitLab to
 merge the story branch into the master branch. The Merge Request UI on GitLab includes a platform for the discussion threads, and indeed an important purpose of the Merge Request is to provide an online place for the team to discuss the changes and review the code before doing the actual merge.
 
-It is recommended that A new merge request will include, among others, the following options:
+It is recommended that A new Merge Request will include, among others, the following options:
 
 * The Merge Request Title should always include the related JIRA issue id - this will be automatic following the above branching naming convention.
 * Merge Request Description should include a concise, brief description about the issue.
 * Add approval rules.
 * Select one or more people for review (use the Reviewer field in the MR to differentiate between assignees and reviewers) and include anyone who has worked in the Merge Request.
-* Delete source branch when merge request is accepted.
-* Do not Squash commits when merge request is accepted.
+* Delete source branch when Merge Request is accepted.
+* Do not Squash commits when Merge Request is accepted.
 
 At the moment the SKA organisation does not enforce approval rules, but it is recommended as good practice to involve other team members as assignees/reviewers for the Merge Request, and ensure that there is code review.
 
 As part of best practices it is important to delete feature branches on merge or after merging them to keep your repository clean, showing only work in progress.
 It is not recommended to squash commits submitted to the remote server, in particular if using GitLab and JIRA integration, so the enabling squash commits option should be left unchecked. However you can arrange your commits before pushing them to remote.
 
+.. _merge-settings-maintainers:
+
 *Gitlab MR Settings for Project Maintainers*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-There are more additional settings in GitLab that only project maintainers could tune. The following settings are configured for the developer portal itself and they are the recommended settings for the projects in the SKA organisation. Normally, these settings would not be needed to change. 
+There are more additional settings in GitLab that only project maintainers could tune. The following settings are configured for the developer portal itself and they are the recommended settings for the projects in the SKA organisation. Normally, these settings would not be needed to change.
 
 .. _figure-gitlab-mergerequest-settings:
 
@@ -293,6 +299,98 @@ There are more additional settings in GitLab that only project maintainers could
    :figclass: figborder
 
    GitLab Merge Request Settings.
-   
-   
+
+
 Note that the System team may from time to time batch update all of the SKA projects' settings as to confirm with the policies and recommendations.
+
+Merge Request Quality Checks
+============================
+
+To ensure the guidelines and policies described in this Developer Portal are followed for a consistent and robust development/security/review and  Software Quality Assurance processes for SKA repositories, there are a series of automated checks in place.
+The result of the checks are reported back to the developers in the main Merge Request page on GitLab.
+It is advised to look for this comment and respond to any issue arisen.
+
+A check is either a:
+
+* Failure (🚫): The Merge Request is violating the SKA guidelines and it should be fixed by following the mitigation defined in the check
+* Warning (⚠): The Merge Request is following anti patterns/non-advised guidelines/policies and it would be better if it is fixed by the mitigation defined in the check
+* Information (📖): You should be aware of the information conveyed in this Merge Request quality check message
+
+Each check has a brief description that explains what it does and a mitigation/explanation (depending on check type) which gives detailed information about the check and how to fix it or explains its findings more. You can find a list of each check below.
+
+Workflow
+++++++++
+
+When a new Merge Request is created, a webhook triggers the SKA MR Service to carry out the checks described below and **Marvin the Paranoid Android** (*username: marvin-42*) happily reports back to the Merge Request by adding a comment (probably the first comment). The comment includes a table (like the example below) with each check and associated information.
+
+For the subsequent changes pushed to the Merge Request, the comment is updated to reflect the latest status of the Merge Request.
+
+.. figure:: media/marvin-check-table.png
+   :scale: 80%
+   :alt: Marvin Merge Request Settings
+   :align: center
+   :figclass: figborder
+
+   Marvin's Check Table.
+
+Checks
+++++++
+
++---------+-----------------------+------------------------------------------------------------------------------------------+
+| Type    | Description           | Mitigation Strategy                                                                      |
++=========+=======================+==========================================================================================+
+| Failure | Squash Commits Setting| Please uncheck Squash commits when Merge Request is accepted.                            |
++---------+-----------------------+------------------------------------------------------------------------------------------+
+| Failure | Missing Jira Ticket ID| Title should include a valid Jira ticket id                                              |
+|         | in MR Title           |                                                                                          |
++---------+-----------------------+------------------------------------------------------------------------------------------+
+| Warning | Docker-Compose        | Please remove docker-compose from following files:                                       |
+|         |                       |     *  At file: <file_location> on line <line_number>                                    |
+|         | Found                 |     *  At file: <file_location> on line <line_number>                                    |
++---------+-----------------------+------------------------------------------------------------------------------------------+
+| Failure | Missing Jira Ticket   | Branch name should start with a lowercase Jira ticket id                                 |
+|         | In Branch Name        |                                                                                          |
++---------+-----------------------+------------------------------------------------------------------------------------------+
+| Failure | Wrong Merge           |  Reconfigure Merge Request Settings according to :ref:`merge-request`                    |
+|         | Request Setting       |                                                                                          |
+|         |                       |  MR Settings Checks:                                                                     |
+|         |                       |      * You should assign one or more people as reviewer(s)                               |
+|         |                       |      * Automatically resolve mr diff discussions should be checked                       |
+|         |                       |      * Override approvers and approvals per MR should be checked                         |
+|         |                       |      * Remove all approvals when new commits are pushed should be checked                |
+|         |                       |      * Prevent approval of MR by the author should be checked                            |
+|         |                       |      * There should be at least 1 approval required                                      |
+|         |                       |  Project Settings Checks(You may need Maintainer rights to change these):                |
+|         |                       |      * Pipelines must succeed should be checked                                          |
+|         |                       |      * Enable Delete source branch option by default should be checked                   |
+|         |                       |      * Show link to create/view MR when pushing from the command line should be checked  |
++---------+-----------------------+------------------------------------------------------------------------------------------+
+| Warning | Missing Jira Ticket   | Following commit messages violate :ref:`committing-code`                                 |
+|         | in commits            |      *   <commit-hash>                                                                   |
+|         |                       |      *   <commit-hash>                                                                   |
++---------+-----------------------+------------------------------------------------------------------------------------------+
+
+
+Squash Commits Setting
+^^^^^^^^^^^^^^^^^^^^^^
+This check is to prevent users from squashing the commits before merging the Merge Requests. This will preserve the history of all commits for the Merge Request. To avoid this failure, users should uncheck Squash commits setting when the Merge Request is accepted.
+
+Missing Jira Ticket ID in MR Title
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This check prevents users from raising a Merge Request without A Jira ticket ID in Merge Request title. This will make every Merge Request identifiable with its Jira ticket (through the GitLab/Jira integration). To avoid this failure, users should include a valid Jira ticket id in title of the Merge Request.
+
+Docker-Compose Found
+^^^^^^^^^^^^^^^^^^^^
+This check is to prevent users from using Docker-Compose in their project. This will make it easier to remove Docker-Compose from the projects as it shouldn't be used anymore (creates issues with the underlying networks). To avoid this warning, the user needs to remove Docker-Compose from the project.  The details of the files involded can be seen in the warning message under the Mitigation Strategy column along with the line numbers where Docker-Compose is found.
+
+Missing Jira Ticket In Branch Name
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This check prevents users from raising a Merge Request without A Jira ticket ID in the branch name. This will make every branch identifiable with its Jira ticket. To avoid this failure, users should follow the steps listed in :ref:`master-based-development`.
+
+Wrong Merge Request Setting
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This check prevents users from merging their branch without the Merge Request being configured with the right settings. To avoid this failure the Merge Request should be configured as listed in :ref:`merge-request`. Some of the settings can only be changed by the maintainers.  These settings are listed in :ref:`merge-settings-maintainers`.
+
+Missing Jira Ticket in commits
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This check warns users of any commit that was made without using a Jira ticket ID in it's message. Having the Jira ticket ID at the beginning of your commit messages is one of the basic rules listed at :ref:`committing-code`. The Jira Ticket ID in the commit messages are used by the developers to keep track of the changes made on the ticket through JIRA, and is a key part of the Software Quality Assurance programme.
