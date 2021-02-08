@@ -334,9 +334,6 @@ Checks
 +---------+-----------------------+------------------------------------------------------------------------------------------+
 | Type    | Description           | Mitigation Strategy                                                                      |
 +=========+=======================+==========================================================================================+
-| Failure | Source Branch         | Please check "Delete source branch when merge request is accepted."                      | 
-|         | Delete Setting        |                                                                                          |
-+---------+-----------------------+------------------------------------------------------------------------------------------+
 | Failure | Squash Commits Setting| Please uncheck Squash commits when merge request is accepted.                            |
 +---------+-----------------------+------------------------------------------------------------------------------------------+
 | Failure | Missing Jira Ticket ID| Title should include a Jira ticket id                                                    |
@@ -369,22 +366,20 @@ Checks
 +---------+-----------------------+------------------------------------------------------------------------------------------+
 
 
-Source Branch Delete Setting
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 Squash Commits Setting
 ^^^^^^^^^^^^^^^^^^^^^^
+This check is to prevent users from squashing the commits before merging the merge requests. This will preserve the history of all commits for the merge request. To avoid this failure, users should uncheck Squash commits setting when merge request is accepted.
 
 Missing Jira Ticket ID in MR Title
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This check prevents users from raising a merge request without A Jira ticket ID in merge request title. This will make every merge request identifiable with its Jira ticket. To avoid this failure, users should include a Jira ticket id in title of the merge request.
 
 Docker-Compose Found
 ^^^^^^^^^^^^^^^^^^^^
+This check is to prevent users from using Docker-Compose in their project. This will make it easier to remove Docker-Compose from the projects as it shouldn't be used anymore. To avoid this warning, user needs to remove Docker-Compose from the project which can be seen from the warning message under Mitigation Strategy column which enlists the files that have the reference to Docker-Compose along with the line numbers where Docker-Compose is found.
 
 Missing Jira Ticket In Branch Name
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
 
 
 Wrong Merge Request Setting
