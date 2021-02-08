@@ -49,6 +49,8 @@ Code Snippets
 
 You can share code snippets (code blocks) within the SKA Organization using the *ska-snippets* repository, and also you can always share code snippets with the project members using project level snippets *(If they are enabled)*
 
+.. _committing-code:
+
 Committing code
 ===============
 
@@ -329,12 +331,70 @@ Checks
 .. todo::
     * Fill the table below
 
-+---------+------------------+----------------------------------------------+
-| Type    | Description      | Mitigation Strategy                          |
-+=========+==================+==============================================+
-| Failure | Missing Assignee | Please assign at least one person for the MR |
-+---------+------------------+----------------------------------------------+
-|         |                  |                                              |
-+---------+------------------+----------------------------------------------+
-|         |                  |                                              |
-+---------+------------------+----------------------------------------------+
++---------+-----------------------+------------------------------------------------------------------------------------------+
+| Type    | Description           | Mitigation Strategy                                                                      |
++=========+=======================+==========================================================================================+
+| Failure | Missing Assignee      | Please assign at least one person for the MR                                             |
++---------+-----------------------+------------------------------------------------------------------------------------------+
+| Failure | Source Branch         | Please check "Delete source branch when merge request is accepted."                      | 
+|         | Delete Setting        |                                                                                          |
++---------+-----------------------+------------------------------------------------------------------------------------------+
+| Failure | Squash Commits Setting| Please uncheck Squash commits when merge request is accepted.                            |
++---------+-----------------------+------------------------------------------------------------------------------------------+
+| Failure | Missing Jira Ticket ID| Title should include a Jira ticket id                                                    |
+|         | in MR Title           |                                                                                          |
++---------+-----------------------+------------------------------------------------------------------------------------------+
+| Warning | Docker-Compose        | Please remove docker-compose from following files:                                       |
+|         |                       |     *  At file: <file_location> on line <line_number>                                    | 
+|         | Found                 |     *  At file: <file_location> on line <line_number>                                    |
++---------+-----------------------+------------------------------------------------------------------------------------------+
+| Failure | Missing Jira Ticket   | Branch name should start with a lowercase Jira ticket id                                 | 
+|         | In Branch Name        |                                                                                          |
++---------+-----------------------+------------------------------------------------------------------------------------------+
+| Failure | Wrong Merge           |  Reconfigure Merge Request Settings according to :ref:`merge-request`                    |    
+|         | Request Setting       |                                                                                          |
+|         |                       |  MR Settings Checks:                                                                     |
+|         |                       |      * You should assign one or more people as reviewer(s)                               |
+|         |                       |      * Automatically resolve mr diff discussions should be checked                       |
+|         |                       |      * Override approvers and approvals per MR should be checked                         |
+|         |                       |      * Remove all approvals when new commits are pushed should be checked                |
+|         |                       |      * Prevent approval of MR by the author should be checked                            |
+|         |                       |      * There should be at least 1 approval required                                      |
+|         |                       |  Project Settings Checks(You may need Maintainer rights to change these):                |   
+|         |                       |      * Pipelines must succeed should be checked                                          |
+|         |                       |      * Enable Delete source branch option by default should be checked                   |
+|         |                       |      * Show link to create/view MR when pushing from the command line should be checked  |
++---------+-----------------------+------------------------------------------------------------------------------------------+
+| Warning | Missing Jira Ticket   | Following commit messages violate :ref:`committing-code`                                 |  
+|         | in commits            |      *   <commit-hash>                                                                   |
+|         |                       |      *   <commit-hash>                                                                   |
++---------+-----------------------+------------------------------------------------------------------------------------------+
+
+
+Missing Assignee
+^^^^^^^^^^^^^^^^
+
+Source Branch Delete Setting
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Squash Commits Setting
+^^^^^^^^^^^^^^^^^^^^^^
+
+Missing Jira Ticket ID in MR Title
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Docker-Compose Found
+^^^^^^^^^^^^^^^^^^^^
+
+Missing Jira Ticket In Branch Name
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+Wrong Merge Request Setting
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Missing Jira Ticket in commits
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
