@@ -331,7 +331,7 @@ For the subsequent changes in the Merge Request, the comment is updated to refle
    :align: center
    :figclass: figborder
 
-   GitLab Merge Request Settings.
+   Marvin's Check Table.
 
 Checks
 ++++++
