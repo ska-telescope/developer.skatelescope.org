@@ -265,3 +265,21 @@ Test using an image pull such as ``docker pull busybox``.  Check your local syst
 .. code:: bash
 
     Dec 15 08:58:57 wattle dockerd[920572]: time="2020-12-14T19:58:57.826247120Z" level=info msg="Attempting next endpoint for pull after error: Get http://192.168.93.12:8181/v2/library/ubuntu/manifests/20.04: unauthorized: authentication required"
+
+Configuration of podman
+-----------------------
+
+If using `podman <https://podman.io/>`_ for dockerless builds then the configuration file `/etc/containers/registries.conf` needs to be updated as follows:
+
+
+.. code:: bash
+
+    unqualified-search-registries = ["docker.io"]
+
+    [[registry]]
+    location = "docker.io"
+
+    [[registry.mirror]]
+    location = "192.168.93.12:8181"
+    insecure = true
+
