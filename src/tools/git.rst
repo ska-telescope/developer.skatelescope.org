@@ -325,8 +325,13 @@ When a new Merge Request is created, a webhook triggers the SKA MR Service to ca
 
 For the subsequent changes in the Merge Request, the comment is updated to reflect the latest status of the Merge Request.
 
-.. todo::
-    * Add example screenshot of table
+.. figure:: media/check-table.png
+   :scale: 80%
+   :alt: Marvin Merge Request Settings
+   :align: center
+   :figclass: figborder
+
+   GitLab Merge Request Settings.
 
 Checks
 ++++++
