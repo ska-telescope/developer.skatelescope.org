@@ -165,6 +165,8 @@ The following sections discuss the two of the most common workflows:
 * Master or trunk based development
 * Feature based branching
 
+.. _master-based-development:
+
 Master based development
 ++++++++++++++++++++++++
 
@@ -281,6 +283,8 @@ At the moment the SKA organisation does not enforce approval rules, but it is re
 As part of best practices it is important to delete feature branches on merge or after merging them to keep your repository clean, showing only work in progress.
 It is not recommended to squash commits submitted to the remote server, in particular if using GitLab and JIRA integration, so the enabling squash commits option should be left unchecked. However you can arrange your commits before pushing them to remote.
 
+.. _merge-settings-maintainers:
+
 *Gitlab MR Settings for Project Maintainers*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -326,10 +330,6 @@ For the subsequent changes in the Merge Request, the comment is updated to refle
 
 Checks
 ++++++
-
-
-.. todo::
-    * Fill the table below
 
 +---------+-----------------------+------------------------------------------------------------------------------------------+
 | Type    | Description           | Mitigation Strategy                                                                      |
@@ -380,11 +380,12 @@ This check is to prevent users from using Docker-Compose in their project. This 
 
 Missing Jira Ticket In Branch Name
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+This check prevents users from raising a merge request without A Jira ticket ID in the branch name. This will make every branch identifiable with its Jira ticket. To avoid this failure, users should follow the steps listed in :ref:`master-based-development`.
 
 Wrong Merge Request Setting
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This check prevents users to merge their branch without the merge request being configured with the right settings. To avoid this failure the merge request should be configured as listed in :ref:`merge-request`. Some of the settings can only be changed by the maintainers, this settings are listed in :ref:`merge-settings-maintainers`.
 
 Missing Jira Ticket in commits
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+This check warns users for the commits that were made without using a Jira ticket ID in it's message. Having the Jira ticket ID at the beginning of your commit messages is one of the basic rules listed at :ref:`committing-code`. The Jira Ticket ID in the commit messages are used for the developers to keep track of the changes made on the ticket through JIRA.
