@@ -1,6 +1,6 @@
 .. _git:
 
-Working with git
+Working with GitLab
 ----------------
 
 About git
@@ -339,8 +339,6 @@ Checks
 +---------+-----------------------+------------------------------------------------------------------------------------------+
 | Type    | Description           | Mitigation Strategy                                                                      |
 +=========+=======================+==========================================================================================+
-| Failure | Squash Commits Setting| Please uncheck Squash commits when Merge Request is accepted.                            |
-+---------+-----------------------+------------------------------------------------------------------------------------------+
 | Failure | Missing Jira Ticket ID| Title should include a valid Jira ticket id                                              |
 |         | in MR Title           |                                                                                          |
 +---------+-----------------------+------------------------------------------------------------------------------------------+
@@ -360,6 +358,8 @@ Checks
 |         |                       |      * Remove all approvals when new commits are pushed should be checked                |
 |         |                       |      * Prevent approval of MR by the author should be checked                            |
 |         |                       |      * There should be at least 1 approval required                                      |
+|         |                       |      * Please uncheck Squash commits when Merge Request is accepted.                     |
+|         |                       |      *  Please check Delete source branch when merge request is accepted.                |
 |         |                       |  Project Settings Checks(You may need Maintainer rights to change these):                |
 |         |                       |      * Pipelines must succeed should be checked                                          |
 |         |                       |      * Enable Delete source branch option by default should be checked                   |
@@ -370,10 +370,6 @@ Checks
 |         |                       |      *   <commit-hash>                                                                   |
 +---------+-----------------------+------------------------------------------------------------------------------------------+
 
-
-Squash Commits Setting
-^^^^^^^^^^^^^^^^^^^^^^
-This check is to prevent users from squashing the commits before merging the Merge Requests. This will preserve the history of all commits for the Merge Request. To avoid this failure, users should uncheck Squash commits setting when the Merge Request is accepted.
 
 Missing Jira Ticket ID in MR Title
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
