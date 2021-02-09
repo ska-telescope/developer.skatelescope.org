@@ -47,5 +47,40 @@ Then provide the test details:
    * Annotate the test case with the relevant scenario.
    * Write your tests, annotating the methods with the Gherkin keywords. These methods can be reused by your tests (e.g. the same "given" step can be reused by several tests).
 
+.. code-block:: python3 
+
+    // import the relevant libraries
+    from pytest-bdd import (given, parsers, scenarios, then, when)
+
+    // load the scenarios from the .feature file. If there are multiple scenarios, add the scenario name after the path.
+    scenarios(path/to/.feature/file)
+
+    //you can create a pytest fixture to allow you to pass data between steps via a dictionary
+    @pytest.fixture
+    def result():
+       return {}
+
+    //then write your test steps, annotating them appropriately:
+    @given('I have an SDPSubarry device')
+    def subarray_device(devices):
+       //code to get a subarray device
+       result = devices.get_device(DEVICE_NAME)
+       return result
+
+    // note that this given step can be reused for many tests that need an SDP subarray device.
+
+    @when('Test step goes here')
+    def set_device_state(device):
+        // more test code goes here
+
+    @then('Result step goes here')
+    def test_result():
+        // test the result of your when steps here
+
+This code is loosely based on https://gitlab.com/ska-telescope/sdp/ska-sdp-lmc/-/blob/master/tests/test_subarray.py.
+
 .. note::
+   
    We strongly recommend only using the JIRA integration on repositories such as skampi, that do a lot of integration. We further recommend only using the JIRA integration on the main/master branch. If you like the BDD testing style, you can just use ``pytest-bdd`` and get test outcomes as part of the usual CI/CD pipeline. 
+
+
