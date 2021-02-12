@@ -374,10 +374,10 @@ Checks
 |         | jobs                  |                                                                                          |
 +---------+-----------------------+------------------------------------------------------------------------------------------+
 | Failure | Could not find        | Please add the following jobs:                                                           |
-|         | needed pipeline       |      *   ci-metrics `link to developer portal <https://developer.skatelescope.org/en/lat |
+|         | needed pipeline       |      *   `ci-metrics  <https://developer.skatelescope.org/en/lat                         |
 |         | jobs                  |          est/tools/ci-cd/continuous-integration.html?highlight=post_step.yml#automated   |
 |         |                       |          -collection-of-ci-health-metrics-as-part-of-the-ci-pipeline>`_                  |
-|         |                       |      *   helm-publish `link to developer portal <https://developer.skatelescope.org/en/  |
+|         |                       |      *   `helm-publish  <https://developer.skatelescope.org/en/                          |
 |         |                       |          latest/tools/software-package-release-procedure.html?highlight=helm_publish.yml |   
 |         |                       |          #package-and-publish-helm-charts-to-the-skao-helm-chart-repository>`_           |
 +---------+-----------------------+------------------------------------------------------------------------------------------+
@@ -405,4 +405,4 @@ This check warns users of any commit that was made without using a Jira ticket I
 
 Could not find needed pipeline jobs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This check prevents users from merging their Merge Request without having a pipeline with the needed jobs. To avoid this failure there are 2 steps. The first one is to create a pipeline (i.e. add .gitlab-ci.yml) if there is not one created yet. The second one can only be done after the first one, and it consists on including the jobs that are listed on the mitigation strategy column (i.e. helm-publish) in the created pipeline. How to add the jobs to the pipeline is explained on the developer portal (link given after the job name on the mitigation strategy column).
+This check prevents users from merging their Merge Request without having a pipeline with the needed jobs. To avoid this failure there are 2 steps. The first one is to create a pipeline (i.e. add .gitlab-ci.yml) if there is not one created yet. The second one can only be done after the first one, and it consists on including the jobs that are listed on the mitigation strategy column (i.e. helm-publish) in the created pipeline. How to add the jobs to the pipeline is explained on the developer portal (job name as hyperlink).
