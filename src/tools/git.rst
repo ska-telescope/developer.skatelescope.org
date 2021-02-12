@@ -369,6 +369,14 @@ Checks
 |         | in commits            |      *   <commit-hash>                                                                   |
 |         |                       |      *   <commit-hash>                                                                   |
 +---------+-----------------------+------------------------------------------------------------------------------------------+
+| Failure | Could not find        | Please create a pipeline on this Merge Request                                           |
+|         | needed pipeline       |                                                                                          |
+|         | jobs                  |                                                                                          |
++---------+-----------------------+------------------------------------------------------------------------------------------+
+| Failure | Could not find        | Please add the following jobs:                                                           |
+|         | needed pipeline       |      *   ci-metrics link to developer portal                                             |
+|         | jobs                  |      *   helm-publish link to developer portal                                           |
++---------+-----------------------+------------------------------------------------------------------------------------------+
 
 
 Missing Jira Ticket ID in MR Title
@@ -390,3 +398,7 @@ This check prevents users from merging their branch without the Merge Request be
 Missing Jira Ticket in commits
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This check warns users of any commit that was made without using a Jira ticket ID in it's message. Having the Jira ticket ID at the beginning of your commit messages is one of the basic rules listed at :ref:`committing-code`. The Jira Ticket ID in the commit messages are used by the developers to keep track of the changes made on the ticket through JIRA, and is a key part of the Software Quality Assurance programme.
+
+Could not find needed pipeline jobs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This check prevents users from merging their Merge Request without having a pipeline with the needed jobs. To avoid this failure there are 2 steps. The first one is to create a pipeline (i.e. add .gitlab-ci.yml) if there is not one created yet. The second one can only be done after the first one, and it consists on including the jobs that are listed on the mitigation strategy column (i.e. helm-publish) in the created pipeline. How to add the jobs to the pipeline is explained on the developer portal (link given after the job name on the mitigation strategy column).
