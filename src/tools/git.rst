@@ -374,8 +374,12 @@ Checks
 |         | jobs                  |                                                                                          |
 +---------+-----------------------+------------------------------------------------------------------------------------------+
 | Failure | Could not find        | Please add the following jobs:                                                           |
-|         | needed pipeline       |      *   ci-metrics link to developer portal                                             |
-|         | jobs                  |      *   helm-publish link to developer portal                                           |
+|         | needed pipeline       |      *   ci-metrics `link to developer portal <https://developer.skatelescope.org/en/lat |
+|         | jobs                  |          est/tools/ci-cd/continuous-integration.html?highlight=post_step.yml#automated   |
+|         |                       |          -collection-of-ci-health-metrics-as-part-of-the-ci-pipeline>`_                  |
+|         |                       |      *   helm-publish `link to developer portal <https://developer.skatelescope.org/en/  |
+|         |                       |          latest/tools/software-package-release-procedure.html?highlight=helm_publish.yml |   
+|         |                       |          #package-and-publish-helm-charts-to-the-skao-helm-chart-repository>`_           |
 +---------+-----------------------+------------------------------------------------------------------------------------------+
 
 
