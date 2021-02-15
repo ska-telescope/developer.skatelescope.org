@@ -384,19 +384,19 @@ Checks
 
 Missing Jira Ticket ID in MR Title
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This check prevents users from raising a Merge Request without A Jira ticket ID in Merge Request title. This will make every Merge Request identifiable with its Jira ticket (through the GitLab/Jira integration). To avoid this failure, users should include a valid Jira ticket id in title of the Merge Request.
+This check warns users from raising a Merge Request without A Jira ticket ID in Merge Request title. This will make every Merge Request identifiable with its Jira ticket (through the GitLab/Jira integration). The level of this check is a failure, and to avoid it users should include a valid Jira ticket id in title of the Merge Request.
 
 Docker-Compose Found
 ^^^^^^^^^^^^^^^^^^^^
-This check is to prevent users from using Docker-Compose in their project. This will make it easier to remove Docker-Compose from the projects as it shouldn't be used anymore (creates issues with the underlying networks). To avoid this warning, the user needs to remove Docker-Compose from the project.  The details of the files involded can be seen in the warning message under the Mitigation Strategy column along with the line numbers where Docker-Compose is found.
+This check warns users from using Docker-Compose in their project. This will make it easier to remove Docker-Compose from the projects as it shouldn't be used anymore (creates issues with the underlying networks). The level of this check is a warning, and to avoid it the user needs to remove Docker-Compose from the project.  The details of the files involded can be seen in the warning message under the Mitigation Strategy column along with the line numbers where Docker-Compose is found.
 
 Missing Jira Ticket In Branch Name
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This check prevents users from raising a Merge Request without A Jira ticket ID in the branch name. This will make every branch identifiable with its Jira ticket. To avoid this failure, users should follow the steps listed in :ref:`master-based-development`.
+This check warns users from raising a Merge Request without A Jira ticket ID in the branch name. This will make every branch identifiable with its Jira ticket. The level of this check is a failure, and to avoid it users should follow the steps listed in :ref:`master-based-development`.
 
 Wrong Merge Request Setting
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This check prevents users from merging their branch without the Merge Request being configured with the right settings. To avoid this failure the Merge Request should be configured as listed in :ref:`merge-request`. Some of the settings can only be changed by the maintainers.  These settings are listed in :ref:`merge-settings-maintainers`.
+This check warns users from merging their branch without the Merge Request being configured with the right settings. The level of this check is a failure, and to avoid it the Merge Request should be configured as listed in :ref:`merge-request`. Some of the settings can only be changed by the maintainers.  These settings are listed in :ref:`merge-settings-maintainers`.
 
 Missing Jira Ticket in commits
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -404,4 +404,4 @@ This check warns users of any commit that was made without using a Jira ticket I
 
 Pipeline Checks 
 ^^^^^^^^^^^^^^^
-This check prevents users from merging their Merge Request without having a pipeline with the needed jobs. To avoid this failure there are 2 steps. The first one is to create a pipeline (i.e. add .gitlab-ci.yml) if there is not one created yet. The second one can only be done after the first one, and it consists on including the jobs that are listed on the mitigation strategy column (i.e. helm-publish) in the created pipeline. How to add the jobs to the pipeline is explained on the developer portal (job name as hyperlink).
+This check warns users from merging their Merge Request without having a pipeline with the needed jobs. The level of this check is a failure, and to avoid it 2 steps may be needed. The first one is to create a pipeline (i.e. add .gitlab-ci.yml) if there is not one created yet. The second one can only be done after the first one, and it consists on including the jobs that are listed on the mitigation strategy column (i.e. helm-publish) in the created pipeline. How to add the jobs to the pipeline is explained on the developer portal (job name as hyperlink).
