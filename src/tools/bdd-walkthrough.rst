@@ -10,7 +10,7 @@ This is a small adaptation of material by Giorgio Brajnik. For background on how
 * Create a JIRA issue of type "Test Set" in the XTP project. 
 
    * (optional) Add a fix version corresponding to the relevant PI.
-   * Link this issue to the requirement or Feature defined above, using the "tests" relationship. (This can also be done from the requirement/FEatuer, but then the relationship used should be "tested by".)
+   * Link this issue to the requirement or Feature defined above, using the "tests" relationship. (This can also be done from the requirement/Feature, but then the relationship used should be "tested by".) This can be done from the Test Set Create screen using the "link" field.
 
 * Create the tests for the Test Set.
 
