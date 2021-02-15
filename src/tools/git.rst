@@ -369,13 +369,12 @@ Checks
 |         | in commits            |      *   <commit-hash>                                                                   |
 |         |                       |      *   <commit-hash>                                                                   |
 +---------+-----------------------+------------------------------------------------------------------------------------------+
-| Failure | Could not find        | Please create a pipeline on this Merge Request                                           |
-|         | needed pipeline       |                                                                                          |
-|         | jobs                  |                                                                                          |
+| Failure | Pipeline Checks       | Please create a `pipeline <https://developer.skatelescope.                               |
+|         |                       | org/en/latest/tools/ci-cd.html>`_ on this Merge Request                                  |
 +---------+-----------------------+------------------------------------------------------------------------------------------+
-| Failure | Could not find        | Please add the following jobs:                                                           |
-|         | needed pipeline       |      *   `ci-metrics  <https://developer.skatelescope.org/en/lat                         |
-|         | jobs                  |          est/tools/ci-cd/continuous-integration.html?highlight=post_step.yml#automated   |
+| Failure | Pipeline Checks       | Please add the following jobs:                                                           |
+|         |                       |      *   `ci-metrics  <https://developer.skatelescope.org/en/lat                         |
+|         |                       |          est/tools/ci-cd/continuous-integration.html?highlight=post_step.yml#automated   |
 |         |                       |          -collection-of-ci-health-metrics-as-part-of-the-ci-pipeline>`_                  |
 |         |                       |      *   `helm-publish  <https://developer.skatelescope.org/en/                          |
 |         |                       |          latest/tools/software-package-release-procedure.html?highlight=helm_publish.yml |   
