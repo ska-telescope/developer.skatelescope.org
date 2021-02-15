@@ -402,6 +402,6 @@ Missing Jira Ticket in commits
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This check warns users of any commit that was made without using a Jira ticket ID in it's message. Having the Jira ticket ID at the beginning of your commit messages is one of the basic rules listed at :ref:`committing-code`. The Jira Ticket ID in the commit messages are used by the developers to keep track of the changes made on the ticket through JIRA, and is a key part of the Software Quality Assurance programme.
 
-Could not find needed pipeline jobs
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Pipeline Checks 
+^^^^^^^^^^^^^^^
 This check prevents users from merging their Merge Request without having a pipeline with the needed jobs. To avoid this failure there are 2 steps. The first one is to create a pipeline (i.e. add .gitlab-ci.yml) if there is not one created yet. The second one can only be done after the first one, and it consists on including the jobs that are listed on the mitigation strategy column (i.e. helm-publish) in the created pipeline. How to add the jobs to the pipeline is explained on the developer portal (job name as hyperlink).
