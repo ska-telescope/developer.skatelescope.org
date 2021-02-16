@@ -369,7 +369,7 @@ Checks
 |         | in commits            |      *   <commit-hash>                                                                   |
 |         |                       |      *   <commit-hash>                                                                   |
 +---------+-----------------------+------------------------------------------------------------------------------------------+
-| Warning | Non-compliant License |Please update the license information according to                           |
+| Warning | Non-compliant License |Please update the license information according to                                        |
 |         | Information           |:doc:`/getting-started/projects/licensing`                                                |
 |         |                       |                                                                                          |
 +---------+-----------------------+------------------------------------------------------------------------------------------+
