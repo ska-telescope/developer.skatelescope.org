@@ -369,7 +369,10 @@ Checks
 |         | in commits            |      *   <commit-hash>                                                                   |
 |         |                       |      *   <commit-hash>                                                                   |
 +---------+-----------------------+------------------------------------------------------------------------------------------+
-
+| Warning | Non-compliant License |Please update the license information according to                                        |
+|         | Information           |:doc:`/getting-started/projects/licensing`                                                |
+|         |                       |                                                                                          |
++---------+-----------------------+------------------------------------------------------------------------------------------+
 
 Missing Jira Ticket ID in MR Title
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -377,7 +380,8 @@ This check prevents users from raising a Merge Request without A Jira ticket ID 
 
 Docker-Compose Found
 ^^^^^^^^^^^^^^^^^^^^
-This check is to prevent users from using Docker-Compose in their project. This will make it easier to remove Docker-Compose from the projects as it shouldn't be used anymore (creates issues with the underlying networks). To avoid this warning, the user needs to remove Docker-Compose from the project.  The details of the files involded can be seen in the warning message under the Mitigation Strategy column along with the line numbers where Docker-Compose is found.
+This check is to prevent users from using Docker-Compose in their project. This will make it easier to remove Docker-Compose from the projects as it shouldn't be used anymore (creates issues with the underlying
+networks). To avoid this warning, the user needs to remove Docker-Compose from the project.  The details of the files involved can be seen in the warning message under the Mitigation Strategy column along with the line numbers where Docker-Compose is found.
 
 Missing Jira Ticket In Branch Name
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -390,3 +394,7 @@ This check prevents users from merging their branch without the Merge Request be
 Missing Jira Ticket in commits
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This check warns users of any commit that was made without using a Jira ticket ID in it's message. Having the Jira ticket ID at the beginning of your commit messages is one of the basic rules listed at :ref:`committing-code`. The Jira Ticket ID in the commit messages are used by the developers to keep track of the changes made on the ticket through JIRA, and is a key part of the Software Quality Assurance programme.
+
+Non-compliant License Information
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This check warns users if license in their project is not compatible with SKA approved license so that the quality of the software is improved and compliance is ensured with the SKA standards. This does not apply to projects in the 'External' project.
