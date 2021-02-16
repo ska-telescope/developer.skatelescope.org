@@ -369,6 +369,17 @@ Checks
 |         | in commits            |      *   <commit-hash>                                                                   |
 |         |                       |      *   <commit-hash>                                                                   |
 +---------+-----------------------+------------------------------------------------------------------------------------------+
+| Failure | Pipeline Checks       | Please create a `pipeline <https://developer.skatelescope.                               |
+|         |                       | org/en/latest/tools/ci-cd.html>`_ on this Merge Request                                  |
++---------+-----------------------+------------------------------------------------------------------------------------------+
+| Failure | Pipeline Checks       | Please add the following jobs:                                                           |
+|         |                       |      *   `ci-metrics  <https://developer.skatelescope.org/en/lat                         |
+|         |                       |          est/tools/ci-cd/continuous-integration.html?highlight=post_step.yml#automated   |
+|         |                       |          -collection-of-ci-health-metrics-as-part-of-the-ci-pipeline>`_                  |
+|         |                       |      *   `helm-publish  <https://developer.skatelescope.org/en/                          |
+|         |                       |          latest/tools/software-package-release-procedure.html?highlight=helm_publish.yml |   
+|         |                       |          #package-and-publish-helm-charts-to-the-skao-helm-chart-repository>`_           |
++---------+-----------------------+------------------------------------------------------------------------------------------+
 | Warning | Non-compliant License |Please update the license information according to                                        |
 |         | Information           |:doc:`/getting-started/projects/licensing`                                                |
 |         |                       |                                                                                          |
@@ -376,7 +387,7 @@ Checks
 
 Missing Jira Ticket ID in MR Title
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This check prevents users from raising a Merge Request without A Jira ticket ID in Merge Request title. This will make every Merge Request identifiable with its Jira ticket (through the GitLab/Jira integration). To avoid this failure, users should include a valid Jira ticket id in title of the Merge Request.
+This check warns users from raising a Merge Request without A Jira ticket ID in Merge Request title. This will make every Merge Request identifiable with its Jira ticket (through the GitLab/Jira integration). The level of this check is a failure, and to avoid it users should include a valid Jira ticket id in title of the Merge Request.
 
 Docker-Compose Found
 ^^^^^^^^^^^^^^^^^^^^
@@ -385,15 +396,19 @@ networks). To avoid this warning, the user needs to remove Docker-Compose from t
 
 Missing Jira Ticket In Branch Name
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This check prevents users from raising a Merge Request without A Jira ticket ID in the branch name. This will make every branch identifiable with its Jira ticket. To avoid this failure, users should follow the steps listed in :ref:`master-based-development`.
+This check warns users from raising a Merge Request without A Jira ticket ID in the branch name. This will make every branch identifiable with its Jira ticket. The level of this check is a failure, and to avoid it users should follow the steps listed in :ref:`master-based-development`.
 
 Wrong Merge Request Setting
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This check prevents users from merging their branch without the Merge Request being configured with the right settings. To avoid this failure the Merge Request should be configured as listed in :ref:`merge-request`. Some of the settings can only be changed by the maintainers.  These settings are listed in :ref:`merge-settings-maintainers`.
+This check warns users from merging their branch without the Merge Request being configured with the right settings. The level of this check is a failure, and to avoid it the Merge Request should be configured as listed in :ref:`merge-request`. Some of the settings can only be changed by the maintainers.  These settings are listed in :ref:`merge-settings-maintainers`.
 
 Missing Jira Ticket in commits
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This check warns users of any commit that was made without using a Jira ticket ID in it's message. Having the Jira ticket ID at the beginning of your commit messages is one of the basic rules listed at :ref:`committing-code`. The Jira Ticket ID in the commit messages are used by the developers to keep track of the changes made on the ticket through JIRA, and is a key part of the Software Quality Assurance programme.
+
+Pipeline Checks 
+^^^^^^^^^^^^^^^
+This check warns users from merging their Merge Request without having a pipeline with the needed jobs. The level of this check is a failure, and to avoid it 2 steps may be needed. The first one is to create a pipeline (i.e. add .gitlab-ci.yml) if there is not one created yet. The second one can only be done after the first one, and it consists on including the jobs that are listed on the mitigation strategy column (i.e. helm-publish) in the created pipeline. How to add the jobs to the pipeline is explained on the developer portal (job name as hyperlink).
 
 Non-compliant License Information
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
