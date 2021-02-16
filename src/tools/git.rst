@@ -380,7 +380,10 @@ Checks
 |         |                       |          latest/tools/software-package-release-procedure.html?highlight=helm_publish.yml |   
 |         |                       |          #package-and-publish-helm-charts-to-the-skao-helm-chart-repository>`_           |
 +---------+-----------------------+------------------------------------------------------------------------------------------+
-
+| Warning | Non-compliant License |Please update the license information according to                                        |
+|         | Information           |:doc:`/getting-started/projects/licensing`                                                |
+|         |                       |                                                                                          |
++---------+-----------------------+------------------------------------------------------------------------------------------+
 
 Missing Jira Ticket ID in MR Title
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -388,7 +391,8 @@ This check warns users from raising a Merge Request without A Jira ticket ID in 
 
 Docker-Compose Found
 ^^^^^^^^^^^^^^^^^^^^
-This check warns users from using Docker-Compose in their project. This will make it easier to remove Docker-Compose from the projects as it shouldn't be used anymore (creates issues with the underlying networks). The level of this check is a warning, and to avoid it the user needs to remove Docker-Compose from the project.  The details of the files involded can be seen in the warning message under the Mitigation Strategy column along with the line numbers where Docker-Compose is found.
+This check is to prevent users from using Docker-Compose in their project. This will make it easier to remove Docker-Compose from the projects as it shouldn't be used anymore (creates issues with the underlying
+networks). To avoid this warning, the user needs to remove Docker-Compose from the project.  The details of the files involved can be seen in the warning message under the Mitigation Strategy column along with the line numbers where Docker-Compose is found.
 
 Missing Jira Ticket In Branch Name
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -405,3 +409,7 @@ This check warns users of any commit that was made without using a Jira ticket I
 Pipeline Checks 
 ^^^^^^^^^^^^^^^
 This check warns users from merging their Merge Request without having a pipeline with the needed jobs. The level of this check is a failure, and to avoid it 2 steps may be needed. The first one is to create a pipeline (i.e. add .gitlab-ci.yml) if there is not one created yet. The second one can only be done after the first one, and it consists on including the jobs that are listed on the mitigation strategy column (i.e. helm-publish) in the created pipeline. How to add the jobs to the pipeline is explained on the developer portal (job name as hyperlink).
+
+Non-compliant License Information
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This check warns users if license in their project is not compatible with SKA approved license so that the quality of the software is improved and compliance is ensured with the SKA standards. This does not apply to projects in the 'External' project.
