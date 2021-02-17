@@ -381,7 +381,7 @@ Checks
 |         |                       |          #package-and-publish-helm-charts-to-the-skao-helm-chart-repository>`_           |
 +---------+-----------------------+------------------------------------------------------------------------------------------+
 | Warning | Non-compliant License |Please update the license information according to                                        |
-|         | Information           |:doc:`/getting-started/projects/licensing`                                                |
+|         | Information           |:doc:`/projects/licensing`                                                                |
 |         |                       |                                                                                          |
 +---------+-----------------------+------------------------------------------------------------------------------------------+
 
