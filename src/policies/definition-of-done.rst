@@ -1,3 +1,4 @@
+.. _definition-of-done:
 
 Definition of Done
 ==================
@@ -15,10 +16,10 @@ Issue Type          Definition of Done
                     * Supplied with an :ref:`ok-licenses`.
                     * Adheres to SKA language :doc:`specific style </tools/codeguides>`.
                     * Checked into SKA repository with a :doc:`reference </tools/jira>` to a JIRA ticket ID.
-                    * Passes the CI/CD pipeline including compiling cleanly and being linted with no warnings: :ref:`linting`. 
+                    * Passes the CI/CD pipeline including compiling cleanly and being linted with no warnings: :ref:`linting`.
                     * Unit and module :ref:`tests <tests>` pass with adequate coverage (>= 75% with appropriate exclusions for boiler-plate code).
                     * Component, integration and system :ref:`tests <tests>` (appropriate for the context) pass.
-                    * Regression :ref:`tests <tests>` pass. 
+                    * Regression :ref:`tests <tests>` pass.
 
                     :doc:`Code Documentation </tools/documentation>`
 
@@ -33,7 +34,7 @@ Issue Type          Definition of Done
 
                     **Process**
 
-                    * Peer-reviewed and integrated into the main branch via GitLab :ref:`merge-request`. 
+                    * Peer-reviewed and integrated into the main branch via GitLab :ref:`merge-request`.
                     * Relevant `NFRs <https://confluence.skatelescope.org/display/SWSI/Requirements>`_ are met
                     * Satisfies acceptance criteria
                     * Accepted by Product Owner
