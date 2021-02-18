@@ -84,7 +84,8 @@ SKA Repositories
   tools/git
   tools/jira
   tools/ci-cd
-  tools/testing
+  tools/bdd-test-context
+  tools/bdd-walkthrough
   tools/test-infrastructure
   tools/containers
   tools/documentation
@@ -120,7 +121,7 @@ CI/CD is at the heart of SKA development, and we use GitLab's automation extensi
 Testing
 =======
 
-Tests are a key part of producing working software. We suggest you look at our :doc:`policies/ska-testing-policy-and-strategy`, and our :doc:`tools/testing`.
+Tests are a key part of producing working software. We suggest you look at our :doc:`policies/ska-testing-policy-and-strategy`, and our :doc:`tools/bdd-test-context` and :doc:`tools/bdd-walkthrough`.
  
 Test Infrastructure
 ===================
