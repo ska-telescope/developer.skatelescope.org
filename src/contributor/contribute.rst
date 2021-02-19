@@ -11,7 +11,7 @@ There are two main ways to contribute to the developer portal:
 Direct Contribution
 ~~~~~~~~~~~~~~~~~~~
 
-You can use the `Edit on GitLab` (TODO: need to add a picture!) button to directly contribute to a page.i
+You can use the `Edit on GitLab` (TODO: need to change a picture!) button to directly contribute to a page.
 
 .. image:: images/edit-on-gl.png
    :alt: A page on the developer portal, showing the "Edit on GitLab" link in the top right of the page.
