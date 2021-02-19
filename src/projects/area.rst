@@ -35,22 +35,22 @@ Simulations
 SKAMPI
 ======
 
-- `SKAMPI repository<https://gitlab.com/ska-telescope/skampi/>`_: the SKA MVP Integration project. Contains helm charts and automation for deployment. 
+- `SKAMPI repository <https://gitlab.com/ska-telescope/skampi/>`_: the SKA MVP Integration project. Contains helm charts and automation for deployment. 
 - `SKAMPI documentation <https://developer.skatelescope.org/projects/skampi/en/latest/?badge=latest>`_.
 
-- `Central Signal Processor Local Monitoring and Control repository<https://gitlab.com/ska-telescope/csp-lmc/>`_ CSP monitoring and control functionality for both SKA MID and LOW  telescopes. 
+- `Central Signal Processor Local Monitoring and Control repository <https://gitlab.com/ska-telescope/csp-lmc/>`_ CSP monitoring and control functionality for both SKA MID and LOW  telescopes. 
 - `CSP LMC documentation <https://developer.skatelescope.org/projects/csp-lmc-prototype/en/latest/?badge=latest>`_.
 
-- `Mid CBF MCS prototype repository<https://gitlab.com/ska-telescope/mid-cbf-mcs/>`_
+- `Mid CBF MCS prototype repository <https://gitlab.com/ska-telescope/mid-cbf-mcs/>`_
 - `Mid CBF MCS documentation <https://developer.skatelescope.org/projects/mid-cbf-mcs/en/latest/?badge=latest>`_.
 
-- `Observation Execution Control repository<https://gitlab.com/ska-telescope/observation-execution-tool/>`_
+- `Observation Execution Control repository <https://gitlab.com/ska-telescope/observation-execution-tool/>`_
 - `Observation Execution Control documentation <https://developer.skatelescope.org/projects/observation-execution-tool/en/latest/?badge=latest>`_.
 
 - `Pulsar Search Pipeline repository <https://gitlab.com/ska-telescope/pss-pipeline/>`_ code for the Pulsar Search Subelement.
 - `Pulsar Search Pipeline Documentation <https://developer.skatelescope.org/projects/pss-pipeline/en/latest/?badge=latest>`_.
 
-- `PSS test vector generator repository<https://gitlab.com/ska-telescope/pss-test-vector-generator>`_: allows generation of tests for Pulsar search.
+- `PSS test vector generator repository <https://gitlab.com/ska-telescope/pss-test-vector-generator>`_: allows generation of tests for Pulsar search.
 - `PSS test vector generator documentation <https://developer.skatelescope.org/projects/pss-test-vector-generator/en/latest/?badge=latest>`_.
 
 - `PSS-CentOS-docker repository <https://gitlab.com/ska-telescope/pss-centos-docker/>`_ Allows PSS integration with skampi.
