@@ -53,20 +53,12 @@ Run the box and call the following commands:
         -e ansible_python_interpreter=/usr/bin/python 
     sudo reboot
 
-Start the tango system
-======================
-In order to start the tango system, just call the following commands:
+Working with Tango
+==================
 
-.. code:: bash
-
-    cd /usr/src/ska-docker/docker-compose
-    make up
-    make start tangotest
+In order to start working with tango you should refer to the documentation on `Tango Example Project <https://developer.skatelescope.org/projects/tango-example/en/latest/?badge=latest#>`_.
 
 
-Other information
-=================
-Please visit the following gitlab pages for more information:
 
-1. https://gitlab.com/ska-telescope/ansible-playbooks.
-2. https://gitlab.com/ska-telescope/ska-docker
+
+
