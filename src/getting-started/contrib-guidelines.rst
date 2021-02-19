@@ -4,7 +4,7 @@ Contributing to the SKA
 
 We're delighted that you'd like to contribute to an SKA project. First of all, please read our :doc:`/policies/code-of-conduct`, which sets out our expectations for behaviour when working on the SKA. Since you're most likely here to work with our repositories, you should proably read our guide to :doc:`/tools/git`. 
 
-The advice provided here is general; please look at the documentation for the repository you wish to commit to to check out the specific policies. For example, if you wish to :doc:`contributor/contribute`, you'll need to read the linked page. If a specific policy contradicts the general advice, please follow the policy for the relevant repository over the guidance provided here. Note that at the moment, not all repositories have good processes to deal with merge requests from forks of that repo. 
+The advice provided here is general; please look at the documentation for the repository you wish to commit to to check out the specific policies. For example, if you wish to :doc:`/contributor/contribute`, you'll need to read the linked page. If a specific policy contradicts the general advice, please follow the policy for the relevant repository over the guidance provided here. Note that at the moment, not all repositories have good processes to deal with merge requests from forks of that repo. 
 
 Please read the :doc:`/tools/codeguides` for the language you're working with; you'll need to adhere to those standards. Many repositories will perform PEP-8 or similar linting checks. If you're working on documentation for any repository, we use ReadtheDocs, using the Sphinx documentation generator, which uses `reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#>`_. 
 
