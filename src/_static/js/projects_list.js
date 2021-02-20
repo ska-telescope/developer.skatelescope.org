@@ -18,7 +18,7 @@
              $.getJSON(pg3, function(data3){
                item = ""
                data = data1.concat(data2,data3);
-               data.sort((a,b) => a["name"].toLowerCase() > b["name"].toLowerCase());
+               data.sort((a, b) => a["name"].localeCompare(b["name"]));      
                $.each(data, function(key, val){
                   if(val["description"])
                       description = val["description"];

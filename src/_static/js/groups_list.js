@@ -29,9 +29,9 @@
            $.getJSON(sbg, function(datag){
             $.getJSON(pg1, function(data1){
              $.getJSON(pg2, function(data2){
-               datag.sort((a,b) => a["name"].toLowerCase() > b["name"].toLowerCase());
+               data.sort((a, b) => a["name"].localeCompare(b["name"]));      
                data = data1.concat(data2);
-               data.sort((a,b) => a["name"].toLowerCase() > b["name"].toLowerCase());
+               data.sort((a, b) => a["name"].localeCompare(b["name"]));      
 
                // data contains the full project list including the 
                // projects in subgroups

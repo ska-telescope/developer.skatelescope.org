@@ -24,10 +24,10 @@
                data = data1.concat(data2,data3);
                // sort by name
                //
-               data.sort((a,b) => a["name"].toLowerCase() > b["name"].toLowerCase());
+               data.sort((a, b) => a["name"].localeCompare(b["name"]));      
                item = ""
                $.each(data, function(key, val){
-                 tags = val["tag_list"] ;
+                 tags = val["tag_list"]
                  var overlist=$(checklist).not($(checklist).not(tags));
                  if (overlist.length > 0){                     
                   if(val["description"])
