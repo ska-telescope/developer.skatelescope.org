@@ -59,7 +59,7 @@
                         "</tr>";
                    } //end if for overlist
                }); //end each
-                  item = tbstart + item + "</tbody></table></div>";        
+                  item = tbstart + item + "</tbody></table>";        
                        $(item).appendTo(list);
            }); //end getJSON
            }); //end getJSON
