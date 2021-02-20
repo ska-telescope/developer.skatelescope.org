@@ -11,6 +11,7 @@
        // limits the return list to 100 and currently we have more than 100 projects
        var pg1 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&simple=true&archived=false&include_subgroups=true&all_available=true&page=1";
        var pg2 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&simple=true&archived=false&include_subgroups=true&all_available=true&page=2";
+       var pg3 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&simple=true&archived=false&include_subgroups=true&all_available=true&page=3";
        //
        // replacement will be made on the second paragraph of this subsection, be careful to not change this in the document
        var list = $("#list-of-subgroups p:eq(1)");
@@ -29,8 +30,9 @@
            $.getJSON(sbg, function(datag){
             $.getJSON(pg1, function(data1){
              $.getJSON(pg2, function(data2){
+             $.getJSON(pg3, function(data3){
                data.sort((a, b) => a["name"].localeCompare(b["name"]));      
-               data = data1.concat(data2);
+               data = data1.concat(data2,data3);
                data.sort((a, b) => a["name"].localeCompare(b["name"]));      
 
                // data contains the full project list including the 
@@ -108,6 +110,7 @@
                }); //end each
               }); //end getJSON
             }); //end getJSON
+           }); //end getJSON
            }); //end getJSON
       }else{ //if list not found
        }
