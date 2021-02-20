@@ -27,6 +27,7 @@ def setup(app):
     app.add_javascript('js/gitlab.js')
     app.add_javascript('js/projects_list.js')
     app.add_javascript('js/groups_list.js')
+    app.add_javascript('js/topics_list.js')
 
 # -- General configuration ------------------------------------------------
 

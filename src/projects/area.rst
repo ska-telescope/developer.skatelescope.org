@@ -7,14 +7,6 @@
 Projects by Area
 ****************
 
-Topics: skampi, infrastructure
-
-   ============= =================
-   Documentation Gitlab repository
-   ============= =================
-   testdoc       testgit
-   testdoc       testgit
-   ============= =================
 
 SDP
 ===
@@ -34,6 +26,18 @@ Simulations
 
 SKAMPI
 ======
+
+Software Modules List
+---------------------
+
+Topics: skampi, infrastructure
+
+   ============= =================
+   Documentation Gitlab repository
+   ============= =================
+   testdoc       testgit
+   testdoc       testgit
+   ============= =================
 
 - `SKAMPI repository <https://gitlab.com/ska-telescope/skampi/>`_: the SKA MVP Integration project. Contains helm charts and automation for deployment. 
 - `SKAMPI documentation <https://developer.skatelescope.org/projects/skampi/en/latest/?badge=latest>`_.
@@ -107,6 +111,3 @@ SKAMPI
 - `tmc-prototype repository <https://gitlab.com/ska-telescope/tmc-prototype/>`_: Telescope Monitoring and Control functionality.
 - `tmc-prototype documentation <https://developer.skatelescope.org/projects/tmc-prototype/en/latest/?badge=latest>`_.
 
-.. .. raw:: html
-
-..    <script type="text/javascript" src="../_static/js/topics_list.js"></script>
