@@ -2,8 +2,8 @@
    // table header defaults for the theme
    var tbstart = "<blockquote><div><table class=\"docutils align-default\"  style=\"width: 100%;\"><colgroup>" +
                  "<col style=\"width: 20%;\" /><col style=\"width: 80%;\" /></colgroup><thead>" + 
-                 "<tr class=\"row-odd\"><th class=\"head\"  style=\"width: 20%;\"><p>Documentation</p></th>" +
-                 "<th class=\"head\"  style=\"width: 80%;\"><p>Gitlab repository</p></th></tr></thead><tbody>" ;
+                 "<tr class=\"row-odd\"><th class=\"head\"  style=\"width: 20%;\">Documentation</th>" +
+                 "<th class=\"head\"  style=\"width: 80%;\">Gitlab repository</th></tr></thead><tbody>" ;
        var readthedocs_prepend="ska-telescope-" // all the readthedocs projects start with ska-telescope- next to their name
        // this will query the gitlab api for the subgroup list
        var sbg = "https://gitlab.com/api/v4/groups/3180705/subgroups?per_page=100&skip_groups=6051706,6429070,6051772&simple=true&all_available=true&page=1";

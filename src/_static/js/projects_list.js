@@ -2,8 +2,8 @@
    // override table header defaults for the theme
    var tbstart = "<table class=\"docutils align-default\"  style=\"width: 100%;\"><colgroup>" +
                  "<col style=\"width: 20%;\" /><col style=\"width: 80%;\" /></colgroup><thead>" + 
-                 "<tr class=\"row-odd\"><th class=\"head\"  style=\"width: 20%;\"><p>Documentation</p></th>" +
-                 "<th class=\"head\"  style=\"width: 80%;\"><p>Gitlab repository</p></th></tr></thead><tbody>" ;
+                 "<tr class=\"row-odd\"><th class=\"head\"  style=\"width: 20%;\">Documentation</th>" +
+                 "<th class=\"head\"  style=\"width: 80%;\">Gitlab repository</th></tr></thead><tbody>" ;
        var pg1 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&simple=true&archived=false&page=1";
        var pg2 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&simple=true&archived=false&page=2";
        var pg3 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&simple=true&archived=false&page=3";

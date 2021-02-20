@@ -2,8 +2,8 @@
    // override table header defaults for the theme
    var tbstart = "<table class=\"docutils align-default\"  style=\"width: 100%;\"><colgroup>" +
                  "<col style=\"width: 20%;\" /><col style=\"width: 80%;\" /></colgroup><thead>" + 
-                 "<tr class=\"row-odd\"><th class=\"head\"  style=\"width: 20%;\"><p>Documentation</p></th>" +
-                 "<th class=\"head\"  style=\"width: 80%;\"><p>Gitlab repository</p></th></tr></thead><tbody>" ;
+                 "<tr class=\"row-odd\"><th class=\"head\"  style=\"width: 20%;\">Documentation</th>" +
+                 "<th class=\"head\"  style=\"width: 80%;\">Gitlab repository</th></tr></thead><tbody>" ;
        var checklist = $("#software-modules-list p:eq(0)").text();
        var checklist = checklist.replace(/\s/g,''); // remove white space
        var checklist = checklist.split(':'); // split Topics from the tags
