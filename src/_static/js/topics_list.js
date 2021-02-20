@@ -25,6 +25,7 @@
                // sort by name
                //
                data.sort((a,b) => a["name"].toLowerCase() > b["name"].toLowerCase());
+               item = ""
                $.each(data, function(key, val){
                  tags = val["tag_list"] ;
                  var overlist=$(checklist).not($(checklist).not(tags));
@@ -41,17 +42,17 @@
                       docs_url = "https://developer.skatelescope.org";
                    else
                        docs_url = "https://developer.skatelescope.org/projects/" + docs_name;
-                  item ="<tr>" +
+                  item = item + "<tr>" +
                        "<td><a href=\"" + docs_url + "/en/latest/?badge=latest\" >" +
                            "<img src=\"https://readthedocs.org/projects/" + readthedocs_prepend + 
                          docs_name + "/badge/?version=latest\" alt=\"Documentation Status\" style=\"width:100%;\" /> " +  "</a></td>" +
                         "<td><a alt=\"repo url on gitlab\" href=\"" + gitlab_url + "\">" + name + "</a><br>" + description +
                        "</td>" +
                         "</tr>";
-                  item = tbstart + item + "</tbody></table></div>";        
-                       $(item).appendTo(list);
                    } //end if for overlist
                }); //end each
+                  item = tbstart + item + "</tbody></table></div>";        
+                       $(item).appendTo(list);
            }); //end getJSON
            }); //end getJSON
            }); //end getJSON
