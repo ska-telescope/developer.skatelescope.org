@@ -31,7 +31,7 @@
             $.getJSON(pg1, function(data1){
              $.getJSON(pg2, function(data2){
              $.getJSON(pg3, function(data3){
-               data.sort((a, b) => a["name"].localeCompare(b["name"]));      
+               datag.sort((a, b) => a["name"].localeCompare(b["name"]));      
                data = data1.concat(data2,data3);
                data.sort((a, b) => a["name"].localeCompare(b["name"]));      
 
@@ -66,7 +66,7 @@
                       gitlab_urlg + "\">" + nameg +  "</a></summary>" + descriptiong;
                       // we now need to build the table! 
                       // the trick is to check the namespace id of 
-                             item = ""
+                             item = "";
                              $.each(data, function(k1, val1){
                                     aux=val1["namespace"] ;
                                     if (aux["id"] === sgid){
