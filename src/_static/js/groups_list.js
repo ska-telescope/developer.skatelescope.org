@@ -59,6 +59,8 @@
                   else
                       sgid  = "";
 
+                  d1 = data ;
+                  d1.filter( a => a["namespace"]["id"] === sgid) ;
                   if (sgid != ""){ 
                       // for collapsing the entry we use details and summary
                       //
@@ -67,7 +69,7 @@
                       // we now need to build the table! 
                       // the trick is to check the namespace id of 
                              item = "";
-                             $.each(data, function(k1, val1){
+                             $.each(d1, function(k1, val1){
                                     aux=val1["namespace"] ;
                                     if (aux["id"] === sgid){
                                        if(val1["description"])
