@@ -30,7 +30,7 @@ SKAMPI
 Software Modules List
 ---------------------
 
-Topics: skampi, infrastructure
+Topics: skampi
 
    ============= =================
    Documentation Gitlab repository
