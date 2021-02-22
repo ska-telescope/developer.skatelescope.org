@@ -16,7 +16,5 @@ be downloaded from the `PyCharm download page`_.
   :hidden:
 
   docker-configuration
-  docker-compose-configuration
 
 - :doc:`docker-configuration`
-- :doc:`docker-compose-configuration`
