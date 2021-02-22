@@ -4,7 +4,7 @@ Tango Development Environment set up
 
 Definition
 ===========================
-The Development Environment is the set of processes and software tools used to create software.  
+The Development Environment is the set of processes and software tools used to create software.
 
 Tools include:
  - python version 3.7
@@ -12,12 +12,12 @@ Tools include:
  - Visual Studio Code, PyCharm Community Edition
  - ZEROMQ '4.3.2'
  - OMNIORB '4.2.3'
- 
+
 Processes include:
  - writing code,
  - testing code,
  - packaging it.
- 
+
 The main process is a python/c++ developer working with one tango device server writing one or more devices:
 
 1. (optional) Work with pogo and create the device(s) needed;
@@ -31,12 +31,12 @@ The main process is a python/c++ developer working with one tango device server 
 
 Prerequisites
 ===========================
-- VirtualBox installed	
+- VirtualBox installed
 - git
 
 Creating a Development Environment
 ==================================================
-Download a image of ubuntu 18.04 like the following one: 
+Download a image of ubuntu 18.04 like the following one:
  - https://sourceforge.net/projects/osboxes/files/v/vb/55-U-u/18.04/18.04.2/18042.64.7z/download
 
 Run the box and call the following commands:
@@ -50,15 +50,15 @@ Run the box and call the following commands:
         sudo apt -y install ansible
     ansible-playbook -i hosts deploy_tangoenv.yml \
         --extra-vars "ansible_become_pass=osboxes.org" \
-        -e ansible_python_interpreter=/usr/bin/python 
+        -e ansible_python_interpreter=/usr/bin/python
     sudo reboot
 
 Working with Tango
-==================
 
 In order to start working with tango you should refer to the documentation on `Tango Example Project <https://developer.skatelescope.org/projects/tango-example/en/latest/?badge=latest#>`_.
 Following this documentation you will be able to start tango on a kubernetes environment using `minikube <https://gitlab.com/ska-telescope/sdi/deploy-minikube>`_.
 
+=======
 Other information
 =================
 Please visit the following gitlab pages for more information:

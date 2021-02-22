@@ -411,26 +411,6 @@ Kubernetes clusters could be created in ci/cd jobs. These clusters are created o
 
 Note: in order to run deploy clusters, the account permissions need to be set up correctly for the runner services.
 
-Migrating to new Runner Infrastructure
-------------------------------------------------------------------
-
-Compose is a commonly used tool for defining and running multi-container Docker applications. It works in all environments including CI workflows and requires a three-step process:
-
-#.  Prepare your Dockerfile.
-#.  Define the services that make up your app in :code:`docker-compose.yml`.
-#.  Run :code:`docker-compose up`.
-
-The SKA is currently promoting migration to Kubernetes as the container orchestrator, and this requires for applications developed with docker-compose to be converted into the new runner infrastructure. In principle there is no need to make any changes if one is not using docker-compose.
-
-The conversion tool allowing the migration is Kompose. A detailed guide for changing from docker-compose to kubernetes can be found at https://kubernetes.io/docs/tasks/configure-pod-container/translate-compose-kubernetes/
-
-The conversion process is relatively straightforward, requiring two steps:
-
-#.  Run :code:`kompose convert`  in the same directory of :code:`docker-compose.yml` file.
-#.  Prepare a make target with :code:`kubectl apply -f <output_file>`.
-
-This converts the :code:`docker-compose.yml` file to files that you can use with :code:`kubectl`. To make sure that the transition will work in the runner cluster you can test locally with Minikube. If it works on your local Minikube then it will work in the kubernetes runner cluster.
-
 .. |image0| image:: ../media/image1.png
    :width: 6.27083in
    :height: 0.83333in
