@@ -12,6 +12,8 @@ Please read the :doc:`/tools/codeguides` for the language you're working with; y
 
 For documentation, we recommend that file and directory names do *not* use underscores, but use hyphens. We recommend using Thomas Cokelaer's `heading syntax <https://thomas-cokelaer.info/tutorials/sphinx/rest_syntax.html#headings>`_. We suggest updating pages as you work on them to adopt this style. 
 
+When you are writing instructions for a developer or user, do not assume you know the gender of that person. Pronouns such as "you", "we" and "they" are all acceptable. If you need to refer to the actions of an individual, use singular "they" or a role: "If a team member is struggling with using git, they should contact the System Team for help." But you may find that (as in this sentence), you can write a more friendly guideline by using "you".  
+
 Any images you add to documentation should have adequate contrast. A good test is to preview or print images out in black and white; if they're still legible, the contrast is likely to be acceptable for people with low vision. All images should have alt-text added, unless the same information can be obtained from a figure caption. We recommend reading a `guide to writing good alt-text <https://brailleworks.com/how-to-write-amazing-alt-text/>`_.
 
 Thank you for reading; we hope that you're able to contribute to the SKA.
