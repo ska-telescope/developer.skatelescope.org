@@ -181,8 +181,7 @@ The tango-example project illustrates two types of unit test:
    devices. utilise require a connection. In the tango-example project, these tests are found in
    *tests/test_2_test_server_using_client.py*.
 
-This tutorial illustrates how to run the self-contained unit tests described in 1. The second type of unit tests require
-a *docker-compose* PyCharm configuration, which is not described here.
+This tutorial illustrates how to run the self-contained unit tests described in 1.
 
 From the main menu, choose Run | Edit Configurations... and click on the '+' button to add a new configuration. From the
 menu that appears, select Python tests | pytest to add a new pytest test configuration. The menu selection looks like
@@ -197,8 +196,7 @@ this:
 
 #. Select 'Project Default' as the Python interpreter for this configuration.
 
-.. note:: If you change the project default interpreter to another configuration - a Docker Compose configuration, for
-   instance - then you may want to revisit this run/debug configuration and explicitly select the Docker *:latest*
+.. note:: If you change the project default interpreter to another configuration then you may want to revisit this run/debug configuration and explicitly select the Docker *:latest*
    interpreter rather than use the project default.
 
 The configuration dialog should look like similar to this:

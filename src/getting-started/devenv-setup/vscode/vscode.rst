@@ -19,5 +19,3 @@ Visual Studio Code is an open source project and available for free from the
   docker-configuration
 
 - :doc:`docker-configuration`
-
-.. - :doc:`docker-compose-configuration`
