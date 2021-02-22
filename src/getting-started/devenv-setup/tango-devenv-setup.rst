@@ -63,5 +63,5 @@ Other information
 =================
 Please visit the following gitlab pages for more information:
 
-1. https://gitlab.com/ska-telescope/ska-docker
+1. https://gitlab.com/ska-telescope/ska-tango-images.
 2. https://gitlab.com/ska-telescope/skampi.
