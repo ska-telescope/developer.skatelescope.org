@@ -18,8 +18,8 @@ You can use the `Edit on GitLab` (TODO: need to change a picture!) button to dir
 
 After logging in, this will open GitLab's edit page window in which depending on your permissions:
 
-- could use GitLab's Edit Window to make your changes and push to a branch, then create a Merge Request
-- or use fork option(TODO: need to add a picture!) and then follow the same steps: use GitLab's Edit Window to make your changes and push to a branch, then create a Merge Request from your fork to the developer portal project. Note; creation of the fork will be handled automatically.
+- you could use GitLab's Edit Window to make your changes and push to a branch, then create a Merge Request
+- or you could use the fork option(TODO: need to add a picture!) and then follow the same steps: use GitLab's Edit Window to make your changes and push to a branch, then create a Merge Request from your fork to the developer portal project. Note; creation of the fork will be handled automatically.
 
 Then, you can follow the Merge Request page for status updates, make new contributions directly or by setting up your local development as described below.
 
@@ -29,7 +29,7 @@ Static build
 
 First clone the `developer portal repo <https://gitlab.com/ska-telescope/developer.skatelescope.org>`_ from GitLab. We recommend using ssh to clone.
 
-Then you  install dependencies:
+Then you install dependencies:
 
 ```
 pipenv install --dev
@@ -68,7 +68,7 @@ When you've created a merge request, you can get feedback from a wider number of
 .. image:: images/view-app.png
    :alt: The view app button on GitLab.
 
-Clicking this button allows pepole to view your changes without having to build the documentation themselves. If you need very wide consultation, a ReadtheDocs admin (ask on the `team-system support Slack channel <https://skasoftware.slack.com/archives/CEMF9HXUZ/>`_ to find one) can add your version to the list of version accesible from the site's "versions" dropdown:
+Clicking this button allows people to view your changes without having to build the documentation themselves. If you need very wide consultation, a ReadtheDocs admin (ask on the `team-system support Slack channel <https://skasoftware.slack.com/archives/CEMF9HXUZ/>`_ to find one) can add your version to the list of version accesible from the site's "versions" dropdown:
 
 .. image:: images/rtd-versions.png
    :alt: The Read the Docs version dropdown expanded to show a list of clickable versions.
