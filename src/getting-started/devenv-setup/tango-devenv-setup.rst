@@ -54,11 +54,11 @@ Run the box and call the following commands:
     sudo reboot
 
 Working with Tango
+==================
 
 In order to start working with tango you should refer to the documentation on `Tango Example Project <https://developer.skatelescope.org/projects/tango-example/en/latest/?badge=latest#>`_.
 Following this documentation you will be able to start tango on a kubernetes environment using `minikube <https://gitlab.com/ska-telescope/sdi/deploy-minikube>`_.
 
-=======
 Other information
 =================
 Please visit the following gitlab pages for more information:
