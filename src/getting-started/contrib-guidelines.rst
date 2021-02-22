@@ -12,6 +12,6 @@ Please read the :doc:`/tools/codeguides` for the language you're working with; y
 
 For documentation, we recommend that file and directory names do *not* use underscores, but use hyphens. We recommend using Thomas Cokelaer's `heading syntax <https://thomas-cokelaer.info/tutorials/sphinx/rest_syntax.html#headings>`_. We suggest updating pages as you work on them to adopt this style. 
 
-Any images you add to documentation should have adequate contrast. A good test is to print images out in black and white; if they're still legible, the contrast is likely to be acceptable for people with low visio. All images should have alt-text added, unless the same information can be obtained from a figure caption. We recommend reading a `guide to writing good alt-text <https://brailleworks.com/how-to-write-amazing-alt-text/>`-.
+Any images you add to documentation should have adequate contrast. A good test is to print images out in black and white; if they're still legible, the contrast is likely to be acceptable for people with low visio. All images should have alt-text added, unless the same information can be obtained from a figure caption. We recommend reading a `guide to writing good alt-text <https://brailleworks.com/how-to-write-amazing-alt-text/>`_.
 
 Thank you for reading; we hope that you're able to contribute to the SKA.
