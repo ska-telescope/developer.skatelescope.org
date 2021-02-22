@@ -30,14 +30,6 @@
                   docs_name = path.replace(/\./g,"");
                   if(name == "developer.skatelescope.org")
                       docs_url = "https://developer.skatelescope.org";
-                  else if(name == "web-maxiv-tangogql")
-                      docs_url = "https://web-maxiv-tangogql.readthedocs.io";
-                  else if(name == "webjive")
-                      docs_url = "https://webjive.readthedocs.io";
-                  else if(name == "WebJive Dashboards")
-                      docs_url = "https://webjive-dashboards.readthedocs.io";
-                  else if(name == "WebJive Auth")
-                      docs_url = "https://webjive-auth.readthedocs.io";
                    else
                        docs_url = "https://developer.skatelescope.org/projects/" + docs_name;
                   item = item + "<tr>" +
