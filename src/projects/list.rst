@@ -4,35 +4,10 @@
 
 .. _list:
 
-Alpahbetical list of projects and subgroups
+Alphabetical list of projects and subgroups
 -------------------------------------------
 
-The majority of the SKA projects are currently housed at the root of our gitlab organisation repository at [https://gitlab.com/ska-telescope] but the SKA encourages the use of Gitlab subgroups to house closely related repositories.
-
-List of subgroups
-=================
-
-The following subgroup list is automatically extracted from our gitlab organisation repository
+The majority of the SKA projects are currently housed at the root of our gitlab organisation repository at [https://gitlab.com/ska-telescope] but the SKA encourages the use of Gitlab subgroups to house closely related repositories. The following lists of projects are automatically extracted from our gitlab organisation repository
 at [https://gitlab.com/ska-telescope] 
 
-Subgroups: Science Data Challanges, Software Defined Infrastructure, templates-
-
-List of non-grouped projects
-============================
-
-The following table is automatically extracted from our gitlab organisation repository
-at [https://gitlab.com/ska-telescope] and it contains the full list of projects at the root of ska-telescope.
-
-   ============= =================
-   Documentation Gitlab repository 
-   ============= =================
-   testdoc       testgit       
-   testdoc       testgit       
-   ============= ================= 
-
-.. .. raw:: html
-
-..   <script type="text/javascript" src="../_static/js/groups_list.js"></script>
-
-..   <script type="text/javascript" src="../_static/js/projects_list.js"></script>
-
+Subgroups: Science Data Challanges, Software Defined Infrastructure, templates.

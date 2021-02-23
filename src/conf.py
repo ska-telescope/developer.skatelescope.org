@@ -23,10 +23,11 @@
 import sphinx_rtd_theme
 
 def setup(app):
-    app.add_stylesheet('css/custom.css')
-    app.add_javascript('js/gitlab.js')
-    app.add_javascript('js/projects_list.js')
-    app.add_javascript('js/groups_list.js')
+    app.add_css_file('css/custom.css')
+    app.add_js_file('js/gitlab.js')
+    app.add_js_file('js/groups_list.js')
+    app.add_js_file('js/topics_list.js')
+    app.add_js_file('js/project_table.js')
 
 # -- General configuration ------------------------------------------------
 
