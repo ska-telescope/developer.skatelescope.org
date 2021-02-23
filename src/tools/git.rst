@@ -388,8 +388,6 @@ Checks
 |            |                       |   *  `helm-publish  <https://developer.skatelescope.org/en/                           |
 |            |                       |      latest/tools/software-package-release-procedure.html?highlight=helm_publish.yml  |   
 |            |                       |      #package-and-publish-helm-charts-to-the-skao-helm-chart-repository>`_            |
-|            |                       |   *  `pages  <https://developer.skatelescope.org/en/latest/tools/ci-cd/               |
-|            |                       |      continuous-integration.html?highlight=post_step.yml#pages>`_                     |                 
 +------------+-----------------------+---------------------------------------------------------------------------------------+
 | Warning    | Non-compliant License | Please update the license information according to                                    |
 |            | Information           | :doc:`/projects/licensing`                                                            |
@@ -430,7 +428,7 @@ This check warns users that this project does not follow the guidelines for succ
 
 Pipeline Checks 
 ^^^^^^^^^^^^^^^
-This check warns users from merging their Merge Request without having a pipeline with the needed jobs. The level of this check is a failure, and to avoid it 2 steps may be needed. The first one is to create a pipeline (i.e. add .gitlab-ci.yml) if there is not one created yet. The second one can only be done after the first one, and it consists on including the jobs that are listed on the mitigation strategy column (i.e. helm-publish) in the created pipeline. How to add the jobs to the pipeline is explained on the developer portal (job name as hyperlink). This checks verifies also if the pipeline has a job to produce documentation (pages).
+This check warns users from merging their Merge Request without having a pipeline with the needed jobs. The level of this check is a failure, and to avoid it 2 steps may be needed. The first one is to create a pipeline (i.e. add .gitlab-ci.yml) if there is not one created yet. The second one can only be done after the first one, and it consists on including the jobs that are listed on the mitigation strategy column (i.e. helm-publish) in the created pipeline. How to add the jobs to the pipeline is explained on the developer portal (job name as hyperlink). 
 
 Non-compliant License Information
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
