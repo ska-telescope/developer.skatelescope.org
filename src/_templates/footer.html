@@ -1,73 +1,34 @@
-<form
-  id="feedback-form"
-  class="pre-footer"
-  onsubmit="event.preventDefault(); return fillFeedback();"
-  action=""
-  method="POST"
->
-  <hr />
-  <h2>Feedback</h2>
-  <p>Was this page helpful?</p>
+<script
+  type="text/javascript"
+  src="https://jira.skatelescope.org/s/d41d8cd98f00b204e9800998ecf8427e-CDN/de7s1x/805009/71de2239b08cff861f2e81d4008a4644/2.2.4.7/_/download/batch/com.atlassian.plugins.jquery:jquery/com.atlassian.plugins.jquery:jquery.js?collectorId=c5f67d71"
+></script>
+<script
+  type="text/javascript"
+  src="https://jira.skatelescope.org/s/f521b91e2fdb75d86f39420ffb6d7738-T/de7s1x/805009/71de2239b08cff861f2e81d4008a4644/4.0.0/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-US&collectorId=c5f67d71"
+></script>
 
-  <button
-    class="btn btn-neutral btn-feedback feedback-yes"
-    type="button"
-    onclick="show('feedback-yes'); disableButtons();"
-  >
-    Yes
-  </button>
-  <button
-    class="btn btn-neutral btn-feedback feedback-no"
-    type="button"
-    onclick="show('feedback-no'); disableButtons();"
-  >
-    No
-  </button>
+<script type="text/javascript">
+  window.ATL_JQ_PAGE_PROPS = $.extend(window.ATL_JQ_PAGE_PROPS, {
+	// ==== default field values ====
+	fieldValues : function() {
+ 
+    // Current page of the feedback
+    var currPage = window.location.href;
 
-  <p class="feedback-response" id="feedback-no" style="width: 480px">
-    <label for="feedback-comment">
-      <span>Let us know what we can do better:</span>
-      <span style="float: right; color: gray; font: lighter">Optional</span>
-    </label>
-    <textarea
-      name="feedback-comment"
-      id="feedback-comment"
-      name="description"
-      rows="3"
-    ></textarea>
-    <button
-      class="btn btn-primary"
-      type="submit"
-      style="float: right; margin-top: 0.2em"
-    >
-      Send
-    </button>
-  </p>
-
-  <p class="feedback-response" id="feedback-yes" style="width: 480px">
-    <span>We are glad you liked it!</span>
-    <label for="feedback-comment">
-      <span
-        >If there is anything we can improve, please let us know below:</span
-      >
-      <span style="float: right; color: gray; font: lighter">Optional</span>
-    </label>
-    <textarea
-      name="feedback-comment"
-      id="feedback-comment"
-      name="description"
-      rows="3"
-    ></textarea>
-    <button
-      class="btn btn-primary"
-      type="submit"
-      style="float: right; margin-top: 0.2em"
-    >
-      Send
-    </button>
-  </p>
-  <hr />
-</form>
+		var values = {};
+ 		
+		var error_message = $('.error_message');
+		if ( error_message.length !== 0 ) {
+			// record error message from the page context rather than asking the user to enter it
+			values[ 'summary' ] = error_message.children('.summary').text();
+			values[ 'description' ] = error_message.children('.description').text();
+		}
+ 
+		return values;
+ 
+	}
+});
+</script> 
 
 {% extends "!footer.html" %} {% block extrafooter %}
 
