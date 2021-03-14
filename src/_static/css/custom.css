@@ -163,6 +163,9 @@ p.feedback-response {
 		top: 45px;
 		left: 1100px;
 		width: 325px;
+		overflow: hidden; 
+		height: auto; 
+		width: auto
 	}
 
 	#local-table-of-contents #local-table-of-contents-title {
