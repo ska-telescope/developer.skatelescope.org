@@ -41,3 +41,23 @@ end of original content #}
 
 {% endblock %}
 #}
+
+{# right side TOC from https://github.com/readthedocs/sphinx_rtd_theme/pull/919/ #}
+{%- block document %}
+<div itemprop="articleBody">
+{% if toc|length > title|length + 75 %}
+<nav id="local-table-of-contents" role="navigation" aria-labelledby="local-table-of-contents-title">
+    <h4 id="local-table-of-contents-title">On This Page</h4>
+    {{ toc }}
+</nav>
+{% endif %}
+{% block body %}
+{% endblock %}
+</div>
+{% if self.comments()|trim %}
+<div class="articleComments">
+{% block comments %}{% endblock %}
+</div>
+{% endif%}
+</div>
+{%- endblock %}
