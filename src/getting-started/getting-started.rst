@@ -92,7 +92,7 @@ Information about the SKA
 
 * How are we building it?
 
-  * We have a guide to the `way SKA currently works to develop software <https://confluence.skatelescope.org/display/SE/Improving+the+context-awareness+of+our+teams+and+collaborators>`_. This tells you a bit about what teams we have and what we are doing. 
+  * We have a guide to the `way SKA currently works to develop software <https://confluence.skatelescope.org/x/v4EWBg>`_. This tells you a bit about what teams we have and what we are doing. 
   * You'll also want to look at the `Operations Context <https://confluence.skatelescope.org/display/SWSI/Operations+Context>`_, to find out how the software fits in to the operational environment of the running telescope.
   * Check out the `timeline <https://confluence.skatelescope.org/display/SE/Bridging+Vision+and+Roadmap#BridgingVisionandRoadmap-SolutionRoadmapTowardsT%E2%82%80>`_ of the software project, so you know roughly what the SKA is planning to do when, and where we are in the process of building a world-leading Radio Astronomy Observatory.
   * Coming soon: the SKA Software Security policy!
