@@ -126,7 +126,7 @@ Tests are a key part of producing working software. We suggest you look at our :
 Test Infrastructure
 ===================
 
-To support our testing and CI/CD pipelines, we have the EngageSKA and other clusters configured to allow testing to happen. 
+To support our testing and CI/CD pipelines, we have the multiple kubernetes clusters configured to allow testing to happen. 
 
 - :doc:`tools/test-infrastructure`
 - :doc:`tools/monitoring-dashboards/ait-performance-env`

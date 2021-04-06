@@ -1277,7 +1277,7 @@ Gitlab
 Once the changes had been pushed it will be built in Gitlab.
 Find the pipeline builds at `https://gitlab.com/ska-telescope/skampi/pipelines <https://gitlab.com/ska-telescope/skampi/pipelines>`_.
 
-If the pipeline completes successfully, the full integration environment will be available at `https://integration.engageska-portugal.pt <https://integration.engageska-portugal.pt>`_.
+If the pipeline completes successfully, the full integration environment will be available at selected deployment environment which should be accessible from pipeline, i.e. https://integration.engageska-portugal.pt for syscore and http://k8s.stfc.skao.int for stfc.
 
 Kubernetes primitives
 =====================
