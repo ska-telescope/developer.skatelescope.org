@@ -35,8 +35,6 @@ Some of the dashboards are password protected. To get the current passwords plea
 STFC Cluster
 ============
 
-http://logging.skao.stfc:5601/app/logs/stream
-
 Some of the dashboards are password protected and maybe behind VPN access. To get the current passwords please contact the system team.
 
 * `SKA Infrastructure <http://monitoring.skao.stfc:3000/login>`__: Monitoring metrics such as Kubernetes, GitLab Runners, Elasticstack, cadvisor etc.
