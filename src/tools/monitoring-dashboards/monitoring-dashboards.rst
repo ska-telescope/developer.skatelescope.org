@@ -39,5 +39,5 @@ Some of the dashboards are password protected and maybe behind VPN access. To ge
 
 * `SKA Infrastructure <http://monitoring.skao.stfc:3000/login>`__: Monitoring metrics such as Kubernetes, GitLab Runners, Elasticstack, cadvisor etc.
 * `Prometheus Alerts <http://monitoring.skao.stfc:9093/#/alerts>`__: Prometheus alerts for the core kubernetes cluster and infrastructure VMs
-* `Kibana Logs <http://logging.skao.stfc:5601/app/logs/stream>`__: Kibana Logs for the core cluster
+* `Kibana Logs <https://k8s.stfc.skao.int/kibana/app/logs/stream>`__: Kibana Logs for the core cluster
 * `Argos  <https://argos.engageska-portugal.pt/argos/dashboards>`__: Argos grafana dashboard for Testing purposes for the repositories test metrics such as coverage, number of executed tests, mean values etc. Note: this dashboard has only some repositories at the moment for prototyping
