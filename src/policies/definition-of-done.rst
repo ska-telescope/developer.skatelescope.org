@@ -7,7 +7,7 @@ Done-ness is defined differently at different stages of development and for diff
 
 The tables below describe the criteria that need to be taken into account by Product Owners (for Team Increment work), by Feature Owners (for System Increment), by Capability Owners (for Solution Increment work), and by Release Managers (TBC; for Software Releases).
 
-Please note that when a Product/Feature/Capability Owner, or Release Manager marks a Story/Feature/Capability/Release as Done, **all applicable criteria** from the Definition of Done are expected to be fulfilled. When that is not possible, or applicable to an item, the Product/Feature/Capability Owner, or Release Manager MUST indicate in the comments why those elemements of the Definition of Done do not apply to that Product/Feature/Capability or Release.
+Please note that when a Product/Feature/Capability Owner, or Release Manager marks a Story/Feature/Capability/Release as Done, **all applicable criteria** from the Definition of Done are expected to be fulfilled. When that is not possible, or applicable to an item, the Product/Feature/Capability Owner, or Release Manager MUST indicate in the comments why those elements of the Definition of Done do not apply to that Product/Feature/Capability or Release.
 
 Failure to justify the lack of complete compliance with the Definition of Done result in decreasing quality, and increased Technical Debt, so please be very mindful of this Definition of Done.
 
