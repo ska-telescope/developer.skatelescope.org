@@ -1,5 +1,6 @@
 .. _getting_started:
 
+**************************************************
 Onboarding: Welcome to the SKA developer community
 **************************************************
 
@@ -28,10 +29,10 @@ Your Scrum Master will usually be your first port of call when you have question
 
 In this page, we talk about your Scrum Master doing various things -- if your onboarding isn't led by a Scrum Master, then this should be done by whoever is leading your onboarding. 
 
-We welcome feedback on this page - please tell us what worked and what didn't! You can leave comments in the `#proj-onboarding <https://skasoftware.slack.com/archives/C016VGRJWVC>`_ slack channel, or you can contribute changes to the `developer.skatelescope <https://gitlab.com/ska-telescope/developer.skatelescope.org>`_ GitLab project, or you can mail the Solution Engineer or Release Train Engineers with feedback.
+We welcome feedback on this page - please tell us what worked and what didn't! You can leave comments in the `#proj-onboarding <https://skao.slack.com/archives/C016VGRJWVC>`_ slack channel, or you can contribute changes to the `developer.skatelescope <https://gitlab.com/ska-telescope/developer.skatelescope.org>`_ GitLab project, or you can mail the Solution Engineer or Release Train Engineers with feedback.
 
 First Day
-=========
+#########
 
 This section is designed to get you up and running, with all the accounts you'll need and the main places to go to get further information.
 
@@ -42,7 +43,7 @@ This section is designed to get you up and running, with all the accounts you'll
 * Get SKA accounts. You should set up these accounts with your institutional email address. Please provide this email address to your Scrum Master if they don't have it already! You'll need the following accounts:
 
   * `JIRA <https://jira.skatelescope.org>`_ and `Confluence <https://confluence.skatelescope.org>`_ login (both sites are configured to authenticate you with the same username and password).
-  * `Slack <https://skasoftware.slack.com>`_ If the person you are trying to add does not have an institutional email address, please drop by `#team-slack-admins <https://skasoftware.slack.com/archives/CVD3RNCR0>`_ and indicate why the account needs to be done on a non-institutional email address.
+  * `Slack <https://skao.slack.com>`_ If the person you are trying to add does not have an institutional email address, please drop by `#team-slack-admins <https://skao.slack.com/archives/CVD3RNCR0>`_ and indicate why the account needs to be done on a non-institutional email address.
   * Google Drive. You may need to create an account associated with your institutional email address. This makes it easier for us to know who is using that Google account.
   * `GitLab <https://gitlab.com/>`_ (If you're not going to be contributing code or documentation, this step may be omitted or postponed.) Please make sure your institutional email address is associated with your GitLab ID if you've already got a GitLab account. See https://developer.skatelescope.org/en/latest/tools/git.html#use-institutional-email for instructions on how to do this.
 
@@ -61,13 +62,13 @@ We therefore have a Code of Conduct, and reading, understanding, and adhering to
 And you should visit the `developer portal <https://developer.skatelescope.org/>`_! (You may be reading this on the developer portal; this is a reminder to Scrum Masters that they should provide you with the link!)
 
 First Week
-==========
+##########
 
 This week is about providing you with some context about the project, and working out what your immediate training needs are. You will learn more about the SKA in the following weeks and months: some of this is just a brief introduction.
 You can use the links provided here as a way to find information in the future, should you wish to revisit some of this material.
 
 Information about the SKA
--------------------------
+*************************
 
 * What is the SKA?
 
@@ -88,6 +89,7 @@ Information about the SKA
   * You should also visit the `Training Events <https://confluence.skatelescope.org/display/SE/Training+Events>`_ Confluence page, and discover when the next appropriate SAFe training sessions will happen. You will probably want to attend the SAFe for Teams training, but please discuss this with your Scrum Master. The training could happen at any point in the next three months, and some of it will be revision of what you've learnt from reading the slides.
 
 * What are we building? 
+
   * The `Solution Intent <https://confluence.skatelescope.org/display/SWSI>`_ Confluence pages describe the software architecture of the SKA. It also describes the direction in which we intend the architecture to evolve. We suggest you look at the top-level views, and then look at the specific views for the part of the system that your team is working on. Again, at this stage, you're only looking at a small section of the information. You can return later to get a better idea of the wider context. Your Scrum Master will help you identify the relevant pages.
 
 * How are we building it?
@@ -104,18 +106,19 @@ Information about the SKA
 * Finally, there's a `Glossary <https://confluence.skatelescope.org/display/GLOS/Glossary>`_. This lists many of the terms and acronyms in use in SKA. Also, don't be afraid to ask your team on Slack, or ask questions in meetings if you don't understand. 
 
 Information about People
-------------------------
+************************
 
 Your Scrum Master should introduce you to your team, and other people you'll meet in the course of your work.
 You can find out about the `people who work for the SKA Organisation <https://www.skatelescope.org/skao-staff/>`_ from the SKA website. 
 You'll find out more about the people working on the software later on.
 
 Socialising
-^^^^^^^^^^^
+===========
+
 You'll get to know people a bit through the various meetings SKA holds, and your own institution probably has some social events that you can participate in. For SKA, we currently have the #social-boardgames slack channel, the #rand-chats channel, and a lunchtime speaker series.
 
 Information about your Team
----------------------------
+===========================
 
 Your Scrum Master should give you links to:
 
@@ -136,7 +139,7 @@ If you are a new Scrum Master or Product Owner, you will definitely need a Miro 
 You can familiarise yourself with Miro by playing in `this sandbox <https://miro.com/app/board/o9J_kvL9C7w=/>`_.
 
 Training
---------
+********
 This may be the first time you've used JIRA or Confluence. Both of these have extensive help pages, which can be accessed by clicking on the question mark in the top right of the screen.
 The links change every time the software is updated, but the question mark icon will always link to the latest version.
 As a rough guide, you should be comfortable editing and creating new Confluence pages, and creating and updating JIRA tickets.
@@ -153,14 +156,15 @@ Your Scrum Master is your first port of call, but they may also encourage you to
 If you're having trouble with particular tools, the slack help channels may be of use as well.
 
 First Month
-===========
+###########
+
 This month is about getting you to the stage where you're able to contribute to your team's work. 
 In each subsection, items are approximately ordered by priority, so things earlier in the list should usually be done before things later in the list.
 
 First of all, you should familiarise yourself with the :doc:`SKA Definition of Done </policies/definition-of-done>`
 
 Understanding more about the SKA
---------------------------------
+********************************
 
 * Have a look at the SKA organisation chart (it's linked on the bottom of the right-hand sidebar on the `staff page <https://www.skatelescope.org/skao-staff/>`_, and find out where you fit in.
 * Find out about your ART (Agile Release Train). An overview of the `structure <https://confluence.skatelescope.org/display/SE/Agile+Release+Trains>`_ will give a general picture. Then you should look at one or other of
@@ -174,7 +178,7 @@ Understanding more about the SKA
 * Read the `Architectural Decision Process </policies/decision-making>`. This process is how we can change and update our architecture, as we find out more about the system we're implementing, or as we need to adopt new technology.  All developers are able to reason about the architecture of the system; you'll need to know the process.
 
 What are your skills?
----------------------
+*********************
 Now you know more about what your team does, and where it fits in the organisation, we suggest you look at the `SKA skills matrix <https://docs.google.com/spreadsheets/d/1aKpe-mbUdVUFIEMw5bQ1Uhs6CVmolKzIItm6-w_9r5o/edit?usp=sharing>`_.
 You'll now work out with your Scrum Master which skills you need to do your job.
 We recommend taking a copy of the skills spreadsheet and putting it in your team area in Google Drive.
@@ -198,7 +202,7 @@ Even if you can do the activity, you may need to do some reading to find out how
 You can also sign up for training on the `Confluence training pages <https://confluence.skatelescope.org/display/SE/Training>`_.
 
 Suggested Activities
---------------------
+********************
 These are some things we think you might want to do.
 Discuss this with your Scrum Master to see which ones are most appropriate for you.
 
@@ -212,7 +216,8 @@ Discuss this with your Scrum Master to see which ones are most appropriate for y
 * Watch some parts of videos of recent demos that describe the part of the system you're working on; your Scrum Master should be able to recommend suitable demos.
 
 Suggested activities for new developers
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+=======================================
+
 This section is primarily aimed at new developers. 
 Your Scrum Master may create tickets in JIRA; this will help you get used to managing your work via JIRA if this is new to you.
 
@@ -226,7 +231,7 @@ Your Scrum Master may create tickets in JIRA; this will help you get used to man
 * Read your team's documentation for the main project you're working on.
 
 Suggested activities for other roles
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+====================================
 Scrum Masters: lead a stand up, then a review and retrospective session, and a planning meeting!
 
 Product Owners: create new tickets for your team.
@@ -236,7 +241,8 @@ Members of the Solution or Program Management: attend feature development worksh
 Also talk to the teams, and find out what they think they're doing.
 
 First Three Months
-==================
+##################
+
 These months are about filling out your knowledge of the project. 
 Because some things happen on a 3-monthly cycle in the SKA, some of these events may be earlier or later in your onboarding. 
 There will probably be training opportunities during the first 1-3 months, so some may technically happen in your first month if that's when the training is offered. We hope they're useful whenever they happen.

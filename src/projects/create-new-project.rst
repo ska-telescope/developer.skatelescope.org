@@ -1,11 +1,12 @@
 .. _create-new-project:
 
+********************
 Create a new project
---------------------
+********************
 
 The SKA code repositories are all stored on the SKA Gitlab account, on `gitlab.com/ska-telescope <http://gitlab.com/ska-telescope>`_.
 The SKA's repositories on Gitlab have to be created by a member of the Systems team.
-If you need a repository simply go to the Slack channel `#team-system-support <https://skasoftware.slack.com/messages/CEMF9HXUZ>`_ and ask for a new repository to be created. Choose the name well (see below).
+If you need a repository simply go to the Slack channel `#team-system-support <https://skao.slack.com/messages/CEMF9HXUZ>`_ and ask for a new repository to be created. Choose the name well (see below).
 Respositories will be created with public access by default. Other permissions schemes, such as private and IP protected repositories, are also possible upon request.
 
 You will be given Maintainer privileges on this project. This will make it possible for you to (among other things) add users to the project and edit their permissions. For more information about permissions on Gitlab, go to `https://docs.gitlab.com/ee/user/permissions.html <https://docs.gitlab.com/ee/user/permissions.html>`_.
@@ -24,7 +25,7 @@ In early 2020 the creation of repositories by developers or team members on the 
 When creating a new repo there is a number of aspects to be considered.
 
 Mono VS Multi repositories
-==========================
+##########################
 
 One of the first choices when creating a new project is how to split the code into repositories.
 In a project such as SKA there is no strict rule that can be applied, and a degree of judgement is
@@ -39,7 +40,7 @@ a repository should be created for every software component following this defin
   -- *adapted from 'Continuous Delivery'*
 
 Naming a repository
-===================
+###################
 
 Repository names shall clearly map to a particular element of the SKA software architecture,
 as described in the SKA software design documentation. That is to say, someone familiar with the
@@ -51,7 +52,7 @@ Names shall be all lowercase, multiple words shall be separated by hyphens.
 .. _repository-checklist:
 
 Repository contents
-===================
+###################
 
 All software repositories shall host whatever is necessary to download and run the code
 they contain. This does not only include code, but also documentation, dependencies and
@@ -83,7 +84,7 @@ A software repository shall contain:
 
 
 SKA Skeleton Projects
-=====================
+#####################
 
 The SKA Organisation repository contain a number of skeleton projects which are intended to be forked
 when starting a new project.
