@@ -43,13 +43,13 @@ open `/build/html/index.html` in a web browser.
 Documentation Guidelines
 ########################
 
-When adding files of any kind to this project, do not use underscores in filenaames. Use hypens instead. Very long filenames are mildly discouraged, as it makes doing cross-references more difficult. Some examples::
+When adding files of any kind to this project, do not use underscores in filenames. Use hyphens instead. Very long filenames are mildly discouraged, as it makes doing cross-references more difficult. Some examples::
 
    thng.rst // A bit short. What is this page about?
    contrib-guide.rst // Good. Not too long to type, and says what the page is about
    development_guidelines_and_policies.rst // Too long, and uses underscores, which are forbidden. 
 
-If you are adding image files, we recommend using a ``/images`` directory in the same directory as the ``.rst`` file you are editing. These directories exist in several locations alerady. Image and other media files should be named using the same conventions as is used for the ``.rst`` files that generate the pages. Any images added should adhere to the :doc:`SKA contribution guidelines </getting-started/contrib-guidelines>`. 
+If you are adding image files, we recommend using a ``/images`` directory in the same directory as the ``.rst`` file you are editing. These directories exist in several locations already. Image and other media files should be named using the same conventions as is used for the ``.rst`` files that generate the pages. Any images added should adhere to the :doc:`SKA contribution guidelines </getting-started/contrib-guidelines>`. 
 
 If you wish to `cross-reference <https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#ref-role>`_ other pages on the developer portal, you must use the ``:doc:`` syntax. This allows the Sphinx documentation generator to detect broken links within the site. Do not refer to pages within thie site using the syntax for URLs. 
 
