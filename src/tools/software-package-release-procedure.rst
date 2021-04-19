@@ -231,7 +231,7 @@ The CI job that is included using the above lines of code takes care of packagin
 
 If no new versions of charts are found (i.e. if the version of the chart that you are trying to publish is already listed in the SKAO Helm repository), none will be uploaded. All the changes will be listed at the end of the CI Pipeline job.
 
-Please note that the above job also includes the generation of the metadata information for the chart which will be included in a MANIFEST file included in the root folder of the chart to be published. 
+Please note that the above job also includes the generation of the metadata information for the chart which will be included as a MANIFEST file in the root folder of the chart. 
 
 .. note::
   A chart has a ``version`` number and an ``appVersion``. Updating only the appVersion number will *not* result in an update to the chart repository - if you want a new version of the application to be uploaded, you *must* update the chart version as well. Read more on the Helm documentation.
