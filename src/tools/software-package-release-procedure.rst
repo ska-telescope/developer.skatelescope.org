@@ -155,7 +155,7 @@ Example: publish an OCI Image for the tango-cpp base image from ska-tango-images
   docker push ${CAR_OCI_REGISTRY_HOST}/ska-tango-images/tango-cpp:9.3.4
   This image has been published at https://artefact.skatelescope.org/#browse/browse:docker-internal:v2%2Fska-tango-images%2Ftango-cpp%2Ftags%2F9.3.4
 
-For a docker image to be valid, metadata must be included as `labels<https://docs.docker.com/engine/reference/builder/#label>`_. The procedure for building and pushing to the repository can be taken from the gitlab template-reposuitory project in the following way: 
+For a docker image to be valid, metadata must be included as `labels <https://docs.docker.com/engine/reference/builder/#label>`_. The procedure for building and pushing to the repository can be taken from the gitlab template-reposuitory project in the following way: 
 
 .. code:: yaml
 
