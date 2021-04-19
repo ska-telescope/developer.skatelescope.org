@@ -41,6 +41,39 @@ The repository is based on *Nexus* Repository Manager 3 deployed on an independ
 
  LDAP authentication has been integrated for SKAO administration purposes, with an additional minimal set of accounts managed for publishing artefacts.  All repositories are enable read-only for anonymous access.  Additionally, email has been integrated for handling task notifications.
 
+
+########
+Metadata 
+########
+
+To be declared as valid, an artefact must be decorated with a set of metadata which certify its origin. Since all artefacts are published from gitlab pipelines, those information must be attached: 
+
+ * CI_COMMIT_AUTHOR
+ * CI_COMMIT_REF_NAME
+ * CI_COMMIT_REF_SLUG
+ * **CI_COMMIT_SHA**
+ * CI_COMMIT_SHORT_SHA
+ * CI_COMMIT_TIMESTAMP
+ * **CI_JOB_ID**
+ * CI_JOB_URL
+ * **CI_PIPELINE_ID**
+ * CI_PIPELINE_IID
+ * CI_PIPELINE_URL
+ * CI_PROJECT_ID
+ * CI_PROJECT_PATH_SLUG
+ * CI_PROJECT_URL
+ * CI_REPOSITORY_URL
+ * CI_RUNNER_ID
+ * CI_RUNNER_REVISION
+ * CI_RUNNER_TAGS
+ * GITLAB_USER_NAME
+ * GITLAB_USER_EMAIL
+ * GITLAB_USER_LOGIN
+ * GITLAB_USER_ID
+
+Bold ones are essential to have. More information can be found on `Predefined variables reference <https://docs.gitlab.com/ee/ci/variables/predefined_variables.html>`_. 
+Procedure for including those metadata is documented in `Deploying Artefacts`_.
+
 Configured Repositories
 -----------------------
 
@@ -104,7 +137,6 @@ Deploying Artefacts
 
 While the Central Artefact Repository is available for anonymous browsing and pulling of artefacts, all artefacts must be published via the SKAO GitLab CI/CD infrastructure.  The GitLab Runner environment provides the credentials.  These are specified in the :ref:`full list of environment variables <gitlab-variables>`, with examples given below.
 
-
 OCI Image
 ~~~~~~~~~
 
@@ -122,6 +154,15 @@ Example: publish an OCI Image for the tango-cpp base image from ska-tango-images
   # Push the image
   docker push ${CAR_OCI_REGISTRY_HOST}/ska-tango-images/tango-cpp:9.3.4
   This image has been published at https://artefact.skatelescope.org/#browse/browse:docker-internal:v2%2Fska-tango-images%2Ftango-cpp%2Ftags%2F9.3.4
+
+For a docker image to be valid, metadata must be included as `labels<https://docs.docker.com/engine/reference/builder/#label>`_. The procedure for building and pushing to the repository can be taken from the gitlab template-reposuitory project in the following way: 
+
+.. code:: yaml
+
+  # Ensure your .gitlab-ci.yml has "build" stage defined!
+  include:
+    - project: 'ska-telescope/templates-repository'
+      file: 'gitlab-ci/includes/build_push.yml'
 
 
 Using the GitLab OCI Registry
@@ -189,6 +230,8 @@ In case you only want to publish a sub-set of the charts in your project, you ca
 The CI job that is included using the above lines of code takes care of packaging the chart in a temporary directory and pushes it to the SKAO repository. The job runs manually, which means that you need to trigger it on the Gitlab web UI in the CI/CD pipeline view. Note, triggering the job, you can specify the ``CHARTS_TO_PUBLISH`` variable before the job executes again, however, re-running this job in turn will not use the manual variable specification again and will result in an attempt to publish all the charts under the ``charts/`` folder.
 
 If no new versions of charts are found (i.e. if the version of the chart that you are trying to publish is already listed in the SKAO Helm repository), none will be uploaded. All the changes will be listed at the end of the CI Pipeline job.
+
+Please note that the above job also includes the generation of the metadata information for the chart which will be included in a MANIFEST file included in the root folder of the chart to be published. 
 
 .. note::
   A chart has a ``version`` number and an ``appVersion``. Updating only the appVersion number will *not* result in an update to the chart repository - if you want a new version of the application to be uploaded, you *must* update the chart version as well. Read more on the Helm documentation.
@@ -290,8 +333,7 @@ After that is complete, then the tag needs to be published to the origin:
 Minimum Metadata requirements
 """""""""""""""""""""""""""""
 
-For proper Python packaging, the following metadata must be present
-in the repository:
+For proper Python packaging, the following metadata must be present in the repository:
 
 * Package name
 * Package version
@@ -308,11 +350,12 @@ Additional metadata files that should be included in the root directory, are:
 * CHANGELOG.{md|rst} - A log of release versions and the changes in each version
 * LICENSE - A text file with the relevant license
 
-Building Python Packages
-""""""""""""""""""""""""
+Together with the above metadata a MANIFEST file must also be present in the whl file. 
 
-The following command will be executed in order to build a wheel
-for a Python package:
+Building and Publishing Python Packages
+"""""""""""""""""""""""""""""""""""""""
+
+The following command will be executed in order to build a wheel for a Python package:
 
 .. code:: bash
 
@@ -324,44 +367,16 @@ for example:
 
 .. code:: yaml
 
-  build_wheel for publication: # Executed on a tag:
-    stage: build
-    tags:
-      - docker-executor
-    script:
-      - pip install setuptools
-      - python setup.py egg_info -b+$CI_COMMIT_SHORT_SHA sdist bdist_wheel # --universal option to be used for pure python packages
+  # uncomment and specify specific charts to publish
+  # variables:
+  #   CHARTS_TO_PUBLISH: my-first-chart my-second-chart
 
-This will build a *Python* wheel that can then be published to the Central Artefact Repository. For developmental purposes one can replace the ``-b+$CI_COMMIT_SHORT_SHA``
-command line option with ``-b+dev.$CI_COMMIT_SHORT_SHA`` to have the wheel built on each commit.
+  # Ensure your .gitlab-ci.yml has "publish" stage defined!
+  include:
+    - project: 'ska-telescope/templates-repository'
+      file: 'gitlab-ci/includes/build_wheel.yml'
 
-Publishing packages to *Nexus*
-""""""""""""""""""""""""""""""
-
-Provided that the release branch has been tagged precisely as described in the above sections
-then the CI job will be triggered by the availability of the tag to publish the *Python* wheel
-to the *SKAO* pypi registry on *Nexus*.
-
-Publishing using ``setup.py``:
-
-.. code:: yaml
-
-  # with setup.py
-  publish-python:
-    stage: publish
-    tags:
-      - k8srunner
-    variables:
-      TWINE_USERNAME: $CAR_PYPI_USERNAME
-      TWINE_PASSWORD: $CAR_PYPI_PASSWORD
-    script:
-      - pip3 install twine
-      - twine upload --repository-url $CAR_PYPI_REPOSITORY_URL dist/*
-    only:
-      variables:
-         - $CI_COMMIT_MESSAGE =~ /^.+$/ # Confirm tag message exists
-         - $CI_COMMIT_TAG =~ /^((([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?)(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?)$/ # Confirm semantic versioning of tag
-
+This will build a *Python* wheel that can then will be published to the Central Artefact Repository (when a tag is available). The above job will also build a wheel on each commit.
 
 Publishing using ``poetry``:
 
