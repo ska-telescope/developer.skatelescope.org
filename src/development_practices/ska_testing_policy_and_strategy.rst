@@ -32,7 +32,7 @@ TDD   Test Driven Development
 What follows is the software testing policy and strategy produced by
 Testing Community of Practice.
 
-This is **version 1.2.0** of this document, completed on 2019-07-09.
+This is **version 1.1.0** of this document, completed on 2019-07-09.
 
 1.1 Purpose of the document
 ----------------------------
@@ -199,11 +199,6 @@ improve themselves and possibly to create competition across teams. Test
 metrics will include basic ones dealing with the testing process, the
 testing architecture and the product quality.
 
-.. todo::
-    say something regarding phase 2
-    - system end-to-end testing
-    - component/service testing
-
 4 Testing policy
 ================
 
@@ -253,10 +248,6 @@ doing debugging. They are two distinct activities.
 Testing is performed by the team who develops the software. There is no
 dedicated group of people who are in charge of testing, there are no
 beta-testers.
-Some testing is performed by a temporary team of people, made of testers coming from
-existing teams. This testing is typically system or integration testing that covers 2
-or more artefacts that are developed by 2 or more teams.
-Selected testers come from these teams.
 
 4.3 Goals of testing
 --------------------
@@ -266,11 +257,8 @@ the teams.**
 
 
 With reference to the test quadrants (:ref:`Figure 1<figure-test-quadrants>`), this policy is restricted
-to tests supporting the teams,  and mostly those that are technology
+to tests supporting the teams and mostly those that are technology
 facing, hence quadrant Q1 (bottom left) and partly Q2 (top left), functional acceptance tests.
-
-.. todo::
-    include also Q2
 
 .. _figure-test-quadrants:
 
@@ -289,9 +277,6 @@ established should help creating testable software products, it should
 lead to a well-designed test automation architecture, it should push
 teams to practice TDD, test-first, and adopt suitable test automation
 patterns.
-
-.. todo::
-    include also system and component/service tests
 
 The reason is that in this way the following higher level objectives can
 be achieved:
@@ -323,11 +308,6 @@ be achieved:
    execution and enable regression testing to be performed several
    times during a sprint (or even a day).
 
-.. todo::
-    say something regarding the support that e2e tests give to individual teams that
-    develop a service and the support they give in identifying system-level failures.
-    Include a word also on smoke tests.
-
 Emphasis on quadrant 1 of :ref:`Figure 1<figure-test-quadrants>`,
 and low importance to the other quadrants, will
 allow the teams to be more focussed (within the realm of testing) and
@@ -335,9 +315,6 @@ learn the basics. Some attention to quadrant 2 will let teams start addressing
 tests at a higher level, which bring along aspects like traceability
 (relationships between tests and requirements) and integration between
 subsystems.
-
-.. todo::
-    adjust the text above to add Q2
 
 Expected outcomes are that once testable systems are produced, a relatively large number of
 unit/module tests will be automated, new tests will be regularly
@@ -355,10 +332,6 @@ systematically covered, testing process not to be extensively monitored,
 systematic traceability of tests to requirements not to be covered, and
 monitoring of quality also not to be covered. These are objectives to be achieved
 in later phases, with enhancements of this policy.
-
-.. todo::
-
-    remove the sentence on traceability not being done
 
 4.4 Monitoring implementation of the policy
 -------------------------------------------
@@ -401,16 +374,15 @@ stakeholder in SKA.
 A testing strategy describes how the test policy is implemented and it
 should help each team member to better understand what kind of test to
 write, how many and how to write them. This testing strategy refers to
-the testing policy described above, for Phase 1 and 2.
+the testing policy described above, for Phase 1.
 
 Because of the diversity of SKA development teams and the diversity of
 the nature of the systems that they work upon (ranging
 from web-based UIs to embedded systems), it seems reasonable
 to start with a testing strategy that is likely to be suitable for most
 teams and let each team decide if a refined strategy is needed. In this
-case each team should explicitly define such a modified strategy,
-it should be compatible with this one, and
-it should be made public.
+case each team should explicitly define such a modified strategy and
+make it public.
 
 5.1 Key definitions and concepts
 --------------------------------
@@ -437,7 +409,8 @@ Testing levels refer to the granularity of the system-under-test (SUT):
 **Component testing**
    Here the word "component" refers to deployment units, rather than software modules or
    other static structures. Components can be binary artefacts such as jar, DLL or wheel
-   files run within threads, processes, services or virtual docker components.
+   files run within
+   threads, processes, services or virtual docker components.
 
 **Integration testing**
    Testing performed to expose defects in the
@@ -505,11 +478,6 @@ developing module and integration tests, testers and product owners are
 responsible for designing component, system and acceptance tests for user stories,
 enablers, and features.
 
-.. todo::
-
-    say that system tests are to be designed implemented and maintained
-    by testers belonmging to different teams based on the teams that own
-    the components constituting the system
 
 5.3 Test specification
 ----------------------
@@ -531,27 +499,6 @@ integration tests. Some of these acceptance tests are also associated
 features. All these tests are automated, possibly during the same sprint
 in which the user story is being developed.
 
-.. todo::
-
-    for unit/module tests say that coverage figures should be monitored.
-    in particular the tester should analyse what is not being covered by tests
-    assess how important are those fragments, and decide if they are worth
-    being covered.
-    If so, new tests should be designed.
-    Importance should be assessed in terms of possible failures and their
-    impact on the project: reduction of value of the system, difficulty in
-    diagnosing failures, delays in deployment, damage to stored data, malfunctions
-    to other components
-
-.. todo::
-
-    say that for system tests they are to be developed based on acceptance
-    criteria of features and capabilities
-    and that they should linked to L1/L2/IF/Verification requirements
-    as shown and explained in CONFLUENCE PAGE
-    all acceptance criteria should be covered, including happy and sad paths
-    of the use case scenarios entailed by the criteria.
-
 5.4 Test environment
 --------------------
 
@@ -560,12 +507,6 @@ environments for running functional and performance tests of complex
 systems. We expect those teams to come up with suggestions
 and prototype solutions that could be included in this strategy later
 on.
-
-.. todo::
-
-   describe here the integration environment and the staging one
-   point to documentation describing how to access existing environments
-   and how to create new ones
 
 5.5 Test data
 -------------
@@ -576,11 +517,6 @@ systems. We expect those teams to come up with suggestions
 and prototype solutions that could be included in this strategy later
 on.
 
-.. todo::
-
-    say that for the moment test data should be stored in the repo with
-    the codebase
-
 5.6 Test automation
 -------------------
 
@@ -590,24 +526,7 @@ associated libraries (for assertions, for mocking); similarly
 developers uisng javascript rely on `Jest`. For component, system, and acceptance tests
 developers may rely also on Gherkin tests (aka, Behavior Driven Development tests).
 
-.. todo::
-
-    provide here links to How To pages for using mocks for Tango,
-    for the bdd stuff.
-
-
-5.7 Continuous integration
----------------------------------------
-
-.. todo::
-
-   provide also links to the CICD pipeline
-   say that there is the "testing" stage, that there should be appropriate xunit artifacts
-   that they should be created always, even if the job fails, that coverage data should be
-   produced based on branch - whenever possible
-
-
-5.8 Confirmation and regression testing
+5.7 Confirmation and regression testing
 ---------------------------------------
 
 Regression testing is performed at least every time code is committed on
