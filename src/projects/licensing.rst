@@ -13,8 +13,10 @@ License File
 Every software repository shall be licensed according to the SPDX standard.
 Every repository shall contain a LICENSE file in its top directory, indicating the copyright holder and the license used for the software in its full textual representation.
 
-Licenses
-========
+.. _ok-licenses:
+
+Acceptable License
+==================
 
 SKA office will automatically accept the BSD 3-clause new LICENSE and any exception to this shall be justified and agreed with SKA office Software Quality Assurance engineer. A template of the license is presented at the end of this page.
 Existing repositories already published with permissive licenses such as Apache 2.0 or MIT licenses will also be accepted as part of the handover procedure, while new repositories are encouraged to adopt the recommended BSD license.
