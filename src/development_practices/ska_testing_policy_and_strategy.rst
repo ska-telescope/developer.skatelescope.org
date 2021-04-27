@@ -32,7 +32,7 @@ TDD   Test Driven Development
 What follows is the software testing policy and strategy produced by
 Testing Community of Practice.
 
-This is **version 1.2.0** of this document, completed on 2020-02-29.
+This is **version 1.2.0** of this document, completed on 2019-07-09.
 
 1.1 Purpose of the document
 ----------------------------
