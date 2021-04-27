@@ -1,30 +1,31 @@
 .. _simulations:
 
+***********
 Simulations
------------
+***********
 
 RASCIL
-++++++
+######
 
 The Radio Astronomy Simulation, Calibration and Imaging Library expresses radio
 interferometry calibration and imaging algorithms in Python and Numpy.
 
 RASCIL
 
-- `Repository <https://gitlab.com/ska-telescope/rascil>`__
-- `Documentation <https://ska-telescope.gitlab.io/rascil/>`__
+- `Repository <https://gitlab.com/ska-telescope/external/rascil>`__
+- `Documentation <https://ska-telescope.gitlab.io/external/rascil/>`__
 
 RASCIL Docker images
 
-- `Repository <https://gitlab.com/ska-telescope/rascil-docker>`__
+- `Repository <https://gitlab.com/ska-telescope/external/rascil-docker>`__
 
 RASCIL examples
 
-- `Repository <https://gitlab.com/ska-telescope/rascil-examples>`__
+- `Repository <https://gitlab.com/ska-telescope/external/rascil-examples>`__
 
 
 OSKAR
-+++++
+=====
 
 OSKAR is designed to simulate visibility data from radio telescopes containing
 aperture arrays, such as SKA-Low.
@@ -39,7 +40,7 @@ OSKAR Python interface
 - `Documentation <https://fdulwich.github.io/oskarpy-doc/>`__
 
 SKA-Low Simulations
-+++++++++++++++++++
+===================
 
 This repository contains scripts for generating SKA-Low simulations.
 
@@ -47,7 +48,7 @@ This repository contains scripts for generating SKA-Low simulations.
 - `Documentation <https://developer.skatelescope.org/projects/ska-sim-low/en/latest/>`__
 
 SKA-Mid Simulations
-+++++++++++++++++++
+===================
 
 This repository contains scripts for generating SKA-Mid simulations.
 
