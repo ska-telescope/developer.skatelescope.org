@@ -376,7 +376,9 @@ for example:
     - project: 'ska-telescope/templates-repository'
       file: 'gitlab-ci/includes/build_wheel.yml'
 
-This will build a *Python* wheel that can then will be published to the Central Artefact Repository (when a tag is available). The above job will also build a wheel on each commit.
+
+This will build a *Python* wheel that can be published to the Central Artefact Repository (when a tag is available). The above job will also build a wheel on each commit and publish the wheel into the gitlab package repository of the project.
+
 
 Publishing using ``poetry``:
 
