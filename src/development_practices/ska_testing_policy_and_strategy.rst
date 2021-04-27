@@ -34,8 +34,6 @@ Testing Community of Practice.
 
 This is **version 1.2.0** of this document, completed on 2020-02-29.
 
-.. todo:: check completion date
-
 1.1 Purpose of the document
 ----------------------------
 
@@ -152,8 +150,8 @@ in terms of monitoring the quality.
 
 One goal of this initial phase is to create awareness of the importance
 given to testing by upper management. Means to implement a testing
-process are provided (tools, training, practices, guidelines) so
-that teams can adopt them.
+process will be provided (tools, training, practices, guidelines), so
+that teams could adopt them.
 
 We plan to cover at least these practices:
 
@@ -181,7 +179,7 @@ process established in this initial phase should NOT:
 -  rely on exploratory testing (which will be introduced later on);
 -  define strict entry/exit conditions for artefacts on the different CI stages to
    avoid creating stumbling blocks for teams;
--  provide traceability of risks.
+-  provide traceability risks.
 
 We will focus on these aspects in subsequent phases.
 
@@ -215,7 +213,7 @@ it applies to all software developed within/for SKA.
 When dealing with software testing, many terms have been defined
 differently in different contexts. It is important to standardise the
 vocabulary used by SKA1 in this specific domain according to the
-following definitions, mostly derived from :ref:`ISTQB Glossary <ref-istqb-glossary>`.
+following definitions, mostly derived from :ref:`ISTQB Glossary <ref-istqb-glossary>`].
 
 **Testing**
     The process consisting of all lifecycle activities, both static
@@ -241,19 +239,17 @@ following definitions, mostly derived from :ref:`ISTQB Glossary <ref-istqb-gloss
     A human action that produces an incorrect result (including
     inserting a bug in the code or writing the wrong specification).
 
-.. note::
-   The purpose of defining both “testing” and “debugging” is so that
-   readers get rid of the idea that one does testing while he or she is
-   doing debugging. They are two distinct activities.
+NOTE: the purpose of defining both “testing” and “debugging” is so that
+readers get rid of the idea that one does testing while he or she is
+doing debugging. They are two distinct activities.
 
 4.2 Work organization
 ---------------------
 
-Testing is **performed by the team who develops the software**. There is no
+Testing is performed by the team who develops the software. There is no
 dedicated group of people who are in charge of testing, there are no
 beta-testers.
-
-Some testing is performed by a **temporary team of testers**, individuals coming from
+Some testing is performed by a temporary team of people, made of testers coming from
 existing teams. This testing is typically system or integration testing that covers 2
 or more artefacts that are developed by 2 or more teams.
 Selected testers come from these teams.
@@ -294,34 +290,34 @@ for testing the system, mostly in the form of Gherkin tests.
 The reason is that in this way the following higher level objectives can
 be achieved:
 
-*  team members explore different test automation frameworks and **learn how to use them** efficiently;
+*  team members explore different test automation frameworks and learn how to use them efficiently;
 
-*  team members learn how to implement tests via **techniques** like test
+*  team members learn how to implement tests via techniques like test
    driven development and test-first, how to use test doubles, how to
    monitor code coverage levels, how to do pair programming and code
    reviews;
 
 *  as an effect of adopting some of those techniques, teams reduce
    technical debt or keep it at bay; therefore they become more and
-   **more efficient in code refactoring** and in writing high quality
+   more efficient in code refactoring and in writing high quality
    code;
 
 *  they will become more proficient in increasing quality of the testing
-   system, so that it becomes **easily maintainable**;
+   system, so that it becomes easily maintainable;
 
 *  by adopting some of those techniques, teams will develop systems that
-   are more and **more testable**; this will increase modularity,
+   are more and more testable; this will increase modularity,
    extendability and understandability of the system, hence its
    quality;
 
-*  team members become used to developing automated tests **within the
-   same sprint** during which the tested code is written;
+*  team members become used to developing automated tests within the
+   same sprint during which the tested code is written;
 
-*  reliance on automated tests will **reduce the time** needed for test
-   execution and **enable regression testing** to be performed several
+*  reliance on automated tests will reduce the time needed for test
+   execution and enable regression testing to be performed several
    times during a sprint (or even a day).
 
-*  System-level tests are needed to verify **acceptance criteria** of features and capabilities
+*  System-level tests are needed to verify acceptance criteria of features and capabilities
    that are related to the system (as opposed to individual components or services).
    Writing them in Gherkin has the added value of providing the means to establish
    a **living documentation**, that is using test cases as a documentation of the
@@ -329,7 +325,7 @@ be achieved:
 
 *  System-level tests are also linked to higher level requirements (L1, L2, IF
    requirements, in addition to
-   acceptance criteria). In this way we can provide **traceability** of tests to
+   acceptance criteria). In this way we can provide traceability of tests to
    requirements, and easily determine what is the degree of satisfaction of certain
    requirements based on test execution data.
 
@@ -384,8 +380,7 @@ These metrics should be automatically computed and updated, and made available t
 stakeholder in SKA.
 
 .. note::
-   Some of these metrics are collected and displayed by the ARGOS system
-   in https://argos.engageska-portugal.pt
+   Some of these metrics are collected and displayed in https://argos.engageska-portugal.pt
    (username=viewer, password=viewer).
 
 
@@ -476,14 +471,7 @@ Other definitions are:
    actively designs the tests as those tests are performed
    and uses information gained while testing to design new and better
    tests. It consists of simultaneous exploration of the system and
-   checking that what it does is suitable for the intended use.
-
-**End-to-end (e2e) tests**
-   These are system, acceptance or component tests that use as observation and control points
-   an API whose entrypoints are all at the same abstraction level, and tests
-   exercise all or most of the components of the SUT. End-to-end tests are different than
-   other system tests that control the SUT from one API and observe some of its
-   components, for example.
+   checking that it does what it should.
 
 6.2 Scope, roles and responsibilities
 -------------------------------------
@@ -491,7 +479,7 @@ Other definitions are:
 This strategy applies to all the software that is being developed within
 the SKA.
 
-Each team should have at least a **tester**, which is the "testing conscience" within the team.
+Each team should have at least a tester, which is the "testing conscience" within the team.
 Because of the specific skills
 that are needed to write good tests and to manage the testing process,
 we expect that in the coming months a tester will become a dedicated
@@ -500,22 +488,22 @@ function within the team rather than a job role. Each team member should
 contribute to this function although one specific person should be held
 accountable for testing.
 
-In most cases, **programmers are responsible** for developing unit tests,
+In most cases, programmers are responsible for developing unit tests,
 programmers and testers together are responsible for designing and
-developing module and integration tests, **testers and product owners** are
+developing module and integration tests, testers and product owners are
 responsible for designing component, system and acceptance tests for user stories,
 enablers, and features.
 
 System-level tests are to be designed, implemented and maintained
-by **groups of testers belonging to different teams**, as opposed by a dedicated
+by groups of testers belonging to different teams, as opposed by a dedicated
 group or team. Testers should come from the teams that contributed one or more
 components making up the system.
 
-The **product owner** of the System Team or a **feature owner** might
+Somebody (the Product Owner of the System Team, or a feature owner) might
 act as a coordinator of the development.
 
 Malfunctions in the testware implementing system-level tests should be treated as
-**high priority bugs**.
+bugs of high priority.
 
 
 
@@ -534,28 +522,29 @@ that bug. This is done prior to fixing the bug.
 Furthermore, the product owner with a tester and a programmer define the
 acceptance criteria of a user story and on this basis the tester with
 the assistance of programmers designs acceptance, system, and
-integration tests. Some of these acceptance tests are also **associated**
-(with tags, links or else) **to acceptance criteria** of corresponding
+integration tests. Some of these acceptance tests are also associated
+(with tags, links or else) to acceptance criteria of corresponding
 features. All these tests are automated, possibly during the same sprint
 in which the user story is being developed.
 
-For unit and module testing code coverage figures should be monitored,
-especially **branch/condition coverage** (as opposed to statement coverage).
-In particular the tester should analyse what is not being covered by tests,
-assess how important are those fragments, and decide if they are worth
-being covered. If so, new tests should be designed.
+.. todo::
 
-Importance should be assessed in terms of possible failures and their
-impact on the project: reduction of value of the system, difficulty in
-diagnosing failures, delays in deployment, damage to stored data, malfunctions
-to other components, impact on users.
+    for unit/module tests say that coverage figures should be monitored.
+    in particular the tester should analyse what is not being covered by tests
+    assess how important are those fragments, and decide if they are worth
+    being covered.
+    If so, new tests should be designed.
+    Importance should be assessed in terms of possible failures and their
+    impact on the project: reduction of value of the system, difficulty in
+    diagnosing failures, delays in deployment, damage to stored data, malfunctions
+    to other components
 
 
 System-level tests are derived from acceptance criteria of epics, capabilities or features.
 Appropriate tags should be added to tests and scenarios so that they can be
 linked to epics, capabilities and features.
 
-All acceptance criteria should be covered by one or more tests/scenarios, including happy and sad paths
+All acceptance criteria should be covered by 1+ tests/scenarios, including happy and sad paths
 of the use case entailed by the criteria.
 
 System-level tests should also be linked (for traceability purposes) to high-level requirements (L1/L2/L3,
@@ -568,67 +557,56 @@ https://confluence.skatelescope.org/display/SE/How+to+implement+BDD+tests.
 5.4 Test environment
 --------------------
 
-in the Developer's portal there is a description of how test
-environments can be provisioned.
+In this version of the strategy we do not cover provisioning of
+environments for running functional and performance tests of complex
+systems. We expect those teams to come up with suggestions
+and prototype solutions that could be included in this strategy later
+on.
 
 .. todo::
-    to be completed and
-    add the link to the specific section in the portal that explains how to create environments
 
-There is a **staging** environment, currently used only by the `Skampi codebase <https://gitlab.com/ska-telescope/skampi>`_.
-
+   describe here the integration environment and the staging one
+   point to documentation describing how to access existing environments
+   and how to create new ones
 
 5.5 Test data
 -------------
 
-Test data, or reference to them when more appropriate, are to be stored as resource files
-that can be used by test cases. When applicable, test data should be versioned.
+In this version of the strategy we do not cover sophisticated mechanisms
+for handling data to support functional and performance tests of complex
+systems. We expect those teams to come up with suggestions
+and prototype solutions that could be included in this strategy later
+on.
 
+.. todo::
+
+    say that for the moment test data should be stored in the repo with
+    the codebase
 
 5.6 Test automation
 -------------------
 
-Different projects have different needs. What follows is a list of test automation frameworks
-and support libraries:
+At the moment these elements are still under active investigation.
+As explained elsewhere in this portal, python developers generally rely on `pytest` and
+associated libraries (for assertions, for mocking); similarly
+developers uisng javascript rely on `Jest`. For component, system, and acceptance tests
+developers may rely also on Gherkin tests (aka, Behavior Driven Development tests).
 
-- for developers using Python: `pytest <https://docs.pytest.org/en/latest/>`_,
-  `pytest-bdd <https://github.com/pytest-dev/pytest-bdd>`_,
-  `assertpy <https://github.com/ActivisionGameScience/assertpy>`_,
-  `mock <https://docs.python.org/3/library/unittest.mock.html>`_
+.. todo::
 
-- for developers using Javascript: `Jest <https://jestjs.io/>`_
-
-- for testers that have to develop end-to-end tests: `Selenium <https://en.wikipedia.org/wiki/Selenium_(software)>`_
-
-- for developers using c or c++: `googletest <https://github.com/google/googletest>`_
-
-Developing unit/module/integration tests for Tango devices might be particularly challenging.
-So far, teams have devised creative ways to use mocks in Python to cope with the problem:
-https://confluence.skatelescope.org/display/SE/How+to+use+mocks+with+Tango.
-
-Other routes have been followed to implement system-level tests using Gherkin:
-https://confluence.skatelescope.org/display/SE/How+to+implement+BDD+tests.
+    provide here links to How To pages for using mocks for Tango,
+    for the bdd stuff.
 
 
 5.7 Continuous integration
 ---------------------------------------
 
-How the CICD pipeline is organized and how it should be used is described in
-http://localhost:63342/developer.skatelescope.org/build/html/tools/continuousintegration.html.
+.. todo::
 
-It is important that teams, when configuring their own CICD pipeline, make sure that the
-testing stage creates and stores important artefacts related to testing.
-These artefacts include:
-
-- pytest execution and coverage reports
-
-- pytest-bdd cucumber reports
-
-- jest xunit execution and coverage reports
-
-- googletest xunit execution and coverage reports.
-
-These artefacts should always be created, no matter what the outcome of the test execution is.
+   provide also links to the CICD pipeline
+   say that there is the "testing" stage, that there should be appropriate xunit artifacts
+   that they should be created always, even if the job fails, that coverage data should be
+   produced based on branch - whenever possible
 
 
 5.8 Confirmation and regression testing
