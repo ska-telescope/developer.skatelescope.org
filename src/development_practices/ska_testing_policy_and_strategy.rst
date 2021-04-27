@@ -568,9 +568,12 @@ https://confluence.skatelescope.org/display/SE/How+to+implement+BDD+tests.
 5.4 Test environment
 --------------------
 
-In the Developer's portal there is a description of how test
-environments can be provisioned: see `Testing Skampi <https://developer.skatelescope.org/projects/skampi/en/latest/testing.html#testing-skampi>`_.
+in the Developer's portal there is a description of how test
+environments can be provisioned.
 
+.. todo::
+    to be completed and
+    add the link to the specific section in the portal that explains how to create environments
 
 There is a **staging** environment, currently used only by the `Skampi codebase <https://gitlab.com/ska-telescope/skampi>`_.
 
@@ -606,13 +609,12 @@ https://confluence.skatelescope.org/display/SE/How+to+use+mocks+with+Tango.
 Other routes have been followed to implement system-level tests using Gherkin:
 https://confluence.skatelescope.org/display/SE/How+to+implement+BDD+tests.
 
-See additional details on `Pytest configuration <https://developer.skatelescope.org/projects/skampi/en/latest/testing.html#pytest-configuration>`_.
 
 5.7 Continuous integration
 ---------------------------------------
 
 How the CICD pipeline is organized and how it should be used is described in
-https://developer.skatelescope.org/projects/skampi/en/latest/testing.html#pipeline-stages-for-testing.
+http://localhost:63342/developer.skatelescope.org/build/html/tools/continuousintegration.html.
 
 It is important that teams, when configuring their own CICD pipeline, make sure that the
 testing stage creates and stores important artefacts related to testing.
