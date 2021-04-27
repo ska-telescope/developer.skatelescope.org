@@ -603,10 +603,6 @@ Developing unit/module/integration tests for Tango devices might be particularly
 So far, teams have devised creative ways to use mocks in Python to cope with the problem:
 https://confluence.skatelescope.org/display/SE/How+to+use+mocks+with+Tango.
 
-Another important approach to write unit/module tests in a way that they don't depend on the Tango infrastructure
-is to apply the **Humble Object** design pattern, that is extracting the domain logic from Tango-related code and move
-it to a separate python object that can be tested in isolation. See some preliminary examples in https://confluence.skatelescope.org/x/MA0xBQ.
-
 Other routes have been followed to implement system-level tests using Gherkin:
 https://confluence.skatelescope.org/display/SE/How+to+implement+BDD+tests.
 
