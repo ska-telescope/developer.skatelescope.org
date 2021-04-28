@@ -60,7 +60,7 @@ For Product/Feature/Capability Owners
 What follows is the software testing policy and strategy produced by
 Testing Community of Practice.
 
-This is **version 1.2.1** of this document, completed on 2020-06-09.
+This is **version 1.2.2** of this document, completed on 2021-04-30.
 
 
 1.1 Purpose of the document
@@ -428,6 +428,9 @@ stakeholder in SKA.
    (username=viewer, password=viewer).
    See :doc:`/tools/monitoring-dashboards/monitoring-dashboards` for more information.
 
+   At the moment (April 2021) Argos is being decommissioned. We will re-deploy it if and when
+   stakeholders will need such a service.
+
 
 5 Testing strategy
 ==================
@@ -699,6 +702,28 @@ These artefacts include:
 These artefacts should always be created, no matter what the outcome of the test execution is.
 
 
+System tests that are applied to the systems running in the staging environment can be classified as **quarantined**.
+
+
+Quarantined tests are such that:
+
+- they are allowed to fail without breaking the CI pipeline;
+
+- such tests should be run any time a pipeline is triggered;
+
+- they should provide the usual pass/fail/error outcome;
+
+- they should include their output into the xml/json report files;
+
+- the CI engine might send an email to the develoepr who triggered the pipeline if one of such tests fails.
+
+The purpose of marking a test as "quarantined" is to avoid blocking the pipeline in case of a test that is flaky.
+Such tests need to be fixed as soon as possible, however. And that is the reason why they should be executed all the times.
+
+A *release manager* is expected to make the decision as to which test to put into quarantine, and when to move it back as
+a normal regression test or to get rid of it.
+
+
 5.8 Confirmation and regression testing
 ---------------------------------------
 
@@ -720,7 +745,24 @@ more.
 Confirmation tests are run manually to confirm that a bug really exist.
 
 
-5.8 Bug management
+5.9 Manual and automatic tests
+-------------------------------
+
+We expect that the vast majority of the tests will be automatic.
+However some tests can, and in some cases they should, be manual.
+
+- Tests that are to be used seldomly, definitely not as regression tests, might not be implemented as automatic scripts because of their poor cost/benefit value.
+
+- Tests that have to involve manual steps (like turning on a piece of hardware) for which it would be too difficult to implement such actions via software
+  could be manual or hybrid tests. A hybrid test is a test where part of the execution is automatic (like preparation of data), alternated with
+  operations that have to be manual.
+  We suggest that any test to be used in regression testing becomes 100% automatic.
+
+- Experience-based tests (aka Exploratory testing), which is a testing method that does not use scripts and where the tester simultaenously explores and verifies the system.
+  This is a commonly used definition of **exploratory testing**: "*Simultaneously designing and executing tests to learn about the system, using your insights from the last experiment to inform the next*."
+  These are the tests that have to be manual.
+
+5.10 Bug management
 ------------------
 We recommend the following process for handling bugs.
 
