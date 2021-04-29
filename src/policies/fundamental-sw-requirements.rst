@@ -7,38 +7,62 @@ These standards underpin all SKA software development. The canonical copy of thi
 but the essential information is on this page, which is extracted from the eB document.
 
 
-**LIST OF ABBREVIATIONS**
+LIST OF ABBREVIATIONS
+#####################
 
-======= ===================================================
-ABBR    MEANING
-======= ===================================================
-ADR     Architectural Decision Record
-AN      Another
-API     Application Programming Interface
-BSD     Berkeley System Distribution
-CSP     Central Signal Processor
-CUDA    Originally “Compute Unified Device Architecture”, now an Nvidia trade mark.
-EX      Example
-FPGA    Field Programmable Gate Array
-HDL     Hardware Description Language
-IEC     International Electro-technical Commission
-IEEE    Institute of Electrical and Electronics Engineers
-IETF    Internet Engineering Task Force
-ITF     Integration and Test Facility
-ISO     International Standards Organisation
-LSST    Large Synoptic Survey Telescope
-LSST DM Large Synoptic Survey Telescope Data Management element.
-LFAA    Low Frequency Aperture Array
-LMC     Local Monitoring and Control
-NIP     Non Image Processing
-ReST    Re-Structured Text
-RFC     Request for Comment
-SDP     Science Data Processor
-SKA     Square Kilometre Array
-SKAO    SKA Organisation (before 1 May 2021) or SKA Observatory (after 1 May 2021)
-VHDL
-(VHSIP) (Very High Speed Integrated Circuit) Hardware Description Language
-======= ===================================================
++--------+--------------------------------------------------------------------------------+
+| ABBR   | MEANING                                                                        |
++========+================================================================================+
+| ADR    |  Architectural Decision Record                                                 |
++--------+--------------------------------------------------------------------------------+
+| AN     |  AD                                                                            |
++--------+--------------------------------------------------------------------------------+
+| API    |  Application Programming Interface                                             |
++--------+--------------------------------------------------------------------------------+
+| BSD    |  Berkeley System Distribution                                                  |
++--------+--------------------------------------------------------------------------------+
+| CSP    |  Central Signal Processor                                                      |
++--------+--------------------------------------------------------------------------------+
+| CUDA   | Originally “Compute Unified Device Architecture”, now an Nvidia trade mark     |
++--------+--------------------------------------------------------------------------------+
+| EX     | Example                                                                        |
++--------+--------------------------------------------------------------------------------+
+| FPGA   | Field Programmable Gate Array                                                  |
++--------+--------------------------------------------------------------------------------+
+| HDL    | Hardware Description Language                                                  |
++--------+--------------------------------------------------------------------------------+
+| IEC    | International Electro-technical Commission                                     |
++--------+--------------------------------------------------------------------------------+
+| IEEE   | Institute of Electrical and Electronics Engineers                              |
++--------+--------------------------------------------------------------------------------+
+| IETF   | Internet Engineering Task Force                                                |
++--------+--------------------------------------------------------------------------------+
+| ITF    | Integration and Test Facility                                                  |
++--------+--------------------------------------------------------------------------------+
+| ISO    | International Standards Organisation                                           |
++--------+--------------------------------------------------------------------------------+
+| LSST   | Large Synoptic Survey Telescope                                                |
++--------+--------------------------------------------------------------------------------+
+| LSST DM| Large Synoptic Survey Telescope Data Management element                        |
++--------+--------------------------------------------------------------------------------+
+| LFAA   | Low Frequency Aperture Array                                                   |
++--------+--------------------------------------------------------------------------------+
+| LMC    | Local Monitoring and Control                                                   |
++--------+--------------------------------------------------------------------------------+
+| NIP    | Non Image Processing                                                           |
++--------+--------------------------------------------------------------------------------+
+| ReST   | Re-Structured Text                                                             |
++--------+--------------------------------------------------------------------------------+
+| RFC    | Request for Comment                                                            |
++--------+--------------------------------------------------------------------------------+
+| SDP    | Science Data Processor                                                         |
++--------+--------------------------------------------------------------------------------+
+| SKA    | Square Kilometre Array                                                         |
++--------+--------------------------------------------------------------------------------+
+| SKAO   | SKA Organisation (before 1 May 2021) or SKA Observatory (after 1 May 2021)     |
++--------+--------------------------------------------------------------------------------+
+| VHDL   | Very High Speed Integrated Circuit (VHSIC) Hardware Description Language       |
++--------+--------------------------------------------------------------------------------+
 
 
 Introduction
