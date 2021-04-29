@@ -239,7 +239,7 @@ Standards Applicable to all SKA Software
 
       v.   Detailed guidelines on how to include License information in
            a **software** distribution are published on the SKA
-           Developer Portal [RD6].
+           Developer Portal [RD6] :doc:`/projects/licensing`.
 
 3. All **SKA Software** shall be documented. The only official
    documentation language accepted by SKA is the English language.
@@ -473,7 +473,7 @@ documentation and models covering the following:
           design may be automatically generated from code and comments.
           Detailed design information that can be derived directly from
           source code repositories is published as part of the SKA
-          developer portal [RD6].
+          developer portal [RD6] at :doc:`/tools/documentation`.
 
       ii. Detailed design documentation for **FPGA software** should
           include estimates of device utilization (DSPs, BRAMS, LUTs
@@ -688,14 +688,14 @@ shall include:
             environment.
 
        ii.  The SKA testing policy and guidelines are published on the
-            SKA developer portal [RD6] and those shall be followed by
+            SKA developer portal [RD6] at :doc:`/policies/ska-testing-policy-and-strategy` and those shall be followed by
             software development teams.
 
        iii. For **software** targeting CPU’s this should include unit
             tests at the class, function or source file level to test
             basic functionality of methods (functions) with an agreed
             minimal coverage of at least 75%, as per the SKA Definition
-            of Done [RD6]. Unit tests created for fixing defects or
+            of Done [RD6] ( :doc:`/policies/definition-of-done` ). Unit tests created for fixing defects or
             making specific enhancements should be checked-in with a
             reference to the issue for which the tests were created.
 
@@ -864,7 +864,7 @@ To develop and integrate **software** the SKAO shall provide:
           publicly make available all code documentation.
 
       ii. How to connect **software** repositories with the publishing
-          platform is documented in the SKA developer portal [RD6].
+          platform is documented in the SKA developer portal [RD6] at :doc:`/tools/documentation`.
 
 3. A continuous integration and test framework that is open to use by
    developers.
