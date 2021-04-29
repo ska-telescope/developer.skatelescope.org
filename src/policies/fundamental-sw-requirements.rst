@@ -1,6 +1,6 @@
-==================================
+**********************************
 Fundamental SKA Software Standards
-==================================
+**********************************
 
 These standards underpin all SKA software development. The canonical copy of this information is 
 `held in eB <https://ska-aw.bentley.com/SKAProd/Search/QuickLink.aspx?n=SKA-TEL-SKO-0000661&t=3&d=Main%5ceB_PROD&sc=Global&r=03&i=view>`_ ,
@@ -66,10 +66,10 @@ LIST OF ABBREVIATIONS
 
 
 Introduction
-============
+############
 
 Explanation of terms
---------------------
+********************
 
 In this document, terms in bold italic font are terms that have a
 specific meaning in the document. The first usage of the term will
@@ -105,13 +105,13 @@ definitions above, but it was included in the title for clarity
 purposes.
 
 Purpose of the document
------------------------
+***********************
 
 This document outlines standards that are applicable to all **SKA
 software**.
 
 Scope of the document
----------------------
+*********************
 
 The scope of these standards includes all **SKA software** and the
 infrastructure associated with it.
@@ -179,10 +179,10 @@ guidelines for **derived software**. In most cases a common-sense
 approach can be taken.
 
 References
-==========
+##########
 
 Applicable documents
---------------------
+********************
 
 The following documents are applicable to the extent stated herein. In
 the event of conflict between the contents of the applicable documents
@@ -191,7 +191,7 @@ and this document, **the applicable documents** shall take precedence.
 1. SKA-GOV-0000086 SKA Observatory Intellectual Property Policy
 
 Reference documents
--------------------
+*******************
 
 The following documents are referenced in this document. In the event of
 conflict between the contents of the referenced documents and this
@@ -228,7 +228,7 @@ document, **this document** shall take precedence.
 11. SKA-GOV-HR00028 Code of Ethics
 
 Standards Applicable to all SKA Software
-========================================
+########################################
 
 1. All **SKA software** shall have a copyright notice which is a
    description of who asserts the copyright over the **software**.
@@ -322,7 +322,7 @@ Standards Applicable to all SKA Software
            license, must be agreed in writing with the SKA Observatory.
 
 Standards applicable to Off-the-shelf software
-==============================================
+##############################################
 
 All **SKA Software** which is **off-the-shelf software** shall have:
 
@@ -394,7 +394,7 @@ All **SKA Software** which is **off-the-shelf software** shall have:
    in a public register of approved **SKA Software**.
 
 Standards applicable to derived software
-========================================
+########################################
 
 As described in `Scope of the document <#_heading=h.4d34og8>`__ the
 spectrum between **off-the-shelf software** and **bespoke software** is
@@ -422,10 +422,10 @@ established on a case by case basis, based on these criteria:
    case basis.
 
 Standards Applicable to Bespoke Software
-========================================
+########################################
 
 Design
-------
+******
 
 This section comprises standards relating to processes described by ISO
 12207 [RD1], §7.1.2 (Requirements), §7.1.3 (Architecture) and §7.1.4
@@ -572,7 +572,7 @@ incorporate the following factors:
             required.
 
 Construction
-------------
+************
 
 This section comprises standards relating to processes described by ISO
 12207 (2008) §7.1.5 (Construction).
@@ -798,7 +798,7 @@ shall include:
     [RD4].
 
 Acceptance and handover
------------------------
+***********************
 
 This section comprises standards relating to processes described by ISO
 12207 [RD1], §6.4.8 (Acceptance Support), §7.1.6 (Integration) and
@@ -860,7 +860,7 @@ validated.
    relevant service-level arrangements.
 
 Support Infrastructure
-======================
+######################
 
 To develop and integrate **software** the SKAO shall provide:
 
