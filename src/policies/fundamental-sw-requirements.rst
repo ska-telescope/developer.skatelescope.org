@@ -297,7 +297,7 @@ Standards Applicable to all SKA Software
    a. Notes:
 
       i.   The license shall be agreed with the SKA Head of Computing
-           and software department or their delegate as agreed.
+           and Software or their delegate as agreed.
 
       ii.  The SKAO will always agree to a `3 clause BSD
            license <https://opensource.org/licenses/BSD-3-Clause>`__ for
