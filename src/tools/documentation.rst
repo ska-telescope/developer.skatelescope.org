@@ -1,7 +1,8 @@
 .. _document-project:
 
+*********************
 Documenting a project
----------------------
+*********************
 
 Documenting a project is the key to make it usable, understandable
 and maintainable, making the difference between a technically excellent
@@ -13,7 +14,7 @@ A more comprehensive set of resources can be found online at:
   * `A beginner guide to writing documentation <https://www.writethedocs.org/guide/writing/beginners-guide-to-docs/>`_
 
 What to document
-~~~~~~~~~~~~~~~~
+################
 
 Based on the documentation provided everyone should be able to:
 
@@ -28,13 +29,13 @@ In order to achieve this goal any structure can be used allowing free
 text as well as code-extracted documentation.
 
 Where to document
-~~~~~~~~~~~~~~~~~
+#################
 
 There are several places where it's possible to write SKA documentation: on the developer portal, as part of the `Solution Intent <https://confluence.skatelescope.org/display/SWSI/Solution+Intent+Home/>`_, as part of the code repository using sphinx (as described below), in your Team space in Confluence (if you're a Confluence user), or using Google Docs in SKA's Google Drive.
 
 Individual code repository documentation is good for describing the current architecture of the code within that repo, and any public APIs it may have. It's also good for user documentation, deployment information and similar documentation that's related to the code. It's not a good place to document information that contains secrets. 
 
-The Solution Intent Confluence space is good for planned architecture, developing and modifying the architecture. As the design is developed, some of the Confluence material will migrate into the relevant repositories, or may cause an update to the formal architecture documents via the :doc:`/policies/decision-making`. The Solution Intent describes what we'd like to develop; repositories document the code "as-is", i.e. what is currently implemented in the code. Because Confluence moves ahead of the code, it's not a good home for documenting the current implemntation, especially at the repository level. It is a good space for developing specifications, and sketching out system tests,  which eventually may be formulated as `BDD tests </tools/bdd-test-context>`. The Solution Intent Confluence space is also not always a good home for user documentation, because again it's hard to know if that's in sync with the code.  It's clear what should *not* go in this space: anything that directly describes developed code. The Solution Intent Confluence space is reviewed regularly by the architecture group. If you are not sure where to place documents in the Solution Intent space, the "work" sub-pages for a product are a good place to start. See, for example, the `Simulation Work <https://confluence.skatelescope.org/display/SWSI/Simulations+Work/>`_ pages. If you can't find a suitable area, ask on the `Architecture Community of Practice Slack channel <https://skasoftware.slack.com/archives/CP6NSB9MH/>`_.
+The Solution Intent Confluence space is good for planned architecture, developing and modifying the architecture. As the design is developed, some of the Confluence material will migrate into the relevant repositories, or may cause an update to the formal architecture documents via the :doc:`/policies/decision-making`. The Solution Intent describes what we'd like to develop; repositories document the code "as-is", i.e. what is currently implemented in the code. Because Confluence moves ahead of the code, it's not a good home for documenting the current implementation, especially at the repository level. It is a good space for developing specifications, and sketching out system tests,  which eventually may be formulated as `BDD tests </tools/bdd-test-context>`. The Solution Intent Confluence space is also not always a good home for user documentation, because again it's hard to know if that's in sync with the code.  It's clear what should *not* go in this space: anything that directly describes developed code. The Solution Intent Confluence space is reviewed regularly by the architecture group. If you are not sure where to place documents in the Solution Intent space, the "work" sub-pages for a product are a good place to start. See, for example, the `Simulation Work <https://confluence.skatelescope.org/display/SWSI/Simulations+Work/>`_ pages. If you can't find a suitable area, ask on the `Architecture Community of Practice Slack channel <https://skao.slack.com/archives/CP6NSB9MH/>`_.
 
 Google Docs is good for drafting formal documents collaboratively, especially documents that will be managed using the SKA Configuration Management system, such as ICDs. If user manuals are to be managed via eB rather than in a repository, then Google Docs is a good tool to use for this. If it is preferred, Overleaf can also be used to manage formal documents collaboratively.
 
@@ -46,14 +47,14 @@ Team spaces are good for time-limited material, drafting material for discussion
 .. _API:
 
 Documenting the Public API
-==========================
+##########################
 
 When it comes to software systems, such as services or libraries, it
 is of paramount importance that the public API exposed by the software
 component is clearly captured and documented.
 
 How to document
-~~~~~~~~~~~~~~~
+***************
 
 Documentation on git
 ====================
@@ -68,7 +69,7 @@ Free text documentation must be placed in a ``docs`` folder in the upper level o
 repository structure. Sphinx generates automatically extracted files under this folder as well, wherever there are docstrings in the code.
 
 Using sphinx
-============
+------------
 
 Documentation must be realised using the `sphinx <http://www.sphinx-doc.org>`_
 package and `Restructured Text <http://docutils.sourceforge.net/rst.html>`_ .
@@ -81,7 +82,7 @@ Sphinx can be used to generate text documents such as this portal, but it also p
 capabilities to automatically extract and parse code documentation, or docstrings. Refer to the :doc:`Python Coding Guidelines </tools/codeguides/python-codeguide>` for more information.
 
 Extracting documentation from code
-==================================
+----------------------------------
 
 .. The internet is full of information on how to write docstrings. A generic example of how to document the hello world module is provided in the `SKA Python skeleton <https://gitlab.com/ska-telescope/ska-skeleton>`_ project, and the output of the sphinx build can be seen `here <https://developer.skatelescope.org/projects/ska-python-skeleton/en/latest/?badge=latest>`_.
 
@@ -92,7 +93,7 @@ Extracting documentation from code
 .. _dev-portal-integration:
 
 Integration into the Developer Portal
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------------
 
 The developer portal is hosted on ReadTheDocs. On the :ref:`list` page a list of all the projects that are hosted on GitLab is available, with badges to show the build status of the project's documentation. Each badge is also a hyperlink to the project's documentation that you can click on.
 
@@ -105,7 +106,7 @@ Register on ReadTheDocs
 Developers working on the SKA are members of the ska-telescope organisation on GitLab. Registering an account using the OAuth credentials on ReadTheDocs is recommended, because then the integration between the SKA GitLab and SKA ReadTheDocs services is done automatically. The integrations can also be set up manually later, and is not difficult.
 
 Sign up / sign in with GitLab account
-=====================================
+-------------------------------------
 
 .. figure:: images/login-rtd.png
    :scale: 40%
@@ -115,18 +116,18 @@ Sign up / sign in with GitLab account
 
 
 Import project to ReadTheDocs
-=============================
+-----------------------------
 
 After signing in, one lands on the Dashboard, and the steps for importing a project are pretty self-explanatory from here. While importing the project **name** should be the `ska-telescope-` and project's gitlab slug (part in the url after https://gitlab.com/ska-telescope/), i.e. `ska-telescope-ska-python-skeleton`. After the project is imported successfully, name should be changed to the name of the project as listed in Gitlab project site. Project name could be changed in the *Admin* page of Read the Docs project site. As a last step, `kurtcobain-19` account should be added to the project as a maintainer for the system team to manage the documentation later on.
 
 .. _sub-project:
 
 Add project as a sub-project on ReadTheDocs
-===========================================
+-------------------------------------------
 
 A sub-project must be added by a user with Maintainer privileges on the main project.
 
-Currently only the System Team members have these permissions. Please ask on the Slack channel `#team-system-support <https://skasoftware.slack.com/messages/CEMF9HXUZ>`_ to have your project added.
+Currently only the System Team members have these permissions. Please ask on the Slack channel `#team-system-support <https://skao.slack.com/messages/CEMF9HXUZ>`_ to have your project added.
 
 For more information on how to add a subproject, go to `Read The Docs <https://docs.ReadTheDocs.io/en/stable/subprojects.html>`_.
 
