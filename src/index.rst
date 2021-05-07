@@ -207,18 +207,14 @@ Questions frequently asked by developers.
   :hidden:
 
   policies/code-of-conduct
+  policies/fundamental-sw-requirements
   policies/definition-of-done
   policies/ska-testing-policy-and-strategy
-  policies/fundamental-sw-requirements
   policies/decision-making
   policies/incident-management
 
-Definition of Done
-==================
-
-The definition of done is used to guide teams in planning and estimating the size of stories and features:
-
-- :doc:`policies/definition-of-done`
+Policies and Procedures
+-----------------------
 
 Fundamental SKA Software & Hardware Description Language Standards
 ==================================================================
@@ -229,6 +225,12 @@ but the essential information is here:
 
 - :doc:`policies/fundamental-sw-requirements`
 
+Definition of Done
+==================
+
+The definition of done is used to guide teams in planning and estimating the size of stories and features:
+
+- :doc:`policies/definition-of-done`
 
 Incident Management
 ===================
