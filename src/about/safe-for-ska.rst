@@ -1,5 +1,5 @@
 ************
-SAFe for SKA
+SAFe® for SKA
 ************
 
 As software developers, we'd like to use Lean and `Agile <https://agilemanifesto.org/>`_ processes. 
@@ -33,19 +33,19 @@ The Processes
 #############
 
 To work out what we're doing, and to keep the release trains aligned, heading towards our common goals and deadlines, we use Program Increments (PIs). 
-PIs are around 3 months long, and usually consist of five lots of two-week sprints, followed by a three week planning and innovation sprint. 
-During the Innovation Sprint, a 4-5 day planning event is held, in which the teams assemble to plan out the work for the next PI. 
+PIs are around 3 months long, and usually consist of five lots of two-week sprints, followed by a three week Innovation and Planning sprint. 
+During the Innovation and Planning Sprint, a 4-5 day planning event is held, in which the teams assemble to plan out the work for the next PI. 
 Before the Covid-19 pandemic, the teams often literally assembled in one place; we now have 100% online planning events, and we will probably continue to have extensive online support using `Miro <https://confluence.skatelescope.org/display/SE/Miro+PI+planning+board+usage+overview>`_, even once a majority of developers can travel again.
 
-During the PI planning event, teams decide to implement Features - the Features we'd like our software to have, based on a Feature Set that's been discussed by the Program and Solution teams, and by the teams in various workshops. 
-This basic Feature Set is chosen to align with the Solution and ART goals for the PI (i.e. what the SKA would like to work towards), and the Features are defined in `JIRA <https://confluence.skatelescope.org/display/SE/Jira+and+Confluence+Usage+Guidelines>`_. 
+During the PI planning event, teams decide to implement Features - the Features we'd like our software to have, based on the Program Backlog that's been discussed by the Program and Solution teams, and by the Agile teams in various workshops. 
+The Program Backlog (containing Features ready for implementation) is chosen to align with the Solution and ART goals for the PI (i.e. what the SKA would like to work towards), and the Features are defined in `JIRA <https://confluence.skatelescope.org/display/SE/Jira+and+Confluence+Usage+Guidelines>`_. 
 All ARTs plan simultaneously, though each ART defines its own plan, and cross-team and cross-ART collaboration is encouraged - and of course it's required to implement some Features. 
 (Cross-ART Features are known as Capabilities.)
 
 Once the teams have decided which Features to work on, they do some work to check that the work is feasible to do in the five sprints of the PI, often by defining stories in JIRA, and estimating how long those stories will take using a points-based system.  
 Then the teams define objectives: a definition of what they'd like to achieve this PI. 
-Each objective is given a business value (BV), which expresses the value of this objective to the SKA. 
-This value can then be used by the teams to guide their internal decisions. 
+Each objective is given a business value (BV) figure, which expresses the value of this objective to the SKA. 
+This figure can then be used by the teams to guide their internal decisions. 
 The teams present their plan to the ART management, commit to their objectives, and participate in a confidence vote, assessing their confidence in the plan. 
 The ART management then decides whether or not to accept the plan. 
 Finally, all of the ART participates in a confidence vote on the overall plan of all the teams.
@@ -55,29 +55,29 @@ During the PI, there are a number of way of checking that work is progressing as
 There are weekly sync meetings for the two ARTs. 
 Most teams run two-week sprints, starting with detailed planning, based off the preliminary plan made during PI planning. 
 The sprint ends with a review and retrospective, to allow teams to learn from what happened in the sprint, so they can maintain what's good and try to improve things that went badly. 
-Teams often have stand-ups - short meetings held on a frequent basis (often daily, sometimes less often). 
+Teams have stand-ups - short meetings held on a frequent basis (often daily, sometimes less often). 
 Because many teams are distributed, these are sometimes text-only stand-ups held in Slack, rather than a video call. 
 In any case, they are frequent meetings so that the Scrum Master knows of any major hold-ups, and perhaps do something about some of those problems. 
-The ART program teams also meet on a weekly or fortnightly basis.
+The ART program teams also follow these practices.
 
 The other way of getting information on what the teams are doing is via demos. 
 Teams demo completed Features, or Features which need feedback from a wider range of stakeholders. 
-These can be small demos to the team and key stakeholders, or larger demos to the ART or to the whole of the SKA Software Solution organisation at a System demo. 
-There is usually at least one demo in each ART each sprint, and at least one System demo per PI. 
+These can be small demos to the team and key stakeholders, or larger System demos to the ART or to the whole of the SKA Software Solution organisation at a PI demo. 
+There is usually at least one System demo in each ART each sprint, and at least one PI demo per PI. 
 The demos show how we value working code, one of the key Agile values. 
 And we will often hold discussion workshops to work on particular Features.
 
 At the end of the PI, teams' progress towards their objectives is assessed. 
-This happens during the PI as objectives are completed, and continues into the Innovation sprint. 
-The Innovation sprint is when teams can try out new ideas, get involved in hackathons, and generally work on things that don't fit into the priorities for a PI.
-During the Innovation sprint, there is also a review and retrospective event for everyone involved in SKA software. 
+This happens during the PI as objectives are completed, and continues into the Innovation and Planning sprint. 
+The Innovation and Planning sprint is when teams can try out new ideas, get involved in hackathons, and generally work on things that don't fit into the priorities for a PI.
+During the Innovation and Planning sprint, there is also a review and retrospective event for everyone involved in SKA software. 
 Just as reviews and retrospectives at the team levels allow the team to improve, the review and retrospective for the SKA Software organisation allows us to seek improvements, using the scientific method of formulating a hypothesis ("If we do X, we will improve Y"), performing the experiment (implementing X), and measuring the outcome (looking at our metrics to see if Y is improved).
 
 This is a very brief introduction to SKA SAFe. 
-We strongly encourage people working on SKA Software to take the SAFe for Teams training that's offered. 
+We strongly encourage people working on SKA Software to take the SAFe® for Teams training that's offered. 
 You may notice a heavy emphasis on meetings and communication. 
 SAFe makes the cost of working in a large distributed project extrinsic. 
 When you can't just pop down the corridor for a chat, or even expect someone to be awake for a video call, you have to provide and use more formal methods to ensure that information gets to the people who need it.
 
-If you have any questions about SAFe at SKA, have a look at our Questions, mail XXX or ask on Slack channel YYY.
+If you have any questions about SAFe® at SKA, have a look at our [Questions](https://confluence.skatelescope.org/questions), mail XXX or ask on Slack channel YYY.
 
