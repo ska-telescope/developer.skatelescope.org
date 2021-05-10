@@ -79,5 +79,5 @@ You may notice a heavy emphasis on meetings and communication.
 SAFe makes the cost of working in a large distributed project extrinsic. 
 When you can't just pop down the corridor for a chat, or even expect someone to be awake for a video call, you have to provide and use more formal methods to ensure that information gets to the people who need it.
 
-If you have any questions about SAFe® at SKA, have a look at our [Questions](https://confluence.skatelescope.org/questions), mail XXX or ask on Slack channel YYY.
+If you have any questions about SAFe® at SKA, have a look at our [Questions](https://confluence.skatelescope.org/questions), or contact Ray Brederode, our Solution Train Engineer.
 
