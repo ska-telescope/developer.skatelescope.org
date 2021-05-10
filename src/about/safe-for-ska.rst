@@ -1,6 +1,6 @@
-************
+*************
 SAFe® for SKA
-************
+*************
 
 As software developers, we'd like to use Lean and `Agile <https://agilemanifesto.org/>`_ processes. 
 However, Agile was designed for relatively small teams (5-12 people), specifically for teams which have a great deal of autonomy. 
