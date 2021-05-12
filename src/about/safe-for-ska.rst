@@ -7,7 +7,7 @@ However, Agile was designed for relatively small teams (5-12 people), specifical
 How can we work in an Agile-like way, when we have over 100 developers in countries all over the world, and also there are parts of our organisation that don't work in an Agile way?
 
 We've picked SAFe® - the `Scaled Agile Framework® <https://www.scaledagileframework.com/>`_ - to help us scale up SKA software development. 
-We offer training in SAFe to all new teams and team members.  
+We offer training in SAFe® to all new teams and team members.  
 All of the material on this page is based on the practices described on https://www.scaledagileframework.com/, customised for how we work in the SKA.
 
 The SKA Software Organisation
@@ -73,10 +73,10 @@ The Innovation and Planning sprint is when teams can try out new ideas, get invo
 During the Innovation and Planning sprint, there is also a review and retrospective event for everyone involved in SKA software. 
 Just as reviews and retrospectives at the team levels allow the team to improve, the review and retrospective for the SKA Software organisation allows us to seek improvements, using the scientific method of formulating a hypothesis ("If we do X, we will improve Y"), performing the experiment (implementing X), and measuring the outcome (looking at our metrics to see if Y is improved).
 
-This is a very brief introduction to SKA SAFe. 
+This is a very brief introduction to SKA SAFe®. 
 We strongly encourage people working on SKA Software to take the SAFe® for Teams training that's offered. 
 You may notice a heavy emphasis on meetings and communication. 
-SAFe makes the cost of working in a large distributed project extrinsic. 
+SAFe® makes the cost of working in a large distributed project extrinsic. 
 When you can't just pop down the corridor for a chat, or even expect someone to be awake for a video call, you have to provide and use more formal methods to ensure that information gets to the people who need it.
 
 If you have any questions about SAFe® at SKA, have a look at our [Questions](https://confluence.skatelescope.org/questions), or contact Ray Brederode, our Solution Train Engineer.
