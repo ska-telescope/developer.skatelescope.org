@@ -208,7 +208,7 @@ Questions frequently asked by developers.
 
   policies/code-of-conduct
   policies/fundamental-sw-requirements
-  policies/sw-product-quality-assurance-plan
+  policies/sw-quality-assurance
   policies/definition-of-done
   policies/ska-testing-policy-and-strategy
   policies/decision-making
@@ -237,7 +237,7 @@ This document is a mapping to the SKA Product Quality Assurance (PQA) Plan, that
 responsibilities of the SKAO and the Contractors and provides an itemised response to the Product Quality Assurance Management, 
 and the PQA Requirements sections.
 
-- :doc:`policies/sw-product-quality-assurance-plan`
+- :doc:`policies/sw-quality-assurance`
 
 Definition of Done
 ==================
