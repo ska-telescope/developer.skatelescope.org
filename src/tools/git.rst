@@ -379,13 +379,13 @@ Checks
 |            |                       |  *  Please add this project as a subproject on Read the Docs following the guidelines |
 |            |                       |  *  Please import your project into Read the Docs                                     |
 +------------+-----------------------+---------------------------------------------------------------------------------------+
-| Failure    | Pipeline Checks       | Please create a `pipeline <https://developer.skao.int/en/latest/tools/ci-     |
+| Failure    | Pipeline Checks       | Please create a `pipeline <https://developer.skao.int/en/latest/tools/ci-             |
 |            |                       | cd.html>`_  on this Merge Request or please add the following jobs:                   |
 |            |                       |                                                                                       |
-|            |                       |   *  `ci-metrics  <https://developer.skao.int/en/lat                          |
+|            |                       |   *  `ci-metrics  <https://developer.skao.int/en/lat                                  |
 |            |                       |      est/tools/ci-cd/continuous-integration.html?highlight=post_step.yml#automated    |
 |            |                       |      -collection-of-ci-health-metrics-as-part-of-the-ci-pipeline>`_                   |
-|            |                       |   *  `helm-publish  <https://developer.skao.int/en/                           |
+|            |                       |   *  `helm-publish  <https://developer.skao.int/en/                                   |
 |            |                       |      latest/tools/software-package-release-procedure.html?highlight=helm_publish.yml  |
 |            |                       |      #package-and-publish-helm-charts-to-the-skao-helm-chart-repository>`_            |
 +------------+-----------------------+---------------------------------------------------------------------------------------+
