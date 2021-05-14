@@ -209,6 +209,7 @@ Questions frequently asked by developers.
   policies/code-of-conduct
   policies/fundamental-sw-requirements
   policies/sw-quality-assurance
+  policies/sw-dev-security
   policies/definition-of-done
   policies/ska-testing-policy-and-strategy
   policies/decision-making
@@ -238,6 +239,15 @@ responsibilities of the SKAO and the Contractors and provides an itemised respon
 and the PQA Requirements sections.
 
 - :doc:`policies/sw-quality-assurance`
+
+Software Development Security Policy 
+====================================
+
+Most of the software used for the control and operation of the SKAO telescopes will be developed by SKA Community members and contributors. 
+To ensure the smooth operation of the SKAO and minimise the risk of software vulnerabilities, information security must be incorporated 
+within the software development lifecycle of SKAO software. This document describes how this must be achieved. 
+
+- :doc:`policies/sw-dev-security`
 
 Definition of Done
 ==================
