@@ -208,6 +208,7 @@ Questions frequently asked by developers.
 
   policies/code-of-conduct
   policies/fundamental-sw-requirements
+  policies/sw-quality-assurance
   policies/definition-of-done
   policies/ska-testing-policy-and-strategy
   policies/decision-making
@@ -224,6 +225,19 @@ These standards underpin all SKA software development. The canonical copy is
 but the essential information is here:
 
 - :doc:`policies/fundamental-sw-requirements`
+
+Software Product Quality Assurance plan
+=======================================
+
+This Software Product Quality Assurance Plan (SPQAP) defines the Quality Assurance requirements and management 
+activities for the development of software by the Agile Development Teams through the PSSC Contracting arrangements, 
+and the delivery of the software by the SKAO.
+
+This document is a mapping to the SKA Product Quality Assurance (PQA) Plan, that describes the roles and 
+responsibilities of the SKAO and the Contractors and provides an itemised response to the Product Quality Assurance Management, 
+and the PQA Requirements sections.
+
+- :doc:`policies/sw-quality-assurance`
 
 Definition of Done
 ==================

@@ -10,6 +10,15 @@ We've picked SAFe® - the `Scaled Agile Framework® <https://www.scaledagilefram
 We offer training in SAFe® to all new teams and team members.  
 All of the material on this page is based on the practices described on https://www.scaledagileframework.com/, customised for how we work in the SKA.
 
+SKA Software Product Quality Assurance Plan
+###########################################
+
+The SKAO Software Product Quality Assurance Plan describes how the SAFe framework has been adopted and implemented by SKAO 
+in adherence with SKAO Product Quality Assurance Plan requirements. 
+It also details the related activities and responsibilities that apply to agile teams contracted. 
+
+* :doc:`/policies/sw-quality-assurance`
+
 The SKA Software Organisation
 #############################
 
