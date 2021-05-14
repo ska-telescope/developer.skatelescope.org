@@ -174,7 +174,7 @@ Understanding more about the SKA
   * Have a look at the pages on `Program Increment and Cadence <https://confluence.skatelescope.org/display/SE/Program+Increments+%28PIs%29+and+cadence>`_; they will tell you about the regular planning and evaluation cycles of the SKA.
   * And look at the `operational flow <https://confluence.skatelescope.org/display/SE/Observation+Management+and+Controls+Agile+Release+Train?preview=/74743196/74743245/OperationalFlow-v2.pdf>`_. The goal here is to find out where your team fits in the organisation, but with a bit more detail than we had time for in week one.
 
-* Look at the `Module Decomposition <https://confluence.skatelescope.org/display/SWSI/Views%3A+Module>`_ of the SKA, and learn how this maps to the different `GitLab project <https://developer.skao.int/en/latest/projects/list.html>`_.
+* Look at the `Module Decomposition <https://confluence.skatelescope.org/display/SWSI/Views%3A+Module>`_ of the SKA, and learn how this maps to the different `GitLab project </en/latest/projects/list.html>`_.
 * Read the `Architectural Decision Process </policies/decision-making>`. This process is how we can change and update our architecture, as we find out more about the system we're implementing, or as we need to adopt new technology.  All developers are able to reason about the architecture of the system; you'll need to know the process.
 
 What are your skills?
@@ -221,11 +221,11 @@ Suggested activities for new developers
 This section is primarily aimed at new developers.
 Your Scrum Master may create tickets in JIRA; this will help you get used to managing your work via JIRA if this is new to you.
 
-* Commit to an SKA project on GitLab. This may be as simple as fixing a typo in some documentation. We recommend that projects, especially projects where we expect external people to contribute, keep a list of easy issues to fix, as they're a good way in to a project. You'll need to look at `how to branch your code <https://developer.skao.int/en/latest/tools/git.html#branching-policy>`_. That page will tell you how to name your branch.
+* Commit to an SKA project on GitLab. This may be as simple as fixing a typo in some documentation. We recommend that projects, especially projects where we expect external people to contribute, keep a list of easy issues to fix, as they're a good way in to a project. You'll need to look at `how to branch your code </en/latest/tools/git.html#branching-policy>`_. That page will tell you how to name your branch.
 * Create a Merge Request (MR) on GitLab. You'll need to do that if you've committed a change!
 
   * Include the JIRA ticket number in the commit
-  * Write a good `commit message <https://developer.skao.int/en/latest/tools/git.html#committing-code>`_!
+  * Write a good `commit message </en/latest/tools/git.html#committing-code>`_!
 
 * Review someone else's code on GitLab.
 * Read your team's documentation for the main project you're working on.
@@ -257,7 +257,7 @@ Remember that we have `training pages on Confluence <https://confluence.skateles
 * Learn about `ECPs (Engineering Change Proposals) <https://confluence.skatelescope.org/pages/viewpage.action?pageId=5767262>`_. These are often required for major architectural changes, so it's useful to understand the purpose and process of ECPs.
 * Continue with your training plan, using the skills matrix!
 * Make sure you know where to get help. This was covered in week one, but some revision may be helpful.
-* Have a look at the various `Monitoring Dashboards <https://developer.skao.int/en/latest/tools/monitoring-dashboards.html>`_ for the EngageSKA Cluster, so you can see what things look like when our prototype is running, and what data we are collecting about it.
+* Have a look at the various `Monitoring Dashboards </en/latest/tools/monitoring-dashboards.html>`_ for the EngageSKA Cluster, so you can see what things look like when our prototype is running, and what data we are collecting about it.
 * Learn about the SKA naming conventions for code, repositories, containers, etc. We need to make our code and the artefacts built from it easy to understand, so we have some standards to adhere to, and some recommendations.
 
 This is the end of your formal onboarding!

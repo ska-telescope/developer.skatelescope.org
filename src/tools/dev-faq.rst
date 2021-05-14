@@ -15,7 +15,7 @@ Develop a Tango device
 ``````````````````````
 
 * A sample PyTango device project that can be forked can be found at `<https://gitlab.com/ska-telescope/tango-example/>`_
-* Documentation for it can be found at `<https://developer.skao.int/projects/tango-example/en/latest/?badge=latest>`_
+* Documentation for it can be found at `</projects/tango-example/en/latest/?badge=latest>`_
 
 Containerise my solution
 ````````````````````````
@@ -117,7 +117,7 @@ Test that the connectivity in the cluster works
 .. note::
   Until recently, we have been using Helm 2 in all our Ansible Playbooks for provisioning machines and development environments. Helm 2 used Tiller as a deployment service, and would be started in your environment by running the ``helm init`` command. **This is no longer the case with Helm 3.** `More info here <https://dev.to/ridaehamdani/some-changes-between-helm-v2-and-helm-v3-that-you-should-know-32ga>`_ .
 
-  Use this `ansible playbook <https://developer.skao.int/projects/ansible-playbooks/en/latest/playbooks/upgrade_helm.html>`_ to upgrade your existing Helm 2 to Helm 3.
+  Use this `ansible playbook </projects/ansible-playbooks/en/latest/playbooks/upgrade_helm.html>`_ to upgrade your existing Helm 2 to Helm 3.
 
 
 Once Helm is installed, develop a helm chart for the project. Refer to :ref:`Helm instructions <orchestration-guidelines-templating-application>` for guidelines.
@@ -145,7 +145,7 @@ Deploy the TMC prototype and Webjive in kubernetes
 
 The integration gitlab repository can be found at `<https://gitlab.com/ska-telescope/skampi>`_.
 
-Documentation on deployment can be found at `<https://developer.skao.int/projects/skampi/en/latest/README.html>`_
+Documentation on deployment can be found at `</projects/skampi/en/latest/README.html>`_
 
 Add the helm chart to the skampi repository: :ref:`integrating-a-chart-into-the-skampi-repo`.
 
