@@ -9,7 +9,7 @@ The Helm deployer is a prototype of a platform controller for the SDP. It
 dynamically allocates processing and buffer resources on a Kubernetes cluster.
 
 - `Repository <https://gitlab.com/ska-telescope/sdp/ska-sdp-helmdeploy>`__
-- `Documentation <https://developer.skatelescope.org/projects/ska-sdp-helmdeploy/en/latest/>`__
+- `Documentation <https://developer.skao.int/projects/ska-sdp-helmdeploy/en/latest/>`__
 
 
 Helm Deployer Charts

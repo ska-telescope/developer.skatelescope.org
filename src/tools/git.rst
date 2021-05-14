@@ -335,7 +335,7 @@ For the subsequent changes pushed to the Merge Request, the comment is updated t
 
 Checks
 ++++++
-             
+
 +------------+-----------------------+---------------------------------------------------------------------------------------+
 | Type       | Description           | Mitigation Strategy                                                                   |
 +============+=======================+=======================================================================================+
@@ -373,20 +373,20 @@ Checks
 +------------+-----------------------+---------------------------------------------------------------------------------------+
 |Information | Documentation Changes | This MR doesn't introduce any documentation changes. Please consider                  |
 |            |                       | updating documentation to reflect your changes                                        |
-+------------+-----------------------+---------------------------------------------------------------------------------------+     
++------------+-----------------------+---------------------------------------------------------------------------------------+
 |Failure     | Read The Docs         | Please integrate this project with ReadtheDocs following the guidelines:              |
 |            | Integration           |  *  Please set up docs/ folder for sphinx documentation build following the guidelines|
 |            |                       |  *  Please add this project as a subproject on Read the Docs following the guidelines |
 |            |                       |  *  Please import your project into Read the Docs                                     |
 +------------+-----------------------+---------------------------------------------------------------------------------------+
-| Failure    | Pipeline Checks       | Please create a `pipeline <https://developer.skatelescope.org/en/latest/tools/ci-     |
+| Failure    | Pipeline Checks       | Please create a `pipeline <https://developer.skao.int/en/latest/tools/ci-     |
 |            |                       | cd.html>`_  on this Merge Request or please add the following jobs:                   |
 |            |                       |                                                                                       |
-|            |                       |   *  `ci-metrics  <https://developer.skatelescope.org/en/lat                          |
+|            |                       |   *  `ci-metrics  <https://developer.skao.int/en/lat                          |
 |            |                       |      est/tools/ci-cd/continuous-integration.html?highlight=post_step.yml#automated    |
 |            |                       |      -collection-of-ci-health-metrics-as-part-of-the-ci-pipeline>`_                   |
-|            |                       |   *  `helm-publish  <https://developer.skatelescope.org/en/                           |
-|            |                       |      latest/tools/software-package-release-procedure.html?highlight=helm_publish.yml  |   
+|            |                       |   *  `helm-publish  <https://developer.skao.int/en/                           |
+|            |                       |      latest/tools/software-package-release-procedure.html?highlight=helm_publish.yml  |
 |            |                       |      #package-and-publish-helm-charts-to-the-skao-helm-chart-repository>`_            |
 +------------+-----------------------+---------------------------------------------------------------------------------------+
 | Warning    | Non-compliant License | Please update the license information according to                                    |
@@ -426,9 +426,9 @@ Read The Docs Integration
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 This check warns users that this project does not follow the guidelines for succesfull Read The Docs Integration. The level of this check is failure. To avoid it, three checks must pass. The project needs to have set up docs/ folder for sphinx documentation, it also needs to be added as a subproject on Read the Docs. Finally webhooks need to be set up so that the project is imported your into Read the Docs.
 
-Pipeline Checks 
+Pipeline Checks
 ^^^^^^^^^^^^^^^
-This check warns users from merging their Merge Request without having a pipeline with the needed jobs. The level of this check is a failure, and to avoid it 2 steps may be needed. The first one is to create a pipeline (i.e. add .gitlab-ci.yml) if there is not one created yet. The second one can only be done after the first one, and it consists on including the jobs that are listed on the mitigation strategy column (i.e. helm-publish) in the created pipeline. How to add the jobs to the pipeline is explained on the developer portal (job name as hyperlink). 
+This check warns users from merging their Merge Request without having a pipeline with the needed jobs. The level of this check is a failure, and to avoid it 2 steps may be needed. The first one is to create a pipeline (i.e. add .gitlab-ci.yml) if there is not one created yet. The second one can only be done after the first one, and it consists on including the jobs that are listed on the mitigation strategy column (i.e. helm-publish) in the created pipeline. How to add the jobs to the pipeline is explained on the developer portal (job name as hyperlink).
 
 Non-compliant License Information
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

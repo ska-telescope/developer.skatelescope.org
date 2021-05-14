@@ -1,4 +1,4 @@
-.. developer.skatelescope.org documentation master file, created by
+.. developer.skao.int documentation master file, created by
    sphinx-quickstart on Wed Dec 13 11:59:38 2017.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -25,7 +25,7 @@ The portal is frequently updated as the project evolves; if you feel that someth
 If you're new to developing the SKA, please have a look at :doc:`our Onboarding material </getting-started/getting-started>` and the :doc:`guideance on setting up your development environment </getting-started/devenv-setup>`.
 
 .. note::
-   Please also read the :doc:`/policies/code-of-conduct`, which governs all SKA interactions. 
+   Please also read the :doc:`/policies/code-of-conduct`, which governs all SKA interactions.
 
 What follows is a brief guide to the headings you'll find in the left-hand sidebar of this site. Feel free to explore!
 
@@ -122,11 +122,11 @@ Testing
 =======
 
 Tests are a key part of producing working software. We suggest you look at our :doc:`policies/ska-testing-policy-and-strategy`, and our :doc:`tools/bdd-test-context` and :doc:`tools/bdd-walkthrough`.
- 
+
 Test Infrastructure
 ===================
 
-To support our testing and CI/CD pipelines, we have the multiple kubernetes clusters configured to allow testing to happen. 
+To support our testing and CI/CD pipelines, we have the multiple kubernetes clusters configured to allow testing to happen.
 
 - :doc:`tools/test-infrastructure`
 - :doc:`tools/monitoring-dashboards/ait-performance-env`
@@ -134,7 +134,7 @@ To support our testing and CI/CD pipelines, we have the multiple kubernetes clus
 Containerisation
 ================
 
-To facilitate code portability and reliability and test running, we use containers. We also use kubernetes as our container orchestration system. 
+To facilitate code portability and reliability and test running, we use containers. We also use kubernetes as our container orchestration system.
 
 - :doc:`tools/containers`
 - :doc:`tools/containers/containerisation-standards`

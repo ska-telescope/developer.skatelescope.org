@@ -27,7 +27,7 @@ Then, you can follow the Merge Request page for status updates, make new contrib
 Static build
 ############
 
-First clone the `developer portal repo <https://gitlab.com/ska-telescope/developer.skatelescope.org>`_ from GitLab. We recommend using ssh to clone.
+First clone the `developer portal repo <https://gitlab.com/ska-telescope/developer.skao.int>`_ from GitLab. We recommend using ssh to clone.
 
 Then you install dependencies: ``pipenv install --dev``
 
@@ -47,15 +47,15 @@ When adding files of any kind to this project, do not use underscores in filenam
 
    thng.rst // A bit short. What is this page about?
    contrib-guide.rst // Good. Not too long to type, and says what the page is about
-   development_guidelines_and_policies.rst // Too long, and uses underscores, which are forbidden. 
+   development_guidelines_and_policies.rst // Too long, and uses underscores, which are forbidden.
 
-If you are adding image files, we recommend using a ``/images`` directory in the same directory as the ``.rst`` file you are editing. These directories exist in several locations already. Image and other media files should be named using the same conventions as is used for the ``.rst`` files that generate the pages. Any images added should adhere to the :doc:`SKA contribution guidelines </getting-started/contrib-guidelines>`. 
+If you are adding image files, we recommend using a ``/images`` directory in the same directory as the ``.rst`` file you are editing. These directories exist in several locations already. Image and other media files should be named using the same conventions as is used for the ``.rst`` files that generate the pages. Any images added should adhere to the :doc:`SKA contribution guidelines </getting-started/contrib-guidelines>`.
 
-If you wish to `cross-reference <https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#ref-role>`_ other pages on the developer portal, you must use the ``:doc:`` syntax. This allows the Sphinx documentation generator to detect broken links within the site. Do not refer to pages within thie site using the syntax for URLs. 
+If you wish to `cross-reference <https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#ref-role>`_ other pages on the developer portal, you must use the ``:doc:`` syntax. This allows the Sphinx documentation generator to detect broken links within the site. Do not refer to pages within thie site using the syntax for URLs.
 
 We use `Thomas Cokelaer's headings syntax <https://thomas-cokelaer.info/tutorials/sphinx/rest_syntax.html#headings>`_; if you find a page that does not conform, please update it as you edit it.
 
-We recommend working on a branch and then submitting a merge request. We recommend following the :ref:`branching-policy`. 
+We recommend working on a branch and then submitting a merge request. We recommend following the :ref:`branching-policy`.
 
 When you've created a merge request, you can get feedback from a wider number of people by using the "view app" button:
 
@@ -67,8 +67,8 @@ Clicking this button allows people to view your changes without having to build 
 .. image:: images/rtd-versions.png
    :alt: The Read the Docs version dropdown expanded to show a list of clickable versions.
 
-Once you've addressed any comments, remember to pull any updates from the master branch. Then you should be good to merge your request. 
+Once you've addressed any comments, remember to pull any updates from the master branch. Then you should be good to merge your request.
 
-Finally, if you've moved existing pages to a new location, a ReadtheDocs admin can add redirects, so we don't end up with broken links. Redirects should use the "page" type redirect. 
+Finally, if you've moved existing pages to a new location, a ReadtheDocs admin can add redirects, so we don't end up with broken links. Redirects should use the "page" type redirect.
 
 Happy merging!

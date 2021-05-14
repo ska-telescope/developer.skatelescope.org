@@ -14,7 +14,7 @@ The components of the system are integrated in the `SDP integration repository
 the Helm chart to deploy the SDP. More details on the design of the SDP and how
 to run it locally or in the integration environment can be found in the
 `documentation
-<https://developer.skatelescope.org/projects/ska-sdp-integration/en/latest/>`_.
+<https://developer.skao.int/projects/ska-sdp-integration/en/latest/>`_.
 
 .. figure:: sdp/images/sdp-module-view.svg
   :align: center

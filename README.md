@@ -1,10 +1,10 @@
 # SKA developer portal
 
-[![Documentation Status](https://readthedocs.org/projects/developerskatelescopeorg/badge/)](https://developer.skatelescope.org)
+[![Documentation Status](https://readthedocs.org/projects/developerskatelescopeorg/badge/)](https://developer.skao.int)
 
 This project contains the code used to generate SKA
 developer documentation hosted in the SKA developer
-portal at developer.skatelescope.org
+portal at developer.skao.int
 
 ## Detailed SKA documentation
 
