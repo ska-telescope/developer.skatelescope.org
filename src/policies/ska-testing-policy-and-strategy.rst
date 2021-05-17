@@ -743,7 +743,12 @@ We recommend the following process for handling bugs.
   are updated in the team's backlog, and the original bug-report owner is notified as well,
   who may decide to close the bug, to keep it open, or to change it.
 
-Logging occurs in JIRA by adding a new issue of type Bug to the product
+We strongly recommend that each bug, when dealt with, has at least an automated (unit, integration, system, BDD) test replicating its failure. Such tests
+should be included in regression tests and can be used to demonstrate that the bug has been eventually fixed (**confirmation test**).
+There can be motivated exceptions to this rule, in cases where the cost of doing so would be prohibitive
+or simply not worthwhile.
+
+Logging of bugs occurs in JIRA by adding a new issue of type Bug to the product
 backlog and prioritized by the Product Owner in the same way other story/enabler/spike work is managed.
 The issue type Defect should not be used, as it is meant to indicate a
 deviation from SKA requirements.
