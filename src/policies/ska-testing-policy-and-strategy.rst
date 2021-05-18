@@ -60,7 +60,7 @@ For Product/Feature/Capability Owners
 What follows is the software testing policy and strategy produced by
 Testing Community of Practice.
 
-This is **version 1.2.2** of this document, completed on 2021-04-30.
+This is **version 1.2.2** of this document, completed on 2021-05-18.
 
 
 1.1 Purpose of the document
