@@ -213,7 +213,7 @@ document, **this document** shall take precedence.
 
 5.  Semantic Versioning 2.0.0. http://semver.org/
 
-6.  The SKA Developer Portal. https://developer.ska-telescope.org
+6.  The SKA Developer Portal. https://developer.skao.int
 
 7.  SKA-TEL-SKO-0001201 ENGINEERING MANAGEMENT PLAN
 
