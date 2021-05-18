@@ -786,6 +786,14 @@ We recommend the following process for handling bugs.
   are updated in the team's backlog, and the original bug-report owner is notified as well,
   who may decide to close the bug, to keep it open, or to change it.
 
+We require that each bug, when dealt with, has at least an automated (unit, integration, system, BDD) test replicating its failure. Such tests
+should be included in regression testing and should be used to demonstrate that the bug has been eventually fixed (**confirmation test**).
+There can be explicitly motivated exceptions to this rule, in cases where the cost of doing so would be prohibitive
+or simply not worthwhile.
+
+We recommend that a **test first** approach is followed: confirmation tests are written **before** fixing the bug so that the failure can be demonstrated. The same test(s)
+can then be run after fixing it to demonstrate that the bug has been removed.
+
 Logging occurs in JIRA by adding a new issue of type Bug to the product
 backlog and prioritized by the Product Owner in the same way other story/enabler/spike work is managed.
 The issue type Defect should not be used, as it is meant to indicate a
