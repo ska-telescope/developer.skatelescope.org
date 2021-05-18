@@ -763,7 +763,8 @@ However some tests can, and in some cases they should, be manual.
   These are the tests that have to be manual.
 
 5.10 Bug management
-------------------
+-------------------------------
+
 We recommend the following process for handling bugs.
 
 * Bugs found by the team during a sprint for code developed are **fixed on the fly** during the
