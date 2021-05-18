@@ -29,7 +29,7 @@ Your Scrum Master will usually be your first port of call when you have question
 
 In this page, we talk about your Scrum Master doing various things -- if your onboarding isn't led by a Scrum Master, then this should be done by whoever is leading your onboarding.
 
-We welcome feedback on this page - please tell us what worked and what didn't! You can leave comments in the `#proj-onboarding <https://skao.slack.com/archives/C016VGRJWVC>`_ slack channel, or you can contribute changes to the `developer.skatelescope <https://gitlab.com/ska-telescope/developer.skao.int>`_ GitLab project, or you can mail the Solution Engineer or Release Train Engineers with feedback.
+We welcome feedback on this page - please tell us what worked and what didn't! You can leave comments in the `#proj-onboarding <https://skao.slack.com/archives/C016VGRJWVC>`_ slack channel, or you can contribute changes to the `developer.skao.int <https://gitlab.com/ska-telescope/developer.skao.int>`_ GitLab project, or you can mail the Solution Engineer or Release Train Engineers with feedback.
 
 First Day
 #########
@@ -257,7 +257,7 @@ Remember that we have `training pages on Confluence <https://confluence.skateles
 * Learn about `ECPs (Engineering Change Proposals) <https://confluence.skatelescope.org/pages/viewpage.action?pageId=5767262>`_. These are often required for major architectural changes, so it's useful to understand the purpose and process of ECPs.
 * Continue with your training plan, using the skills matrix!
 * Make sure you know where to get help. This was covered in week one, but some revision may be helpful.
-* Have a look at the various `Monitoring Dashboards </en/latest/tools/monitoring-dashboards.html>`_ for the EngageSKA Cluster, so you can see what things look like when our prototype is running, and what data we are collecting about it.
+* Have a look at the various `Monitoring Dashboards </en/latest/tools/monitoring-dashboards/monitoring-dashboards.html>`_ for the EngageSKA Cluster, so you can see what things look like when our prototype is running, and what data we are collecting about it.
 * Learn about the SKA naming conventions for code, repositories, containers, etc. We need to make our code and the artefacts built from it easy to understand, so we have some standards to adhere to, and some recommendations.
 
 This is the end of your formal onboarding!
