@@ -84,7 +84,7 @@ capabilities to automatically extract and parse code documentation, or docstring
 Extracting documentation from code
 ----------------------------------
 
-.. The internet is full of information on how to write docstrings. A generic example of how to document the hello world module is provided in the `SKA Python skeleton <https://gitlab.com/ska-telescope/ska-skeleton>`_ project, and the output of the sphinx build can be seen `here </projects/ska-python-skeleton/en/latest/?badge=latest>`_.
+.. The internet is full of information on how to write docstrings. A generic example of how to document the hello world module is provided in the `SKA Python skeleton <https://gitlab.com/ska-telescope/ska-skeleton>`_ project, and you can look at the `output of the sphinx build </projects/ska-python-skeleton/en/latest/?badge=latest>`_.
 
 .. todo::
     * add hello world class with parameters to the SKA Python Skeleton Project
