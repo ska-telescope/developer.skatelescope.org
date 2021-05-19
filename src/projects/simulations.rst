@@ -45,7 +45,7 @@ SKA-Low Simulations
 This repository contains scripts for generating SKA-Low simulations.
 
 - `Repository <https://gitlab.com/ska-telescope/sim/ska-sim-low>`__
-- `Documentation <https://developer.skatelescope.org/projects/ska-sim-low/en/latest/>`__
+- `Documentation </projects/ska-sim-low/en/latest/>`__
 
 SKA-Mid Simulations
 ===================
@@ -53,4 +53,4 @@ SKA-Mid Simulations
 This repository contains scripts for generating SKA-Mid simulations.
 
 - `Repository <https://gitlab.com/ska-telescope/sim/ska-sim-mid>`__
-- `Documentation <https://developer.skatelescope.org/projects/ska-sim-mid/en/latest/>`__
+- `Documentation </projects/ska-sim-mid/en/latest/>`__

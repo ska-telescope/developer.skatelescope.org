@@ -12,7 +12,7 @@ the system. The SDP Subarray device controls the processing associated with a
 telescope subarray.
 
 - `Repository <https://gitlab.com/ska-telescope/sdp/ska-sdp-lmc>`__
-- `Documentation <https://developer.skatelescope.org/projects/ska-sdp-lmc/en/latest/>`__
+- `Documentation </projects/ska-sdp-lmc/en/latest/>`__
 
 Processing Controller
 +++++++++++++++++++++
@@ -23,7 +23,7 @@ passed to the workflows. It detects processing blocks by monitoring the
 configuration database.
 
 - `Repository <https://gitlab.com/ska-telescope/sdp/ska-sdp-proccontrol>`__
-- `Documentation <https://developer.skatelescope.org/projects/ska-sdp-proccontrol/en/latest/>`__
+- `Documentation </projects/ska-sdp-proccontrol/en/latest/>`__
 
 Configuration Library
 ++++++++++++++++++++++
@@ -36,7 +36,7 @@ for controller and processing components to discover and manipulate the
 intended state of the system.
 
 - `Repository <https://gitlab.com/ska-telescope/sdp/ska-sdp-config>`__
-- `Documentation <https://developer.skatelescope.org/projects/ska-sdp-config/en/latest/>`__
+- `Documentation </projects/ska-sdp-config/en/latest/>`__
 
 Console
 +++++++

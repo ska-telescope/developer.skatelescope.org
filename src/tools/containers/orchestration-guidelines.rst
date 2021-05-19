@@ -369,14 +369,14 @@ Helm sub-chart architecture
 
 Introduction to subcharts
 *************************
-A chart can have one or more dependencies charts, called sub-charts. According to the `helm documentation <https://helm.sh/docs/chart_template_guide/subcharts_and_globals/>`_: 
+A chart can have one or more dependencies charts, called sub-charts. According to the `helm documentation <https://helm.sh/docs/chart_template_guide/subcharts_and_globals/>`_:
 
 * a chart is stand-alone (cannot depend on a parent chart),
 * a sub-chart cannot access the values of its parent,
 * a parent sub-chart can override values for its sub-charts and
 * all charts (parent and sub-chart) can access the global values.
 
-Let's consider two charts, A and B where A depends on B. The file Chart.yaml for the chart A will specify the dependency and in the values file it is possible for chart A to override any value of chart B. The following figure shows how to do it: 
+Let's consider two charts, A and B where A depends on B. The file Chart.yaml for the chart A will specify the dependency and in the values file it is possible for chart A to override any value of chart B. The following figure shows how to do it:
 
 .. _figure-subcharts-1:
 
@@ -395,18 +395,18 @@ It is also important to consider the `operational aspects of using dependencies 
 * sorted by type followed by name; and then
 * created/updated in that order.
 
-This means that if chart A defines the following k8s resources: 
+This means that if chart A defines the following k8s resources:
 
 * namespace "A-Namespace"
 * statefulset "A-StatefulSet"
 * service "A-Service"
-* and chart B defines the following k8s resources: 
+* and chart B defines the following k8s resources:
 
 * namespace “B-Namespace"
 * statefulset “B-ReplicaSet"
 * service “B-Service"
 
-Then the result of the helm install command for chart A will be: 
+Then the result of the helm install command for chart A will be:
 
 * A-Namespace
 * B-Namespace
@@ -444,7 +444,7 @@ Three solutions have been proposed and described in the `Supporting model <https
 #. Charts with dependencies and Subcharts enabled by levels
 #. Charts with dependencies and Subcharts enabled with conditions and tags
 
-The chosen solution is an hybrid approach which enables a single level hierarchy for the shared charts and umbrella charts for charts composition (i.e. specific deployment or testing purpose). The rational is: 
+The chosen solution is an hybrid approach which enables a single level hierarchy for the shared charts and umbrella charts for charts composition (i.e. specific deployment or testing purpose). The rational is:
 
 * Every chart can be deployed with its own tango eco-system
 * Every chart can have tango-base, webjive and the archiver as dependencies
@@ -460,7 +460,7 @@ The chosen solution is an hybrid approach which enables a single level hierarchy
 
    Chart TMC with shared charts
 
-Every dependency must have a common condition on it, so that it will be possible to disable the shared charts if they are included in the parent umbrella. For instance if there is the need (for testing purposes) to have the TMC and the OET charts together the result will be: 
+Every dependency must have a common condition on it, so that it will be possible to disable the shared charts if they are included in the parent umbrella. For instance if there is the need (for testing purposes) to have the TMC and the OET charts together the result will be:
 
 .. _figure-subcharts-4:
 
@@ -473,7 +473,7 @@ Every dependency must have a common condition on it, so that it will be possible
 
    Umbrella chart with tmc and oet charts
 
-The initial model will become: 
+The initial model will become:
 
 .. _figure-subcharts-5:
 
@@ -489,7 +489,7 @@ The initial model will become:
 Gitlab Helm/k8s testing pipeline
 ********************************
 
-In order to enable the GitLab pipeline to deploy and test the specific component each ska-telescope repository must: 
+In order to enable the GitLab pipeline to deploy and test the specific component each ska-telescope repository must:
 
 * contain at least one helm chart (i.e. starting point is skampi charts): `link to example <https://gitlab.com/ska-telescope/tango-example/-/tree/master/charts>`__
 * have an environment (i.e. test): `link to example <https://gitlab.com/ska-telescope/tango-example/-/environments>`__
@@ -497,9 +497,9 @@ In order to enable the GitLab pipeline to deploy and test the specific component
 * use the environment keywords: `link to example <­https://gitlab.com/ska-telescope/tango-example/-/blob/master/.gitlab-ci.yml#L108>`__
 * have a common publish chart CI job step: `link to example <­https://gitlab.com/ska-telescope/tango-example/-/blob/master/.gitlab-ci.yml#L122>`__
 
-Also, note that each project/repository in the ska-telescope group has a `Kubernetes cluster already enabled <https://gitlab.com/ska-telescope/tango-example/-/clusters>`_. 
+Also, note that each project/repository in the ska-telescope group has a `Kubernetes cluster already enabled <https://gitlab.com/ska-telescope/tango-example/-/clusters>`_.
 
-The test job of the GitLab pipeline needs to be: 
+The test job of the GitLab pipeline needs to be:
 
 .. code:: yaml
 
@@ -534,7 +534,7 @@ where:
 * make install:  installs the chart in the namespace specified in the environment tag
 * make wait: wait for all jobs to be completed and all pods to be running
 * make smoketest: checks that no containers are waiting
-* make test: 
+* make test:
 
   1. Create a pod into the specified namespace
   2. Run pytests
@@ -562,7 +562,7 @@ The following diagram shows the data model for the harmonized values file:
 
    Data model for the values file
 
-Elements: 
+Elements:
 
 +--------------------------+-----------------------------------------------------------------------------------------------+
 | Element                  | Description                                                                                   |
@@ -595,14 +595,14 @@ Rationale:
 
 * Almost all helm charts in the Skampi repository are device server configurations so it appears natural to start the modelling from that concept
 * The depends_on relationship has been added so that it is possible to extract the dependency map of the MVP prototype
-* Every chart of the ska-telescope can have the shared charts in the dependency list 
+* Every chart of the ska-telescope can have the shared charts in the dependency list
 * The annotations block has been added to enable GitLab’s Deploy Boards
 * The DeviceServer struct specifies the shell args so that it is possible to start the related container instance of the linked image
 
 Advantages
 **********
 
-With this architecture, a number of advantages can be obtained: 
+With this architecture, a number of advantages can be obtained:
 
 * By using a separate deployment (i.e. Namespace) for each test, searching for all the logs of a particular test will be easy: example
 * Requires teams to create versions of docker images and charts
@@ -626,8 +626,8 @@ The Helm community have a well defined set of `best practices <https://helm.sh/d
 
 .. warning:: **Helm 2 vs Helm 3**
 
-  It should be noted that we have now migrated to using Helm 3. Feel free to upgrade Helm in your development environments using our Ansible Playbook ``upgrade_helm.yml`` found in the `SKA Ansible Playbooks repository <https://developer.skatelescope.org/projects/ansible-playbooks/en/latest/playbooks/upgrade_helm.html>`_.
-  
+  It should be noted that we have now migrated to using Helm 3. Feel free to upgrade Helm in your development environments using our Ansible Playbook ``upgrade_helm.yml`` found in the `SKA Ansible Playbooks repository </projects/ansible-playbooks/en/latest/playbooks/upgrade_helm.html>`_.
+
   There are a few changes that may impact specific cases, to read up on them please read up at `This blog post <https://dev.to/ridaehamdani/some-changes-between-helm-v2-and-helm-v3-that-you-should-know-32ga>`_, as well as on Helm's own `FAQ page <https://helm.sh/docs/faq/>`_.
 
 Example ``Chart.yaml`` file:

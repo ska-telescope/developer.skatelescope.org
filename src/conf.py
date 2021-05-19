@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# developer.skatelescope.org documentation build configuration file, created by
+# developer.skao.int documentation build configuration file, created by
 # sphinx-quickstart on Wed Dec 13 11:59:38 2017.
 #
 # This file is execfile()d with the current directory set to its
@@ -36,6 +36,7 @@ def setup(app):
 # If your documentation needs a minimal Sphinx version, state it here.
 #
 # needs_sphinx = '1.0'
+
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -78,7 +79,7 @@ source_suffix = ".rst"
 master_doc = "index"
 
 # General information about the project.
-project = "developer.skatelescope.org"
+project = "developer.skao.int"
 copyright = "2020, SKA Organization"
 author = "Marco Bartolini"
 
@@ -122,9 +123,9 @@ html_theme = "sphinx_rtd_theme"
 # documentation.
 #
 html_theme_options = {
-    #'logo_only' : False,
-    #'logo_only' : 'ska_logo.jpg',
-    #'logo' : 'ska_logo.jpg',
+    # 'logo_only' : False,
+    # 'logo_only' : 'ska_logo.jpg',
+    # 'logo' : 'ska_logo.jpg',
     # "vcs_pageview_mode": "edit" # Does not work see:h ttps://github.com/readthedocs/sphinx_rtd_theme/issues/701
 }
 
@@ -134,10 +135,11 @@ html_context = {
     "theme_logo_only": True,
     "display_gitlab": True,  # Integrate Gitlab
     "gitlab_user": "ska-telescope",  # Username
-    "gitlab_repo": "developer.skatelescope.org",  # Repo name
+    "gitlab_repo": "developer.skao.int",  # Repo name
     "gitlab_version": "master",  # Version
     "conf_py_path": "/src/",  # Path in the checkout to the docs root
-    "theme_vcs_pageview_mode": "edit",  # workaround for https://github.com/readthedocs/sphinx_rtd_theme/issues/701
+    # workaround for https://github.com/readthedocs/sphinx_rtd_theme/issues/701
+    "theme_vcs_pageview_mode": "edit",
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
@@ -191,7 +193,7 @@ latex_documents = [
     (
         master_doc,
         "developerskatelescopeorg.tex",
-        "developer.skatelescope.org Documentation",
+        "developer.skao.int Documentation",
         "Marco Bartolini",
         "manual",
     ),
@@ -206,7 +208,7 @@ man_pages = [
     (
         master_doc,
         "developerskatelescopeorg",
-        "developer.skatelescope.org Documentation",
+        "developer.skao.int Documentation",
         [author],
         1,
     )
@@ -222,7 +224,7 @@ texinfo_documents = [
     (
         master_doc,
         "developerskatelescopeorg",
-        "developer.skatelescope.org Documentation",
+        "developer.skao.int Documentation",
         author,
         "developerskatelescopeorg",
         "One line description of project.",

@@ -2,7 +2,7 @@
 Fundamental SKA Software Standards
 **********************************
 
-These standards underpin all SKA software development. The canonical copy of this information is 
+These standards underpin all SKA software development. The canonical copy of this information is
 `held in eB <https://ska-aw.bentley.com/SKAProd/Search/QuickLink.aspx?n=SKA-TEL-SKO-0000661&t=3&d=Main%5ceB_PROD&sc=Global&r=03&i=view>`_ ,
 but the essential information is on this page, which is extracted from the eB document.
 
@@ -213,7 +213,7 @@ document, **this document** shall take precedence.
 
 5.  Semantic Versioning 2.0.0. http://semver.org/
 
-6.  The SKA Developer Portal. https://developer.ska-telescope.org
+6.  The SKA Developer Portal. https://developer.skao.int
 
 7.  SKA-TEL-SKO-0001201 ENGINEERING MANAGEMENT PLAN
 
@@ -774,7 +774,7 @@ shall include:
           software.
 
 12. The ability to log diagnostic information according to the Logging
-    Standards described in the SKA developer portal [RD6] :doc:`/tools/logging-format`. 
+    Standards described in the SKA developer portal [RD6] :doc:`/tools/logging-format`.
 
 13. The ability, dynamically at runtime, to suppress or select logging
     of messages at different severity levels on at least a per-process
@@ -957,7 +957,7 @@ To develop and integrate **software** the SKAO shall provide:
    From ISO 12207[RD1],
 
 .. [3]
-   https://developer.skatelescope.org/en/latest/tools/git.html
+   https://developer.skao.int/en/latest/tools/git.html
 
 .. [4]
    https://gitlab.com/ska-telescope/

@@ -622,7 +622,7 @@ The call is on the feature/enabler/capability owner to decide when this is appro
 --------------------
 
 In the Developer's portal there is a description of how test
-environments can be provisioned: see `Testing Skampi <https://developer.skatelescope.org/projects/skampi/en/latest/testing.html#testing-skampi>`_.
+environments can be provisioned: see `Testing Skampi </projects/skampi/en/latest/testing.html#testing-skampi>`_.
 
 
 There is a **staging** environment, currently used only by the `Skampi codebase <https://gitlab.com/ska-telescope/skampi>`_.
@@ -665,7 +665,7 @@ See some preliminary examples in https://confluence.skatelescope.org/x/MA0xBQ.
 Other routes have been followed to implement system-level tests using Gherkin:
 https://confluence.skatelescope.org/display/SE/How+to+implement+BDD+tests.
 
-See additional details on `Pytest configuration <https://developer.skatelescope.org/projects/skampi/en/latest/testing.html#pytest-configuration>`_.
+See additional details on `Pytest configuration </projects/skampi/en/latest/testing.html#pytest-configuration>`_.
 
 In any case attention should be payed to the quality of the testware: code of the test cases,
 code of assertions and fixtures, for data handling, code implementing tools used for testing.
@@ -682,7 +682,7 @@ However, for complex tests, some commenting may still be useful to guide subsequ
 ---------------------------------------
 
 How the CICD pipeline is organized and how it should be used is described in
-https://developer.skatelescope.org/projects/skampi/en/latest/testing.html#pipeline-stages-for-testing.
+https://developer.skao.int/projects/skampi/en/latest/testing.html#pipeline-stages-for-testing.
 
 It is important that teams, when configuring their own CICD pipeline, make sure that the
 testing stage creates and stores important artefacts related to testing.

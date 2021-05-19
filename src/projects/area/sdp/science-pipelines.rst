@@ -9,7 +9,7 @@ Details of the realtime and and batch workflows, and instructions on how to
 develop a workflow can be found here.
 
 - `Repository <https://gitlab.com/ska-telescope/sdp/ska-sdp-science-pipelines>`__
-- `Documentation <https://developer.skatelescope.org/projects/ska-sdp-science-pipelines/en/latest/>`__
+- `Documentation </projects/ska-sdp-science-pipelines/en/latest/>`__
 
 
 Workflow Library
@@ -21,7 +21,7 @@ needing to interact directly with the low-level interfaces such as the
 configuration library.
 
 - `Repository <https://gitlab.com/ska-telescope/sdp/ska-sdp-workflow>`__
-- `Documentation <https://developer.skatelescope.org/projects/ska-sdp-workflow/en/latest/>`__
+- `Documentation </projects/ska-sdp-workflow/en/latest/>`__
 
 
 
