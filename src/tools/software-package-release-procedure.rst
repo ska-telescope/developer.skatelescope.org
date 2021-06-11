@@ -367,10 +367,6 @@ for example:
 
 .. code:: yaml
 
-  # uncomment and specify specific charts to publish
-  # variables:
-  #   CHARTS_TO_PUBLISH: my-first-chart my-second-chart
-
   # Ensure your .gitlab-ci.yml has "publish" stage defined!
   include:
     - project: 'ska-telescope/templates-repository'
