@@ -4,7 +4,7 @@ CI/CD
 *****
 
 How the SKA does Continuous Integration and Deployment, using GitLab's tools.
-These pages describe the full :doc:`CI process </tools/ci-cd/continuous-integration>`, the :doc:`/tools/ci-cd/gitlab-variables` used for projects, and a mirror of the :doc:`/tools/ci-cd/ci-dashboard`.
+These pages describe the full :doc:`CI process </tools/ci-cd/continuous-integration>`, the :doc:`/tools/ci-cd/gitlab-variables`, the :doc:`/tools/ci-cd/gitlab-rate-limiting` used for projects, and a mirror of the :doc:`/tools/ci-cd/ci-dashboard`.
 
 
 .. toctree::
@@ -14,3 +14,4 @@ These pages describe the full :doc:`CI process </tools/ci-cd/continuous-integrat
   ci-cd/continuous-integration
   ci-cd/gitlab-variables
   ci-cd/ci-dashboard
+  ci-cd/gitlab-rate-limiting
