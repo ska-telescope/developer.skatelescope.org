@@ -118,7 +118,7 @@ Sign up / sign in with GitLab account
 Import project to ReadTheDocs
 -----------------------------
 
-After signing in, one lands on the Dashboard, and the steps for importing a project are pretty self-explanatory from here. While importing the project **name** should be the `ska-telescope-` and project's gitlab slug (part in the url after https://gitlab.com/ska-telescope/), i.e. `ska-telescope-ska-python-skeleton`. After the project is imported successfully, name should be changed to the name of the project as listed in Gitlab project site. Project name could be changed in the *Admin* page of Read the Docs project site. As a last step, `kurtcobain-19` account should be added to the project as a maintainer for the system team to manage the documentation later on.
+After signing in, one lands on the Dashboard, and the steps for importing a project are pretty self-explanatory from here. While importing the project **name** should be the `ska-telescope-` and project's gitlab slug (part in the url after https://gitlab.com/ska-telescope/), i.e. `ska-telescope-ska-python-skeleton`. After the project is imported successfully, name should be changed to the name of the project as listed in Gitlab project site. Project name could be changed in the *Admin* page of Read the Docs project site. As a last step, `kurtcobain-19` account should be added to the ReadTheDocs project as a maintainer for the system team to manage the documentation later on.
 
 .. _sub-project:
 
