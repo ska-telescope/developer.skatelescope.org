@@ -1,11 +1,13 @@
 .. _best-practices-tips-and-tricks:
 
-***********************
-GitLab Rate Limiting
-***********************
-This section describes the rate limits that are presently being used as part of the
+*******************************
+Best Practices Tips and Tricks
+*******************************
+This section describes the best practices tips and tricks that should be followed as part of the
 GitLab CI/CD infrastructure.
 
+GitLab Rate Limiting
+-------------------------
 Rate limiting is a common technique used to improve the security and durability of a web application. For example, a simple script can make thousands of web requests per second. Whether malicious, apathetic, or just a bug, your application and infrastructure may not be able to cope with the load. This is called Denial-of-service attack. Most cases can be mitigated by limiting the rate of requests from a single IP address.
 Most brute-force attacks are similarly mitigated by a rate limit.
 
@@ -37,6 +39,7 @@ For more details on Personal Access Tokens, please see `Personal Access Tokens <
 Example request :
 
 .. code-block:: bash
+
     repository=https://gitlab.com/api/v4/projects/<project_id>/repository/files \
     curl --retry 30 --retry-delay 3 \
     --header "PRIVATE-TOKEN: <your_access_token>" \
