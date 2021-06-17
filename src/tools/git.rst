@@ -271,7 +271,7 @@ merge the story branch into the master branch. The Merge Request UI on GitLab in
 
 It is recommended that A new Merge Request will include, among others, the following options:
 
-* The Merge Request Title should always include the related JIRA issue id - this will be automatic following the above branching naming convention. You can add :code:`Draft` or :code:`Draft:` at the beggingin of the Merge Request Title to automatically indicate that a Merge Request is not ready for merging just yet. Alternatively, you can use the Merge Request UI to mark the Merge Request as draft.
+* The Merge Request Title should always include the related JIRA issue id - this will be automatic following the above branching naming convention. You can add :code:`Draft` or :code:`Draft:` at the beginning of the Merge Request Title to automatically indicate that a Merge Request is not ready for merging just yet. Alternatively, you can use the Merge Request UI to mark the Merge Request as draft.
 * Merge Request Description should include a concise, brief description about the issue.
 * Add approval rules.
 * Select one or more people for review (use the Reviewer field in the MR to differentiate between assignees and reviewers) and include anyone who has worked in the Merge Request.
