@@ -302,7 +302,7 @@ Consider the following:
 .. code:: docker
 
     FROM python:3.9.5
-    ARG postgres_client "postgresql-client-10 libpq-dev"
+    ARG postgres_client="postgresql-client-10 libpq-dev"
     RUN apt-get install -y $postgres_client
     COPY requirements.txt .
     RUN pip3 install -r requirements.txt
@@ -312,7 +312,6 @@ Consider the following:
 Looking at the example above, during the intensive development build phase of an application, it is likely that the most volitile element is the ``./app`` itself, followed by the Python dependencies in the ``requirements.txt`` file, then finally the least changeable element is the specific postgresql client libraries (the base image is always at the top).
 
 Laying out the build process in this way ensures that the build exploits as much as possible the build cache that the Container Engine holds locally.  The cache calculates a hash of each element of the ``Dockerfile`` linked to all the previous elements.  If this hash has not changed then the build process will skip the rebuild of that layer and pull it from the cache instead.  If in the above example, the ``COPY ./app /app`` step was placed before the ``RUN apt-get install``, then the package install would be triggered every time the code changed in the application unnecessarily.
-
 
 Volumes
 ~~~~~~~
@@ -328,7 +327,6 @@ Volumes definitions are not strictly required inorder to make a container functi
     VOLUME ["/etc/myconfig", "/data"]
     ...
 
-
 Ports
 ~~~~~
 
@@ -342,7 +340,6 @@ Ports, like Volumes definitions, are not strictly required inorder to make a con
     EXPOSE 8080/tcp
     ...
 
-
 Labels
 ~~~~~~
 
@@ -353,15 +350,13 @@ Use the ``LABEL`` directive to add ample metadata to your image.  This metadata 
 
     ...
     LABEL \
-          author="A Developer <a.developer@example.com>" \
+          author="Piers Harding <piers.harding@skao.int>" \
           description="This image illustrates LABELs" \
           license="Apache2.0" \
-          registry="acmeincorporated/imagename" \
-          vendor="ACME Incorporated" \
           int.skao.team="Systems Team" \
           int.skao.application="widget" \
           int.skao.version="1.0.0" \
-          int.skao.website="http://gitlab.com/ACMEIncorporate/widget"
+          int.skao.repository="http://gitlab.com/ska-telescope/ska-project"
     ...
 
 The following are recommended labels for all images:
@@ -369,12 +364,10 @@ The following are recommended labels for all images:
 * author: name and email address of the author
 * description: a short description of this image and it's purpose.
 * license: license that this image and contained software are released under
-* registry: the primary registry that this image should be found in
-* vendor: the owning organisation of the software component
 * int.skao.team: the SKA team responsible for this image.
 * int.skao.application: the application that this image contains
 * int.skao.version: follows `Semantic Versioning <https://semver.org>`_, and should be linked to the image version tag discussed below.
-* int.skao.website: where the software pertaining to the building of this image resides
+* int.skao.repository: where the software pertaining to the building of this image resides
 
 Arguments
 ~~~~~~~~~
