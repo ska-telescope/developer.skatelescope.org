@@ -135,7 +135,10 @@ Find the project you want to import. You can filter the projects using the list 
    :figclass: figborder
 
 
-When importing the project, the **name** should have SKA Telescope (or ska-telescope-, if the project name is in this format) as a prefix.
+Name the project correctly
+--------------------------
+
+When importing the project, the **Name** should have SKA Telescope (or ska-telescope-, if the project name is in this format) as a prefix.
 
 .. figure:: images/rtd_prefix.jpg
    :scale: 80%
@@ -143,7 +146,10 @@ When importing the project, the **name** should have SKA Telescope (or ska-teles
    :align: center
    :figclass: figborder
 
-Importantly, the `kurtcobain-19`'s account should be added to the project as a Maintainer so that the System Team can add it as a Sub-project (see next step).
+Add a special account as Maintainer
+-----------------------------------
+
+Importantly, the user `kurtcobain-19` must be added to the project as a Maintainer so that the System Team can add it as a Sub-project (see next step).
 
 .. figure:: images/kurtcobain.jpg
    :scale: 60%
