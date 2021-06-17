@@ -436,3 +436,7 @@ Note: in order to run deploy clusters, the account permissions need to be set up
    :width: 6.27083in
    :height: 4.63889in
 .. |runners-on-kubernetes| image:: ../media/runners-on-kubernetes.png
+
+Best Practices Tips and Tricks
+-------------------------------------
+For referring to the best practices that must be followed while working with Gitlab CI, please refer the :doc:`/tools/ci-cd/best-practices-tips-and-tricks` used for projects.
