@@ -1,7 +1,7 @@
 .. _best-practices-tips-and-tricks:
 
 *******************************
-Best Practices Tips and Tricks
+Best Practices, Tips and Tricks
 *******************************
 This section describes the best practices tips and tricks that should be followed as part of the
 GitLab CI/CD infrastructure.
