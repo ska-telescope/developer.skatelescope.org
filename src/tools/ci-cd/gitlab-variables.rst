@@ -7,6 +7,10 @@ GitLab Global Variables
 This section describes the global variables that are presently being used as part of the
 GitLab CI/CD infrastructure.
 
+You can directly use these variables in `$VARIABLE` format in your CI/CD pipelines.
+Passwords are masked and not visible on the pipeline outputs. 
+Please refrain from writing them in plain-text format.
+
 Variables Interface
 ===================
 
@@ -28,73 +32,52 @@ The variables are set under the
 Variables Description
 =====================
 
-+--------------------------------+--------------------------------------------------------------------------------+-------------------------------+
-|             Key                |                            Description                                         |             Notes             |
-+================================+================================================================================+===============================+
-| ``CAR_OCI_REGISTRY_HOST``      | Is the FQDN of the Central Artefact Repository - artefact.skatelescope.org     |                               |
-+--------------------------------+--------------------------------------------------------------------------------+-------------------------------+
-| ``CAR_OCI_REGISTRY_USERNAME``  | OCI Image Publishing user name                                                 |                               |
-+--------------------------------+--------------------------------------------------------------------------------+-------------------------------+
-| ``CAR_OCI_REGISTRY_PASSWORD``  | OCI Publishing user password                                                   |                               |
-+--------------------------------+--------------------------------------------------------------------------------+-------------------------------+
-| ``CAR_PYPI_REPOSITORY_URL``    | https://artefact.skatelescope.org/repository/pypi-internal/                    |                               |
-+--------------------------------+--------------------------------------------------------------------------------+-------------------------------+
-| ``CAR_PYPI_USERNAME``          | PyPi Publishing user name                                                      |                               |
-+--------------------------------+--------------------------------------------------------------------------------+-------------------------------+
-| ``CAR_PYPI_PASSWORD``          | PyPi user password                                                             |                               |
-+--------------------------------+--------------------------------------------------------------------------------+-------------------------------+
-| ``CAR_HELM_REPOSITORY_URL``    | Is the FQDN of the Central Artefact Repository - artefact.skatelescope.org     |                               |
-+--------------------------------+--------------------------------------------------------------------------------+-------------------------------+
-| ``CAR_HELM_USERNAME``          | Helm Chart Publishing user name                                                |                               |
-+--------------------------------+--------------------------------------------------------------------------------+-------------------------------+
-| ``CAR_HELM_PASSWORD``          | Helm Chart Publishing user password                                            |                               |
-+--------------------------------+--------------------------------------------------------------------------------+-------------------------------+
-| ``CAR_ANSIBLE_REPOSITORY_URL`` | https://artefact.skatelescope.org/repository/ansible-internal                  |                               |
-+--------------------------------+--------------------------------------------------------------------------------+-------------------------------+
-| ``CAR_ANSIBLE_USERNAME``       | Ansible role/collection Publishing user name                                   |                               |
-+--------------------------------+--------------------------------------------------------------------------------+-------------------------------+
-| ``CAR_ANSIBLE_PASSWORD``       | Ansible role/collection Publishing user password                               |                               |
-+--------------------------------+--------------------------------------------------------------------------------+-------------------------------+
-| ``CAR_RAW_REPOSITORY_URL``     | https://artefact.skatelescope.org/repository/raw-internal                      |                               |
-+--------------------------------+--------------------------------------------------------------------------------+-------------------------------+
-| ``CAR_RAW_USERNAME``           | Raw Repository Publishing user name                                            |                               |
-+--------------------------------+--------------------------------------------------------------------------------+-------------------------------+
-| ``CAR_RAW_PASSWORD``           | Raw Repository Publishing user password                                        |                               |
-+--------------------------------+--------------------------------------------------------------------------------+-------------------------------+
+.. csv-table:: GitLab ska-telescope Group Variables
+   :header: "Key", "Description"
+   :widths: auto
+
+   ``CAR_OCI_REGISTRY_HOST``, "Is the FQDN of the Central Artefact Repository - artefact.skao.int"
+   ``CAR_OCI_REGISTRY_USERNAME``, "OCI Image Publishing user name"
+   ``CAR_OCI_REGISTRY_PASSWORD``, "OCI Publishing user password"
+   ``CAR_PYPI_REPOSITORY_URL``, "Python Package Artefact Repository URL - https://artefact.skao.int/repository/pypi-internal/"
+   ``CAR_PYPI_USERNAME``, "PyPi Publishing user name"
+   ``CAR_PYPI_PASSWORD``, "PyPi user password"
+   ``CAR_HELM_REPOSITORY_URL``, "Helm Artefact Repository URL - https://artefact.skao.int/repository/helm-internal"
+   ``CAR_HELM_USERNAME``, "Helm Chart Publishing user name"
+   ``CAR_HELM_PASSWORD``, "Helm Chart Publishing user password"
+   ``CAR_ANSIBLE_REPOSITORY_URL``, "Ansible Collections Repository URL - https://artefact.skao.int/repository/ansible-internal"
+   ``CAR_ANSIBLE_USERNAME``, "Ansible role/collection Publishing user name"
+   ``CAR_ANSIBLE_PASSWORD``, "Ansible role/collection Publishing user password"
+   ``CAR_RAW_REPOSITORY_URL``, "Raw Artefact Repository URL - https://artefact.skao.int/repository/raw-internal"
+   ``CAR_RAW_USERNAME``, "Raw Repository Publishing user name"
+   ``CAR_RAW_PASSWORD``, "Raw Repository Publishing user password"
+   ``JIRA_AUTH``, "JIRA Authentication token for uploading XRAY Test Results"
+   ``SKA_K8S_TOOLS_DEPLOY_IMAGE``, "Latest OCI image for deployment jobs - artefact.skao.int/ska-k8s-tools/deploy:x.x.x"
+   ``SKA_K8S_TOOLS_DOCKER_BUILDER_IMAGE``, "Latest OCI image for OCI build jobs - artefact.skao.int/ska-k8s-tools/docker-builder:x.x.x"
 
 
 Historical Variable Use (Deprecated)
 ====================================
 
-The following variables have been used historically to drive behaviour in the pipelines, but must be set at the individual repository level:
+The following variables are pointing to SKAEngage Nexus Artefact Repository.
+They have been used historically to drive behaviour in the pipelines, but if you want to use them, they must be set at the individual repository level:
 
-+--------------------------------+-------------------------------------------------+--------------------------------------------------------------+
-|             Key                |                  Description                    |                          Notes                               |
-+================================+=================================================+==============================================================+
-| ``DOCKER_REGISTRY_FOLDER``     | specify the base path prefixed                  | Used to produce the image path: with                         |
-|                                | for an image eg: ``ska-docker``                 | ``DOCKER_REGISTRY_HOST/DOCKER_REGISTRY_FOLDER/<image-name>`` |
-+--------------------------------+-------------------------------------------------+--------------------------------------------------------------+
-| ``DOCKER_REGISTRY_HOST``       | FQDN of the Nexus Docker registry               | Replaced by ``CAR_OCI_REGISTRY_HOST``                        |
-+--------------------------------+-------------------------------------------------+--------------------------------------------------------------+
-| ``DOCKER_REGISTRY_PASSWORD``   | Password for uploading to the Nexus registry    | Replaced by ``CAR_OCI_REGISTRY_USERNAME``                    |
-+--------------------------------+-------------------------------------------------+--------------------------------------------------------------+
-| ``DOCKER_REGISTRY_USERNAME``   | Username for uploading to the Nexus registry    | Replaced by ``CAR_OCI_REGISTRY_PASSWORD``                    |
-+--------------------------------+-------------------------------------------------+--------------------------------------------------------------+
-| ``HELM_HOST``                  | FQDN of the Helm Chart repository               | Replaced by ``CAR_HELM_REPOSITORY_URL``                      |
-+--------------------------------+-------------------------------------------------+--------------------------------------------------------------+
-| ``HELM_USERNAME``              | Username for uploading to the Helm Chart repo   | Replaced by ``CAR_HELM_USERNAME``                            |
-+--------------------------------+-------------------------------------------------+--------------------------------------------------------------+
-| ``HELM_PASSWORD``              | Password for uploading to the Helm Chart repo   | Replaced by ``CAR_HELM_PASSWORD``                            |
-+--------------------------------+-------------------------------------------------+--------------------------------------------------------------+
-| ``PYPI_REPOSITORY_URL``        | FQDN of the PyPi Nexus repository               | Replaced by ``CAR_PYPI_REPOSITORY_URL``                      |
-+--------------------------------+-------------------------------------------------+--------------------------------------------------------------+
-| ``TWINE_USERNAME``             | Username for uploading to the PyPi Nexus repo   | Replaced by ``CAR_PYPI_USERNAME``                            |
-+--------------------------------+-------------------------------------------------+--------------------------------------------------------------+
-| ``TWINE_PASSWORD``             | Password for uploading to the PyPi Nexus repo   | Replaced by ``CAR_PYPI_PASSWORD``                            |
-+--------------------------------+-------------------------------------------------+--------------------------------------------------------------+
-| ``RAW_HOST``                   | FQDN for the Raw file hosting                   | Replaced by ``CAR_RAW_REPOSITORY_URL``                       |
-+--------------------------------+-------------------------------------------------+--------------------------------------------------------------+
-| ``RAW_USER``                   | Username for uploading to the Raw repo on Nexus | Replaced by ``CAR_RAW_USERNAME``                             |
-+--------------------------------+-------------------------------------------------+--------------------------------------------------------------+
-| ``RAW_PASS``                   | Password for uploading to the Raw repo on Nexus | Replaced by ``CAR_RAW_PASSWORD``                             |
-+--------------------------------+-------------------------------------------------+--------------------------------------------------------------+
+
+.. csv-table:: GitLab ska-telescope Group Variables (Deprecated)
+   :header: "Key", "Description", "Notes"
+   :widths: auto
+
+   ``DOCKER_REGISTRY_FOLDER``, "specify the base path prefixed for an image eg: ``ska-docker`` ", "Used to produce the image path: with ``DOCKER_REGISTRY_HOST/DOCKER_REGISTRY_FOLDER/<image-name>``"
+   ``DOCKER_REGISTRY_HOST``, "FQDN of the Nexus Docker registry ", "Replaced by ``CAR_OCI_REGISTRY_HOST``"
+   ``DOCKER_REGISTRY_PASSWORD``, "Password for uploading to the Nexus registry", "Replaced by ``CAR_OCI_REGISTRY_USERNAME``"
+   ``DOCKER_REGISTRY_USERNAME``, "Username for uploading to the Nexus registry", "Replaced by ``CAR_OCI_REGISTRY_PASSWORD``"
+   ``HELM_HOST``, "FQDN of the Helm Chart repository", "Replaced by ``CAR_HELM_REPOSITORY_URL``"
+   ``HELM_USERNAME``, "Username for uploading to the Helm Chart repo", "Replaced by ``CAR_HELM_USERNAME``"
+   ``HELM_PASSWORD``, "Password for uploading to the Helm Chart repo", "Replaced by ``CAR_HELM_PASSWORD``"
+   ``PYPI_REPOSITORY_URL``, "FQDN of the PyPi Nexus repository", "Replaced by ``CAR_PYPI_REPOSITORY_URL``"
+   ``TWINE_REPOSITORY_URL``, "FQDN of the PyPi Nexus repository", "Replaced by ``CAR_PYPI_REPOSITORY_URL``"
+   ``TWINE_USERNAME``,  "Username for uploading to the PyPi Nexus repo", "Replaced by ``CAR_PYPI_USERNAME``"
+   ``TWINE_PASSWORD``, "Password for uploading to the PyPi Nexus repo", "Replaced by ``CAR_PYPI_PASSWORD``"
+   ``RAW_HOST``, "FQDN for the Raw file hosting", "Replaced by ``CAR_RAW_REPOSITORY_URL``"
+   ``RAW_USER``, "Username for uploading to the Raw repo on Nexus", "Replaced by ``CAR_RAW_USERNAME``"
+   ``RAW_PASS``, "Password for uploading to the Raw repo on Nexus", "Replaced by ``CAR_RAW_PASSWORD``"
