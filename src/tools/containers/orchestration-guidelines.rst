@@ -507,7 +507,7 @@ The test job of the GitLab pipeline needs to be:
     stage: test
     tags:
       - docker-executor
-    image: nexus.engageska-portugal.pt/ska-docker/deploy:0.4.1
+    image: artefact.skao.int/ska-docker/deploy:0.4.1
     script:
       - kubectl version
       - make install-chart
@@ -1233,7 +1233,7 @@ Integrating a chart into the SKAMPI repo
 .. admonition:: Prerequisites
 
   - Verify that Docker, kubectl, Minikube and Helm are installed and working properly - refer to :ref:`verify-k8s`.
-  - The required docker images have been uploaded to and are available from `Nexus <https://nexus.engageska-portugal.pt/#browse/search/docker>`_, see `docker upload instructions <uploading-docker-nexus.html>`__
+  - The required docker images have been uploaded to and are available from `Central Artefact Repository <https://artefact.skao.int/#browse/search/docker>`_, see `docker upload instructions <uploading-docker-nexus.html>`__
 
 To integrate a helm chart into the `SKAMPI` repo, follow these steps:
 
@@ -2181,7 +2181,7 @@ The following restricts access to the deployed TangoDB to only the DatabaseDS ap
 Images, Tags, and pullPolicy
 ----------------------------
 
-Only use images from trusted sources.  In most cases this should be only from the `official SKA repository <https://nexus.engageska-portugal.pt/>`_, with a few exceptions such as the core vender supported images for key services such as `MySQL <https://hub.docker.com/_/mysql>`_.  It is anticipated that in the future the SKA will host mirrors and/or pull-through caches for key external software components, and will then firewall off access to external repositories that are not explicitly trusted.
+Only use images from trusted sources.  In most cases this should be only from the `official SKA Central Artefact Repository <https://artefact.skao.int/>`_, with a few exceptions such as the core vender supported images for key services such as `MySQL <https://hub.docker.com/_/mysql>`_.  It is anticipated that in the future the SKA will host mirrors and/or pull-through caches for key external software components, and will then firewall off access to external repositories that are not explicitly trusted.
 
 As a general rule, stable image tags should be used for images that at least include the Major and Minor version number of `Semantic Versioning <https://semver.org>`_ eg: ``mysql:5.27``.  As curated images come from trusted sources, this ensures that the deployment process gets a functionally stable starting point that will still accrue bug fixing and security patching over time.  Do **NOT** use the ``latest`` tag as it is likely that this will break your application in future as it gives no way of guaranteeing feature parity and stability.
 

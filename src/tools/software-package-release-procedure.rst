@@ -280,7 +280,7 @@ In order to add the Helm chart repo to your local list of repositories, run
 
 .. code:: bash
 
- $ helm repo add skao https://nexus.engageska-portugal.pt/repository/helm-chart
+ $ helm repo add skao https://artefact.skao.int/repository/helm-internal
 
 Search available charts in a repo
 """""""""""""""""""""""""""""""""

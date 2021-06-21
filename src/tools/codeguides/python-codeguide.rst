@@ -413,14 +413,14 @@ Here is a SKA pytango package example tox.ini:
 
   [testenv]
   setenv = PIP_DISABLE_VERSION_CHECK = 1
-  install_command = python -m pip install --extra-index-url https://nexus.engageska-portugal.pt/repository/pypi/simple {opts} {packages}
+  install_command = python -m pip install --extra-index-url https://artefact.skao.int/repository/pypi-internal/simple {opts} {packages}
   deps = 
       -rrequirements.txt  # runtime requirements
       -rrequirements-test.txt   # test/development requirements
   commands =
       # this ugly hack is here because:
       # https://github.com/tox-dev/tox/issues/149
-      python -m pip install -U --extra-index-url https://nexus.engageska-portugal.pt/repository/pypi/simple -r{toxinidir}/requirements.txt
+      python -m pip install -U --extra-index-url https://artefact.skao.int/repository/pypi-internal/simple -r{toxinidir}/requirements.txt
       # 
       python -m pytest {posargs}
   # use system site-packages for pytango (and c++ library dependencies)
