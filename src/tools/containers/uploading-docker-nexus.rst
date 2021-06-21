@@ -1,5 +1,5 @@
 
-.. _registry: https://artefact.skatelescope.org/#browse/search/docker
+.. _registry: https://artefact.skao.int/#browse/search/docker
 
 ===========================================================
 Hosting a docker image on the *Central Artefact Repository*
@@ -18,7 +18,7 @@ To explicitly tag a docker image run the following command:
 
 .. code:: bash
 
-  $ docker tag <source_image> artefact.skatelescope.org/<repository_name>/<image_name>:<tag_name>
+  $ docker tag <source_image> artefact.skao.int/<repository_name>/<image_name>:<tag_name>
 
 This command will create an alias by the name of the :code:`<image_name>` that refers to the :code:`<source_image>`.
 
@@ -33,4 +33,4 @@ by executing the following command:
 
 .. code:: bash
 
-  $ docker push artefact.skatelescope.org/<repository_name>/<image_name>:<tag_name>
+  $ docker push artefact.skao.int/<repository_name>/<image_name>:<tag_name>
