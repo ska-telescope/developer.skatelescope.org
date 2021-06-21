@@ -116,9 +116,46 @@ Sign up / sign in with GitLab account
 
 
 Import project to ReadTheDocs
------------------------------
+=============================
 
-After signing in, one lands on the Dashboard, and the steps for importing a project are pretty self-explanatory from here. While importing the project **name** should be the `ska-telescope-` and project's gitlab slug (part in the url after https://gitlab.com/ska-telescope/), i.e. `ska-telescope-ska-python-skeleton`. After the project is imported successfully, name should be changed to the name of the project as listed in Gitlab project site. Project name could be changed in the *Admin* page of Read the Docs project site. As a last step, `kurtcobain-19` account should be added to the ReadTheDocs project as a maintainer for the system team to manage the documentation later on.
+After signing in, one lands on the Dashboard. To import a project so that it is automatically built by Readthedocs, click on the dropdown next to your name at the top right and choose **My Projects**, then **Import a Project**:
+
+.. figure:: images/rtd_my_projects_import.jpg
+   :scale: 80%
+   :alt: My Projects >> Import Project
+   :align: center
+   :figclass: figborder
+
+Find the project you want to import. You can filter the projects using the list on the right, or if you cannot find your project, import manually.
+
+.. figure:: images/rtd_import.jpg
+   :scale: 80%
+   :alt: Import a Project
+   :align: center
+   :figclass: figborder
+
+
+Name the project correctly
+--------------------------
+
+When importing the project, the **Name** should have SKA Telescope (or ska-telescope-, if the project name is in this format) as a prefix.
+
+.. figure:: images/rtd_prefix.jpg
+   :scale: 80%
+   :alt: Import a Project
+   :align: center
+   :figclass: figborder
+
+Add a special account as Maintainer
+-----------------------------------
+
+Importantly, the user `kurtcobain-19` must be added to the project as a Maintainer so that the System Team can add it as a Sub-project (see next step).
+
+.. figure:: images/kurtcobain.jpg
+   :scale: 60%
+   :alt: Import a Project
+   :align: center
+   :figclass: figborder
 
 .. _sub-project:
 
