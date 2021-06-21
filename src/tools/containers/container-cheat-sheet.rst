@@ -72,12 +72,6 @@ Image Signing and Publishing
 
 * All images pushed to the SKA hosted repository must be signed.  This will ensure that only trusted content will be launched in containerised environments.
 
-Image Signing and Publishing
-============================
-
-* All images pushed to the SKA hosted repository must be signed.  This will ensure that only trusted content will be launched in containerised environments.
-
-
 Running Containerised Applications
 ==================================
 

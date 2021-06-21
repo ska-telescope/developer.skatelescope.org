@@ -54,7 +54,11 @@ extensions = [
     "sphinx_gitstamp",
     "notfound.extension",
     "sphinx_copybutton",
+    "sphinx.ext.autosectionlabel",
 ]
+
+# Set each document name as prefix to avoid duplication
+autosectionlabel_prefix_document = True
 
 # 404 page configuration
 notfound_context = {
