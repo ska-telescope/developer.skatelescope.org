@@ -122,7 +122,7 @@ Test that the connectivity in the cluster works
 
 Once Helm is installed, develop a helm chart for the project. Refer to :ref:`Helm instructions <orchestration-guidelines-templating-application>` for guidelines.
 
-.. _Helm Chart Repository: https://nexus.engageska-portugal.pt/#browse/browse:helm-chart
+.. _Helm Chart Repository: https://artefact.skao.int/#browse/browse:helm-internal
 .. _SKAMPI: https://gitlab.com/ska-telescope/skampi
 
 Install Helm charts from our own repository
@@ -136,7 +136,7 @@ To add the SKA Helm chart repo to your local Helm, simply run
 
 .. code:: bash
 
- $ helm repo add skatelescope https://nexus.engageska-portugal.pt/repository/helm-chart
+ $ helm repo add skao https://artefact.skao.int/repository/helm-internal
 
 Working with the Helm chart repository, including how to package and upload charts to our repository, is described :ref:`here in detail <helm-chart-repo>`.
 

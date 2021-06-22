@@ -339,7 +339,7 @@ The Central Artefact Repository PYPI destination as well as a username and passw
 For a reference implementation see the `lmc-base-classes .gitlab-ci.yaml <https://gitlab.com/ska-telescope/lmc-base-classes/blob/master/.gitlab-ci.yml>`_
 
 Note the following:
- - The Central Artefact Repository `CAR_PYPI_REPOSITORY_URL <https://artefact.skatelescope.org/repository/pypi-internal/>`_ is where the packages will be uploaded to.
+ - The Central Artefact Repository `CAR_PYPI_REPOSITORY_URL <https://artefact.skao.int/repository/pypi-internal/>`_ is where the packages will be uploaded to.
  - `twine` uses the local environment variables (`TWINE_USERNAME`, `TWINE_PASSWORD`) to authenticate the upload, therefore they are defined in the `variables` section.
 
 .. code-block:: yaml

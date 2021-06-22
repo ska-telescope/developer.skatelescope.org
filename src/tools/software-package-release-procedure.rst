@@ -1,12 +1,12 @@
 .. _Semver: https://semver.org
-.. _Helm Chart Repository: https://artefact.skatelescope.org/#browse/browse:helm-internal
+.. _Helm Chart Repository: https://artefact.skao.int/#browse/browse:helm-internal
 .. _SKAMPI: https://gitlab.com/ska-telescope/skampi
 
 ==================================
 Software Package Release Procedure
 ==================================
 
-Whilst source code related to software artefacts are hosted on `GitLab <https://gitlab.com/ska-telescope>`_, the delivered runtime artefacts for the SKAO are maintained and curated in the `Central Artefact Repository <https://artefact.skatelescope.org>`_.  It is here that they will navigate through the process of verification and testing with the aim of finally being promoted to a state ready for production release.
+Whilst source code related to software artefacts are hosted on `GitLab <https://gitlab.com/ska-telescope>`_, the delivered runtime artefacts for the SKAO are maintained and curated in the `Central Artefact Repository <https://artefact.skao.int>`_.  It is here that they will navigate through the process of verification and testing with the aim of finally being promoted to a state ready for production release.
 
 Artefacts that are candidates for promotion to the Central Artefact Repository will need to follow the
 `ADR-25 - Software naming conventions <https://confluence.skatelescope.org/display/SWSI/ADR-25+General+software+naming+convention>`_, and must conform to the :ref:`Definition of Done <definition-of-done>`.
@@ -93,15 +93,15 @@ The SKAO aims to maintain repositories with native interface support for the cor
 Additionally, there are also upsteam proxy/caching facilities available for:
 
 * Docker (OCI Images - only available inside AWS VPC)
-* Helm - https://artefact.skatelescope.org/repository/helm-proxy/ (from https://charts.helm.sh/stable)
-* PyPi - https://artefact.skatelescope.org/repository/pypi-all/ (from pypi.python.org and include pypi-internal)
-* Conda - https://artefact.skatelescope.org/repository/conda-proxy/ (from https://repo.continuum.io/pkgs/)
-* Conan - https://artefact.skatelescope.org/repository/conan-proxy/ (from https://conan.bintray.com)
-* NPM - https://artefact.skatelescope.org/repository/npm-all/ (from https://registry.npmjs.org and include npm-internal which is not active yet)
-* Maven - https://artefact.skatelescope.org/repository/maven-public/ (from maven-release, maven-snapshots, https://repo1.maven.org/maven2/)
-* Apt - https://artefact.skatelescope.org/repository/ubuntu-archive/, https://artefact.skatelescope.org/repository/ubuntu18.04-proxy/, and https://artefact.skatelescope.org/repository/ubuntu20.04-proxy/
-* Yum - CentOS7 https://artefact.skatelescope.org/repository/yum_centos_7-internal/ (from http://download.fedoraproject.org/pub/epel/7/x86_64 and yum_centos_7-internal), CentOS8 https://artefact.skatelescope.org/repository/yum_centos_8-internal/ (from http://download.fedoraproject.org/pub/epel/8/Everything/x86_64 and yum_centos_8-internal)
-* Go Lang - https://artefact.skatelescope.org/repository/go-proxy/ (from https://golang.org/pkg/)
+* Helm - https://artefact.skao.int/repository/helm-proxy/ (from https://charts.helm.sh/stable)
+* PyPi - https://artefact.skao.int/repository/pypi-all/ (from pypi.python.org and include pypi-internal)
+* Conda - https://artefact.skao.int/repository/conda-proxy/ (from https://repo.continuum.io/pkgs/)
+* Conan - https://artefact.skao.int/repository/conan-proxy/ (from https://conan.bintray.com)
+* NPM - https://artefact.skao.int/repository/npm-all/ (from https://registry.npmjs.org and include npm-internal which is not active yet)
+* Maven - https://artefact.skao.int/repository/maven-public/ (from maven-release, maven-snapshots, https://repo1.maven.org/maven2/)
+* Apt - https://artefact.skao.int/repository/ubuntu-archive/, https://artefact.skao.int/repository/ubuntu18.04-proxy/, and https://artefact.skao.int/repository/ubuntu20.04-proxy/
+* Yum - CentOS7 https://artefact.skao.int/repository/yum_centos_7-internal/ (from http://download.fedoraproject.org/pub/epel/7/x86_64 and yum_centos_7-internal), CentOS8 https://artefact.skao.int/repository/yum_centos_8-internal/ (from http://download.fedoraproject.org/pub/epel/8/Everything/x86_64 and yum_centos_8-internal)
+* Go Lang - https://artefact.skao.int/repository/go-proxy/ (from https://golang.org/pkg/)
 
 
 Finally, there are repositories that utilise the Nexus Raw format to provide library space for the following:
@@ -140,7 +140,7 @@ While the Central Artefact Repository is available for anonymous browsing and pu
 OCI Image
 ~~~~~~~~~
 
-The OCI Image repository is locate at https://artefact.skatelescope.org/#browse/browse:docker-internal . 
+The OCI Image repository is located at https://artefact.skao.int/#browse/browse:docker-internal . 
 
 Example: publish an OCI Image for the tango-cpp base image from ska-tango-images
 
@@ -153,7 +153,7 @@ Example: publish an OCI Image for the tango-cpp base image from ska-tango-images
   echo ${CAR_OCI_REGISTRY_PASSWORD} | docker login --username ${CAR_OCI_REGISTRY_USERNAME} --password-stdin ${CAR_OCI_REGISTRY_HOST}
   # Push the image
   docker push ${CAR_OCI_REGISTRY_HOST}/ska-tango-images/tango-cpp:9.3.4
-  This image has been published at https://artefact.skatelescope.org/#browse/browse:docker-internal:v2%2Fska-tango-images%2Ftango-cpp%2Ftags%2F9.3.4
+  This image has been published at https://artefact.skao.int/#browse/browse:docker-internal:v2%2Fska-tango-images%2Ftango-cpp%2Ftags%2F9.3.4
 
 For a docker image to be valid, metadata must be included as `labels <https://docs.docker.com/engine/reference/builder/#label>`_. The procedure for building and pushing to the repository can be taken from the gitlab template-reposuitory project in the following way: 
 
@@ -274,13 +274,13 @@ Example:
 Adding the SKAO repository
 """"""""""""""""""""""""""
 
-The Helm Chart index is here `https://artefact.skatelescope.org/#browse/search/helm <https://artefact.skatelescope.org/#browse/search/helm>`_ .  This consists of the hosted repository *helm-internal* and the upstream proxy of `https://charts.helm.sh/stable <https://charts.helm.sh/stable>`_. 
+The Helm Chart index is here `https://artefact.skao.int/#browse/search/helm <https://artefact.skao.int/#browse/search/helm>`_ .  This consists of the hosted repository *helm-internal* and the upstream proxy of `https://charts.helm.sh/stable <https://charts.helm.sh/stable>`_. 
 
 In order to add the Helm chart repo to your local list of repositories, run
 
 .. code:: bash
 
- $ helm repo add skao https://nexus.engageska-portugal.pt/repository/helm-chart
+ $ helm repo add skao https://artefact.skao.int/repository/helm-internal
 
 Search available charts in a repo
 """""""""""""""""""""""""""""""""
@@ -432,7 +432,7 @@ Publishing to the `GitLab Project PyPi <https://docs.gitlab.com/ee/user/packages
 Installing a package from *Nexus*
 """""""""""""""""""""""""""""""""
 
-The Python Package Index is located at https://artefact.skatelescope.org/#browse/search/pypi .  A combined PyPi index of pypi-internal and pypi.python.org is available from https://artefact.skatelescope.org/repository/pypi-all/ .
+The Python Package Index is located at https://artefact.skao.int/#browse/search/pypi .  A combined PyPi index of pypi-internal and pypi.python.org is available from https://artefact.skao.int/repository/pypi-all/ .
 
 Packages for upload must follow the SKAO naming convention starting with ska- (ADR-25) and incorporating the semantic version number.  The following example shows the Python ska_logging class.
 
@@ -443,7 +443,7 @@ the following section(s), for example:
 .. code:: ini
 
   [[source]]
-  url = 'https://artefact.skatelescope.org/#browse/search/pypi'
+  url = 'https://artefact.skao.int/#browse/search/pypi'
   verify_ssl = true
   name = 'skao'
 
@@ -485,7 +485,7 @@ The following example is for common systems role collections:
 Raw
 ~~~
 
-Raw artefacts are typically `tar.gz` files, images, reports, data files, and specific repositories that do not have direct functional support in Nexus (same as for Ansible roles and collections).  These are hosted here `raw-internal <https://artefact.skatelescope.org/#browse/search/raw>`_ .  Note that the artefact directory structure must be prefixed by the related repository, but can be flexible but meaningful after that.
+Raw artefacts are typically `tar.gz` files, images, reports, data files, and specific repositories that do not have direct functional support in Nexus (same as for Ansible roles and collections).  These are hosted here `raw-internal <https://artefact.skao.int/#browse/search/raw>`_ .  Note that the artefact directory structure must be prefixed by the related repository, but can be flexible but meaningful after that.
 
 The following example shows the publishing of an external dependency library for the Tango base image builds:
 

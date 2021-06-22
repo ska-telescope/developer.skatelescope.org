@@ -63,73 +63,49 @@ Begin a terminal session in the cloned repository directory and build the image:
 
 .. code-block:: console
 
-    mypc:tango-example tangodeveloper$ make build
-    docker build  -t nexus.engageska-portugal.pt/tango-example/powersupply:0.1.0-65c0927 . -f Dockerfile --build-arg DOCKER_REGISTRY_HOST=nexus.engageska-portugal.pt --build-arg DOCKER_REGISTRY_USER=tango-example
-    Sending build context to Docker daemon  450.6kB
-    Step 1/4 : FROM nexus.engageska-portugal.pt/ska-docker/ska-python-buildenv:latest AS buildenv
-    latest: Pulling from ska-docker/ska-python-buildenv
-    177e7ef0df69: Pull complete
-    d9178ba39f54: Pull complete
-    a1c86587108f: Pull complete
-    072891bac9fb: Pull complete
-    f7ec90efdf53: Pull complete
-    877eee992e82: Pull complete
-    eb71e945bf43: Pull complete
-    6b50707e167c: Pull complete
-    6bb56dff13ba: Pull complete
-    8c3fe19826ab: Pull complete
-    4377cf316b50: Pull complete
-    209febb6128f: Pull complete
-    41eb9ed8ebf6: Pull complete
-    Digest: sha256:a909606b3d0d4b01b5102bd0e4f329d7fd175319f81c8706493e75504dd0439e
-    Status: Downloaded newer image for nexus.engageska-portugal.pt/ska-docker/ska-python-buildenv:latest
-    # Executing 3 build triggers
-     ---> Running in c98b60355c16
-    Installing dependencies from Pipfile.lock (48af56)…
-    Removing intermediate container c98b60355c16
-     ---> 52007c1fb364
-    Step 2/4 : FROM nexus.engageska-portugal.pt/ska-docker/ska-python-runtime:latest AS runtime
-    latest: Pulling from ska-docker/ska-python-runtime
-    177e7ef0df69: Already exists
-    d9178ba39f54: Already exists
-    a1c86587108f: Already exists
-    072891bac9fb: Already exists
-    f7ec90efdf53: Already exists
-    0f3a4ec2943c: Pull complete
-    Digest: sha256:9adf4810777d14b660b99fbe2d443f8871cc591313c8ac436dacee38de39160e
-    Status: Downloaded newer image for nexus.engageska-portugal.pt/ska-docker/ska-python-runtime:latest
-    # Executing 6 build triggers
-     ---> Running in edf8f96df923
-    Removing intermediate container edf8f96df923
-     ---> Running in 246002732edf
-    Removing intermediate container 246002732edf
-     ---> 1ac7b8a31b0f
-    Step 3/4 : RUN ipython profile create
-     ---> Running in 6eccb0302ab8
-    [ProfileCreate] Generating default config file: '/home/tango/.ipython/profile_default/ipython_config.py'
-    Removing intermediate container 6eccb0302ab8
-     ---> d428fd337258
-    Step 4/4 : CMD ["/venv/bin/python", "/app/powersupply/powersupply.py"]
-     ---> Running in e667e6c25b0b
-    Removing intermediate container e667e6c25b0b
-     ---> 76e5e0e2e4b9
-    [Warning] One or more build-args [DOCKER_REGISTRY_HOST DOCKER_REGISTRY_USER] were not consumed
-    Successfully built 76e5e0e2e4b9
-    Successfully tagged nexus.engageska-portugal.pt/tango-example/powersupply:0.1.0-65c0927
-    docker tag nexus.engageska-portugal.pt/tango-example/powersupply:0.1.0-65c0927 nexus.engageska-portugal.pt/tango-example/powersupply:latest
-    mypc:tango-example tangodeveloper$
+      ~/dev/tango-example  master                                                                                                          23:16:46 ─
+    ❯ make build                                                                                                                                           ─╯
+    [+] Building 92.6s (14/14) FINISHED
+    => [internal] load build definition from Dockerfile                                                                                                0.0s
+    => => transferring dockerfile: 453B                                                                                                                0.0s
+    => [internal] load .dockerignore                                                                                                                   0.0s
+    => => transferring context: 259B                                                                                                                   0.0s
+    => [internal] load metadata for artefact.skatelescope.org/ska-tango-images/pytango-runtime:9.3.3.5                                                 0.2s
+    => [buildenv 1/1] FROM artefact.skatelescope.org/ska-tango-images/pytango-builder:9.3.3.5                                                         81.5s
+    => => resolve artefact.skatelescope.org/ska-tango-images/pytango-builder:9.3.3.5                                                                   0.2s
+    => => sha256:5686237a38ebe49118e3c56be46cb1351f6fd07b13a4c0b916a358df074d8d1f 190B / 190B                                                          0.0s
+    ...
+    => [stage-1 1/5] FROM artefact.skatelescope.org/ska-tango-images/pytango-runtime:9.3.3.5@sha256:b0d8a67d16818b72cb9ebf84a36431c0f5ef1ace854c4315  42.6s
+    => => resolve artefact.skatelescope.org/ska-tango-images/pytango-runtime:9.3.3.5@sha256:b0d8a67d16818b72cb9ebf84a36431c0f5ef1ace854c4315930ea775b  0.0s
+    => => sha256:0e970d6d4e3a68ec13536739109feda96a289da2bc803637cbe43d86c2def2d9 1.02MB / 1.02MB                                                      0.4s
+    ...
+    => => extracting sha256:fe6a2e4a5243a99c379de5984e484667782be80029db7221c2a1cb411eedb0e6                                                           0.0s
+    => => extracting sha256:48447e4613545e45c5c2f01304305bb742d43091b0458a8f56c3f93e7e28ac17                                                           0.0s
+    => [internal] load build context                                                                                                                   1.2s
+    => => transferring context: 288.02MB                                                                                                               1.2s
+    => [stage-1 2/5] COPY --chown=tango:tango . /app                                                                                                   1.1s
+    => [stage-1 3/5] COPY --from=buildenv /usr/local/bin/ /usr/local/bin/                                                                              0.1s
+    => [stage-1 4/5] WORKDIR /app                                                                                                                      0.0s
+    => [stage-1 5/5] RUN ipython profile create                                                                                                        0.5s
+    => [stage-1 6/5] COPY requirements.txt /app/requirements.txt                                                                                       0.0s
+    => [stage-1 7/5] RUN python3 -m pip install -r /app/requirements.txt                                                                               5.3s
+    => [stage-1 8/5] RUN python3 -m pip install .                                                                                                      2.7s
+    => exporting to image                                                                                                                              1.1s
+    => => exporting layers                                                                                                                             1.1s
+    => => writing image sha256:9ed46b8e9b2ee5457a650b93e3cbf1e12a4fc3613b9c38028401ca7e9c52de74                                                        0.0s
+    => => naming to artefact.skao.int/ska-tango-images/ska-tango-examples:0.4.12
 
 The last lines of terminal output displays the name and tags of the resulting images, e.g.,
 
 .. code-block:: console
 
     ...
-    Successfully built 76e5e0e2e4b9
-    Successfully tagged nexus.engageska-portugal.pt/tango-example/powersupply:0.1.0-65c0927
-    docker tag nexus.engageska-portugal.pt/tango-example/powersupply:0.1.0-65c0927 nexus.engageska-portugal.pt/tango-example/powersupply:latest
+     => exporting to image                                                                                                                              1.1s
+     => => exporting layers                                                                                                                             1.1s
+     => => writing image sha256:9ed46b8e9b2ee5457a650b93e3cbf1e12a4fc3613b9c38028401ca7e9c52de74                                                        0.0s
+     => => naming to artefact.skao.int/ska-tango-images/ska-tango-examples:0.4.12
 
-In the example above, the image name is tagged as *nexus.engageska-portugal.pt/tango-example/powersupply:0.1.0-65c0927* and
-*nexus.engageska-portugal.pt/tango-example/powersupply:latest*. Take a note of the image tagged as *latest* as you will need
+In the example above, the image name is tagged as *artefact.skao.int/ska-tango-images/ska-tango-examples:0.4.12*. Take a note of the tagged image as you will need
 it when configuring the remote interpreter.
 
 Configure the remote interpreter
@@ -151,11 +127,6 @@ As a result, the Python interpreter Preferences dialog should look something lik
     :alt: the Python Interpreter Preferences dialog box, showing the list of packages in the tango-example image.
 
 Click 'OK' to apply your changes.
-
-.. note::
-    It is recommended to use the remote interpreter in the image tagged as *:latest* rather than the image tagged with a
-    git hash, e.g., *:0.1.0-65c0927*. The *:latest* version will always point to the most recent version of the image,
-    whereas the hash-tagged image will be superceded every time you rebuild.
 
 You can now navigate through the project. As an exercise, open the source code for the PowerSupply class, which is
 defined in powersupply/powersupply.py. Notice that the IDE notifications and intellisense / code completion are now
@@ -196,7 +167,7 @@ this:
 
 #. Select 'Project Default' as the Python interpreter for this configuration.
 
-.. note:: If you change the project default interpreter to another configuration then you may want to revisit this run/debug configuration and explicitly select the Docker *:latest*
+.. note:: If you change the project default interpreter to another configuration then you may want to revisit this run/debug configuration and explicitly select the Docker image
    interpreter rather than use the project default.
 
 The configuration dialog should look like similar to this:
