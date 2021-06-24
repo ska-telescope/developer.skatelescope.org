@@ -48,10 +48,12 @@ This section is about getting you up and running. It contains the onboarding mat
   getting-started/getting-started
   getting-started/contrib-guidelines
   getting-started/devenv-setup
+  getting-started/mvp
 
 - :doc:`getting-started/getting-started`
 - :doc:`getting-started/contrib-guidelines`
 - :doc:`getting-started/devenv-setup`
+- :doc:`getting-started/mvp`
 
 A list of the tools we are using to collaborate, together with guidance on how to use them can be found at this confluence page: `SKA Guidelines to Remote Working <https://confluence.skatelescope.org/display/SKAIT/SKA+Guidelines+to+Remote+Working>`_ (requires an SKA Confluence account).
 
