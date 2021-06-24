@@ -17,12 +17,19 @@ pull requests.
 
 The website uses restructured text and Python sphinx to compile
 text files into html documentation. In order to contribute, you can
-clone the repository and test your changes locally:
+clone the repository and test your changes locally. 
+### Set up your local environment using Poetry (recommended)
 
 ```bash
-$ pipenv install
-$ pipenv run make html
-$ browser build/html/index.html
+$ python get-poetry.py
+$ poetry install
+```
+
+### Build your changes locally and open with browser
+```bash
+$ make html
+$ browse build/html/index.html #linux
+$ open build/html/index.html #macos
 ```
 
 Once your local changes are compiling, you can request to update the documentation
