@@ -5,7 +5,7 @@ Working with the Evolutionary Prototype (SKAMPI)
 
 Whether you're a Developer, a Product Owner / Product Manager / Feature Owner, an AIV Test Engineer or an Operator or Scientist, there is a good chance you'd want to work with the SKA MVP Integration or related products while it is being constructed. Depending on which of these roles fits your description, you'll want to approach the task of getting to know this software slightly differently.
 
-.. warning:: Anyone that requires access to the MVP needs a Gitlab account set up. Contact the System Team in the #team-system-support Slack channel for getting the appropriate access for your account, once you've created it on `gitlab.com <https://gitlab.com>`_. 
+.. note:: Anyone that requires access to the MVP needs a Gitlab account set up. Contact the System Team in the #team-system-support Slack channel for getting the appropriate access for your account, once you've created it on `gitlab.com <https://gitlab.com>`_. 
 
 Developers
 ~~~~~~~~~~
@@ -31,7 +31,7 @@ For branched or local deployments, you need to construct the URLs using a well-d
 
 PSI (Low)
 =========
-For access to the PSI a user needs an SSH tunnel set up. Contact the System Team ????? for assistance.
+For access to the PSI Low hosted at CSIRO a user needs an account there. Contact the Viola Team on slack #team-viola for assistance.
 
 
 AIV Test Engineers
