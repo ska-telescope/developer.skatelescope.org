@@ -45,14 +45,13 @@ Developers
 .. todo::
     
     Three use cases:
-    - I want to integrate new component(s) / modify a Chart to the repository
-      - Link to Tango Examples
-      - List development steps: 
-        - create new project/component / checkout existing project
-        - build images
-        - deploy in local minikube
-        - deploy in remote k8s cluster
-        - 
-    - I want to modify the values.yaml file (change the deployment configuration of an existing chart) 
-      - explain why this may be what a Developer wants to do
-    - I want to add a System Level integration- or end-to-end acceptance test to SKAMPI
+        - I want to integrate new component(s) / modify a Chart to the repository
+        - Link to Tango Examples
+        - List development steps: 
+            - create new project/component / checkout existing project
+            - build images
+            - deploy in local minikube
+            - deploy in remote k8s cluster
+        - I want to modify the values.yaml file (change the deployment configuration of an existing chart) 
+        - explain why this may be what a Developer wants to do
+        - I want to add a System Level integration- or end-to-end acceptance test to SKAMPI
