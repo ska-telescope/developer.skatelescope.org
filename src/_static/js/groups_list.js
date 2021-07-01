@@ -8,7 +8,7 @@ jQuery(function(){
   var pg3 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&simple=true&archived=false&include_subgroups=true&all_available=true&page=3";
   //
   // replacement will be made on the second paragraph of this subsection, be careful to not change this in the document
-  var list = $("#alphabetical-list-of-projects-and-subgroups p:eq(1)");
+  var list = $("#list-of-projects-and-subgroups p:eq(1)");
   //
   if( list.length ){
      list.empty();
