@@ -44,37 +44,6 @@ The repository is based on *Nexus* Repository Manager 3 deployed on an independ
 LDAP authentication has been integrated for SKAO administration purposes, with an additional minimal set of accounts managed for publishing artefacts.  All repositories are enable read-only for anonymous access.  Additionally, email has been integrated for handling task notifications.
 
 
-Metadata 
-========
-
-To be declared as valid, an artefact must be decorated with a set of metadata which certify its origin. Since all artefacts are published from gitlab pipelines, those information must be attached: 
-
- * CI_COMMIT_AUTHOR
- * CI_COMMIT_REF_NAME
- * CI_COMMIT_REF_SLUG
- * **CI_COMMIT_SHA**
- * CI_COMMIT_SHORT_SHA
- * CI_COMMIT_TIMESTAMP
- * **CI_JOB_ID**
- * CI_JOB_URL
- * **CI_PIPELINE_ID**
- * CI_PIPELINE_IID
- * CI_PIPELINE_URL
- * CI_PROJECT_ID
- * CI_PROJECT_PATH_SLUG
- * CI_PROJECT_URL
- * CI_REPOSITORY_URL
- * CI_RUNNER_ID
- * CI_RUNNER_REVISION
- * CI_RUNNER_TAGS
- * GITLAB_USER_NAME
- * GITLAB_USER_EMAIL
- * GITLAB_USER_LOGIN
- * GITLAB_USER_ID
-
-Bold ones are essential to have. More information can be found on `Predefined variables reference <https://docs.gitlab.com/ee/ci/variables/predefined_variables.html>`_. 
-Procedure for including those metadata is documented in `Deploying Artefacts`_.
-
 Configured Repositories
 =======================
 
@@ -110,6 +79,37 @@ Finally, there are repositories that utilise the Nexus Raw format to provide lib
 * Ansible
 * Raw objects (binary, text etc.)
 
+Metadata 
+========
+
+To be declared as valid, an artefact must be decorated with a set of metadata which certify its origin. Since all artefacts are published from gitlab pipelines, those information must be attached: 
+
+ * CI_COMMIT_AUTHOR
+ * CI_COMMIT_REF_NAME
+ * CI_COMMIT_REF_SLUG
+ * **CI_COMMIT_SHA**
+ * CI_COMMIT_SHORT_SHA
+ * CI_COMMIT_TIMESTAMP
+ * **CI_JOB_ID**
+ * CI_JOB_URL
+ * **CI_PIPELINE_ID**
+ * CI_PIPELINE_IID
+ * CI_PIPELINE_URL
+ * CI_PROJECT_ID
+ * CI_PROJECT_PATH_SLUG
+ * CI_PROJECT_URL
+ * CI_REPOSITORY_URL
+ * CI_RUNNER_ID
+ * CI_RUNNER_REVISION
+ * CI_RUNNER_TAGS
+ * GITLAB_USER_NAME
+ * GITLAB_USER_EMAIL
+ * GITLAB_USER_LOGIN
+ * GITLAB_USER_ID
+
+Bold ones are essential to have. More information can be found on `Predefined variables reference <https://docs.gitlab.com/ee/ci/variables/predefined_variables.html>`_. 
+Procedure for including those metadata is documented in `Deploying Artefacts`_.
+
 
 Versioning
 ==========
@@ -132,6 +132,17 @@ In additon to the semantic versioning scheme, when publishing artefacts to the r
 * Published artefacts are immutable - do not re-release an artefact version
 * Filters and cleanup policies are implemented to purge artefacts that do not adhere to standards, and where possible validation hooks will deny publishing of incorrectly named/versioned artefacts.  For instance images with the tag 'latest' will be trapped by a cleanup policy.
 
+
+Artefact Validations
+====================
+
+To ensure the guidelines and policies described in this Developer Portal are followed for a consistent, compliant and robust artefact management, there are series of automated validations in place. 
+If the artefacts fails the validations, then it is quarantined and the result of the validations are reported back to the developers in a newly created Merge Request and assigned to the developer who triggered the pipeline job that pushed the artefact.
+The Merge Request title includes the name and version of the artefact and a table compsed of all failing validations and how to mitigate them are given in the MR description.
+
+Each validation has a brief description that explains what it does and a mitigation/explanation (depending on validation type) which gives detailed information about the artefact and how to fix it or explains its findings more. 
+
+All the information listed in this page is used in the artefact validation, i.e. All artefacts are validated against `Artefact Naming`_, `Versioning`_ and `Metadata`_ and they are quarantined if they are not compliant.
 
 Deploying Artefacts
 ===================
