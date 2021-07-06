@@ -2,9 +2,9 @@
 .. _Helm Chart Repository: https://artefact.skao.int/#browse/browse:helm-internal
 .. _SKAMPI: https://gitlab.com/ska-telescope/skampi
 
-==================================
+**********************************
 Software Package Release Procedure
-==================================
+**********************************
 
 Whilst source code related to software artefacts are hosted on `GitLab <https://gitlab.com/ska-telescope>`_, the delivered runtime artefacts for the SKAO are maintained and curated in the `Central Artefact Repository <https://artefact.skao.int>`_.  It is here that they will navigate through the process of verification and testing with the aim of finally being promoted to a state ready for production release.
 
