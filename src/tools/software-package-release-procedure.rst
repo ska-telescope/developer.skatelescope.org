@@ -79,10 +79,10 @@ Finally, there are repositories that utilise the Nexus Raw format to provide lib
 * Ansible
 * Raw objects (binary, text etc.)
 
-Metadata 
+Metadata
 ========
 
-To be declared as valid, an artefact must be decorated with a set of metadata which certify its origin. Since all artefacts are published from gitlab pipelines, those information must be attached: 
+To be declared as valid, an artefact must be decorated with a set of metadata which certify its origin. Since all artefacts are published from gitlab pipelines, those information must be attached:
 
  * CI_COMMIT_AUTHOR
  * CI_COMMIT_REF_NAME
@@ -107,7 +107,7 @@ To be declared as valid, an artefact must be decorated with a set of metadata wh
  * GITLAB_USER_LOGIN
  * GITLAB_USER_ID
 
-Bold ones are essential to have. More information can be found on `Predefined variables reference <https://docs.gitlab.com/ee/ci/variables/predefined_variables.html>`_. 
+Bold ones are essential to have. More information can be found on `Predefined variables reference <https://docs.gitlab.com/ee/ci/variables/predefined_variables.html>`_.
 Procedure for including those metadata is documented in `Deploying Artefacts`_.
 
 
@@ -136,13 +136,13 @@ In additon to the semantic versioning scheme, when publishing artefacts to the r
 Artefact Validations
 ====================
 
-To ensure the guidelines and policies described in this Developer Portal are followed for a consistent, compliant and robust artefact management, there are series of automated validations in place. 
-If the artefacts fails the validations, then it is quarantined and the result of the validations are reported back to the developers in a newly created Merge Request and assigned to the developer who triggered the pipeline job that pushed the artefact.
-The Merge Request title includes the name and version of the artefact and a table compsed of all failing validations and how to mitigate them are given in the MR description.
+To ensure the guidelines and policies described in this Developer Portal are followed for a consistent, compliant and robust artefact management, there are series of automated validations in place.
+If an artefact fails the validations, then it is quarantined and the result of the validations are reported back to the developers in a newly created Merge Request.  This Merge Request is assigned to the developer who triggered the pipeline job that pushed the artefact.
+The Merge Request title includes the name and version of the artefact and a table composed of the failed validations and instructions on how to mitigate them are given in the MR description.
 
-Each validation has a brief description that explains what it does and a mitigation/explanation (depending on validation type) which gives detailed information about the artefact and how to fix it or explains its findings more. 
+Each validation has a brief description that explains what it does with a mitigation or explanation (depending on validation type).  This gives detailed information about the artefact and how to fix the issue or provides further explaination of the findings.
 
-All the information listed in this page is used in the artefact validation, i.e. All artefacts are validated against `Artefact Naming`_, `Versioning`_ and `Metadata`_ and they are quarantined if they are not compliant.
+All the information listed on this page is used in the artefact validation, i.e. All artefacts are validated against `Artefact Naming`_, `Versioning`_ and `Metadata`_ and they are quarantined if they are not compliant.
 
 Deploying Artefacts
 ===================
@@ -167,7 +167,7 @@ Example: publish an OCI Image for the tango-cpp base image from ska-tango-images
   docker push ${CAR_OCI_REGISTRY_HOST}/ska-tango-images/tango-cpp:9.3.4
   This image has been published at https://artefact.skao.int/#browse/browse:docker-internal:v2%2Fska-tango-images%2Ftango-cpp%2Ftags%2F9.3.4
 
-For a docker image to be valid, metadata must be included as `labels <https://docs.docker.com/engine/reference/builder/#label>`_. The procedure for building and pushing to the repository can be taken from the gitlab template-reposuitory project in the following way: 
+For a docker image to be valid, metadata must be included as `labels <https://docs.docker.com/engine/reference/builder/#label>`_. The procedure for building and pushing to the repository can be taken from the gitlab template-reposuitory project in the following way:
 
 .. code:: yaml
 
@@ -243,7 +243,7 @@ The CI job that is included using the above lines of code takes care of packagin
 
 If no new versions of charts are found (i.e. if the version of the chart that you are trying to publish is already listed in the SKAO Helm repository), none will be uploaded. All the changes will be listed at the end of the CI Pipeline job.
 
-Please note that the above job also includes the generation of the metadata information for the chart which will be included as a MANIFEST file in the root folder of the chart. 
+Please note that the above job also includes the generation of the metadata information for the chart which will be included as a MANIFEST file in the root folder of the chart.
 
 .. note::
   A chart has a ``version`` number and an ``appVersion``. Updating only the appVersion number will *not* result in an update to the chart repository - if you want a new version of the application to be uploaded, you *must* update the chart version as well. Read more on the Helm documentation.
@@ -362,7 +362,7 @@ Additional metadata files that should be included in the root directory, are:
 * CHANGELOG.{md|rst} - A log of release versions and the changes in each version
 * LICENSE - A text file with the relevant license
 
-Together with the above metadata a MANIFEST file must also be present in the whl file. 
+Together with the above metadata a MANIFEST file must also be present in the whl file.
 
 Building and Publishing Python Packages
 """""""""""""""""""""""""""""""""""""""
