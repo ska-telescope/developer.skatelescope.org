@@ -1,7 +1,7 @@
 # GitLab CI in conjunction with GitLab Runner can use Docker Engine to test and build any application.
 # Docker, when used with GitLab CI, runs each job in a separate and isolated container using the predefined image that is set up in .gitlab-ci.yml.
 # In this case we use the latest python docker image to build and test this project.
-image: python:latest
+image: python:buster
 
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache"
@@ -11,17 +11,9 @@ variables:
 cache:
   paths:
     - .cache/pip
-    - venv/
 
 before_script:
-  - apt-get update
-  - apt install -y python-minimal
-  - apt install -y python-pip
   - python -V               # Print out python version for debugging
-  - apt-get install -y rsync
-  - pip install virtualenv
-  - virtualenv venv
-  - source venv/bin/activate
 
 #pages is a special job that is used to upload static content to GitLab that can be used to serve your website
 #in this case the developer portal
@@ -54,3 +46,9 @@ deploy_staging:
     name: staging
 # only:
 # - master
+
+# Create Gitlab CI badges from CI metrics
+# https://developer.skao.int/en/latest/tools/continuousintegration.html#automated-collection-of-ci-health-metrics-as-part-of-the-ci-pipeline
+include:
+  - project: 'ska-telescope/templates-repository'
+    file: 'gitlab-ci/includes/post_step.yml'

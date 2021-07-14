@@ -2,9 +2,9 @@
 .. _Helm Chart Repository: https://artefact.skao.int/#browse/browse:helm-internal
 .. _SKAMPI: https://gitlab.com/ska-telescope/skampi
 
-==================================
+**********************************
 Software Package Release Procedure
-==================================
+**********************************
 
 Whilst source code related to software artefacts are hosted on `GitLab <https://gitlab.com/ska-telescope>`_, the delivered runtime artefacts for the SKAO are maintained and curated in the `Central Artefact Repository <https://artefact.skao.int>`_.  It is here that they will navigate through the process of verification and testing with the aim of finally being promoted to a state ready for production release.
 
@@ -17,11 +17,13 @@ For intermediate artefacts, it is recommended that the builtin `packages <https:
 
 
 .. contents:: Table of Contents
+    :depth: 2
+    :local:
 
 
-###########################
+
 Central Artefact Repository
-###########################
+===========================
 
  The Central Artefact Repository provides the storage and library management facilities for artefacts throughout the Software Development Life Cycle.  Being central to the SDLC means that it is highly desirable that the Repository is stable, long lived, and can evolve with the SKAO requirements through the different stages of DevSecOps maturity, and the life time of the project.
 
@@ -29,9 +31,9 @@ An Artefact Repository is essentially a content management system for software a
 
 The purpose of the Central Artefact Repository within the context of the SKAO, is to provide a controlled single source of truth for all artefacts that enter the software delivery and verification processes through to the curation and maintenance of approved software artefacts available for production deployment and historical reference for the life time of the Observatory.  This means that the Central Artefact Repository not only holds the canonical reference versions of all artefacts within the SKAO landscape, but it also holds the stateful context of these artefacts as they progress through their continuous life-cycle from development to production deployment, to decommissioning.  
 
-##########
+
 Deployment
-##########
+==========
 
 The Central Artefact Repository plays a key role in regulating the flow of artefacts throughout the Software Development Life Cycle.  It is highly integrated into all the phases of software development, build, test, and publish.  In this position, it can ensure that only approved software artefacts are included in composite products, and subsequently delivered to the production environments.
 
@@ -39,43 +41,11 @@ Whilst it is important for the Repository to be highly available and performant 
 
 The repository is based on *Nexus* Repository Manager 3 deployed on an independent UK based hosting service.  The core deployment is nexus-oss-edition with the nexus-core-feature, nexus-cma-feature, nexus-oss-feature features enabled. 
 
- LDAP authentication has been integrated for SKAO administration purposes, with an additional minimal set of accounts managed for publishing artefacts.  All repositories are enable read-only for anonymous access.  Additionally, email has been integrated for handling task notifications.
+LDAP authentication has been integrated for SKAO administration purposes, with an additional minimal set of accounts managed for publishing artefacts.  All repositories are enable read-only for anonymous access.  Additionally, email has been integrated for handling task notifications.
 
-
-########
-Metadata 
-########
-
-To be declared as valid, an artefact must be decorated with a set of metadata which certify its origin. Since all artefacts are published from gitlab pipelines, those information must be attached: 
-
- * CI_COMMIT_AUTHOR
- * CI_COMMIT_REF_NAME
- * CI_COMMIT_REF_SLUG
- * **CI_COMMIT_SHA**
- * CI_COMMIT_SHORT_SHA
- * CI_COMMIT_TIMESTAMP
- * **CI_JOB_ID**
- * CI_JOB_URL
- * **CI_PIPELINE_ID**
- * CI_PIPELINE_IID
- * CI_PIPELINE_URL
- * CI_PROJECT_ID
- * CI_PROJECT_PATH_SLUG
- * CI_PROJECT_URL
- * CI_REPOSITORY_URL
- * CI_RUNNER_ID
- * CI_RUNNER_REVISION
- * CI_RUNNER_TAGS
- * GITLAB_USER_NAME
- * GITLAB_USER_EMAIL
- * GITLAB_USER_LOGIN
- * GITLAB_USER_ID
-
-Bold ones are essential to have. More information can be found on `Predefined variables reference <https://docs.gitlab.com/ee/ci/variables/predefined_variables.html>`_. 
-Procedure for including those metadata is documented in `Deploying Artefacts`_.
 
 Configured Repositories
------------------------
+=======================
 
 The SKAO aims to maintain repositories with native interface support for the core languages and frameworks used for software development within the project.  This includes:
 
@@ -109,9 +79,40 @@ Finally, there are repositories that utilise the Nexus Raw format to provide lib
 * Ansible
 * Raw objects (binary, text etc.)
 
+Metadata
+========
+
+To be declared as valid, an artefact must be decorated with a set of metadata which certify its origin. Since all artefacts are published from gitlab pipelines, those information must be attached:
+
+ * CI_COMMIT_AUTHOR
+ * CI_COMMIT_REF_NAME
+ * CI_COMMIT_REF_SLUG
+ * **CI_COMMIT_SHA**
+ * CI_COMMIT_SHORT_SHA
+ * CI_COMMIT_TIMESTAMP
+ * **CI_JOB_ID**
+ * CI_JOB_URL
+ * **CI_PIPELINE_ID**
+ * CI_PIPELINE_IID
+ * CI_PIPELINE_URL
+ * CI_PROJECT_ID
+ * CI_PROJECT_PATH_SLUG
+ * CI_PROJECT_URL
+ * CI_REPOSITORY_URL
+ * CI_RUNNER_ID
+ * CI_RUNNER_REVISION
+ * CI_RUNNER_TAGS
+ * GITLAB_USER_NAME
+ * GITLAB_USER_EMAIL
+ * GITLAB_USER_LOGIN
+ * GITLAB_USER_ID
+
+Bold ones are essential to have. More information can be found on `Predefined variables reference <https://docs.gitlab.com/ee/ci/variables/predefined_variables.html>`_.
+Procedure for including those metadata is documented in `Deploying Artefacts`_.
+
 
 Versioning
-----------
+==========
 
 As part of the goal to align all developmental efforts to one standard, we
 have documented a procedure of how we would like all the *SKAO* developers to
@@ -120,7 +121,7 @@ able to make use of the existing Gitlab CI/CD pipeline to automate the building
 of artefacts. This standard is defined in detail for each artefact type in `ADR-25 - Software naming conventions <https://confluence.skatelescope.org/display/SWSI/ADR-25+General+software+naming+convention>`_.  These convetions are fundamentally derived from the `Sematic Versioning standard 2.0.0 <https://semver.org/>`_.  In a nutshell, this follows a dotted numeric notation for `Major`.`Minor`.`Patch` eg: `1.2.3`, but please check the above guidance for the details, and language specifics.
 
 Artefact Naming
----------------
+===============
 
 In additon to the semantic versioning scheme, when publishing artefacts to the repositories, the naming  conventions for the artefact must be adhered to (also detailed in `ADR-25 - Software naming conventions <https://confluence.skatelescope.org/display/SWSI/ADR-25+General+software+naming+convention>`_).  The general rules are:
 
@@ -132,13 +133,24 @@ In additon to the semantic versioning scheme, when publishing artefacts to the r
 * Filters and cleanup policies are implemented to purge artefacts that do not adhere to standards, and where possible validation hooks will deny publishing of incorrectly named/versioned artefacts.  For instance images with the tag 'latest' will be trapped by a cleanup policy.
 
 
+Artefact Validations
+====================
+
+To ensure the guidelines and policies described in this Developer Portal are followed for a consistent, compliant and robust artefact management, there are series of automated validations in place.
+If an artefact fails the validations, then it is quarantined and the result of the validations are reported back to the developers in a newly created Merge Request.  This Merge Request is assigned to the developer who triggered the pipeline job that pushed the artefact.
+The Merge Request title includes the name and version of the artefact and a table composed of the failed validations and instructions on how to mitigate them are given in the MR description.
+
+Each validation has a brief description that explains what it does with a mitigation or explanation (depending on validation type).  This gives detailed information about the artefact and how to fix the issue or provides further explaination of the findings.
+
+All the information listed on this page is used in the artefact validation, i.e. All artefacts are validated against `Artefact Naming`_, `Versioning`_ and `Metadata`_ and they are quarantined if they are not compliant.
+
 Deploying Artefacts
--------------------
+===================
 
 While the Central Artefact Repository is available for anonymous browsing and pulling of artefacts, all artefacts must be published via the SKAO GitLab CI/CD infrastructure.  The GitLab Runner environment provides the credentials.  These are specified in the :ref:`full list of environment variables <gitlab-variables>`, with examples given below.
 
 OCI Image
-~~~~~~~~~
+---------
 
 The OCI Image repository is located at https://artefact.skao.int/#browse/browse:docker-internal . 
 
@@ -155,7 +167,7 @@ Example: publish an OCI Image for the tango-cpp base image from ska-tango-images
   docker push ${CAR_OCI_REGISTRY_HOST}/ska-tango-images/tango-cpp:9.3.4
   This image has been published at https://artefact.skao.int/#browse/browse:docker-internal:v2%2Fska-tango-images%2Ftango-cpp%2Ftags%2F9.3.4
 
-For a docker image to be valid, metadata must be included as `labels <https://docs.docker.com/engine/reference/builder/#label>`_. The procedure for building and pushing to the repository can be taken from the gitlab template-reposuitory project in the following way: 
+For a docker image to be valid, metadata must be included as `labels <https://docs.docker.com/engine/reference/builder/#label>`_. The procedure for building and pushing to the repository can be taken from the gitlab template-reposuitory project in the following way:
 
 .. code:: yaml
 
@@ -188,7 +200,7 @@ The `GitLab OCI Registry <https://docs.gitlab.com/ee/user/packages/container_reg
 .. _helm-chart-repo:
 
 Helm Chart
-~~~~~~~~~~
+----------
 
 Helm Charts are published to the Central Artefact Repository in a native repository, however (at the time of writing) there is a move in the Cloud Native community to extend the storage of Charts to OCI compliant repositories.  This support has been made available in ```helm``` and is supported by both Nexus and the GitLab Container Registry.
 
@@ -231,7 +243,7 @@ The CI job that is included using the above lines of code takes care of packagin
 
 If no new versions of charts are found (i.e. if the version of the chart that you are trying to publish is already listed in the SKAO Helm repository), none will be uploaded. All the changes will be listed at the end of the CI Pipeline job.
 
-Please note that the above job also includes the generation of the metadata information for the chart which will be included as a MANIFEST file in the root folder of the chart. 
+Please note that the above job also includes the generation of the metadata information for the chart which will be included as a MANIFEST file in the root folder of the chart.
 
 .. note::
   A chart has a ``version`` number and an ``appVersion``. Updating only the appVersion number will *not* result in an update to the chart repository - if you want a new version of the application to be uploaded, you *must* update the chart version as well. Read more on the Helm documentation.
@@ -309,7 +321,7 @@ Almost like a **git fetch** command, you can update your local repositories' ind
 Note: this will update *ALL* your local repositories' index files.
 
 PyPi and Python Packaging
-~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------
 
 Creating a Version
 """"""""""""""""""
@@ -350,7 +362,7 @@ Additional metadata files that should be included in the root directory, are:
 * CHANGELOG.{md|rst} - A log of release versions and the changes in each version
 * LICENSE - A text file with the relevant license
 
-Together with the above metadata a MANIFEST file must also be present in the whl file. 
+Together with the above metadata a MANIFEST file must also be present in the whl file.
 
 Building and Publishing Python Packages
 """""""""""""""""""""""""""""""""""""""
@@ -469,7 +481,7 @@ The Python Package Index is located at  ```https://__token__:${CI_JOB_TOKEN}@gi
 
 
 Ansible Roles and Collections
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------
 
 Ansible roles and collections are held in a Raw format repository *helm-internal* .  These are uploaded as individual files following the ADR-25 conventions of `<repository>/<role/collection name>` .
 
@@ -483,7 +495,7 @@ The following example is for common systems role collections:
 
 
 Raw
-~~~
+---
 
 Raw artefacts are typically `tar.gz` files, images, reports, data files, and specific repositories that do not have direct functional support in Nexus (same as for Ansible roles and collections).  These are hosted here `raw-internal <https://artefact.skao.int/#browse/search/raw>`_ .  Note that the artefact directory structure must be prefixed by the related repository, but can be flexible but meaningful after that.
 
