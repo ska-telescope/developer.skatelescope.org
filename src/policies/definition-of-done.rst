@@ -21,16 +21,24 @@ Issue Type          Definition of Done
                     * Component, integration and system :ref:`tests <tests>` (appropriate for the context) pass.
                     * Regression :ref:`tests <tests>` pass.
 
+
+                    **Artefacts**
+
+                    * Packaged software artefacts are published to the Central Artefact Repository inline with  :doc:`SKA naming and semantic versioning standards </tools/software-package-release-procedure>`.
+
+
                     :doc:`Code Documentation </tools/documentation>`
 
                     * Exposed Public :ref:`API <API>` (where applicable) is cleanly documented.
                     * Documented inline according to :doc:`language specific standards </tools/codeguides>`.
                     * Deployed to externally visible website accessible via the :ref:`dev-portal-integration`.
 
+
                     **Integration**
 
                     * Deployed to a :doc:`/tools/ci-cd/continuous-integration` environment (staging environment during Construction).
                     * Migrations are implemented with defined automated processes for roll-forward and rollback as appropriate.
+
 
                     **Process**
 
