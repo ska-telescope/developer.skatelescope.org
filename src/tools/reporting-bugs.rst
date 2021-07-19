@@ -10,7 +10,7 @@ Reporting and Management of Bugs
 0 Introduction
 ===============
 
-.. admonition:: Software Bug
+.. tip:: Software Bug
    A Software Bug is an error, flaw or fault in a computer program of system that causes it to produce an incorrect or unexpected result, or to behave in unintended ways.
 
 The purpose of this chapter is to outline the processes by which the SKA Project will report and track software bugs. After this introduction there is a brief description of how to report bugs, an outline of the bug triaging processes and lastly a description of the process for fixing bugs and the responsibilities of different stakeholders.
@@ -64,13 +64,13 @@ Do I need to report a bug that I fixed as soon as I saw it? The SKA Project enco
 The SKB JIRA Project also supports the reporting of incidents, by selecting the JIRA issue type of “Incident”. Incidents, when a bug has a more direct impact on stakeholders, should be reported in more or less the same way. There is more information on :doc:`Incident Management </policies/incident-management>`.
   
 
-.. admonition:: TODO
+.. attention:: TODO
      Add something on how this relates to the new Problem Reporting and Tracking System (PRTS) setup to report and track hardware issues.
 
 2 Bug Triage
 =============
 
-.. admonition:: Triage
+.. tip:: Triage
      The process of examining problems in order to decide which ones are the most serious and must be dealt with first.
 
 In the SKA Project the process of triaging a bug report will assess and set values for
@@ -119,7 +119,7 @@ There is also a “Discarded” status for reports that can no longer be reprodu
 
 Lastly there is a “Blocked” status that may be used if work on a fix cannot proceed for some reason - again a reason should be provided as a comment.
 
-.. admonition:: Basic Workflow
+.. attention:: Basic Workflow
    “TODO” -> “Assigned” -> “In Progress” -> “Ready for Acceptance” -> “Done”
 
 The flow is not constrained - any status may be chosen at any time.
