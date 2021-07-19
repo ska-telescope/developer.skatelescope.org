@@ -11,7 +11,7 @@ Reporting and Management of Bugs
 ===============
 
 .. admonition:: Software Bug
-     A Software Bug is an error, flaw or fault in a computer program of system that causes it to produce an incorrect or unexpected result, or to behave in unintended ways.
+   A Software Bug is an error, flaw or fault in a computer program of system that causes it to produce an incorrect or unexpected result, or to behave in unintended ways.
 
 The purpose of this chapter is to outline the processes by which the SKA Project will report and track software bugs. After this introduction there is a brief description of how to report bugs, an outline of the bug triaging processes and lastly a description of the process for fixing bugs and the responsibilities of different stakeholders.
 
@@ -47,8 +47,8 @@ Description         Provide a more detailed description - include a brief statem
 Environment         Enter the environment in use when the bug arose - there is a drop-down of suggestions or you may type your own.
 Component/s         If you can identify in which software component the bug seems to arise then select from the drop-down or enter a new one. Note of course this may not be the root cause of the problem.
 Steps to Reproduce  Write down what you did to produce in Steps to Reproduce. Provide as much information as possible for someone else to be able to follow.
-Links to Log Files. Enter any links to log files if possible.
-Affects Version/s.  Select at least one of the choices in Affects Version/s or type in a new version (of the system you were running).
+Links to Log Files  Enter any links to log files if possible.
+Affects Version/s   Select at least one of the choices in Affects Version/s or type in a new version (of the system you were running).
 Severity            Provide your own estimates of the Severity. (See below)
 Priority            Provide your own estimates of the Priority. (See below)
 =================== =================================================
@@ -83,10 +83,10 @@ At the present time SKB bugs that are in the Status “TODO” are triaged by so
 Severity            Meaning
 =================== =================================================
 Critical            Critical loss of functionality or data, no work-around exists.
-Major.              Major loss of functionality or data, possible work-around exists.  
-Minor.              Minor loss of functionality or data.
-Trivial.            No loss of functionality or data.
-=================== ====================================================================
+Major               Major loss of functionality or data, possible work-around exists.  
+Minor               Minor loss of functionality or data.
+Trivial             No loss of functionality or data.
+=================== =================================================
 
 =================== =================================================
 Priority            When a fix should be sought
@@ -99,7 +99,7 @@ Lowest              Who knows
 =================== =================================================
 
 .. important:: Security Issues
-     Security Issues will normally be classified as Critical = there is a potential for a critical loss of functionality and/or data.
+     Security Issues will normally be classified as Critical - there is a potential for a critical loss of functionality and/or data.
 
 
 Some of the possible extreme combinations here (e.g. a Critical bug of Lowest priority) will seem unlikely, though it may be possible to understand some apparently contradictory combinations where work-arounds are available and it is clear the bug may take a while to fix and/or will be fixed in a later release. These judgements should be part of the triage process.
@@ -119,7 +119,7 @@ There is also a “Discarded” status for reports that can no longer be reprodu
 
 Lastly there is a “Blocked” status that may be used if work on a fix cannot proceed for some reason - again a reason should be provided as a comment.
 
-.. admonition:: Basic Workflow
+.. important:: Basic Workflow
    “TODO” -> “Assigned” -> “In Progress” -> “Ready for Acceptance” -> “Done”
 
 The flow is not constrained - any status may be chosen at any time.
