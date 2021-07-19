@@ -123,7 +123,7 @@ Test that the connectivity in the cluster works
 Once Helm is installed, develop a helm chart for the project. Refer to :ref:`Helm instructions <orchestration-guidelines-templating-application>` for guidelines.
 
 .. _Helm Chart Repository: https://artefact.skao.int/#browse/browse:helm-internal
-.. _SKAMPI: https://gitlab.com/ska-telescope/skampi
+.. _SKAMPI: https://gitlab.com/ska-telescope/ska-skampi
 
 Install Helm charts from our own repository
 ```````````````````````````````````````````
@@ -143,7 +143,7 @@ Working with the Helm chart repository, including how to package and upload char
 Deploy the TMC prototype and Webjive in kubernetes
 ```````````````````````````````````````````````````
 
-The integration gitlab repository can be found at `<https://gitlab.com/ska-telescope/skampi>`_.
+The integration gitlab repository can be found at `<https://gitlab.com/ska-telescope/ska-skampi>`_.
 
 Documentation on deployment can be found at `</projects/skampi/en/latest/README.html>`_
 

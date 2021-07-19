@@ -1,6 +1,6 @@
 .. _Semver: https://semver.org
 .. _Helm Chart Repository: https://artefact.skao.int/#browse/browse:helm-internal
-.. _SKAMPI: https://gitlab.com/ska-telescope/skampi
+.. _SKAMPI: https://gitlab.com/ska-telescope/ska-skampi
 
 **********************************
 Software Package Release Procedure

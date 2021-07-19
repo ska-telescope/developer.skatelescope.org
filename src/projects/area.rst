@@ -39,7 +39,7 @@ Topics: skampi
    testdoc       testgit
    ============= =================
 
-- `SKAMPI repository <https://gitlab.com/ska-telescope/skampi/>`_: the SKA MVP Integration project. Contains helm charts and automation for deployment.
+- `SKAMPI repository <https://gitlab.com/ska-telescope/ska-skampi/>`_: the SKA MVP Integration project. Contains helm charts and automation for deployment.
 - `SKAMPI documentation </projects/skampi/en/latest/?badge=latest>`_.
 
 - `Central Signal Processor Local Monitoring and Control repository <https://gitlab.com/ska-telescope/csp-lmc/>`_ CSP monitoring and control functionality for both SKA MID and LOW  telescopes.

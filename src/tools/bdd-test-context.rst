@@ -149,7 +149,7 @@ The associated test code then can be relatively simple::
 
 This imports the relevant pytest infrastructure, creates a pytest fixture to allow information to be passed between steps, and then annotates the pytest infrastructure to allow the JIRA metadata to be associated with the outputs. It also includes the test description, so you can see what the code is meant to be doing. The given, when, then steps and associated methods can be reused for other tests if this is useful. 
 
-This code is lightly adapted from code in https://gitlab.com/ska-telescope/skampi/-/tree/master/post-deployment. 
+This code is lightly adapted from code in https://gitlab.com/ska-telescope/ska-skampi/-/tree/master/post-deployment. 
   
 
 
