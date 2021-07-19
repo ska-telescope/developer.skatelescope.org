@@ -119,7 +119,7 @@ There is also a “Discarded” status for reports that can no longer be reprodu
 
 Lastly there is a “Blocked” status that may be used if work on a fix cannot proceed for some reason - again a reason should be provided as a comment.
 
-.. important:: Basic Workflow
+.. admonition:: Basic Workflow
    “TODO” -> “Assigned” -> “In Progress” -> “Ready for Acceptance” -> “Done”
 
 The flow is not constrained - any status may be chosen at any time.
