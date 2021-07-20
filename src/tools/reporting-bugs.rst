@@ -66,7 +66,7 @@ Do I need to report a bug that I fixed as soon as I saw it? The SKA Project enco
 The SKB JIRA Project also supports the reporting of incidents, by selecting the JIRA issue type of “Incident”. Incidents, when a bug has a more direct impact on stakeholders, should be reported in more or less the same way. There is more information on :doc:`Incident Management </policies/incident-management>`.
   
 
-.. attention:: TODO
+.. TODO::
 
      Add something on how this relates to the new Problem Reporting and Tracking System (PRTS) setup to report and track hardware issues.
 
