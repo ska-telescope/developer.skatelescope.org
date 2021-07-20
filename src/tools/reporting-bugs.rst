@@ -7,20 +7,22 @@ Reporting and Management of Bugs
     :numbered:
     :hidden:
 
-0 Introduction
+Introduction
 ===============
 
-.. tip:: Software Bug
+.. admonition:: Software Bug
+
    A Software Bug is an error, flaw or fault in a computer program of system that causes it to produce an incorrect or unexpected result, or to behave in unintended ways.
 
 The purpose of this chapter is to outline the processes by which the SKA Project will report and track software bugs. After this introduction there is a brief description of how to report bugs, an outline of the bug triaging processes and lastly a description of the process for fixing bugs and the responsibilities of different stakeholders.
 
 The SKA uses JIRA as its bug tracking system, for alignment with all software development processes.
 
-1 Bug Reporting
+Bug Reporting
 ===============
 
-1.1 Categorising Bug Scope
+Categorising Bug Scope
+-----------------------
 
 To try and minimise the number of bug reports exposed to the whole project the SKA recognises two main types of bug, “system-level” bugs and “team-level” bugs. These are reported in different JIRA projects.
 
@@ -30,7 +32,7 @@ A system-level bug is one that is judged to affect the wider SKA system beyond o
 
 This section concentrates primarily on the processes for system-level bugs, with a few comments on team-level bugs.
 
-1.2 Reporting the Bug
+Reporting the Bug
 ------------------------
 
 System level bugs are reported in the `SKB JIRA Project <https://jira.skatelescope.org/projects/SKB/summary>`_. “SKB” stands for “SKA Bugs”.
@@ -65,20 +67,23 @@ The SKB JIRA Project also supports the reporting of incidents, by selecting the 
   
 
 .. attention:: TODO
+
      Add something on how this relates to the new Problem Reporting and Tracking System (PRTS) setup to report and track hardware issues.
 
-2 Bug Triage
+Bug Triage
 =============
 
-.. tip:: Triage
+.. admonition:: Triage
+
      The process of examining problems in order to decide which ones are the most serious and must be dealt with first.
 
-In the SKA Project the process of triaging a bug report will assess and set values for
+In the SKA Project the process of triaging a bug report will assess and set values for severity, priority and assignee.
 
 At the present time SKB bugs that are in the Status “TODO” are triaged by someone in the management teams as soon as possible if they seem (or are labelled) Critical and if they are noticed. However, there is no need to wait: All teams and team members are encouraged to triage bugs themselves if they feel able. Otherwise remaining SKB bugs in the “TODO” state are triaged at the Bi-weekly Release Management Forum.
 
-2.1 Values and meanings for Severity and Priority
+Values and meanings for Severity and Priority
 --------------------------------------------------
+
 =================== =================================================
 Severity            Meaning
 =================== =================================================
@@ -99,6 +104,7 @@ Lowest              Who knows
 =================== =================================================
 
 .. important:: Security Issues
+
      Security Issues will normally be classified as Critical - there is a potential for a critical loss of functionality and/or data.
 
 
@@ -107,10 +113,10 @@ Some of the possible extreme combinations here (e.g. a Critical bug of Lowest pr
 Note that there is a `JIRA Bug Dashboard <https://jira.skatelescope.org/secure/Dashboard.jspa?selectPageId=14101>`_, which shows both SKB and team-level bugs.
 
 
-3 Processing a Bug
+Processing a Bug
 ===================
 
-3.1 Workflow
+Workflow
 ---------------
 
 All SKB bugs are created in an initial status of “TODO”, with no Assignee. During the triage process the bug will be given an assignee and the status updated to “Assigned”. At some point work on investigating and fixing the bug will begin, at which point its status should be changed to “In Progress”. When the bug is believed to be fixed the status should be changed to “Ready for Acceptance”. Lastly, when someone has verified the fix the status should be set to “Done”.
@@ -119,12 +125,13 @@ There is also a “Discarded” status for reports that can no longer be reprodu
 
 Lastly there is a “Blocked” status that may be used if work on a fix cannot proceed for some reason - again a reason should be provided as a comment.
 
-.. attention:: Basic Workflow
+.. admonition:: Basic Workflow
+
    “TODO” -> “Assigned” -> “In Progress” -> “Ready for Acceptance” -> “Done”
 
 The flow is not constrained - any status may be chosen at any time.
 
-3.2 Assignee Responsibilities
+Assignee Responsibilities
 --------------------------------
 
 The assignee of an SKB bug has a number of key responsibilities:
@@ -140,13 +147,13 @@ Remember anyone may be an assignee (see above).
 As for reporting, the above may be useful guidance for Team-level bugs, but the actual process is left up to each individual team.
 
 
-4 Fixing a Bug
+Fixing a Bug
 ===============
 
 Approaches to fixing bugs are found under :doc:`Testing Strategy </policies/ska-testing-policy-and-strategy>`.
 
 
-5 Comments and Open Issues
+Comments and Open Issues
 =============================
 
   * Committing “on-the-fly” fixes: Marvin requires a ticket number. One possible suggestion:
