@@ -150,7 +150,7 @@ As for reporting, the above may be useful guidance for Team-level bugs, but the 
 Fixing a Bug
 ===============
 
-Approaches to fixing bugs are found under :doc:`Testing Strategy </policies/ska-testing-policy-and-strategy>`.
+Some approaches to fixing bugs are found under :doc:`Testing Strategy </policies/ska-testing-policy-and-strategy>`. That section also has a little more information on handling team-level bugs.
 
 
 Comments and Open Issues
