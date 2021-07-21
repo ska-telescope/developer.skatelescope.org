@@ -12,7 +12,7 @@ Introduction
 
 .. admonition:: Software Bug
 
-   A Software Bug is an error, flaw or fault in a computer program of system that causes it to produce an incorrect or unexpected result, or to behave in unintended ways.
+   A Software Bug is an error, flaw or fault in a computer program or system that causes it to produce an incorrect or unexpected result, or to behave in unintended ways.
 
 The purpose of this chapter is to outline the processes by which the SKA Project will report and track software bugs. After this introduction there is a brief description of how to report bugs, an outline of the bug triaging processes and lastly a description of the process for fixing bugs and the responsibilities of different stakeholders.
 
