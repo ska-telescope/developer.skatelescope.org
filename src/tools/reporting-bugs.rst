@@ -28,7 +28,7 @@ To try and minimise the number of bug reports exposed to the whole project the S
 
 A team-level bug is one that is judged to affect only one team and also not affect the functionality of the SKA system as a whole. It would normally be discovered within that team during their testing (though of course team level bugs could be found by other teams).
 
-A system-level bug is one that is judged to affect the wider SKA system beyond one team.
+A system-level bug is one that is judged to affect the wider SKA system beyond repos managed by one team.
 
 This section concentrates primarily on the processes for system-level bugs, with a few comments on team-level bugs.
 
