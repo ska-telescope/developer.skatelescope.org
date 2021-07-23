@@ -57,7 +57,7 @@ Priority            Provide your own estimates of the Priority. (See below)
 
 If there is more information you can provide (e.g. Linked Issues, suggested Collaborators who may be interested) please do.
 
-You may not be or feel able to provide all of this information, but please try - the more information you can provide (while your memory is fresh) will help to reproduce and fix the problem.
+You may not be or feel able to provide all of this information, but please try - the more information you can provide (while your memory is fresh) will help to reproduce and fix the problem. If you can access logs that may contain useful information, please link to them or attach them to the ticket. If there are any error messages, please provide them in your bug report.
 
 Team-level bugs (not affecting wider system or other teams) should be reported in the relevant agile team’s JIRA project, using the issue type “bug”. The same guidelines for reporting may be used, but of course please tailor to the needs of your team.
 
