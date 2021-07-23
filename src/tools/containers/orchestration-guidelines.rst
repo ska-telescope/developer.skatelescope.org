@@ -1240,7 +1240,7 @@ To integrate a helm chart into the `SKAMPI` repo, follow these steps:
 Local steps
 ~~~~~~~~~~~
 
-- Clone the `SKAMPI` repo, available `here <https://gitlab.com/ska-telescope/skampi>`_.
+- Clone the `SKAMPI` repo, available `here <https://gitlab.com/ska-telescope/ska-skampi>`_.
 
 - Add a directory in `charts` with a descriptive name
 
@@ -1275,7 +1275,7 @@ Gitlab
 ~~~~~~
 
 Once the changes had been pushed it will be built in Gitlab.
-Find the pipeline builds at `https://gitlab.com/ska-telescope/skampi/pipelines <https://gitlab.com/ska-telescope/skampi/pipelines>`_.
+Find the pipeline builds at `https://gitlab.com/ska-telescope/ska-skampi/pipelines <https://gitlab.com/ska-telescope/ska-skampi/pipelines>`_.
 
 If the pipeline completes successfully, the full integration environment will be available at selected deployment environment which should be accessible from pipeline, i.e. https://integration.engageska-portugal.pt for syscore and http://k8s.stfc.skao.int for stfc.
 

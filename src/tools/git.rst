@@ -208,8 +208,8 @@ should follow these steps:
 
 .. code:: bash
 
-  $ git clone git@gitlab.com:ska-telescope/skampi.git
-  $ cd skampi
+  $ git clone git@gitlab.com:ska-telescope/ska-skampi.git
+  $ cd ska-skampi
   $ git branch
   * master
   $ git checkout -b at1-26-the-new-widget
@@ -232,9 +232,9 @@ should follow these steps:
   Total 25 (delta 14), reused 0 (delta 0)
   remote:
   remote: To create a merge request for at1-26-the-new-widget, visit:
-  remote:   https://gitlab.com/ska-telescope/skampi/-/merge_requests/new?merge_request%5Bsource_branch%5D=at1-26-the-new-widget
+  remote:   https://gitlab.com/ska-telescope/ska-skampi/-/merge_requests/new?merge_request%5Bsource_branch%5D=at1-26-the-new-widget
   remote:
-  To gitlab.com:ska-telescope/skampi.git
+  To gitlab.com:ska-telescope/ska-skampi.git
   * [new branch]      at1-26-the-new-widget -> at1-26-the-new-widget
   Branch 'at1-26-the-new-widget' set up to track remote branch 'at1-26-the-new-widget' from 'origin'.
 

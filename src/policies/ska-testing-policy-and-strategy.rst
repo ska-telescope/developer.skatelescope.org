@@ -628,7 +628,7 @@ In the Developer's portal there is a description of how test
 environments can be provisioned: see `Testing Skampi </projects/skampi/en/latest/testing.html#testing-skampi>`_.
 
 
-There is a **staging** environment, currently used only by the `Skampi codebase <https://gitlab.com/ska-telescope/skampi>`_.
+There is a **staging** environment, currently used only by the `Skampi codebase <https://gitlab.com/ska-telescope/ska-skampi>`_.
 
 
 5.5 Test data
