@@ -45,7 +45,7 @@ The SKB project provides some key fields to aid the reporter.
 JIRA Field          Use
 =================== =================================================
 Summary             Provide a brief summary of the bug
-Description         Provide a more detailed description - include a brief statement of what you were doing when the bug arose and copies of the error messages.   
+Description         Provide a more detailed description - include a brief statement of what you were doing when the bug arose and copies of the error messages.
 Environment         Enter the environment in use when the bug arose - there is a drop-down of suggestions or you may type your own.
 Component/s         If you can identify in which software component the bug seems to arise then select from the drop-down or enter a new one. Note of course this may not be the root cause of the problem.
 Steps to Reproduce  Write down what you did to produce in Steps to Reproduce. Provide as much information as possible for someone else to be able to follow.
@@ -64,7 +64,7 @@ Team-level bugs (not affecting wider system or other teams) should be reported i
 Do I need to report a bug that I fixed as soon as I saw it? The SKA Project encourages bug fixing “on-the-fly”, i.e. without the need to enter a bug report JIRA ticket. However, “on-the-fly” means that any discovered bug should be fixed in the same sprint. If the bug will take longer to fix, or there is no time now then it should be reported. It should also be reported if it affects more than one team, so that all the teams know about it.
 
 The SKB JIRA Project also supports the reporting of incidents, by selecting the JIRA issue type of “Incident”. Incidents, when a bug has a more direct impact on stakeholders, should be reported in more or less the same way. There is more information on :doc:`Incident Management </policies/incident-management>`.
-  
+
 
 .. TODO::
 
@@ -88,7 +88,7 @@ Values and meanings for Severity and Priority
 Severity            Meaning
 =================== =================================================
 Critical            Critical loss of functionality or data, no work-around exists.
-Major               Major loss of functionality or data, possible work-around exists.  
+Major               Major loss of functionality or data, possible work-around exists.
 Minor               Minor loss of functionality or data.
 Trivial             No loss of functionality or data.
 =================== =================================================
@@ -161,7 +161,7 @@ Comments and Open Issues
   * For team-level bugs the “bug” type does not have Story Points so time spent cannot be tracked or accounted for.
       * Could create a related “story” to fix the bug
       * We may also change this.
-  * Can we use gitlab issues? This is problematic as we wish to track everything in JIRA. Ideas will be considered.
+  * Can we use gitlab issues? Using GitLab Issues (or any other Issue Management solution) is problematic as our project management, methodology, and audit trail is held in Jira. At this point in time, the policy is that GitLab Issues should not be used.
   * Should we rename the SKB project?
 
 
