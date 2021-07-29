@@ -59,6 +59,8 @@ If there is more information you can provide (e.g. Linked Issues, suggested Coll
 
 You may not be or feel able to provide all of this information, but please try - the more information you can provide (while your memory is fresh) will help to reproduce and fix the problem. If you can access logs that may contain useful information, please link to them or attach them to the ticket. If there are any error messages, please provide them in your bug report.
 
+A useful guide to how to report bugs effectively can be found here: https://www.chiark.greenend.org.uk/~sgtatham/bugs.html.
+
 Team-level bugs (not affecting wider system or other teams) should be reported in the relevant agile team’s JIRA project, using the issue type “bug”. The same guidelines for reporting may be used, but of course please tailor to the needs of your team.
 
 Do I need to report a bug that I fixed as soon as I saw it? The SKA Project encourages bug fixing “on-the-fly”, i.e. without the need to enter a bug report JIRA ticket. However, “on-the-fly” means that any discovered bug should be fixed in the same sprint. If the bug will take longer to fix, or there is no time now then it should be reported. It should also be reported if it affects more than one team, so that all the teams know about it.
@@ -111,6 +113,7 @@ Lowest              Who knows
 Some of the possible extreme combinations here (e.g. a Critical bug of Lowest priority) will seem unlikely, though it may be possible to understand some apparently contradictory combinations where work-arounds are available and it is clear the bug may take a while to fix and/or will be fixed in a later release. These judgements should be part of the triage process.
 
 "Trivial" bugs could be assigned to new developers as introductory exercises.
+
 Note that there is a `JIRA Bug Dashboard <https://jira.skatelescope.org/secure/Dashboard.jspa?selectPageId=14101>`_, which shows both SKB and team-level bugs.
 
 
@@ -158,11 +161,8 @@ Comments and Open Issues
 =============================
 
   * Committing “on-the-fly” fixes: Marvin requires a ticket number. One possible suggestion:
-      * Use the story ticket you are working on if the bug relates to the same feature/story;
-  * For team-level bugs the “bug” type does not have Story Points so time spent cannot be tracked or accounted for.
-      * Could create a related “story” to fix the bug
-      * We may also change this.
+      * Use the story ticket you are working on if the bug relates to the same feature/story.
   * Can we use gitlab issues? Using GitLab Issues (or any other Issue Management solution) is problematic as our project management, methodology, and audit trail is held in Jira. At this point in time, the policy is that GitLab Issues should not be used.
-  * Should we rename the SKB project?
+  * Should we rename the SKB project? We would rather not rename. The project is "SKA Bugs".
 
 
