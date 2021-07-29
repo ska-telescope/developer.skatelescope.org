@@ -52,8 +52,8 @@ Variables Description
    ``CAR_RAW_USERNAME``, "Raw Repository Publishing user name"
    ``CAR_RAW_PASSWORD``, "Raw Repository Publishing user password"
    ``JIRA_AUTH``, "JIRA Authentication token for uploading XRAY Test Results"
-   ``SKA_K8S_TOOLS_DEPLOY_IMAGE``, "Latest OCI image for deployment jobs - artefact.skao.int/ska-k8s-tools/deploy:x.x.x"
-   ``SKA_K8S_TOOLS_DOCKER_BUILDER_IMAGE``, "Latest OCI image for OCI build jobs - artefact.skao.int/ska-k8s-tools/docker-builder:x.x.x"
+   ``SKA_K8S_TOOLS_DEPLOY_IMAGE``, "Latest OCI image for deployment jobs - artefact.skao.int/ska-cicd-k8s-tools-deploy:x.x.x"
+   ``SKA_K8S_TOOLS_DOCKER_BUILDER_IMAGE``, "Latest OCI image for OCI build jobs - artefact.skao.int/ska-cicd-k8s-tools-docker-builder:x.x.x"
 
 
 Historical Variable Use (Deprecated)
