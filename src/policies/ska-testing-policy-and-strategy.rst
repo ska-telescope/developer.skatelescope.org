@@ -529,7 +529,7 @@ Other definitions are:
    from a high level interface and observe some of its
    components through a lower-level, component-specific, interface for example.
 
-6.2 Scope, roles and responsibilities
+5.2 Scope, roles and responsibilities
 -------------------------------------
 
 This strategy applies to all the software that is being developed within
@@ -765,7 +765,7 @@ However some tests can, and in some cases they should, be manual.
 5.10 Bug management
 -------------------------------
 
-We recommend the following process for handling bugs.
+For the overall SKA approach to Bug Management please refer to :doc:`Reporting Bugs </tools/reporting-bugs>`. While that section concentrates on system-level bugs much of what is described also applies to "team-level" bugs. Some key guidelines for team-level bugs are:
 
 * Bugs found by the team during a sprint for code developed are **fixed on the fly** during the
   same sprint, with no logging at all. If they cannot
@@ -777,14 +777,12 @@ We recommend the following process for handling bugs.
   (this is useful for measuring the quality of the testing process, with a
   metric called defect-detection-rate).
 
-* Bugs that are reported by third parties (eg. non SKA and SKA users,
-  other teams, product managers) are always logged, by whoever can do it, which
-  becomes the **bug-report owner**.
+* Team-level bugs that are reported by third parties (eg. non SKA and SKA users,
+  other teams, product managers) are always logged, by whoever can do it.
   These bugs have to undergo a **triage stage** to confirm that they are a bug and find
   the team that is most appropriate to deal with them. At that point the bugs appear
   in the chosen team's backlog. When resolved, appropriate comments and workflow state
-  are updated in the team's backlog, and the original bug-report owner is notified as well,
-  who may decide to close the bug, to keep it open, or to change it.
+  are updated in the team's backlog and original reporter is notified as well, who may decide to close the bug, to keep it open, or to change it.
 
 We require that each bug, when dealt with, has at least an automated (unit, integration, system, BDD) test replicating its failure. Such tests
 should be included in regression testing and should be used to demonstrate that the bug has been eventually fixed (**confirmation test**).
@@ -799,8 +797,7 @@ backlog and prioritized by the Product Owner in the same way other story/enabler
 The issue type Defect should not be used, as it is meant to indicate a
 deviation from SKA requirements.
 
-For system-wide bugs the JIRA project called `SKB (SKA bug tracking system) <https://jira.skatelescope.org/projects/SKB/summary>`_ is used. Triage of these bugs is done by the SYSTEM team with support by selected people.
-
+For system-wide bugs please refer to :doc:`Reporting Bugs </tools/reporting-bugs>`.
 
 6 General references
 ====================
