@@ -82,17 +82,17 @@ Finally, there are repositories that utilise the Nexus Raw format to provide lib
 Metadata
 ========
 
-To be declared as valid, an artefact must be decorated with a set of metadata which certify its origin. Since all artefacts are published from gitlab pipelines, those information must be attached:
+To be declared as valid, an artefact must be decorated with a set of metadata which certify its origin. Since all the artefacts are published from gitlab pipelines, all the relevant information must be attached. Please ensure that the below information is included in the metadata:
 
  * CI_COMMIT_AUTHOR
  * CI_COMMIT_REF_NAME
  * CI_COMMIT_REF_SLUG
- * **CI_COMMIT_SHA**
+ * CI_COMMIT_SHA
  * CI_COMMIT_SHORT_SHA
  * CI_COMMIT_TIMESTAMP
- * **CI_JOB_ID**
+ * CI_JOB_ID
  * CI_JOB_URL
- * **CI_PIPELINE_ID**
+ * CI_PIPELINE_ID
  * CI_PIPELINE_IID
  * CI_PIPELINE_URL
  * CI_PROJECT_ID
@@ -107,7 +107,7 @@ To be declared as valid, an artefact must be decorated with a set of metadata wh
  * GITLAB_USER_LOGIN
  * GITLAB_USER_ID
 
-Bold ones are essential to have. More information can be found on `Predefined variables reference <https://docs.gitlab.com/ee/ci/variables/predefined_variables.html>`_.
+More information can be found on `Predefined variables reference <https://docs.gitlab.com/ee/ci/variables/predefined_variables.html>`_.
 Procedure for including those metadata is documented in `Deploying Artefacts`_.
 
 
@@ -123,7 +123,7 @@ of artefacts. This standard is defined in detail for each artefact type in `ADR-
 Artefact Naming
 ===============
 
-In additon to the semantic versioning scheme, when publishing artefacts to the repositories, the naming  conventions for the artefact must be adhered to (also detailed in `ADR-25 - Software naming conventions <https://confluence.skatelescope.org/display/SWSI/ADR-25+General+software+naming+convention>`_).  The general rules are:
+In addition to the semantic versioning scheme, when publishing artefacts to the repositories, the naming  conventions for the artefact must be adhered to (also detailed in `ADR-25 - Software naming conventions <https://confluence.skatelescope.org/display/SWSI/ADR-25+General+software+naming+convention>`_).  The general rules are:
 
 * Prefix the artefact with the namespace'd name of the GitLab repository that holds the source code
 * Name the artefact after it's core function
@@ -167,7 +167,8 @@ Example: publish an OCI Image for the tango-cpp base image from ska-tango-images
   docker push ${CAR_OCI_REGISTRY_HOST}/ska-tango-images/tango-cpp:9.3.4
   This image has been published at https://artefact.skao.int/#browse/browse:docker-internal:v2%2Fska-tango-images%2Ftango-cpp%2Ftags%2F9.3.4
 
-For a docker image to be valid, metadata must be included as `labels <https://docs.docker.com/engine/reference/builder/#label>`_. The procedure for building and pushing to the repository can be taken from the gitlab template-reposuitory project in the following way:
+For an OCI image to be valid, metadata must be included as `labels <https://docs.docker.com/engine/reference/builder/#label>`_. Only the OCI image with tagged commits, signifying a change in the version of OCI image, will be pushed to CAR. For this, the "build_push.yml" placed in the templates-repository must be included in your .gitlab-ci.yml file.
+The procedure for building and pushing to the repository is carried out by build_push.yml which can be taken from the gitlab templates-repository project in the following way:
 
 .. code:: yaml
 
@@ -180,21 +181,19 @@ For a docker image to be valid, metadata must be included as `labels <https://do
 Using the GitLab OCI Registry
 """""""""""""""""""""""""""""
 
-The `GitLab OCI Registry <https://docs.gitlab.com/ee/user/packages/container_registry/index.html>`_ is a useful service for storing intermediate images, that are required between job steps within a Pipeline or between piplines (eg: where base images are used and subsequent pipeline triggers).  The following is an example of interacting with a project specific repository:
+The `GitLab OCI Registry <https://docs.gitlab.com/ee/user/packages/container_registry/index.html>`_ is a useful service for storing intermediate images, that are required between job steps within a pipeline or between pipelines (eg: where base images are used and subsequent pipeline triggers). The OCI images generated during development activities are with untagged commits. These images will be tagged with version generated from combination of current version in .release file appended by short commit hash and will be stored in Gitlab at https://gitlab.com/ska-telescope/<<repository-name>>/container_registry. The following is an example of interacting with a project specific repository:
 
 .. code:: yaml
 
-  build oci image:
-    image: docker:19.03.12
-    stage: build
-    services:
-      - docker:19.03.12-dind
-    variables:
-      IMAGE_TAG: $CI_REGISTRY_IMAGE:$SEMANTIC_VERSION
-    script:
-      - echo "$CI_JOB_TOKEN $CI" | docker login -u $CI_JOB_USER --password-stdin $CI_REGISTRY
-      - docker build -t $IMAGE_TAG .
-      - docker push $IMAGE_TAG
+  build and publish oci image for development: # Executed on non-tagged commit for Gitlab
+      stage: build
+      image: $SKA_K8S_TOOLS_DEPLOY_IMAGE
+      tags:
+        - k8srunner
+      before_script:
+        - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+      script:
+        - PROJECT=$PROJECT CAR_OCI_REGISTRY_HOST=$CI_REGISTRY DOCKER_BUILD_CONTEXT=$DOCKER_BUILD_CONTEXT	DOCKER_FILE_PATH=$DOCKER_FILE_PATH VERSION=$VERSION	TAG=$TAG /usr/local/bin/docker-build.sh
 
 
 .. _helm-chart-repo:
