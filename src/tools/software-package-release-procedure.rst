@@ -179,13 +179,13 @@ The procedure for building and pushing to the repository is carried out by build
 
 The variables used in the above job in templates repository are :
 
- * PROJECT: name of the oci image; default: the folder name
- * DOCKER: the command used for operations on oci image; default: docker
- * CAR_OCI_REGISTRY_HOST: the oci registry; default: artefact.skao.int
+ * PROJECT: name of the OCI image; default: the folder name
+ * DOCKER: the command used for operations on OCI image; default: docker
+ * CAR_OCI_REGISTRY_HOST: the OCI registry; default: artefact.skao.int
  * DOCKER_BUILD_CONTEXT: the context of docker build; default: current directory
- * DOCKER_FILE_PATH: path of the dockerfile; default: path of docker file of current directory
- * VERSION: version of the oci image; default: the version in .release file
- * TAG: tag of oci image on oci registry; default: version
+ * DOCKER_FILE_PATH: path of the dockerfile; default: path of the dockerfile of current directory
+ * VERSION: version of the OCI image; default: the version in .release file
+ * TAG: tag of the OCI image on OCI registry; default: version
 
 
 Using the GitLab OCI Registry
