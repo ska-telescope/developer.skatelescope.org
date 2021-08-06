@@ -167,7 +167,7 @@ Example: publish an OCI Image for the tango-cpp base image from ska-tango-images
   docker push ${CAR_OCI_REGISTRY_HOST}/ska-tango-images/tango-cpp:9.3.4
   This image has been published at https://artefact.skao.int/#browse/browse:docker-internal:v2%2Fska-tango-images%2Ftango-cpp%2Ftags%2F9.3.4
 
-For an OCI image to be valid, metadata must be included as `labels <https://docs.docker.com/engine/reference/builder/#label>`_. Only the OCI image with tagged commits, signifying a change in the version of OCI image, will be pushed to CAR. For this, the "build_push.yml" placed in the templates-repository must be included in your .gitlab-ci.yml file.
+For an OCI image to be valid, metadata must be included as `labels <https://docs.docker.com/engine/reference/builder/#label>`_. Only the OCI image with tagged commits, signifying a change in the version of OCI image, will be pushed to CAR. For this, the "build_push.yml" placed in the templates-repository may be included in your .gitlab-ci.yml file for ease of use.
 The procedure for building and pushing to the repository is carried out by build_push.yml which can be taken from the gitlab templates-repository project in the following way:
 
 .. code:: yaml
