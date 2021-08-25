@@ -193,10 +193,10 @@ Vulnerability Scanning of artefacts pushed to OCI Registry
 The pipeline producing an OCI image artefact must include a scanning workflow to  check that container for 
 vulnerability and build the adequate reports. All OCI images pushed to the OCI registry are thus tested to check 
 for that scanning workflow and, if it exists, trigger the default pipeline with scanning turned on to ensure that 
-the master pipeline security dashboard is in sync with the last artefact that is published. 
+the default pipeline security dashboard is in sync with the last artefact that is published. 
 
 This vulnerability scanning check is made even for artefacts that are not fully validated, including those that 
-are quarantined as long as the adequate workflow exists in the pipeline and the artefact includes adequate  
+are quarantined, as long as the adequate workflow exists in the pipeline and the artefact includes adequate  
 `Metadata`_. If any of those two conditions is not met a warning is produced in a channel monitored by 
 the Systems Team.
 
