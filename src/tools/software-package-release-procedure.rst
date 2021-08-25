@@ -222,6 +222,7 @@ The `GitLab OCI Registry <https://docs.gitlab.com/ee/user/packages/container_reg
 
 
 .. _helm-chart-repo:
+
 Helm Chart
 ----------
 
