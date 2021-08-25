@@ -18,3 +18,4 @@ Helm Deployer Charts
 The charts used by the Helm deployer are maintained in this repository.
 
 - `Repository <https://gitlab.com/ska-telescope/sdp-helmdeploy-charts>`__
+- `Documentation </projects/ska-sdp-helmdeploy-charts/en/latest/>`__
