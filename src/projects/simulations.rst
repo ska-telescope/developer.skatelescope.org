@@ -15,10 +15,6 @@ RASCIL
 - `Repository <https://gitlab.com/ska-telescope/external/rascil>`__
 - `Documentation <https://ska-telescope.gitlab.io/external/rascil/>`__
 
-RASCIL Docker images
-
-- `Repository <https://gitlab.com/ska-telescope/external/rascil-docker>`__
-
 RASCIL examples
 
 - `Repository <https://gitlab.com/ska-telescope/external/rascil-examples>`__
