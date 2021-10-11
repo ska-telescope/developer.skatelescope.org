@@ -139,8 +139,8 @@ Building The Project
 
 The Image
 """""""""
-We recommend building using the `cpp_base image that we have developed <nexus.engageska-portugal.pt/ska-docker/cpp_build_base>`_ and
-stored in the image repository. This, or an image derived from it contains all
+We recommend building using the `cpp_base image that we have developed and
+stored in the image repository <nexus.engageska-portugal.pt/ska-docker/cpp_build_base>`_. This, or an image derived from it contains all
 the tools required to operate this CI pipeline and you should avoid the pain of
 installing and configuring system tools.
 
