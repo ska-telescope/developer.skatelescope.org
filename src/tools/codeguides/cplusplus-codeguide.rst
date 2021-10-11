@@ -2,7 +2,8 @@
 ************************
 C++ Coding Guidelines
 ************************
-This section describes requirements and guidelines for development and testing of a new C++ project on GitLab. The Continuous Integration tools are GitLab specific - but most of the processes could be easily moved to a Jenkins Pipeline if required. 
+This section describes requirements and guidelines for development and testing of a new C++ project on GitLab.
+The Continuous Integration tools are GitLab specific.
 
 .. contents:: Table of Contents
 
@@ -13,17 +14,18 @@ We have created a `skeleton C++ project
 <https://gitlab.com/ska-telescope/templates/cpp-template>`_. Which should provide a full introduction to the various
 recommendations and requirements for the development of C++. The philosophy behind the development of this
 template was to demonstrate one way to meet the project guidelines. There are probably as many ways to organise C++ projects
-as there are developers there are sure to be some controversial design decisions made. 
+as there are developers there are sure to be some controversial design decisions made.
 
 This projects demonstrates a recommended
-project layout. It also demonstrates how to implement the following recommended C++ project development features. 
+project layout. It also demonstrates how to implement the following recommended C++ project development features.
 
 * Continuous integration (CI) setup using Gitlab 
 * CMake as a build tool.
 * GoogleTest framework and example unit testing.
 * C++ linting using clang for stylistic errors.
 * Also test running under valgrind for memory errors.
-* gcov to measure test coverage 
+* gcov and lcov to measure test coverage and generate HTML reports.
+* Additional tools to use: iwyu, cppcheck, clang-tidy, clang-format.
 
 All building and testing is done within a docker container.
 
@@ -36,7 +38,7 @@ We have a top level of the project containing:
 CMakeLists.txt
 """"""""""""""
         We have built this template using CMake. The structure of this file
-        will be discussed in `Building the Project`_.   
+        will be discussed in `Building the Project`_.
 
 LICENSE
 """""""
@@ -85,6 +87,9 @@ Header (.h) files are included with and template definitions (.tcc) and
 implementation files (.cpp). We have done this to make it easier to navigate
 the source tree. Having a separate include tree adds unnecessary complexity.
 
+* File extensions: C codes may use .c/.h and .cc/.hh. C++ codes may prefer to use use .cpp/.hpp. Be consistent.
+* Do not use #pragma once as include guard.
+
 Design Patterns
 """""""""""""""
 We recommend that project follow design patterns where applicable.
@@ -110,8 +115,8 @@ developed is a good thing
 
 Continuous Integration
 ----------------------
-GitLab manages builds via a YAML file held inside your repository. Similar to a
-Jenkinsfile in philosophy. This is the file in the skeleton HelloWorld project. 
+GitLab manages builds via a YAML file held inside your repository.
+This is the file in the skeleton HelloWorld project. 
 
 .. literalinclude:: example-ci.yml 
 
@@ -133,12 +138,18 @@ Building The Project
 
 The Image
 """""""""
-We recommend building using the cpp_base image that we have developed and
+We recommend building using the cpp_base image that we have developed [LINK NEEDED] and
 stored in the image repository. This, or an image derived from it contains all
 the tools required to operate this CI pipeline and you should avoid the pain of
 installing and configuring system tools.
 
-
+CMake
+"""""""""""""""""""
+* Use CMake for builds.
+* Out-of-source builds are required.
+* Use the same CMake version within the same repository.
+* Do not hardcode absolute paths in software.
+* Relative paths external to the build must be configured at build time - use config files if you need to.
 
 CMake for Beginners
 """""""""""""""""""
@@ -150,7 +161,7 @@ would like (e.g. Eclipse and Xcode) from the same CMake files.
 The CMake application parses the CMakeLists.txt file and generates a set of
 build scripts. An important element of the CMake philosophy is that you can
 build the application out-of-place, thereby supporting multiple build
-configurations from the same source tree. 
+configurations from the same source tree.
 
 This is the top level CMakeLists.txt file
 
@@ -320,9 +331,91 @@ the file and install the requirements.
 Coding Style & Conventions
 --------------------------
 
+A non-exhaustive list of guidelines
+
+Style:
 We are not advocating that software be restructured and rewritten before
-on-boarding - However we recommend that new software follow `The cplusplus Core
-Guidelines <http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines>`_.
+on-boarding - However we recommend that new software follow
+
+* `The cplusplus Core Guidelines <http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines>`_.
+* The `Google C++ Style Guide <https://google.github.io/styleguide/cppguide.html>`_.
+
+Project structure:
+
+* Follow the structure shown in the SKA C++ example project repository.
+* Reduce compile time code by considering which code should go in a header file and which should go in a source file.
+
+General:
+
+* Prefer to pass primitive types by value.
+* Use const wherever possible.
+* Prefer to use libraries consistent with existing code.
+* Prefer the STL as a starting point if a choice is available.
+* If you need to use external dependencies, refer to SKA guidelines on external dependencies.
+* Use a strongly-typed enum instead of ordinary enum.
+* Be mindful of implicit type conversions. Do not rely on implicit conversions, use consistent types and be explicit if you can. Use auto where appropriate.
+* Prefer C++ style casts over C style casts.
+* Avoid forward declarations.
+* Construct variables inside or as close to the locality of the scope where they are needed only.
+* Avoid global variables.
+* Avoid #define for variables that could be defined in the code body.
+* Avoid complex macros.
+* Do not omit curly braces for control statements (e.g. "if", "for").
+
+Classes:
+
+* Use struct if you only need to contain data without methods, otherwise use a class.
+* Prefer RAII with simple constructors.
+* Use constructor member initializer lists.
+* Avoid computationally intensive work inside constructors, or consider adding an initialization method if absolutely necessary.
+* Prefer to pass constructor parameters by value and use std::move with initializer lists.
+* Single parameter constructors should be marked explicit.
+* Derived virtual methods should be marked override.
+* By default, mark a class as final, and mark all members private.
+* Only set a member as protected if it must be inherited, or public if the getter is sufficiently trivial.
+* Place public code first, protected code second, and private code last.
+* If you need to use inheritance, prefer public inheritance.
+* Avoid complex multiple inheritance hierarchies.
+* Avoid friend classes and methods.
+* Avoid static classes such as singletons.
+* Limit the proliferation of overloaded functions and constructors.
+
+Namespaces:
+
+* Prefer to use fully qualified namespace and class names for definitions in source files over enclosing namespaces.
+* Use using-declarations where needed and do not use using-directives.
+* If your project supports C++17, use nested namespaces.
+
+Pointers:
+
+* Prefer smart pointers over raw pointers.
+* Prefer std::unique_ptr over std::shared_ptr - though both are permitted.
+
+Loops:
+
+* Prefer range-based for loops, and use const reference iterators if you can. For shorter operations, consider using STL iterator methods such as std::find_if, std::for_each.
+* If you must use loop counters, avoid unsigned types, use int, auto, or size_t where possible.
+* If you must use loop counters, prefer to declare and update the loop counter inside the for statements instead of inside or outside of the for loop body.
+
+Exceptions:
+
+* External dependencies have different ways of dealing with errors: exceptions, status codes, passing parameters by reference, or calling a function to check what (if any) was the last error.
+* Be consistent with the way your own code handles and generates errors.
+* Prefer to handle errors in your own code instead of passing them along.
+* Consider how your code will be used when making these decisions.
+
+Architecture:
+
+* You may wish to consider using platform specific optimizations on a specific hardware architecture for performance reasons.
+* If possible, write portable code, or make it clear why that cannot be done in your case.
+
+Tests:
+
+* Strive to achieve 100% code coverage.
+* Perform memory leak checks with standard tools.
+
+Naturally, there will be exceptions to each rule, so use your own best judgement to improve the quality of your code.
+If in doubt, ask.
 
 The clang/llvm compiler tools have an extension which can provide some direct
 criticism of your code for stylistic errors (and even automatically fix them). For example in our lint step we
@@ -418,8 +511,8 @@ This basic template project is available `on GitLab <https://gitlab.com/ska-tele
 
 1) Provides a base image on which to run C++ builds
 2) Describes example basic dependency management is possible at least based on CMake but way of CMake External projects and git submodules
-3) Presents a convention for defininig third party/external to project libs such that they are independent of the dependency management layer that will be supported by the systems team.  
-4) Proposes a C++ 14 language standard and related static code checking tools
+3) Presents a convention for defininig third party/external to project libs such that they are independent of the dependency management layer that will be supported by the systems team
+4) Proposes at least the C++ 14 language standard and related static code checking tools
 5) Outlines header naming conventions that follow namespace definitions
 6) Proposal of GoogleTest for a common C++ unit testing library
 
