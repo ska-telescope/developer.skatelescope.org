@@ -89,6 +89,7 @@ the source tree. Having a separate include tree adds unnecessary complexity.
 
 * File extensions: C codes may use .c/.h and .cc/.hh. C++ codes may prefer to use use .cpp/.hpp. Be consistent.
 * Do not use #pragma once as include guard.
+* Avoid transitive includes.
 
 Design Patterns
 """""""""""""""
@@ -138,7 +139,7 @@ Building The Project
 
 The Image
 """""""""
-We recommend building using the cpp_base image that we have developed [LINK NEEDED] and
+We recommend building using the `cpp_base image that we have developed <nexus.engageska-portugal.pt/ska-docker/cpp_build_base>`_ and
 stored in the image repository. This, or an image derived from it contains all
 the tools required to operate this CI pipeline and you should avoid the pain of
 installing and configuring system tools.
@@ -347,7 +348,7 @@ Project structure:
 
 General:
 
-* Prefer to pass primitive types by value.
+* Prefer to pass fundamental types by value.
 * Use const wherever possible.
 * Prefer to use libraries consistent with existing code.
 * Prefer the STL as a starting point if a choice is available.
@@ -361,12 +362,14 @@ General:
 * Avoid #define for variables that could be defined in the code body.
 * Avoid complex macros.
 * Do not omit curly braces for control statements (e.g. "if", "for").
+* Prefer to place input-only parameters at the beginning early in the function signature.
 
 Classes:
 
 * Use struct if you only need to contain data without methods, otherwise use a class.
 * Prefer RAII with simple constructors.
 * Use constructor member initializer lists.
+* Avoid unnecessary getter/setter methods for member variables if the class' interface permits setting them in the constructor.
 * Avoid computationally intensive work inside constructors, or consider adding an initialization method if absolutely necessary.
 * Prefer to pass constructor parameters by value and use std::move with initializer lists.
 * Single parameter constructors should be marked explicit.
@@ -375,6 +378,7 @@ Classes:
 * Only set a member as protected if it must be inherited, or public if the getter is sufficiently trivial.
 * Place public code first, protected code second, and private code last.
 * If you need to use inheritance, prefer public inheritance.
+* When using inheritance, prefer to keep class member variables and methods within the same class or else close to each other in the class hierarchy.
 * Avoid complex multiple inheritance hierarchies.
 * Avoid friend classes and methods.
 * Avoid static classes such as singletons.
