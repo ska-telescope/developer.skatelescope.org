@@ -95,9 +95,9 @@ Retrieving the kubeconfig file is easy, you'll see a ``curl`` in the job output 
  Example:
  
  You can get the kubeconfig file from the url: 
- "https://nexus.engageska-portugal.pt/repository/k8s-ci-creds/ci-skampi-st-559-publish-credentials-low" 
+ "https://https://artefact.skao.int//repository/k8s-ci-creds/ci-skampi-st-559-publish-credentials-low" 
  with the following command into your current directory in a file called KUBECONFIG:
-	curl https://nexus.engageska-portugal.pt/repository/k8s-ci-creds/ci-skampi-st-559-publish-credentials-low --output KUBECONFIG
+	curl https://https://artefact.skao.int//repository/k8s-ci-creds/ci-skampi-st-559-publish-credentials-low --output KUBECONFIG
 
 Once this file is copied to your local machine, and the adequate enviroment variables are set you should be able to access the namespace within the kubernetes cluster. A more detailed description on how this is implemented in the pipeline and how it works is found in the README file at the SKAMPI project repository 
 https://gitlab.com/ska-telescope/ska-skampi/-/blob/master/README.md
