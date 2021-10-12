@@ -304,7 +304,7 @@ Coding Style & Conventions
 A non-exhaustive list of guidelines
 
 Style:
-""""""
+
 We are not advocating that software be restructured and rewritten before
 on-boarding - However we recommend that new software follow
 
@@ -312,12 +312,12 @@ on-boarding - However we recommend that new software follow
 * The `Google C++ Style Guide <https://google.github.io/styleguide/cppguide.html>`_.
 
 Project structure:
-""""""""""""""""""
+
 * Follow the structure shown in the SKA C++ example project repository.
 * Reduce compile time code by considering which code should go in a header file and which should go in a source file.
 
 General:
-""""""""
+
 * Prefer to pass fundamental types by value.
 * Use const wherever possible.
 * Prefer to use libraries consistent with existing code.
@@ -335,7 +335,7 @@ General:
 * Prefer to place input-only parameters at the beginning early in the function signature.
 
 Classes:
-""""""""
+
 * Use struct if you only need to contain data without methods, otherwise use a class.
 * Prefer RAII with simple constructors.
 * Use constructor member initializer lists.
@@ -355,7 +355,7 @@ Classes:
 * Limit the proliferation of overloaded functions and constructors.
 
 Namespaces:
-"""""""""""
+
 * Prefer to use fully qualified namespace and class names for definitions in source files over enclosing namespaces.
 * Use using-declarations where needed and do not use using-directives.
 * If your project supports C++17, use nested namespaces.
@@ -364,25 +364,25 @@ Namespaces:
 * Headers are included using their full namespaces.
 
 Pointers:
-"""""""""
+
 * Prefer smart pointers over raw pointers.
 * Prefer std::unique_ptr over std::shared_ptr - though both are permitted.
 
 Loops:
-""""""
+
 * Prefer range-based for loops, and use const reference iterators if you can. For shorter operations, consider using STL iterator methods such as std::find_if, std::for_each.
 * If you must use loop counters, avoid unsigned types, use int, auto, or size_t where possible.
 * If you must use loop counters, prefer to declare and update the loop counter inside the for statements instead of inside or outside of the for loop body.
 
 Exceptions:
-"""""""""""
+
 * External dependencies have different ways of dealing with errors: exceptions, status codes, passing parameters by reference, or calling a function to check what (if any) was the last error.
 * Be consistent with the way your own code handles and generates errors.
 * Prefer to handle errors in your own code instead of passing them along.
 * Consider how your code will be used when making these decisions.
 
 Headers:
-""""""""
+
 Header (.h) files are included with and template definitions (.tcc) and
 implementation files (.cpp). We have done this to make it easier to navigate
 the source tree. Having a separate include tree adds unnecessary complexity.
@@ -393,7 +393,7 @@ the source tree. Having a separate include tree adds unnecessary complexity.
 * Headers are included using their full namespaces.
 
 Design Patterns:
-""""""""""""""""
+
 We recommend that project follow design patterns where applicable.
 The example class structure follows the *Pimpl* construction design pattern but
 there are many others. This has an abstract base class *hello* and a derived
@@ -404,17 +404,17 @@ every source file that includes *wave.h*. Some example patterns for different us
 cases can be found `in this article <https://en.wikibooks.org/wiki/C%2B%2B_Programming/Code/Design_Patterns>`_.
 
 Hardware architecture:
-""""""""""""""""""""""
+
 * You may wish to consider using platform specific optimizations on a specific hardware architecture for performance reasons.
 * If possible, write portable code, or make it clear why that cannot be done in your case.
 
 Tests:
-""""""
+
 * Strive to achieve 100% code coverage.
 * Perform memory leak checks with standard tools.
 
 Documentation:
-""""""""""""""
+
 * Add doxygen compatible comments that explain the purpose and functionality of the code, as well as describing all parameters and what the function will return.
 * Provide useful information about failure cases, and what users should expect if this happens.
 * Document under what circumstances the code might raise exceptions or return or result in an error - or document that it is not certain if that is the case.
