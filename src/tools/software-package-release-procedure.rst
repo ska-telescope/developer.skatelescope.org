@@ -144,6 +144,29 @@ Each validation has a brief description that explains what it does with a mitiga
 
 All the information listed on this page is used in the artefact validation, i.e. All artefacts are validated against `Artefact Naming`_, `Versioning`_ and `Metadata`_ and they are quarantined if they are not compliant.
 
+Changelog Management and Release Notes Publishing
+=================================================
+
+The changelog regenation process relies on the **generate-changelog** make target present in the **release.mk makefile**. It is meant to be used in a Gitlab tag pipeline job as it depends on the following variables to publish the release notes to a newly created tagged commit:
+
+ - CI_COMMIT_TAG
+ - CI_JOB_TOKEN
+ - CI_PROJECT_ID
+ - CI_PROJECT_URL
+ - CI_SERVER_URL
+
+The process can also be customized using the following variables:
+
+
+ - **CHANGELOG_FILE** - Used to specify the changelog file that is meant to keep the release notes for every release. Defaults to CHANGELOG.md.
+
+ - **CHANGELOG_VERSION** - Used to change the default **git-chglog** version used. Defaults to **0.15.0**.
+
+ - **CHANGELOG_CONFIG** - Used to overwrite the **git-chglog** config file. Defaults to `.make/.chglog/config.yml <https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile/-/blob/master/.chglog/config.yml>`_.
+
+ - **CHANGELOG_TEMPLATE** - Used to overwrite the **git-chglog** template used to generate the changelog output. Defaults to `.make/.chglog/CHANGELOG.tpl.md <https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile/-/blob/master/.chglog/CHANGELOG.tpl.md>`_.
+
+
 Deploying Artefacts
 ===================
 
