@@ -147,7 +147,7 @@ All the information listed on this page is used in the artefact validation, i.e.
 Changelog Management and Release Notes Publishing
 =================================================
 
-The changelog regenation process relies on the **generate-changelog** make target present in the **release.mk makefile**. It is meant to be used in a Gitlab tag pipeline job as it depends on the following variables to publish the release notes to a newly created tagged commit:
+The changelog generation process relies on the **generate-changelog** make target present in the **release.mk makefile**. It is meant to be used in a Gitlab tag pipeline job as it depends on the following variables to publish the release notes to a newly created tagged commit:
 
  - CI_COMMIT_TAG
  - CI_JOB_TOKEN
