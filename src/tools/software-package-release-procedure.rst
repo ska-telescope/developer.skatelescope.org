@@ -144,18 +144,10 @@ Each validation has a brief description that explains what it does with a mitiga
 
 All the information listed on this page is used in the artefact validation, i.e. All artefacts are validated against `Artefact Naming`_, `Versioning`_ and `Metadata`_ and they are quarantined if they are not compliant.
 
-Changelog Management and Release Notes Publishing
+Release Management
 =================================================
 
-The changelog generation process relies on the **generate-changelog** make target present in the **release.mk makefile**. It is meant to be used in a Gitlab tag pipeline job as it depends on the following variables to publish the release notes to a newly created tagged commit:
-
- - CI_COMMIT_TAG
- - CI_JOB_TOKEN
- - CI_PROJECT_ID
- - CI_PROJECT_URL
- - CI_SERVER_URL
-
-The process can also be customized using the following variables:
+The changelog generation process relies on the **generate-changelog** make target present in the **release.mk makefile**. It is meant to be used in a Gitlab tag pipeline job as it depends on the pipelines variables to publish the release notes to a newly created tagged commit. The process can also be customized using the following variables:
 
 
  - **CHANGELOG_FILE** - Used to specify the changelog file that is meant to keep the release notes for every release. Defaults to CHANGELOG.md.

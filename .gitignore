@@ -4,6 +4,7 @@ build
 *.swp
 *~ 
 .vscode
+Pipfile
 Pipfile.lock
 venv
 .idea
