@@ -3,7 +3,7 @@
 Visual Studio Code
 ******************
 
-Visual Studio Code is a recommended IDE for developing SKA control system
+Visual Studio Code is the recommended IDE for developing SKA control system
 software.
 
 Visual Studio Code is an open source project and available for free from the
