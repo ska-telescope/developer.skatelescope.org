@@ -339,7 +339,7 @@ Classes:
 * Use struct if you only need to contain data without methods, otherwise use a class.
 * Prefer RAII with simple constructors.
 * Use constructor member initializer lists.
-* Avoid unnecessary getter/setter methods for member variables if the class' interface permits setting them in the constructor.
+* Avoid unnecessary getter/setter methods.
 * Avoid computationally intensive work inside constructors, or consider adding an initialization method if absolutely necessary.
 * Prefer to pass constructor parameters by value and use std::move with initializer lists.
 * Single parameter constructors should be marked explicit.
@@ -360,7 +360,7 @@ Namespaces:
 * Use using-declarations where needed and do not use using-directives.
 * If your project supports C++17, use nested namespaces.
 * The directory structure follows namespaces.
-* We have defined an uppermost *ska* namespace and require all projects providing specfic ska functionality do the same.
+* We have defined an uppermost *ska* namespace and require all projects providing specfic ska functionality do the same. *This rule needs further review.*
 * Headers are included using their full namespaces.
 
 Pointers:
@@ -371,7 +371,7 @@ Pointers:
 Loops:
 
 * Prefer range-based for loops, and use const reference iterators if you can. For shorter operations, consider using STL iterator methods such as std::find_if, std::for_each.
-* If you must use loop counters, avoid unsigned types, use int, auto, or size_t where possible.
+* If you must use loop counters, consider avoiding an unsigned type if possible.
 * If you must use loop counters, prefer to declare and update the loop counter inside the for statements instead of inside or outside of the for loop body.
 
 Exceptions:
@@ -383,10 +383,7 @@ Exceptions:
 
 Headers:
 
-Header (.h) files are included with and template definitions (.tcc) and
-implementation files (.cpp). We have done this to make it easier to navigate
-the source tree. Having a separate include tree adds unnecessary complexity.
-
+* Include header files in the same directory tree as source files.
 * File extensions: C codes may use .c/.h and .cc/.hh. C++ codes may prefer to use use .cpp/.hpp. Be consistent.
 * Do not use #pragma once as include guard.
 * Avoid transitive includes.
