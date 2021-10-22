@@ -359,7 +359,7 @@ Namespaces:
 * Prefer to use fully qualified namespace and class names for definitions in source files over enclosing namespaces.
 * Use using-declarations where needed and do not use using-directives.
 * If your project supports C++17, use nested namespaces.
-* We have defined an uppermost *ska* namespace and require all projects providing specfic ska functionality do the same. *This rule needs further review.*
+* We have defined an uppermost *ska* namespace and require that all projects providing specfic ska functionality do the same, and that the project directory structure follows the namespaces. *This rule needs further review.*
 * Headers are included using their full namespaces.
 
 Pointers:
