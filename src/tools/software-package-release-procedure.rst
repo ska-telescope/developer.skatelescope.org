@@ -147,7 +147,7 @@ All the information listed on this page is used in the artefact validation, i.e.
 Release Management
 =================================================
 
-As part of the  release rotes publishing procedures developers should use a template job to generate artefact release artefacts. The changelog generation process relies on the **generate-changelog** make target present in the **release.mk makefile**. It uses a script that generates changelog documentation using **git-chglog** and it is meant to be used in a Gitlab tag pipeline job as it depends on the pipelines variables to publish the release notes to a newly created tagged commit. A Jira ticket is added to the release notes to enable other teams to refer to the documentation related to process and implementation of git-changelog.
+As part of the  release notes publishing procedures developers should use a template job  that uses changelogs to generate artefact releases. The changelog generation process relies on the **generate-changelog** make target present in the **release.mk makefile**. It requires a script that generates changelog documentation using **git-chglog** and it is meant to be used in a Gitlab tag pipeline job as it depends on the pipelines variables to publish the release notes to a newly created tagged commit. A Jira ticket is added to the release notes to enable other teams to refer to the documentation related to process and implementation of git-changelog.
 
 Developers are strongly encouraged to use the default template to ensure that similar practices are followed in all SKA repositories, but if any departures from standard procedures are required the process can be customized using the following variables:
 
