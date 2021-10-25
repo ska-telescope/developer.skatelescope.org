@@ -384,7 +384,7 @@ Headers:
 
 * Include header files in the same directory tree as source files.
 * File extensions: C codes may use ``.c``/``.h`` and ``.cc``/``.hh``. C++ codes may prefer to use use ``.cpp``/``.hpp``. Be consistent.
-* Do not use ``#pragma`` once as include guard.
+* Do not use ``#pragma once`` as include guard.
 * Avoid transitive includes where possible, and also consider the guideline about forward declarations described above.
 * Headers are included using their full namespaces.
 
