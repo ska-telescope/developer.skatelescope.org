@@ -25,7 +25,7 @@ project layout. It also demonstrates how to implement the following recommended 
 * C++ linting using clang for stylistic errors.
 * Also test running under valgrind for memory errors.
 * gcov and lcov to measure test coverage and generate HTML reports.
-* Additional tools to use: iwyu, cppcheck, clang-tidy, clang-format.
+* Additional tools to use: ``iwyu``, ``cppcheck``, ``clang-tidy``, ``clang-format``.
 
 All building and testing is done within a docker container.
 
@@ -319,45 +319,45 @@ Project structure:
 General:
 
 * Prefer to pass fundamental types by value.
-* Use const wherever possible.
+* Use ``const`` wherever possible.
 * Prefer to use libraries consistent with existing code.
 * Prefer the STL as a starting point if a choice is available.
 * If you need to use external dependencies, refer to SKA guidelines on external dependencies.
-* Use a strongly-typed enum instead of ordinary enum.
+* Use a strongly-typed ``enum`` instead of ordinary enum.
 * Be mindful of implicit type conversions. Do not rely on implicit conversions, use consistent types and be explicit if you can. Use auto where appropriate.
 * Prefer C++ style casts over C style casts.
 * Prefer to include a header file instead of relying on a forward declaration, unless it significantly improves compile time.
 * Construct variables inside or as close to the locality of the scope where they are needed only.
 * Avoid global variables.
-* Avoid #define for variables that could be defined in the code body.
+* Avoid ``#define`` for variables that could be defined in the code body.
 * Avoid complex macros.
-* Do not omit curly braces for control statements (e.g. "if", "for").
+* Do not omit curly braces for control statements (e.g. ``if``, ``for``).
 * Prefer to place input-only parameters early in a function signature where it is consistent with your existing codebase.
 
 Classes:
 
-* Use struct if you only need to contain data without methods, otherwise use a class.
+* Use ``struct`` if you only need to contain data without methods, otherwise use a class.
 * Prefer RAII with simple constructors.
 * Use constructor member initializer lists.
 * Avoid unnecessary getter/setter methods.
 * Avoid computationally intensive work inside constructors, or consider adding an initialization method if absolutely necessary.
-* Prefer to pass constructor parameters by value and use std::move with initializer lists.
-* Single parameter constructors should be marked explicit.
-* Derived virtual methods should be marked override.
-* By default, mark a class as final, and mark all members private.
-* Only set a member as protected if it must be inherited, or public if the getter is sufficiently trivial.
-* Place public code first, protected code second, and private code last.
-* If you need to use inheritance, prefer public inheritance.
+* Prefer to pass constructor parameters by value and use ``std::move`` with initializer lists.
+* Single parameter constructors should be marked ``explicit``.
+* Derived ``virtual`` methods should be marked ``override``.
+* By default, mark a class as ``final``, and mark all members ``private``.
+* Only set a member as ``protected`` if it must be inherited, or public if the getter is sufficiently trivial.
+* Place ``public`` code first, ``protected`` code second, and ``private`` code last.
+* If you need to use inheritance, prefer ``public`` inheritance.
 * When using inheritance, prefer to keep class member variables and methods within the same class or else close to each other in the class hierarchy.
 * Avoid complex multiple inheritance hierarchies.
-* Avoid friend classes and methods.
-* Avoid static classes such as singletons.
+* Avoid ``friend`` classes and methods.
+* Avoid ``static`` classes (e.g. the singleton pattern).
 * Limit the proliferation of overloaded functions and constructors.
 
 Namespaces:
 
-* Prefer to use fully qualified namespace and class names for definitions in source files over enclosing namespaces.
-* Use using-declarations where needed and do not use using-directives.
+* Prefer to use fully qualified ``namespace`` and class names for definitions in source files over enclosing namespaces.
+* Use ``using-declarations`` where needed and do not use ``using-directives``.
 * If your project supports C++17, use nested namespaces.
 * We have defined an uppermost *ska* namespace and require that all projects providing specfic ska functionality do the same, and that the project directory structure follows the namespaces. *This rule needs further review.*
 * Headers are included using their full namespaces.
@@ -365,13 +365,13 @@ Namespaces:
 Pointers:
 
 * Prefer smart pointers over raw pointers.
-* Prefer std::unique_ptr over std::shared_ptr - though both are permitted.
+* Prefer ``std::unique_ptr`` over ``std::shared_ptr`` - though both are permitted.
 
 Loops:
 
-* Prefer range-based for loops, and use const reference iterators if you can. For shorter operations, consider using STL iterator methods such as std::find_if, std::for_each.
-* If you must use loop counters, consider avoiding an unsigned type if possible.
-* If you must use loop counters, prefer to declare and update the loop counter inside the for statements instead of inside or outside of the for loop body.
+* Prefer range-based ``for`` loops, and use ``const`` reference iterators if you can. For shorter operations, consider using STL library algorithms methods such as ``std::find_if``, ``std::for_each`` that can be used with containers.
+* If you must use loop counters, consider avoiding an ``unsigned`` type if possible.
+* If you must use loop counters, prefer to declare and update the loop counter inside the ``for`` statements instead of inside or outside of the for loop body.
 
 Exceptions:
 
@@ -383,8 +383,8 @@ Exceptions:
 Headers:
 
 * Include header files in the same directory tree as source files.
-* File extensions: C codes may use .c/.h and .cc/.hh. C++ codes may prefer to use use .cpp/.hpp. Be consistent.
-* Do not use #pragma once as include guard.
+* File extensions: C codes may use ``.c``/``.h`` and ``.cc``/``.hh``. C++ codes may prefer to use use ``.cpp``/``.hpp``. Be consistent.
+* Do not use ``#pragma`` once as include guard.
 * Avoid transitive includes where possible, and also consider the guideline about forward declarations described above.
 * Headers are included using their full namespaces.
 
@@ -421,13 +421,13 @@ If in doubt, ask.
 
 The clang/llvm compiler tools have an extension which can provide some direct
 criticism of your code for stylistic errors (and even automatically fix them). For example in our lint step we
-suggest you run:: 
+suggest you run::
 
     run-clang-tidy -checks='cppcoreguidelines-*,performance-*,readibility-*,modernize-*,misc-*,clang-analyzer-*,google-*'
 
 .. note:: The GoogleTest  macros generate a lot of warnings ... Google have their own code guidelines ...
 
-In the linting stage we also run cppcheck as a separate step. 
+In the linting stage we also run cppcheck as a separate step.
 
 .. warning:: The linting stage as presented here is spotting an error in the GTest macros. So we have explicitly removed the test directory from the cppcheck path. 
 
@@ -435,7 +435,7 @@ In the linting stage we also run cppcheck as a separate step.
 Unit testing
 ------------
 
-Setting Up The Tests 
+Setting Up The Tests
 ^^^^^^^^^^^^^^^^^^^^
 Within the template we give examples of how to write a Unit Test in `The Google Test framework <https://github.com/google/googletest/>`_.
 
@@ -514,7 +514,7 @@ This basic template project is available `on GitLab <https://gitlab.com/ska-tele
 1) Provides a base image on which to run C++ builds
 2) Describes example basic dependency management is possible at least based on CMake but way of CMake External projects and git submodules
 3) Presents a convention for defininig third party/external to project libs such that they are independent of the dependency management layer that will be supported by the systems team
-4) Proposes at least the C++ 14 language standard and related static code checking tools
+4) Proposes at least the C++14 language standard and related static code checking tools
 5) Outlines header naming conventions that follow namespace definitions
 6) Proposal of GoogleTest for a common C++ unit testing library
 
