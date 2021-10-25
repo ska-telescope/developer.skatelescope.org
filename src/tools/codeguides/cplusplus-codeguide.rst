@@ -108,8 +108,8 @@ Building The Project
 
 The Image
 """""""""
-We recommend building using the `cpp_base image that we have developed and
-stored in the image repository <nexus.engageska-portugal.pt/ska-docker/cpp_build_base>`_. This, or an image derived from it contains all
+We recommend building using the cpp_base image that we have developed and
+stored in the image repository (nexus.engageska-portugal.pt/ska-docker/cpp_build_base). This, or an image derived from it contains all
 the tools required to operate this CI pipeline and you should avoid the pain of
 installing and configuring system tools.
 
@@ -326,13 +326,13 @@ General:
 * Use a strongly-typed enum instead of ordinary enum.
 * Be mindful of implicit type conversions. Do not rely on implicit conversions, use consistent types and be explicit if you can. Use auto where appropriate.
 * Prefer C++ style casts over C style casts.
-* Avoid forward declarations.
+* Prefer to include a header file instead of relying on a forward declaration, unless it significantly improves compile time.
 * Construct variables inside or as close to the locality of the scope where they are needed only.
 * Avoid global variables.
 * Avoid #define for variables that could be defined in the code body.
 * Avoid complex macros.
 * Do not omit curly braces for control statements (e.g. "if", "for").
-* Prefer to place input-only parameters at the beginning early in the function signature.
+* Prefer to place input-only parameters early in a function signature where it is consistent with your existing codebase.
 
 Classes:
 
@@ -385,7 +385,7 @@ Headers:
 * Include header files in the same directory tree as source files.
 * File extensions: C codes may use .c/.h and .cc/.hh. C++ codes may prefer to use use .cpp/.hpp. Be consistent.
 * Do not use #pragma once as include guard.
-* Avoid transitive includes.
+* Avoid transitive includes where possible, and also consider the guideline about forward declarations described above.
 * Headers are included using their full namespaces.
 
 Design Patterns:
