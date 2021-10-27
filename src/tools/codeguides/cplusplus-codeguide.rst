@@ -351,7 +351,7 @@ Classes:
 * When using inheritance, prefer to keep class member variables and methods within the same class or else close to each other in the class hierarchy. [`Explanation <https://google.github.io/styleguide/cppguide.html#Inheritance>`__]
 * Avoid complex multiple inheritance hierarchies. [`Explanation <https://google.github.io/styleguide/cppguide.html#Inheritance>`__]
 * Avoid ``friend`` classes and methods, preferring a class' own interfaces. [`Explanation <https://google.github.io/styleguide/cppguide.html#Friends>`__]
-* Avoid ``static`` classes and classes that behave like the singleton pattern). [`Explanation <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#i3-avoid-singletons>`__]
+* Avoid ``static`` classes and classes that behave like the singleton pattern. [`Explanation <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#i3-avoid-singletons>`__]
 * Limit the proliferation of overloaded functions and constructors, prefer default parameters. [`Explanation <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#f51-where-there-is-a-choice-prefer-default-arguments-over-overloading>`__]
 
 Namespaces:
