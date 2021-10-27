@@ -95,13 +95,13 @@ Extracting documentation from code
 Integration into the Developer Portal
 -------------------------------------
 
-The developer portal is hosted on ReadTheDocs. On the :ref:`list` page a list of all the projects that are hosted on GitLab is available, with badges to show the build status of the project's documentation. Each badge is also a hyperlink to the project's documentation that you can click on.
+The developer portal is hosted on `ReadTheDocs <https://readthedocs.org/>`_. On the :ref:`list` page a list of all the projects that are hosted on GitLab is available, with badges to show the build status of the project's documentation. Each badge is also a hyperlink to the project's documentation that you can click on.
 
 Every SKA project's documentation is hosted on Readthedocs as a :ref:`subproject <sub-project>` of the developer portal, so that all projects have a common URL for easier search-ability. For example: whereas the developer portal's URL is https://developer.skao.int, the ska_python_skeleton project is at https://developer.skao.int/projects/ska-python-skeleton.
 
-In order to add the project's documentation as a subproject on Readthedocs, a project must first be imported into Readthedocs.
+In order to add the project's documentation as a subproject on ReadTheDocs, a project must first be imported into Readthedocs.
 
-Register on ReadTheDocs
+Register on `ReadTheDocs <https://readthedocs.org/>`_
 =======================
 Developers working on the SKA are members of the ska-telescope organisation on GitLab. Registering an account using the OAuth credentials on ReadTheDocs is recommended, because then the integration between the SKA GitLab and SKA ReadTheDocs services is done automatically. The integrations can also be set up manually later, and is not difficult.
 
