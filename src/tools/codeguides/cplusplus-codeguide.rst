@@ -11,7 +11,7 @@ An Example C++ Project
 ======================
 
 We have created a `skeleton C++ project
-<https://gitlab.com/ska-telescope/templates/cpp-template>`_. Which should provide a full introduction to the various
+<https://gitlab.com/ska-telescope/templates/cpp-template>`__. Which should provide a full introduction to the various
 recommendations and requirements for the development of C++. The philosophy behind the development of this
 template was to demonstrate one way to meet the project guidelines. There are probably as many ways to organise C++ projects
 as there are developers there are sure to be some controversial design decisions made.
@@ -60,7 +60,7 @@ version.txt
 """""""""""
         In this template the version file is parsed by the CMakeLists file during the 
         build process. This specific functionality is not required, but clear versioning is.
-        The SKA project mandates `Semantic Versioning <https://semver.org>`_.
+        The SKA project mandates `Semantic Versioning <https://semver.org>`__.
 
 
 The Source Tree
@@ -184,9 +184,9 @@ CMake Coding Conventions
 Unfortunately there is even less consensus in the community as to the most
 effective way to write CMake files, thought there are a lot of opinions. We
 have found a good distillation of some effective ideas can be found `here
-<https://gist.github.com/mbinna/c61dbb39bca0e4fb7d1f73b0d66a4fd1>`_. And GitLab
+<https://gist.github.com/mbinna/c61dbb39bca0e4fb7d1f73b0d66a4fd1>`__. And GitLab
 has an introduction to `Modern CMake
-<https://cliutils.gitlab.io/modern-cmake/>`_.
+<https://cliutils.gitlab.io/modern-cmake/>`__.
 
 In general however we recommend Modern CMake (minimum version of 3.0). A lot of legacy
 projects will have used 2.8 - but we cannot recommend that new projects use
@@ -278,9 +278,9 @@ dependencies listed using the find_package() functionality of CMake. Of course
 if the build depends upon an external dependency that is not present in the
 build image, automated CI *will* fail. 
 
-.. todo:: To avoid this we will add other macros to install the external dependencies using a package management tool. When one is downselected.  
+.. todo:: To avoid this we will add other macros to install the external dependencies using a package management tool. When one is downselected. 
 
-Therefore package-name is prefixed by one of *install*, *find*, or *both*. 
+Therefore package-name is prefixed by one of *install*, *find*, or *both*.
 
 * *install* is used as a keyword so you can parse the file for packages to install (using apt for example), 
 * *find* is used as a keyword for the dependencies function to use the find_package() functionality. It is possible, indeed likely that the package name for apt and for the cmake module will not be the same. Hence the separate keywords
@@ -298,80 +298,79 @@ the file and install the requirements.
 
 
 
-Coding Style & Conventions
---------------------------
+Coding Style, Conventions, and Tips
+-----------------------------------
 
 A non-exhaustive list of guidelines
 
 Style:
 
 We are not advocating that software be restructured and rewritten before
-on-boarding - However we recommend that new software follow
+on-boarding. However, we recommend that new software follow
 
-* `The cplusplus Core Guidelines <http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines>`_.
-* The `Google C++ Style Guide <https://google.github.io/styleguide/cppguide.html>`_.
+* `The cplusplus Core Guidelines <http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines>`__.
+* The `Google C++ Style Guide <https://google.github.io/styleguide/cppguide.html>`__.
 
 Project structure:
 
 * Follow the structure shown in the SKA C++ example project repository.
-* Reduce compile time code by considering which code should go in a header file and which should go in a source file.
+* Reduce compile times by considering what code should go in a header file and what code should go in a source file.
 
 General:
 
-* Prefer to pass fundamental types by value.
-* Use ``const`` wherever possible.
+* Prefer to pass fundamental types by value. [`Explanation <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#f16-for-in-parameters-pass-cheaply-copied-types-by-value-and-others-by-reference-to-const>`__]
+* Use ``const`` wherever possible. [`Explanation <https://google.github.io/styleguide/cppguide.html#Use_of_const>`__]
 * Prefer to use libraries consistent with existing code.
-* Prefer the STL as a starting point if a choice is available.
-* If you need to use external dependencies, refer to SKA guidelines on external dependencies.
-* Use a strongly-typed ``enum`` instead of ordinary enum.
-* Be mindful of implicit type conversions. Do not rely on implicit conversions, use consistent types and be explicit if you can. Use auto where appropriate.
-* Prefer C++ style casts over C style casts.
-* Prefer to include a header file instead of relying on a forward declaration, unless it significantly improves compile time.
-* Construct variables inside or as close to the locality of the scope where they are needed only.
-* Avoid global variables.
-* Avoid ``#define`` for variables that could be defined in the code body.
-* Avoid complex macros.
-* Do not omit curly braces for control statements (e.g. ``if``, ``for``).
-* Prefer to place input-only parameters early in a function signature where it is consistent with your existing codebase.
+* Prefer the STL as a starting point if a choice is available. [`Explanation <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#es1-prefer-the-standard-library-to-other-libraries-and-to-handcrafted-code>`__]
+* If you need to use external dependencies, refer to SKA guidelines on external dependencies. [`Explanation <https://developer.skao.int/en/latest/policies/fundamental-sw-requirements.html>`__]
+* Use a strongly-typed ``enum`` instead of an ordinary enum. [`Explanation <http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#enum3-prefer-class-enums-over-plain-enums>`__]
+* Be mindful of implicit type conversions. Do not rely on implicit conversions, use consistent types and be explicit if you can. Use auto where appropriate. [`Explanation <https://google.github.io/styleguide/cppguide.html#Type_deduction>`__]
+* Prefer C++ style casts over C style casts. [`Explanation <https://google.github.io/styleguide/cppguide.html#Casting>`__]
+* Prefer to include a header file instead of relying on a forward declaration, unless it significantly improves compile time. [`Explanation <https://google.github.io/styleguide/cppguide.html#Forward_Declarations>`__]
+* Construct variables inside or as close to the locality of the scope where they are needed only. [`Explanation <https://google.github.io/styleguide/cppguide.html#Local_Variables>`__]
+* Avoid global variables. [`Explanation <https://google.github.io/styleguide/cppguide.html#Local_Variables>`__]
+* Avoid ``#define`` for variables that could be defined in the code body. [`Explanation <https://google.github.io/styleguide/cppguide.html#Preprocessor_Macros>`__]
+* Avoid complex macros. [`Explanation <https://google.github.io/styleguide/cppguide.html#Preprocessor_Macros>`__]
+* Do not omit curly braces for control statements (e.g. ``if``, ``for``). [`Explanation <https://clang.llvm.org/extra/clang-tidy/checks/readability-braces-around-statements.html>`__]
+* Prefer to place input-only parameters early in a function signature where it is consistent with your existing codebase. [`Explanation <https://google.github.io/styleguide/cppguide.html#Inputs_and_Outputs>`__]
 
 Classes:
 
-* Use ``struct`` if you only need to contain data without methods, otherwise use a class.
-* Prefer RAII with simple constructors.
-* Use constructor member initializer lists.
-* Avoid unnecessary getter/setter methods.
-* Avoid computationally intensive work inside constructors, or consider adding an initialization method if absolutely necessary.
-* Prefer to pass constructor parameters by value and use ``std::move`` with initializer lists.
-* Single parameter constructors should be marked ``explicit``.
-* Derived ``virtual`` methods should be marked ``override``.
-* By default, mark a class as ``final``, and mark all members ``private``.
-* Only set a member as ``protected`` if it must be inherited, or public if the getter is sufficiently trivial.
-* Place ``public`` code first, ``protected`` code second, and ``private`` code last.
-* If you need to use inheritance, prefer ``public`` inheritance.
-* When using inheritance, prefer to keep class member variables and methods within the same class or else close to each other in the class hierarchy.
-* Avoid complex multiple inheritance hierarchies.
-* Avoid ``friend`` classes and methods.
-* Avoid ``static`` classes (e.g. the singleton pattern).
-* Limit the proliferation of overloaded functions and constructors.
+* Use ``struct`` if you only need to contain data without methods, otherwise use a class. [`Explanation <https://google.github.io/styleguide/cppguide.html#Structs_vs._Classes>`__]
+* Prefer RAII with simple constructors. [`Explanation <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#r1-manage-resources-automatically-using-resource-handles-and-raii-resource-acquisition-is-initialization>`__]
+* Use constructor member initializer lists. [`Explanation <https://google.github.io/styleguide/cppguide.html#Constructor_Initializer_Lists>`__]
+* Avoid unnecessary getter/setter methods. [`Explanation <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#c131-avoid-trivial-getters-and-setters>`__]
+* Only set a member as ``protected`` if it must be inherited, or ``public`` if the getter is sufficiently trivial. [`Explanation <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#c131-avoid-trivial-getters-and-setters>`__]
+* Avoid computationally intensive work (in particular virtual calls) inside constructors, or consider adding an initialization method if absolutely necessary. [`Explanation <https://google.github.io/styleguide/cppguide.html#Doing_Work_in_Constructors>`__]
+* Prefer to pass constructor parameters by value and use ``std::move`` with initializer lists. [`Explanation <https://clang.llvm.org/extra/clang-tidy/checks/modernize-pass-by-value.html>`__]
+* Single parameter constructors should be marked ``explicit``. [`Explanation <https://clang.llvm.org/extra/clang-tidy/checks/google-explicit-constructor.html>`__]
+* Derived ``virtual`` methods should be marked ``override``. [`Explanation <https://clang.llvm.org/extra/clang-tidy/checks/modernize-use-override.html>`__]
+* By default, mark a class as ``final``, and mark all members ``private``. [`Explanation <https://google.github.io/styleguide/cppguide.html#Inheritance>`__]
+* Place ``public`` code first, ``protected`` code second, and ``private`` code last. [`Explanation <https://google.github.io/styleguide/cppguide.html#Class_Format>`__]
+* If you need to use inheritance, prefer ``public`` inheritance. [`Explanation <https://google.github.io/styleguide/cppguide.html#Inheritance>`__]
+* When using inheritance, prefer to keep class member variables and methods within the same class or else close to each other in the class hierarchy. [`Explanation <https://google.github.io/styleguide/cppguide.html#Inheritance>`__]
+* Avoid complex multiple inheritance hierarchies. [`Explanation <https://google.github.io/styleguide/cppguide.html#Inheritance>`__]
+* Avoid ``friend`` classes and methods, preferring a class' own interfaces. [`Explanation <https://google.github.io/styleguide/cppguide.html#Friends>`__]
+* Avoid ``static`` classes and classes that behave like the singleton pattern). [`Explanation <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#i3-avoid-singletons>`__]
+* Limit the proliferation of overloaded functions and constructors, prefer default parameters. [`Explanation <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#f51-where-there-is-a-choice-prefer-default-arguments-over-overloading>`__]
 
 Namespaces:
 
 * Prefer to use fully qualified ``namespace`` and class names for definitions in source files over enclosing namespaces.
-* Use ``using-declarations`` where needed and do not use ``using-directives``.
-* If your project supports C++17, use nested namespaces.
+* Use ``using-declarations`` where needed and do not use ``using-directives``. [`Explanation <https://google.github.io/styleguide/cppguide.html#Namespaces>`__]
+* If your project supports C++17, use nested namespaces. [`Explanation <https://clang.llvm.org/extra/clang-tidy/checks/modernize-concat-nested-namespaces.html>`__]
 * We have defined an uppermost *ska* namespace and require that all projects providing specfic ska functionality do the same, and that the project directory structure follows the namespaces. *This rule needs further review.*
-* Headers are included using their full namespaces.
 
 Pointers:
 
-* Prefer smart pointers over raw pointers.
-* Prefer ``std::unique_ptr`` over ``std::shared_ptr`` - though both are permitted.
+* Prefer smart pointers over raw pointers. [`Explanation <https://google.github.io/styleguide/cppguide.html#Ownership_and_Smart_Pointers>`__]
+* Prefer ``std::unique_ptr`` over ``std::shared_ptr`` - though both are permitted. [`Explanation <https://google.github.io/styleguide/cppguide.html#Ownership_and_Smart_Pointers>`__]
 
 Loops:
 
-* Prefer range-based ``for`` loops, and use ``const`` reference iterators if you can. For shorter operations, consider using STL library algorithms methods such as ``std::find_if``, ``std::for_each`` that can be used with containers.
-* If you must use loop counters, consider avoiding an ``unsigned`` type if possible.
-* If you must use loop counters, prefer to declare and update the loop counter inside the ``for`` statements instead of inside or outside of the for loop body.
+* Prefer range-based ``for`` loops, and use ``const`` reference iterators if you can. [`Explanation <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#es71-prefer-a-range-for-statement-to-a-for-statement-when-there-is-a-choice>`__] For shorter operations, consider using STL library algorithms methods such as ``std::find_if``, ``std::for_each`` that can be used with containers. [`Explanation <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#p3-express-intent>`__]
+* If you must use loop counters, consider avoiding an ``unsigned`` type if possible. [`Explanation <https://google.github.io/styleguide/cppguide.html#Integer_Types>`__]
+* Prefer to declare and update the loop counter inside the ``for`` statements instead of inside or outside of the for loop body. [`Explanation <https://google.github.io/styleguide/cppguide.html#Local_Variables>`__]
 
 Exceptions:
 
@@ -383,9 +382,9 @@ Exceptions:
 Headers:
 
 * Include header files in the same directory tree as source files.
-* File extensions: C codes may use ``.c``/``.h`` and ``.cc``/``.hh``. C++ codes may prefer to use use ``.cpp``/``.hpp``. Be consistent.
-* Do not use ``#pragma once`` as include guard.
-* Avoid transitive includes where possible, and also consider the guideline about forward declarations described above.
+* File extensions: C codes may use ``.c``/``.h`` and ``.cc``/``.hh``. C++ codes may also use ``.cpp``. Be consistent. [`Explanation <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#sf1-use-a-cpp-suffix-for-code-files-and-h-for-interface-files-if-your-project-doesnt-already-follow-another-convention>`__]
+* Do not use ``#pragma once`` as include guard. [`Explanation <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#sf8-use-include-guards-for-all-h-files>`__]
+* Avoid transitive includes where possible, and also consider the guideline about forward declarations described above. [`Explanation <https://google.github.io/styleguide/cppguide.html#Include_What_You_Use>`__ and `Explanation <https://google.github.io/styleguide/cppguide.html#Forward_Declarations>`__]
 * Headers are included using their full namespaces.
 
 Design Patterns:
@@ -397,7 +396,7 @@ class *wave* which is a type of hello, but we are also including an
 implementation of a *wave*. We have done this as this scheme allows multiple
 implementations of a wave to be created without forcing a recompilation of
 every source file that includes *wave.h*. Some example patterns for different use
-cases can be found `in this article <https://en.wikibooks.org/wiki/C%2B%2B_Programming/Code/Design_Patterns>`_.
+cases can be found `in this article <https://en.wikibooks.org/wiki/C%2B%2B_Programming/Code/Design_Patterns>`__.
 
 Hardware architecture:
 
@@ -411,7 +410,7 @@ Tests:
 
 Documentation:
 
-* Add doxygen compatible comments that explain the purpose and functionality of the code, as well as describing all parameters and what the function will return.
+* Add ``doxygen`` compatible comments that explain the purpose and functionality of the code, as well as describing all parameters and what the function will return.
 * Provide useful information about failure cases, and what users should expect if this happens.
 * Document under what circumstances the code might raise exceptions or return or result in an error - or document that it is not certain if that is the case.
 * Document the dimensionality and units of all parameters.
@@ -437,7 +436,7 @@ Unit testing
 
 Setting Up The Tests
 ^^^^^^^^^^^^^^^^^^^^
-Within the template we give examples of how to write a Unit Test in `The Google Test framework <https://github.com/google/googletest/>`_.
+Within the template we give examples of how to write a Unit Test in `The Google Test framework <https://github.com/google/googletest/>`__.
 
 You will also see from the  CI script that we publish the test results in the following manner:
 
@@ -509,7 +508,7 @@ But you can access the artifact from the pipeline.
 Summary
 =======
 
-This basic template project is available `on GitLab <https://gitlab.com/ska-telescope/cpp-template.git>`_. And demonstrates the following:
+This basic template project is available `on GitLab <https://gitlab.com/ska-telescope/cpp-template.git>`__. And demonstrates the following:
 
 1) Provides a base image on which to run C++ builds
 2) Describes example basic dependency management is possible at least based on CMake but way of CMake External projects and git submodules
