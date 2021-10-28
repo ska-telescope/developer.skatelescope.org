@@ -84,6 +84,7 @@ In the SKA Project the process of triaging a bug report will assess and set valu
 At the present time SKB bugs that are in the Status “TODO” are triaged by someone in the management teams as soon as possible if they seem (or are labelled) Critical and if they are noticed. However, there is no need to wait: All teams and team members are encouraged to triage bugs themselves if they feel able. Otherwise remaining SKB bugs in the “TODO” state are triaged at the Bi-weekly Release Management Forum.
 
 .. _bug-priority:
+
 Values and meanings for Severity and Priority
 --------------------------------------------------
 
@@ -235,7 +236,7 @@ The *Resolution* should be set to one of:
 * Duplicate
 
 Approaches to fixing a Bug
-===============
+==========================
 
 Some approaches to fixing bugs are found under :doc:`Testing Strategy </policies/ska-testing-policy-and-strategy>`. That section also has a little more information on handling team-level bugs.
 
