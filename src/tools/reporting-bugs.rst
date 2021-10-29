@@ -63,7 +63,7 @@ A useful guide to how to report bugs effectively can be found here: https://www.
 
 Team-level bugs (not affecting wider system or other teams) should be reported in the relevant agile team’s JIRA project, using the issue type “bug”. The same guidelines for reporting may be used, but of course please tailor to the needs of your team.
 
-**Do I need to report a bug that I fixed as soon as I saw it?** The SKA Project encourages bug fixing “on-the-fly”, i.e. without the need to enter a bug report JIRA ticket. However, “on-the-fly” means that any discovered bug should be fixed in the same sprint. If the bug will take longer to fix, or there is no time now then it should be reported. It should also be reported if it affects more than one team, so that all the teams know about it.
+**Do I need to report a bug that I fixed as soon as I saw it?** The SKA Project encourages bug fixing “on-the-fly”, i.e. without the need to enter a bug report JIRA ticket. However, “on-the-fly” means that any discovered bug must be fixed *in the same sprint*. If the bug will take longer to fix, or there is no time now then it should be reported. It should also be reported if it affects more than one team, so that all the teams know about it.
 
 The SKB JIRA Project also supports the reporting of incidents, by selecting the JIRA issue type of “Incident”. Incidents, when a bug has a more direct impact on stakeholders, should be reported in more or less the same way. There is more information on :doc:`Incident Management </policies/incident-management>`.
 
@@ -137,15 +137,15 @@ All SKB bugs are created with an initial status of *Identified*. The Assignee fi
 During this phase, the Reporter is responsible for collating the information to allow for bug assessment. 
 They may need to collaborate with others; nevertheless, they are assigned to co-ordinate this data collection phase.
 
-Once enough information to make an informed assessment has been provided, the bug needs to be triaged. 
-The Reporter should then put the bug into the *Assessment* state, after considering whether the bug needs to be reassigned.
-
+Once the Reporter judges enough information to make an informed assessment has been provided, the bug needs to be triaged. 
+At a minimum, there should be instructions to reproduce the bug, or a description of why that's not possible, plus any logs and error messages seen.
+The Reporter should then put the bug into the *Assessment* state, after considering whether the bug needs to be reassigned to an architect for consideration.
 If the Reporter cannot triage the bug themselves, they should assign to a Program Level Architect, who becomes the Bug Owner.
 This may be necessary for bugs where the impact is unclear, or where additional visibility is needed.
 
 Assessment
 ^^^^^^^^^^
-The assignee (the current Bug Owner) reviews the information provided, and assesses the Severity and Priority of the bug.
+The Bug Owner (the current Assignee) reviews the information provided, and assesses the Severity and Priority of the bug.
 If there is insufficent information, the issue is re-assigned to the original Reporter to provide more information.
 The issue may be discarded at this point; perhaps it is a non-issue, or a duplicate of a previous bug.
 
@@ -200,7 +200,7 @@ The Bug Owner (assignee) verifies the fix:
   * Non-functional requirements (NFRs) are met.
   * The new software versions have passed integration tests.
 
-If verification fails, the status is updated to *Assigned*, and the Product Owner(s) for the relevant teams must be informed of any issues.
+If verification fails, the status is changed back to *Assigned*, and the Product Owner(s) for the relevant teams must be informed of any issues.
 Otherwise, the status is updated to *Validating*, and the Assignee is updated to an appropriate validator.
 The original reporter is usually a good candidate for performing validation tests.
 
@@ -209,7 +209,7 @@ Validating
 This should be performed on the same system that the bug was reported on, if at all possible.
 This ensures that the feedback loop is closed from the original bug report to the fix being applied and working as expected in the same environment in which it originally failed. 
 
-If validation fails, the status is updated to *Assigned*, and the previous Bug Owner becomes the Assignee.
+If validation fails, the status is changed back to *Assigned*, and the previous Bug Owner becomes the Assignee.
 
 If validation passes, the status should be updated to *Done*, and the *Resolution* field to *Resolved*.
 
@@ -247,7 +247,8 @@ Comments and Open Issues
   * Committing “on-the-fly” fixes: Marvin requires a ticket number. One possible suggestion:
       * Use the story ticket you are working on if the bug relates to the same feature/story.
    
-*Can we use gitlab issues?* Using GitLab Issues (or any other Issue Management solution) is problematic as our project management, methodology, and audit trail is held in Jira. At this point in time, the policy is that GitLab Issues should not be used.
+*Can we use gitlab issues?* Using GitLab Issues (or any other Issue Management solution) is problematic as our project management, methodology, and audit trail is held in Jira. 
+At this point in time, the policy is that GitLab Issues *should not* be used.
 
 *Should we rename the SKB project?* We would rather not rename. The project is "SKA Bugs".
 
