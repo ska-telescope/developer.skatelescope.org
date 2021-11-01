@@ -71,6 +71,7 @@ stop_review:
   rules:
     - if: $CI_MERGE_REQUEST_ID
       when: manual
+      allow_failure: true # needed to not block pipeline
 
 # Create Gitlab CI badges from CI metrics
 # https://developer.skao.int/en/latest/tools/continuousintegration.html#automated-collection-of-ci-health-metrics-as-part-of-the-ci-pipeline
