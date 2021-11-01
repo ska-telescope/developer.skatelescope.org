@@ -51,7 +51,7 @@ Defining and Building Container Images
 * Use the ``["thing"]`` which is the ``exec`` notation ensuring that proper signal propagation occurs to the containerised application.
 * Use the ``ONBUILD`` feature sparingly, as it can cause unintended consequences.
 
-aming and Tagging
+Naming and Tagging
 ==================
 
 * Image names should reflect the application that will run in the resultant container eg: ``tango-example/powersupply:1.13.2``.

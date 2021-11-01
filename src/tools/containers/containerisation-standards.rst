@@ -163,7 +163,7 @@ Be liberal with comments (lines starting with ``#``).  These should explain each
 
     # This application depends on type hints available only in 3.7+
     # as described in PEP-484
-    ARG base_image="python:3.7"
+    ARG base_image="python:3.9"
     FROM $base_image
     ...
 
@@ -210,17 +210,17 @@ Image builds tend to be highly information dense, therefore it is important to k
 
 .. code:: docker
 
-    FROM python:latest
+    FROM python:3.9.5
     RUN apt-get install -y libpq-dev \
                     postgresql-client-10
     RUN pip install psycopg2 \
                     sqlalchemy
 
-The image is built with ``docker build -t python-with-postgres:latest .``.  Now we have a base image with Python, Postgres, and SQLalchemy support that can be used as a common based for other applications:
+The image is built with ``docker build -t python-with-postgres:1.2.3 .``.  Now we have a base image with Python, Postgres, and SQLalchemy support that can be used as a common based for other applications:
 
 .. code:: docker
 
-    FROM  python-with-postgres:latest
+    FROM  python-with-postgres:1.2.3
     COPY ./app /app
     ...
 
@@ -301,8 +301,8 @@ Consider the following:
 
 .. code:: docker
 
-    FROM python:latest
-    ARG postgres_client "postgresql-client-10 libpq-dev"
+    FROM python:3.9.5
+    ARG postgres_client="postgresql-client-10 libpq-dev"
     RUN apt-get install -y $postgres_client
     COPY requirements.txt .
     RUN pip3 install -r requirements.txt
@@ -312,6 +312,33 @@ Consider the following:
 Looking at the example above, during the intensive development build phase of an application, it is likely that the most volitile element is the ``./app`` itself, followed by the Python dependencies in the ``requirements.txt`` file, then finally the least changeable element is the specific postgresql client libraries (the base image is always at the top).
 
 Laying out the build process in this way ensures that the build exploits as much as possible the build cache that the Container Engine holds locally.  The cache calculates a hash of each element of the ``Dockerfile`` linked to all the previous elements.  If this hash has not changed then the build process will skip the rebuild of that layer and pull it from the cache instead.  If in the above example, the ``COPY ./app /app`` step was placed before the ``RUN apt-get install``, then the package install would be triggered every time the code changed in the application unnecessarily.
+
+Volumes
+~~~~~~~
+
+Volumes definitions are not strictly required inorder to make a container function, but it is still useful to add as it provides documentary evidence of expected behaviour.
+
+.. code:: docker
+
+    FROM python:3.9.5
+    ...
+    # configuration files are mounted at /etc/myconfig
+    # database storage is expected at /data
+    VOLUME ["/etc/myconfig", "/data"]
+    ...
+
+Ports
+~~~~~
+
+Ports, like Volumes definitions, are not strictly required inorder to make a container function, but it is still useful to add as it provides documentary evidence of expected behaviour.
+
+.. code:: docker
+
+    FROM python:3.9.5
+    ...
+    # Application listens on 8080 for health check
+    EXPOSE 8080/tcp
+    ...
 
 Labels
 ~~~~~~
@@ -323,14 +350,13 @@ Use the ``LABEL`` directive to add ample metadata to your image.  This metadata 
 
     ...
     LABEL \
-          author="A Developer <a.developer@example.com>" \
+          author="Piers Harding <piers.harding@skao.int>" \
           description="This image illustrates LABELs" \
           license="Apache2.0" \
-          registry="acmeincorporated/imagename" \
-          vendor="ACME Incorporated" \
-          org.skatelescope.team="Systems Team" \
-          org.skatelescope.version="1.0.0" \
-          org.skatelescope.website="http://gitlab.com/ACMEIncorporate/widget"
+          int.skao.team="Systems Team" \
+          int.skao.application="widget" \
+          int.skao.version="1.0.0" \
+          int.skao.repository="http://gitlab.com/ska-telescope/ska-project"
     ...
 
 The following are recommended labels for all images:
@@ -338,11 +364,10 @@ The following are recommended labels for all images:
 * author: name and email address of the author
 * description: a short description of this image and it's purpose.
 * license: license that this image and contained software are released under
-* registry: the primary registry that this image should be found in
-* vendor: the owning organisation of the software component
-* org.skatelescope.team: the SKA team responsible for this image.
-* org.skatelescope.version: follows `Semantic Versioning <https://semver.org>`_, and should be linked to the image version tag discussed below.
-* org.skatelescope.website: where the software pertaining to the building of this image resides
+* int.skao.team: the SKA team responsible for this image.
+* int.skao.application: the application that this image contains
+* int.skao.version: follows `Semantic Versioning <https://semver.org>`_, and should be linked to the image version tag discussed below.
+* int.skao.repository: where the software pertaining to the building of this image resides
 
 Arguments
 ~~~~~~~~~
@@ -351,7 +376,7 @@ Use arguments via the ``ARG`` directive to parameterise elements such as the bas
 
 .. code:: docker
 
-    ARG base_image="python:latest"
+    ARG base_image="python:3.9.5"
     FROM $base_image
     RUN apt-get install -y binutls cmake
     ARG postgres_client="postgresql-client-10 libpq-dev"
@@ -362,8 +387,8 @@ The ARGs referenced above can then be addressed at build time with:
 
 .. code:: bash
 
-    docker build -t myimage:latest \
-                 --build-arg base_image="python:3" \
+    docker build -t myimage:1.2.3 \
+                 --build-arg base_image="python:3.10.1" \
                  --build-arg postgres_client="postgresql-client-9 libpq-dev"
                  -f path/to/Dockerfile \
                  project/path/to/build/context
@@ -439,7 +464,7 @@ ONBUILD is a powerful directive that enables the author of an image to enforce a
 
 .. code:: docker
 
-    FROM python:latest
+    FROM python:3.9.5
     RUN pip3 install -r https://example.com/parent/image/requirements.txt
     ONBUILD COPY ./app ./app
     ONBUILD RUN chmod 644 ./app/bin/*
