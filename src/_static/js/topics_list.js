@@ -1,33 +1,58 @@
-   jQuery(function(){
-       var checklist = $("#software-modules-list p:eq(0)").text();
-       var checklist = checklist.replace(/\s/g,''); // remove white space
-       var checklist = checklist.split(':'); // split Topics from the tags
-       var topics = checklist[0];
-       var checklist = checklist[1].split(','); // get tag list
-       var pg1 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&simple=true&archived=false&include_subgroups=true&all_available=true&page=1";
-       var pg2 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&simple=true&archived=false&include_subgroups=true&all_available=true&page=2";
-       var pg3 = "https://gitlab.com/api/v4/groups/3180705/projects?per_page=100&simple=true&archived=false&include_subgroups=true&all_available=true&page=3";
-       var list = $("#software-modules-list table");
-       if( list.length && topics === "Topics" && checklist.length){
-           list.empty();
-           // concatenate all pages
-           //
-           $.getJSON(pg1, function(data1){
-            $.getJSON(pg2, function(data2){
-             $.getJSON(pg3, function(data3){
-               data = data1.concat(data2,data3);
-               // restrict the list to files with the rigt tags
-               //
-               data = data.filter( a => ($(checklist).not($(checklist).not(a.tag_list))).length > 0) ;    
-               // sort by name
-               //
-               data.sort((a, b) => a["name"].localeCompare(b["name"]));  
-               // build the table
-               //
-               item = ProjectTable(data);
-               $(item).appendTo(list);
-           }); //end getJSON
-           }); //end getJSON
-           }); //end getJSON
-       }
-    });
+// https://stackoverflow.com/questions/62337587/return-paginated-output-recursively-with-fetch-api
+async function fetchRequest(url) {
+  try {
+    // Fetch request and parse as JSON
+    const response = await fetch(url);
+    let data = await response.json();
+
+    // Extract the url of the response's "next" relational Link header
+    let next_page;
+    if (/<([^>]+)>; rel="next"/g.test(response.headers.get("link"))) {
+      next_page = /<([^>]+)>; rel="next"/g.exec(
+        response.headers.get("link")
+      )[1];
+    }
+
+    // If another page exists, merge its output into the array recursively
+    if (next_page) {
+      data = data.concat(await fetchRequest(next_page));
+    }
+    return data;
+  } catch (err) {
+    return console.error(err);
+  }
+}
+
+// Fill the topics table
+function topicsList() {
+  let areas = ["sdp", "simulations", "skampi"];
+  let projectsUrl = new URL(
+    "https://gitlab.com/api/v4/groups/3180705/projects?"
+  );
+
+  projectsUrl.searchParams.set("simple", "true");
+  projectsUrl.searchParams.set("archived", "false");
+  projectsUrl.searchParams.set("include_subgroups", "true");
+  projectsUrl.searchParams.set("all_available", "true");
+  projectsUrl.searchParams.set("per_page", "100");
+
+  // get all results and fill the tables
+  fetchRequest(projectsUrl).then((data) => {
+    for (const area of areas) {
+      var list = $("#" + area + " table");
+      list.empty();
+      // restrict the list to files with the right tag
+      //
+      const data_filtered = data.filter((a) => a.tag_list.includes(area));
+      // sort by name
+      //
+      data_filtered.sort((a, b) => a["name"].localeCompare(b["name"]));
+      // build the table
+      //
+      item = ProjectTable(data_filtered);
+      $(item).appendTo(list);
+    }
+  });
+}
+
+topicsList();

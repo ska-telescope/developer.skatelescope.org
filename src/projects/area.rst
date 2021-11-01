@@ -1,6 +1,10 @@
 .. this title is converted into a DOM id and used
    for populating this page using Gitlab APIs,
    Do not edit it
+   Note that the section titles are used in 
+   `src/_static/js/topics_list.js` to populate the tables
+   So when a new section is added, the following section name
+   should be added to the list in the above file (in lowercase)
 
 .. _topics:
 
@@ -11,6 +15,11 @@ Projects by Area
 SDP
 ===
 
+   ============= =================
+   Documentation Gitlab repository
+   ============= =================
+   ============= =================
+
 .. toctree::
   :maxdepth: 1
 
@@ -18,6 +27,11 @@ SDP
 
 Simulations
 ===========
+
+   ============= =================
+   Documentation Gitlab repository
+   ============= =================
+   ============= =================
 
 .. toctree::
   :maxdepth: 1
@@ -27,16 +41,9 @@ Simulations
 SKAMPI
 ======
 
-Software Modules List
----------------------
-
-Topics: skampi
-
    ============= =================
    Documentation Gitlab repository
    ============= =================
-   testdoc       testgit
-   testdoc       testgit
    ============= =================
 
 - `SKAMPI repository <https://gitlab.com/ska-telescope/ska-skampi/>`_: the SKA MVP Integration project. Contains helm charts and automation for deployment.
