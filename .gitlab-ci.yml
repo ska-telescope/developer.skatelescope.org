@@ -51,4 +51,4 @@ deploy_staging:
 # https://developer.skao.int/en/latest/tools/continuousintegration.html#automated-collection-of-ci-health-metrics-as-part-of-the-ci-pipeline
 include:
   - project: 'ska-telescope/templates-repository'
-    file: 'gitlab-ci/includes/post_step.yml'
+    file: 'gitlab-ci/includes/finaliser.gitlab-ci.yml'
