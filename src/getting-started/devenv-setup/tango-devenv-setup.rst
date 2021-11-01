@@ -56,8 +56,8 @@ Run the box and call the following commands:
 Working with Tango
 ==================
 
-In order to start working with tango you should refer to the documentation on `Tango Example Project </projects/tango-example/en/latest/?badge=latest#>`_.
-Following this documentation you will be able to start tango on a kubernetes environment using `minikube <https://gitlab.com/ska-telescope/sdi/deploy-minikube>`_.
+In order to start working with tango you should refer to the documentation on `Tango Example Project </projects/ska-tango-examples/en/latest/?badge=latest#>`_.
+Following this documentation you will be able to start tango on a kubernetes environment using `Minikube <https://gitlab.com/ska-telescope/sdi/ska-cicd-deploy-minikube>`_.
 
 Other information
 =================
