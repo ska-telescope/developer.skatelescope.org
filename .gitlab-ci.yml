@@ -11,7 +11,6 @@ variables:
 cache:
   paths:
     - .cache/pip
-    - public
     - venv
 
 before_script:
