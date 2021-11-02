@@ -11,9 +11,13 @@ variables:
 cache:
   paths:
     - .cache/pip
+    - venv
 
 before_script:
   - python -V               # Print out python version for debugging
+  - pip install virtualenv
+  - virtualenv venv
+  - source venv/bin/activate
 
 #pages is a special job that is used to upload static content to GitLab that can be used to serve your website
 #in this case the developer portal
@@ -24,11 +28,13 @@ pages:
   - ls build/html
   - mkdir .public
   - cp -r build/html/* .public
-  - mv .public public
-  # "tags" is used to select specific Runners from the list of all Runners that are allowed to run this project
-  #tags:
-  #  - ska
+  - rm -rf public/$CI_COMMIT_REF_SLUG
+  - mkdir .public/$CI_COMMIT_REF_SLUG
+  - cp -r build/html/* .public/$CI_COMMIT_REF_SLUG
+  - mkdir -p public # create folder if not exists (if cache is deleted)
+  - cp -r .public/* public/
   artifacts:
+    name: "$CI_COMMIT_REF_SLUG"
     paths:
     - public
     expire_in: 1 week
@@ -39,18 +45,35 @@ deploy_staging:
   stage: deploy
   script:
     - echo "Deploy to staging server"
-  #  - rsync -av public /srv/public
-  # "tags" is used to select specific Runners from the list of all Runners that are allowed to run this project
-  #tags:
-  #  - ska
   environment:
     name: staging
-# only:
-# - master
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      
+deploy_review:
+  stage: deploy
+  script:
+    - echo "Deploy a review app"
+  environment:
+    name: review/$CI_COMMIT_REF_SLUG
+    url: https://ska-telescope.gitlab.io/developer.skatelescope.org/$CI_COMMIT_REF_SLUG/
+  rules:
+    - if: $CI_MERGE_REQUEST_ID
+      
+stop_review:
+  stage: deploy
+  script:
+    - echo "Stopping review/$CI_COMMIT_REF_SLUG environment"
+  environment:
+    name: review/$CI_COMMIT_REF_SLUG
+    action: stop
+  rules:
+    - if: $CI_MERGE_REQUEST_ID
+      when: manual
+      allow_failure: true # needed to not block pipeline
 
 # Create Gitlab CI badges from CI metrics
 # https://developer.skao.int/en/latest/tools/continuousintegration.html#automated-collection-of-ci-health-metrics-as-part-of-the-ci-pipeline
 include:
   - project: 'ska-telescope/templates-repository'
-    file: 'gitlab-ci/includes/post_step.yml'
-
+    file: 'gitlab-ci/includes/finaliser.gitlab-ci.yml'
