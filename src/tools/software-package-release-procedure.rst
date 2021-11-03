@@ -549,7 +549,7 @@ Raw
 Raw artefacts are typically images, reports, data files, and specific repositories that do not have direct functional support in Nexus (same as for Ansible roles and collections). These are hosted here `raw-internal <https://artefact.skao.int/#browse/search/raw>`_ .  This arefacts should be packaged and labelled with metadata like any other artefact that gets published to the Central Artefact Repository. In order to support this, each Raw artefact (essentially a collection of one or more files, possibly spanning directories) must reside in a separate directory following the convention `/raw/<raw artefact suffix>/`.  When published, the Raw artefact will have a manifest file added to it, and will be packaged as a tar.gz file with the name <repository>-<raw artefact suffix>-<semver>.tar.gz.
 
 Package and publish Raw artefacts to the SKAO Raw Repository
-"""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 The process of packaging and publishing raw artefacts to the SKAO repository is very simple. A few lines are needed in the .gitlab-ci.yml file, and the project needs to have a raw directory under the root of the project, that contains all your project’s raw packages. 
 
