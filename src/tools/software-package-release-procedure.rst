@@ -619,8 +619,11 @@ Validation Checks (Marvin)
 
 After the raw artefacts have been published to the nexus repository `raw-internal <https://artefact.skao.int/#browse/search/raw>`_  in CAR, Marvin will run multiple checks to find out if the artefact is a valid one.
 For the artefact to be valid:
-* Artefact name should be complaint. The folders inside raw/ should have a adr-25 complaint name .
-* Artefact Version should be complaint. The .release file should have a release version complaint with semantic versioning.
-* Artefact should have a Manifest.skao.int file with the required metadata inside
+.. toctree::
+   :maxdepth: 1 
+
+  Artefact name should be complaint. The folders inside raw/ should have a adr-25 complaint name .
+  Artefact Version should be complaint. The .release file should have a release version complaint with semantic versioning.
+  Artefact should have a Manifest.skao.int file with the required metadata inside
 
 If any of this checks fail the artefact will be moved to a quarantined status to the repository  `raw-qurantine <https://artefact.skao.int/#browse/browse:raw-quarantine>`_
