@@ -546,35 +546,81 @@ The following example is for common systems role collections:
 Raw
 ---
 
-Raw artefacts are typically `tar.gz` files, images, reports, data files, and specific repositories that do not have direct functional support in Nexus (same as for Ansible roles and collections).  These are hosted here `raw-internal <https://artefact.skao.int/#browse/search/raw>`_ .  Note that the artefact directory structure must be prefixed by the related repository, but can be flexible but meaningful after that.
+Raw artefacts are typically images, reports, data files, and specific repositories that do not have direct functional support in Nexus (same as for Ansible roles and collections). These are hosted here `raw-internal <https://artefact.skao.int/#browse/search/raw>`_ .  This arefacts should be packaged and labelled with metadata like any other artefact that gets published to the Central Artefact Repository. In order to support this, each Raw artefact (essentially a collection of one or more files, possibly spanning directories) must reside in a separate directory following the convention `/raw/<raw artefact suffix>/`.  When published, the Raw artefact will have a manifest file added to it, and will be packaged as a tar.gz file with the name <repository>-<raw artefact suffix>-<semver>.tar.gz.
 
-The following example shows the publishing of an external dependency library for the Tango base image builds:
+Package and publish Raw artefacts to the SKAO Raw Repository
+"""""""""""""""""""""""""""""""""
+
+The process of packaging and publishing raw artefacts to the SKAO repository is very simple. A few lines are needed in the .gitlab-ci.yml file, and the project needs to have a raw directory under the root of the project, that contains all your project’s raw packages. 
+
+
+As an example, let's take the following project structure:
 
 .. code:: bash
 
-  curl -u ${CAR_RAW_USERNAME}:${CAR_RAW_PASSWORD} \
-    --upload-file tango-9.3.4.tar.gz \
-    ${CAR_RAW_REPOSITORY_URL}/ska-tango-images/libraries/tango-9.3.4.tar.gz
+  .
+  ├── my-project
+  │   ├── raw
+  │   |   └── ska-first-chart
+  │   |   └── ska-second-chart
+  │   ├── .gitlab-ci.yml
+  │   ├── README.md
+  │   ├── Makefile
+  |   └── .release   
 
-GitLab Generic Package Repository
+To simply package and code your raw packages, you migrate to use the Makefile templates and Gitlab Templates.
+Basically by adding the `ska-cicd-makefile <https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile>`_ repo as a submodule with the following command:
+
+.. code:: bash
+
+  $ git submodule add https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile.git .make
+
+And adding to your root Makefile, the following:
+
+.. code:: yaml
+
+  # include RAW packages support
+  include .make/raw.mk
+
+This will include the make target present in the .make/raw.mk file. The targets are:
+
+* raw-package-all: Package all version to a tar.gz format and add a Manifest.skao.int file with the required metadata, and saves them into build/raw folder
+* raw-publish-all: Publish all raw packages that are under build/raw folder to CAR
+* raw-package: Package folder under the RAW_PKG var
+* raw-publish: Publish raw package in build/raw folder with the value name of RAW_PKG var
+
+For more informations about the raw targets, you can run
+
+.. code:: yaml
+
+  $ make long-help raw
+
+and this will show all the information about the targets and variables from the raw.mk file.
+
+To add steps for packaging and publishing raw packages to your pipeline you just need to add the following to your gitlab-ci.yaml:
+
+.. code:: yaml
+
+  variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
+  stages:
+  - build
+  - publish
+
+  # Raw
+  - project: 'ska-telescope/templates-repository'
+    file: 'gitlab-ci/includes/raw.gitlab-ci.yml'
+
+And this will add both jobs to your pipeline. The build job will package all raw packages under raw/ folder and save them on the gitlab artefacts under the folder build/raw. The publish job that only runs on Tagged Commits will publish the raw packages present on the gitlab artefact build/raw folder to CAR.
+
+Validation Checks (Marvin)
 """""""""""""""""""""""""""""""""
 
-The `GitLab Generic Repository <https://docs.gitlab.com/ee/user/packages/generic_packages/index.html>`_ can be used to store arbitrary artefacts between job steps (as an alternative to the gitlab runner `cache <https://docs.gitlab.com/ee/ci/caching/>`_) or between pipelines.
+After the raw artefacts have been published to the nexus repository `raw-internal <https://artefact.skao.int/#browse/search/raw>`_  in CAR, Marvin will run multiple checks to find out if the artefact is a valid one.
+For the artefact to be valid:
+* Artefact name should be complaint. The folders inside raw/ should have a adr-25 complaint name .
+* Artefact Version should be complaint. The .release file should have a release version complaint with semantic versioning.
+* Artefact should have a Manifest.skao.int file with the required metadata inside
 
-Upload artefacts in CI/CD with:
-
-.. code:: yaml
-
-  upload:
-    stage: upload
-    script:
-      - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file path/to/really_important.tar.gz "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/${YOUR_PACKAGE_NAME}/${SEMANTIC_VERSION}/really_important.tar.gz"'
-
-These can later be retrieved with:
-
-.. code:: yaml
-
-  download:
-    stage: download
-    script:
-      - 'wget --header="JOB-TOKEN: $CI_JOB_TOKEN" ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/${YOUR_PACKAGE_NAME}/${SEMANTIC_VERSION}/really_important.tar.gz'
+If any of this checks fail the artefact will be moved to a quarantined status to the repository  `raw-qurantine <https://artefact.skao.int/#browse/browse:raw-quarantine>`_
