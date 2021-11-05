@@ -362,10 +362,10 @@ Namespaces:
 * If your project supports C++17 and does not need to be compatible with an older standard, use nested namespaces. [`Explanation <https://clang.llvm.org/extra/clang-tidy/checks/modernize-concat-nested-namespaces.html>`__]
 * Follow `SKA ADR-25 (General software naming convention) <https://confluence.skatelescope.org/display/SWSI/ADR-25+General+software+naming+convention>`__ to name components in a project.
 
-    * Prefer to organise key components of your code by using a ``namespace`` that follows the naming convention set out in ADR-25.
-    * An uppermost *ska* ``namespace`` should be used for SKA code.
-    * Prefer to keep a flat ``namespace`` hierarchy in your project.
-    * The project directory structure should follow the project's ``namespace`` hierarchy.
+  * Prefer to organise key components of your code by using a ``namespace`` that follows the naming convention set out in ADR-25.
+  * An uppermost *ska* ``namespace`` should be used for SKA code.
+  * Prefer to keep a flat ``namespace`` hierarchy in your project.
+  * The project directory structure should follow the project's ``namespace`` hierarchy.
 
 Pointers:
 
@@ -384,7 +384,8 @@ Exceptions:
 * Be consistent with the way your own code handles and generates errors.
 * Consider which errors your own code can handle (e.g. parameter configuration for internal methods) and if not, how you will pass on errors to callers of your code.
 
-    * For instance, if a user inputs a negative value for a parameter that resizes a ``std::vector``, it may be more helpful to return an error indicating that the parameter should be non-negative, than it is to let the code throw a ``std::length_error`` with no additional information.
+  * For instance, if a user inputs a negative value for a parameter that resizes a ``std::vector``, it may be more helpful to return an error indicating that the parameter should be non-negative, than it is to let the code throw a ``std::length_error`` with no additional information.
+
 * Minimise the burden for others to understand the internal workings of your code when dealing with errors.
 * Consider how your code will be used when making these decisions.
 
