@@ -92,7 +92,7 @@ This is the file in the skeleton HelloWorld project.
 
 We have four stages of the CI 
 
-* build
+* build *(Note: For high level languages like python, web etc. the build stage comes after the lint stage)*
 * lint
 * test
 * pages
