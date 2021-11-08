@@ -149,8 +149,8 @@ Release Management
 
 The Release of a new artefact should be as follow:
 
-* Create a new Issue on the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`_ Jira Project with a summary of your release.
-* Push a new tag on your gitlab project, with the new version to be Released. The commit that triggered this Tag should include the Jira ticket that was just created in the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`_ Jira Project.
+- 1st: Create a new Issue on the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`_ Jira Project with a summary of your release.
+- 2nd: Push a new tag on your gitlab project, with the new version to be Released. The commit that triggered this Tag should include the Jira ticket that was just created in the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`_ Jira Project.
 
 Templates for automating the release process
 --------------------------------------------
