@@ -155,7 +155,7 @@ The Release of a new artefact should be as follow:
 Templates for automating the release process
 --------------------------------------------
 
-As part of the release notes publishing procedures developers should use a template job that uses changelogs to generate artefact releases. To use it, please include the below template job. The changelog generation process relies on the **generate-changelog** make target present in the **release.mk makefile** (*must be included as submodule*). 
+As part of the release notes publishing procedures developers should use a template job that uses changelogs to generate artefact releases. To use it, please include the below template job. The changelog generation process relies on the **generate-changelog** make target present in the **release.mk makefile**. It must be included as a submodule of repository `ska-cicd-makefile <https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile>`_. 
 It requires a script that generates changelog documentation using **git-chglog** and it is meant to be used in a Gitlab tag pipeline job as it depends on the pipelines variables to publish the release notes to a newly created tagged commit. A Jira ticket is added to the release notes to enable other teams to refer to the documentation related to process and implementation of git-changelog.
 
 .. code:: yaml
@@ -179,7 +179,7 @@ Developers are strongly encouraged to use the default template to ensure that si
 Release results
 ---------------
 
-After the tagged pipeline finished the new release generated with the git-chglog will be appended to the tag in the gitlab project, an example of the release notes can be seen `here <https://gitlab.com/ska-telescope/templates/ska-raw-skeleton/-/releases/0.0.1>`_. And the Jira ticket (preferable one created on the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`_ Jira Project) that is present on the commit message that triggered the tag pipeline will be updated with links to the gitlab release page.
+After the tagged pipeline finishes, the new release generated with the git-chglog will be appended to the tag in the gitlab project, an example of the release notes can be seen `here <https://gitlab.com/ska-telescope/templates/ska-raw-skeleton/-/releases/0.0.1>`_. And the Jira ticket (preferable one created on the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`_ Jira Project) that is present on the commit message that triggered the tag pipeline will be updated with links to the gitlab release page.
 
 Deploying Artefacts
 ===================
