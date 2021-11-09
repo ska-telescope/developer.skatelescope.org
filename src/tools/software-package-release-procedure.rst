@@ -155,7 +155,12 @@ The Release of a new artefact should be as follow:
 Templates for automating the release process
 --------------------------------------------
 
-As part of the release notes publishing procedures developers should use a template job that uses changelogs to generate artefact releases. To use it, please include the below template job. The changelog generation process relies on the **generate-changelog** make target present in the **release.mk makefile**. It must be included as a submodule of repository `ska-cicd-makefile <https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile>`_. 
+As part of the release notes publishing procedures developers should use a template job that uses changelogs to generate artefact releases. To use it, please include the below template job. The changelog generation process relies on the **generate-changelog** make target present in the **release.mk makefile**, this makefile is located in the `ska-cicd-makefile <https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile>`_ project. This repo should be added as a submodule to your own project, with the following command:
+
+.. code:: yaml
+
+  git submodule add https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile.git .make
+
 It requires a script that generates changelog documentation using **git-chglog** and it is meant to be used in a Gitlab tag pipeline job as it depends on the pipelines variables to publish the release notes to a newly created tagged commit. A Jira ticket is added to the release notes to enable other teams to refer to the documentation related to process and implementation of git-changelog.
 
 .. code:: yaml
