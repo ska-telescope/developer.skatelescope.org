@@ -270,7 +270,7 @@ for example
 
 .. code-block:: bash
 
-    find cfitsio REQURIED
+    find cfitsio REQUIRED
 
 Except for the initial prefix (install, find or both) the other [] are optional, and are passed directly to the find_package() cmake function.
 
@@ -312,10 +312,18 @@ on-boarding. However, we recommend that new software follow
 * `The cplusplus Core Guidelines <http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines>`__.
 * The `Google C++ Style Guide <https://google.github.io/styleguide/cppguide.html>`__.
 
+C++ language standard
+
+* [SKA] The minimum language standard is C++14. There is no maximum language standard.
+
+Compiler
+
+* [SKA] There is no mandate to use a specific compiler or compiler version at this time, as long as it supports the minimum language standard.
+
 Project structure:
 
-* Follow the structure shown in the SKA C++ example project repository.
-* Reduce compile times by considering what code should go in a header file and what code should go in a source file.
+* [SKA] Follow the structure shown in the SKA C++ example project repository.
+* [SKA] Reduce compile times by considering what code should go in a header file and what code should go in a source file.
 
 General:
 
@@ -341,12 +349,12 @@ Classes:
 * Place ``public`` code first, ``protected`` code second, and ``private`` code last. [`Explanation <https://google.github.io/styleguide/cppguide.html#Class_Format>`__]
 * By default, mark a class as ``final``, and mark all members ``private``. [`Explanation <https://google.github.io/styleguide/cppguide.html#Inheritance>`__]
 * Only set a member as ``protected`` if it must be inherited, or ``public`` if the getter is sufficiently trivial. [`Explanation <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#c131-avoid-trivial-getters-and-setters>`__]
-* Derived ``virtual`` methods should be marked ``override``. [`Explanation <https://clang.llvm.org/extra/clang-tidy/checks/modernize-use-override.html>`__]
+* Derived ``virtual`` methods should be marked ``override``. [`Explanation <https://google.github.io/styleguide/cppguide.html#Inheritance>`__]
 * Prefer RAII with simple constructors. [`Explanation <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#r1-manage-resources-automatically-using-resource-handles-and-raii-resource-acquisition-is-initialization>`__]
 * Limit the proliferation of overloaded functions and constructors, prefer default parameters. [`Explanation <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#f51-where-there-is-a-choice-prefer-default-arguments-over-overloading>`__]
 * Prefer constructor member initializer lists. [`Explanation <https://google.github.io/styleguide/cppguide.html#Constructor_Initializer_Lists>`__]
-* Prefer to pass constructor parameters by value and use ``std::move`` with initializer lists. [`Explanation <https://clang.llvm.org/extra/clang-tidy/checks/modernize-pass-by-value.html>`__]
-* Single parameter constructors should be marked ``explicit``. [`Explanation <https://clang.llvm.org/extra/clang-tidy/checks/google-explicit-constructor.html>`__]
+* Prefer to pass constructor parameters by value and use ``std::move`` with initializer lists. [`Explanation <https://google.github.io/styleguide/cppguide.html#Rvalue_references>`__ and `Explanation <https://clang.llvm.org/extra/clang-tidy/checks/modernize-pass-by-value.html>`__]
+* Single parameter constructors should be marked ``explicit``. [`Explanation <https://google.github.io/styleguide/cppguide.html#Implicit_Conversions>`__ and `Explanation <https://clang.llvm.org/extra/clang-tidy/checks/google-explicit-constructor.html>`__]
 * If you need to use inheritance, prefer ``public`` inheritance. [`Explanation <https://google.github.io/styleguide/cppguide.html#Inheritance>`__]
 * When using inheritance, prefer to keep class member variables and methods within the same class or else close to each other in the class hierarchy. [`Explanation <https://google.github.io/styleguide/cppguide.html#Inheritance>`__]
 * Avoid computationally intensive work (in particular virtual calls) inside constructors, or consider adding an initialization method if absolutely necessary. [`Explanation <https://google.github.io/styleguide/cppguide.html#Doing_Work_in_Constructors>`__]
@@ -357,15 +365,14 @@ Classes:
 
 Namespaces:
 
-* Prefer to use fully qualified ``namespace`` and class names for definitions in source files over enclosing namespaces.
+* Prefer to use fully qualified ``namespace`` and class names for definitions in source files over enclosing namespaces. However, if this affects the readability of the code, use an enclosing namespace. [`Explanation <https://google.github.io/styleguide/cppguide.html#Namespaces>`__]
 * Use ``using-declarations`` where needed and do not use ``using-directives``. [`Explanation <https://google.github.io/styleguide/cppguide.html#Namespaces>`__]
-* If your project supports C++17 and does not need to be compatible with an older standard, use nested namespaces. [`Explanation <https://clang.llvm.org/extra/clang-tidy/checks/modernize-concat-nested-namespaces.html>`__]
 * Follow `SKA ADR-25 (General software naming convention) <https://confluence.skatelescope.org/display/SWSI/ADR-25+General+software+naming+convention>`__ to name components in a project.
 
-  * Prefer to organise key components of your code by using a ``namespace`` that follows the naming convention set out in ADR-25.
-  * An uppermost *ska* ``namespace`` should be used for SKA code.
-  * Prefer to keep a flat ``namespace`` hierarchy in your project.
-  * The project directory structure should follow the project's ``namespace`` hierarchy.
+  * [SKA] Prefer to organise key components of your code by using a ``namespace`` that follows the naming convention set out in ADR-25.
+  * [SKA] An uppermost *ska* ``namespace`` should be used for SKA code, but your project may use additional (internal) nested namespaces.
+  * [SKA] Prefer to keep a flat ``namespace`` hierarchy in your project.
+  * [SKA] The project directory structure should follow the project's ``namespace`` hierarchy.
 
 Pointers:
 
@@ -380,26 +387,27 @@ Loops:
 
 Exceptions:
 
-* External dependencies have different ways of dealing with errors: exceptions, status codes, passing parameters by reference, or calling a function to check what (if any) was the last error.
-* Be consistent with the way your own code handles and generates errors.
-* Consider which errors your own code can handle (e.g. parameter configuration for internal methods) and if not, how you will pass on errors to callers of your code.
+* Please read the core guidelines on `Error handling <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines.html#e-error-handling>`__.
+* [SKA] External dependencies have different ways of dealing with errors: exceptions, status codes, passing parameters by reference, or calling a function to check what (if any) was the last error.
+* [SKA] Be consistent with the way your own code handles and generates errors.
+* [SKA] Consider which errors your own code can handle (e.g. parameter configuration for internal methods) and if not, how you will pass on errors to callers of your code.
 
   * For instance, if a user inputs a negative value for a parameter that resizes a ``std::vector``, it may be more helpful to return an error indicating that the parameter should be non-negative, than it is to let the code throw a ``std::length_error`` with no additional information.
 
-* Minimise the burden for others to understand the internal workings of your code when dealing with errors.
-* Consider how your code will be used when making these decisions.
+* [SKA] Minimise the burden for others to understand the internal workings of your code when dealing with errors.
+* [SKA] Consider how your code will be used when making these decisions.
 
 Headers:
 
-* Include header files in the same directory tree as source files.
+* [SKA] Include header files in the same directory tree as source files.
 * File extensions: C codes may use ``.c``/``.h`` and ``.cc``/``.hh``. C++ codes may also use ``.cpp``. Be consistent. [`Explanation <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#sf1-use-a-cpp-suffix-for-code-files-and-h-for-interface-files-if-your-project-doesnt-already-follow-another-convention>`__]
 * Do not use ``#pragma once`` as include guard. [`Explanation <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#sf8-use-include-guards-for-all-h-files>`__]
 * Avoid transitive includes where possible, and also consider the guideline about forward declarations described above. [`Explanation <https://google.github.io/styleguide/cppguide.html#Include_What_You_Use>`__ and `Explanation <https://google.github.io/styleguide/cppguide.html#Forward_Declarations>`__]
-* Headers are included using their full namespaces.
+* [SKA] Headers are included using their full namespaces.
 
 Design Patterns:
 
-We recommend that project follow design patterns where applicable.
+[SKA] We recommend that project follow design patterns where applicable.
 The example class structure follows the *Pimpl* construction design pattern but
 there are many others. This has an abstract base class *hello* and a derived
 class *wave* which is a type of hello, but we are also including an
@@ -410,20 +418,20 @@ cases can be found `in this article <https://en.wikibooks.org/wiki/C%2B%2B_Progr
 
 Hardware architecture:
 
-* You may wish to consider using platform specific optimizations on a specific hardware architecture for performance reasons.
-* If possible, write portable code, or make it clear why that cannot be done in your case.
+* [SKA] If possible, write portable code, or make it clear why that cannot be done in your case.
+* [SKA] You may wish to consider using platform specific optimizations on a specific hardware architecture for performance reasons.
 
 Tests:
 
-* Strive to achieve 100% code coverage.
-* Perform memory leak checks with standard tools such as ``valgrind``. Several tools to test code are included near the start of this page.
+* [SKA] Strive to achieve 100% code coverage. The SKA mandates demonstrating a minimum of 80% coverage.
+* [SKA] Perform memory leak checks with standard tools such as ``valgrind``. Several tools to test code are included near the start of this page.
 
 Documentation:
 
-* Add ``doxygen`` compatible comments that explain the purpose and functionality of the code, as well as describing all parameters and what the function will return.
-* Provide useful information about failure cases, and what users should expect if this happens.
-* Document under what circumstances the code might raise exceptions or return or result in an error - or document that it is not certain if that is the case.
-* Document the dimensionality and units of all parameters.
+* [SKA] Add ``doxygen`` compatible comments that explain the purpose and functionality of the code, as well as describing all parameters and what the function will return.
+* [SKA] Provide useful information about failure cases, and what users should expect if this happens.
+* [SKA] Document under what circumstances the code might raise exceptions or return or result in an error - or document that it is not certain if that is the case.
+* [SKA] Document the dimensionality and units of all parameters.
 
 Naturally, there will be exceptions to each rule, so use your own best judgement to improve the quality of your code.
 If in doubt, ask.
