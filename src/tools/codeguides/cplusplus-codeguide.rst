@@ -340,7 +340,7 @@ General:
 * Avoid global variables. [`Explanation <https://google.github.io/styleguide/cppguide.html#Local_Variables>`__]
 * Avoid ``#define`` for variables that could be defined in the code body. [`Explanation <https://google.github.io/styleguide/cppguide.html#Preprocessor_Macros>`__]
 * Avoid complex macros. [`Explanation <https://google.github.io/styleguide/cppguide.html#Preprocessor_Macros>`__]
-* Do not omit curly braces for control statements (e.g. ``if``, ``for``). [`Explanation <https://clang.llvm.org/extra/clang-tidy/checks/readability-braces-around-statements.html>`__]
+* Do not omit curly braces for control statements (e.g. ``if``, ``for``). [`Explanation <https://google.github.io/styleguide/cppguide.html#Conditionals>`__ and `Explanation <https://clang.llvm.org/extra/clang-tidy/checks/readability-braces-around-statements.html>`__]
 * Be mindful of implicit type conversions. Do not rely on implicit conversions, use consistent types and be explicit if you can. Use auto where appropriate. [`Explanation <https://google.github.io/styleguide/cppguide.html#Type_deduction>`__]
 
 Classes:
