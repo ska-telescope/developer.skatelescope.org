@@ -651,7 +651,7 @@ Conan
 Conan artefacts are typically C and C++ packages and manage any number of different binaries for different build configurations, including different architectures, compilers, compiler versions, runtimes, C++ standard library, etc. These are hosted here `conan-internal <https://artefact.skao.int/#browse/search/conan>`_ .  These artefacts should be packaged and labelled with metadata like any other artefact that gets published to the Central Artefact Repository. In order to support this, each Conan artefact (essentially a collection of one or more files, possibly spanning directories) must reside in a separate directory following the convention `./conan/<conan artefact suffix>/`.  When published, the conan artefact should have a manifest file added to it, and should be packaged as a .tgz file with the name <gitlab-repository-slug>-<conan artefact suffix>-<semver version>.tgz.
 
 Package and publish Conan artefacts to the SKAO Conan Repository
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 The process of packaging and publishing conan artefacts to the SKAO repository is very simple. A few lines are needed in the .gitlab-ci.yml file, and the project needs to have a conan directory under the root of the project, that contains all your project’s conan packages. 
 
