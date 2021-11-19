@@ -648,13 +648,21 @@ If any of this checks fail the artefact will be moved to a quarantined status to
 Conan
 ---
 
-Conan artefacts are typically C and C++ packages and manage any number of different binaries for different build configurations, including different architectures, compilers, compiler versions, runtimes, C++ standard library, etc. These are hosted here `conan-internal <https://artefact.skao.int/#browse/search/conan>`_ .  These artefacts should be packaged and labelled with metadata like any other artefact that gets published to the Central Artefact Repository. In order to support this, each Conan artefact (essentially a collection of one or more files, possibly spanning directories) must reside in a separate directory following the convention `./conan/<conan artefact suffix>/`.  When published, the conan artefact should have a manifest file added to it, and should be packaged as a .tgz file with the name <gitlab-repository-slug>-<conan artefact suffix>-<semver version>.tgz.
+Conan artefacts are typically C and C++ packages and manage any number of different binaries for different build configurations, including different architectures, compilers, compiler versions, runtimes, C++ standard library, etc. These are hosted in the `conan-internal <https://artefact.skao.int/#browse/search/conan>`_ repository in the Central Artefact Repository. These artefacts should be packaged and labelled with metadata like any other artefact that gets published to the CAR. In order to support this, each Conan artefact (essentially a collection of one or more files, possibly spanning directories) must reside in a separate directory following the convention `./conan/<conan artefact suffix>/`. To add the required metadata to your conan package you should first generate a MANIFEST.skao.int file with all the metadata required in it and pass it to the package while building, just by adding the following command to your conanfile.py:
+
+.. code:: conan
+
+  def package(self):
+    # Copy headers to the include folder and libraries to the lib folder
+    self.copy("MANIFEST.skao.int", src="src")
+                  .
+                  .
+
 
 Package and publish Conan artefacts to the SKAO Conan Repository
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 The process of packaging and publishing conan artefacts to the SKAO repository is very simple. A few lines are needed in the .gitlab-ci.yml file, and the project needs to have a conan directory under the root of the project, that contains all your project’s conan packages. 
-
 
 As an example, let's take the following project structure:
 
@@ -663,8 +671,8 @@ As an example, let's take the following project structure:
   .
   ├── my-project
   │   ├── conan
-  │   |   └── ska-first-chart
-  │   |   └── ska-second-chart
+  │   |   └── ska-first-package
+  │   |   └── ska-second-package
   │   ├── .gitlab-ci.yml
   │   ├── README.md
   │   ├── Makefile
@@ -686,10 +694,12 @@ And adding to your root Makefile, the following:
 
 This will include the make target present in the .make/conan.mk file. The targets are:
 
-* conan-package-all: Package all version to a tar.gz format and add a Manifest.skao.int file with the required metadata, and saves them into build/conan folder
+* conan-package-all: Package all version and add a Manifest.skao.int file with the required metadata, and saves them into build/conan folder
 * conan-publish-all: Publish all conan packages that are under build/conan folder to CAR
 * conan-package: Package folder under the CONAN_PKG var
 * conan-publish: Publish conan package in build/conan folder with the value name of CONAN_PKG var
+
+For this templates to work you need to add the copy Manifest line described above to your conanfile.py. the Default channel is stable and it is set in the makefile with the variable CONAN_CHANNEL and the default User will be Marvin also set in the conan.mk with the variable CONAN_USER. This to variable can be overriden in the root MAKEFILE.
 
 For more informations about the conan targets, you can run
 
@@ -714,4 +724,4 @@ To add steps for packaging and publishing conan packages to your pipeline you ju
   - project: 'ska-telescope/templates-repository'
     file: 'gitlab-ci/includes/conan.gitlab-ci.yml'
 
-And this will add both jobs to your pipeline. The build job will package all conan packages under conan/ folder and save them on the gitlab artefacts under the folder build/conan. The publish job that only runs on Tagged Commits will publish the conan packages present on the gitlab artefact build/conan folder to CAR.
+And this will add both jobs to your pipeline. The build job will build all conan packages under conan/ folder and save them on the gitlab artefacts under the folder build/.conan. The publish job that only runs on Tagged Commits will publish the conan packages present on the gitlab artefact build/.conan folder to CAR.
