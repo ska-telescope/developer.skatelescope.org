@@ -650,7 +650,7 @@ Conan
 
 Conan artefacts are typically C and C++ packages and manage any number of different binaries for different build configurations, including different architectures, compilers, compiler versions, runtimes, C++ standard library, etc. These are hosted in the `conan-internal <https://artefact.skao.int/#browse/search/conan>`_ repository in the Central Artefact Repository. These artefacts should be packaged and labelled with metadata like any other artefact that gets published to the CAR. In order to support this, each Conan artefact (essentially a collection of one or more files, possibly spanning directories) must reside in a separate directory following the convention `./conan/<conan artefact suffix>/`. To add the required metadata to your conan package you should first generate a MANIFEST.skao.int file with all the metadata required in it and pass it to the package while building, just by adding the following command to your conanfile.py:
 
-.. code:: conan
+.. code:: c
 
   def package(self):
     # Copy headers to the include folder and libraries to the lib folder
