@@ -699,7 +699,7 @@ This will include the make target present in the .make/conan.mk file. The target
 * conan-package: Package folder under the CONAN_PKG var
 * conan-publish: Publish conan package in build/conan folder with the value name of CONAN_PKG var
 
-For this templates to work you need to add the copy Manifest line described above to your conanfile.py. the Default channel is stable and it is set in the makefile with the variable CONAN_CHANNEL and the default User will be Marvin also set in the conan.mk with the variable CONAN_USER. This to variable can be overriden in the root MAKEFILE.
+For this templates to work you need to add the copy Manifest line described above to your conanfile.py. The Default channel is stable and it is set in the makefile with the variable CONAN_CHANNEL and the default User will be Marvin also set in the conan.mk with the variable CONAN_USER. This variable can be overriden in the root MAKEFILE.
 
 For more informations about the conan targets, you can run
 
