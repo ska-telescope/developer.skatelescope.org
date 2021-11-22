@@ -13,7 +13,7 @@ Artefacts that are candidates for promotion to the Central Artefact Repository w
 
 These conventions are designed to integrate with the leading packaging and deployment tools commonly available for each artefact type.
 
-For intermediate artefacts, it is recommended that the builtin `packages <https://docs.gitlab.com/ee/user/packages/>`_ (repository) features available in GitLab are used.  These can be accessed directly in the GitLab CI/CD pipeline.  Examples of these are given below for OCI Images, PyPi packages, and Raw (Generic) artefact artefacts.
+For intermediate artefacts, it is recommended that the built in `packages <https://docs.gitlab.com/ee/user/packages/>`_ (repository) features available in GitLab are used.  These can be accessed directly in the GitLab CI/CD pipeline.  Examples of these are given below for OCI Images, PyPi packages and Raw (Generic) artefacts.
 
 
 .. contents:: Table of Contents
@@ -549,7 +549,7 @@ The Python Package Index is located at  ```https://__token__:${CI_JOB_TOKEN}@gi
 Ansible Roles and Collections
 -----------------------------
 
-Ansible roles and collections are held in a Raw format repository *helm-internal* .  These are uploaded as individual files following the ADR-25 conventions of `<repository>/<role/collection name>` .
+Ansible roles and collections are held in a Raw format repository *ansible-internal* .  These are uploaded as individual files following the ADR-25 conventions of `<repository>/<role/collection name>` .
 
 The following example is for common systems role collections:
 
@@ -563,12 +563,12 @@ The following example is for common systems role collections:
 Raw
 ---
 
-Raw artefacts are typically images, reports, data files, and specific repositories that do not have direct functional support in Nexus (same as for Ansible roles and collections). These are hosted here `raw-internal <https://artefact.skao.int/#browse/search/raw>`_ .  These artefacts should be packaged and labelled with metadata like any other artefact that gets published to the Central Artefact Repository. In order to support this, each Raw artefact (essentially a collection of one or more files, possibly spanning directories) must reside in a separate directory following the convention `./raw/<raw artefact suffix>/`.  When published, the raw artefact should have a manifest file added to it, and should be packaged as a tar.gz file with the name <gitlab-repository-slug>-<raw artefact suffix>-<semver version>.tar.gz.
+Raw artefacts are typically images, reports, data files and specific repositories that do not have direct functional support in Nexus (same as for Ansible roles and collections). These are hosted here `raw-internal <https://artefact.skao.int/#browse/search/raw>`_ .  These artefacts should be packaged and labelled with metadata like any other artefact that gets published to the Central Artefact Repository. In order to support this, each Raw artefact (essentially a collection of one or more files, possibly spanning directories) must reside in a separate directory following the convention `./raw/<raw artefact suffix>/`.  When published, the raw artefact should have a manifest file added to it, and should be packaged as a tar.gz file with the name <gitlab-repository-slug>-<raw artefact suffix>-<semver version>.tar.gz.
 
 Package and publish Raw artefacts to the SKAO Raw Repository
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-The process of packaging and publishing raw artefacts to the SKAO repository is very simple. A few lines are needed in the .gitlab-ci.yml file, and the project needs to have a raw directory under the root of the project, that contains all your project’s raw packages. 
+The process of packaging and publishing raw artefacts to the SKAO repository is relatively straight-forward. A few lines are needed in the .gitlab-ci.yml file, and the project needs to have a raw directory under the root of the project, that contains all your project’s raw packages. 
 
 
 As an example, let's take the following project structure:
@@ -643,3 +643,85 @@ For the artefact to be valid:
 
 
 If any of this checks fail the artefact will be moved to a quarantined status to the repository  `raw-qurantine <https://artefact.skao.int/#browse/browse:raw-quarantine>`_
+
+
+Conan
+---
+
+Conan artefacts are typically C and C++ packages and manage any number of different binaries for different build configurations, including different architectures, compilers, compiler versions, runtimes, C++ standard library, etc. These are hosted in the `conan-internal <https://artefact.skao.int/#browse/search/conan>`_ repository in the Central Artefact Repository. These artefacts should be packaged and labelled with metadata like any other artefact that gets published to the CAR. In order to support this, each Conan artefact (essentially a collection of one or more files, possibly spanning directories) must reside in a separate directory following the convention `./conan/<conan artefact suffix>/`. To add the required metadata to your conan package you should first generate a MANIFEST.skao.int file with all the metadata required in it and pass it to the package while building, just by adding the following command to your conanfile.py:
+
+.. code:: c
+
+  def package(self):
+    # Copy headers to the include folder and libraries to the lib folder
+    self.copy("MANIFEST.skao.int", src="src")
+                  .
+                  .
+
+
+Package and publish Conan artefacts to the SKAO Conan Repository
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The process of packaging and publishing conan artefacts to the SKAO repository is relatively straight-forward. A few lines are needed in the .gitlab-ci.yml file, and the project needs to have a conan directory under the root of the project, that contains all your project’s conan packages. 
+
+As an example, let's take the following project structure:
+
+.. code:: bash
+
+  .
+  ├── my-project
+  │   ├── conan
+  │   |   └── ska-first-package
+  │   |   └── ska-second-package
+  │   ├── .gitlab-ci.yml
+  │   ├── README.md
+  │   ├── Makefile
+  |   └── .release   
+
+To simply package and code your conan packages, you migrate to use the Makefile templates and Gitlab Templates.
+Basically by adding the `ska-cicd-makefile <https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile>`_ repo as a submodule with the following command:
+
+.. code:: bash
+
+  $ git submodule add https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile.git .make
+
+And adding to your root Makefile, the following:
+
+.. code:: yaml
+
+  # include CONAN packages support
+  include .make/conan.mk
+
+This will include the make target present in the .make/conan.mk file. The targets are:
+
+* conan-package-all: Package all version and add a Manifest.skao.int file with the required metadata, and saves them into build/conan folder
+* conan-publish-all: Publish all conan packages that are under build/conan folder to CAR
+* conan-package: Package folder under the CONAN_PKG var
+* conan-publish: Publish conan package in build/conan folder with the value name of CONAN_PKG var
+
+For this templates to work you need to add the copy Manifest line described above to your conanfile.py. The Default channel is stable and it is set in the makefile with the variable CONAN_CHANNEL and the default User will be Marvin also set in the conan.mk with the variable CONAN_USER. This variable can be overriden in the root MAKEFILE.
+
+For more informations about the conan targets, you can run
+
+.. code:: yaml
+
+  $ make long-help conan
+
+and this will show all the information about the targets and variables from the conan.mk file.
+
+To add steps for packaging and publishing conan packages to your pipeline you just need to add the following to your gitlab-ci.yaml:
+
+.. code:: yaml
+
+  variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
+  stages:
+  - build
+  - publish
+
+  # Conan
+  - project: 'ska-telescope/templates-repository'
+    file: 'gitlab-ci/includes/conan.gitlab-ci.yml'
+
+And this will add both jobs to your pipeline. The build job will build all conan packages under conan/ folder and save them on the gitlab artefacts under the folder build/.conan. The publish job that only runs on Tagged Commits will publish the conan packages present on the gitlab artefact build/.conan folder to CAR.
