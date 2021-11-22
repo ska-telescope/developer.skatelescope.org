@@ -274,7 +274,7 @@ Helm Charts are published to the Central Artefact Repository in a native reposit
 Package and publish Helm Charts to the SKAO Helm Chart Repository
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-The process of packaging and publishing Helm charts to the SKAO repository is very simple. A few lines are needed in the ``.gitlab-ci.yml`` file, and the project needs to have a ``charts`` directory under the root of the project, that contains all your project's charts. If the ``charts`` folder is not under the project root, a line can be added in the CI job to first change to the directory containing this ``charts`` directory, however this is discouraged. For further information on best practices with regards to specifically the folder structure of charts, refer to `The Chart Best Practices Guide <https://helm.sh/docs/chart_best_practices/>`_, and also to our own set of :ref:`helm-best-practices`.
+The process of packaging and publishing Helm charts to the SKAO repository is relatively straight-forward. A few lines are needed in the ``.gitlab-ci.yml`` file, and the project needs to have a ``charts`` directory under the root of the project, that contains all your project's charts. If the ``charts`` folder is not under the project root, a line can be added in the CI job to first change to the directory containing this ``charts`` directory, however this is discouraged. For further information on best practices with regards to specifically the folder structure of charts, refer to `The Chart Best Practices Guide <https://helm.sh/docs/chart_best_practices/>`_, and also to our own set of :ref:`helm-best-practices`.
 
 As an example, let's take the following project structure:
 
@@ -568,7 +568,7 @@ Raw artefacts are typically images, reports, data files and specific repositorie
 Package and publish Raw artefacts to the SKAO Raw Repository
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-The process of packaging and publishing raw artefacts to the SKAO repository is very simple. A few lines are needed in the .gitlab-ci.yml file, and the project needs to have a raw directory under the root of the project, that contains all your project’s raw packages. 
+The process of packaging and publishing raw artefacts to the SKAO repository is relatively straight-forward. A few lines are needed in the .gitlab-ci.yml file, and the project needs to have a raw directory under the root of the project, that contains all your project’s raw packages. 
 
 
 As an example, let's take the following project structure:
@@ -662,7 +662,7 @@ Conan artefacts are typically C and C++ packages and manage any number of differ
 Package and publish Conan artefacts to the SKAO Conan Repository
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-The process of packaging and publishing conan artefacts to the SKAO repository is very simple. A few lines are needed in the .gitlab-ci.yml file, and the project needs to have a conan directory under the root of the project, that contains all your project’s conan packages. 
+The process of packaging and publishing conan artefacts to the SKAO repository is relatively straight-forward. A few lines are needed in the .gitlab-ci.yml file, and the project needs to have a conan directory under the root of the project, that contains all your project’s conan packages. 
 
 As an example, let's take the following project structure:
 
