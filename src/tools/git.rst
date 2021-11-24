@@ -292,7 +292,7 @@ There are more additional settings in GitLab that only project maintainers could
 
 .. _figure-gitlab-mergerequest-settings:
 
-.. figure:: media/gitlab-mergerequest-settings.png
+.. figure:: images/gitlab-mergerequest-settings.png
    :scale: 80%
    :alt: GitLab Merge Request Settings, showing the default settings for SKA Organisation projects
    :align: center
@@ -325,7 +325,7 @@ When a new Merge Request is created, a webhook triggers the SKA MR Service to ca
 
 For the subsequent changes pushed to the Merge Request, the comment is updated to reflect the latest status of the Merge Request.
 
-.. figure:: media/marvin-check-table.png
+.. figure:: images/marvin-check-table.png
    :scale: 80%
    :alt: Marvin Merge Request Settings
    :align: center
