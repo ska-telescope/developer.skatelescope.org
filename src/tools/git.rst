@@ -355,11 +355,11 @@ Checks
 +------------+-----------------------+---------------------------------------------------------------------------------------+
 | Failure    | Wrong Merge           | Reconfigure Merge Request Settings according to :ref:`merge-request`                  |
 |            | Request Setting       |                                                                                       |
-|            |                       | MR Settings Checks:                                                                   |
+|            |                       | MR Settings Checks(You may need Maintainer rights to change these):                                                                   |
 |            |                       |    * You should assign one or more people as reviewer(s)                              |
 |            |                       |    * Automatically resolve mr diff discussions should be checked                      |
-|            |                       |    * Override approvers and approvals per MR should be checked                        |
-|            |                       |    * Remove all approvals when new commits are pushed should be checked               |
+|            |                       |    * Prevent editing approval rules in merge requests should be checked                        |
+|            |                       |    * Remove all approvals when commits are added to the source branch should be checked               |
 |            |                       |    * Prevent approval of MR by the author should be checked                           |
 |            |                       |    * There should be at least 1 approval required                                     |
 |            |                       |    * Please uncheck Squash commits when Merge Request is accepted.                    |
