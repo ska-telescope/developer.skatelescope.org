@@ -336,62 +336,62 @@ For the subsequent changes pushed to the Merge Request, the comment is updated t
 Checks
 ++++++
 
-+------------+-----------------------+---------------------------------------------------------------------------------------+
-| Type       | Description           | Mitigation Strategy                                                                   |
-+============+=======================+=======================================================================================+
-| Warning    | Docker-Compose        | Please remove docker-compose from following files:                                    |
-|            | Usage                 |     *  At file: <file_location> on line <line_number>                                 |
-|            | Found                 |     *  At file: <file_location> on line <line_number>                                 |
-+------------+-----------------------+---------------------------------------------------------------------------------------+
-| Failure    | Missing Jira Ticket   | Branch name should start with a lowercase Jira ticket id                              |
-|            | In Branch Name        |                                                                                       |
-+------------+-----------------------+---------------------------------------------------------------------------------------+
-| Warning    | Missing Jira Ticket   | Following commit messages violate :ref:`committing-code`                              |
-|            | in commits            |      *   <commit-hash>                                                                |
-|            |                       |      *   <commit-hash>                                                                |
-+------------+-----------------------+---------------------------------------------------------------------------------------+
-| Failure    | Missing Jira Ticket ID| Title should include a valid Jira ticket id                                           |
-|            | in MR Title           |                                                                                       |
-+------------+-----------------------+---------------------------------------------------------------------------------------+
-| Failure    | Wrong Merge           | Reconfigure Merge Request Settings according to :ref:`merge-request`                  |
-|            | Request Setting       |                                                                                       |
-|            |                       | MR Settings Checks(You may need Maintainer rights to change these):                                                                   |
-|            |                       |    * You should assign one or more people as reviewer(s)                              |
-|            |                       |    * Automatically resolve mr diff discussions should be checked                      |
-|            |                       |    * Prevent editing approval rules in merge requests should be checked                        |
-|            |                       |    * Remove all approvals when commits are added to the source branch should be checked               |
-|            |                       |    * Prevent approval of MR by the author should be checked                           |
-|            |                       |    * There should be at least 1 approval required                                     |
-|            |                       |    * Please uncheck Squash commits when Merge Request is accepted.                    |
-|            |                       |    *  Please check Delete source branch when merge request is accepted.               |
-|            |                       | Project Settings Checks(You may need Maintainer rights to change these):              |
-|            |                       |    * Pipelines must succeed should be checked                                         |
-|            |                       |    * Enable Delete source branch option by default should be checked                  |
-|            |                       |    * Show link to create/view MR when pushing from the command line should be checked |
-+------------+-----------------------+---------------------------------------------------------------------------------------+
-| Failure    | Missing Assignee      |  Please assign at least one person for the MR                                         |
-+------------+-----------------------+---------------------------------------------------------------------------------------+
-|Information | Documentation Changes | This MR doesn't introduce any documentation changes. Please consider                  |
-|            |                       | updating documentation to reflect your changes                                        |
-+------------+-----------------------+---------------------------------------------------------------------------------------+
-|Failure     | Read The Docs         | Please integrate this project with ReadtheDocs following the guidelines:              |
-|            | Integration           |  *  Please set up docs/ folder for sphinx documentation build following the guidelines|
-|            |                       |  *  Please add this project as a subproject on Read the Docs following the guidelines |
-|            |                       |  *  Please import your project into Read the Docs                                     |
-+------------+-----------------------+---------------------------------------------------------------------------------------+
-| Failure    | Pipeline Checks       | Please create a `pipeline </en/latest/tools/ci-                                       |
-|            |                       | cd.html>`_  on this Merge Request or please add the following jobs:                   |
-|            |                       |                                                                                       |
-|            |                       |   *  `ci-metrics  </en/lat                                                            |
-|            |                       |      est/tools/ci-cd/continuous-integration.html?highlight=post_step.yml#automated    |
-|            |                       |      -collection-of-ci-health-metrics-as-part-of-the-ci-pipeline>`_                   |
-|            |                       |   *  `helm-publish  </en/                                                             |
-|            |                       |      latest/tools/software-package-release-procedure.html?highlight=helm_publish.yml  |
-|            |                       |      #package-and-publish-helm-charts-to-the-skao-helm-chart-repository>`_            |
-+------------+-----------------------+---------------------------------------------------------------------------------------+
-| Warning    | Non-compliant License | Please update the license information according to                                    |
-|            | Information           | :doc:`/projects/licensing`                                                            |
-+------------+-----------------------+---------------------------------------------------------------------------------------+
++------------+-----------------------+------------------------------------------------------------------------------------------+
+| Type       | Description           | Mitigation Strategy                                                                      |
++============+=======================+==========================================================================================+
+| Warning    | Docker-Compose        | Please remove docker-compose from following files:                                       |
+|            | Usage                 |     *  At file: <file_location> on line <line_number>                                    |
+|            | Found                 |     *  At file: <file_location> on line <line_number>                                    |
++------------+-----------------------+------------------------------------------------------------------------------------------+
+| Failure    | Missing Jira Ticket   | Branch name should start with a lowercase Jira ticket id                                 |
+|            | In Branch Name        |                                                                                          |
++------------+-----------------------+------------------------------------------------------------------------------------------+
+| Warning    | Missing Jira Ticket   | Following commit messages violate :ref:`committing-code`                                 |
+|            | in commits            |      *   <commit-hash>                                                                   |
+|            |                       |      *   <commit-hash>                                                                   |
++------------+-----------------------+------------------------------------------------------------------------------------------+
+| Failure    | Missing Jira Ticket ID| Title should include a valid Jira ticket id                                              |
+|            | in MR Title           |                                                                                          |
++------------+-----------------------+------------------------------------------------------------------------------------------+
+| Failure    | Wrong Merge           | Reconfigure Merge Request Settings according to :ref:`merge-request`                     |
+|            | Request Setting       |                                                                                          |
+|            |                       | MR Settings Checks(You may need Maintainer rights to change these):                      |
+|            |                       |    * You should assign one or more people as reviewer(s)                                 |
+|            |                       |    * Automatically resolve mr diff discussions should be checked                         |
+|            |                       |    * Prevent editing approval rules in merge requests should be checked                  |
+|            |                       |    * Remove all approvals when commits are added to the source branch should be checked  |
+|            |                       |    * Prevent approval of MR by the author should be checked                              |
+|            |                       |    * There should be at least 1 approval required                                        |
+|            |                       |    * Please uncheck Squash commits when Merge Request is accepted.                       |
+|            |                       |    *  Please check Delete source branch when merge request is accepted.                  |
+|            |                       | Project Settings Checks(You may need Maintainer rights to change these):                 |
+|            |                       |    * Pipelines must succeed should be checked                                            |
+|            |                       |    * Enable Delete source branch option by default should be checked                     |
+|            |                       |    * Show link to create/view MR when pushing from the command line should be checked    |
++------------+-----------------------+------------------------------------------------------------------------------------------+
+| Failure    | Missing Assignee      |  Please assign at least one person for the MR                                            |
++------------+-----------------------+------------------------------------------------------------------------------------------+
+|Information | Documentation Changes | This MR doesn't introduce any documentation changes. Please consider                     |
+|            |                       | updating documentation to reflect your changes                                           |
++------------+-----------------------+------------------------------------------------------------------------------------------+
+|Failure     | Read The Docs         | Please integrate this project with ReadtheDocs following the guidelines:                 |
+|            | Integration           |  *  Please set up docs/ folder for sphinx documentation build following the guidelines   |
+|            |                       |  *  Please add this project as a subproject on Read the Docs following the guidelines    |
+|            |                       |  *  Please import your project into Read the Docs                                        |
++------------+-----------------------+------------------------------------------------------------------------------------------+
+| Failure    | Pipeline Checks       | Please create a `pipeline </en/latest/tools/ci-                                          |
+|            |                       | cd.html>`_  on this Merge Request or please add the following jobs:                      |
+|            |                       |                                                                                          |
+|            |                       |   *  `ci-metrics  </en/lat                                                               |
+|            |                       |      est/tools/ci-cd/continuous-integration.html?highlight=post_step.yml#automated       |
+|            |                       |      -collection-of-ci-health-metrics-as-part-of-the-ci-pipeline>`_                      |
+|            |                       |   *  `helm-publish  </en/                                                                |
+|            |                       |      latest/tools/software-package-release-procedure.html?highlight=helm_publish.yml     |
+|            |                       |      #package-and-publish-helm-charts-to-the-skao-helm-chart-repository>`_               |
++------------+-----------------------+------------------------------------------------------------------------------------------+
+| Warning    | Non-compliant License | Please update the license information according to                                       |
+|            | Information           | :doc:`/projects/licensing`                                                               |
++------------+-----------------------+------------------------------------------------------------------------------------------+
 
 Docker-Compose Found
 ^^^^^^^^^^^^^^^^^^^^
