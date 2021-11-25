@@ -411,31 +411,31 @@ Kubernetes clusters could be created in ci/cd jobs. These clusters are created o
 
 Note: in order to run deploy clusters, the account permissions need to be set up correctly for the runner services.
 
-.. |image0| image:: ../media/image1.png
+.. |image0| image:: ../images/image1.png
    :width: 6.27083in
    :height: 0.83333in
-.. |image1| image:: ../media/image6.png
+.. |image1| image:: ../images/image6.png
    :width: 6.27083in
    :height: 3.86111in
-.. |image2| image:: ../media/image4.png
+.. |image2| image:: ../images/image4.png
    :width: 6.27083in
    :height: 4.27778in
-.. |image3| image:: ../media/image5.png
+.. |image3| image:: ../images/image5.png
    :width: 6.27083in
    :height: 5.25000in
-.. |image4| image:: ../media/image3.png
+.. |image4| image:: ../images/image3.png
    :width: 6.27083in
    :height: 4.47222in
-.. |image5| image:: ../media/image2.png
+.. |image5| image:: ../images/image2.png
    :width: 6.27083in
    :height: 2.88889in
-.. |image6| image:: ../media/image7.png
+.. |image6| image:: ../images/image7.png
    :width: 6.27083in
    :height: 4.63889in
-.. |image7| image:: ../media/image0.png
+.. |image7| image:: ../images/image0.png
    :width: 6.27083in
    :height: 4.63889in
-.. |runners-on-kubernetes| image:: ../media/runners-on-kubernetes.png
+.. |runners-on-kubernetes| image:: ../images/runners-on-kubernetes.png
 
 Best Practices, Tips and Tricks
 -------------------------------------
