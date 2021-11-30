@@ -9,6 +9,3 @@ within the software development lifecycle of SKAO software. This document descri
 A first draft of the document: ISMS SOFTWARE DEVELOPMENT SECURITY POLICY SKA-GOV-0000017 
 is `available in the Solution Intent google drive <https://drive.google.com/file/d/1mNIeiy_h7p2z9kDPZZfewlwHy5SYwabE/view?usp=sharing>`_.
 
-.. TODO::
-   As soon as the policy is formally approved as part of the ISMS framework
-   add a link to the final version on the SKAO eB system. 
