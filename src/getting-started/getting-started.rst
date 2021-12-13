@@ -83,6 +83,14 @@ Information about the SKA
 
   * Our Senior System Scientist, Robert Laing, recorded `some lectures <https://confluence.skatelescope.org/display/SE/Lectures+on+Radio+Interferometry?src=contextnavpagetreemode>`_. We suggest that you listen to the first and possibly the second lecture now. If you're interested or need to know more about radio interferometry, you can look at the other lectures in the next few months. Or come back later on -- you may discover a need to know more about how radio telescopes work in a few years!
 
+  * We've also prepared a guide to Radio Astronomy, designed primarily for computing people (though other people may also find it useful). It's available in pdf, epub, and mobi formats. If there are any formatting issues with your device, please let us know, so we can improve in the future. The pdf should be fine for everyone.
+    
+    * `A Programmer's Guide to Radio Astronomy pdf <https://drive.google.com/file/d/19DFGrk0SsSLfCHyVlYO-Lsv08YsLxC4w/view?usp=sharing>`_
+    
+    * `A Programmer's Guide to Radio Astronomy epub <https://drive.google.com/file/d/18R0QCyb9Zt4_Y160myEVRwviD0fpC5D9/view?usp=sharing>`_
+
+    * `A Programmer's Guide to Radio Astronomy mobi <https://drive.google.com/file/d/1t9AHHZOsdmav1xAICrSr9jmTcibqQqge/view?usp=sharing>`_
+
 * What is SAFe?
 
   * This is a very good question! We have some slides to tell you `what SAFe is <https://confluence.skatelescope.org/download/attachments/113803312/SKA%20SAFe%20Introduction%20-%20July%2020.pptx?version=1&modificationDate=1595231478869&api=v2>`_.
