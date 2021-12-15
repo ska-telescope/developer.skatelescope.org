@@ -28,7 +28,8 @@ h4,
 h5,
 h6,
 legend,
-.toc-backref,
+.rst-content .toc-backref,
+.rst-content .topic-title,
 strong {
   color: rgb(7, 0, 104);
 }
