@@ -4,7 +4,7 @@ Following SKA brand guidelines colors are defined as
 SKA Sky Blue:    rgb(0, 174, 239)
 SKA Primary Blueshift Navy:    rgb(7, 0, 104)
 SKA Ocean Blue:  rgb(0, 84, 164)
-SKA Primary Redshift Magenda:    rgb(228, 7, 105)
+SKA Primary Redshift Magenta:    rgb(228, 7, 105)
 SKA Teal Blue:   rgb(0, 104, 138)
 SKA Burnt Sun:   rgb(236, 134, 35)
 SKA Earth Green: rgb(166, 206, 57)
@@ -18,7 +18,7 @@ SKA Earth Green: rgb(166, 206, 57)
 }
 
 * {
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Noto Sans", verdana;
 }
 
 a:link {
