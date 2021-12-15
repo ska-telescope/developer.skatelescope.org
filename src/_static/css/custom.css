@@ -2,38 +2,51 @@
 Following SKA brand guidelines colors are defined as
 
 SKA Sky Blue:    rgb(0, 174, 239)
+SKA Primary Blueshift Navy:    rgb(7, 0, 104)
 SKA Ocean Blue:  rgb(0, 84, 164)
+SKA Primary Redshift Magenda:    rgb(228, 7, 105)
 SKA Teal Blue:   rgb(0, 104, 138)
 SKA Burnt Sun:   rgb(236, 134, 35)
 SKA Earth Green: rgb(166, 206, 57)
+
+
 */
 
 .wy-nav-side{
-        background-color: rgb(0, 84, 164);
+        /* background-color: rgb(228, 7, 105); */
+        background-color: rgb(7, 0, 104);
         color: white;
 }
 
 .wy-side-nav-search{
         padding-top: 0px;
-        /*background-color: rgb(0, 174, 239);*/
-        background-color: rgb(0, 84, 164);
+        background-color: rgb(7, 0, 104);
+        /* background-color: rgb(228, 7, 105); */
         text-align: center;
 }
 
 .wy-menu-vertical p.caption{
-        color: rgb(236, 134, 35);
+        color: rgb(228, 7, 105);
 }
 
 .wy-menu {
         color: white;
 }
 
+
+
 .wy-menu-vertical a{
   color: white;
 }
 
+.wy-menu-vertical a:hover{
+	color: rgb(7, 0, 104);
+	background-color: rgb(228, 7, 105);
+}
+
+
 .local-toc ul li a:hover {
-        background-color: rgb(0, 174, 239);
+        background-color: rgb(7, 0, 104);
 }
 
 .wy-side-nav-search a{
@@ -41,7 +54,7 @@ SKA Earth Green: rgb(166, 206, 57)
 }
 
 .wy-side-nav-search a img.logo{
-	background-color: rgb(255, 255, 255);
+	background-color: white;
 	border-bottom-left-radius: 6px;
 	border-bottom-right-radius: 6px;
       padding-top: 40px;
@@ -54,7 +67,7 @@ white-space: normal;
 .ska-logo, ska-logo:hover{
 	background-attachment: scroll;
 	background-clip: border-box;
-	background-color: rgb(255, 255, 255);
+	background-color: white;
 	background-image: url("https://www.skatelescope.org/wp-content/themes/skatelescope.org-theme/img/img-logo3.png");
 	background-origin: padding-box;
 	background-position: 22px 35px;
@@ -64,15 +77,6 @@ white-space: normal;
 	background-size: 153px 98px;
 	border-bottom-left-radius: 6px;
 	border-bottom-right-radius: 6px;
-	/*color: rgb(0, 86, 120);
-	float: left;
-	font-family: "Eurostile LT W01 Demi", sans-serif;
-	font-size: 44.8px;
-	font-weight: 400;
-	line-height: 60px;
-	list-style-image: none;
-	list-style-position: outside;
-	list-style-type: none;*/
 	margin-bottom: 0px;
 	margin-left: 0px;
 	margin-right: 0px;
@@ -112,7 +116,7 @@ white-space: normal;
     color: white;
     /* padding: 0 5px; */
     overflow: hidden;
-    background-color: #6ab0de;
+    background-color: rgb(228, 7, 105);
 }
 
 .toggle .header p {
