@@ -21,6 +21,18 @@ SKA Earth Green: rgb(166, 206, 57)
   font-family: "Noto Sans", verdana;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+legend,
+.toc-backref,
+strong {
+  color: rgb(7, 0, 104);
+}
+
 a:link {
   color: rgb(228, 7, 105);
 }
