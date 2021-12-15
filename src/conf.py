@@ -135,7 +135,7 @@ html_theme_options = {
 
 html_context = {
     "favicon": "img/favicon.ico",
-    "logo": "img/logo.jpg",
+    "logo": "img/logo.png",
     "theme_logo_only": True,
     "display_gitlab": True,  # Integrate Gitlab
     "gitlab_user": "ska-telescope",  # Username
