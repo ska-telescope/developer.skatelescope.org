@@ -1,13 +1,16 @@
 /*
 Following SKA brand guidelines colors are defined as
 
-SKA Sky Blue:    rgb(0, 174, 239)
 SKA Primary Blueshift Navy:    rgb(7, 0, 104)
-SKA Ocean Blue:  rgb(0, 84, 164)
 SKA Primary Redshift Magenta:    rgb(228, 7, 105)
-SKA Teal Blue:   rgb(0, 104, 138)
-SKA Burnt Sun:   rgb(236, 134, 35)
-SKA Earth Green: rgb(166, 206, 57)
+SKA Science 2 Color Accent 1: rgb(13, 29, 44)
+SKA Science 2 Color Accent 2: rgb(14, 37, 56)
+SKA Science 2 Color Accent 3: rgb(23, 36, 61)
+SKA Tech 2 Color Accent 1: rgb(50, 62, 72)
+SKA Tech 2 Color Accent 2: rgb(92, 103, 113)
+SKA Tech 2 Color Accent 3: rgb(125, 134, 140)
+SKA Tech 2 Color Accent 4: rgb(161, 168, 172)
+SKA Tech 2 Color Accent 5: rgb(194, 199, 202)
 
 
 */
@@ -71,9 +74,36 @@ a:visited {
   color: white;
 }
 
-.wy-menu-vertical a:hover {
+.wy-menu-vertical a:hover,
+.wy-menu-vertical li.current a:hover,
+.wy-menu-vertical li.toctree-l2.current > a:hover,
+.wy-menu-vertical li.toctree-l2.current li.toctree-l3 > a:hover  {
   color: white;
   background-color: rgb(228, 7, 105);
+}
+
+.wy-menu-vertical li.current > a,
+.wy-menu-vertical li.on a {
+  color: rgb(7, 0, 104);
+}
+
+.wy-menu-vertical li.toctree-l2 a,
+.wy-menu-vertical li.toctree-l3 a,
+.wy-menu-vertical li.toctree-l4 a,
+.wy-menu-vertical li.toctree-l5 a,
+.wy-menu-vertical li.toctree-l6 a,
+.wy-menu-vertical li.toctree-l7 a,
+.wy-menu-vertical li.toctree-l8 a,
+.wy-menu-vertical li.toctree-l9 a,
+.wy-menu-vertical li.toctree-l10 a {
+  color: rgb(7, 0, 104);
+  background-color: rgb(194, 199, 202);
+}
+
+.wy-menu-vertical li.toctree-l2.current > a,
+.wy-menu-vertical li.toctree-l2.current li.toctree-l3 > a {
+  color: rgb(7, 0, 104);
+  background-color: rgb(161, 168, 172);
 }
 
 .local-toc ul li a:hover {
