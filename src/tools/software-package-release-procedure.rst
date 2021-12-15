@@ -98,7 +98,6 @@ To be declared as valid, an artefact must be decorated with a set of metadata wh
  * CI_PROJECT_ID
  * CI_PROJECT_PATH_SLUG
  * CI_PROJECT_URL
- * CI_REPOSITORY_URL
  * CI_RUNNER_ID
  * CI_RUNNER_REVISION
  * CI_RUNNER_TAGS
