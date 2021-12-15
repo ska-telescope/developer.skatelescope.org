@@ -34,6 +34,10 @@ strong {
   color: rgb(7, 0, 104);
 }
 
+.wy-breadcrumbs {
+  color: rgb(228, 7, 105);
+}
+
 a:link {
   color: rgb(228, 7, 105);
 }
