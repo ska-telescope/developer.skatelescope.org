@@ -4,7 +4,8 @@
 Deploy SKAMPI on Minikube
 *************************
 
-This tutorial is an arrangement of the workshop available `here <https://confluence.skatelescope.org/pages/viewpage.action?pageId=159384439>`_. 
+This tutorial is an arrangement of the workshop available "`So you want to deploy Skampi on Minikube? <https://confluence.skatelescope.org/pages/viewpage.action?pageId=159384439>`_".
+
 The purpose of the workshop was to:
 * Understanding the motivation for standardising on Minikube, 
 * Deploying Minikube in a consistent way and
@@ -15,7 +16,7 @@ This page aims at the same goals.
 Before you begin
 ################
 
-It is possible to deploy SKAMPI on many common used operating systems. In specific, for windows, please use WSL2 (more information can be found `here <https://gitlab.com/ska-telescope/sdi/ska-cicd-deploy-minikube#wsl2>`_), for the macos, please sort hyperkit out by following `these instructions <https://gitlab.com/ska-telescope/sdi/ska-cicd-deploy-minikube#macos>`_ and install hyperkit by running:
+It is possible to deploy SKAMPI on many common used operating systems. In specific, for windows, please use WSL2 `WSL2 <https://gitlab.com/ska-telescope/sdi/ska-cicd-deploy-minikube#wsl2>`_, for the macos, please sort hyperkit out by following `these instructions <https://gitlab.com/ska-telescope/sdi/ska-cicd-deploy-minikube#macos>`_ and install hyperkit by running:
 
 .. code-block::
 
@@ -77,10 +78,12 @@ There are only two steps for installing minikube on a local environment which ar
 
 .. code-block::
         :caption: Checkout ska-cicd-deploy-minikube
+
         git clone https://gitlab.com/ska-telescope/sdi/ska-cicd-deploy-minikube.git
 
 .. code-block::
         :caption: Deploy Minikube
+
         cd ska-cicd-deploy-minikube
         make all
 
@@ -92,6 +95,7 @@ Once Minikube is installed and working, it is possible to deploy SKAMPI with the
 
 .. code-block::
         :caption: Deploy SKAMPI
+
         git clone --recurse-submodules https://gitlab.com/ska-telescope/ska-skampi.git 
         cd ska-skampi
         helm repo add ska https://artefact.skao.int/repository/helm-internal
@@ -108,15 +112,19 @@ These are complex issues, but caching and pre-loading can help (as shown in the 
 
 .. code-block::
         :caption: Preload Individual images
+
         minikube image load <image>:<tag>
 
 .. code-block::
         :caption: Preload chart images
+
         make minikube-load-images K8S_CHARTS=/path-to-chart-location
 
 As alternative, it is possible to deploy SKAMPI using only helm: 
+
 .. code-block::
         :caption: Alternative deploy SKAMPI
+
         kubectl create namespace ska-mid
         helm install test ska/ska-mid --version 0.8.2 --namespace ska-mid
         # to delete: helm uninstall test --namespace ska-mid
@@ -127,15 +135,18 @@ Checking SKAMPI
 In order to check SKAMPI, it is possible to run the following commands:
 
 .. code-block::
-        :caption: Check that Skampi is running - wait for all the Pods to be running:
+        :caption: Check that Skampi is running - wait for all the Pods to be running
+
         make skampi-wait-all KUBE_NAMESPACE=ska-mid K8S_TIMEOUT=600s
 
 .. code-block::
         :caption: Check with K9s - are all the Pods healty
+
         k9s --namespace ska-mid --command pods
 
 .. code-block::
         :caption: Access the SKA landing page
+
         sensible-browser http://$(minikube ip)/ska-mid/start/
 
 Testing SKAMPI
@@ -145,6 +156,7 @@ In order to test SKAMPI, it is possible to run the following commands:
 
 .. code-block::
         :caption: run the defined test cycle against Kubernetes
+
         make k8s-test KUBE_NAMESPACE=ska-mid K8S_TIMEOUT=600s
 
 The above commands will start a new pod in the target namespace to run the tests against a deployed environment in the same way that python-test runs in a local context. The default configuration runs pytest against the tests defined in ./tests. By default, this will pickup any pytest specific configuration set in pytest.ini, setup.cfg etc. located in ./tests.
@@ -153,6 +165,7 @@ It is also possible to run component tests by running the below command:
 
 .. code-block::
         :caption: iterate over Skampi component tests defined as make targets
+
         make skampi-component-tests KUBE_NAMESPACE=ska-mid K8S_TIMEOUT=600s
 
 The above command introspects the Makefile looking for targets starting with skampi-test-* and then executes them in sorted order.
@@ -163,6 +176,7 @@ Cleaning up SKAMPI
 
 .. code-block::
         :caption: Teardown an instance of SKAMPI a specified Kubernetes Namespace
+
         make k8s-uninstall-chart KUBE_NAMESPACE=ska-mid
 
 Minikube Problems
@@ -175,7 +189,8 @@ Use Cache
 It is possible to configure a local cache by running the following command:
 
 .. code-block::
-        :caption: Use a intermediate cache based on nginx:
+        :caption: Use a intermediate cache based on nginx
+
         make all USE_CACHE=yes
 
 This will create a local cache of images that are pulled so that the second time you make a deployment in Minikube, the cache will respond without going to the upstream image registry. This is currently configured to cache:
@@ -195,13 +210,14 @@ The `ska-cicd-deploy-minikube <https://gitlab.com/ska-telescope/sdi/ska-cicd-dep
 
 .. code-block::
         :caption: for local build
+
         eval $(minikube docker_env)
 
 
 Other problems
 **************
 
-If there's a corporate firewall, it is important to check the variable that can be set for minikube `here <https://minikube.sigs.k8s.io/docs/handbook/vpn_and_proxy/>`_.
+If there's a corporate firewall, it is important to check the variables that can be set for `vpn and proxy <https://minikube.sigs.k8s.io/docs/handbook/vpn_and_proxy/>`_ in minikube.
 
 When deploying minikube, consider to allocate the maximum possible memory and cpu and set the MEM and/or CPUS options of the `ska-cicd-deploy-minikube <https://gitlab.com/ska-telescope/sdi/ska-cicd-deploy-minikube>`_ repository. 
 
