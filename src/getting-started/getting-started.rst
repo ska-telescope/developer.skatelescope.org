@@ -40,7 +40,7 @@ This section is designed to get you up and running, with all the accounts you'll
    Scrum Masters: you should try to arrange accounts for new team members ahead of time, if you know they will be joining.
    You will also need to budget a fair amount of time to help new people integrate with your team; you may want to create stories or features to help with this!
    Please be aware that new team members should be registered using the process described on the `Team Member Registration Confluence page <https://confluence.skatelescope.org/display/SE/Team+Member+Registration>`_, so your team members can get access to various tools, training opportunities.
-  This also ensures that work orders and other contractual matters are addressed. 
+   This also ensures that work orders and other contractual matters are addressed. 
 
 
 * Get SKA accounts. You should set up these accounts with your institutional email address. Please provide this email address to your Scrum Master if they don't have it already! You'll need the following accounts:
