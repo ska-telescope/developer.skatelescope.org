@@ -42,6 +42,7 @@ This section is designed to get you up and running, with all the accounts you'll
    Please be aware that new team members should be registered using the process described on the `Team Member Registration Confluence page <https://confluence.skatelescope.org/display/SE/Team+Member+Registration>`_, so your team members can get access to various tools, training opportunities.
   This also ensures that work orders and other contractual matters are addressed. 
 
+
 * Get SKA accounts. You should set up these accounts with your institutional email address. Please provide this email address to your Scrum Master if they don't have it already! You'll need the following accounts:
 
   * `JIRA <https://jira.skatelescope.org>`_ and `Confluence <https://confluence.skatelescope.org>`_ login (both sites are configured to authenticate you with the same username and password).
