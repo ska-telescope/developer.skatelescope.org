@@ -922,7 +922,7 @@ Minikube Problems
 Use Cache
 *********
 
-It is possible to configure a local cache by running the following command:
+For Linux and WSL2, it is possible to configure a local cache by running the following command:
 
 .. code-block::
         :caption: Use a intermediate cache based on nginx
