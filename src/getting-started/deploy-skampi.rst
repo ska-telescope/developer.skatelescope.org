@@ -122,27 +122,35 @@ Deploy SKAMPI
 Once Minikube is installed and working, it is possible to deploy SKAMPI with the following set of commands:
 
 .. code-block::
-        :caption: Deploy SKAMPI
+        :caption: Clone SKAMPI and update helm repository
 
         git clone --recurse-submodules https://gitlab.com/ska-telescope/ska-skampi.git
         cd ska-skampi
         helm repo add ska https://artefact.skao.int/repository/helm-internal # add SKA artefact repository to the helm repositories
         helm repo update
-        make k8s-dep-update # update the dependency of chart ska-mid (default)
-        make minikube-load-images K8S_CHARTS=charts/ska-mid/ # preload images for ska-mid chart (optional)
-        pipenv shell # or other virtual environment (i.e. virtualenv venv && source venv/bin/activate)
-        make k8s-install-chart K8S_CHART=ska-mid KUBE_NAMESPACE=ska-mid
-
-In general, deploying Skampi can be hard since it requires many images (some large), the components launched are highly interdependent (TangoDB -> DatabaseDS -> Configuration Job -> a TANGO Device Server depends on the configuration job which depends on the DatabaseDS which depends on the TangoDB) and there are frequent timeout issues and race conditions.
-
-These are complex issues, but caching and pre-loading container images can help (as shown in the code above). This can also be done with individual images with the following commands:
 
 .. code-block::
         :caption: Preload ska-mid chart images
         
         # from ska-skampi folder
-        make k8s-dep-update 
+        make k8s-dep-update # update the dependency of chart ska-mid (default)
         make minikube-load-images K8S_CHARTS=charts/ska-mid/
+
+.. code-block::
+        :caption: Create virtual environment
+        
+        virtualenv venv
+        source venv/bin/activate
+
+.. code-block::
+        :caption: Install ska-mid of SKAMPI
+
+        make k8s-install-chart K8S_CHART=ska-mid KUBE_NAMESPACE=ska-mid
+
+
+In general, deploying Skampi can be hard since it requires many images (some large), the components launched are highly interdependent (TangoDB -> DatabaseDS -> Configuration Job -> a TANGO Device Server depends on the configuration job which depends on the DatabaseDS which depends on the TangoDB) and there are frequent timeout issues and race conditions.
+
+These are complex issues, but caching and pre-loading container images can help (as shown in the code above). This can also be done with individual images with the following commands:
 
 .. code-block::
         :caption: Preload Individual images
