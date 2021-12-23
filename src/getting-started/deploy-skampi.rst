@@ -475,10 +475,7 @@ In order to check SKAMPI, it is possible to run the following commands:
 
         k9s --namespace ska-mid --command pods
 
-.. code-block::
-        :caption: Access the SKA landing page
-
-        sensible-browser http://$(minikube ip)/ska-mid/start/
+The http link to access the SKA landing page can be found by calling :code:`make skampi-links`. 
 
 Testing SKAMPI
 **************
