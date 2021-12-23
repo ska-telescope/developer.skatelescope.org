@@ -384,6 +384,7 @@ Once Minikube is installed and working, it is possible to deploy SKAMPI with the
         make k8s-dep-update # update the dependency of chart ska-mid (default)
 
 An optional step to do before the real installation of SKAMPI is to download the container images. From the ska-cicd-deploy-minikube folder repository run the following command: 
+
 .. code-block::
         :caption: Preload ska-mid chart images
         
