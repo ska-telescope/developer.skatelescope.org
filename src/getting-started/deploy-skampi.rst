@@ -4,7 +4,7 @@
 Deploy SKAMPI on Minikube
 *************************
 
-This tutorial is an arrangement of the workshop available "`So you want to deploy Skampi on Minikube? <https://confluence.skatelescope.org/pages/viewpage.action?pageId=159384439>`_".
+This tutorial is an arrangement of the workshop available "`So you want to deploy Skampi on Minikube? <https://confluence.skatelescope.org/pages/viewpage.action?pageId=159384439>`__".
 
 The purpose of the workshop was to:
 
@@ -19,16 +19,16 @@ Before you begin
 
 It is possible to deploy SKAMPI on many common used operating systems. 
 
-In specific, for windows, please use `WSL2 <https://gitlab.com/ska-telescope/sdi/ska-cicd-deploy-minikube#wsl2>`_. 
+In specific, for windows, please use `WSL2 <https://gitlab.com/ska-telescope/sdi/ska-cicd-deploy-minikube#wsl2>`__. 
 
-For macos, please sort hyperkit out by following `these instructions <https://gitlab.com/ska-telescope/sdi/ska-cicd-deploy-minikube#macos>`_ and install hyperkit by running:
+For macos, please sort hyperkit out by following `these instructions <https://gitlab.com/ska-telescope/sdi/ska-cicd-deploy-minikube#macos>`__ and install hyperkit by running:
 
 .. code-block::        
         :caption: Install hyperkit on macos      
 
         brew install hyperkit
 
-For Linux, checkout the `ska-cicd-deploy-minikube <https://gitlab.com/ska-telescope/sdi/ska-cicd-deploy-minikube>`_, and run the following commands:
+For Linux, checkout the `ska-cicd-deploy-minikube <https://gitlab.com/ska-telescope/sdi/ska-cicd-deploy-minikube>`__, and run the following commands:
 
 .. code-block::
         :caption: Install podman on linux
@@ -40,9 +40,9 @@ For Linux, checkout the `ska-cicd-deploy-minikube <https://gitlab.com/ska-telesc
 Why Kubernetes
 ##############
 
-The only thing that holds an highly distributed project like SKA are clear standards and APIs. Kubernetes (and, more in general, containerisation) provides a clear abstraction that enables developers to (cheaply) closely imitate production on the desktop for compute, network and storage.
+The only thing that holds an highly distributed project like SKA together are clear standards and APIs. Kubernetes (and, more in general, containerisation) provides a clear abstraction that enables developers to (cheaply) closely imitate production on the desktop for computing, network and storage.
 
-Developers need a simple self-contained environment to support a fast and iterative software development workflow and `Minikube <https://minikube.sigs.k8s.io/docs/start/>`_ can solve this need because it is a local Kubernetes, focusing on making it easy to learn and develop for Kubernetes. 
+Developers need a simple self-contained environment to support a fast and iterative software development workflow and `Minikube <https://minikube.sigs.k8s.io/docs/start/>`__ can solve this need because it is a local Kubernetes, focusing on making it easy to learn and develop for Kubernetes. 
 
 Consistent minikube development environment
 ###########################################
@@ -52,7 +52,7 @@ There are many ways to setup Minikube and it is important to select one way for 
 It is therefore crucial to have consistency in deployments including:
 
  * Network - not relevant on a single node (we don’t use NetworkPolicies either yet)
- * `StorageClass abstraction <https://kubernetes.io/docs/concepts/storage/storage-classes/>`_
+ * `StorageClass abstraction <https://kubernetes.io/docs/concepts/storage/storage-classes/>`__
  * Kubernetes Version - feature support
  * Auxillary tooling - kubectl, Helm, K9s - matched versions
 
@@ -72,16 +72,16 @@ The main features provided by the `ska-cicd-deploy-minikube <https://gitlab.com/
  * Pretested versions of Minikube, Kubernetes, and tools
  * Deploys on podman, docker, hyperkit, wsl2
  * Mounts local storage into virtual machine ready for access from Pods (/srv:/srv)
- * Loads SKA `StorageClasses <https://kubernetes.io/docs/concepts/storage/storage-classes/>`_ - emulates integration
+ * Loads SKA StorageClasses - emulates integration
  * Discovers and configures proxy settings (based on environment variables)
  * Provides verification tests (make minikube-test)
  * Proxy Ingress to host network adapter (Linux only)
- * Activates `key addons <https://minikube.sigs.k8s.io/docs/commands/addons/>`_ - Ingress Controller, Loadbalancer, logging, metrics
+ * Activates `key addons <https://minikube.sigs.k8s.io/docs/commands/addons/>`__ - Ingress Controller, Loadbalancer, logging, metrics
 
 Deploy Minikube
 ###############
 
-In order to deploy minikube in a local laptop, the first thing to do is to check the os dependencies at this `link <https://gitlab.com/ska-telescope/sdi/ska-cicd-deploy-minikube#os-variations>`_.
+In order to deploy minikube in a local laptop, the first thing to do is to check the os dependencies at this `link <https://gitlab.com/ska-telescope/sdi/ska-cicd-deploy-minikube#os-variations>`__.
 
 There are only few commands for installing minikube on a local environment which are listed below: 
 
@@ -93,7 +93,15 @@ There are only few commands for installing minikube on a local environment which
         make all
         make minikube-test 
 
-Together with minikube, the pre-tested version of `k9s <https://github.com/derailed/k9s>`_, `kubectl <https://kubernetes.io/docs/reference/kubectl/cheatsheet/>`_ and `helm <https://helm.sh/>`_ will be installed. 
+It is possible to personalize the installation by setting variables like :code:`MEM` (default 8192MB) or :code:`DRIVER` (default podman; the complete list of variable is available with the command :code:`make`). One way of doing this is to create a file called :code:`PrivateRules.mak` in the root folder of the ska-cicd-deploy-minikube repository. An example of content is the following: 
+
+.. code-block::
+        :caption: PrivateRules.mak file (set memory 4096MB and driver docker)
+
+        MEM = 4096
+        DRIVER = docker
+
+Together with minikube, the pre-tested version of `k9s <https://github.com/derailed/k9s>`__, `kubectl <https://kubernetes.io/docs/reference/kubectl/cheatsheet/>`__ and `helm <https://helm.sh/>`__ will be installed. 
 
 The installation process will give some information, for example the minikube ip, the version of the tools installed or the memory and cpus allocated to the minikube. 
 
@@ -102,9 +110,11 @@ Please note that the list of the storage classes installed includes:
  * nfs and nfss1, aliases for network file system (type of storage) and
  * block and bds1 aliases for for block storage.
 
-For the minikube installation, they map to host path while in the SKA k8s online cluster available on Gitlab they map to real storage (like `ceph <https://ceph.readthedocs.io>`_). 
+For the minikube installation, they map to host path while in the SKA k8s online cluster available on Gitlab they map to real storage (like `ceph <https://ceph.readthedocs.io>`__). 
 
 The verification tests will checks the services and ingresses, the storage classes installed, the load balancer by installing a pod which write into a storage and retrieve the content from various different end points. 
+
+Please check the section :ref:`Minikube Problems` for suggestions on how to solve common problems. 
 
 Deploy SKAMPI
 #############
@@ -171,7 +181,7 @@ In order to check SKAMPI, it is possible to run the following commands:
 Testing SKAMPI
 **************
 
-In order to test SKAMPI, it is possible to run the following commands: 
+In order to test SKAMPI, run the following commands: 
 
 .. code-block::
         :caption: run the defined test cycle against Kubernetes
@@ -212,13 +222,15 @@ There are a number of basic commands that can help in Understanding what's happe
         kubectl describe pod -n ska-mid <name-of-pod> # describe a pod in namespace ska-mid
         kubectl logs -n ska-mid <name-of-pod> # get logs of a pod in namespace ska-mid
 
-`k9s <https://github.com/derailed/k9s>`_ is also a very useful tool that enables to use kubectl without knowing all the detail of the specific command. More information on this tool can be found at `k9s documentation page <https://k9scli.io/>`_ and in particular it can be useful to check the `commands page <https://k9scli.io/topics/commands/>`_. 
+k9s is also a very useful tool that enables to use kubectl without knowing all the detail of the specific command. More information on this tool can be found at `k9s documentation page <https://k9scli.io/>`__ and in particular it can be useful to check the `commands page <https://k9scli.io/topics/commands/>`__. 
 
 .. code-block::
         :caption: Makefile useful commands
 
         make k8s-watch # watch the pod's status
         make k8s-wait # wait for all jobs to be completed or all pods to be running
+
+.. _Minikube Problems:
 
 Minikube Problems
 #################
@@ -259,7 +271,7 @@ The `ska-cicd-deploy-minikube <https://gitlab.com/ska-telescope/sdi/ska-cicd-dep
 Other problems
 **************
 
-If there's a corporate firewall, it is important to check the variables that can be set for `vpn and proxy <https://minikube.sigs.k8s.io/docs/handbook/vpn_and_proxy/>`_ in minikube.
+If there's a corporate firewall, it is important to check the variables that can be set for `vpn and proxy <https://minikube.sigs.k8s.io/docs/handbook/vpn_and_proxy/>`__ in minikube.
 
 When deploying minikube, consider to allocate the maximum possible memory and cpu and set the MEM and/or CPUS options of the `ska-cicd-deploy-minikube <https://gitlab.com/ska-telescope/sdi/ska-cicd-deploy-minikube>`_ repository. 
 
@@ -272,7 +284,7 @@ Docker rate limiting
 
 Docker implemented rate limiting in November, 2020 so if there is a share of network with other users, it is possible to get messages like: Failed to pull image … desc = Error response from daemon: toomanyrequests: You have reached your pull rate limit.
 
-In this case it is possible to try the Minikube `registry-creds addon <https://minikube.sigs.k8s.io/docs/handbook/registry/>`_.
+In this case it is possible to try the Minikube `registry-creds addon <https://minikube.sigs.k8s.io/docs/handbook/registry/>`__.
 
 The docker registry server url would be at https://registry-1.docker.io.
 
