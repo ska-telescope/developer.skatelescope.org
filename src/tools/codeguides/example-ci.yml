@@ -11,14 +11,14 @@
 #
 # For details see https://github.com/ska-telescope/cpp_build_base
 #
-image: artefact.skao.int/ska-cicd-cpp-build-base:0.2.5
+image: artefact.skao.int/ska-cicd-cpp-build-base:0.2.10
 
 variables:
   # Needed if you want automatic submodule checkout
   # For details see https://docs.gitlab.com/ee/ci/yaml/README.html#git-submodule-strategy
   GIT_SUBMODULE_STRATEGY: normal
 
-.common: {tags: [engageska, docker]}
+.common: {tags: [stfc, oci]}
 
 stages:
   - build

@@ -46,7 +46,7 @@ Repository names shall clearly map to a particular element of the SKA software a
 as described in the SKA software design documentation. That is to say, someone familiar with the
 SKA software architecture shuold be able to identify the content of a repository just by its name.
 
-Names shall be all lowercase, multiple words shall be separated by hyphens.
+Names shall be all lowercase starting with "ska-" whereas multiple words shall be separated by hyphens.
 
 
 .. _repository-checklist:
