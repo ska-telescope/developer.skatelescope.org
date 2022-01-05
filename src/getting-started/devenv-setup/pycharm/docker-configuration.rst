@@ -10,7 +10,7 @@ images. PyCharm can be configured to use the Python interpreter inside a Docker 
 - the development environment to be identical to the testing and deployment environment, eliminating problems that occur
   due to differences in execution environment.
 
-Follow the steps below to configure PyCharm to develop new code and run tests for the tango-example project using the
+Follow the steps below to configure PyCharm to develop new code and run tests for the ska-tango-examples project using the
 Docker images for the project.
 
 Prerequisites
@@ -28,8 +28,8 @@ Make sure that the following prerequistes are met:
 .. _`First Steps`: https://www.jetbrains.com/help/pycharm/basic-tutorials.html
 
 
-Clone the tango-example project
-===============================
+Clone the ska-tango-examples project
+====================================
 
 PyCharm allows you to check out (in Git terms clone) an existing repository and create a new project based on the data
 you've downloaded.
@@ -37,7 +37,7 @@ you've downloaded.
 #. From the main menu, choose VCS | Checkout from Version Control | Git, or, if no project is currently opened, choose
    Checkout from Version Control | Git on the Welcome screen.
 
-#. In the Clone Repository dialog, specify the URL of the `tango-example repository`_ (you can click Test to make sure
+#. In the Clone Repository dialog, specify the URL of the `ska-tango-examples repository`_ (you can click Test to make sure
    that connection to the remote can be established).
 
 #. In the Directory field, specify the path where the folder for your local Git repository will be created into which
@@ -50,7 +50,7 @@ you've downloaded.
 4. Click Clone, then click Yes in the subsequent confirmation dialog to create a PyCharm project based on the sources
    you have cloned.
 
-.. _`tango-example repository`: https://gitlab.com/ska-telescope/ska-tango-examples
+.. _`ska-tango-examples repository`: https://gitlab.com/ska-telescope/ska-tango-examples
 
 
 Build the application image
@@ -63,7 +63,7 @@ Begin a terminal session in the cloned repository directory and build the image:
 
 .. code-block:: console
 
-      ~/dev/tango-example  master                                                                                                          23:16:46 ─
+      ~/dev/ska-tango-examples  master                                                                                                          23:16:46 ─
     ❯ make build                                                                                                                                           ─╯
     [+] Building 92.6s (14/14) FINISHED
     => [internal] load build definition from Dockerfile                                                                                                0.0s
@@ -93,7 +93,7 @@ Begin a terminal session in the cloned repository directory and build the image:
     => exporting to image                                                                                                                              1.1s
     => => exporting layers                                                                                                                             1.1s
     => => writing image sha256:9ed46b8e9b2ee5457a650b93e3cbf1e12a4fc3613b9c38028401ca7e9c52de74                                                        0.0s
-    => => naming to artefact.skao.int/ska-tango-images/ska-tango-examples:0.4.12
+    => => naming to artefact.skao.int/ska-tango-examples:0.4.17
 
 The last lines of terminal output displays the name and tags of the resulting images, e.g.,
 
@@ -118,13 +118,13 @@ created. The 'Add Python Interpreter' dialog should look similar to this:
 
 .. image:: add-python-interpreter.png
     :align: center
-    :alt: Add Python Interpreter dialog box, showing the Server dropdown set to "Docker", the Image name set to: ska-registry.av.it.pt/tango-example/powersupply:latest, and the Python Interpreter path set.
+    :alt: Add Python Interpreter dialog box, showing the Server dropdown set to "Docker", the Image name set to: ska-registry.av.it.pt/ska-tango-examples/powersupply:latest, and the Python Interpreter path set.
 
 As a result, the Python interpreter Preferences dialog should look something like this:
 
 .. image:: preferences-docker-interpreter.png
     :align: center
-    :alt: the Python Interpreter Preferences dialog box, showing the list of packages in the tango-example image.
+    :alt: the Python Interpreter Preferences dialog box, showing the list of packages in the ska-tango-examples image.
 
 Click 'OK' to apply your changes.
 
@@ -142,14 +142,14 @@ File | Invalidate Caches / Restart... from the main menu.
 Running unit tests
 ==================
 
-The tango-example project illustrates two types of unit test:
+The ska-tango-examples project illustrates two types of unit test:
 
 #. Self-contained unit tests that execute within the confines of a single Docker container. These tests use the Tango
-   class *DeviceTestContext*, which provides a mock connection to a Tango database. In the tango-example project, these
+   class *DeviceTestContext*, which provides a mock connection to a Tango database. In the ska-tango-examples project, these
    tests are found in *tests/test_1_server_in_devicetestcontext.py*.
 
 #. Unit tests that exercise a device in a real Tango environment, with connections to a Tango database and other
-   devices. utilise require a connection. In the tango-example project, these tests are found in
+   devices. utilise require a connection. In the ska-tango-examples project, these tests are found in
    *tests/test_2_test_server_using_client.py*.
 
 This tutorial illustrates how to run the self-contained unit tests described in 1.
