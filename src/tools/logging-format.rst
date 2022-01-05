@@ -220,7 +220,7 @@ A list of tags (identifiers) we want to add to log messages for easy filtering a
 Filtering the Logs on Kibana
 ============================
 
-Log messages from  the core syscore cluster can be checked in our monitoring platform at https://kibana.engageska-portugal.pt/app/logs and for stfc cluster at http://k8s.stfc.skao.int/kibana/app/logs/stream .
+Log messages for stfc cluster can be checked on our monitoring platform at http://k8s.stfc.skao.int/kibana/app/logs/stream .
 
 Kibana allows for filtering on log messages on the basis of a series of fields. These fields can be added as columns to display information using the **Settings** option, and filtering based on the values of those fields can be done directly on the **Search** box or by selecting the **View details** menu:
 

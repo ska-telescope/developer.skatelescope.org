@@ -27,7 +27,7 @@ Then, you can follow the Merge Request page for status updates, make new contrib
 Static build
 ############
 
-First clone the `developer portal repo <https://gitlab.com/ska-telescope/developer.skao.int>`_ from GitLab. We recommend using ssh to clone.
+First clone the `developer portal repo <https://gitlab.com/ska-telescope/developer.skatelescope.org>`_ from GitLab. We recommend using ssh to clone.
 
 Then you install dependencies: ``pipenv install --dev``
 

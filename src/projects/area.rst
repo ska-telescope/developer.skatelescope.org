@@ -115,6 +115,6 @@ SKAMPI
 - `telescope-model project <https://gitlab.com/ska-telescope/ska-telmodel/>`_: library of data models shared between telescope elements.
 - `telescope-model documentation </projects/telescope-model/en/latest/?badge=latest>`_.
 
-- `tmc-prototype repository <https://gitlab.com/ska-telescope/ska-tmc/>`_: Telescope Monitoring and Control functionality.
-- `tmc-prototype documentation </projects/tmc-prototype/en/latest/?badge=latest>`_.
+- `Telescope Monitoring and Control repository <https://gitlab.com/ska-telescope/ska-tmc/>`_: Telescope Monitoring and Control functionality.
+- `Telescope Monitoring and Control documentation </projects/tmc-prototype/en/latest/?badge=latest>`_.
 

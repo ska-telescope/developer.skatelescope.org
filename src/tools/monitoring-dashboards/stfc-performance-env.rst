@@ -1,6 +1,6 @@
 .. _monitoring-dashboards:
 
-EngageSKA cluster
+STFC cluster
 *****************
 
 Cluster specs
@@ -10,16 +10,14 @@ Cluster specs
 
 Access the cluster
 ==================
-The EngageSKA cluster locates at the Datacenter of Institute of
-Telecommunication (IT) in Aveiro. To have access to the cluster, it is required
+The STFC cluster is located at the SKAO headquarters, UK. To have access to the cluster, it is required
 to be inside the facilities or have VPN credentials to access the IT network
 remotely.
 
 Access to the network using VPN
 ===============================
-At the moment, VPN credentials are sent individually and is required to send an
-email to Domingos Nunes (dfsn@ua.pt) with the knowledge from Piers Harding
-(Piers.Harding@skao.int).
+At the moment, VPN credentials are sent individually and can be requested by sending an
+email or Slack message on `#team-system-support <https://skao.slack.com/archives/CEMF9HXUZ>`_ channel for System Team specific services.
 
 - Guide on how to connect to the private network using VPN: https://engageska-portugal.pt/theme/files/vpn-guide.pdf
 

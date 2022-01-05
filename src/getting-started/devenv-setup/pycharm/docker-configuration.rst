@@ -50,7 +50,7 @@ you've downloaded.
 4. Click Clone, then click Yes in the subsequent confirmation dialog to create a PyCharm project based on the sources
    you have cloned.
 
-.. _`tango-example repository`: https://gitlab.com/ska-telescope/tango-example
+.. _`tango-example repository`: https://gitlab.com/ska-telescope/ska-tango-examples
 
 
 Build the application image
@@ -70,13 +70,13 @@ Begin a terminal session in the cloned repository directory and build the image:
     => => transferring dockerfile: 453B                                                                                                                0.0s
     => [internal] load .dockerignore                                                                                                                   0.0s
     => => transferring context: 259B                                                                                                                   0.0s
-    => [internal] load metadata for artefact.skatelescope.org/ska-tango-images/pytango-runtime:9.3.3.5                                                 0.2s
-    => [buildenv 1/1] FROM artefact.skatelescope.org/ska-tango-images/pytango-builder:9.3.3.5                                                         81.5s
-    => => resolve artefact.skatelescope.org/ska-tango-images/pytango-builder:9.3.3.5                                                                   0.2s
+    => [internal] load metadata for artefact.skao.int/ska-tango-images-pytango-runtime:9.3.14                                                 0.2s
+    => [buildenv 1/1] FROM artefact.skao.int/ska-tango-images-pytango-builder:9.3.16                                                         81.5s
+    => => resolve artefact.skao.int/ska-tango-images-pytango-builder:9.3.16                                                                 0.2s
     => => sha256:5686237a38ebe49118e3c56be46cb1351f6fd07b13a4c0b916a358df074d8d1f 190B / 190B                                                          0.0s
     ...
-    => [stage-1 1/5] FROM artefact.skatelescope.org/ska-tango-images/pytango-runtime:9.3.3.5@sha256:b0d8a67d16818b72cb9ebf84a36431c0f5ef1ace854c4315  42.6s
-    => => resolve artefact.skatelescope.org/ska-tango-images/pytango-runtime:9.3.3.5@sha256:b0d8a67d16818b72cb9ebf84a36431c0f5ef1ace854c4315930ea775b  0.0s
+    => [stage-1 1/5] FROM artefact.skao.int/ska-tango-images-pytango-runtime:9.3.14@sha256:b0d8a67d16818b72cb9ebf84a36431c0f5ef1ace854c4315  42.6s
+    => => resolve artefact.skao.int/ska-tango-images-pytango-runtime:9.3.14@sha256:b0d8a67d16818b72cb9ebf84a36431c0f5ef1ace854c4315930ea775b  0.0s
     => => sha256:0e970d6d4e3a68ec13536739109feda96a289da2bc803637cbe43d86c2def2d9 1.02MB / 1.02MB                                                      0.4s
     ...
     => => extracting sha256:fe6a2e4a5243a99c379de5984e484667782be80029db7221c2a1cb411eedb0e6                                                           0.0s
@@ -103,9 +103,9 @@ The last lines of terminal output displays the name and tags of the resulting im
      => exporting to image                                                                                                                              1.1s
      => => exporting layers                                                                                                                             1.1s
      => => writing image sha256:9ed46b8e9b2ee5457a650b93e3cbf1e12a4fc3613b9c38028401ca7e9c52de74                                                        0.0s
-     => => naming to artefact.skao.int/ska-tango-images/ska-tango-examples:0.4.12
+     => => naming to artefact.skao.int/ska-tango-examples:0.4.17
 
-In the example above, the image name is tagged as *artefact.skao.int/ska-tango-images/ska-tango-examples:0.4.12*. Take a note of the tagged image as you will need
+In the example above, the image name is tagged as *artefact.skao.int/ska-tango-examples:0.4.17*. Take a note of the tagged image as you will need
 it when configuring the remote interpreter.
 
 Configure the remote interpreter

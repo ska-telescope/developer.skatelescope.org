@@ -267,7 +267,7 @@ Remember that we have `training pages on Confluence <https://confluence.skateles
 * Learn about `ECPs (Engineering Change Proposals) <https://confluence.skatelescope.org/pages/viewpage.action?pageId=5767262>`_. These are often required for major architectural changes, so it's useful to understand the purpose and process of ECPs.
 * Continue with your training plan, using the skills matrix!
 * Make sure you know where to get help. This was covered in week one, but some revision may be helpful.
-* Have a look at the various `Monitoring Dashboards </en/latest/tools/monitoring-dashboards/monitoring-dashboards.html>`_ for the EngageSKA Cluster, so you can see what things look like when our prototype is running, and what data we are collecting about it.
+* Have a look at the various `Monitoring Dashboards </en/latest/tools/monitoring-dashboards/monitoring-dashboards.html>`_ for STFC Cluster, so you can see what things look like when our prototype is running and what data we are collecting about it.
 * Learn about the SKA naming conventions for code, repositories, containers, etc. We need to make our code and the artefacts built from it easy to understand, so we have some standards to adhere to, and some recommendations.
 
 This is the end of your formal onboarding!
