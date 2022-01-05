@@ -19,7 +19,7 @@ The logging levels used can be any one of the five standard Python logging level
 Mapping of Logging Levels
 -------------------------
 
-The table below maps Python logging levels to that of `RFC5424 <https://tools.ietf.org/html/rfc5424>`_ (syslog).
+The table below maps Python logging levels to that of `RFC5424 <https://datatracker.ietf.org/doc/html/rfc5424>`_ (syslog).
 
 ::
 

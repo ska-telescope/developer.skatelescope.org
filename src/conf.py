@@ -83,7 +83,7 @@ source_suffix = ".rst"
 master_doc = "index"
 
 # General information about the project.
-project = "developer.skao.int"
+project = "developer.skatelescope.org"
 copyright = "2020, SKA Organization"
 author = "Marco Bartolini"
 
@@ -139,7 +139,7 @@ html_context = {
     "theme_logo_only": True,
     "display_gitlab": True,  # Integrate Gitlab
     "gitlab_user": "ska-telescope",  # Username
-    "gitlab_repo": "developer.skao.int",  # Repo name
+    "gitlab_repo": "developer.skatelescope.org",  # Repo name
     "gitlab_version": "master",  # Version
     "conf_py_path": "/src/",  # Path in the checkout to the docs root
     # workaround for https://github.com/readthedocs/sphinx_rtd_theme/issues/701
