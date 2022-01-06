@@ -310,7 +310,7 @@ To ensure the guidelines and policies described in this Developer Portal are fol
 The result of the checks are reported back to the developers in the main Merge Request page on GitLab.
 It is advised to look for this comment and respond to any issue arisen.
 
-A check is either a:
+A check is either a
 
 * Failure (🚫): The Merge Request is violating the SKA guidelines and it should be fixed by following the mitigation defined in the check
 * Warning (⚠): The Merge Request is following anti patterns/non-advised guidelines/policies and it would be better if it is fixed by the mitigation defined in the check
@@ -346,7 +346,7 @@ Checks
 | Failure    | Missing Jira Ticket   | Branch name should start with a lowercase Jira ticket id                                 |
 |            | In Branch Name        |                                                                                          |
 +------------+-----------------------+------------------------------------------------------------------------------------------+
-| Warning    | Missing Jira Ticket   | Following commit messages violate :ref:`committing-code`                                 |
+| Failure    | Missing Jira Ticket   | Following commit messages violate :ref:`committing-code`                                 |
 |            | in commits            |      *   <commit-hash>                                                                   |
 |            |                       |      *   <commit-hash>                                                                   |
 +------------+-----------------------+------------------------------------------------------------------------------------------+
@@ -357,16 +357,17 @@ Checks
 |            | Request Setting       |                                                                                          |
 |            |                       | MR Settings Checks(You may need Maintainer rights to change these):                      |
 |            |                       |    * You should assign one or more people as reviewer(s)                                 |
-|            |                       |    * Automatically resolve mr diff discussions should be checked                         |
-|            |                       |    * Prevent editing approval rules in merge requests should be checked                  |
-|            |                       |    * Remove all approvals when commits are added to the source branch should be checked  |
-|            |                       |    * Prevent approval of MR by the author should be checked                              |
 |            |                       |    * There should be at least 1 approval required                                        |
 |            |                       |    * Please uncheck Squash commits when Merge Request is accepted.                       |
-|            |                       |    *  Please check Delete source branch when merge request is accepted.                  |
+|            |                       |    * Please check Delete source branch when merge request is accepted.                   |
 |            |                       | Project Settings Checks(You may need Maintainer rights to change these):                 |
 |            |                       |    * Pipelines must succeed should be checked                                            |
+|            |                       |    * Remove all approvals when commits are added to the source branch should be checked  |
+|            |                       |    * Prevent approval of MR by the author should be checked                              |
+|            |                       |    * Automatically resolve mr diff discussions should be checked                         |
+|            |                       |    * Prevent editing approval rules in merge requests should be checked                  |
 |            |                       |    * Enable Delete source branch option by default should be checked                     |
+|            |                       |    * Merge Method should be Merge Commit                                                 |
 |            |                       |    * Show link to create/view MR when pushing from the command line should be checked    |
 +------------+-----------------------+------------------------------------------------------------------------------------------+
 | Failure    | Missing Assignee      |  Please assign at least one person for the MR                                            |
