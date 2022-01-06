@@ -333,6 +333,12 @@ For the subsequent changes pushed to the Merge Request, the comment is updated t
 
    Marvin's Check Table.
 
+*Marvin Approval*
+^^^^^^^^^^^^^^^^^
+
+Marvin after creating the table will verify if there is any checks under the failure category failed, if so Marvin does not approve the MR, and in the case that that MR was already approved before by him he unapproves it. 
+If none of the checks under the failure category failed Marvin will approve the MR.
+
 Checks
 ++++++
 
