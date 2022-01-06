@@ -313,8 +313,22 @@ It is advised to look for this comment and respond to any issue arisen.
 A check is either a
 
 * Failure (🚫): The Merge Request is violating the SKA guidelines and it should be fixed by following the mitigation defined in the check
+
+  * Example
+  
+    * Branch name should start with a lowercase Jira Ticket ID - see :ref:`branching-policy`
+
 * Warning (⚠): The Merge Request is following anti patterns/non-advised guidelines/policies and it would be better if it is fixed by the mitigation defined in the check
+
+  * Example
+  
+    * Docker-Compose commands found on the repository
+
 * Information (📖): You should be aware of the information conveyed in this Merge Request quality check message
+  
+  * Example
+  
+    * The merge request does not present documentation changes
 
 Each check has a brief description that explains what it does and a mitigation/explanation (depending on check type) which gives detailed information about the check and how to fix it or explains its findings more. You can find a list of each check below.
 
