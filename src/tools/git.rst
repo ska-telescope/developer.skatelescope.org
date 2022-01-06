@@ -310,7 +310,7 @@ To ensure the guidelines and policies described in this Developer Portal are fol
 The result of the checks are reported back to the developers in the main Merge Request page on GitLab.
 It is advised to look for this comment and respond to any issue arisen.
 
-A check is either a
+A check is either a:
 
 * Failure (🚫): The Merge Request is violating the SKA guidelines and it should be fixed by following the mitigation defined in the check
 
