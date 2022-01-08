@@ -6,6 +6,7 @@ SKA Primary Redshift Magenta:    rgb(228, 7, 105)
 SKA Science 2 Color Accent 1: rgb(13, 29, 44)
 SKA Science 2 Color Accent 2: rgb(14, 37, 56)
 SKA Science 2 Color Accent 3: rgb(23, 36, 61)
+SKA Tech 1 Color Accent 4: rgb(247, 190, 0)
 SKA Tech 2 Color Accent 1: rgb(50, 62, 72)
 SKA Tech 2 Color Accent 2: rgb(92, 103, 113)
 SKA Tech 2 Color Accent 3: rgb(125, 134, 140)
@@ -33,6 +34,8 @@ h6,
 legend,
 .rst-content .toc-backref,
 .rst-content .topic-title,
+.rst-content dl dt,
+.rst-content th>p,
 strong {
   color: rgb(7, 0, 104);
 }
