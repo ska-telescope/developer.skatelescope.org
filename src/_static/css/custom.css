@@ -3,6 +3,7 @@ Following SKA brand guidelines colors are defined as
 
 SKA Primary Blueshift Navy:    rgb(7, 0, 104)
 SKA Primary Redshift Magenta:    rgb(228, 7, 105)
+SKA Primary Redshift Magenta Variant (Passes contrast check on Navy background): #F81B7F
 SKA Science 2 Color Accent 1: rgb(13, 29, 44)
 SKA Science 2 Color Accent 2: rgb(14, 37, 56)
 SKA Science 2 Color Accent 3: rgb(23, 36, 61)
@@ -66,7 +67,8 @@ a:visited {
 }
 
 .wy-menu-vertical p.caption {
-  color: rgb(228, 7, 105);
+  /* color: rgb(228, 7, 105); */
+  color: #F81B7F;
 }
 
 .wy-menu {
