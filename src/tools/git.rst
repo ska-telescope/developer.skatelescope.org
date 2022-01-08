@@ -313,8 +313,22 @@ It is advised to look for this comment and respond to any issue arisen.
 A check is either a:
 
 * Failure (🚫): The Merge Request is violating the SKA guidelines and it should be fixed by following the mitigation defined in the check
+
+  * Example
+  
+    * Branch name should start with a lowercase Jira Ticket ID - see :ref:`branching-policy`
+
 * Warning (⚠): The Merge Request is following anti patterns/non-advised guidelines/policies and it would be better if it is fixed by the mitigation defined in the check
+
+  * Example
+  
+    * Docker-Compose commands found on the repository
+
 * Information (📖): You should be aware of the information conveyed in this Merge Request quality check message
+  
+  * Example
+  
+    * The merge request does not present documentation changes
 
 Each check has a brief description that explains what it does and a mitigation/explanation (depending on check type) which gives detailed information about the check and how to fix it or explains its findings more. You can find a list of each check below.
 
@@ -333,6 +347,12 @@ For the subsequent changes pushed to the Merge Request, the comment is updated t
 
    Marvin's Check Table.
 
+*Marvin Approval*
+^^^^^^^^^^^^^^^^^
+
+Marvin after creating the table will verify if there is any checks under the failure category failed, if so Marvin does not approve the MR, and in the case that that MR was already approved before by him he unapproves it. 
+If none of the checks under the failure category failed Marvin will approve the MR.
+
 Checks
 ++++++
 
@@ -346,7 +366,7 @@ Checks
 | Failure    | Missing Jira Ticket   | Branch name should start with a lowercase Jira ticket id                                 |
 |            | In Branch Name        |                                                                                          |
 +------------+-----------------------+------------------------------------------------------------------------------------------+
-| Warning    | Missing Jira Ticket   | Following commit messages violate :ref:`committing-code`                                 |
+| Failure    | Missing Jira Ticket   | Following commit messages violate :ref:`committing-code`                                 |
 |            | in commits            |      *   <commit-hash>                                                                   |
 |            |                       |      *   <commit-hash>                                                                   |
 +------------+-----------------------+------------------------------------------------------------------------------------------+
@@ -357,16 +377,17 @@ Checks
 |            | Request Setting       |                                                                                          |
 |            |                       | MR Settings Checks(You may need Maintainer rights to change these):                      |
 |            |                       |    * You should assign one or more people as reviewer(s)                                 |
-|            |                       |    * Automatically resolve mr diff discussions should be checked                         |
-|            |                       |    * Prevent editing approval rules in merge requests should be checked                  |
-|            |                       |    * Remove all approvals when commits are added to the source branch should be checked  |
-|            |                       |    * Prevent approval of MR by the author should be checked                              |
 |            |                       |    * There should be at least 1 approval required                                        |
 |            |                       |    * Please uncheck Squash commits when Merge Request is accepted.                       |
-|            |                       |    *  Please check Delete source branch when merge request is accepted.                  |
+|            |                       |    * Please check Delete source branch when merge request is accepted.                   |
 |            |                       | Project Settings Checks(You may need Maintainer rights to change these):                 |
 |            |                       |    * Pipelines must succeed should be checked                                            |
+|            |                       |    * Remove all approvals when commits are added to the source branch should be checked  |
+|            |                       |    * Prevent approval of MR by the author should be checked                              |
+|            |                       |    * Automatically resolve mr diff discussions should be checked                         |
+|            |                       |    * Prevent editing approval rules in merge requests should be checked                  |
 |            |                       |    * Enable Delete source branch option by default should be checked                     |
+|            |                       |    * Merge Method should be Merge Commit                                                 |
 |            |                       |    * Show link to create/view MR when pushing from the command line should be checked    |
 +------------+-----------------------+------------------------------------------------------------------------------------------+
 | Failure    | Missing Assignee      |  Please assign at least one person for the MR                                            |
