@@ -15,17 +15,4 @@ pull requests.
 
 ## Contributing
 
-The website uses restructured text and Python sphinx to compile
-text files into html documentation. In order to contribute, you can
-clone the repository and test your changes locally:
-
-```bash
-$ pipenv install
-$ pipenv run make html
-$ browser build/html/index.html
-```
-
-Once your local changes are compiling, you can request to update the documentation
-via a pull request.
-When the pull request gets merged, the online version of the website gets
-automatically updated to the most recent version.
+Please see [Contribute to the developer portal](https://developer.skao.int/en/latest/contributor/contribute.html) page

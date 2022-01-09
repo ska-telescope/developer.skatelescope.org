@@ -19,7 +19,7 @@ Limitations of VSCode docker container debugging compared to PyCharm:
   code completion and linting using a docker container though. Therefore
   in order to have intellisense (code completion inside VSCode) and linting
   you will need to have a local installation of the project as well (i.e.
-  a *pipenv* environment).
+  a *poetry* environment).
 
 * VSCode remote debugging library *ptvsd* presently conflicts with *pytest*,
   meaning that debugging breakpoints cannot be set while running the automated
