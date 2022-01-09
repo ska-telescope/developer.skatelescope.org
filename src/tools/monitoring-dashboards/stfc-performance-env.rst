@@ -19,8 +19,6 @@ Access to the network using VPN
 At the moment, VPN credentials are sent individually and can be requested by sending an
 email or Slack message on `#team-system-support <https://skao.slack.com/archives/CEMF9HXUZ>`_ channel for System Team specific services.
 
-- Guide on how to connect to the private network using VPN: https://engageska-portugal.pt/theme/files/vpn-guide.pdf
-
 Access to the OpenStack platform (Virtualization)
 =================================================
 .. image:: ../images/openstack-login.png
