@@ -55,14 +55,12 @@ Variables Description
    ``CAR_CONAN_USERNAME``, "Conan Repository Publishing user name"
    ``CAR_CONAN_PASSWORD``, "Conan Repository Publishing user password"
    ``JIRA_AUTH``, "JIRA Authentication token for uploading XRAY Test Results"
-   ``SKA_K8S_TOOLS_DEPLOY_IMAGE``, "Latest OCI image for deployment jobs - artefact.skao.int/ska-cicd-k8s-tools-deploy:x.x.x"
-   ``SKA_K8S_TOOLS_DOCKER_BUILDER_IMAGE``, "Latest OCI image for OCI build jobs - artefact.skao.int/ska-cicd-k8s-tools-docker-builder:x.x.x"
-   ``SKA_K8S_TOOLS_BUILD_DEPLOY_ALPINE``, "Latest OCI image for OCI build jobs (Alpine image) - artefact.skao.int/ska-cicd-k8s-tools-build-deploy-alpine:x.x.x"
+   ``SKA_K8S_TOOLS_BUILD_DEPLOY``, "Latest OCI image for build and test jobs- artefact.skao.int/ska-cicd-k8s-tools-build-deploy:x.x.x"
+   ``SKA_K8S_TOOLS_BUILD_DEPLOY_ALPINE``, "Latest OCI image for build and test jobs (Alpine based) - artefact.skao.int/ska-cicd-k8s-tools-build-deploy-alpine:x.x.x"
    ``SKA_PYTHON_PYTANGO_BUILDER_IMAGE``, "Latest OCI image for Python lint and test jobs - artefact.skao.int/ska-tango-images-pytango-builder:x.x.x"
    ``JIRA_URL``, "SKA Jira URL"
    ``JIRA_USERNAME``, "Jira Automation Account Username"
    ``JIRA_PASSWORD``, "Jira Automation Account Password"
-   ``MARVIN_SLACK_TOKEN``, "Slack token used by Marvin for Slack usage"
-   ``SLACK_RELEASE_CHANNEL``, "Slack channel used for releases"
+   ``SLACK_RELEASE_CHANNEL``, "Slack channel id used for release notification message"
 
    
