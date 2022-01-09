@@ -11,7 +11,6 @@ Respositories will be created with public access by default. Other permissions s
 
 You will be given Maintainer privileges on this project. This will make it possible for you to (among other things) add users to the project and edit their permissions. For more information about permissions on Gitlab, go to `https://docs.gitlab.com/ee/user/permissions.html <https://docs.gitlab.com/ee/user/permissions.html>`_.
 
-In early 2020 the creation of repositories by developers or team members on the SKA Gitlab instance may be supported.
 
 .. admonition:: On groups in Gitlab
 
@@ -38,6 +37,8 @@ a repository should be created for every software component following this defin
   *All software and firmware source code handed over to the SKA organisation shall be organised into source code repositories. A source code repository is a set of files and metadata, organized in a directory structure. It is expected that source code repositories map to individual applications or modules according to the following definition: A module is reusable, replaceable with something else that implements the same API, independently deployable, and encapsulates some coherent set of behaviors and responsibilities of the system.*
 
   -- *adapted from 'Continuous Delivery'*
+
+SKAO advises one repository should only have one deliverable artefact which would mean that a repository may produce single python package/oci image/helm chart consisting of the same functionality. *Note that a repository can still supply different packages targeting different environments but still providing the same functionality on the target platforms*
 
 Naming a repository
 ###################
