@@ -932,6 +932,8 @@ For Linux and WSL2, it is possible to configure a local cache by running the fol
 .. code-block::
         :caption: Use a intermediate cache based on nginx
 
+        # from ska-cicd-deploy-minikube folder
+        cd ska-cicd-deploy-minikube
         make all USE_CACHE=yes
 
 This will create a local cache of images that are pulled so that the second time you make a deployment in Minikube, the cache will respond without going to the upstream image registry. This is currently configured to cache:
