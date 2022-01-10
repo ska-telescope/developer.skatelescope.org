@@ -40,7 +40,7 @@ For Linux, checkout the `ska-cicd-deploy-minikube <https://gitlab.com/ska-telesc
 Why Kubernetes
 ##############
 
-The only thing that holds an highly distributed project like SKA together are clear standards and APIs. Kubernetes (and, more in general, containerisation) provides a clear abstraction that enables developers to (cheaply) closely imitate production on the desktop for computing, network and storage.
+The only thing that holds a highly distributed project like SKA together are clear standards and APIs. Kubernetes (and, more in general, containerization) provides a clear abstraction that enables developers to (cheaply) closely imitate production on the desktop for computing, network and storage.
 
 Developers need a simple self-contained environment to support a fast and iterative software development workflow and `Minikube <https://minikube.sigs.k8s.io/docs/start/>`__ can solve this need because it is a local Kubernetes, focusing on making it easy to learn and develop for Kubernetes. 
 
