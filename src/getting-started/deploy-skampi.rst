@@ -365,7 +365,7 @@ Please note that the list of the storage classes installed includes:
 
 For the minikube installation, they map to host path while in the SKA k8s online cluster available on Gitlab they map to real storage (like `ceph <https://ceph.readthedocs.io>`__). 
 
-The verification tests will checks the services and ingresses, the storage classes installed, the load balancer by installing a pod which write into a storage and retrieve the content from various different end points. 
+The verification tests will check the services and ingresses, the storage classes installed, the load balancer by installing a pod which writes into a storage and retrieves the content from various different end points. 
 
 Please check the section :ref:`Minikube Problems` for suggestions on how to solve common problems. 
 
