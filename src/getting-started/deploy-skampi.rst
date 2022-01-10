@@ -346,7 +346,7 @@ There are only few commands for installing minikube on a local environment which
         Overall exit code is: 0
 
 
-It is possible to personalize the installation by setting variables like :code:`MEM` (default 8192MB) or :code:`DRIVER` (default podman; the complete list of variable is available with the command :code:`make`). One way of doing this is to create a file called :code:`PrivateRules.mak` in the root folder of the ska-cicd-deploy-minikube repository. An example of content is the following: 
+It is possible to personalize the installation by setting variables like :code:`MEM` (default 8192MB) or :code:`DRIVER` (default podman; the complete list of variables is available with the command :code:`make`). One way of doing this is to create a file called :code:`PrivateRules.mak` in the root folder of the ska-cicd-deploy-minikube repository. An example of content is the following: 
 
 .. code-block::
         :caption: PrivateRules.mak file (set memory 4096MB and driver docker)
