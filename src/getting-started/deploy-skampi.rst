@@ -56,7 +56,7 @@ It is therefore crucial to have consistency in deployments including:
  * Kubernetes Version - feature support
  * Auxillary tooling - kubectl, Helm, K9s - matched versions
 
-It is also important so have support across desktop/laptop hardware/OS and in particular the target will be: 
+It is also important to have support across desktop/laptop hardware/OS and in particular the target will be: 
 
  * macOS,
  * Linux and
