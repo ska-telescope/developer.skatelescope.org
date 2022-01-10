@@ -471,7 +471,7 @@ In order to check SKAMPI, it is possible to run the following commands:
         make skampi-wait-all KUBE_NAMESPACE=ska-mid K8S_TIMEOUT=600s
 
 .. code-block::
-        :caption: Check with K9s - are all the Pods healty
+        :caption: Check with K9s if all the Pods are healthy
 
         k9s --namespace ska-mid --command pods
 
