@@ -481,7 +481,7 @@ In order to check SKAMPI, it is possible to run the following commands:
 .. code-block::
         :caption: Check with K9s if all the Pods are healthy
 
-        k9s --namespace ska-mid --command pods
+        k9s --namespace ska-mid --command pods # press ctrl-c to exit the tool
 
 The http link to access the SKA landing page can be found by calling :code:`make skampi-links`. 
 
