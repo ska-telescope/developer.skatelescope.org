@@ -37,13 +37,17 @@ For Linux, checkout the `ska-cicd-deploy-minikube <https://gitlab.com/ska-telesc
         cd ska-cicd-deploy-minikube
         make minikube-install-podman
 
-There are other dependencies to install that can be installed by running the following commands:: 
+Please not that the installation of minikube may require the selection of images to be downloaded from docker.io or quay.io. Both repositories are good. 
+
+There are other dependencies to install that can be installed by running the following commands:
 
 .. code-block::
         :caption: Install host OS dependencies
 
         apt update
         apt install -y curl virtualenv git build-essential
+
+
 
 Why Kubernetes
 ##############
