@@ -48,10 +48,10 @@ See https://www.scaledagileframework.com/product-owner/
 
 The SKA PO is responsible for:
 
-  * Maintaining the team backlog
-  * Ensuring all tickets are following the :doc:`SKA Definition of Done </policies/definition-of-done>`
-  * Providing the iteration goals and an overall description of tickets that will be undertaken in the iteration during the iteration planning
-  * Attending the DSUs and helping the team with any questions related to the work
-  * Clarifying any questions/issues about the features with the FOs
-  * Attenting the related SAFe meetings and organising the material for them working with the SM
-  * Helping FOs in backlog prioritisation/definition for the next PI
+  * Maintaining the team backlog.
+  * Ensuring all tickets are following the :doc:`SKA Definition of Done </policies/definition-of-done>`.
+  * Providing the iteration goals and an overall description of tickets that will be undertaken in the iteration during the iteration planning.
+  * Attending the DSUs and helping the team with any questions related to the work.
+  * Clarifying any questions/issues about the features with the FOs.
+  * Attending the related SAFe meetings and organising the material for them working with the SM.
+  * Helping FOs in backlog prioritisation/definition for the next PI.
