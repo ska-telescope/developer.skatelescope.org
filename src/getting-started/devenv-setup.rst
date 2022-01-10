@@ -18,3 +18,4 @@ PyTANGO development activities. You will find detailed instructions and how-tos 
    devenv-setup/tango-devenv-setup
    devenv-setup/vscode/vscode
    devenv-setup/pycharm/pycharm
+   deploy-skampi
