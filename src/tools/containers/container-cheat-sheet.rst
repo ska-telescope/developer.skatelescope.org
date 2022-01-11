@@ -54,15 +54,15 @@ Defining and Building Container Images
 Naming and Tagging
 ==================
 
-* Image names should reflect the application that will run in the resultant container eg: ``tango-example/powersupply:1.13.2``.
+* Image names should reflect the application that will run in the resultant container eg: ``ska-tango-examples/powersupply:1.13.2``.
 * Images should be tagged with short commit hash as derived by ``git rev-parse --verify --short=8 HEAD`` from the parent Git repository.
 * When an image version for an application is promoted to production, it should be tagged with the application version (using `Semantic Versioning <https://semver.org>`_).
 * For the most current major.minor.patch image version the 'latest' tag should be added.
 * Application version tags should be added eg: ``1.13.2``, ``1.13``, ``1`` - where major/minor/patch version point to the latest in that series.
-* A production deployment should always be made with a fully qualified semantic version eg: ``tango-example/powersupply:1.13.2``.
+* A production deployment should always be made with a fully qualified semantic version eg: ``ska-tango-examples/powersupply:1.13.2``.
 * The SKA will endeavour to support only one OS base per image as the practice of multi-OS bases does not strictly follow Semantic Versioning, and creates considerable maintenance overhead.
 * Within the SKA hosted Continuous Integration infrastructure, all production images are kept indefinitely.
-* Images with debuging tools, profilers, and any tools not essential to the running of the target application should be contained in a derivative image that is named explicitly ``dev`` eg: ``tango-example/powersupply-dev:1.13.2``.
+* Images with debuging tools, profilers, and any tools not essential to the running of the target application should be contained in a derivative image that is named explicitly ``dev`` eg: ``ska-tango-examples/powersupply-dev:1.13.2``.
 * All images should be stored in a Docker v2 Registry API compliant repository, protected by HTTPS.
 * All containerised software used within the SKA, will be served out of the hosted repository service.
 

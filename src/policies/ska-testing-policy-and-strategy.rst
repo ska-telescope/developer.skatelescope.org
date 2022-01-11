@@ -422,16 +422,6 @@ following (possibly in an automatic way):
 These metrics should be automatically computed and updated, and made available to every
 stakeholder in SKA.
 
-.. note::
-   Some of these metrics are collected and displayed by the ARGOS system
-   in https://argos.engageska-portugal.pt
-   (username=viewer, password=viewer).
-   See :doc:`/tools/monitoring-dashboards/monitoring-dashboards` for more information.
-
-   At the moment (April 2021) Argos is being decommissioned. We will re-deploy it if and when
-   stakeholders will need such a service.
-
-
 5 Testing strategy
 ==================
 

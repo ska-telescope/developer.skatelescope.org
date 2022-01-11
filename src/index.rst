@@ -53,7 +53,6 @@ This section is about getting you up and running. It contains the onboarding mat
 - :doc:`getting-started/contrib-guidelines`
 - :doc:`getting-started/devenv-setup`
 
-A list of the tools we are using to collaborate, together with guidance on how to use them can be found at this confluence page: `SKA Guidelines to Remote Working <https://confluence.skatelescope.org/display/SKAIT/SKA+Guidelines+to+Remote+Working>`_ (requires an SKA Confluence account).
 
 SKA Repositories
 ----------------
@@ -129,7 +128,7 @@ Test Infrastructure
 To support our testing and CI/CD pipelines, we have the multiple kubernetes clusters configured to allow testing to happen.
 
 - :doc:`tools/test-infrastructure`
-- :doc:`tools/monitoring-dashboards/ait-performance-env`
+- :doc:`tools/monitoring-dashboards/stfc-performance-env`
 
 Containerisation
 ================

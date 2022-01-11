@@ -74,7 +74,7 @@ Using sphinx
 Documentation must be realised using the `sphinx <http://www.sphinx-doc.org>`_
 package and `Restructured Text <http://docutils.sourceforge.net/rst.html>`_ .
 SKA provides a predefined sphinx template for this purpose in the
-`SKA Python skeleton <https://gitlab.com/ska-telescope/ska-skeleton>`_ project.
+`SKA Python skeleton <https://gitlab.com/ska-telescope/templates/ska-python-skeleton>`_ project.
 Every project shall use the same ``docs`` folder as a starting point for assembling their
 own documentation.
 

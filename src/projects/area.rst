@@ -47,16 +47,16 @@ SKAMPI
    ============= =================
 
 - `SKAMPI repository <https://gitlab.com/ska-telescope/ska-skampi/>`_: the SKA MVP Integration project. Contains helm charts and automation for deployment.
-- `SKAMPI documentation </projects/skampi/en/latest/?badge=latest>`_.
+- `SKAMPI documentation </projects/ska-skampi/en/latest/?badge=latest>`_.
 
 - `Central Signal Processor Local Monitoring and Control repository <https://gitlab.com/ska-telescope/csp-lmc/>`_ CSP monitoring and control functionality for both SKA MID and LOW  telescopes.
 - `CSP LMC documentation </projects/csp-lmc-prototype/en/latest/?badge=latest>`_.
 
-- `Mid CBF MCS prototype repository <https://gitlab.com/ska-telescope/mid-cbf-mcs/>`_
-- `Mid CBF MCS documentation </projects/mid-cbf-mcs/en/latest/?badge=latest>`_.
+- `Mid CBF MCS prototype repository <https://gitlab.com/ska-telescope/ska-mid-cbf-mcs/>`_
+- `Mid CBF MCS documentation </projects/ska-mid-cbf-mcs/en/latest/?badge=latest>`_.
 
-- `Observation Execution Control repository <https://gitlab.com/ska-telescope/observation-execution-tool/>`_
-- `Observation Execution Control documentation </projects/observation-execution-tool/en/latest/?badge=latest>`_.
+- `Observation Execution Control repository <https://gitlab.com/ska-telescope/ska-oso-oet/>`_
+- `Observation Execution Control documentation </projects/ska-oso-oet/en/latest/?badge=latest>`_.
 
 - `Pulsar Search Pipeline repository <https://gitlab.com/ska-telescope/pss-pipeline/>`_ code for the Pulsar Search Subelement.
 - `Pulsar Search Pipeline Documentation </projects/pss-pipeline/en/latest/?badge=latest>`_.
@@ -112,9 +112,9 @@ SKAMPI
 - `tangogql project <https://gitlab.com/ska-telescope/tangogql/>`_: for of an externl project to provide a GraphQL interface to Tango.
 - `tangogql documentation </projects/tangogql/en/latest/?badge=latest>`_.
 
-- `telescope-model project <https://gitlab.com/ska-telescope/telescope-model/>`_: library of data models shared between telescope elements.
+- `telescope-model project <https://gitlab.com/ska-telescope/ska-telmodel/>`_: library of data models shared between telescope elements.
 - `telescope-model documentation </projects/telescope-model/en/latest/?badge=latest>`_.
 
-- `tmc-prototype repository <https://gitlab.com/ska-telescope/tmc-prototype/>`_: Telescope Monitoring and Control functionality.
-- `tmc-prototype documentation </projects/tmc-prototype/en/latest/?badge=latest>`_.
+- `Telescope Monitoring and Control repository <https://gitlab.com/ska-telescope/ska-tmc/>`_: Telescope Monitoring and Control functionality.
+- `Telescope Monitoring and Control documentation </projects/ska-tmc/en/latest/?badge=latest>`_.
 

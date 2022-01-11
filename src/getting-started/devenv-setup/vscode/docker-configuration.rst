@@ -19,7 +19,7 @@ Limitations of VSCode docker container debugging compared to PyCharm:
   code completion and linting using a docker container though. Therefore
   in order to have intellisense (code completion inside VSCode) and linting
   you will need to have a local installation of the project as well (i.e.
-  a *pipenv* environment).
+  a *poetry* environment).
 
 * VSCode remote debugging library *ptvsd* presently conflicts with *pytest*,
   meaning that debugging breakpoints cannot be set while running the automated
@@ -35,7 +35,7 @@ Improvements to debugging capabilities in VSCode compared to PyCharm:
   non-asyncio modes.
 
 Follow the steps below to configure VSCode to develop new code and run
-tests for the tango-example project using the
+tests for the ska-tango-examples project using the
 Docker images for the project.
 
 Prerequisites
@@ -54,14 +54,14 @@ Make sure that the following prerequisites are met:
 .. _`First Steps`: https://code.visualstudio.com/docs/python/python-tutorial
 
 
-Clone the tango-example project and get VSCode to recognize it
-==============================================================
+Clone the ska-tango-examples project and get VSCode to recognize it
+===================================================================
 
-#. Clone the `tango-example repository`_ in your local machine.
+#. Clone the `ska-tango-examples repository`_ in your local machine.
 
-#. Open VSCode from inside the *tango-example* folder.
+#. Open VSCode from inside the *ska-tango-examples* folder.
 
-.. _`tango-example repository`: https://gitlab.com/ska-telescope/tango-example
+.. _`ska-tango-examples repository`: https://gitlab.com/ska-telescope/ska-tango-examples
 
 
 Build the application image (this step is optional)
@@ -143,8 +143,8 @@ Troubleshooting
   
   .. code-block:: console
   
-      docker run --rm -it -p 3000:3000 --name=powersupply-dev -e TANGO_HOST=databaseds:10000 --network=tango-example_default \
-        -v /home/morgado/Sync/Work/Code/ska/tango-example:/app registry.gitlab.com/ska-telescope/tango-example/powersupply:latest /bin/bash
+      docker run --rm -it -p 3000:3000 --name=powersupply-dev -e TANGO_HOST=databaseds:10000 --network=ska-tango-examples_default \
+        -v /home/morgado/Sync/Work/Code/ska/ska-tango-examples:/app registry.gitlab.com/ska-telescope/ska-tango-examples/powersupply:latest /bin/bash
       docker: Error response from daemon: Conflict. The container name "/powersupply-dev" is already in use by container "215a9150910605a0670058a0023cbd2d180f1cea11d196b2a413910fb428e290". You have to remove (or rename) that container to be able to reuse that name.
       See 'docker run --help'.
       Makefile:59: recipe for target 'interactive' failed
