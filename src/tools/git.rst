@@ -413,9 +413,9 @@ Checks
 | Warning    | Non-compliant License | Please update the license information according to                                       |
 |            | Information           | :doc:`/projects/licensing`                                                               |
 +------------+-----------------------+------------------------------------------------------------------------------------------+
-| Warning    | Missing Test Coverage | This Project is missing test coverage Please have a look at the following `page<         |
-|            |                       | https://developer.skatelescope.org/en/latest/tools/ci-cd/continuous-integration.html?high|
-|            |                       | light=coverage#automated-collection-of-ci-health-metrics-as-part-of-the-ci-pipeline)>`_  |
+| Warning    | Missing Test Coverage | This Project is missing test coverage Please have a look at the following `page <https   |
+|            |                       | ://developer.skatelescope.org/en/latest/tools/ci-cd/continuous-integration.html?hig      |
+|            |                       | hlight=coverage#automated-collection-of-ci-health-metrics-as-part-of-the-ci-pipeline)>`_ |
 +------------+-----------------------+------------------------------------------------------------------------------------------+
 
 Docker-Compose Found
