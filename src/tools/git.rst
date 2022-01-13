@@ -461,4 +461,4 @@ This check warns users if license in their project is not compatible with SKA ap
 
 Missing Test Coverage
 ^^^^^^^^^^^^^^^^^^^^^
-This check warns users if test coverage is missing, by verifying if the file code-coverage.xml exists in the .post job (create-ci-metrics). To avoid it make sure your tests are exporting a code-coverage.xml file, or simply use the `make submodule targets <https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile>`_.
+This check warns users if test coverage is missing, by verifying if the file code-coverage.xml exists in the .post job (create-ci-metrics). To avoid it make sure your tests are exporting a build/reports/code-coverage.xml file, or simply use the `make submodule targets <https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile>`_.
