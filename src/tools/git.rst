@@ -347,7 +347,7 @@ For the subsequent changes pushed to the Merge Request, the comment is updated t
 
    Marvin's Check Table.
 
-*Automatic Fixing of Wrong Merge Request Settings*
+*Automatic Fixing of Merge Request Settings*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 While the checks are being processed, several settings in the Project and the Merge Request that triggered the checks will be automatically fixed. These fixes include:
@@ -366,7 +366,7 @@ While the checks are being processed, several settings in the Project and the Me
 
 * Enabling 'show link to create/view MR when pushing from the command line'.
 
-Next to each other supported Wrong Merge Request Settings messages is a Fix link, which will trigger Marvin to attempt to fix that setting after the user is authenticated. 
+In addition to the above automatic fixes, there is a clickable Fix link next to each supported Merge Request Settings message, clicking on it will trigger Marvin to attempt to fix that setting if the triggering user is authenticated.
 
 Only users that are assigned to the Merge Request can trigger this automatic setting fix feature.
 
