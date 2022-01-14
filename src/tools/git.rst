@@ -395,7 +395,7 @@ Checks
 |Information | Documentation Changes | This MR doesn't introduce any documentation changes. Please consider                     |
 |            |                       | updating documentation to reflect your changes                                           |
 +------------+-----------------------+------------------------------------------------------------------------------------------+
-|Failure     | Read The Docs         | Please integrate this project with ReadtheDocs following the guidelines:                 |
+| Failure    | Read The Docs         | Please integrate this project with ReadtheDocs following the guidelines:                 |
 |            | Integration           |  *  Please set up docs/ folder for sphinx documentation build following the guidelines   |
 |            |                       |  *  Please add this project as a subproject on Read the Docs following the guidelines    |
 |            |                       |  *  Please import your project into Read the Docs                                        |
@@ -409,6 +409,9 @@ Checks
 |            |                       |   *  `helm-publish  </en/                                                                |
 |            |                       |      latest/tools/software-package-release-procedure.html?highlight=helm_publish.yml     |
 |            |                       |      #package-and-publish-helm-charts-to-the-skao-helm-chart-repository>`_               |
++------------+-----------------------+------------------------------------------------------------------------------------------+
+| Warning    | Missing CODEOWNERS    | Please add a `CODEOWNERS <https://docs.gitlab.com/ee/user/project/code_owners.html>`_    |
+|            | file                  | file to the root folder.                                                                 |
 +------------+-----------------------+------------------------------------------------------------------------------------------+
 | Warning    | Non-compliant License | Please update the license information according to                                       |
 |            | Information           | :doc:`/projects/licensing`                                                               |
@@ -454,6 +457,10 @@ This check warns users that this project does not follow the guidelines for succ
 Pipeline Checks
 ^^^^^^^^^^^^^^^
 This check warns users from merging their Merge Request without having a pipeline with the needed jobs like post_step.yml and build_push.yml. Including build_push.yml guarantees that container scanning job is included in your pipelines. The level of this check is a failure, and to avoid it 2 steps may be needed. The first one is to create a pipeline (i.e. add .gitlab-ci.yml) if there is not one created yet. The second one can only be done after the first one, and it consists on including the jobs that are listed on the mitigation strategy column (i.e. helm-publish) in the created pipeline. How to add the jobs to the pipeline is explained on the developer portal (job name as hyperlink).
+
+Missing CODEOWNERS File
+^^^^^^^^^^^^^^^^^^^^^^^
+This check warns users from merging their Merge Request without having a `CODEOWNERS <https://docs.gitlab.com/ee/user/project/code_owners.html>`_ file present in the root folder of the repository. This file specifies who owns the code and can be used to automatically setup who can approve Merge Requests.
 
 Non-compliant License Information
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
