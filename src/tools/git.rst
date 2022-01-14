@@ -348,7 +348,7 @@ For the subsequent changes pushed to the Merge Request, the comment is updated t
    Marvin's Check Table.
 
 *Automatic Fixing of Wrong Merge Request Settings*
-^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 While the checks are being processed, several settings in the Project and the Merge Request that triggered the checks will be automatically fixed. These fixes include:
 * Disabling 'squash commits when merge request is accepted'.
