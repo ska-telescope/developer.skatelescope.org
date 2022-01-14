@@ -347,6 +347,32 @@ For the subsequent changes pushed to the Merge Request, the comment is updated t
 
    Marvin's Check Table.
 
+*Automatic Fixing of Merge Request Settings*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+While the checks are being processed, several settings in the Project and the Merge Request that triggered the checks will be automatically fixed. These fixes include:
+
+* Disabling 'squash commits when merge request is accepted'.
+
+* Enabling 'delete source branch when merge request is accepted'.
+
+* Enabling 'automatically resolve mr diff discussions'.
+
+* Enabling 'remove all approvals when new commits are pushed'.
+
+* Enabling 'pipelines must succeed'.
+
+* Enabling 'delete source branch option by default'.
+
+* Enabling 'show link to create/view MR when pushing from the command line'.
+
+In addition to the above automatic fixes, there is a clickable Fix link next to each supported Merge Request Settings message, clicking on it will trigger Marvin to attempt to fix that setting if the triggering user is authenticated.
+
+All settings fixed by Marvin will result in a new comment in the Merge Request detailing the changes made and whether they were successful or not.
+Settings fixed automatically will be detailed together in a single comment, while each setting fixed through the clickable link will have their own individual comment.
+
+Please note that only users that are assigned to the Merge Request can use the clickable links to trigger the automatic setting fix feature.
+
 *Marvin Approval*
 ^^^^^^^^^^^^^^^^^
 
