@@ -368,7 +368,10 @@ While the checks are being processed, several settings in the Project and the Me
 
 In addition to the above automatic fixes, there is a clickable Fix link next to each supported Merge Request Settings message, clicking on it will trigger Marvin to attempt to fix that setting if the triggering user is authenticated.
 
-Only users that are assigned to the Merge Request can trigger this automatic setting fix feature.
+All settings fixed by Marvin will result in a new comment in the Merge Request detailing the changes made and wether they were successful or not.
+Settings fixed automatically will be detailed together in a single comment, while each setting fixed through the clickable link will have their own individual comment.
+
+Please note that only users that are assigned to the Merge Request can use the clickable links to trigger the automatic setting fix feature.
 
 *Marvin Approval*
 ^^^^^^^^^^^^^^^^^
