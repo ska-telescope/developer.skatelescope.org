@@ -414,6 +414,7 @@ Use poetry to create a virtual environment in the skampi project with the follow
         poetry shell
 
 If you don't have poetry you can create an virtual environenment with the following commands, make sure that your environment uses **python3.9**:
+
 .. code-block::
         :caption: Create virtual environment
         
@@ -421,8 +422,6 @@ If you don't have poetry you can create an virtual environenment with the follow
         cd ../ska-skampi
         virtualenv venv
         source venv/bin/activate
-
-
 
 Finally install ska-mid with the following command: 
 
