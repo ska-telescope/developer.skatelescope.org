@@ -404,8 +404,15 @@ An optional step to do before the real installation of SKAMPI is to download the
         cd ../ska-cicd-deploy-minikube
         make minikube-load-images K8S_CHARTS=../ska-skampi/charts/ska-mid/
 
-To avoid any conflicts with python create a virtual environment with the following commands: 
+To avoid any conflicts with python create a virtual environment. 
 
+Use poetry to create a virtual environment in the skampi project with the following commands:
+
+.. code-block::
+        cd ../ska-skampi
+        poetry shell
+
+If you don't have poetry you can create an virtual environenment with the following commands, make sure that your environment uses **python3.9**:
 .. code-block::
         :caption: Create virtual environment
         
@@ -413,6 +420,8 @@ To avoid any conflicts with python create a virtual environment with the followi
         cd ../ska-skampi
         virtualenv venv
         source venv/bin/activate
+
+
 
 Finally install ska-mid with the following command: 
 
