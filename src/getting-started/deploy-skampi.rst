@@ -409,6 +409,7 @@ To avoid any conflicts with python create a virtual environment.
 Use poetry to create a virtual environment in the skampi project with the following commands:
 
 .. code-block::
+
         cd ../ska-skampi
         poetry shell
 
