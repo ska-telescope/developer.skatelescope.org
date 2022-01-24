@@ -446,7 +446,7 @@ Checks
 |            |                       | ://developer.skatelescope.org/en/latest/tools/ci-cd/continuous-integration.html?hig      |
 |            |                       | hlight=coverage#automated-collection-of-ci-health-metrics-as-part-of-the-ci-pipeline)>`_ |
 +------------+-----------------------+------------------------------------------------------------------------------------------+
-| Warning    | None Complaint        | Project Slug should start with  **ska-** .                                               |
+| Warning    | Non-Complaint         | Project Slug should start with  **ska-** .                                               |
 |            |  Project Slug Name    | To change the slug go into: Settings->Advanced->Change Path                              |
 |            |                       | If you don't have access to this settings, please contact the system team                |
 |            |                       | at #team-system-support slack channel                                                    |
