@@ -501,6 +501,6 @@ Missing Test Coverage
 ^^^^^^^^^^^^^^^^^^^^^
 This check warns users if test coverage is missing, by verifying if the file code-coverage.xml exists in the .post job (create-ci-metrics). To avoid it make sure your tests are exporting a build/reports/code-coverage.xml file, or simply use the `make submodule targets <https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile>`_.
 
-None Complaint Project Slug Name
+Non-Complaint Project Slug Name
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This check warns users if the project slug does not have a complaint name. For the slug to be complaint it needs to start with ska-. The level of this check is warning, to fix it you need to go into: Settings->Advanced->Change Path and change the slug to a complaint name, if you don't have the access to do it please contact the system team at #team-system-support slack channel
