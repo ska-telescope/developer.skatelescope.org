@@ -134,7 +134,7 @@ html_theme_options = {
 }
 
 html_context = {
-    "favicon": "img/favicon.ico",
+    "favicon": "img/favicon_mono.ico",
     "logo": "img/logo.png",
     "theme_logo_only": True,
     "display_gitlab": True,  # Integrate Gitlab
