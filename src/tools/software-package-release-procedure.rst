@@ -78,6 +78,7 @@ Finally, there are repositories that utilise the Nexus Raw format to provide lib
 
 * Ansible
 * Raw objects (binary, text etc.)
+* RPM packages
 
 Metadata
 ========
@@ -629,6 +630,92 @@ To add steps for packaging and publishing raw packages to your pipeline you just
     file: 'gitlab-ci/includes/raw.gitlab-ci.yml'
 
 And this will add both jobs to your pipeline. The build job will package all raw packages under raw/ folder and save them on the gitlab artefacts under the folder build/raw. The publish job that only runs on Tagged Commits will publish the raw packages present on the gitlab artefact build/raw folder to CAR.
+
+
+RPM
+---
+
+RPM artefacts are typically packages for RedHat-based operating systems that do not have direct functional support in Nexus (same as for Ansible roles and collections). These are hosted here `rpm-internal <https://artefact.skao.int/#browse/browse:rpm-internal>`_ .  These artefacts should be packaged and labelled with metadata like any other artefact that gets published to the Central Artefact Repository. In order to support this, each RPM artefact (essentially a package) must reside in a separate directory following the convention `./rpm/<rpm artefact suffix>/`.  When published, the rpm artefact should have a manifest file added to it, and should be packaged as a .rpm file with the name <gitlab-repository-slug>-<rpm artefact suffix>-<semver version>.rpm.
+
+Package and publish RPM artefacts to the SKAO RPM Repository
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The process of packaging and publishing RPM artefacts to the SKAO repository is relatively simple provided CMake is used. A few lines are needed in the .gitlab-ci.yml file, and the project needs to have an rpm directory under the root of the project, that contains all your project’s source code. 
+
+
+As an example, let's take the following project structure:
+
+.. code:: bash
+
+  .
+  ├── my-project
+  │   ├── rpm
+  │   |   └── ska-first-rpm
+  |   |   |   └── CMakeLists.txt
+  │   |   └── ska-second-rpm
+  |   |       └── CMakeLists.txt
+  │   ├── .gitlab-ci.yml
+  │   ├── README.md
+  │   ├── Makefile
+  |   └── .release   
+
+To simply package and code your RPM packages, you migrate to use the Makefile templates and Gitlab Templates.
+Basically by adding the `ska-cicd-makefile <https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile>`_ repo as a submodule with the following command:
+
+.. code:: bash
+
+  $ git submodule add https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile.git .make
+
+And adding to your root Makefile, the following:
+
+.. code:: yaml
+
+  # include RPM packages support
+  include .make/rpm.mk
+
+This will include the make target present in the .make/rpm.mk file. The targets are:
+
+* rpm-package-all: Package all version to a tar.gz format and add a Manifest.skao.int file with the required metadata, and saves them into build/rpm folder
+* rpm-publish-all: Publish all RPM packages that are under build/RPM folder to CAR
+* rpm-package: Package folder under the RPM_PKG var
+* rpm-publish: Publish RPM package in build/rpm folder with the value name of RPM_PKG var
+
+For more informations about the rpm targets, you can run
+
+.. code:: yaml
+
+  $ make long-help rpm
+
+and this will show all the information about the targets and variables from the rpm.mk file.
+
+To add steps for packaging and publishing RPM packages to your pipeline you just need to add the following to your gitlab-ci.yaml:
+
+.. code:: yaml
+
+  variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
+  stages:
+  - build
+  - publish
+
+  # RPM
+  - project: 'ska-telescope/templates-repository'
+    file: 'gitlab-ci/includes/rpm.gitlab-ci.yml'
+
+And this will add both jobs to your pipeline. The build job will package all RPM packages under rpm/ folder and save them on the gitlab artefacts under the folder build/rpm. The publish job that only runs on Tagged Commits will publish the RPM packages present on the gitlab artefact build/rpm folder to CAR.
+
+The cmake command can also be customized. The environment variable *ADDITIONAL_CMAKE_PARAMS* can be set and is passed to cmake during packaging.
+
+Since additional metadata is required to be present on the RPM in order to be possible to validate it, the *MANIFEST.skao.int* file that is automatically generated must be installed in the RPM. Furthermore, the *VERSION* environment variable is passed to cmake and should be used when naming the package file. This can be done using the following directives in the CMakeLists.txt:
+
+.. code-block:: cmake
+
+  install(FILES "MANIFEST.skao.int" DESTINATION "metadata")
+
+  # -- generic package settings
+  set(PACK_NAME ${PROJECT_NAME})
+  set(CPACK_PACKAGE_FILE_NAME "${PACK_NAME}-${VERSION}")
 
 Validation Checks (Marvin)
 """""""""""""""""""""""""""""""""
