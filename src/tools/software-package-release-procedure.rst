@@ -707,11 +707,9 @@ And this will add both jobs to your pipeline. The build job will package all RPM
 
 The cmake command can also be customized. The environment variable *ADDITIONAL_CMAKE_PARAMS* can be set and is passed to cmake during packaging.
 
-Since additional metadata is required to be present on the RPM in order to be possible to validate it, the *MANIFEST.skao.int* file that is automatically generated must be installed in the RPM. Furthermore, the *VERSION* environment variable is passed to cmake and should be used when naming the package file. This can be done using the following directives in the CMakeLists.txt:
+Since additional metadata is required to be present on the RPM in order to be possible to validate it, the *MANIFEST.skao.int* file that is automatically generated is added to the RPM description. Furthermore, the *VERSION* environment variable is passed to cmake and should be used when naming the package file. This can be done using the following directives in the CMakeLists.txt:
 
 .. code-block:: cmake
-
-  install(FILES "MANIFEST.skao.int" DESTINATION "metadata")
 
   # -- generic package settings
   set(PACK_NAME ${PROJECT_NAME})
