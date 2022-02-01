@@ -635,12 +635,12 @@ And this will add both jobs to your pipeline. The build job will package all raw
 RPM
 ---
 
-RPM artefacts are typically packages for RedHat-based operating systems that do not have direct functional support in Nexus (same as for Ansible roles and collections). These are hosted here `rpm-internal <https://artefact.skao.int/#browse/browse:rpm-internal>`_ .  These artefacts should be packaged and labelled with metadata like any other artefact that gets published to the Central Artefact Repository. In order to support this, each RPM artefact (essentially a package) must reside in a separate directory following the convention `./src/<rpm artefact suffix>/`.  When published, the rpm artefact should have a manifest metadata added to its description, and should be packaged as a .rpm file with the name <gitlab-repository-slug>-<rpm artefact suffix>-<semver version>.rpm.
+RPM artefacts are typically packages for RedHat-based operating systems that do not have direct functional support in Nexus (same as for Ansible roles and collections). These are hosted here `rpm-internal <https://artefact.skao.int/#browse/browse:rpm-internal>`_ .  These artefacts should be packaged and labelled with metadata like any other artefact that gets published to the Central Artefact Repository. In order to support this, a CMakeLists.txt file must be present in the project's root folder that uses CPack to generate the RPM artefact.  When published, the RPM artefact will have the manifest metadata added to its description, and should be packaged with the name <gitlab-repository-slug>-<rpm artefact suffix>-<semver version>.rpm.
 
 Package and publish RPM artefacts to the SKAO RPM Repository
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-The process of packaging and publishing RPM artefacts to the SKAO repository is relatively simple provided CMake is used. A few lines are needed in the .gitlab-ci.yml file, and the project needs to have an rpm directory under the root of the project, that contains all your project’s source code. 
+The process of packaging and publishing RPM artefacts to the SKAO repository is relatively simple provided CMake is used. A few lines are needed in the .gitlab-ci.yml file, and the project needs to have a src directory under the root of the project, that contains all your project’s source code. 
 
 
 As an example, let's take the following project structure:
@@ -650,11 +650,8 @@ As an example, let's take the following project structure:
   .
   ├── my-project
   │   ├── src
-  │   |   └── ska-first-rpm
-  |   |   |   └── CMakeLists.txt
-  │   |   └── ska-second-rpm
-  |   |       └── CMakeLists.txt
   │   ├── .gitlab-ci.yml
+  │   ├── CMakeLists.txt
   │   ├── README.md
   │   ├── Makefile
   |   └── .release   
@@ -675,9 +672,9 @@ And adding to your root Makefile, the following:
 
 This will include the make target present in the .make/rpm.mk file. The targets are:
 
-* rpm-package-all: Package all versions using cmake (which should output an rpm artefact) and add the contents of a MANIFEST.skao.int file with the required metadata to the RPMs description, and saves them into build/rpm folder
+* rpm-package-all: Package all versions using cmake (which should output an RPM artefact), add the MANIFEST.skao.int metadata to the RPMs description, and saves them into the build/rpm folder by default
 * rpm-publish-all: Publish all RPM packages that are under build/RPM folder to CAR
-* rpm-package: Package folder under the RPM_PKG var
+* rpm-package: Package the source folder using cmake
 * rpm-publish: Publish RPM package in build/rpm folder with the value name of RPM_PKG var
 
 For more informations about the rpm targets, you can run
@@ -703,7 +700,7 @@ To add steps for packaging and publishing RPM packages to your pipeline you just
   - project: 'ska-telescope/templates-repository'
     file: 'gitlab-ci/includes/rpm.gitlab-ci.yml'
 
-And this will add both jobs to your pipeline. The build job will package all RPM packages under src/ folders that contain a CMakeLists.txt file and save them on the gitlab artefacts under the folder build/rpm. The publish job that only runs on Tagged Commits will publish the RPM packages present on the gitlab artefact build/rpm folder to CAR.
+And this will add both jobs to your pipeline. The build job will package all RPM packages using the CMakeLists.txt file and save them on the gitlab artefacts under the folder build/rpm by default. The publish job that only runs on Tagged Commits will publish the RPM packages present on the gitlab artefact build/rpm folder to CAR.
 
 The cmake command can also be customized. The environment variable *ADDITIONAL_CMAKE_PARAMS* can be set and is passed to cmake during packaging.
 
