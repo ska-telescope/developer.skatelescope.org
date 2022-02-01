@@ -672,12 +672,10 @@ And adding to your root Makefile, the following:
 
 This will include the make target present in the .make/rpm.mk file. The targets are:
 
-* rpm-package-all: Package all versions using cmake (which should output an RPM artefact), add the MANIFEST.skao.int metadata to the RPMs description, and saves them into the build/rpm folder by default
-* rpm-publish-all: Publish all RPM packages that are under build/RPM folder to CAR
-* rpm-package: Package the source folder using cmake
-* rpm-publish: Publish RPM package in build/rpm folder with the value name of RPM_PKG var
+* rpm-package: Package the source folder using cmake (which should output an RPM artefact), add the MANIFEST.skao.int metadata to the RPM description, and save the package into the build/rpm folder by default
+* rpm-publish: Publish RPM package in build/rpm folder
 
-For more informations about the rpm targets, you can run
+For more information about the rpm targets, you can run
 
 .. code:: yaml
 
