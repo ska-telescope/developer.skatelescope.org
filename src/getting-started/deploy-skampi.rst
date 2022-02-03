@@ -38,7 +38,12 @@ For Linux, checkout the `ska-cicd-deploy-minikube <https://gitlab.com/ska-telesc
         make minikube-install-podman
 
 Please not that the installation of minikube may require the selection of images to be downloaded from docker.io or quay.io. Both repositories are good. 
+If you get an error on a missing opensuse key, you can get it by:
 
+.. code-block::
+        wget -qO - https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04/Release.key | sudo apt-key add -
+
+        
 There are other dependencies to install that can be installed by running the following commands:
 
 .. code-block::
