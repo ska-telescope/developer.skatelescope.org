@@ -36,7 +36,7 @@ https://docs.gitlab.com/ee/user/profile/account/two_factor_authentication.html.
 Setup SSH key
 +++++++++++++
 
-To enable `git+ssh` based authentication for clients, associate your ssh-key to your user at *Settings->SSH keys* (https://gitlab.com/profile/keys).
+To enable `git+ssh` based authentication for clients, associate your ssh-key to your user at *Settings->SSH keys* (https://gitlab.com/-/profile/keys).
 
 SKA Organization
 ++++++++++++++++
@@ -109,7 +109,7 @@ Signing commits with GPG
 Developers are strongly encouraged to use a GPG key to sign Git commits.
 The procedure for
 obtaining a GPG key and uploading it to the GitLab account is described at
-https://docs.gitlab.com/ee/user/project/repository/gpg_signed_commits/, or got straight to uploading at https://gitlab.com/profile/gpg_keys.
+https://docs.gitlab.com/ee/user/project/repository/gpg_signed_commits/, or got straight to uploading at https://gitlab.com/-/profile/gpg_keys.
 
 
 The only difference from a non signed commit is the addition of the -S flag:
