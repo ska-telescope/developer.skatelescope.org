@@ -375,7 +375,7 @@ just replacing skuid or centralnode with your own subsystem. Pay attention to th
   * If adding a new target, include it at the end of the list and increment the number after skampi-test.
   * The version of the image test is taken directly from the Umbrella chart, so when adding your image name make sure you are using `$$version` not an hard-coded version number. 
 
-For ska-tango-examples, assuming we had only the two tests shown before we would need to add
+For ska-tango-examples, assuming there were only the two tests shown before you would need to add
 
 .. code-block:: 
 
@@ -408,13 +408,13 @@ Slack channel, and linked to Jira.
 
 The goals of the cross-team review are to:
 
-* Ensure that the delivered product meets requirements
-* Increase the quality of code and the feature being delivered
-* Harmonise and standardise the development practices
-* Share a common understanding of the SKA software system and its architecture
-* Give developers the opportunity to gain technical insight about all areas of code
-* Ensure the test suite is appropriate, and provides adequate coverage for the feature scope in support of acceptance
-* Increase the ability to collaborate between teams
+  * Ensure that the delivered product meets requirements
+  * Increase the quality of code and the feature being delivered
+  * Harmonise and standardise the development practices
+  * Share a common understanding of the SKA software system and its architecture
+  * Give developers the opportunity to gain technical insight about all areas of code
+  * Ensure the test suite is appropriate, and provides adequate coverage for the feature scope in support of acceptance
+  * Increase the ability to collaborate between teams
 
 Scheduled review meetings should happen in the form of an informal code-walk-through. This can happen in a focused meeting, 
 using tools like zoom and supported by other documentation that can be shared with the reviewers
@@ -422,24 +422,24 @@ in advance of the meeting. If possible the meeting should be recorded and linked
 
 The information to be shared needs to include:
 
-* The Feature, as described on Jira.
-* A pointer to relevant documentation describing the subsystem under review. For example this could be part of the Solution Intent, or part of the detailed design documentation in the developer portal.
-* The set of Stories realising the features.
-* The set of Merge Requests contributing to the feature.
-* Relevant tests and related outputs.
+  * The Feature, as described on Jira.
+  * A pointer to relevant documentation describing the subsystem under review. For example this could be part of the Solution Intent, or part of the detailed design documentation in the developer portal.
+  * The set of Stories realising the features.
+  * The set of Merge Requests contributing to the feature.
+  * Relevant tests and related outputs.
 
 During the review the authors will:
 
-* Describe the larger context where the feature takes place with a brief overview of the subsystem.
-* Describe the detailed design behind the implementation
-* Walk through the code, possibly following the flow of execution
+  * Describe the larger context where the feature takes place with a brief overview of the subsystem.
+  * Describe the detailed design behind the implementation
+  * Walk through the code, possibly following the flow of execution
 
 The reviewers will in turn:
 
-* Verify that the default SKA pipeline machinery (templates, makefiles) is used in all relevant repositories
-* Ask questions about the design choices
-* Verify that the implementation adheres to SKA quality standards
-* Verify that the feature is supported by tests
+  * Verify that the default SKA pipeline machinery (templates, makefiles) is used in all relevant repositories
+  * Ask questions about the design choices
+  * Verify that the implementation adheres to SKA quality standards
+  * Verify that the feature is supported by tests
 
 
 
