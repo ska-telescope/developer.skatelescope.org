@@ -373,12 +373,12 @@ just replacing skuid or centralnode with your own subsystem. Pay attention to th
 * If adding a new target, include it at the end of the list and increment the number after skampi-test.
 * The version of the image test is taken directly from the Umbrella chart, so when adding your image name make sure you are using `$$version` not an hard-coded version number. 
 
-For ska-tango-examples, assuming we had only those tests
+For ska-tango-examples, assuming we had only the two tests shown before we would need to add
 
 .. code-block:: 
 
 	## TARGET: skampi-test-03tangoexamples
-	## SYNOPSIS: make skampi-test-01tangoexamples
+	## SYNOPSIS: make skampi-test-03tangoexamples
 	## HOOKS: none
 	## VARS: none
 	##  make target for running tango-examples specific tests against Skampi
