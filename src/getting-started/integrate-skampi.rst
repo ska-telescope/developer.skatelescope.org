@@ -67,7 +67,7 @@ The first thing to do is to verify that the repository contains the following:
   gitlab-ci.yml file on the root of the repository
   Dockerfile on the root of the repository (or in an image folder)
 
-Next you need to verify that our .gitlab-ci.yml file  follows standard SKAO GitLab CI/CD infrastructure practices. Stages shall
+Next you need to verify that the .gitlab-ci.yml file  follows standard SKAO GitLab CI/CD infrastructure practices. Stages shall
 contain lint, build, test, pages, publish and scan. For ska-tango-examples:
 
 .. code-block:: yaml
@@ -94,8 +94,8 @@ contain lint, build, test, pages, publish and scan. For ska-tango-examples:
         - build/
       when: always
 
-So all relevant stages are there, with an extra step of joining the linting reports. Next you need to verify 
-that those stages include the default templating. For the ska-tango-examples:
+So all relevant stages are there, with an extra step of joining the linting reports. Then you need to verify 
+that the includes the default templating. For the ska-tango-examples:
 
 .. code-block:: yaml
 
@@ -124,7 +124,7 @@ that those stages include the default templating. For the ska-tango-examples:
     - project: 'ska-telescope/templates-repository'
       file: 'gitlab-ci/includes/changelog.gitlab-ci.yml'
 
-Now that you have verified that your repository follows the standard defined for SKAO you need the verify the release that
+Now that you have verified that your repository follows the SKAO standards you need the verify the release that
 you will be integrating into SKAMPI. This tutorial is aiming for ska-tango-examples:0.4.17
 
 
@@ -132,18 +132,18 @@ you will be integrating into SKAMPI. This tutorial is aiming for ska-tango-examp
    :align: center
 
 It is important that the pipeline for the release is green, as is the case. The release page should also be checked 
-for consistency in naming the image and the helm chart.
+for consistency in naming the image and the helm chart. The OCI image and the Helm chart must have the same version.
 
 .. image:: images/tangoe1.png
    :scale: 100%
    :align: center
 
-Using the standard SKA makefiles and templates the OCI and HELM versions should always comply but there may be cases where customized pipelines are required.
+Using the standard SKAO makefiles and templates the OCI and HELM versions should always comply but there may be cases where customized pipelines are required.
 
 How to integrate a chart in SKAMPI
 **********************************
 
-Now that you are sure that the repository and the release follow standard SKA practice you are in a position to start the integration process.
+Now that you are sure that the repository and the release follow standard SKAO practice you are in a position to start the integration process.
 
 Before you begin
 ================
@@ -234,7 +234,7 @@ requires very similar changes in the following files:
   resources/skampi.mk 
 
 All file paths are relative to the root of your local `ska-skampi` folder. The
-actual charts are added on the first two files and may need to be enabled on the third.
+actual charts are added to the first two files and may need to be enabled in the third.
 The forth file is a makefile where targets to run tests can be added or modified. 
 
 Changing the umbrella charts
@@ -371,9 +371,9 @@ The `resources/skampi.mk` makefile is where you add or modify targets for tests 
 With the possible exception of SKA-SDP the targets for most subsystems should be very similar to these, essentially
 just replacing skuid or centralnode with your own subsystem. Pay attention to the following:
 
-* You need to use a `skampi-test-[0-9a-zA-Z_-]` naming scheme for the target name, since the main test target in the makefile will only iterate through component test targets following that particular naming scheme.
-* If adding a new target, include it at the end of the list and increment the number after skampi-test.
-* The version of the image test is taken directly from the Umbrella chart, so when adding your image name make sure you are using `$$version` not an hard-coded version number. 
+  * You need to use a `skampi-test-[0-9a-zA-Z_-]` naming scheme for the target name, since the main test target in the makefile will only iterate through component test targets following that particular naming scheme.
+  * If adding a new target, include it at the end of the list and increment the number after skampi-test.
+  * The version of the image test is taken directly from the Umbrella chart, so when adding your image name make sure you are using `$$version` not an hard-coded version number. 
 
 For ska-tango-examples, assuming we had only the two tests shown before we would need to add
 
