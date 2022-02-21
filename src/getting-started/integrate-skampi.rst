@@ -390,13 +390,6 @@ For ska-tango-examples, assuming there were only the two tests shown before you 
 		telescope=$$(echo $(DEPLOYMENT_CONFIGURATION) | sed s/-/_/ | sed s/ska/SKA/); \
 		make skampi-k8s-test K8S_TEST_IMAGE_TO_TEST=artefact.skao.int/ska-tango-examples:$$version MARK="$$telescope and acceptance"
 
-
-.. tip::
-
-  If you want to deploy Taranta locally, and you want to be able to log into the web dashboards UI, you should set `TARANTA_AUTH_DASHBOARD_ENABLE=true` in your `PrivateRules.mak` file.
-
-
-
 The SKAMPI review process
 =========================
 
