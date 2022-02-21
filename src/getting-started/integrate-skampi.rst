@@ -227,7 +227,7 @@ requires very similar changes in the following files:
 .. code-block:: bash
 
   charts/ska-low/Chart.yaml 
-  charts/ska-low/Chart.yaml  
+  charts/ska-mid/Chart.yaml  
   pipeline.yaml 
   resources/skampi.mk 
 
@@ -373,17 +373,17 @@ just replacing skuid or centralnode with your own subsystem. Pay attention to th
 * If adding a new target, include it at the end of the list and increment the number after skampi-test.
 * The version of the image test is taken directly from the Umbrella chart, so when adding your image name make sure you are using `$$version` not an hard-coded version number. 
 
-For examples, for ska-tango-examples we need to include
+For ska-tango-examples, assuming we had only those tests
 
 .. code-block:: 
 
-	## TARGET: skampi-test-01tangoexamples
+	## TARGET: skampi-test-03tangoexamples
 	## SYNOPSIS: make skampi-test-01tangoexamples
 	## HOOKS: none
 	## VARS: none
 	##  make target for running tango-examples specific tests against Skampi
 
-	skampi-test-01tangoexamples:  ## launcher for ska-tango-examples tests
+	skampi-test-03tangoexamples:  ## launcher for ska-tango-examples tests
 		@version=$$(helm dependency list charts/$(DEPLOYMENT_CONFIGURATION) | awk '$$1 == "ska-tango-examples" {print $$2}'); \
 		telescope=$$(echo $(DEPLOYMENT_CONFIGURATION) | sed s/-/_/ | sed s/ska/SKA/); \
 		make skampi-k8s-test K8S_TEST_IMAGE_TO_TEST=artefact.skao.int/ska-tango-examples:$$version MARK="$$telescope and acceptance"
