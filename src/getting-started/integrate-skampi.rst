@@ -127,7 +127,6 @@ you will be integrating into SKAMPI. This tutorial is aiming for ska-tango-examp
 
 
 .. image:: images/tangoe2.png
-   :scale: 100%
    :align: center
 
 It is important that the pipeline for the release is green, as is the case. The release page should also be checked 
