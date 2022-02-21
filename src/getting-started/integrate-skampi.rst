@@ -1,20 +1,20 @@
 .. _integrate-skampi:
 
-******************************************
-So you want to integrate a chart to SKAMPI
-******************************************
+*******************************************
+So you want to integrate a chart to SKAMPI?
+*******************************************
 
 This tutorial is an arrangement of the workshop available "`So you want to integrate a chart to SKAMPI? <https://confluence.skatelescope.org/pages/viewpage.action?pageId=168663188&src=contextnavpagetreemode>`__".
 
-The purpose of the workshop was to:
+The purpose of the workshop was:
 
-* Understanding the principles behind integration of a new chart
-* How to integrate a new chart in a consistent way
-* Understanding the importance of the review process
+  * Understanding the principles behind integration of a new chart
+  * Understanding how to integrate a new chart in a consistent way
+  * Understanding the importance of the review process
 
 This page aims at the same goals. 
 
-We will illustrate the process of chart integration with a walkthrough of integration of the ska-tango-examples chart
+We will illustrate the process of chart integration with a walkthrough of that integration of the ska-tango-examples chart
 that is linked to the repository https://gitlab.com/ska-telescope/ska-tango-examples
 
 
@@ -58,12 +58,14 @@ Check that your repository follows best practices
 
 The first thing to do is to verify that the repository contains the following:
 
-* a charts folder
-* a docs folder
-* a src folder
-* a tests folder
-* a gitlab-ci.yml file on the root of the repository
-* a Dockerfile on the root of the repository (or in an image folder)
+.. code:: bash
+
+  charts folder
+  docs folder
+  src folder
+  tests folder
+  gitlab-ci.yml file on the root of the repository
+  Dockerfile on the root of the repository (or in an image folder)
 
 Next you need to verify that our .gitlab-ci.yml file  follows standard SKAO GitLab CI/CD infrastructure practices. Stages shall
 contain lint, build, test, pages, publish and scan. For ska-tango-examples:
