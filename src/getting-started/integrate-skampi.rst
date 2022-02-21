@@ -23,7 +23,7 @@ Understanding the principles behind integration of a new chart
 
 The SKA evolutionary prototype, also known as the Minimum Viable Product (MVP),
 results from the integration of the several telescope subsystems. This integration is 
-done in the SKA MVP Prototype Integration (SKAMPI) Gitlab repository.
+done in the SKA MVP Prototype Integration (SKAMPI) Gitlab repository. https://gitlab.com/ska-telescope/ska-skampi
 
 If you are developing (or planning to develop or contribute to) a component 
 or subsystem that is to be integrated in SKAMPI, please make sure 
@@ -95,7 +95,7 @@ contain lint, build, test, pages, publish and scan. For ska-tango-examples:
       when: always
 
 So all relevant stages are there, with an extra step of joining the linting reports. Then you need to verify 
-that the includes the default templating. For the ska-tango-examples:
+that gitlab-ci.yml includes the default templating. For the ska-tango-examples:
 
 .. code-block:: yaml
 
@@ -131,8 +131,11 @@ you will be integrating into SKAMPI. This tutorial is aiming for ska-tango-examp
 .. image:: images/tangoe2.png
    :align: center
 
-It is important that the pipeline for the release is green, as is the case. The release page should also be checked 
+It is important that the pipeline for the release passed without errors, as is the case (green check mark on the right. 
+
+The release page should also be checked 
 for consistency in naming the image and the helm chart. The OCI image and the Helm chart must have the same version.
+Again this is the case for relase 0.4.17 of ska-tango-examples:
 
 .. image:: images/tangoe1.png
    :scale: 100%
@@ -148,7 +151,7 @@ Now that you are sure that the repository and the release follow standard SKAO p
 Before you begin
 ================
 
-It is possible to deploy SKAMPI on many common used operating system. If you have not done it before or are having trouble
+It is possible to deploy SKAMPI on many commonly used operating system. If you have not done it before or are having trouble
 with the process please follow the detailed tutorial https://developer.skao.int/en/latest/getting-started/deploy-skampi.html
 
 Before you start with the actual integration you need to clone the SKAMPI repository and test
@@ -161,7 +164,7 @@ need to be imported. We recommend using ssh to clone, but it can also be done us
   $ cd ska-skampi
 
 
-Since you will want to push your changes later care must be taken not to use the default branch.
+Since you will want to push your changes later, care must be taken not to use the default branch.
 A branch should be created using your JIRA ticket ID and a checkout made into that branch. Supposing your Jira ticket is ST-1050:
 
 .. code:: bash
@@ -241,7 +244,7 @@ Changing the umbrella charts
 ----------------------------
 
 The `charts/ska-low/Chart.yaml` and `charts/ska-low/Chart.yaml` files are Helm umbrella charts
-determining which Helm charts should used in SKA-LOW and SKA-MID deployments. New charts
+determining which Helm charts should be used in SKA-LOW and SKA-MID deployments. Charts
 should be added below `dependencies:` 
 
 .. code-block:: yaml
@@ -401,13 +404,13 @@ Slack channel, and linked to Jira.
 
 The goals of the cross-team review are to:
 
-  * Ensure that the delivered product meets requirements
-  * Increase the quality of code and the feature being delivered
-  * Harmonise and standardise the development practices
-  * Share a common understanding of the SKA software system and its architecture
-  * Give developers the opportunity to gain technical insight about all areas of code
-  * Ensure the test suite is appropriate, and provides adequate coverage for the feature scope in support of acceptance
-  * Increase the ability to collaborate between teams
+  * Ensure that the delivered product meets requirements.
+  * Increase the quality of code and the feature being delivered.
+  * Harmonise and standardise the development practices.
+  * Share a common understanding of the SKA software system and its architecture.
+  * Give developers the opportunity to gain technical insight about all areas of code.
+  * Ensure the test suite is appropriate, and provides adequate coverage for the feature scope in support of acceptance.
+  * Increase the ability to collaborate between teams.
 
 Scheduled review meetings should happen in the form of an informal code-walk-through. This can happen in a focused meeting, 
 using tools like zoom and supported by other documentation that can be shared with the reviewers
@@ -424,15 +427,15 @@ The information to be shared needs to include:
 During the review the authors will:
 
   * Describe the larger context where the feature takes place with a brief overview of the subsystem.
-  * Describe the detailed design behind the implementation
-  * Walk through the code, possibly following the flow of execution
+  * Describe the detailed design behind the implementation.
+  * Walk through the code, possibly following the flow of execution.
 
 The reviewers will in turn:
 
-  * Verify that the default SKA pipeline machinery (templates, makefiles) is used in all relevant repositories
-  * Ask questions about the design choices
-  * Verify that the implementation adheres to SKA quality standards
-  * Verify that the feature is supported by tests
+  * Verify that the default SKA pipeline machinery (templates, makefiles) is used in all relevant repositories.
+  * Ask questions about the design choices.
+  * Verify that the implementation adheres to SKA quality standards.
+  * Verify that the feature is supported by tests.
 
 
 
