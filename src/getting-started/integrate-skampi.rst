@@ -8,9 +8,9 @@ This tutorial is an arrangement of the workshop available "`So you want to integ
 
 The purpose of the workshop was to:
 
- * Understanding the principles behind integration of a new chart
- * How to integrate a new chart in a consistent way
- * Understanding the importance of the review process
+* Understanding the principles behind integration of a new chart
+* How to integrate a new chart in a consistent way
+* Understanding the importance of the review process
 
 This page aims at the same goals. 
 
@@ -58,15 +58,15 @@ Check that your repository follows best practices
 
 The first thing to do is to verify that the repository contains the following:
 
- * a charts folder
- * a docs folder
- * a src folder
- * a tests folder
- * a gitlab-ci.yml file on the root of the repository
- * a Dockerfile on the root of the repository (or in an image folder)
+* a charts folder
+* a docs folder
+* a src folder
+* a tests folder
+* a gitlab-ci.yml file on the root of the repository
+* a Dockerfile on the root of the repository (or in an image folder)
 
-Next we need to verify that our .gitlab-ci.yml file  follows standard SKAO GitLab CI/CD infrastructure practices. Stages shall
-contain lint, build, test, pages, publish and scan. For ska-tango-examples have:
+Next you need to verify that our .gitlab-ci.yml file  follows standard SKAO GitLab CI/CD infrastructure practices. Stages shall
+contain lint, build, test, pages, publish and scan. For ska-tango-examples:
 
 .. code-block:: yaml
 
@@ -92,8 +92,8 @@ contain lint, build, test, pages, publish and scan. For ska-tango-examples have:
         - build/
       when: always
 
-So all relevant stages are there, with an extra step of joining the linting reports. Next we need to verify 
-that those stages include the default templating. For the tango examples we do have:
+So all relevant stages are there, with an extra step of joining the linting reports. Next you need to verify 
+that those stages include the default templating. For the ska-tango-examples:
 
 .. code-block:: yaml
 
@@ -122,22 +122,20 @@ that those stages include the default templating. For the tango examples we do h
     - project: 'ska-telescope/templates-repository'
       file: 'gitlab-ci/includes/changelog.gitlab-ci.yml'
 
-Now that we have verified that our repository follows the standard defined for SKAO we need the verify the release that
-we will be integrating into SKAMPI. In this tutorial we are aiming for ska-tango-examples:0.4.17
+Now that you have verified that your repository follows the standard defined for SKAO you need the verify the release that
+you will be integrating into SKAMPI. This tutorial is aiming for ska-tango-examples:0.4.17
 
 
-.. figure:: images/tangoe2.png
+.. image:: images/tangoe2.png
    :scale: 100%
    :align: center
-   :figclass: figborder
 
 It is important that the pipeline for the release is green, as is the case. The release page should also be checked 
 for consistency in naming the image and the helm chart.
 
-.. figure:: images/tangoe1.png
+.. image:: images/tangoe1.png
    :scale: 100%
    :align: center
-   :figclass: figborder
 
 Using the standard SKA makefiles and templates the OCI and HELM versions should always comply but there may be cases where customized pipelines are required.
 
