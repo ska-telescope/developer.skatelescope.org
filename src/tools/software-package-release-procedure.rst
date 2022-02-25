@@ -209,7 +209,7 @@ Release results
 
 After the tagged pipeline finishes, the new release generated with the git-chglog will be appended to the tag in the gitlab project, an example of the release notes can be seen `here <https://gitlab.com/ska-telescope/templates/ska-raw-skeleton/-/releases/0.0.1>`_. And the Jira ticket (preferable one created on the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`_ Jira Project) that is present on the commit message that triggered the tag pipeline will be updated with links to the gitlab release page.
 
-If you have had included the file `'gitlab-ci/includes/release.gitlab-ci.yml'` Marvin should also publish a message on this ` channel <https://skao.slack.com/archives/C02NW62R0SE>`_ annoucing the release.
+If you have had included the file ``gitlab-ci/includes/release.gitlab-ci.yml`` Marvin should also publish a message on this ` channel <https://skao.slack.com/archives/C02NW62R0SE>`_ annoucing the release.
 
 Deploying Artefacts
 ===================
