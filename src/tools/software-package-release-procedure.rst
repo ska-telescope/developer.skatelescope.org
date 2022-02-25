@@ -147,7 +147,6 @@ All the information listed on this page is used in the artefact validation, i.e.
 Release Management
 =================================================
 
-The Release of a new artefact should be as follow:
 
 Templates for automating the release process
 --------------------------------------------
@@ -177,7 +176,10 @@ Developers are strongly encouraged to use the default template to ensure that si
 
  - **CHANGELOG_TEMPLATE** - Used to overwrite the **git-chglog** template used to generate the changelog output. Defaults to `.make/.chglog/CHANGELOG.tpl.md <https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile/-/blob/master/.chglog/CHANGELOG.tpl.md>`_.
 
+Release steps
+-------------
 
+After including the templates, the Release of a new artefact should be as follow:
 
 - **1st**: Create a new Issue on the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`_ Jira Project with a summary of your release.
 
