@@ -191,7 +191,7 @@ After including the templates, the Release of a new artefact should be as follow
   
   Run for example ``make bump-patch-release``, if for example .release was ``1.2.1`` it will be moved to ``1.2.2``
 
-- **3**: Run ``make helm-set-release`` this will set all charts to example ``1.2.2`` version (DO only this step if you have helm packages on your project)
+- **3**: Run ``make helm-set-release`` this will set all charts to example ``1.2.2`` version (DO only this step if you have helm charts on your project)
 
 - **4**: Run ``make python-set-release`` this will set pyproject.toml to example ``1.2.2`` version (DO only this step if you have python packages on your project)
  
