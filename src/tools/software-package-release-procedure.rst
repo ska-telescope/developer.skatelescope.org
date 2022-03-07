@@ -147,10 +147,6 @@ All the information listed on this page is used in the artefact validation, i.e.
 Release Management
 =================================================
 
-The Release of a new artefact should be as follow:
-
-- **1st**: Create a new Issue on the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`_ Jira Project with a summary of your release.
-- **2nd**: Push a new tag on your gitlab project, with the new version to be Released. The commit that triggered this Tag should include the Jira ticket that was just created in the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`_ Jira Project.
 
 Templates for automating the release process
 --------------------------------------------
@@ -180,11 +176,40 @@ Developers are strongly encouraged to use the default template to ensure that si
 
  - **CHANGELOG_TEMPLATE** - Used to overwrite the **git-chglog** template used to generate the changelog output. Defaults to `.make/.chglog/CHANGELOG.tpl.md <https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile/-/blob/master/.chglog/CHANGELOG.tpl.md>`_.
 
+Release steps
+-------------
+
+After including the templates, the Release of a new artefact should be as follow:
+
+- **1st**: Create a new Issue on the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`_ Jira Project with a summary of your release.
+
+- **2**: Choose which bump version you want to use:
+
+    - bump-major-release
+    - bump-minor-release
+    - bump-patch-release
+  
+  Run for example ``make bump-patch-release``, if for example .release was ``1.2.1`` it will be moved to ``1.2.2``
+
+- **3**: Run ``make helm-set-release`` this will set all charts to example ``1.2.2`` version (DO only this step if you have helm charts on your project)
+
+- **4**: Run ``make python-set-release`` this will set pyproject.toml to example ``1.2.2`` version (DO only this step if you have python packages on your project)
+ 
+- **5**: Run ``make git-create-tag``, assuming that the ticket created in the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`_ is the ticket REL-1234:
+
+    - Do you wish to continue (will commit outstanding changes) [N/y]: y
+    - Tell me your Jira Ticket ID (REL-999): REL-1234
+
+- **6**: ``make git-push-tag``
+
+
 
 Release results
 ---------------
 
 After the tagged pipeline finishes, the new release generated with the git-chglog will be appended to the tag in the gitlab project, an example of the release notes can be seen `here <https://gitlab.com/ska-telescope/templates/ska-raw-skeleton/-/releases/0.0.1>`_. And the Jira ticket (preferable one created on the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`_ Jira Project) that is present on the commit message that triggered the tag pipeline will be updated with links to the gitlab release page.
+
+If you have had included the file ``gitlab-ci/includes/release.gitlab-ci.yml`` Marvin should also publish a message on this ` channel <https://skao.slack.com/archives/C02NW62R0SE>`_ annoucing the release.
 
 Deploying Artefacts
 ===================
