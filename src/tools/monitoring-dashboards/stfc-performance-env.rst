@@ -15,7 +15,9 @@ In order to gain a VPN connection, you first need credentials.  To get them plea
 Receiving your OVPN key using GPG encryption is a three-step process:
 
  1 Create and publish your GPG key
+ 
  2 Request VPN credentials from System Team
+ 
  3 Receive encrypted credentials and decrypt them.
 
 Once the above three steps were followed, you should be able to connect as described under Connecting to the VPN.
