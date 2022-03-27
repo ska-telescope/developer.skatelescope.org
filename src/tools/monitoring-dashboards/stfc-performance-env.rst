@@ -3,14 +3,14 @@
 STFC cluster
 *****************
 
-The STFC cluster is located at the SKAO headquarters, UK. Direct access to Openstack platforms used by SKAO is provided only to the System Team. Access to namespaced deployments and monitoring is available only through a VPN connection.
+The STFC cluster is located at the SKAO headquarters, UK. Direct access to Openstack platforms used by SKAO is provided only to the System Team. Access to namespaced deployments and monitoring is available to other teams through a VPN connection.
 
 Connecting to the STFC VPN
 ===============================
 
 For Accessing branch-based deployments of the MVP it is necessary to have a connection to the VPN. This will not only provide access to the iTango, Taranta and REST interfaces, but also allow usage of the KUBECONFIG that can be downloaded from the pipeline logs of the deployments - hence giving developers and testers kubectl access to their namespaced deployments.
 
-In order to gain a VPN connection, you first need credentials.  To get them please contact the system team by sending a Slack message on `#team-system-support <https://skao.slack.com/archives/CEMF9HXUZ>`_ channel. Sharing these credentials has to be done in a secure way. We support two methods for doing this - GPG encryption, and LastPass. A GPG key is also required for SKA Developers for verifying their commits, so if you are a developer this is the preferred method.
+In order to gain a VPN connection, you first need credentials.  To get them please contact the system team by sending a Slack message on `#team-system-support <https://skao.slack.com/archives/CEMF9HXUZ>`_ channel. Sharing these credentials has to be done in a secure way. Two methods are currently available for doing this - GPG encryption, and LastPass. Since a GPG key is also required for SKA Developers for verifying their commits this is the preferred method.
 
 Receiving your OVPN key using GPG encryption is a three-step process:
 
@@ -20,7 +20,7 @@ Receiving your OVPN key using GPG encryption is a three-step process:
  
  3 Receive encrypted credentials and decrypt them.
 
-Once the above three steps were followed, you should be able to connect as described under Connecting to the VPN.
+Once the above three steps are followed, you shall be able to connect.
 
 Create your GPG key
 ===================
@@ -99,6 +99,43 @@ Enter your real name, the email address to be associated with this key (should m
    Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? O
    
 Pick a strong password when asked and type it twice to confirm.
+
+Create key using GUI
+--------------------
+
+Kleopatra is a tool that works for Windows, Linux and Android available from https://apps.kde.org/kleopatra/
+
+Open Kleopatra and choose New Key Pair:
+
+image2021-3-25_11-20-30.png
+
+Choose PGP key pair:
+
+image2021-3-25_11-22-25.png
+
+Fill in your details and tick the "Protect..." box:
+
+image2021-3-25_11-23-9.png
+
+
+Do no forget this passphrase - you'll need it later:
+
+image2021-3-25_11-24-24.png
+
+Click on Finish:
+
+image2021-3-25_11-26-31.png
+
+In the list of keys, you can now double-click on your key, to see it's details. Click on Export:
+
+image2021-3-25_11-31-28.png
+
+Copy all the text:
+
+image2021-3-25_11-32-46 (1).png
+
+Open the link to the keyserver to publish it as described here (or Gitlab.com if you want to sign your commits) and paste it there.
+
 
 Publish your GPG key
 ====================
@@ -181,7 +218,7 @@ Note that, you may see output slightly different from the expected (as shown abo
 Decrypt using GUI
 -----------------
 
-Kleopatra is a tool available that works for Windows, Linux and Android from https://apps.kde.org/kleopatra/
+Kleopatra is a tool that works for Windows, Linux and Android available from https://apps.kde.org/kleopatra/
 
 Click on Decrypt / Verify:
 
@@ -198,4 +235,159 @@ You should see a success message. Choose an Output folder and click on Save All:
 
 .. image:: ../images/image2021-3-25_11-44-49.png
    :align: center
+
+
+Connecting to the VPN on Linux
+==============================
+
+Once you have received your ovpn credentials, you should be able to connect to the VPN using either the command line or
+the network manager.
+
+Connecting with the terminal/command line
+-----------------------------------------
+
+Open a new terminal. You will need to point the openvpn command to the .ovpn file you have previously obtained. 
+
+.. code-block:: bash
+
+	$ sudo openvpn --config my-certs-path/my-cert.ovpn
+	
+Where ``my-certs-path`` is the path to the folder where you keep your certificate ``my-cert.ovpn`` 
+file.
+
+Connect using network manager
+-----------------------------
+
+This was tested on Ubuntu 20.04
+
+Ensure that the following packages are installed: network-manager-openvpn, network-manager-openvpn-gnome 
+
+Open Network settings and click on the + for VPN:
+image2021-3-12_12-57-58.png
+
+From the add VPN dialog, select "Import from file..." and load the OVPN file provided, that contains the connection and authentication information (rename the resultant VPN connection to something appropriate):
+
+image2021-3-12_12-54-40 (1).png
+
+Activate the VPN as required under the Network Settings:
+
+image2021-3-12_13-2-56.png
+
+Connecting to the VPN on macOS
+==============================
+
+Install TunnelBlick - follow instructions https://tunnelblick.net/cInstall.html
+
+tunnelblick.png
+
+If you are running macOS 11 (Big Sur), you need to be running the latest beta version of Tunnelblick: https://tunnelblick.net/downloads.html (see how to troubleshoot issues with Big Sur)
+
+
+Connecting to the VPN on Windows
+================================
+
+There are two clients by openVPN:
+
+ * openVPN GUI: comes with the community edition of openvpn installation
+ 
+ * openVPN Connect: distributed by the openvpn access server and includes paid features
+
+For a simple VPN connection, it’s recommended to use openVPN GUI.
+
+OpenVPN GUI
+-----------
+
+OpenVPN GUI used in this guide is: v11.20
+
+Download and install openvpn gui from the official website: https://openvpn.net/community-downloads/ 
+
+The app starts at the system tray, right click on it and select `Import file…`
+
+image2021-3-12_13-48-45.png
+
+Select your openvpn configuration file (.ovpn)
+You will see the connection in the list like below:
+Choose connect to connect to the VPN
+
+image2021-3-12_13-49-45.png
+
+After the connection is successful, the icon will turn green
+If the connection is unsuccessful, open the logs and investigate the errors:
+
+image2021-3-12_13-50-55.png
+
+Note: The openvpn GUI imports your configuration and saves it in a different location. In order to change your configuration. Please select `Edit Config` option on the menu instead of changing the original configuration file. (You could find the location in the Settings… -> Advanced window.
+
+
+OpenVPN Connect
+---------------
+
+OpenVPN Connect used in this guide is: v3.2.3 (1851)
+
+Download and install openvpn for windows from the official website: https://openvpn.net/download-open-vpn/ 
+
+The app starts at the system tray, right click on it and select `Open app`
+
+image2021-3-12_13-51-38.png
+
+Click on the Menu Icon
+
+image2021-3-12_13-52-8.png
+
+Select Import Profile
+
+image2021-3-12_13-53-9.png
+
+Choose File and upload your openvpn profile
+
+image2021-3-12_13-53-56.png
+image2021-3-12_13-54-25.png
+
+u will see the connection in the main profile list as below:
+
+image2021-3-12_13-55-23.png
+
+After enabling it (with the grayed out toggle). You don’t need to do anything in the WSL2 as it will automatically work on connections coming from your WSL2 Ubuntu installation.
+
+To access log on the client:
+
+image2021-3-12_13-55-59.png
+
+Troubleshooting
+===============
+
+
+I get a logged error: "Bad compression stub (swap) decompression header byte: 42"
+Try commenting out compress in the .ovpn configuration file
+
+The VPN connection is unstable and goes up and down every few minutes
+Try switching network protocol from UDP to TCP - edit the .ovpn file and change the configuration line proto udp to proto tcp 
+
+All tap-windows6 adapters currently in use
+When using OpenVPN GUI, If you're seeing this when trying to connect: 
+
+image2021-3-25_12-44-17.png
+
+
+it may mean that you were still connected to a different VPN (Aveiro IT for instance). You need to manually disconnect first:
+
+image2021-3-25_12-46-41.png
+
+Try to connect now - your connection should work: 
+
+image2021-3-25_12-47-40.png
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
