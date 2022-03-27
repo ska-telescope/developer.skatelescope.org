@@ -108,13 +108,19 @@ Command line
 
 You can directly upload the key from the command line - just tell GPG to upload it to the keyserver using the fingerprint: 
 
-$ gpg --send-keys --keyserver keyserver.ubuntu.com $(gpg --fingerprint <YOUR_EMAIL> | sed -n '2 p' | tr -d " \t\n\r")
-Export, copy
-Use the following command to list the private GPG key you just created (of course, replace {{<YOUR_EMAIL_ADDRESS>}} with your own email address: 
+.. code-block:: bash
 
-gpg --armor --export $(gpg --fingerprint <YOUR_EMAIL_ADDRESS> | sed -n '2 p' | tr -d " \t\n\r")
+	$ gpg --send-keys --keyserver keyserver.ubuntu.com $(gpg --fingerprint <YOUR_EMAIL> | sed -n '2 p' | tr -d " \t\n\r")
+	Export, copy
+	Use the following command to list the private GPG key you just created (of course, replace {{<YOUR_EMAIL_ADDRESS>}} with your own email address: 
+
+	gpg --armor --export $(gpg --fingerprint <YOUR_EMAIL_ADDRESS> | sed -n '2 p' | tr -d " \t\n\r")
+	
 Copy all the contents, including the -----BEGIN PGP PUBLIC KEY ... and END ... ----- parts.
+
 Submit on keyserver
+===================
+
 Go to the website, click on "Submit Key":
 ￼
 
@@ -142,18 +148,23 @@ Command line
 
 Run the following command (the filename will contain your username, which should contain your name and initials of your last name):
 
-$ gpg --output <YOUR_USERNAME>.ovpn --decrypt <YOUR_USERNAME>.ovpn.gpg
-gpg: encrypted with 4096-bit RSA key, ID 7361A071DDC58EE5, created 2021-03-22
-"<YOUR_USERNAME> <<YOUR_EMAIL>>"
-gpg: Signature made Tue 23 Mar 2021 11:39:00 SAST
-gpg: using RSA key 8EF305837D259A6DE269C5068C3A465011EBAD07
-gpg: Good signature from "<SYSTEM TEAM MEMBER NAME> <<SYSTEM_TEAM_MEMBER_EMAIL>>" [ultimate]
+.. code-block:: bash
+
+	$ gpg --output <YOUR_USERNAME>.ovpn --decrypt <YOUR_USERNAME>.ovpn.gpg
+	gpg: encrypted with 4096-bit RSA key, ID 7361A071DDC58EE5, created 2021-03-22
+	"<YOUR_USERNAME> <<YOUR_EMAIL>>"
+	gpg: Signature made Tue 23 Mar 2021 11:39:00 SAST
+	gpg: using RSA key 8EF305837D259A6DE269C5068C3A465011EBAD07
+	gpg: Good signature from "<SYSTEM TEAM MEMBER NAME> <<SYSTEM_TEAM_MEMBER_EMAIL>>" [ultimate]
+
 Note that, you may see output slightly different from the expected (as shown above), depending on whether or not your Public key was signed. The end-result should be that you now have a file named <YOUR_USERNAME>.ovpn  in the same directory:
 
-$ ls -latr
-...snip...
--rw-rw-r--  1 you you  6838 Mar 23 11:39 <YOUR_USERNAME>.ovpn.gpg
--rw-rw-r--  1 you you  6446 Mar 23 11:55 <YOUR_USERNAME>.ovpn
+.. code-block:: bash
+
+	$ ls -latr
+	...snip...
+	-rw-rw-r--  1 you you  6838 Mar 23 11:39 <YOUR_USERNAME>.ovpn.gpg
+	-rw-rw-r--  1 you you  6446 Mar 23 11:55 <YOUR_USERNAME>.ovpn
 
 GUI
 ---
