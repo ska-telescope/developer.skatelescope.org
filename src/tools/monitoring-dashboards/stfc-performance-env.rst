@@ -123,12 +123,12 @@ Submit on keyserver
 
 Go to the website, click on "Submit Key":
 ￼
-
-
 Paste the key and click on "Submit Public Key":
+
 ￼
 Request VPN credentials
 =======================
+
 
 Hop on over to #team-system-support on slack and request VPN access credentials. One of the System Team members will contact you directly to help facilitate the rest of the process. You will need to provide them the email address with which you published your GPG key.
 
@@ -138,7 +138,6 @@ Decrypt credentials
 ===================
 
 This is also not relevant to the LastPass users.
-
 
 
 The System Team member helping you should be sending you an encrypted version of your .ovpn file. To decrypt it, follow either the Command line or Windows GUI steps:
@@ -180,6 +179,7 @@ Locate the file on your hard drive and click on Open. Enter the passphrase you u
 
 .. image:: ../images/image2021-3-25_11-44-19.png
    :align: center
+
 
 You should see a success message. Choose an Output folder and click on Save All:
 
