@@ -140,10 +140,8 @@ Paste the key and click on "Submit Public Key":
    :align: center
 
 
-￼
 Request VPN credentials
 =======================
-
 
 Hop on over to #team-system-support on slack and request VPN access credentials. One of the System Team members will contact you directly to help facilitate the rest of the process. You will need to provide them the email address with which you published your GPG key.
 
@@ -157,8 +155,8 @@ This is also not relevant to the LastPass users.
 
 The System Team member helping you should be sending you an encrypted version of your .ovpn file. To decrypt it, follow either the Command line or Windows GUI steps:
 
-Command line
-------------
+Decrypt on the command line
+---------------------------
 
 Run the following command (the filename will contain your username, which should contain your name and initials of your last name):
 
@@ -180,8 +178,8 @@ Note that, you may see output slightly different from the expected (as shown abo
 	-rw-rw-r--  1 you you  6838 Mar 23 11:39 <YOUR_USERNAME>.ovpn.gpg
 	-rw-rw-r--  1 you you  6446 Mar 23 11:55 <YOUR_USERNAME>.ovpn
 
-GUI
----
+Decrypt using GUI
+-----------------
 
 Kleopatra is a tool available that works for Windows, Linux and Android from https://apps.kde.org/kleopatra/
 
