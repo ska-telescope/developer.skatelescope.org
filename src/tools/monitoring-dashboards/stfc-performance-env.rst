@@ -111,7 +111,12 @@ You can directly upload the key from the command line - just tell GPG to upload 
 .. code-block:: bash
 
 	$ gpg --send-keys --keyserver keyserver.ubuntu.com $(gpg --fingerprint <YOUR_EMAIL> | sed -n '2 p' | tr -d " \t\n\r")
-	Export, copy
+
+Export, copy
+------------
+
+.. code-block:: bash
+
 	Use the following command to list the private GPG key you just created (of course, replace {{<YOUR_EMAIL_ADDRESS>}} with your own email address: 
 
 	gpg --armor --export $(gpg --fingerprint <YOUR_EMAIL_ADDRESS> | sed -n '2 p' | tr -d " \t\n\r")
