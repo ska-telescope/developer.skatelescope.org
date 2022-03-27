@@ -136,7 +136,7 @@ Go to the website, click on "Submit Key":
 
 Paste the key and click on "Submit Public Key":
 
-.. image:: ../images/image2021-3-25_11-34-36.png
+.. image:: ../images/image2021-3-25_11-36-20.png
    :align: center
 
 
