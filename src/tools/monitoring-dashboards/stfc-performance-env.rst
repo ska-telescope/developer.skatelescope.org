@@ -173,16 +173,16 @@ Kleopatra is a tool available that works for Windows, Linux and Android from htt
 
 Click on Decrypt / Verify:
 
-.. image:: images/image2021-3-25_11-42-7.png
+.. image:: ../images/image2021-3-25_11-42-7.png
    :align: center
 
 Locate the file on your hard drive and click on Open. Enter the passphrase you used to create the GPG key:
 
-.. image:: images/image2021-3-25_11-44-19.png
+.. image:: ../images/image2021-3-25_11-44-19.png
    :align: center
 
 You should see a success message. Choose an Output folder and click on Save All:
 
-.. image:: images/image2021-3-25_11-44-49.png
+.. image:: ../images/image2021-3-25_11-44-49.png
    :align: center
 
