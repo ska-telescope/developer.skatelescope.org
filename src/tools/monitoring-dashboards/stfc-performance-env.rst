@@ -123,14 +123,22 @@ Export, copy
 
 	gpg --armor --export $(gpg --fingerprint <YOUR_EMAIL_ADDRESS> | sed -n '2 p' | tr -d " \t\n\r")
 	
-Copy all the contents, including the -----BEGIN PGP PUBLIC KEY ... and END ... ----- parts.
+Copy all the contents, including the ``-----BEGIN PGP PUBLIC KEY ...`` and ``END ... -----`` parts.
 
 Submit on keyserver
 ===================
 
 Go to the website, click on "Submit Key":
-￼
+
+.. image:: ../images/image2021-3-25_11-34-34.png
+   :align: center
+
+
 Paste the key and click on "Submit Public Key":
+
+.. image:: ../images/image2021-3-25_11-34-36.png
+   :align: center
+
 
 ￼
 Request VPN credentials
