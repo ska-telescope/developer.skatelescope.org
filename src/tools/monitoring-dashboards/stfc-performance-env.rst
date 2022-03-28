@@ -3,14 +3,14 @@
 STFC cluster
 *****************
 
-The STFC cluster is located at the SKAO headquarters, UK. Direct access to Openstack platforms used by SKAO is provided only to the System Team. Access to namespaced deployments and monitoring is available to other teams through a VPN connection.
+The STFC cluster is located at the SKAO headquarters, UK. Direct access to Openstack platforms used by SKAO is provided only to the System Team but access to namespaced deployments and monitoring is available to other teams through a VPN connection.
 
 Connecting to the STFC VPN
 ===============================
 
 For Accessing branch-based deployments of the MVP it is necessary to have a connection to the VPN. This will not only provide access to the iTango, Taranta and REST interfaces, but also allow usage of the KUBECONFIG that can be downloaded from the pipeline logs of the deployments - hence giving developers and testers kubectl access to their namespaced deployments.
 
-In order to gain a VPN connection, you first need credentials.  To get them please contact the system team by sending a Slack message on `#team-system-support <https://skao.slack.com/archives/CEMF9HXUZ>`_ channel. Sharing these credentials has to be done in a secure way. Two methods are currently available for doing this - GPG encryption, and LastPass. Since a GPG key is also required for SKA Developers for verifying their commits this is the preferred method.
+In order to gain a VPN connection, you first need credentials.  To get them please contact the system team by sending a Slack message on `#team-system-support <https://skao.slack.com/archives/CEMF9HXUZ>`_ channel. Sharing these credentials has to be done in a secure way. Two methods are currently available for doing this: GPG encryption, and LastPass. Since a GPG key is also required for SKA Developers for verifying their commits this is the preferred method.
 
 Receiving your OVPN key using GPG encryption is a three-step process:
 
@@ -25,12 +25,7 @@ Once the above three steps are followed, you shall be able to connect.
 Create your GPG key
 ===================
 
-If you don’t already have a GPG key, the following steps can help you get started.
-If you are using LastPass, you can ignore this step and continue to Request VPN credentials
-
-
-As a prerequiste you need to install GPG for your operating system. If your operating system has gpg2 installed, 
-replace gpg with gpg2 in the following commands.
+If you don’t already have a GPG key, the following steps can help you get started. As a prerequiste you need to install GPG for your operating system. If your operating system has gpg2 installed, replace gpg with gpg2 in the following commands.
 
 If you are using Windows, you can install Gpg4win. IMPORTANT NOTE: tick all the boxes (GPA is deselected by default) when installing. Then create your GPG key following either the guide for the Command Line or the GUI below.
 
@@ -107,32 +102,39 @@ Kleopatra is a tool that works for Windows, Linux and Android available from htt
 
 Open Kleopatra and choose New Key Pair:
 
-image2021-3-25_11-20-30.png
+.. image:: ../images/image2021-3-25_11-20-30.png
+   :align: center
 
 Choose PGP key pair:
 
-image2021-3-25_11-22-25.png
+.. image:: ../images/image2021-3-25_11-22-25.png
+   :align: center
 
 Fill in your details and tick the "Protect..." box:
 
-image2021-3-25_11-23-9.png
+.. image:: ../images/image2021-3-25_11-23-9.png
+   :align: center
 
 
 Do no forget this passphrase - you'll need it later:
 
-image2021-3-25_11-24-24.png
+.. image:: ../images/image2021-3-25_11-24-24.png
+   :align: center
 
 Click on Finish:
 
-image2021-3-25_11-26-31.png
+.. image:: ../images/image2021-3-25_11-26-31.png
+   :align: center
 
 In the list of keys, you can now double-click on your key, to see it's details. Click on Export:
 
-image2021-3-25_11-31-28.png
+.. image:: ../images/image2021-3-25_11-31-28.png
+   :align: center
 
 Copy all the text:
 
-image2021-3-25_11-32-46 (1).png
+.. image:: ../images/image2021-3-25_11-32-46 (1).png
+   :align: center
 
 Open the link to the keyserver to publish it as described here (or Gitlab.com if you want to sign your commits) and paste it there.
 
@@ -182,13 +184,11 @@ Request VPN credentials
 
 Hop on over to #team-system-support on slack and request VPN access credentials. One of the System Team members will contact you directly to help facilitate the rest of the process. You will need to provide them the email address with which you published your GPG key.
 
-If you are using LastPass, you can tell the System Team member who is helping you this . Once you've received your .OVPN file via LastPass, you should be able to connect following one of these guides.
+.. note::
+   Your credentials may expire after some time. If your connection stops working and gives you timeouts you will need to contact the System Team again.
 
 Decrypt credentials
 ===================
-
-This is also not relevant to the LastPass users.
-
 
 The System Team member helping you should be sending you an encrypted version of your .ovpn file. To decrypt it, follow either the Command line or Windows GUI steps:
 
@@ -250,9 +250,9 @@ Open a new terminal. You will need to point the openvpn command to the .ovpn fil
 
 .. code-block:: bash
 
-	$ sudo openvpn --config my-certs-path/my-cert.ovpn
+	$ sudo openvpn --config <YOUR_CERTS_PATH>/<YOUR_USERNAME>.ovpn
 	
-Where ``my-certs-path`` is the path to the folder where you keep your certificate ``my-cert.ovpn`` 
+Where ``YOUR_CERTS_PATH`` is the path to the folder where you keep the certificate ``<YOUR_USERNAME>.ovpn`` 
 file.
 
 Connect using network manager
@@ -267,20 +267,24 @@ image2021-3-12_12-57-58.png
 
 From the add VPN dialog, select "Import from file..." and load the OVPN file provided, that contains the connection and authentication information (rename the resultant VPN connection to something appropriate):
 
-image2021-3-12_12-54-40 (1).png
+.. image:: ../images/image2021-3-12_12-54-40 (1).png
+   :align: center
 
 Activate the VPN as required under the Network Settings:
 
-image2021-3-12_13-2-56.png
+.. image:: ../images/image2021-3-12_13-2-56.png
+   :align: center
 
 Connecting to the VPN on macOS
 ==============================
 
 Install TunnelBlick - follow instructions https://tunnelblick.net/cInstall.html
 
-tunnelblick.png
+.. image:: ../images/tunnelblick.png
+   :align: center
 
-If you are running macOS 11 (Big Sur), you need to be running the latest beta version of Tunnelblick: https://tunnelblick.net/downloads.html (see how to troubleshoot issues with Big Sur)
+.. note::
+   If you are running macOS 11 (Big Sur), you need to be running the latest beta version of Tunnelblick: https://tunnelblick.net/downloads.html (see how to troubleshoot issues with Big Sur)
 
 
 Connecting to the VPN on Windows
@@ -303,18 +307,21 @@ Download and install openvpn gui from the official website: https://openvpn.net/
 
 The app starts at the system tray, right click on it and select `Import file…`
 
-image2021-3-12_13-48-45.png
+.. image:: ../images/image2021-3-12_13-48-45.png
+   :align: center
 
 Select your openvpn configuration file (.ovpn)
 You will see the connection in the list like below:
 Choose connect to connect to the VPN
 
-image2021-3-12_13-49-45.png
+.. image:: ../images/image2021-3-12_13-49-45.png
+   :align: center
 
 After the connection is successful, the icon will turn green
 If the connection is unsuccessful, open the logs and investigate the errors:
 
-image2021-3-12_13-50-55.png
+.. image:: ../images/image2021-3-12_13-50-55.png
+   :align: center
 
 Note: The openvpn GUI imports your configuration and saves it in a different location. In order to change your configuration. Please select `Edit Config` option on the menu instead of changing the original configuration file. (You could find the location in the Settings… -> Advanced window.
 
@@ -328,54 +335,68 @@ Download and install openvpn for windows from the official website: https://open
 
 The app starts at the system tray, right click on it and select `Open app`
 
-image2021-3-12_13-51-38.png
+.. image:: ../images/image2021-3-12_13-51-38.png
+   :align: center
 
 Click on the Menu Icon
 
-image2021-3-12_13-52-8.png
+.. image:: ../images/image2021-3-12_13-52-8.png
+   :align: center
 
 Select Import Profile
 
-image2021-3-12_13-53-9.png
+.. image:: ../images/image2021-3-12_13-53-9.png
+   :align: center
 
 Choose File and upload your openvpn profile
 
-image2021-3-12_13-53-56.png
-image2021-3-12_13-54-25.png
+.. image:: ../images/image2021-3-12_13-53-56.png
+   :align: center
+
+.. image:: ../images/image2021-3-12_13-54-25.png
+   :align: center
 
 u will see the connection in the main profile list as below:
 
-image2021-3-12_13-55-23.png
+.. image:: ../images/image2021-3-12_13-55-23.png
+   :align: center
 
 After enabling it (with the grayed out toggle). You don’t need to do anything in the WSL2 as it will automatically work on connections coming from your WSL2 Ubuntu installation.
 
 To access log on the client:
 
-image2021-3-12_13-55-59.png
+.. image:: ../images/image2021-3-12_13-55-59.png
+   :align: center
 
 Troubleshooting
 ===============
 
 
-I get a logged error: "Bad compression stub (swap) decompression header byte: 42"
+**I get a logged error: "Bad compression stub (swap) decompression header byte: 42"**
+
 Try commenting out compress in the .ovpn configuration file
 
-The VPN connection is unstable and goes up and down every few minutes
+**The VPN connection is unstable and goes up and down every few minutes**
+
 Try switching network protocol from UDP to TCP - edit the .ovpn file and change the configuration line proto udp to proto tcp 
 
-All tap-windows6 adapters currently in use
+**All tap-windows6 adapters currently in use**
+
 When using OpenVPN GUI, If you're seeing this when trying to connect: 
 
-image2021-3-25_12-44-17.png
-
+.. image:: ../images/image2021-3-25_12-44-17.png
+   :align: center
 
 it may mean that you were still connected to a different VPN (Aveiro IT for instance). You need to manually disconnect first:
 
-image2021-3-25_12-46-41.png
+.. image:: ../images/image2021-3-25_12-46-41.png
+   :align: center
 
 Try to connect now - your connection should work: 
 
-image2021-3-25_12-47-40.png
+.. image:: ../images/image2021-3-25_12-47-40.png
+   :align: center
+
 
 
 
