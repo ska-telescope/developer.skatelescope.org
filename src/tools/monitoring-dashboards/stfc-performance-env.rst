@@ -133,7 +133,7 @@ In the list of keys, you can now double-click on your key, to see it's details. 
 
 Copy all the text:
 
-.. image:: ../images/image2021-3-25_11-32-46 (1).png
+.. image:: ../images/image2021-3-25_11-32-46.png
    :align: center
 
 Open the link to the keyserver to publish it as described here (or Gitlab.com if you want to sign your commits) and paste it there.
@@ -267,7 +267,7 @@ image2021-3-12_12-57-58.png
 
 From the add VPN dialog, select "Import from file..." and load the OVPN file provided, that contains the connection and authentication information (rename the resultant VPN connection to something appropriate):
 
-.. image:: ../images/image2021-3-12_12-54-40 (1).png
+.. image:: ../images/image2021-3-12_12-54-40.png
    :align: center
 
 Activate the VPN as required under the Network Settings:
