@@ -263,7 +263,10 @@ This was tested on Ubuntu 20.04
 Ensure that the following packages are installed: network-manager-openvpn, network-manager-openvpn-gnome 
 
 Open Network settings and click on the + for VPN:
-image2021-3-12_12-57-58.png
+
+.. image:: ../images/image2021-3-12_12-57-58.png
+   :align: center
+
 
 From the add VPN dialog, select "Import from file..." and load the OVPN file provided, that contains the connection and authentication information (rename the resultant VPN connection to something appropriate):
 
