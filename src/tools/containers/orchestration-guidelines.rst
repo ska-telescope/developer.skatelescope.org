@@ -15,7 +15,11 @@ Container Orchestration Guidelines
 **********************************
 
 This section describes a set of standards, conventions and guidelines for deploying application suites on Container Orchestration technologies.
-For a hands on training recording please check `Containerisation and Orchestration Concept <https://skatelescope.zoom.us/rec/share/2ZCX7LdPy42vvB3wrthOe_5RBarl_1xNro5l3rwc7M5QXe1y618xKdHfHneqjgSK.GP8il5w0x5mCSc3h>`_
+For a hands on training please check :
+
+`Containerisation and Orchestration Concept recording <https://drive.google.com/drive/folders/1LM6pjhOzhWMMhP9v1ByMBAvuVKFVgeRk?usp=sharing>`_
+
+`Containerisation and Orchestration exercises <https://gitlab.com/piersharding/containerisation-and-orchestration>`_
 
 .. warning::
    Information regarding examples on these pages may be out of date
