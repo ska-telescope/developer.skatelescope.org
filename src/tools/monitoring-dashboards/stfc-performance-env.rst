@@ -151,7 +151,7 @@ You can directly upload the key from the command line - just tell GPG to upload 
 
 .. code-block:: bash
 
-	$ gpg --send-keys --keyserver keyserver.ubuntu.com $(gpg --fingerprint <YOUR_EMAIL> | sed -n '2 p' | tr -d " \t\n\r")
+	gpg --send-keys --keyserver keyserver.ubuntu.com $(gpg --fingerprint <YOUR_EMAIL> | sed -n '2 p' | tr -d " \t\n\r")
 
 Export, copy
 ------------
