@@ -3,403 +3,415 @@
 STFC cluster
 *****************
 
-Cluster specs
-=============
-.. image:: ../images/cluster.png
-  :alt: Rack diagram: whole cluster has Compute:232C/464T, Memory:2.5TB RAM, SSD: 21.76TB, HDD: 33.60TB, 10GB top of rack switch with redundancy. Two compute node types: one with 512GB RAM, the other with 128GB RAM, both with 2x Intel Xeon E5-2650 chips and 2x 400GB SSD in RAID 0, and 2x 10GB and 2x 1GB links. One Controller node with redundancy, with 64GB RAM and 4x 600GB SAS in RAID 4, with the same links as the compute nodes. Two flavours of storage node: SSD and SAS.
+The STFC cluster is located at the SKAO headquarters, UK. Direct access to Openstack platforms used by SKAO is provided only to the System Team but access to namespaced deployments and monitoring is available to other teams through a VPN connection.
 
-Access the cluster
-==================
-The STFC cluster is located at the SKAO headquarters, UK. To have access to the cluster, it is required
-to be inside the facilities or have VPN credentials to access the IT network
-remotely.
-
-Access to the network using VPN
+Connecting to the STFC VPN
 ===============================
-At the moment, VPN credentials are sent individually and can be requested by sending an
-email or Slack message on `#team-system-support <https://skao.slack.com/archives/CEMF9HXUZ>`_ channel for System Team specific services.
 
-Access to the OpenStack platform (Virtualization)
-=================================================
-.. image:: ../images/openstack-login.png
-  :alt: Openstack login dialog box. Dialog boxes are labelled in Portuguese.
+For Accessing branch-based deployments of the MVP it is necessary to have a connection to the VPN. This will not only provide access to the iTango, Taranta and REST interfaces, but also allow usage of the KUBECONFIG that can be downloaded from the pipeline logs of the deployments - hence giving developers and testers kubectl access to their namespaced deployments.
 
-The OpenStack platform requires authentication in order to use it.
+In order to gain a VPN connection, you first need credentials.  To get them please contact the system team by sending a Slack message on `#team-system-support <https://skao.slack.com/archives/CEMF9HXUZ>`_ channel. Sharing these credentials has to be done in a secure way. Two methods are currently available for doing this: GPG encryption, and LastPass. Since a GPG key is also required for SKA Developers for verifying their commits this is the preferred method.
 
-At the moment, OpenStack credentials are sent individually and it is required
-to send an email to  Domingos Nunes (dfsn@ua.pt) with the knowledge from Piers
-Harding (piers@ompka.net). In the next phase, OpenStack could support Gitlab
-authentication.
+Receiving your OVPN key using GPG encryption is a three-step process:
 
-To access the OpenStack platform go to http://192.168.93.215/dashboard
-(requires VPN) and login with your credentials. These credentials should be
-the same used for your VPN authentication. The **Domain** to use is
-**default**.
+ 1 Create and publish your GPG key
+ 
+ 2 Request VPN credentials from System Team
+ 
+ 3 Receive encrypted credentials and decrypt them.
 
-Virtual machine deployment
---------------------------
-- At the sidebar, go to Project -> Compute -> Instances and click on the "Launch Instance" button:
+Once the above three steps are followed, you shall be able to connect.
 
-.. image:: ../images/openstack-project-compute-instance.png
-  :alt: OpenStack Horizon interface, with the left-hand sidebar highlighted, and the "Launch Instance" button highlighted in blue.
+Create your GPG key
+===================
 
-- At this stage a menu will pop-up and will ask to specify virtual machine characteristics, chose an name for virtual machine:
+If you don’t already have a GPG key, the following steps can help you get started. As a prerequiste you need to install GPG for your operating system. If your operating system has gpg2 installed, replace gpg with gpg2 in the following commands.
 
-.. image:: ../images/openstack-vm-chars.png
-  :alt: OpenStack Launch Instance dialog box
+If you are using Windows, you can install Gpg4win. IMPORTANT NOTE: tick all the boxes (GPA is deselected by default) when installing. Then create your GPG key following either the guide for the Command Line or the GUI below.
 
-- Select the Operating System you want your VM to have:
+Command Line / Terminal
+-----------------------
 
-**NOTE: Please choose the option "Yes" at "Delete Volume on Instance Delete"
-so when you decide to delete the instance the volume will be also deleted and
-not occupy unnecessary space**
+Generate the private/public key pair with the following command, which will spawn a series of questions:
 
-.. image:: ../images/openstack-vm-os.png
-   :alt: OpenStack Launch Instance dialog box, on the Source tab, highlighting in red the Delete Volume on Instance Delete buttons.
+.. code-block:: bash
 
-.. image:: ../images/openstack-vm-os2.png
-  :alt: Openstack Launch Instance dialog box, on the Source tab, showing the Delete Volume on Instance Delete button set to Yes, and the CentOS7 OS allocated.
+    gpg --full-gen-key
 
-- Select the flavor which you want your VM to have:
+In some cases like Gpg4win on Windows and macOS versions, the command here may be ``gpg --gen-key``.
 
-.. image:: ../images/openstack-flavor.png
-  :alt: OpenStack Launch Instance dialog box, showing the Flavor tab
 
-.. image:: ../images/openstack-flavor2.png
-  :alt: OpenStack Launch Instance dialog box, showing the Flavor tab, with a Flavor selected.
+The first question is which algorithm can be used. Select the kind you want or press Enter to choose the default (RSA and RSA):
 
-- Select private network (int-net):
+.. code-block:: bash
 
-.. image:: ../images/openstack-network.png
-  :alt: OpenStack Launch Instance dialog box, showing the Networks tab
+   Please select what kind of key you want:
+       (1) RSA and RSA (default)
+       (2) DSA and Elgamal
+       (3) DSA (sign only)
+       (4) RSA (sign only)
+   Your selection? 1
+   
+The next question is key length. We recommend you choose 4096: 
 
-.. image:: ../images/openstack-network2.png
-  :alt: OpenStack Launch Instance dialog box, showing the int_net network selected.
+.. code-block:: bash
 
-- Create or use ssh key to enable ssh access to the VM:
+   RSA keys may be between 1024 and 4096 bits long.
+   What keysize do you want? (2048) 4096
+   Requested keysize is 4096 bits
 
-.. image:: ../images/openstack-sshkeys.png
-  :alt:  OpenStack Launch Instance dialog box, showing the Key Pair tab
+Specify the validity period of your key. This is something subjective, and you can use the default value, which is to never expire:
 
-- In the end press on "Launch Instance" button at the bottom. This initiates the virtual machine deployment. It could take a while:
+.. code-block:: bash
 
-.. image:: ../images/openstack-launch-instance.png
-  :alt: OpenStack Launch Instance dialog box, with the "Launch Instance" button highlighted in red.
+   Please specify how long the key should be valid.
+         0 = key does not expire
+      <n>  = key expires in n days
+      <n>w = key expires in n weeks
+      <n>m = key expires in n months
+      <n>y = key expires in n years
+   Key is valid for? (0) 0
+   Key does not expire at all
+   
+Confirm that the answers you gave were correct by typing y:
 
-- When the Power State become "Running", the virtual machine has been successfully deployed and is ready to be used:
+.. code-block:: bash
 
-.. image:: ../images/openstack-running-intance.png
-  :alt: OpenStack Instances tab, showing the newly-created instance
+   Is this correct? (y/N) y
 
-- Since the VM is deployed inside private network you will need to associate Floating IP from your network have the access:
+Enter your real name, the email address to be associated with this key (should match a verified email address you use in GitLab) and an optional comment (press Enter to skip): 
 
-.. image:: ../images/openstack-running-intance.png
-  :alt: OpenStack Instances tab, showing the newly-created instance, with the dropdown box to the right of the instance status line highlighted
+.. code-block:: bash
 
-.. image:: ../images/openstack-floating-choose.png
-  :alt: OpenStack instance dropdown, with the "Associate Floating IP" option highlighted in red
+   GnuPG needs to construct a user ID to identify your key.
+ 
+   Real name: Mr. Robot
+   Email address: <YOUR_EMAIL>
+   Comment:
+   You selected this USER-ID:
+       "Mr. Robot <YOUR_EMAIL>"
+ 
+   Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? O
+   
+Pick a strong password when asked and type it twice to confirm.
 
-.. image:: ../images/openstack-floating-add.png
-  :alt: OpenStack Manage Floating IP Associations dialog box
+Create key using GUI
+--------------------
 
-.. image:: ../images/openstack-floating-add2.png
-  :alt: OpenStack Manage Floating IP Associations dialog box with all options selected. The "Associate" button is highlighted in red
+Kleopatra is a tool that works for Windows, Linux and Android available from https://apps.kde.org/kleopatra/
 
-.. image:: ../images/openstack-floating-ip.png
-  :alt: OpenStack Instances tab, highlighting with red underline the newly-associated IP address.
+Open Kleopatra and choose New Key Pair:
 
-- Now using any SSH client connect to the instance through VPN using the Floating IP address. The login user is **ubuntu** when using the Ubuntu base images and **centos** for the CentOS ones.
+.. image:: ../images/image2021-3-25_11-20-30.png
+   :align: center
 
-Docker machine deployment
--------------------------
-Official docker-machine documentation:
-https://docs.docker.com/machine/overview/
+Choose PGP key pair:
 
-1. Installation
-^^^^^^^^^^^^^^^
-Guide: https://docs.docker.com/machine/install-machine/
+.. image:: ../images/image2021-3-25_11-22-25.png
+   :align: center
 
-2. Configuration
-^^^^^^^^^^^^^^^^
-In order to use the OpenStack integration you need to export OpenStack
-Authentication credentials.
+Fill in your details and tick the "Protect..." box:
 
-For the future use, create an executable file which will export environmental
-variables automatically. For example you can call file "openstackrc" and the
-content of the file be:
+.. image:: ../images/image2021-3-25_11-23-9.png
+   :align: center
 
-::
-
-	# VM CONFIG
-	export OS_SSH_USER=ubuntu
-	export OS_IMAGE_NAME=Ubuntu1604
-	export OS_FLAVOR_NAME=m1.medium
-	export OS_FLOATINGIP_POOL=ext_net
-	export OS_SECURITY_GROUPS=default
-	export OS_NETWORK_NAME=int_net
-
-	# AUTH
-	export OS_DOMAIN_NAME=default
-	export OS_USERNAME=<OPENSTACK_USER>
-	export OS_PASSWORD=<OPENSTACK_PASS>
-	export OS_TENANT_NAME=geral
-	export OS_AUTH_URL=http://192.168.93.215:5000/v3
-
-
-OS_SSH_USER
-  Default ssh user, usually it is ubuntu (if operating system is ubuntu)
-
-OS_IMAGE_NAME
-  OS image to be used during virtual machine deployment
-
-OS_FLAVOR_NAME
-  Virtual machine specification (vCPU, RAM, storage, ...)
-
-
-  +------------+------+-----------+-------+
-  | Flavor     | vCPU | Root Disk |  RAM  |
-  +============+======+===========+=======+
-  | m1.tiny    |  1   | 0         | 0.5GB |
-  +------------+------+-----------+-------+
-  | m1.smaller |  1   | 0         | 1GB   |
-  +------------+------+-----------+-------+
-  | m1.small   |  1   | 10GB      | 2GB   |
-  +------------+------+-----------+-------+
-  | m1.medium  |  2   | 10GB      | 3GB   |
-  +------------+------+-----------+-------+
-  | m1.large   |  4   | 10GB      | 8GB   |
-  +------------+------+-----------+-------+
-  | m1.xlarge  |  8   | 10GB      | 8GB   |
-  +------------+------+-----------+-------+
-  | ska1.full  |  46  | 10GB      | 450GB |
-  +------------+------+-----------+-------+
-
-OS_FLOATINGIP_POOL
-  Floating IP external network pool is the "ext_net"
-
-OS_SECURITY_GROUPS
-  Security groups, default is "default"
-
-OS_NETWORK_NAME
-  Private network, default is "int_net"
 
-OS_DOMAIN_NAME
-  OpenStack domain region, default is "default"
-
-OS_USERNAME
-  OpenStack username
-
-OS_PASSWORD
-  OpenStack password
-
-OS_TENANT_NAME
-  OpenStack project name, default is "geral"
-
-OS_AUTH_URL
-  OpenStack Auth URL, default is "http://192.168.93.215:5000/v3"
-
-
-3. Usage
-^^^^^^^^
-
-**Complete documentation about docker-machine CLI commands can be found here:
-https://docs.docker.com/machine/reference/**
-
-3.1 Run the enviromental variable file
-""""""""""""""""""""""""""""""""""""""
-::
+Do no forget this passphrase - you'll need it later:
 
-	$ . openstackrc
+.. image:: ../images/image2021-3-25_11-24-24.png
+   :align: center
 
-3.2 Create docker-machine
-"""""""""""""""""""""""""
-Create a machine. Requires the --driver flag to indicate which provider
-(OpenStack) the machine should be created on, and an argument to indicate the
-name of the created machine.
+Click on Finish:
 
-::
+.. image:: ../images/image2021-3-25_11-26-31.png
+   :align: center
 
-	$ docker-machine create --driver=openstack MACHINE-NAME
+In the list of keys, you can now double-click on your key, to see it's details. Click on Export:
 
-	Creating CA: /root/.docker/machine/certs/ca.pem
-	Creating client certificate: /root/.docker/machine/certs/cert.pem
-	Running pre-create checks...
-	Creating machine...
-	(MACHINE-NAME) Creating machine...
-	Waiting for machine to be running, this may take a few minutes...
-	Detecting operating system of created instance...
-	Waiting for SSH to be available...
-	Detecting the provisioner...
-	Provisioning with ubuntu(systemd)...
-	Installing Docker...
-	Copying certs to the local machine directory...
-	Copying certs to the remote machine...
-	Setting Docker configuration on the remote daemon...
-	Checking connection to Docker...
-	Docker is up and running!
-	To see how to connect your Docker Client to the Docker Engine running on
-	this virtual machine, run: docker-machine env MACHINE-NAME
+.. image:: ../images/image2021-3-25_11-31-28.png
+   :align: center
 
-In this step docker-machine will create VM inside OpenStack. As soon as the
-ssh connection to VM is available the Docker service will be installed.
+Copy all the text:
 
-3.3 Set docker-machine environment
-""""""""""""""""""""""""""""""""""
-Set environment variables to dictate that docker should run a command against
-a particular machine.
-::
+.. image:: ../images/image2021-3-25_11-32-46.png
+   :align: center
 
-	$ docker-machine env MACHINE-NAME
+Open the link to the keyserver to publish it as described here (or Gitlab.com if you want to sign your commits) and paste it there.
 
-	export DOCKER_TLS_VERIFY="1"
-	export DOCKER_HOST="tcp://192.168.93.23:2376"
-	export DOCKER_CERT_PATH="/root/.docker/machine/machines/MACHINE-NAME"
-	export DOCKER_MACHINE_NAME="MACHINE-NAME"
-	# Run this command to configure your shell: 
-	# eval $(docker-machine env MACHINE-NAME)
 
-3.4 Configure shell to use your docker-machine
-""""""""""""""""""""""""""""""""""""""""""""""
-After this, when you execute "docker" command it will be executed remotely.
+Publish your GPG key
+====================
 
-::
+This GPG key must now be uploaded to https://keyserver.ubuntu.com/ - either by using the command line to directly publish it, or by copying the exported public key & pasting it on the website.
 
-	$ eval $(docker-machine env MACHINE-NAME)
+Command line
+------------
 
-Now if you run "docker-machine ls" you see that your machine is active and
-ready to use.
-::
+You can directly upload the key from the command line - just tell GPG to upload it to the keyserver using the fingerprint: 
 
-	$ docker-machine ls
+.. code-block:: bash
 
-	NAME           ACTIVE   DRIVER      STATE     URL                        SWARM   DOCKER     ERRORS
-	MACHINE-NAME   *        openstack   Running   tcp://192.168.93.23:2376           v18.09.0   
+	gpg --send-keys --keyserver keyserver.ubuntu.com $(gpg --fingerprint <YOUR_EMAIL> | sed -n '2 p' | tr -d " \t\n\r")
 
-3.5 Use "docker" command to remotely deploy docker containers
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Export, copy
+------------
 
-::
+.. code-block:: bash
 
-	$ docker run -d -p 80:80 nginx
+	Use the following command to list the private GPG key you just created (of course, replace {{<YOUR_EMAIL_ADDRESS>}} with your own email address: 
 
-	Unable to find image 'nginx:latest' locally
-	latest: Pulling from library/nginx
-	a5a6f2f73cd8: Pull complete 
-	67da5fbcb7a0: Pull complete 
-	e82455fa5628: Pull complete 
-	Digest: sha256:98b06873ea9c87d5df1bb75b650926cfbcc4c53f675dfabb158830af0b115f99
-	Status: Downloaded newer image for nginx:latest
-	889a1ab275ba072980fe4fd3ec58094513cf41330c3698b226c239ba490a24a6
+	gpg --armor --export $(gpg --fingerprint <YOUR_EMAIL_ADDRESS> | sed -n '2 p' | tr -d " \t\n\r")
+	
+Copy all the contents, including the ``-----BEGIN PGP PUBLIC KEY ...`` and ``END ... -----`` parts.
 
-3.6 Remove docker-machine
-"""""""""""""""""""""""""
-Remove a machine. This removes the local reference and deletes it on the cloud 
-rr or virtualization management platform.
-::
+Submit on keyserver
+===================
 
-	$ docker-machine rm MACHINE-NAME (-f if need force)
+Go to the website, click on "Submit Key":
 
-3.7 Docker-machine IP
-"""""""""""""""""""""
-Get the IP address of one or more machines.
+.. image:: ../images/image2021-3-25_11-34-34.png
+   :align: center
 
-::
 
-	$ docker-machine ip MACHINE-NAME
+Paste the key and click on "Submit Public Key":
 
-	192.168.93.23
+.. image:: ../images/image2021-3-25_11-36-20.png
+   :align: center
 
-3.8 Docker-machine list
-"""""""""""""""""""""""
-List currently deployed docker-machines.
 
-::
+Request VPN credentials
+=======================
 
-	$ docker-machine ls
+Hop on over to #team-system-support on slack and request VPN access credentials. One of the System Team members will contact you directly to help facilitate the rest of the process. You will need to provide them the email address with which you published your GPG key.
 
-	NAME           ACTIVE   DRIVER      STATE     URL                        SWARM   DOCKER     ERRORS
-	MACHINE-NAME   *        openstack   Running   tcp://192.168.93.23:2376           v18.09.0   
+.. note::
+   Your credentials may expire after some time. If your connection stops working and gives you timeouts you will need to contact the System Team again.
 
-3.9 Docker-machine upgrade
-""""""""""""""""""""""""""
-Upgrade a machine to the latest version of Docker. How this upgrade happens
-depends on the underlying distribution used on the created instance.
-::
+Decrypt credentials
+===================
 
-	$ docker-machine upgrade MACHINE-NAME
+The System Team member helping you should be sending you an encrypted version of your .ovpn file. To decrypt it, follow either the Command line or Windows GUI steps:
 
-	Waiting for SSH to be available...
-	Detecting the provisioner...
-	Upgrading docker...
-	Restarting docker...
+Decrypt on the command line
+---------------------------
 
-3.10 Docker-machine stop
-""""""""""""""""""""""""
-Stops running docker-machine.
+Run the following command (the filename will contain your username, which should contain your name and initials of your last name):
 
-::
+.. code-block:: bash
 
-	$ docker-machine stop MACHINE-NAME
+	$ gpg --output <YOUR_USERNAME>.ovpn --decrypt <YOUR_USERNAME>.ovpn.gpg
+	gpg: encrypted with 4096-bit RSA key, ID 7361A071DDC58EE5, created 2021-03-22
+	"<YOUR_USERNAME> <<YOUR_EMAIL>>"
+	gpg: Signature made Tue 23 Mar 2021 11:39:00 SAST
+	gpg: using RSA key 8EF305837D259A6DE269C5068C3A465011EBAD07
+	gpg: Good signature from "<SYSTEM TEAM MEMBER NAME> <<SYSTEM_TEAM_MEMBER_EMAIL>>" [ultimate]
 
-	Stopping "MACHINE-NAME"...
-	Machine "MACHINE-NAME" was stopped.
+Note that, you may see output slightly different from the expected (as shown above), depending on whether or not your Public key was signed. The end-result should be that you now have a file named <YOUR_USERNAME>.ovpn  in the same directory:
 
-3.11 Docker-machine restart
-"""""""""""""""""""""""""""
-Restarts docker-machine.
+.. code-block:: bash
 
-::
+	$ ls -latr
+	...snip...
+	-rw-rw-r--  1 you you  6838 Mar 23 11:39 <YOUR_USERNAME>.ovpn.gpg
+	-rw-rw-r--  1 you you  6446 Mar 23 11:55 <YOUR_USERNAME>.ovpn
 
-	$ docker-machine restart MACHINE-NAME
+Decrypt using GUI
+-----------------
 
-	Restarting "MACHINE-NAME"...
-	Waiting for SSH to be available...
-	Detecting the provisioner...
-	Restarted machines may have new IP addresses. You may need to re-run the
-	`docker-machine env` command.
+Kleopatra is a tool that works for Windows, Linux and Android available from https://apps.kde.org/kleopatra/
 
-3.12 Docker-machine start
-"""""""""""""""""""""""""
-Starts docker-machine.
+Click on Decrypt / Verify:
 
-::
+.. image:: ../images/image2021-3-25_11-42-7.png
+   :align: center
 
-	$ docker-machine start MACHINE-NAME
+Locate the file on your hard drive and click on Open. Enter the passphrase you used to create the GPG key:
 
-	Starting "MACHINE-NAME"...
-	Machine "MACHINE-NAME" was started.
-	Waiting for SSH to be available...
-	Detecting the provisioner...
-	Started machines may have new IP addresses. You may need to re-run the
-	`docker-machine env` command.
+.. image:: ../images/image2021-3-25_11-44-19.png
+   :align: center
 
-3.13 Docker-machine ssh
-"""""""""""""""""""""""
-Log into or run a command on a machine using SSH.
 
-::
+You should see a success message. Choose an Output folder and click on Save All:
 
-	$ docker-machine ssh MACHINE-NAME
+.. image:: ../images/image2021-3-25_11-44-49.png
+   :align: center
 
-	Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.4.0-116-generic x86_64)
 
-	* Documentation:  https://help.ubuntu.com
-	* Management:     https://landscape.canonical.com
-	* Support:        https://ubuntu.com/advantage
+Connecting to the VPN on Linux
+==============================
 
-	Get cloud support with Ubuntu Advantage Cloud Guest:
-	http://www.ubuntu.com/business/services/cloud
+Once you have received your ovpn credentials, you should be able to connect to the VPN using either the command line or
+the network manager.
 
-	153 packages can be updated.
-	81 updates are security updates.
+Connecting with the terminal/command line
+-----------------------------------------
 
-	New release '18.04.1 LTS' available.
-	Run 'do-release-upgrade' to upgrade to it.
+Open a new terminal. You will need to point the openvpn command to the .ovpn file you have previously obtained. 
 
+.. code-block:: bash
 
-	ubuntu@MACHINE-NAME:~$ 
+	$ sudo openvpn --config <YOUR_CERTS_PATH>/<YOUR_USERNAME>.ovpn
+	
+Where ``YOUR_CERTS_PATH`` is the path to the folder where you keep the certificate ``<YOUR_USERNAME>.ovpn`` 
+file.
 
-Access to the bare metal
-========================
-In this stage, this option is very restrictive and only in a well-justified
-situation is allowed.
+Connect using network manager
+-----------------------------
+
+This was tested on Ubuntu 20.04
+
+Ensure that the following packages are installed: network-manager-openvpn, network-manager-openvpn-gnome 
+
+Open Network settings and click on the + for VPN:
+
+.. image:: ../images/image2021-3-12_12-57-58.png
+   :align: center
+
+
+From the add VPN dialog, select "Import from file..." and load the OVPN file provided, that contains the connection and authentication information (rename the resultant VPN connection to something appropriate):
+
+.. image:: ../images/image2021-3-12_12-54-40.png
+   :align: center
+
+Activate the VPN as required under the Network Settings:
+
+.. image:: ../images/image2021-3-12_13-2-56.png
+   :align: center
+
+Connecting to the VPN on macOS
+==============================
+
+Install TunnelBlick - follow instructions https://tunnelblick.net/cInstall.html
+
+.. image:: ../images/tunnelblick.png
+   :align: center
+
+.. note::
+   If you are running macOS 11 (Big Sur), you need to be running the latest beta version of Tunnelblick: https://tunnelblick.net/downloads.html (see how to troubleshoot issues with Big Sur)
+
+
+Connecting to the VPN on Windows
+================================
+
+There are two clients by openVPN:
+
+ * openVPN GUI: comes with the community edition of openvpn installation
+ 
+ * openVPN Connect: distributed by the openvpn access server and includes paid features
+
+For a simple VPN connection, it’s recommended to use openVPN GUI.
+
+OpenVPN GUI
+-----------
+
+OpenVPN GUI used in this guide is: v11.20
+
+Download and install openvpn gui from the official website: https://openvpn.net/community-downloads/ 
+
+The app starts at the system tray, right click on it and select `Import file…`
+
+.. image:: ../images/image2021-3-12_13-48-45.png
+   :align: center
+
+Select your openvpn configuration file (.ovpn)
+You will see the connection in the list like below:
+Choose connect to connect to the VPN
+
+.. image:: ../images/image2021-3-12_13-49-45.png
+   :align: center
+
+After the connection is successful, the icon will turn green
+If the connection is unsuccessful, open the logs and investigate the errors:
+
+.. image:: ../images/image2021-3-12_13-50-55.png
+   :align: center
+
+Note: The openvpn GUI imports your configuration and saves it in a different location. In order to change your configuration. Please select `Edit Config` option on the menu instead of changing the original configuration file. (You could find the location in the Settings… -> Advanced window.
+
+
+OpenVPN Connect
+---------------
+
+OpenVPN Connect used in this guide is: v3.2.3 (1851)
+
+Download and install openvpn for windows from the official website: https://openvpn.net/download-open-vpn/ 
+
+The app starts at the system tray, right click on it and select `Open app`
+
+.. image:: ../images/image2021-3-12_13-51-38.png
+   :align: center
+
+Click on the Menu Icon
+
+.. image:: ../images/image2021-3-12_13-52-8.png
+   :align: center
+
+Select Import Profile
+
+.. image:: ../images/image2021-3-12_13-53-9.png
+   :align: center
+
+Choose File and upload your openvpn profile
+
+.. image:: ../images/image2021-3-12_13-53-56.png
+   :align: center
+
+.. image:: ../images/image2021-3-12_13-54-25.png
+   :align: center
+
+u will see the connection in the main profile list as below:
+
+.. image:: ../images/image2021-3-12_13-55-23.png
+   :align: center
+
+After enabling it (with the grayed out toggle). You don’t need to do anything in the WSL2 as it will automatically work on connections coming from your WSL2 Ubuntu installation.
+
+To access log on the client:
+
+.. image:: ../images/image2021-3-12_13-55-59.png
+   :align: center
+
+Troubleshooting
+===============
+
+
+**I get a logged error: "Bad compression stub (swap) decompression header byte: 42"**
+
+Try commenting out compress in the .ovpn configuration file
+
+**The VPN connection is unstable and goes up and down every few minutes**
+
+Try switching network protocol from UDP to TCP - edit the .ovpn file and change the configuration line proto udp to proto tcp 
+
+**All tap-windows6 adapters currently in use**
+
+When using OpenVPN GUI, If you're seeing this when trying to connect: 
+
+.. image:: ../images/image2021-3-25_12-44-17.png
+   :align: center
+
+it may mean that you were still connected to a different VPN (Aveiro IT for instance). You need to manually disconnect first:
+
+.. image:: ../images/image2021-3-25_12-46-41.png
+   :align: center
+
+Try to connect now - your connection should work: 
+
+.. image:: ../images/image2021-3-25_12-47-40.png
+   :align: center
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

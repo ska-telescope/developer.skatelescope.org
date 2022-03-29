@@ -8,7 +8,7 @@ There are several dashboards that can be used to monitor the SKA infrastructure 
 STFC Cluster
 ============
 
-Some of the dashboards are password protected and maybe behind VPN access. To get the current passwords please contact the system team.
+Some of the dashboards are password protected and maybe behind VPN access. To get the current passwords please contact the system team by sending a Slack message on `#team-system-support <https://skao.slack.com/archives/CEMF9HXUZ>`_ channel.
 
 * `SKA Infrastructure <http://monitoring.skao.stfc:3000/login>`__: Monitoring metrics such as Kubernetes, GitLab Runners, Elasticstack, cadvisor etc.
 * `Prometheus Alerts <http://monitoring.skao.stfc:9093/#/alerts>`__: Prometheus alerts for the core kubernetes cluster and infrastructure VMs
