@@ -17,7 +17,7 @@ Containerisation Standards
 This section describes a set of standards, conventions and guidelines for
 building, integrating and maintaining container technologies. For a hands on training please check :
 
-`Containerisation and Orchestration Concept recording <https://drive.google.com/drive/folders/1LM6pjhOzhWMMhP9v1ByMBAvuVKFVgeRk?usp=sharing>`_
+`Containerisation and Orchestration Concept PDF <https://drive.google.com/file/d/1xKtFwl2Cas2yLIRt-v28XjHRtDYKm38Z/view?usp=sharing>`_
 
 `Containerisation and Orchestration exercises <https://gitlab.com/piersharding/containerisation-and-orchestration>`_
 
