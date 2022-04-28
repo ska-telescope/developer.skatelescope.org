@@ -138,7 +138,8 @@ Find the project you want to import. You can filter the projects using the list 
 Name the project correctly
 --------------------------
 
-When importing the project, the **Name/Project Slug** should have SKA Telescope (or ska-telescope-, if the project name is in this format) as a prefix followed by the gitlab repository slug. i.e. for `ska-tango-examples` gitlab repository, the rtd project name should be `ska-telescope-ska-tango-examples` when being created. This ensures that RTD project slug is correctly set. The RTD project name is used to create the RTD project slug and the slug cannot be changed later whereas the project name can be changed in the settings to "SKA Tango Examples" for readability. If there's an error it's best to delete the project and recreate it again.
+When importing the project, the **Name/Project Slug** should have SKA Telescope (or ska-telescope-, if the project name is in this format) as a prefix followed by the gitlab repository slug. i.e. for `ska-tango-examples` gitlab repository, the rtd project name should be `ska-telescope-ska-tango-examples` when being created. This ensures that RTD project slug is correctly set. The RTD project name is used to create the RTD project slug and the slug cannot be changed later whereas the project name can be changed in the settings to "SKA Tango Examples" for readability. If your git repo uses the `main` branch instead of `master`, you **must** fill in the field *Default branch:* as it is not detected automatically. 
+If there's an error it's best to delete the project and recreate it again.
 
 .. figure:: images/rtd_prefix.jpg
    :scale: 80%
