@@ -532,6 +532,17 @@ Publishing to the `GitLab Project PyPi <https://docs.gitlab.com/ee/user/packages
       - poetry build
       - poetry publish -r gitlab
 
+Vulnerability Scanning of Published Python Packages
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+When a Python package is published to the Central Artefact Repository it must be checked for vulnerabilities to ensure that no critical issues are included in the python dependencies.
+
+This vulnerability scan, executed using gemnasium, will be included as part of the the default python pipeline https://gitlab.com/ska-telescope/templates-repository/-/blob/master/gitlab-ci/includes/python.gitlab-ci.yml .
+It will be executed in a customed docker container based on the image defined by the **SKA_GEMNASIUM_IMAGE** variable and it will target either the *pyproject.toml* or the *requirements.txt* file listing the package's dependencies. 
+
+If a scanned python package is reported to have critical vulnerabilities it will be moved from the pypi-internal repository to the quarantine repository and a report mentioning the package where it has been identified as well as a suggested solution will be presented.
+
+
 Installing a package from *Nexus*
 """""""""""""""""""""""""""""""""
 
