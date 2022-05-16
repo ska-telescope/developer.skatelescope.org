@@ -1,4 +1,4 @@
-.. _monitoring-dashboards.rst:
+.. _new-environments:
 
 New Environments on STFC
 *************************
