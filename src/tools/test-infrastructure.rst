@@ -10,4 +10,4 @@ Our CI/CD takes place on the STFC cluster. Its architecture and instructions on 
 
   monitoring-dashboards/stfc-performance-env
   monitoring-dashboards/monitoring-dashboards
-  
+  monitoring-dashboards/new-environments
