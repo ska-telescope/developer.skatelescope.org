@@ -840,3 +840,83 @@ To add steps for packaging and publishing conan packages to your pipeline you ju
     file: 'gitlab-ci/includes/conan.gitlab-ci.yml'
 
 And this will add both jobs to your pipeline. The build job will build all conan packages under conan/ folder and save them on the gitlab artefacts under the folder build/.conan. The publish job that only runs on Tagged Commits will publish the conan packages present on the gitlab artefact build/.conan folder to CAR.
+
+APT (Debian)
+------------
+
+Debian and systems based on it, like Ubuntu, use the same package management system. APT (Advanced Package Tool) is a set of tools for managing Debian packages, and therefore the applications installed on your Debian system. It provides a wide set of operations like searching repositories, installing packages with their dependencies, and managing upgrades.
+
+Injecting Metadata
+------------------
+
+All Debian packages have a `Control File <https://www.debian.org/doc/debian-policy/ch-controlfields.html>`_ that contains metadata describing the package and that must be present to push to the SKAO APT Repository.
+
+To see the current metadata from a package :
+
+.. code:: bash
+
+  dpkg-deb --info <package>
+
+Packages published in SKAO APT Repository should also have the `required metada <https://developer.skao.int/en/latest/tools/software-package-release-procedure.html?highlight=CI_PROJECT_URL#metadata>`_ .
+
+To add/edit metadata, from a existing package, first extract the files installed by the binary package:
+
+.. code:: bash
+
+  dpkg-deb -x mypackage.deb mypackage
+
+Next extract the package metadata:
+
+.. code:: bash
+
+  dpkg-deb -e mypackage.deb mypackage/DEBIAN
+
+At this point edit the control files in mypackage/DEBIAN. Finally, create the modified package:  
+
+.. code:: bash
+
+  dpkg-deb -b mypackage mypackage-new.deb
+
+Publish debian artefacts to the SKAO APT Repository
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+.. code:: bash
+
+  curl -u ${CAR_APT_USERNAME}:${CAR_APT_PASSWORD} -H "Content-Type: multipart/form-data" --data-binary "@./${PACKAGE-NAME}.deb" "https://artefact.skao.int/repository/apt-bionic-internal/"
+
+
+Configure the Apt client
+""""""""""""""""""""""""
+Prerequisite:
+
+.. code:: bash
+
+  sudo apt update
+  sudo apt install gpg
+
+To configure the Apt client to work with Nexus Repository Manager edit the file "/etc/apt/sources.list". Add the following line if you want to add the repository to the list, or replace the content of the file if you're going to use only this repository:
+
+.. code:: bash
+
+  deb https://artefact.skao.int/repository/apt-bionic-internal/ bionic main
+
+Then you need to add the apt repository public key:
+
+.. code:: bash
+
+  cat <public.key> | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/<public_key>.gpg  >/dev/null
+
+  # or you can download the key first
+
+  curl -sL https://.../public.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/<public_key>.gpg  >/dev/null
+
+Update apt and check if the repository updates without errors:
+
+.. code:: bash
+
+  sudo apt update
+
+Then to install the package just run:
+
+.. code:: bash
+
+  sudo apt install <package-name>
