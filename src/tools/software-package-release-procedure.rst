@@ -772,7 +772,7 @@ If using dnf (you probably need to add sudo before the commands):
    $ dnf install 'dnf-command(config-manager)'
    $ dnf config-manager --add-repo https://artefact.skao.int/repository/rpm-internal
 
-Check if SKAO is part of the enabled  repositories
+Check if SKAO is part of the enabled  repositories:
 
 .. code:: bash
 
@@ -783,7 +783,7 @@ Check if SKAO is part of the enabled  repositories
    baseos                                      CentOS Linux 8 - BaseOS
    extras                                      CentOS Linux 8 - Extras
 
-To see the list of packages we have installed in that registry
+To see the list of packages we have installed in that registry:
 
 .. code:: bash
 
@@ -791,44 +791,34 @@ To see the list of packages we have installed in that registry
    Available Packages
    rabbit.x86_64      0.1.1-1         artefact.skao.int_repository_rpm-internal
    
-The package can then be installed doing
+The package can then be installed doing:
 
 .. code:: bash
 
    $ dnf install rabbit
 
    
-If using yum, if yum-config-manager is not present it needs to be installed
+If using yum, if yum-config-manager is not present it needs to be installed:
 
 .. code:: bash
 
    $ yum install yum-config-manager
    
-Older versions of some operating systems may require instead
+Older versions of some operating systems may require instead:
 
 .. code:: bash
 
    $ yum install yum-utils
    
-Enabling the repository is done with   
+Enabling the repository is done with:
 
 .. code:: bash
 
    $ yum-config-manager --add-repo https://artefact.skao.int/repository/rpm-internal
 
-Check if SKAO is part of the enabled repositories
 
-.. code:: bash
-
-   $ yum repolist
-   repo id                                    repo name                                                     status
-   artefact.skao.int_repository_rpm-internal  added from: https://artefact.skao.int/repository/rpm-internal      2
-   base                                       CentOS-6 - Base                                                 6713
-   extras                                     CentOS-6 - Extras                                                 47
-   updates                                    CentOS-6 - Updates                                              1193
-
-For the more recent OS versions yum should accept the same options as dnf, but for older versions to check the list of packages we have installed in 
-the registry will  require
+For the more recent OS versions yum should accept the same options as dnf above. For older versions checking the list of packages we have installed in 
+the registry will require:
 
 .. code:: bash
 
