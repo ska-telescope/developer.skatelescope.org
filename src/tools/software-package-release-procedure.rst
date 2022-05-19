@@ -762,10 +762,6 @@ Since additional metadata is required to be present on the RPM in order to be po
 Installing RPM packages from *Nexus*
 """"""""""""""""""""""""""""""""""""
 
-cd /etc/yum.repos.d/
-sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
-sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
-
 For developers who want to install a rpm package from the *SKAO*
 rpm registry hosted on *Nexus*, they need first to import the configuration.
 
