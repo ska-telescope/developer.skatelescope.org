@@ -667,6 +667,19 @@ To add steps for packaging and publishing raw packages to your pipeline you just
 
 And this will add both jobs to your pipeline. The build job will package all raw packages under raw/ folder and save them on the gitlab artefacts under the folder build/raw. The publish job that only runs on Tagged Commits will publish the raw packages present on the gitlab artefact build/raw folder to CAR.
 
+Validation Checks (Marvin)
+"""""""""""""""""""""""""""""""""
+
+After the raw artefacts have been published to the nexus repository `raw-internal <https://artefact.skao.int/#browse/search/raw>`_  in CAR, Marvin will run multiple checks to find out if the artefact is a valid one.
+For the artefact to be valid:
+
+- Artefact name should be complaint. The folders inside raw/ should have a adr-25 complaint name.
+- Artefact Version should be complaint. The .release file should have a release version complaint with semantic versioning.
+- Artefact should have a Manifest.skao.int file with the required metadata inside.
+
+
+If any of this checks fail the artefact will be moved to a quarantined status to the repository  `raw-qurantine <https://artefact.skao.int/#browse/browse:raw-quarantine>`_
+
 
 RPM
 ---
@@ -746,22 +759,90 @@ Since additional metadata is required to be present on the RPM in order to be po
   set(PACK_NAME ${PROJECT_NAME})
   set(CPACK_PACKAGE_FILE_NAME "${PACK_NAME}-${VERSION}")
 
-Validation Checks (Marvin)
-"""""""""""""""""""""""""""""""""
+Installing RPM packages from *Nexus*
+""""""""""""""""""""""""""""""""""""
 
-After the raw artefacts have been published to the nexus repository `raw-internal <https://artefact.skao.int/#browse/search/raw>`_  in CAR, Marvin will run multiple checks to find out if the artefact is a valid one.
-For the artefact to be valid:
+cd /etc/yum.repos.d/
+sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
 
-- Artefact name should be complaint. The folders inside raw/ should have a adr-25 complaint name.
-- Artefact Version should be complaint. The .release file should have a release version complaint with semantic versioning.
-- Artefact should have a Manifest.skao.int file with the required metadata inside.
+For developers who want to install a rpm package from the *SKAO*
+rpm registry hosted on *Nexus*, they need first to import the configuration.
 
+If using dnf (you probably need to add sudo before the commands):
 
-If any of this checks fail the artefact will be moved to a quarantined status to the repository  `raw-qurantine <https://artefact.skao.int/#browse/browse:raw-quarantine>`_
+.. code:: bash
+
+   $ dnf install 'dnf-command(config-manager)'
+   $ dnf config-manager --add-repo https://artefact.skao.int/repository/rpm-internal
+
+Check if SKAO is part of the enabled  repositories
+
+.. code:: bash
+
+   $ dnf repolist
+   repo id                                     repo name
+   appstream                                   CentOS Linux 8 - AppStream
+   artefact.skao.int_repository_rpm-internal   created by dnf config-manager from https://artefact.skao.int/repository/rpm-internal
+   baseos                                      CentOS Linux 8 - BaseOS
+   extras                                      CentOS Linux 8 - Extras
+
+To see the list of packages we have installed in that registry
+
+.. code:: bash
+
+   $ dnf repository-packages artefact.skao.int_repository_rpm-internal list
+   Available Packages
+   rabbit.x86_64      0.1.1-1         artefact.skao.int_repository_rpm-internal
+   
+The package can then be installed doing
+
+.. code:: bash
+
+   $ dnf install rabbit
+
+   
+If using yum, if yum-config-manager is not present it needs to be installed
+
+.. code:: bash
+
+   $ yum install yum-config-manager
+   
+Older versions of some operating systems may require instead
+
+.. code:: bash
+
+   $ yum install yum-utils
+   
+Enabling the repository is done with   
+
+.. code:: bash
+
+   $ yum-config-manager --add-repo https://artefact.skao.int/repository/rpm-internal
+
+Check if SKAO is part of the enabled repositories
+
+.. code:: bash
+
+   $ yum repolist
+   repo id                                    repo name                                                     status
+   artefact.skao.int_repository_rpm-internal  added from: https://artefact.skao.int/repository/rpm-internal      2
+   base                                       CentOS-6 - Base                                                 6713
+   extras                                     CentOS-6 - Extras                                                 47
+   updates                                    CentOS-6 - Updates                                              1193
+
+For the more recent OS versions yum should accept the same options as dnf, but for older versions to check the list of packages we have installed in 
+the registry will  require
+
+.. code:: bash
+
+   $ yum --disablerepo="*" --enablerepo=artefact.skao.int_repository_rpm-internal list available
+   Available Packages
+   rabbit.x86_64      0.1.1-1         artefact.skao.int_repository_rpm-internal
 
 
 Conan
----
+-----
 
 Conan artefacts are typically C and C++ packages and manage any number of different binaries for different build configurations, including different architectures, compilers, compiler versions, runtimes, C++ standard library, etc. These are hosted in the `conan-internal <https://artefact.skao.int/#browse/search/conan>`_ repository in the Central Artefact Repository. These artefacts should be packaged and labelled with metadata like any other artefact that gets published to the CAR. In order to support this, each Conan artefact (essentially a collection of one or more files, possibly spanning directories) must reside in a separate directory following the convention `./conan/<conan artefact suffix>/`. To add the required metadata to your conan package you should first generate a MANIFEST.skao.int file with all the metadata required in it and pass it to the package while building, just by adding the following command to your conanfile.py:
 
