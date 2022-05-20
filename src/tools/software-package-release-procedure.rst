@@ -764,7 +764,7 @@ Installing RPM packages from *Nexus*
 
 For developers who want to install a rpm package from the *SKAO*
 rpm registry hosted on *Nexus*, they need first to import the configuration.
-The process is slightly different if you are using dnf (like in modern Fedora systems)
+The process is slightly different if using dnf (like in modern Fedora systems)
 or yum (most CentOS).
 
 If using dnf:
@@ -785,7 +785,7 @@ Check if SKAO is part of the enabled  repositories:
    baseos                                      CentOS Linux 8 - BaseOS
    extras                                      CentOS Linux 8 - Extras
 
-To see the list of packages we have installed in that registry:
+To see the list of packages we have in that registry:
 
 .. code:: bash
 
