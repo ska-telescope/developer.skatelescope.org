@@ -764,13 +764,12 @@ Installing RPM packages from *Nexus*
 
 For developers who want to install a rpm package from the *SKAO*
 rpm registry hosted on *Nexus*, they need first to import the configuration.
-
-If using dnf (you probably need to add sudo before the commands):
+If using dnf:
 
 .. code:: bash
 
-   $ dnf install 'dnf-command(config-manager)'
-   $ dnf config-manager --add-repo https://artefact.skao.int/repository/rpm-internal
+   $ sudo dnf install 'dnf-command(config-manager)'
+   $ sudo dnf config-manager --add-repo https://artefact.skao.int/repository/rpm-internal
 
 Check if SKAO is part of the enabled  repositories:
 
@@ -795,30 +794,30 @@ The package can then be installed doing:
 
 .. code:: bash
 
-   $ dnf install rabbit
+   $ sudo dnf install rabbit
 
    
-If using yum, if yum-config-manager is not present it needs to be installed:
+If using yum yum-config-manager might need to be installed:
 
 .. code:: bash
 
-   $ yum install yum-config-manager
+   $ sudo yum install yum-config-manager
    
 Older versions of some operating systems may require instead:
 
 .. code:: bash
 
-   $ yum install yum-utils
+   $ sudo yum install yum-utils
    
 Enabling the repository is done with:
 
 .. code:: bash
 
-   $ yum-config-manager --add-repo https://artefact.skao.int/repository/rpm-internal
+   $ sudo yum-config-manager --add-repo https://artefact.skao.int/repository/rpm-internal
 
 
-For the more recent OS versions yum should accept the same options as dnf above. For older versions checking the list of packages we have installed in 
-the registry will require:
+For the more recent OS versions yum should accept the same options used for dnf above to list and install packages. 
+For older OS versions checking the list of packages in the registry can be done with:
 
 .. code:: bash
 
