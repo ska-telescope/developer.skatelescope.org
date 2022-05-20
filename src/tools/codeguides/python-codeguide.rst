@@ -1,3 +1,5 @@
+.. _python-codeguide:
+
 .. todo::
     - Testing Guidelines
     - Writing Command-Line Scripts
