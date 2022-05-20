@@ -764,6 +764,9 @@ Installing RPM packages from *Nexus*
 
 For developers who want to install a rpm package from the *SKAO*
 rpm registry hosted on *Nexus*, they need first to import the configuration.
+The process is slightly different if you are using dnf (like in modern Fedora systems)
+or yum (most CentOS).
+
 If using dnf:
 
 .. code:: bash
@@ -797,7 +800,7 @@ The package can then be installed doing:
    $ sudo dnf install rabbit
 
    
-If using yum yum-config-manager might need to be installed:
+If using yum it is possible that yum-config-manager might need to be installed:
 
 .. code:: bash
 
