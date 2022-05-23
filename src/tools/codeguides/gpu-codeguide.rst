@@ -1,10 +1,8 @@
-.. _gpu-codeguide:
-
 *********************
 GPU Coding Guidelines
 *********************
 This section describes requirements and guidelines for deployment and testing of a new Python project using GPUs on GitLab.
-The basic guidelines build upon that of the :ref:`python-codeguide`, but are specific to the GPU environment and describe how to specify a GPU runner for the pipeline jobs
+The basic guidelines build upon that of the :doc:`./python-codeguide.rst`, but are specific to the GPU environment and describe how to specify a GPU runner for the pipeline jobs
 and how to deploy a workload on a GPU node in the cluster using a Kubernetes chart deployment.
 
 .. contents:: Table of Contents
