@@ -108,6 +108,9 @@ that gitlab-ci.yml includes the default templating. For the ska-tango-examples:
   # Python packages build,lint, test and publish
     - project: 'ska-telescope/templates-repository'
       file: 'gitlab-ci/includes/python.gitlab-ci.yml'
+  # GPU packages build,lint, test and publish
+    - project: 'ska-telescope/templates-repository'
+      file: 'gitlab-ci/includes/gpu.gitlab-ci.yml'
   # Helm Charts
     - project: 'ska-telescope/templates-repository'
       file: 'gitlab-ci/includes/helm-chart.gitlab-ci.yml'

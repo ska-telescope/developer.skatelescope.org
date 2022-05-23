@@ -10,3 +10,4 @@ Coding guidelines
   codeguides/javascript-codeguide
   codeguides/python-codeguide
   codeguides/vhdl-codeguide
+  codeguides/gpu-codeguide
