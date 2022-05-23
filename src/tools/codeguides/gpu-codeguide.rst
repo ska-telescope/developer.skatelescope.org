@@ -2,18 +2,19 @@
 GPU Coding Guidelines
 *********************
 This section describes requirements and guidelines for deployment and testing of a new Python project using GPUs on GitLab.
-The basic guidelines build upon that of the :doc:`./python-codeguide.rst`, but are specific to the GPU environment and describe how to specify a GPU runner for the pipeline jobs
+The basic guidelines build upon those of the `Python Coding Guidelines <https://developer.skao.int/en/latest/tools/codeguides/python-codeguide.html>`_,
+but are specific to the GPU environment and describe how to specify a GPU runner for the pipeline jobs
 and how to deploy a workload on a GPU node in the cluster using a Kubernetes chart deployment.
 
 .. contents:: Table of Contents
 
 Running pipeline jobs on a GPU node
 ===================================
-A template for a pipeline job on a GPU node is provided in the `gitlab-ci/includes/gpu.gitlab-ci.yml` location.
+A template for a pipeline job on a GPU node is provided in the ``gitlab-ci/includes/gpu.gitlab-ci.yml`` location.
 This template supersedes the Python template and should not be used in combination with the Python template.
-The only step added by this template that makes use of the GPU node is the `test` step. All other steps will use the CPU nodes.
+The only step added by this template that makes use of the GPU node is the ``test`` step. All other steps will use the CPU nodes.
 
-In order to use this template add the following to your `.gitlab-ci.yml` file:
+In order to use this template add the following to your ``.gitlab-ci.yml`` file:
 
 .. code-block:: yaml
 
@@ -32,7 +33,7 @@ Alternatively, if you don't want to use the provided GPU template, any step on y
 
 Deploying a workload on a GPU node
 ==================================
-The `STENCIL <https://gitlab.com/ska-telescope/sdi/ska-cicd-stencil>` project provides a template deployment chart that can be used to deploy a workload on a GPU node.
+The `STENCIL <https://gitlab.com/ska-telescope/sdi/ska-cicd-stencil>`_ project provides a template deployment chart that can be used to deploy a workload on a GPU node.
 
 All that's needed to deploy the existing chart is to issue the command:
 
@@ -43,7 +44,7 @@ All that's needed to deploy the existing chart is to issue the command:
 
 If you want to create your own chart that deploys a workload to a GPU node, you need to define the following besides the usual steps needed for a CPU workload:
 
-On the `values.yaml` file:
+On the ``values.yaml`` file:
 
 .. code-block:: yaml
 
@@ -69,7 +70,7 @@ On the `values.yaml` file:
 
 *NOTE: The GPU resources are scarce. Reserving 1 GPU uses a full physical device for your workload and can quickly exhaust the available GPU resources.*
 
-On the `deployment.yaml` file:
+On the ``deployment.yaml`` file:
 
 .. code-block:: yaml
 
@@ -88,7 +89,7 @@ Under normal circumstances after the workload is finished, the container should 
 Summary
 =======
 
-This basic template project is available `on GitLab <https://gitlab.com/ska-telescope/sdi/ska-cicd-stencil>`_. And demonstrates the following:
+This basic template project is available on `GitLab <https://gitlab.com/ska-telescope/sdi/ska-cicd-stencil>`_. And demonstrates the following:
 
 1) Provides functions and unit tests that run on a GPU worker node runner by calling the GPU gitlab CI/CD template.
 2) Defines an example chart that deploys a workload to a GPU node.
