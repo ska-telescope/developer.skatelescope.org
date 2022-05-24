@@ -801,6 +801,7 @@ The package can then be installed doing:
 
 
 .. note::
+
    If trying to run yum from a CentOS OCI image the following may be needed before trying to use yum
    cd /etc/yum.repos.d
    2000  sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
