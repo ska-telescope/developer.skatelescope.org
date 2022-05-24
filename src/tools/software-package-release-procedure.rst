@@ -805,8 +805,6 @@ The package can then be installed doing:
    If trying to run yum from a CentOS OCI image Yum installs may fail due to issues with mirror lists. The following 
    commands should solve the issue:
 
-   $ cd /etc/yum.repos.d
-   
    $ sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
    
    $ sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
