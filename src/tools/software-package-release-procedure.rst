@@ -799,6 +799,12 @@ The package can then be installed doing:
 
    $ sudo dnf install rabbit
 
+
+.. note::
+   If trying to run yum from a CentOS OCI image the following may be needed before trying to use yum
+   cd /etc/yum.repos.d
+   2000  sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+   sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
    
 If using yum it is possible that yum-config-manager might need to be installed:
 
