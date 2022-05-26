@@ -1,6 +1,8 @@
-*********************
-GPU Coding Guidelines
-*********************
+.. _gpu-pipelines-workloads:
+
+***************************
+GPU Pipelines and Workloads
+***************************
 This section describes requirements and guidelines for deployment and testing of a new Python project using GPUs on GitLab.
 The basic guidelines build upon those of the `Python Coding Guidelines <https://developer.skao.int/en/latest/tools/codeguides/python-codeguide.html>`_,
 but are specific to the GPU environment and describe how to specify a GPU runner for the pipeline jobs
@@ -11,8 +13,7 @@ and how to deploy a workload on a GPU node in the cluster using a Kubernetes cha
 Running pipeline jobs on a GPU node
 ===================================
 A template for a pipeline job on a GPU node is provided in the ``gitlab-ci/includes/gpu.gitlab-ci.yml`` location.
-This template supersedes the Python template and should not be used in combination with the Python template.
-The only step added by this template that makes use of the GPU node is the ``test`` step. All other steps will use the CPU nodes.
+This template adds a new ``test`` stage to the pipeline job, which runs the workload on the GPU node.
 
 In order to use this template add the following to your ``.gitlab-ci.yml`` file:
 
@@ -23,6 +24,21 @@ In order to use this template add the following to your ``.gitlab-ci.yml`` file:
       - project: 'ska-telescope/templates-repository'
         file: 'gitlab-ci/includes/gpu.gitlab-ci.yml'
         ref: $UPSTREAM_BRANCH
+        variables:
+            PYTHON_VARS_AFTER_PYTEST: "-m gpu"
+
+You will probably also want to add the following to your ``.gitlab-ci.yml`` file, specifyng that the non-GPU pipeline tests should not be run in case you aren't using a GPU:
+
+.. code-block:: yaml
+
+    include:
+        # Python
+      - project: 'ska-telescope/templates-repository'
+        file: 'gitlab-ci/includes/python.gitlab-ci.yml'
+        ref: $UPSTREAM_BRANCH
+        variables:
+            PYTHON_VARS_AFTER_PYTEST: "-m not gpu"
+
 
 Alternatively, if you don't want to use the provided GPU template, any step on your pipeline can be configured to use the GPU node by adding the following to the step:
 
@@ -30,6 +46,16 @@ Alternatively, if you don't want to use the provided GPU template, any step on y
 
     tags:
         - k8srunner-gpu-v100
+
+The unit tests themselves should be marked with the ``gputest`` tag.
+
+.. code-block:: python
+
+    @pytest.mark.gputest
+    def test_cuda():
+        """A dummy test for a cuda function"""
+        test = dummy.cuda_dummy_function()
+        assert test == "cuda-function"
 
 Deploying a workload on a GPU node
 ==================================
