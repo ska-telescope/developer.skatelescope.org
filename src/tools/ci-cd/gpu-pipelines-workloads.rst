@@ -23,9 +23,6 @@ In order to use this template add the following to your ``.gitlab-ci.yml`` file:
         # GPU
       - project: 'ska-telescope/templates-repository'
         file: 'gitlab-ci/includes/gpu.gitlab-ci.yml'
-        ref: $UPSTREAM_BRANCH
-        variables:
-            PYTHON_VARS_AFTER_PYTEST: "-m gpu"
 
 You will probably also want to add the following to your ``.gitlab-ci.yml`` file, specifyng that the non-GPU pipeline tests should not be run in case you aren't using a GPU:
 
