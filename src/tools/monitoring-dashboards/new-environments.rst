@@ -18,7 +18,7 @@ This unified approach adds a new stage - the deploy stage - to the pipeline that
 * **Test Dev Environment** - second job to be executed, automatically, once the deploy job finishes to check that something has been deployed and is running
 
 
-Once, at least, the Deploy and Test Dev Environment jobs are executed successfully a new test environment will be deployed into STFC.
+Once, at least, the Deploy and Test Dev Environment jobs are executed successfully a new test environment will be deployed into STFC. Only one environment is allowed per project. If you have feedback about this, please raise it in #team-system-support to improve the solution.
 
 Environment Setup
 ===============================
@@ -33,25 +33,30 @@ To enable this new stage, in your *.gitlab-ci.yml*, add the deploy stage and inc
 
    Adding the deploy stage to the pipeline
 
-In your *values.yaml* file, the "no_svc" parameter should be set to *false* if, for the service for which this is set, you want it to be deployed into the development environment. If you don't want to deploy the service to the environment and prefer to work on it locally, this parameter should be set to *true*. 
+In your *values.yaml* file, the "deploy_service" parameter should be set to *true* if, for the service for which this is set, you want it to be deployed into the development environment, ignoring the parameter alltogether works as setting to *true* as well. If you don't want to deploy the service to the environment and prefer to work on it locally, this parameter should be set to *false*. 
 
-.. figure:: ../images/nosvc-parameter-example.png
-   :scale: 30%
-   :alt: no_svc parameter set
-   :align: center
-   :figclass: figborder
 
-   Setting the no_svc parameter
+.. code-block:: yaml
+  
+  ...
+  example-device-server:
+    file: "data/example-device-server.yaml"
+    polling: 1000
+    deploy_service: false
+  ...
 
-On the local machine, to be able to communicate with the environment, the following configurations must be added to the */etc/resolv.conf* file.
 
-.. figure:: ../images/nameserver-config.png
-   :scale: 30%
-   :alt: nameserver configuration
-   :align: center
-   :figclass: figborder
+If you want to talk to the exposed services on the cluster by MetalLB, you need to be inside STFC VPN. 
 
-   Adding the nameserver configuration
+If you are on Ubuntu or MacOS, you don't have to configure anything else as it's included within the VPN configuration, but if you are on WSL2 or using a container for development, you have to add the following configurations in the */etc/resolv.conf* file.
+
+
+.. code-block:: yaml
+  
+  ...
+  nameserver 192.168.99.194
+  ...
+
 
 Environment Usage Examples
 ===============================
