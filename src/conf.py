@@ -19,8 +19,7 @@
 #
 # import os
 # import sys
-# sys.path.insert(0, os.path.abspath('.'))
-import sphinx_rtd_theme
+# sys.path.insert(0, os.path.abspath('.')
 
 
 def setup(app):
@@ -55,6 +54,7 @@ extensions = [
     "notfound.extension",
     "sphinx_copybutton",
     "sphinx.ext.autosectionlabel",
+    "sphinx_design",
 ]
 
 # Set each document name as prefix to avoid duplication
@@ -127,10 +127,13 @@ html_theme = "pydata_sphinx_theme"
 # documentation.
 #
 html_theme_options = {
-    # 'logo_only' : False,
-    # 'logo_only' : 'ska_logo.jpg',
-    # 'logo' : 'ska_logo.jpg',
-    # "vcs_pageview_mode": "edit" # Does not work see:h ttps://github.com/readthedocs/sphinx_rtd_theme/issues/701
+    "navbar_start": ["navbar-logo","search-field",],
+    # "navbar_center": [ "navbar-nav"],
+    # "navbar_end": ["navbar-icon-links"]
+}
+
+html_sidebars = {
+    "**": ["sidebar-nav-bs.html", "sidebar-ethical-ads.html"]
 }
 
 html_context = {
