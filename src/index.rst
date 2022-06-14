@@ -46,6 +46,8 @@ What follows is a brief guide to the headings you'll find in the left-hand sideb
 
   Getting Started <getting-started/index>
   Projects <projects/index>
-  Tools <tools/index>
+  How-to Guides <tools/index>
+  Reference <tools/index>
   Policies <policies/index>
+  Testing <policies/index>
   About <about/index>
