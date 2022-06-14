@@ -23,7 +23,7 @@
 
 
 def setup(app):
-    # app.add_css_file('css/custom.css')
+    app.add_css_file('css/custom.css')
     app.add_js_file('js/gitlab.js')
     app.add_js_file('js/groups_list.js')
     app.add_js_file('js/topics_list.js')
@@ -126,10 +126,21 @@ html_theme = "pydata_sphinx_theme"
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
+html_static_path = ["_static"]
+
+html_css_files = [
+    'css/custom.css',
+]
+
 html_theme_options = {
     "navbar_start": ["navbar-logo","search-field",],
     # "navbar_center": [ "navbar-nav"],
-    # "navbar_end": ["navbar-icon-links"]
+    # "navbar_end": ["navbar-icon-links", "version-switcher"],
+   "logo": {
+      "image_light": "img/logo-default.png",
+      "image_dark": "img/logo-dark.png",
+   },
+    "use_edit_page_button": True,
 }
 
 html_sidebars = {

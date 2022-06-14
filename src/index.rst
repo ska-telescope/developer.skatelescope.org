@@ -16,6 +16,30 @@ If you're new to developing the SKA, please have a look at :doc:`our Onboarding 
 What follows is a brief guide to the headings you'll find in the left-hand sidebar of this site. Feel free to explore!
 
 
+.. grid:: 2
+    :gutter: 2
+
+    .. grid-item-card::  SKAO Website
+       :link: https://www.skaobservatory.org/
+
+        Follow this card for main SKAO Website
+
+    .. grid-item-card::  Onboarding
+       :link: getting-started/getting-started
+       :link-type: doc
+
+       Are you new to the project?
+       Follow this card for the onboarding experience!
+
+    .. grid-item-card:: PlaceHolder Card 1
+
+       Put more easy to follow links for Important Stuff here
+
+    .. grid-item-card::  PlaceHolder Card 2
+
+       Put more easy to follow links for Important Stuff here
+
+
 .. toctree::
   :maxdepth: 1
   :hidden:
