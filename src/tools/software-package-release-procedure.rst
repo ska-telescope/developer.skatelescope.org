@@ -473,7 +473,7 @@ for example:
   # Ensure your .gitlab-ci.yml has "publish" stage defined!
   include:
     - project: 'ska-telescope/templates-repository'
-      file: 'gitlab-ci/includes/build_wheel.yml'
+      file: 'gitlab-ci/includes/python.gitlab-ci.yml'
 
 
 This will build a *Python* wheel that can be published to the Central Artefact Repository (when a tag is available). The above job will also build a wheel on each commit and publish the wheel into the gitlab package repository of the project.
