@@ -65,7 +65,7 @@ SKAMPI
 - `PSS test vector generator documentation </projects/pss-test-vector-generator/en/latest/?badge=latest>`_.
 
 - `PSS-CentOS-docker repository <https://gitlab.com/ska-telescope/pss-centos-docker/>`_ Allows PSS integration with skampi.
-- `PSS-CentOS-docker documetation </projects/pss-centos-docker/en/latest/?badge=latest>`_.
+- `PSS-CentOS-docker documentation </projects/pss-centos-docker/en/latest/?badge=latest>`_.
 
 - `ska-low-mccs repository <https://gitlab.com/ska-telescope/ska-low-mccs/>`_ for the monitoring, control and calibration subsystem for the LOW telescope.
 - `ska-low-mccs documentation </projects/ska-low-mccs/en/master/?badge=latest>`_.
@@ -83,7 +83,7 @@ SKAMPI
 - `ska-sdo-helmdeploy-charts documentation </projects/ska-sdp-helmdeploy-charts/en/latest/?badge=latest>`_.
 
 - `ska-sdp-integration repository <https://gitlab.com/ska-telescope/sdp/ska-sdp-integration/>`_ integrates components of the Science Data Processor (SDP).
-- `ska-sdp-integration documetation </projects/ska-sdp-integration/en/latest/?badge=latest>`-.
+- `ska-sdp-integration documentation </projects/ska-sdp-integration/en/latest/?badge=latest>`_.
 
 - `ska-sdp-lmc repository <https://gitlab.com/ska-telescope/sdp/ska-sdp-lmc/>`_ contains the Tango device servers to control the SDP.
 - `ska-sdp-lmc documentation </projects/ska-sdp-lmc/en/latest/?badge=latest>`_.
@@ -95,12 +95,12 @@ SKAMPI
 - `ska-sdp-science-pipelines documentation </projects/ska-sdp-science-pipelines/en/latest/?badge=latest>`_.
 
 - `ska-sdp-workflow repository <https://gitlab.com/ska-telescope/sdp/ska-sdp-workflow/>`_: high-level interface for writing workflows.
-- `ska-sdp-workflow documentatino </projects/ska-sdp-workflow/en/latest/?badge=latest>`-.
+- `ska-sdp-workflow documentatino </projects/ska-sdp-workflow/en/latest/?badge=latest>`_.
 
 - `ska-tmc-common repository <https://gitlab.com/ska-telescope/ska-tmc-common/>`_.
 - `ska-tmc-common documentation </projects/ska-tmc-common/en/latest/?badge=latest>`_.
 
-- `ska-tmc-centralnode-mid repository <https://gitlab.com/ska-telescope/ska-tmc-centralnode-mid/`-.
+- `ska-tmc-centralnode-mid repository <https://gitlab.com/ska-telescope/ska-tmc-centralnode-mid/>`_.
 - `ska-tmc-centralnode-mid documentation </projects/ska-tmc-centralnode-mid/en/latest/?badge=latest>`_.
 
 - `ska-tmc-subarraynode-mid repository <https://gitlab.com/ska-telescope/ska-tmc-subarraynode-mid/>`_.
