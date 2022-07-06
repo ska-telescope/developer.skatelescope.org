@@ -7,9 +7,9 @@ Local Monitoring and Control
 
 The local monitoring and control is the interface between the telescope control
 system and the SDP. It consists of Tango device servers which control different
-aspects of the system. The SDP Master device provides the top-level control of
-the system. The SDP Subarray device controls the processing associated with a
-telescope subarray.
+aspects of the system. The SDP Controller device provides the top-level control
+of the system. The SDP Subarray device controls the processing associated with
+a telescope subarray.
 
 - `Repository <https://gitlab.com/ska-telescope/sdp/ska-sdp-lmc>`__
 - `Documentation </projects/ska-sdp-lmc/en/latest/>`__
@@ -18,9 +18,9 @@ Processing Controller
 +++++++++++++++++++++
 
 The processing controller controls the execution of processing blocks. The
-processing blocks define the workflows to be run and the parameters to be
-passed to the workflows. It detects processing blocks by monitoring the
-configuration database.
+processing blocks define the scripts to be run and the parameters to be passed
+to the scripts. It detects processing blocks by monitoring the configuration
+database.
 
 - `Repository <https://gitlab.com/ska-telescope/sdp/ska-sdp-proccontrol>`__
 - `Documentation </projects/ska-sdp-proccontrol/en/latest/>`__
@@ -41,7 +41,16 @@ intended state of the system.
 Console
 +++++++
 
-The console provides an environment for interacting with the configuration
-database.
+The console provides an command-line environment for interacting with the
+configuration database.
 
 - `Repository <https://gitlab.com/ska-telescope/sdp/ska-sdp-console>`__
+
+Operator Interface
+++++++++++++++++++
+
+The operator interface provides a web interface to monitor the configuration of
+the SDP.
+
+- `Repository <https://gitlab.com/ska-telescope/sdp/ska-sdp-opinterface>`__
+- `Documentation </projects/ska-sdp-opinterface/en/latest/>`__
