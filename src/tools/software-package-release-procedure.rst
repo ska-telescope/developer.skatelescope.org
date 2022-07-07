@@ -195,12 +195,20 @@ After including the templates, the Release of a new artefact should be as follow
 
 - **4**: Run ``make python-set-release`` this will set pyproject.toml to example ``1.2.2`` version (DO only this step if you have python packages on your project)
  
-- **5**: Run ``make git-create-tag``, assuming that the ticket created in the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`_ is the ticket REL-1234:
+- **5**: The above steps make changes to files in your repository, and these changes will soon be committed. If you have any other manual changes to make, that are essential to bumping the version, now is the time to do so. For example:
+
+  * Updating the ``release`` variable in your ``docs/conf.py``;
+  * Updating your python package's ``__version__`` attribute;
+  * Manually updating a human-readable ``CHANGELOG`` file.
+
+  **Important**: Any changes you make here will be pushed straight to your master/main branch when the tag is pushed, without going through the merge review process. Therefore, only make changes that are essential to bumping the version.
+
+- **6**: Run ``make git-create-tag``, assuming that the ticket created in the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`_ is the ticket REL-1234:
 
     - Do you wish to continue (will commit outstanding changes) [N/y]: y
     - Tell me your Jira Ticket ID (REL-999): REL-1234
 
-- **6**: ``make git-push-tag``
+- **7**: ``make git-push-tag``
 
 
 
