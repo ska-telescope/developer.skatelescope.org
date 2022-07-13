@@ -87,6 +87,7 @@ SKA Repositories
   tools/bdd-walkthrough
   tools/test-infrastructure
   tools/containers
+  tools/binderhub
   tools/documentation
   tools/software-package-release-procedure
   tools/logging-format
@@ -142,6 +143,13 @@ To facilitate code portability and reliability and test running, we use containe
 - :doc:`tools/containers/multitenancy`
 - :doc:`tools/containers/docker-proxy-cache`
 - :doc:`tools/containers/uploading-docker-nexus`
+
+Working with BinderHub
+======================
+
+To enable developers to share their code and collaborate, while being provided with enough computational resources to execute it.
+
+- :doc:`tools/binderhub`
 
 Documentation
 =============
