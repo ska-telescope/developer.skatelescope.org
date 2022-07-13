@@ -63,3 +63,12 @@ This will show the previously launched servers - if any - and provide options to
 
 Policies
 ========
+
+To ensure that every developer has the same amount of resources available the following policies were defined:
+
+* **Server names:** The name of a server should be limited to 20 characters;
+* **Number of servers:** Each developer can have up to 5 named servers plus its own server (using the "My Server" option from JupyterHub);
+* **Server timeout:** If a developer leaves a server running for more than 2 hours, without any kind if activity, it will automatically be stopped. It will be available to be started again, once needed, from JupyterHub;
+* **Storage capacity:** Each server will have a maximum storage capacity of 2Gib;
+* **Storage retention:** Once a server is started, it will have a volume mounted and associated to it to save the work in progress. If the server is stopped, the storage will be kept so that the work can continue once the server is started again. Still, once the server gets deleted, so will its associated storage;
+* **CPU and RAM:** Each server will be limited to one CPU and 2GB of RAM.
