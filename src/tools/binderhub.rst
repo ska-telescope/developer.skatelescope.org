@@ -20,9 +20,9 @@ To access BinderHub, go to https://k8s.stfc.skao.int/binderhub/ and sign in usin
    BinderHub homepage
 
 Once successfully logged in a user can enter the name/URL of its repository, including a Git ref if needed (HEAD will be the default), and click on the "launch" button.
-BinderHub will then build a Docker image of the repository provided - pushing it into CAR - and launch it, creating a customized URL so that the collaboration can begin.
+BinderHub will then build a Docker image of the repository provided and launch it, creating a customized URL so that the collaboration can begin.
 
-If a developer tries to launch a repository which has already been built the image will be pulled from CAR instead of being built again. A rebuild of the image will only happen if a new commit has been made.
+If a developer tries to launch a repository which has already been built the image will be pulled instead of being built again. A rebuild of the image will only happen if a new commit has been made.
 
 It is important to note that the repository provided should **include a dependencies file** so that these are included when building the docker image.
 
