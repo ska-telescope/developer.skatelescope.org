@@ -422,7 +422,7 @@ Test environment
 In the future there will be specialised test environments in the ITFs and the AA0.5.
 In the Developer’s portal there is a description of how test environments can be provisioned: see `Testing Skampi <https://developer.skatelescope.org/projects/skampi/en/latest/testing.html#testing-skampi>`_.
 
-There is a staging environment, currently used only by the `Skampi codebase <https://gitlab.com/ska-telescope/ska-skampi>_`.
+There is a staging environment, currently used only by the `Skampi codebase <https://gitlab.com/ska-telescope/ska-skampi>`_.
 
 * How Pipeline Machinery can be used for test automation: https://developer.skao.int/en/latest/tools/ci-cd/skao-pipeline-machinery-tutorial.html 
 
@@ -467,7 +467,7 @@ Developing unit/module/integration tests for Tango devices might be particularly
 So far, teams have devised creative ways to use mocks in Python to cope with the problem:
 https://confluence.skatelescope.org/display/SE/How+to+use+mocks+with+Tango. 
 
-There is also a reliable library to support testing asynchronous benahviour in Tango devices: see https://gitlab.com/ska-telescope/ska-tango-testing and an associated `presentation <https://confluence.skatelescope.org/download/attachments/184372162/ska-tango-testing_presentation_to_cop_testing_20220711.pdf?version=1&modificationDate=1657527652693&api=v2>`_.
+There is also a reliable library to support **testing asynchronous behaviour** in Tango devices: see https://gitlab.com/ska-telescope/ska-tango-testing and an associated `presentation <https://confluence.skatelescope.org/download/attachments/184372162/ska-tango-testing_presentation_to_cop_testing_20220711.pdf?version=1&modificationDate=1657527652693&api=v2>`_.
 
 Another important approach to write unit/module tests in a way that they don't depend on the Tango infrastructure
 is to apply the **Humble Object** design pattern, that is extracting the domain logic from Tango-related code and move
@@ -507,7 +507,7 @@ testing stage creates and stores important artefacts related to testing. See htt
 
 System and integration tests that are applied to the systems running in the staging environment can be classified as quarantined.
 
-Quarantined tests are such that:
+**Quarantined** tests are such that:
 
 
 * they are allowed to fail without breaking the CI pipeline;
