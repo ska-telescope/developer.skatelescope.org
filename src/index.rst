@@ -259,9 +259,19 @@ within the software development lifecycle of SKAO software. This document descri
 Definition of Done
 ==================
 
+
 The definition of done is used to guide teams in planning and estimating the size of stories and features:
 
 - :doc:`policies/definition-of-done`
+
+Testing Policy and Strategy
+===========================
+
+
+The testing policy and strategy is used to align people to the goals of testing and to guide them in establishing an effective testing process:
+
+- :doc:`policies/ska-testing-policy-and-strategy`
+
 
 Incident Management
 ===================
