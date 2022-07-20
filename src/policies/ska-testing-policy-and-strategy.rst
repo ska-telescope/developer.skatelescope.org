@@ -334,7 +334,7 @@ regarding how the development process is proceeding and the actual quality level
 
 Thus:
 
-* **traceability** of test results to all sorts of requirements is needed, and vice versa. In this way we can provide traceability of tests to requirements,   and easily determine what is the degree of satisfaction of certain requirements based on test results.
+* **traceability** of test results to all sorts of requirements is needed, and vice versa. In this way we can provide traceability of tests to requirements, and easily determine what is the degree of satisfaction of certain requirements based on test results.
 * **Functional and non-functional completeness** of specific requirements could also be assessed by test results.
 * Integration of components during each PI should provide status information about what works and what does not yet work, and that should be based on automated tests being routinely run. These test reports are the **basis to assess progress** during each PI.
 * Component and system tests should be used to establish a **living documentation**, that is the usage of test cases and specifications by example as         a documentation of the business logic and policies actually implemented by the tested system.
@@ -501,7 +501,7 @@ How the CICD pipeline is organized and how it should be used is described in
 https://developer.skao.int/projects/skampi/en/latest/testing.html#pipeline-stages-for-testing.
 
 It is important that teams, when configuring their own CICD pipeline, make sure that the
-testing stage creates and stores important artefacts related to testing. See https://developer.skatelescope.org/en/latest/tools/ci-cd.html.
+testing stage creates and stores important artefacts related to testing. See :doc:`our documentation on CI-CD </tools/ci-cd>`.
 
 
 
@@ -610,9 +610,9 @@ Relevant "How To Pages" are:
 
 - `On Test-Driven Development <https://confluence.skatelescope.org/display/SE/On+Test-Driven+Development>`_
 
-- `BDD walkthrough <https://developer.skatelescope.org/en/latest/tools/bdd-walkthrough.html>`_
+- :doc: `BDD walkthrough <tools/bdd-walkthrough>`
 
-- `BDD testing guide <https://developer.skatelescope.org/en/latest/tools/bdd-test-context.html>`_.
+- :doc: `BDD testing guide </tools/bdd-test-context>`.
 
 Relevant textbooks include:
 
