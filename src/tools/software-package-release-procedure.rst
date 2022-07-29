@@ -179,38 +179,46 @@ Developers are strongly encouraged to use the default template to ensure that si
 Release steps
 -------------
 
-After including the templates, the Release of a new artefact should be as follow:
+After including the templates, the Release of a new artefact should be as follows:
 
-- **1st**: Create a new Issue on the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`_ Jira Project with a summary of your release.
+- **1st**: Create a new issue on the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`_ Jira Project with a summary of your release, and set it to "IN PROGRESS".
 
-- **2**: Choose which bump version you want to use:
+- **2**: Create and checkout a new `REL-XXX-release-v-1.2.2` branch (where `REL-XXX` is your Jira issue.)
+
+- **3**: Choose which bump version you want to use:
 
     - bump-major-release
     - bump-minor-release
     - bump-patch-release
   
-  Run for example ``make bump-patch-release``, if for example .release was ``1.2.1`` it will be moved to ``1.2.2``
+  Run for example ``make bump-patch-release``, if for example .release was ``1.2.1`` it will be moved to ``1.2.2``.
 
-- **3**: Run ``make helm-set-release`` this will set all charts to example ``1.2.2`` version (DO only this step if you have helm charts on your project)
+- **4**: If you have helm charts on your project, run ``make helm-set-release``. This will set all charts to example ``1.2.2`` version.
 
-- **4**: Run ``make python-set-release`` this will set pyproject.toml to example ``1.2.2`` version (DO only this step if you have python packages on your project)
+- **5**: If you have python packages on your project, run ``make python-set-release``. This will set pyproject.toml to example ``1.2.2`` version.
  
-- **5**: The above steps make changes to files in your repository, and these changes will soon be committed. If you have any other manual changes to make, that are essential to bumping the version, now is the time to do so. For example:
+- **6**: Make any other manual changes that are necessary to bump the version. For example:
 
   * Updating the ``release`` variable in your ``docs/conf.py``;
   * Updating your python package's ``__version__`` attribute;
+  * Updating python tests that check the version;
+  * Updating umbrella charts to use your new chart version;
   * Manually updating a human-readable ``CHANGELOG`` file.
 
-  **Important**: Any changes you make here will be pushed straight to your master/main branch when the tag is pushed, without going through the merge review process. Therefore, only make changes that are essential to bumping the version.
+- **7**: Push your branch, create a merge request, get it approved and merged.
 
-- **6**: Run ``make git-create-tag``, assuming that the ticket created in the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`_ is the ticket REL-1234:
+- **8**: Checkout and pull the main branch.
+
+- **9**: Run ``make git-create-tag``, assuming that the ticket created in the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`_ is the ticket REL-1234:
 
     - Do you wish to continue (will commit outstanding changes) [N/y]: y
     - Tell me your Jira Ticket ID (REL-999): REL-1234
 
-- **7**: ``make git-push-tag``
+- **10**: ``make git-push-tag``
 
+Note: This final step will push the release tag direct to the main branch, so this step can only be performed by a repository maintainer. It is possible instead to push the tag onto the REL-XXX branch immediately before it is merged. In this case, it is very important that the tag is pushed to the branch only after the MR has been approved and no further commits will be made to it.
 
+Either way, once the tag has landed on the main branch, this will trigger a CI pipeline to publish the release. When the pipeline has completed, you can move your `REL-XXX` Jira issue to RELEASED.
 
 Release results
 ---------------
