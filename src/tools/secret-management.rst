@@ -1,7 +1,7 @@
 Secret Management
 ==================
 
-HashiCorp Vault is a secrets management tool specifically designed to control access to sensitive credentials in a low-trust environments.
+HashiCorp Vault is a secrets management tool specifically designed to control access to sensitive credentials in low-trust environments.
 This tool has various types of authentications being one of them Kubernetes Auth Method that will be used to get the secrets inside the pods and Gitlab Auth Method that will allow users to add and list their secrets group.
 
 
@@ -11,7 +11,7 @@ Logging into Vault with Gitlab and Add Secrets
 
 Any developer that is part of the skao-dev group has access to the SKAO Vault service by logging in with their Gitlab Account.
 
-The logging URL is the following: https://vault-test-1.skao.int/ui/vault/auth?with=gitlab%2F, and a page like the below one should appear to you.
+The logging URL is the following: https://vault-test-1.skao.int/ui/vault/auth?with=gitlab%2F, and a page like the one below should be shown.
 
 .. image:: images/vault-login.png
   :alt: Login Vault Page
@@ -24,7 +24,7 @@ After logging in you should be given access to the secrets page. Each user when 
   :align: center
 
 
-You can also noticie that you can see paths to others users secrets but cannot read them. To create you own secrets it needs to have the path: `` kv/users/gitlab_username `` . Example bellow, where the username was Bruno_Ribeiro.
+You can also notice that you can see paths to other users secrets but cannot read them. To create your own secrets it needs to have the following path with your gitlab_username in it: `` kv/users/gitlab_username `` . Example below, where the username was Bruno_Ribeiro.
 
 .. image:: images/vault-secrets-path.png
   :alt: Vault Secrets Created
@@ -35,7 +35,7 @@ You can also noticie that you can see paths to others users secrets but cannot r
 Using Secrets with K8s Pod
 ==========================
 
-There are 2 known ways to use vault secrets inside the pods, one using a `Vault Sidecar Injector <https://learn.hashicorp.com/tutorials/vault/kubernetes-sidecar>`_ and the other using the Vault `CSI provider <https://www.vaultproject.io/docs/platform/k8s/csi>`_. Both of this will be examplified in the sections below so you can choose the one that best suites your needs.
+There are 2 known ways to use vault secrets inside the pods, one using a `Vault Sidecar Injector <https://learn.hashicorp.com/tutorials/vault/kubernetes-sidecar>`_ and the other using the Vault `CSI provider <https://www.vaultproject.io/docs/platform/k8s/csi>`_. Both of these will be examplified in the sections below so you can choose the one that best suites your needs.
 
 Use environment variables with K8s
 ----------------------------------
@@ -74,14 +74,14 @@ Lets consider this simple deployment example of a pod with 2 environment variabl
                 value: "{{ .Values.global.env.password }}"
 
 With this approach we need to pass the environment variables to the Values File where we can override them with the assist of `helm set` command.
-But for us to be able to do this we need to have those variables stored somewhere until now we were using the Gitlab CI Vars to store this variables and secrets.
+But for us to be able to do this we need to have those variables stored somewhere since, until now, we were using the Gitlab CI Vars to store these variables and secrets.
 
 
 Vault Sidecar Injector
 ----------------------
 
 The Vault Agent Injector alters pod specifications to include Vault Agent containers that render Vault secrets to a shared memory volume using Vault Agent Templates. 
-Changing the previous code for it to use the vault sidecar injector we have something like the following:
+To change the previous code for it to use the vault sidecar injector we have something like the following:
 
 
 .. code-block:: yaml
@@ -136,7 +136,7 @@ In this case the annotations where added, this will create an init container tha
     export USERNAME=user
     export PASSWORD=1111
 
-For this variables to be declared environment variables inside the running pod you will also need to add the command `[ "sh", "-c", ". /vault/secrets/config" ]` to source those variables.
+For these variables to be declared environment variables inside the running pod you will also need to add the command `[ "sh", "-c", ". /vault/secrets/config" ]` to source those variables.
 
 A working example on the SKA projects of this method can be checked `here <https://gitlab.com/ska-telescope/ska-tango-images/-/blob/master/charts/ska-tango-base/templates/databaseds.yaml#L75>`_
 
@@ -146,7 +146,7 @@ Vault CSI Provider
 
 At a high level, the CSI Secrets Store driver allows users to create SecretProviderClass objects. This object defines which secret provider to use and what secrets to retrieve. When pods requesting CSI volumes are created, the CSI Secrets Store driver will send the request to the Vault CSI Provider if the provider is vault. The Vault CSI Provider will then use Secret Provider Class specified and the pod's service account to retrieve the secrets from Vault, and mount them into the pod's CSI volume.
 
-Changing the previous code to use the CSI Provider first we need to add a K8s kind SecretProviderClass:
+To change the previous code to use the CSI Provider first we need to add a K8s kind SecretProviderClass:
 
 .. code-block:: yaml
     :caption: vaultsecrets.yaml
@@ -189,7 +189,7 @@ Changing the previous code to use the CSI Provider first we need to add a K8s ki
         {{- end }}
         {{- end }}
 
-Admiting that we have a Values.yaml with this fields:
+Admiting that we have a Values.yaml with these fields:
 
 .. code-block:: yaml
     :caption: values.yaml
@@ -268,6 +268,6 @@ On the Pod we will need to get the variables from the mounted volume like so:
                 secretProviderClass: {{ .Values.secretProvider.name }}
 
 
-It is very important to have the if statements to make sure that the deployment work in local environments where we don't have access to the vault secrets.
+It is very important to have the if statements to make sure that the deployment works in local environments where we don't have access to the vault secrets.
 
 A working example on the SKA projects of this method can be checked `in this chart <https://gitlab.com/ska-telescope/sdi/ska-cicd-artefact-validations/-/tree/master/charts/ska-cicd-artefact-validations/templates>`_
