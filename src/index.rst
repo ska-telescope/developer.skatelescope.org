@@ -90,6 +90,7 @@ SKA Repositories
   tools/binderhub
   tools/documentation
   tools/software-package-release-procedure
+  tools/secret-management
   tools/logging-format
   tools/monitoring-dashboards/monitoring-dashboards
   tools/reporting-bugs
@@ -164,6 +165,13 @@ Package Release Process
 What you need to know in order to release an SKA software package.
 
 - :doc:`tools/software-package-release-procedure`
+
+Vault Secret Management
+=======================
+
+What you need to know in order to keep your secrets secret.
+
+- :doc:`tools/secret-management`
 
 Logging
 =======
