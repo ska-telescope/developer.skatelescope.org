@@ -185,7 +185,7 @@ Understanding more about the SKA
   * And look at the `operational flow <https://confluence.skatelescope.org/display/SE/Observation+Management+and+Controls+Agile+Release+Train?preview=/74743196/74743245/OperationalFlow-v2.pdf>`_. The goal here is to find out where your team fits in the organisation, but with a bit more detail than we had time for in week one.
 
 * Look at the `Module Decomposition <https://confluence.skatelescope.org/display/SWSI/Views%3A+Module>`_ of the SKA, and learn how this maps to the different `GitLab project </en/latest/projects/list.html>`_.
-* Read the `Architectural Decision Process <policies/decision-making>`. This process is how we can change and update our architecture, as we find out more about the system we're implementing, or as we need to adopt new technology.  All developers are able to reason about the architecture of the system; you'll need to know the process.
+* Read the :doc:`/policies/decision-making`. This process is how we can change and update our architecture, as we find out more about the system we're implementing, or as we need to adopt new technology.  All developers are able to reason about the architecture of the system; you'll need to know the process.
 
 What are your skills?
 *********************
@@ -219,7 +219,7 @@ Discuss this with your Scrum Master to see which ones are most appropriate for y
 * Join a Community of Practice (CoP). CoPs span the two Agile Release Trains (ARTs), and are a good way of sharing expertise, connecting with the wider community and making a contribution.
 * Continue watching the `Radio Interferometry lectures <https://confluence.skatelescope.org/display/SE/Lectures+on+Radio+Interferometry>`_.
 * Get involved in a team's feature. This may be as a developer, reviewer, tester, by shadowing a Feature owner, helping with a demo, or something else!
-* Learn about (or get!) access to the `cluster <tools/test-infrastructure>`, or `access to HPC facilities <https://confluence.skatelescope.org/display/SE/HPC+access>`_ for testing, prototyping and performance testing. People on the DP ART are more likely to need to access the HPC facilities for performance testing; most developers will need to be aware of our the cluster is used for testing. You may also need to arrange access to the `SKA Data Store <https://confluence.skatelescope.org/display/SE/Working+with+Google+Cloud+Platfom+%28GCP%29+storage>`_.
+* Learn about (or get!) access to the :doc:`cluster </tools/test-infrastructure>`, or `access to HPC facilities <https://confluence.skatelescope.org/display/SE/HPC+access>`_ for testing, prototyping and performance testing. People on the DP ART are more likely to need to access the HPC facilities for performance testing; most developers will need to be aware of our the cluster is used for testing. You may also need to arrange access to the `SKA Data Store <https://confluence.skatelescope.org/display/SE/Working+with+Google+Cloud+Platfom+%28GCP%29+storage>`_.
 * Create or amend some SKA documentation, whether on the Developer Portal, Confluence, or in a specific GitLab project.
 * Attend a system demo. You can find out more about demos in the #system-demos-buzz Slack channel, or in the `Demos <https://confluence.skatelescope.org/pages/viewpage.action?pageId=68715218>`_ pages in Confluence.
 * Sign up for some SKA-organised training. We expect that you'll need to attend some SAFe training; now is a good time to sign up!
