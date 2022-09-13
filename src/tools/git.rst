@@ -23,6 +23,8 @@ CI/CD tools.
 
 The following describes how to access the service, and how to setup the basic working environment to integrate with GitLab for the SKA.
 
+.. _git-use-institutional-email:
+
 Use institutional email
 +++++++++++++++++++++++
 

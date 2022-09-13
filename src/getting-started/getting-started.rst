@@ -48,7 +48,7 @@ This section is designed to get you up and running, with all the accounts you'll
   * `JIRA <https://jira.skatelescope.org>`_ and `Confluence <https://confluence.skatelescope.org>`_ login (both sites are configured to authenticate you with the same username and password).
   * `Slack <https://skao.slack.com>`_ If the person you are trying to add does not have an institutional email address, please drop by `#team-slack-admins <https://skao.slack.com/archives/CVD3RNCR0>`_ and indicate why the account needs to be done on a non-institutional email address.
   * Google Drive. You may need to create an account associated with your institutional email address. This makes it easier for us to know who is using that Google account.
-  * `GitLab <https://gitlab.com/>`_ (If you're not going to be contributing code or documentation, this step may be omitted or postponed.) Please make sure your institutional email address is associated with your GitLab ID if you've already got a GitLab account. See https://developer.skao.int/en/latest/tools/git.html#use-institutional-email for instructions on how to do this.
+  * `GitLab <https://gitlab.com/>`_ (If you're not going to be contributing code or documentation, this step may be omitted or postponed.) Please make sure your institutional email address is associated with your GitLab ID if you've already got a GitLab account. See :ref:`git-use-institutional-email` for instructions on how to do this.
 
 Please be aware of the `Team Member Registration Confluence page <https://confluence.skatelescope.org/display/SE/Team+Member+Registration>`_, where the processes for requesting access to these tools is outlined. 
 There is also very informative `Guidance <https://confluence.skatelescope.org/display/SKAIT/Guidance>`_ page created by the SKAO IT team that you might want to consult, especially if you work at HQ.
@@ -184,7 +184,7 @@ Understanding more about the SKA
   * Have a look at the pages on `Program Increments and PI Planning <https://confluence.skatelescope.org/display/SE/Program+Increments+and+PI+Planning>`_; they will tell you about the regular planning and evaluation cycles of the SKA.
   * And look at the `operational flow <https://confluence.skatelescope.org/display/SE/Observation+Management+and+Controls+Agile+Release+Train?preview=/74743196/74743245/OperationalFlow-v2.pdf>`_. The goal here is to find out where your team fits in the organisation, but with a bit more detail than we had time for in week one.
 
-* Look at the `Module Decomposition <https://confluence.skatelescope.org/display/SWSI/Views%3A+Module>`_ of the SKA, and learn how this maps to the different `GitLab project </en/latest/projects/list.html>`_.
+* Look at the `Module Decomposition <https://confluence.skatelescope.org/display/SWSI/Views%3A+Module>`_ of the SKA, and learn how this maps to the different :doc:`GitLab project </projects/list>`.
 * Read the :doc:`/policies/decision-making`. This process is how we can change and update our architecture, as we find out more about the system we're implementing, or as we need to adopt new technology.  All developers are able to reason about the architecture of the system; you'll need to know the process.
 
 What are your skills?
@@ -231,11 +231,11 @@ Suggested activities for new developers
 This section is primarily aimed at new developers.
 Your Scrum Master may create tickets in JIRA; this will help you get used to managing your work via JIRA if this is new to you.
 
-* Commit to an SKA project on GitLab. This may be as simple as fixing a typo in some documentation. We recommend that projects, especially projects where we expect external people to contribute, keep a list of easy issues to fix, as they're a good way in to a project. You'll need to look at `how to branch your code </en/latest/tools/git.html#branching-policy>`_. That page will tell you how to name your branch.
+* Commit to an SKA project on GitLab. This may be as simple as fixing a typo in some documentation. We recommend that projects, especially projects where we expect external people to contribute, keep a list of easy issues to fix, as they're a good way in to a project. You'll need to look at :ref:`how to branch your code <branching-policy>`. That page will tell you how to name your branch.
 * Create a Merge Request (MR) on GitLab. You'll need to do that if you've committed a change!
 
   * Include the JIRA ticket number in the commit
-  * Write a good `commit message </en/latest/tools/git.html#committing-code>`_!
+  * Write a good :ref:`commit message <committing-code>`!
 
 * Review someone else's code on GitLab.
 * Read your team's documentation for the main project you're working on.
@@ -267,7 +267,7 @@ Remember that we have `training pages on Confluence <https://confluence.skateles
 * Learn about `ECPs (Engineering Change Proposals) <https://confluence.skatelescope.org/pages/viewpage.action?pageId=5767262>`_. These are often required for major architectural changes, so it's useful to understand the purpose and process of ECPs.
 * Continue with your training plan, using the skills matrix!
 * Make sure you know where to get help. This was covered in week one, but some revision may be helpful.
-* Have a look at the various `Monitoring Dashboards </en/latest/tools/monitoring-dashboards/monitoring-dashboards.html>`_ for STFC Cluster, so you can see what things look like when our prototype is running and what data we are collecting about it.
+* Have a look at the various :doc:`Monitoring Dashboards </tools/monitoring-dashboards/monitoring-dashboards>` for STFC Cluster, so you can see what things look like when our prototype is running and what data we are collecting about it.
 * Learn about the SKA naming conventions for code, repositories, containers, etc. We need to make our code and the artefacts built from it easy to understand, so we have some standards to adhere to, and some recommendations.
 
 This is the end of your formal onboarding!
