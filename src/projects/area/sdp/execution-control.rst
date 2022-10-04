@@ -47,8 +47,9 @@ configuration database.
 - `Repository <https://gitlab.com/ska-telescope/sdp/ska-sdp-console>`__
 
 How to use the console is described in the `SDP Integration documentation
-</projects/ska-sdp-integration/en/latest/>`_. This enables the use of the
-configuration database CLI (``ska-sdp`` command).
+</projects/ska-sdp-integration/en/latest/>`__. This enables the use of the
+`configuration database CLI <https://developer.skao.int/projects/ska-sdp-config/en/latest/cli.html>`__
+(``ska-sdp`` command).
 
 Operator Interface
 ++++++++++++++++++

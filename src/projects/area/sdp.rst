@@ -14,7 +14,7 @@ The components of the system are integrated in the `SDP integration repository
 the Helm chart to deploy the SDP. More details on the design of the SDP and how
 to run it locally or in the integration environment can be found in the
 `SDP Integration documentation
-</projects/ska-sdp-integration/en/latest/>`_.
+</projects/ska-sdp-integration/en/latest/>`__.
 
 .. figure:: sdp/images/sdp-module-view.svg
   :align: center
@@ -42,7 +42,8 @@ The main instructions for how to deploy and run the SDP are in the
 `SDP Integration documentation
 </projects/ska-sdp-integration/en/latest/>`_.
 
-Tutorials for controlling SDP are additionally provided in the form of Jupyter notebooks:
+Tutorials for controlling SDP are additionally provided in the form of
+`Jupyter notebooks </projects/ska-sdp-notebooks/en/latest/?badge=latest>`__:
 
 - `Control SDP with the ska-sdp CLI <https://gitlab.com/ska-telescope/sdp/ska-sdp-notebooks/-/blob/main/src/ska-sdp-cli-tutorial.ipynb>`_
 - `Control SDP using the Tango devices <https://gitlab.com/ska-telescope/sdp/ska-sdp-notebooks/-/blob/main/src/ska-sdp-tango-tutorial.ipynb>`_
