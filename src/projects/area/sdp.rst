@@ -40,7 +40,7 @@ Controlling SDP
 
 The main instructions for how to deploy and run the SDP are in the
 `SDP Integration documentation
-</projects/ska-sdp-integration/en/latest/>`_.
+</projects/ska-sdp-integration/en/latest/>`__.
 
 Tutorials for controlling SDP are additionally provided in the form of
 `Jupyter notebooks </projects/ska-sdp-notebooks/en/latest/?badge=latest>`__:
