@@ -45,5 +45,5 @@ The main instructions for how to deploy and run the SDP are in the
 Tutorials for controlling SDP are additionally provided in the form of
 `Jupyter notebooks </projects/ska-sdp-notebooks/en/latest/?badge=latest>`__:
 
-- `Control SDP with the ska-sdp CLI <https://gitlab.com/ska-telescope/sdp/ska-sdp-notebooks/-/blob/main/src/ska-sdp-cli-tutorial.ipynb>`_
-- `Control SDP using the Tango devices <https://gitlab.com/ska-telescope/sdp/ska-sdp-notebooks/-/blob/main/src/ska-sdp-tango-tutorial.ipynb>`_
+    - `Control SDP with the ska-sdp CLI <https://gitlab.com/ska-telescope/sdp/ska-sdp-notebooks/-/blob/main/src/ska-sdp-cli-tutorial.ipynb>`_
+    - `Control SDP using the Tango devices <https://gitlab.com/ska-telescope/sdp/ska-sdp-notebooks/-/blob/main/src/ska-sdp-tango-tutorial.ipynb>`_
