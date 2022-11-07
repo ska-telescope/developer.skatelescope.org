@@ -92,7 +92,7 @@ SKA Repositories
   tools/software-package-release-procedure
   tools/secret-management
   tools/logging-format
-  tools/monitoring-dashboards/monitoring-dashboards
+  tools/centralised-monitoring-and-logging
   tools/reporting-bugs
   tools/codeguides
   tools/dev-faq
@@ -185,7 +185,7 @@ Monitoring Dashboards
 
 You've deployed your code on one of our test systems. Now you want to monitor it.
 
-- :doc:`tools/monitoring-dashboards/monitoring-dashboards`
+- :doc:`tools/centralised-monitoring-and-logging`
 
 Bug Reporting
 =============
