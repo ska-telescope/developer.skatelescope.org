@@ -22,10 +22,7 @@ Grafana
 
 To monitor SKA Infrastructure related metrics from, for example, Kubernetes, Gitlab Runners, Elasticstack or Ceph, Grafana dashboards should be used.
 
-The URLs to access it are:
-
-* **STFC datacentre** - https://k8s.stfc.skao.int/grafana/
-* **DP datacentre** - https://sdhp.stfc.skao.int/grafana/
+The URL to access it is: https://k8s.stfc.skao.int/grafana/
 
 To log in choose the "Sign in with Microsoft" option and use the *<jira-username>@ad.skatelescope.org* and *<jira-password>* combination.
 
@@ -39,35 +36,15 @@ Once logged in a user can browse through the existing dashboards and monitor the
 
    STFC Dashboards Browsing page
 
-Prometheus Alerts
------------------
+Besides taking advantage of the already existing dashboards, users can also `create their own dashboards <https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/>`_ and share them, as shown below, displaying the information that they require.
 
-To check the prometheus alerts, generated for the core kubernetes cluster and the infrastructure VMs, a user can choose between the web access to the Prometheus Alert Manager UI and the Slack alerts channels.
-
-The URLs to access the Prometheus Alert Manager are:
-
-* **STFC datacentre** - http://monitoring.skao.stfc:9093/#/alerts 
-* **DP datacentre** - http://monitoring.sdhp.skao:9093/#/alerts
-
-.. figure:: images/prometheus-alert-manager-example-stfc.png
+.. figure:: images/grafana-share-dashboard.png
    :scale: 40%
-   :alt: STFC Alert Manager homepage
+   :alt: Dashboard sharing example
    :align: center
    :figclass: figborder
 
-   STFC Alert Manager homepage
-
-It is important to note that these URLs are behind a VPN, so VPN access to the corresponding datacentre is required to access them.
-
-There are also two sets of Slack alerts channels, one that serves infrastructure alerts and another that serves user (developer) related alerts. These are:
-
-* **STFC datacentre**
-   * Infrastructure alerts - `#techops-alerts <https://skao.slack.com/archives/C047BDYR4LA>`_
-   * User alerts - `#techops-user-alerts <https://skao.slack.com/archives/C04815GKLSU>`_
-
-* **DP datacentre**
-   * Infrastructure alerts - `#dp-platform-alerts <https://skao.slack.com/archives/C0478FG3HMK>`_
-   * User alerts - `#dp-platform-user-alerts <https://skao.slack.com/archives/C047DTS4FNY>`_
+   New Dashboard Sharing example
 
 Kibana
 ------
@@ -101,4 +78,32 @@ The field ``ska_tags`` is also parsed so that the key is added to a ``ska_tags_f
 
 Making the selection illustrated above means that only messages with the value ``ska_mid/tm_leaf_node/d0003`` for the ``ska_tags_field.tango-device`` field would be displayed.
 
- 
+Prometheus Alerts
+-----------------
+
+To check the prometheus alerts, generated for the core kubernetes cluster and the infrastructure VMs, a user can choose between the web access to the Prometheus Alert Manager UI and the Slack alerts channels.
+
+The URLs to access the Prometheus Alert Manager are:
+
+* **STFC datacentre** - http://monitoring.skao.stfc:9093/#/alerts 
+* **DP datacentre** - http://monitoring.sdhp.skao:9093/#/alerts
+
+.. figure:: images/prometheus-alert-manager-example-stfc.png
+   :scale: 40%
+   :alt: STFC Alert Manager homepage
+   :align: center
+   :figclass: figborder
+
+   STFC Alert Manager homepage
+
+It is important to note that these URLs are behind a VPN, so VPN access to the corresponding datacentre is required to access them.
+
+There are also two sets of Slack alerts channels, one that serves application alerts and another that serves developer related alerts. These are:
+
+* **STFC datacentre**
+   * Application alerts - `#techops-alerts <https://skao.slack.com/archives/C047BDYR4LA>`_
+   * Developer alerts - `#techops-user-alerts <https://skao.slack.com/archives/C04815GKLSU>`_
+
+* **DP datacentre**
+   * Application alerts - `#dp-platform-alerts <https://skao.slack.com/archives/C0478FG3HMK>`_
+   * Developer alerts - `#dp-platform-user-alerts <https://skao.slack.com/archives/C047DTS4FNY>`_
