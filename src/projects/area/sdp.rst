@@ -34,6 +34,7 @@ so far are part of:
   sdp/execution-control
   sdp/science-pipelines
   sdp/platform-services
+  sdp/data-models-proc-funcs
 
 Controlling SDP
 ---------------
