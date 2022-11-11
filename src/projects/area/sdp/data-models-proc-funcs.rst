@@ -7,8 +7,9 @@ The packages below contain the building blocks of SDP processing.
 Memory Data Models
 ++++++++++++++++++
 
-The repository provides a set of universal data models, implemented in python,
-which can be used across various scripts and pipelines in the SDP architecture.
+The repository provides a set of data models involved in radio astronomy
+visibility processing. The models are specifically meant to facilitate
+passing data between services and processing components within the SDP.
 They are mostly based on xarray.Dataset.
 
 - `Repository <https://gitlab.com/ska-telescope/sdp/ska-sdp-datamodels>`__
@@ -18,17 +19,20 @@ Processing Function Library
 +++++++++++++++++++++++++++
 
 Contains low-level capabilities such as coordinate systems, Fourier Transforms, etc,
-implemented in C++.
+implemented in C, C++, and CUDA (internal), with C interfaces.
+Eventually it will cover reference implementations of all important domain-specific
+algorithms needed for the SKA, optimised for SKA-specific processing use cases.
+
 
 - `Repository <https://gitlab.com/ska-telescope/sdp/ska-sdp-func>`__
 - `Documentation </projects/ska-sdp-func/en/latest/>`__
 
-Python Processing Functions
-+++++++++++++++++++++++++++
+Python Processing Function Wrappers
++++++++++++++++++++++++++++++++++++
 
-Contains processing functions for imaging, calibration, coordinate systems, etc,
-implemented in Python. It is a reference library of various low-level processing
-function implementations.
+Contains processing function wrappers and reference implementations for imaging, calibration,
+coordinate systems, etc, implemented in Python. It meant to allow low-level processing function
+libraries (e.g ska-sdp-func) to present high-level interfaces using ska-sdp-datamodel.
 
 - `Repository <https://gitlab.com/ska-telescope/sdp/ska-sdp-func-python>`__
 - `Documentation </projects/ska-sdp-func-python/en/latest/>`__
