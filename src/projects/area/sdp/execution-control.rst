@@ -36,6 +36,16 @@ the SDP.
 - `Repository <https://gitlab.com/ska-telescope/sdp/ska-sdp-opinterface>`__
 - `Documentation </projects/ska-sdp-opinterface/en/latest/>`__
 
+Jupyter Notebooks
++++++++++++++++++
+
+A set of Jupyter Notebooks is available, which serve as tutorials on
+controlling SDP, including using different interfaces, and running the
+visibility receive workflow.
+
+- `Repository <https://gitlab.com/ska-telescope/sdp/ska-sdp-notebooks>`__
+- `Documentation </projects/ska-sdp-notebooks/en/latest/>`__
+
 Processing Controller
 +++++++++++++++++++++
 
