@@ -82,6 +82,7 @@ Information about the SKA
 * How does the SKA operate? How is it meant to work?
 
   * Read `about the SKA Operational Programme <https://confluence.skatelescope.org/download/attachments/113803312/SKA_Programmes_Induction_v2020.1.pdf?version=1&modificationDate=1595231309607&api=v2>`_.
+  * The SKAO also uses relational contracting for its software contracts. If you're on a software contract, you must complete the `Computing and Software Contracts Training <https://confluence.skatelescope.org/display/SE/Computing+and+Software+Contracts+Training>`_. This is a self-paced course, with an exam at the end. If you have any questions about this course, or wonder whether it's required for you to complete it, ask your Scrum Master or RTE. While it's only compulsory for people on the software contracts, you are welcome to take the course if you're working on any SKAO contract, especially if you work closely with the software teams. 
 
 * What is Radio Astronomy?
 
