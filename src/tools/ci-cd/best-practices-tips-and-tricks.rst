@@ -49,7 +49,9 @@ Example request :
 GitLab CI/CD Pipeline Images
 ----------------------------
 
-You can use ``SKA_K8S_TOOLS_DEPLOY_IMAGE`` group-level variable for packaging, publishing python, ansible, helm artefacts, and deploying k8s tests 
-and ``SKA_K8S_TOOLS_DOCKER_BUILDER_IMAGE`` group-level variable for building and publishing OCI images.
+You can use the following images: 
+
+* ``SKA_K8S_TOOLS_BUILD_DEPLOY`` (``artefact.skao.int/ska-cicd-k8s-tools-build-deploy:x.x.x``): group-level variable for building and publishing SKAO artefacts (OCI images, packaging and publishing python, ansible, helm ) and deploying  and running python/k8s tests. 
+* ``SKA_K8S_TOOLS_BUILD_DEPLOY_ALPINE`` (``artefact.skao.int/ska-cicd-k8s-tools-build-deploy-alpine:x.x.x``): Same as the above image but uses an Alpine image as its base for a faster and less sized image.
 
 See more about pipeline variables in :ref:`tools/ci-cd/gitlab-variables:Variables Description`.

@@ -13,7 +13,7 @@ Artefacts that are candidates for promotion to the Central Artefact Repository w
 
 These conventions are designed to integrate with the leading packaging and deployment tools commonly available for each artefact type.
 
-For intermediate artefacts, it is recommended that the builtin `packages <https://docs.gitlab.com/ee/user/packages/>`_ (repository) features available in GitLab are used.  These can be accessed directly in the GitLab CI/CD pipeline.  Examples of these are given below for OCI Images, PyPi packages, and Raw (Generic) artefact artefacts.
+For intermediate artefacts, it is recommended that the built in `packages <https://docs.gitlab.com/ee/user/packages/>`_ (repository) features available in GitLab are used.  These can be accessed directly in the GitLab CI/CD pipeline.  Examples of these are given below for OCI Images, PyPi packages and Raw (Generic) artefacts.
 
 
 .. contents:: Table of Contents
@@ -25,7 +25,7 @@ For intermediate artefacts, it is recommended that the builtin `packages <https:
 Central Artefact Repository
 ===========================
 
- The Central Artefact Repository provides the storage and library management facilities for artefacts throughout the Software Development Life Cycle.  Being central to the SDLC means that it is highly desirable that the Repository is stable, long lived, and can evolve with the SKAO requirements through the different stages of DevSecOps maturity, and the life time of the project.
+The Central Artefact Repository provides the storage and library management facilities for artefacts throughout the Software Development Life Cycle.  Being central to the SDLC means that it is highly desirable that the Repository is stable, long lived, and can evolve with the SKAO requirements through the different stages of DevSecOps maturity, and the life time of the project.
 
 An Artefact Repository is essentially a content management system for software artefacts delivered in their published form.  The Artefact Repository makes it possible to publish and retrieve the artefacts using the native tools, processes and protocols commonly associated with the related programming language and/or language based framework.  The Artefacts are versioned, and decorated with extensible metadata that is used to help manage the life cycle of the Artefacts.  The Central Artefact Repository provides APIs and reporting interfaces to provide integration into extended DevSecOps processes such as CI/CD, BoM and dependency management, license management, provenance, vulnerability scanning and release management.   It also provides controlled access to Artefacts through IAM, and offers notary features for provenance through TLS/SSL and signatures.
 
@@ -78,6 +78,7 @@ Finally, there are repositories that utilise the Nexus Raw format to provide lib
 
 * Ansible
 * Raw objects (binary, text etc.)
+* RPM packages
 
 Metadata
 ========
@@ -98,7 +99,6 @@ To be declared as valid, an artefact must be decorated with a set of metadata wh
  * CI_PROJECT_ID
  * CI_PROJECT_PATH_SLUG
  * CI_PROJECT_URL
- * CI_REPOSITORY_URL
  * CI_RUNNER_ID
  * CI_RUNNER_REVISION
  * CI_RUNNER_TAGS
@@ -147,14 +147,23 @@ All the information listed on this page is used in the artefact validation, i.e.
 Release Management
 =================================================
 
-As part of the  release notes publishing procedures developers should use a template job  that uses changelogs to generate artefact releases. To use it, please include the below template job. The changelog generation process relies on the **generate-changelog** make target present in the **release.mk makefile** (*must be included as submodule*). 
+
+Templates for automating the release process
+--------------------------------------------
+
+As part of the release notes publishing procedures developers should use a template job that uses changelogs to generate artefact releases. To use it, please include the below template job. The changelog generation process relies on the **generate-changelog** make target present in the **release.mk makefile**, this makefile is located in the `ska-cicd-makefile <https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile>`_ project. This repo should be added as a submodule to your own project, with the following command:
+
+.. code:: yaml
+
+  git submodule add https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile.git .make
+
 It requires a script that generates changelog documentation using **git-chglog** and it is meant to be used in a Gitlab tag pipeline job as it depends on the pipelines variables to publish the release notes to a newly created tagged commit. A Jira ticket is added to the release notes to enable other teams to refer to the documentation related to process and implementation of git-changelog.
 
 .. code:: yaml
 
   include:
   - project: 'ska-telescope/templates-repository'
-    file : 'gitlab-ci/includes/changelog.gitlab-ci.yml'
+    file : 'gitlab-ci/includes/release.gitlab-ci.yml'
 
 
 Developers are strongly encouraged to use the default template to ensure that similar practices are followed in all SKA repositories, but if any departures from standard procedures are required the process can be customized using the following variables:
@@ -167,7 +176,56 @@ Developers are strongly encouraged to use the default template to ensure that si
 
  - **CHANGELOG_TEMPLATE** - Used to overwrite the **git-chglog** template used to generate the changelog output. Defaults to `.make/.chglog/CHANGELOG.tpl.md <https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile/-/blob/master/.chglog/CHANGELOG.tpl.md>`_.
 
+Release steps
+-------------
 
+After including the templates, the Release of a new artefact should be as follows:
+
+- **1st**: Create a new issue on the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`_ Jira Project with a summary of your release, and set it to "IN PROGRESS".
+
+- **2**: Create and checkout a new `REL-XXX-release-v-1.2.2` branch (where `REL-XXX` is your Jira issue.)
+
+- **3**: Choose which bump version you want to use:
+
+    - bump-major-release
+    - bump-minor-release
+    - bump-patch-release
+  
+  Run for example ``make bump-patch-release``, if for example .release was ``1.2.1`` it will be moved to ``1.2.2``.
+
+- **4**: If you have helm charts on your project, run ``make helm-set-release``. This will set all charts to example ``1.2.2`` version.
+
+- **5**: If you have python packages on your project, run ``make python-set-release``. This will set pyproject.toml to example ``1.2.2`` version.
+ 
+- **6**: Make any other manual changes that are necessary to bump the version. For example:
+
+  * Updating the ``release`` variable in your ``docs/conf.py``;
+  * Updating your python package's ``__version__`` attribute;
+  * Updating python tests that check the version;
+  * Updating umbrella charts to use your new chart version;
+  * Manually updating a human-readable ``CHANGELOG`` file.
+
+- **7**: Push your branch, create a merge request, get it approved and merged.
+
+- **8**: Checkout and pull the main branch.
+
+- **9**: Run ``make git-create-tag``, assuming that the ticket created in the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`_ is the ticket REL-1234:
+
+    - Do you wish to continue (will commit outstanding changes) [N/y]: y
+    - Tell me your Jira Ticket ID (REL-999): REL-1234
+
+- **10**: ``make git-push-tag``
+
+Note: This final step will push the release tag direct to the main branch, so this step can only be performed by a repository maintainer. It is possible instead to push the tag onto the REL-XXX branch immediately before it is merged. In this case, it is very important that the tag is pushed to the branch only after the MR has been approved and no further commits will be made to it.
+
+Either way, once the tag has landed on the main branch, this will trigger a CI pipeline to publish the release. When the pipeline has completed, you can move your `REL-XXX` Jira issue to RELEASED.
+
+Release results
+---------------
+
+After the tagged pipeline finishes, the new release generated with the git-chglog will be appended to the tag in the gitlab project, an example of the release notes can be seen `here <https://gitlab.com/ska-telescope/templates/ska-raw-skeleton/-/releases/0.0.1>`_. And the Jira ticket (preferable one created on the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`_ Jira Project) that is present on the commit message that triggered the tag pipeline will be updated with links to the gitlab release page.
+
+If you have had included the file ``gitlab-ci/includes/release.gitlab-ci.yml`` Marvin should also publish a message on this ` channel <https://skao.slack.com/archives/C02NW62R0SE>`_ annoucing the release.
 
 Deploying Artefacts
 ===================
@@ -431,7 +489,7 @@ for example:
   # Ensure your .gitlab-ci.yml has "publish" stage defined!
   include:
     - project: 'ska-telescope/templates-repository'
-      file: 'gitlab-ci/includes/build_wheel.yml'
+      file: 'gitlab-ci/includes/python.gitlab-ci.yml'
 
 
 This will build a *Python* wheel that can be published to the Central Artefact Repository (when a tag is available). The above job will also build a wheel on each commit and publish the wheel into the gitlab package repository of the project.
@@ -490,6 +548,17 @@ Publishing to the `GitLab Project PyPi <https://docs.gitlab.com/ee/user/packages
       - poetry build
       - poetry publish -r gitlab
 
+Vulnerability Scanning of Published Python Packages
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+When a Python package is published to the Central Artefact Repository it must be checked for vulnerabilities to ensure that no critical issues are included in the python dependencies.
+
+This vulnerability scan, executed using gemnasium, will be included as part of the the default python pipeline https://gitlab.com/ska-telescope/templates-repository/-/blob/master/gitlab-ci/includes/python.gitlab-ci.yml .
+It will be executed in a customed docker container based on the image defined by the **SKA_GEMNASIUM_IMAGE** variable and it will target either the *pyproject.toml* or the *requirements.txt* file listing the package's dependencies. 
+
+If a scanned python package is reported to have critical vulnerabilities it will be moved from the pypi-internal repository to the quarantine repository and a report mentioning the package where it has been identified as well as a suggested solution will be presented.
+
+
 Installing a package from *Nexus*
 """""""""""""""""""""""""""""""""
 
@@ -532,7 +601,7 @@ The Python Package Index is located at  ```https://__token__:${CI_JOB_TOKEN}@gi
 Ansible Roles and Collections
 -----------------------------
 
-Ansible roles and collections are held in a Raw format repository *helm-internal* .  These are uploaded as individual files following the ADR-25 conventions of `<repository>/<role/collection name>` .
+Ansible roles and collections are held in a Raw format repository *ansible-internal* .  These are uploaded as individual files following the ADR-25 conventions of `<repository>/<role/collection name>` .
 
 The following example is for common systems role collections:
 
@@ -546,35 +615,402 @@ The following example is for common systems role collections:
 Raw
 ---
 
-Raw artefacts are typically `tar.gz` files, images, reports, data files, and specific repositories that do not have direct functional support in Nexus (same as for Ansible roles and collections).  These are hosted here `raw-internal <https://artefact.skao.int/#browse/search/raw>`_ .  Note that the artefact directory structure must be prefixed by the related repository, but can be flexible but meaningful after that.
+Raw artefacts are typically images, reports, data files and specific repositories that do not have direct functional support in Nexus (same as for Ansible roles and collections). These are hosted here `raw-internal <https://artefact.skao.int/#browse/search/raw>`_ .  These artefacts should be packaged and labelled with metadata like any other artefact that gets published to the Central Artefact Repository. In order to support this, each Raw artefact (essentially a collection of one or more files, possibly spanning directories) must reside in a separate directory following the convention `./raw/<raw artefact suffix>/`.  When published, the raw artefact should have a manifest file added to it, and should be packaged as a tar.gz file with the name <gitlab-repository-slug>-<raw artefact suffix>-<semver version>.tar.gz.
 
-The following example shows the publishing of an external dependency library for the Tango base image builds:
+Package and publish Raw artefacts to the SKAO Raw Repository
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The process of packaging and publishing raw artefacts to the SKAO repository is relatively straight-forward. A few lines are needed in the .gitlab-ci.yml file, and the project needs to have a raw directory under the root of the project, that contains all your project’s raw packages. 
+
+
+As an example, let's take the following project structure:
 
 .. code:: bash
 
-  curl -u ${CAR_RAW_USERNAME}:${CAR_RAW_PASSWORD} \
-    --upload-file tango-9.3.4.tar.gz \
-    ${CAR_RAW_REPOSITORY_URL}/ska-tango-images/libraries/tango-9.3.4.tar.gz
+  .
+  ├── my-project
+  │   ├── raw
+  │   |   └── ska-first-chart
+  │   |   └── ska-second-chart
+  │   ├── .gitlab-ci.yml
+  │   ├── README.md
+  │   ├── Makefile
+  |   └── .release   
 
-GitLab Generic Package Repository
+To simply package and code your raw packages, you migrate to use the Makefile templates and Gitlab Templates.
+Basically by adding the `ska-cicd-makefile <https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile>`_ repo as a submodule with the following command:
+
+.. code:: bash
+
+  $ git submodule add https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile.git .make
+
+And adding to your root Makefile, the following:
+
+.. code:: yaml
+
+  # include RAW packages support
+  include .make/raw.mk
+
+This will include the make target present in the .make/raw.mk file. The targets are:
+
+* raw-package-all: Package all version to a tar.gz format and add a Manifest.skao.int file with the required metadata, and saves them into build/raw folder
+* raw-publish-all: Publish all raw packages that are under build/raw folder to CAR
+* raw-package: Package folder under the RAW_PKG var
+* raw-publish: Publish raw package in build/raw folder with the value name of RAW_PKG var
+
+For more informations about the raw targets, you can run
+
+.. code:: yaml
+
+  $ make long-help raw
+
+and this will show all the information about the targets and variables from the raw.mk file.
+
+To add steps for packaging and publishing raw packages to your pipeline you just need to add the following to your gitlab-ci.yaml:
+
+.. code:: yaml
+
+  variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
+  stages:
+  - build
+  - publish
+
+  # Raw
+  - project: 'ska-telescope/templates-repository'
+    file: 'gitlab-ci/includes/raw.gitlab-ci.yml'
+
+And this will add both jobs to your pipeline. The build job will package all raw packages under raw/ folder and save them on the gitlab artefacts under the folder build/raw. The publish job that only runs on Tagged Commits will publish the raw packages present on the gitlab artefact build/raw folder to CAR.
+
+Validation Checks (Marvin)
 """""""""""""""""""""""""""""""""
 
-The `GitLab Generic Repository <https://docs.gitlab.com/ee/user/packages/generic_packages/index.html>`_ can be used to store arbitrary artefacts between job steps (as an alternative to the gitlab runner `cache <https://docs.gitlab.com/ee/ci/caching/>`_) or between pipelines.
+After the raw artefact is published to the nexus repository `raw-internal <https://artefact.skao.int/#browse/search/raw>`_  Marvin will run multiple checks to find out if the artefact is a valid one.
+For the artefact to be valid:
 
-Upload artefacts in CI/CD with:
+- Artefact name should be compliant. The folders inside raw/ should have a adr-25 compliant name.
+- Artefact Version should be compliant. The .release file should have a release version compliant with semantic versioning.
+- Artefact should have a Manifest.skao.int file with the required metadata inside.
+
+
+If any of these checks fail the artefact will be moved to a quarantined status to the repository  `raw-qurantine <https://artefact.skao.int/#browse/browse:raw-quarantine>`_
+
+
+RPM
+---
+
+RPM artefacts are typically packages for RedHat-based operating systems that do not have direct functional support in Nexus (same as for Ansible roles and collections). These are hosted here `rpm-internal <https://artefact.skao.int/#browse/browse:rpm-internal>`_ .  These artefacts should be packaged and labelled with metadata like any other artefact that gets published to the Central Artefact Repository. In order to support this, a CMakeLists.txt file must be present in the project's root folder that uses CPack to generate the RPM artefact.  When published, the RPM artefact will have the manifest metadata added to its description, and should be packaged with the name <gitlab-repository-slug>-<rpm artefact suffix>-<semver version>.rpm.
+
+Package and publish RPM artefacts to the SKAO RPM Repository
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The process of packaging and publishing RPM artefacts to the SKAO repository is relatively simple provided CMake is used. A few lines are needed in the .gitlab-ci.yml file, and the project needs to have a src directory under the root of the project, that contains all your project’s source code. 
+
+
+As an example, let's take the following project structure:
+
+.. code:: bash
+
+  .
+  ├── my-project
+  │   ├── src
+  │   ├── .gitlab-ci.yml
+  │   ├── CMakeLists.txt
+  │   ├── README.md
+  │   ├── Makefile
+  |   └── .release   
+
+To simply package and code your RPM packages, you migrate to use the Makefile templates and Gitlab Templates.
+Basically by adding the `ska-cicd-makefile <https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile>`_ repo as a submodule with the following command:
+
+.. code:: bash
+
+  $ git submodule add https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile.git .make
+
+And adding to your root Makefile, the following:
 
 .. code:: yaml
 
-  upload:
-    stage: upload
-    script:
-      - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file path/to/really_important.tar.gz "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/${YOUR_PACKAGE_NAME}/${SEMANTIC_VERSION}/really_important.tar.gz"'
+  # include RPM packages support
+  include .make/rpm.mk
 
-These can later be retrieved with:
+This will include the make target present in the .make/rpm.mk file. The targets are:
+
+* rpm-package: Package the source folder using cmake (which should output an RPM artefact), add the MANIFEST.skao.int metadata to the RPM description, and save the package into the build/rpm folder by default
+* rpm-publish: Publish RPM package in build/rpm folder
+
+For more information about the rpm targets, you can run
 
 .. code:: yaml
 
-  download:
-    stage: download
-    script:
-      - 'wget --header="JOB-TOKEN: $CI_JOB_TOKEN" ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/${YOUR_PACKAGE_NAME}/${SEMANTIC_VERSION}/really_important.tar.gz'
+  $ make long-help rpm
+
+and this will show all the information about the targets and variables from the rpm.mk file.
+
+To add steps for packaging and publishing RPM packages to your pipeline you just need to add the following to your gitlab-ci.yaml:
+
+.. code:: yaml
+
+  variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
+  stages:
+  - build
+  - publish
+
+  # RPM
+  - project: 'ska-telescope/templates-repository'
+    file: 'gitlab-ci/includes/rpm.gitlab-ci.yml'
+
+And this will add both jobs to your pipeline. The build job will package all RPM packages using the CMakeLists.txt file and save them on the gitlab artefacts under the folder build/rpm by default. The publish job that only runs on Tagged Commits will publish the RPM packages present on the gitlab artefact build/rpm folder to CAR.
+
+The cmake command can also be customized. The environment variable *ADDITIONAL_CMAKE_PARAMS* can be set and is passed to cmake during packaging.
+
+Since additional metadata is required to be present on the RPM in order to be possible to validate it, the *MANIFEST.skao.int* file that is automatically generated is added to the RPM description. Furthermore, the *VERSION* environment variable is passed to cmake and should be used when naming the package file. This can be done using the following directives in the CMakeLists.txt:
+
+.. code-block:: cmake
+
+  # -- generic package settings
+  set(PACK_NAME ${PROJECT_NAME})
+  set(CPACK_PACKAGE_FILE_NAME "${PACK_NAME}-${VERSION}")
+
+Installing RPM packages from *Nexus*
+""""""""""""""""""""""""""""""""""""
+
+For developers who want to install a rpm package from the *SKAO*
+rpm registry hosted on *Nexus*, they need first to import the configuration.
+The process is slightly different if using dnf (like in modern Fedora systems)
+or yum (most CentOS).
+
+If using dnf:
+
+.. code:: bash
+
+   $ sudo dnf install 'dnf-command(config-manager)'
+   $ sudo dnf config-manager --add-repo https://artefact.skao.int/repository/rpm-internal
+
+Check if SKAO is part of the enabled  repositories:
+
+.. code:: bash
+
+   $ dnf repolist
+   repo id                                     repo name
+   appstream                                   CentOS Linux 8 - AppStream
+   artefact.skao.int_repository_rpm-internal   created by dnf config-manager from https://artefact.skao.int/repository/rpm-internal
+   baseos                                      CentOS Linux 8 - BaseOS
+   extras                                      CentOS Linux 8 - Extras
+
+To see the list of packages we have in that registry:
+
+.. code:: bash
+
+   $ dnf repository-packages artefact.skao.int_repository_rpm-internal list
+   Available Packages
+   rabbit.x86_64      0.1.1-1         artefact.skao.int_repository_rpm-internal
+   
+The package can then be installed doing:
+
+.. code:: bash
+
+   $ sudo dnf install rabbit
+
+
+.. note::
+
+   If trying to run yum from a CentOS OCI image Yum installs may fail due to issues with mirror lists. The following 
+   commands should solve the issue:
+
+   $ sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+   
+   $ sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
+   
+If using Yum it is possible that yum-config-manager might need to be installed:
+
+.. code:: bash
+
+   $ sudo yum install yum-config-manager
+   
+Older versions of some operating systems may require instead:
+
+.. code:: bash
+
+   $ sudo yum install yum-utils
+   
+Enabling the repository is done with:
+
+.. code:: bash
+
+   $ sudo yum-config-manager --add-repo https://artefact.skao.int/repository/rpm-internal
+
+
+For the more recent OS versions yum should accept the same options used for dnf above to list and install packages. 
+For older OS versions checking the list of packages in the registry can be done with:
+
+.. code:: bash
+
+   $ yum --disablerepo="*" --enablerepo=artefact.skao.int_repository_rpm-internal list available
+   Available Packages
+   rabbit.x86_64      0.1.1-1         artefact.skao.int_repository_rpm-internal
+
+
+Conan
+-----
+
+Conan artefacts are typically C and C++ packages and manage any number of different binaries for different build configurations, including different architectures, compilers, compiler versions, runtimes, C++ standard library, etc. These are hosted in the `conan-internal <https://artefact.skao.int/#browse/search/conan>`_ repository in the Central Artefact Repository. These artefacts should be packaged and labelled with metadata like any other artefact that gets published to the CAR. In order to support this, each Conan artefact (essentially a collection of one or more files, possibly spanning directories) must reside in a separate directory following the convention `./conan/<conan artefact suffix>/`. To add the required metadata to your conan package you should first generate a MANIFEST.skao.int file with all the metadata required in it and pass it to the package while building, just by adding the following command to your conanfile.py:
+
+.. code:: c
+
+  def package(self):
+    # Copy headers to the include folder and libraries to the lib folder
+    self.copy("MANIFEST.skao.int", src="src")
+                  .
+                  .
+
+
+Package and publish Conan artefacts to the SKAO Conan Repository
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The process of packaging and publishing conan artefacts to the SKAO repository is relatively straight-forward. A few lines are needed in the .gitlab-ci.yml file, and the project needs to have a conan directory under the root of the project, that contains all your project’s conan packages. 
+
+As an example, let's take the following project structure:
+
+.. code:: bash
+
+  .
+  ├── my-project
+  │   ├── conan
+  │   |   └── ska-first-package
+  │   |   └── ska-second-package
+  │   ├── .gitlab-ci.yml
+  │   ├── README.md
+  │   ├── Makefile
+  |   └── .release   
+
+To simply package and code your conan packages, you migrate to use the Makefile templates and Gitlab Templates.
+Basically by adding the `ska-cicd-makefile <https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile>`_ repo as a submodule with the following command:
+
+.. code:: bash
+
+  $ git submodule add https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile.git .make
+
+And adding to your root Makefile, the following:
+
+.. code:: yaml
+
+  # include CONAN packages support
+  include .make/conan.mk
+
+This will include the make target present in the .make/conan.mk file. The targets are:
+
+* conan-package-all: Package all version and add a Manifest.skao.int file with the required metadata, and saves them into build/conan folder
+* conan-publish-all: Publish all conan packages that are under build/conan folder to CAR
+* conan-package: Package folder under the CONAN_PKG var
+* conan-publish: Publish conan package in build/conan folder with the value name of CONAN_PKG var
+
+For this templates to work you need to add the copy Manifest line described above to your conanfile.py. The Default channel is stable and it is set in the makefile with the variable CONAN_CHANNEL and the default User will be Marvin also set in the conan.mk with the variable CONAN_USER. This variable can be overriden in the root MAKEFILE.
+
+For more informations about the conan targets, you can run
+
+.. code:: yaml
+
+  $ make long-help conan
+
+and this will show all the information about the targets and variables from the conan.mk file.
+
+To add steps for packaging and publishing conan packages to your pipeline you just need to add the following to your gitlab-ci.yaml:
+
+.. code:: yaml
+
+  variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
+  stages:
+  - build
+  - publish
+
+  # Conan
+  - project: 'ska-telescope/templates-repository'
+    file: 'gitlab-ci/includes/conan.gitlab-ci.yml'
+
+And this will add both jobs to your pipeline. The build job will build all conan packages under conan/ folder and save them on the gitlab artefacts under the folder build/.conan. The publish job that only runs on Tagged Commits will publish the conan packages present on the gitlab artefact build/.conan folder to CAR.
+
+APT (Debian)
+------------
+
+Debian and systems based on it, like Ubuntu, use the same package management system. APT (Advanced Package Tool) is a set of tools for managing Debian packages, and therefore the applications installed on your Debian system. It provides a wide set of operations like searching repositories, installing packages with their dependencies, and managing upgrades.
+
+Injecting Metadata
+------------------
+
+All Debian packages have a `Control File <https://www.debian.org/doc/debian-policy/ch-controlfields.html>`_ that contains metadata describing the package and that must be present to push to the SKAO APT Repository.
+
+To see the current metadata from a package :
+
+.. code:: bash
+
+  dpkg-deb --info <package>
+
+Packages published in SKAO APT Repository should also have the `required metada <https://developer.skao.int/en/latest/tools/software-package-release-procedure.html?highlight=CI_PROJECT_URL#metadata>`_ .
+
+To add/edit metadata, from a existing package, first extract the files installed by the binary package:
+
+.. code:: bash
+
+  dpkg-deb -x mypackage.deb mypackage
+
+Next extract the package metadata:
+
+.. code:: bash
+
+  dpkg-deb -e mypackage.deb mypackage/DEBIAN
+
+At this point edit the control files in mypackage/DEBIAN. Finally, create the modified package:  
+
+.. code:: bash
+
+  dpkg-deb -b mypackage mypackage-new.deb
+
+Publish debian artefacts to the SKAO APT Repository
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+.. code:: bash
+
+  curl -u ${CAR_APT_USERNAME}:${CAR_APT_PASSWORD} -H "Content-Type: multipart/form-data" --data-binary "@./${PACKAGE-NAME}.deb" "https://artefact.skao.int/repository/apt-bionic-internal/"
+
+
+Configure the Apt client
+""""""""""""""""""""""""
+Prerequisite:
+
+.. code:: bash
+
+  sudo apt update
+  sudo apt install gpg
+
+To configure the Apt client to work with Nexus Repository Manager edit the file "/etc/apt/sources.list". Add the following line if you want to add the repository to the list, or replace the content of the file if you're going to use only this repository:
+
+.. code:: bash
+
+  deb https://artefact.skao.int/repository/apt-bionic-internal/ bionic main
+
+Then you need to add the apt repository public key:
+
+.. code:: bash
+
+  cat <public.key> | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/<public_key>.gpg  >/dev/null
+
+  # or you can download the key first
+
+  curl -sL https://.../public.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/<public_key>.gpg  >/dev/null
+
+Update apt and check if the repository updates without errors:
+
+.. code:: bash
+
+  sudo apt update
+
+Then to install the package just run:
+
+.. code:: bash
+
+  sudo apt install <package-name>

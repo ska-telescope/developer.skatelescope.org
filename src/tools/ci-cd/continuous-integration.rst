@@ -28,7 +28,7 @@ To do that the option must be enabled:
 
 |image6|
 
-The EngageSKA cluster located at the Datacenter of Institute of Telecommunication (IT) in Aveiro provides some virtual machines available adding the tag "engageska" or "docker-executor" as shown `here <https://gitlab.com/ska-telescope/templates/ska-python-skeleton/>`__.
+The STFC cluster located at the SKAO in UK provides some virtual machines available adding the tag "stfc" or "docker-executor" as shown `here <https://gitlab.com/ska-telescope/templates/ska-python-skeleton/>`__.
 
 .. note::
   In order to have the SKA runners available, a project *must* be under the `SKA Telescope <https://gitlab.com/ska-telescope/>`_ group. Currently projects can only be added to the SKA group by the System Team - refer to our guide to :doc:`/projects/create-new-project`.
@@ -297,11 +297,20 @@ Input
 Output
   The packages are uploaded to the SKA software repository.
 
+Scan
+"""""
+This is a gitlab stage which scans the container from the stages for potential security vulnerabilities in Gitlab.
+
+Input
+  The OCI container in each pipeline stage.
+
+Output
+  The generated output in JUnit format containing the pipeline container scanning results. 
 
 
 Pages
 """""
-This is a gitlab stage publishes the results from the stages to Gitlab
+This is a gitlab stage which publishes the results from the stages to Gitlab
 
 Input
   The JUnit files generated in each pipeline stage.
@@ -336,7 +345,7 @@ Python Modules
 ______________
 
 The Central Artefact Repository PYPI destination as well as a username and password is available.
-For a reference implementation see the `lmc-base-classes .gitlab-ci.yaml <https://gitlab.com/ska-telescope/lmc-base-classes/blob/master/.gitlab-ci.yml>`_
+For a reference implementation see the `ska-tango-base .gitlab-ci.yaml <https://gitlab.com/ska-telescope/ska-tango-base/-/blob/main/.gitlab-ci.yml>`_
 
 Note the following:
  - The Central Artefact Repository `CAR_PYPI_REPOSITORY_URL <https://artefact.skao.int/repository/pypi-internal/>`_ is where the packages will be uploaded to.
@@ -363,22 +372,22 @@ Note the following:
 
 
 
-Docker images
+OCI images
 _____________
 
 The Central Artefact Repository Docker registery host and user is available.
 For a reference implementation see the `SKA docker gitlab-ci.yml <https://gitlab.com/ska-telescope/ska-tango-images/blob/master/.gitlab-ci.yml>`_
 
 Note the following:
- - The `DOCKER_REGISTRY_USER` corresponds to the folder where the images are uploaded, hence the `$CAR_OCI_REGISTRY_USERNAME` is used.
+ - The `DOCKER_REGISTRY_USERNAME` corresponds to the folder where the images are uploaded, hence the `$CAR_OCI_REGISTRY_USERNAME` is used.
 
 .. code-block:: yaml
 
   script:
   - cd docker/tango/tango-cpp
   - echo ${CAR_OCI_REGISTRY_PASSWORD} | docker login --username ${CAR_OCI_REGISTRY_USERNAME} --password-stdin ${CAR_OCI_REGISTRY_HOST}
-  - make DOCKER_BUILD_ARGS="--no-cache" DOCKER_REGISTRY_USER=$CAR_OCI_REGISTRY_USERNAME DOCKER_REGISTRY_HOST=$CAR_OCI_REGISTRY_HOST build
-  - make DOCKER_REGISTRY_USER=$CAR_OCI_REGISTRY_USERNAME DOCKER_REGISTRY_HOST=$CAR_OCI_REGISTRY_HOST push
+  - make DOCKER_BUILD_ARGS="--no-cache" DOCKER_REGISTRY_USERNAME=$CAR_OCI_REGISTRY_USERNAME DOCKER_REGISTRY_HOST=$CAR_OCI_REGISTRY_HOST build
+  - make DOCKER_REGISTRY_USERNAME=$CAR_OCI_REGISTRY_USERNAME DOCKER_REGISTRY_HOST=$CAR_OCI_REGISTRY_HOST push
 
 Kubernetes based Runners Architecture
 -------------------------------------
@@ -411,31 +420,31 @@ Kubernetes clusters could be created in ci/cd jobs. These clusters are created o
 
 Note: in order to run deploy clusters, the account permissions need to be set up correctly for the runner services.
 
-.. |image0| image:: ../media/image1.png
+.. |image0| image:: ../images/image1.png
    :width: 6.27083in
    :height: 0.83333in
-.. |image1| image:: ../media/image6.png
+.. |image1| image:: ../images/image6.png
    :width: 6.27083in
    :height: 3.86111in
-.. |image2| image:: ../media/image4.png
+.. |image2| image:: ../images/image4.png
    :width: 6.27083in
    :height: 4.27778in
-.. |image3| image:: ../media/image5.png
+.. |image3| image:: ../images/image5.png
    :width: 6.27083in
    :height: 5.25000in
-.. |image4| image:: ../media/image3.png
+.. |image4| image:: ../images/image3.png
    :width: 6.27083in
    :height: 4.47222in
-.. |image5| image:: ../media/image2.png
+.. |image5| image:: ../images/image2.png
    :width: 6.27083in
    :height: 2.88889in
-.. |image6| image:: ../media/image7.png
+.. |image6| image:: ../images/image7.png
    :width: 6.27083in
    :height: 4.63889in
-.. |image7| image:: ../media/image0.png
+.. |image7| image:: ../images/image0.png
    :width: 6.27083in
    :height: 4.63889in
-.. |runners-on-kubernetes| image:: ../media/runners-on-kubernetes.png
+.. |runners-on-kubernetes| image:: ../images/runners-on-kubernetes.png
 
 Best Practices, Tips and Tricks
 -------------------------------------

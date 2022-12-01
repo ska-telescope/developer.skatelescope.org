@@ -8,3 +8,4 @@ Pipfile
 Pipfile.lock
 venv
 .idea
+.venv

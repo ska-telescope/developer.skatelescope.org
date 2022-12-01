@@ -15,3 +15,5 @@ These pages describe the full :doc:`CI process </tools/ci-cd/continuous-integrat
   ci-cd/gitlab-variables
   ci-cd/ci-dashboard
   ci-cd/best-practices-tips-and-tricks
+  ci-cd/skao-pipeline-machinery-tutorial
+  ci-cd/gpu-pipelines-workloads

@@ -53,7 +53,6 @@ This section is about getting you up and running. It contains the onboarding mat
 - :doc:`getting-started/contrib-guidelines`
 - :doc:`getting-started/devenv-setup`
 
-A list of the tools we are using to collaborate, together with guidance on how to use them can be found at this confluence page: `SKA Guidelines to Remote Working <https://confluence.skatelescope.org/display/SKAIT/SKA+Guidelines+to+Remote+Working>`_ (requires an SKA Confluence account).
 
 SKA Repositories
 ----------------
@@ -88,10 +87,12 @@ SKA Repositories
   tools/bdd-walkthrough
   tools/test-infrastructure
   tools/containers
+  tools/binderhub
   tools/documentation
   tools/software-package-release-procedure
+  tools/secret-management
   tools/logging-format
-  tools/monitoring-dashboards/monitoring-dashboards
+  tools/centralised-monitoring-and-logging
   tools/reporting-bugs
   tools/codeguides
   tools/dev-faq
@@ -129,7 +130,7 @@ Test Infrastructure
 To support our testing and CI/CD pipelines, we have the multiple kubernetes clusters configured to allow testing to happen.
 
 - :doc:`tools/test-infrastructure`
-- :doc:`tools/monitoring-dashboards/ait-performance-env`
+- :doc:`tools/monitoring-dashboards/stfc-performance-env`
 
 Containerisation
 ================
@@ -143,6 +144,13 @@ To facilitate code portability and reliability and test running, we use containe
 - :doc:`tools/containers/multitenancy`
 - :doc:`tools/containers/docker-proxy-cache`
 - :doc:`tools/containers/uploading-docker-nexus`
+
+Working with BinderHub
+======================
+
+To enable developers to share their code and collaborate, while being provided with enough computational resources to execute it.
+
+- :doc:`tools/binderhub`
 
 Documentation
 =============
@@ -158,6 +166,13 @@ What you need to know in order to release an SKA software package.
 
 - :doc:`tools/software-package-release-procedure`
 
+Vault Secret Management
+=======================
+
+What you need to know in order to keep your secrets secret.
+
+- :doc:`tools/secret-management`
+
 Logging
 =======
 
@@ -170,7 +185,7 @@ Monitoring Dashboards
 
 You've deployed your code on one of our test systems. Now you want to monitor it.
 
-- :doc:`tools/monitoring-dashboards/monitoring-dashboards`
+- :doc:`tools/centralised-monitoring-and-logging`
 
 Bug Reporting
 =============
@@ -252,9 +267,19 @@ within the software development lifecycle of SKAO software. This document descri
 Definition of Done
 ==================
 
+
 The definition of done is used to guide teams in planning and estimating the size of stories and features:
 
 - :doc:`policies/definition-of-done`
+
+Testing Policy and Strategy
+===========================
+
+
+The testing policy and strategy is used to align people to the goals of testing and to guide them in establishing an effective testing process:
+
+- :doc:`policies/ska-testing-policy-and-strategy`
+
 
 Incident Management
 ===================

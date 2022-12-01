@@ -23,6 +23,8 @@ CI/CD tools.
 
 The following describes how to access the service, and how to setup the basic working environment to integrate with GitLab for the SKA.
 
+.. _git-use-institutional-email:
+
 Use institutional email
 +++++++++++++++++++++++
 
@@ -36,7 +38,7 @@ https://docs.gitlab.com/ee/user/profile/account/two_factor_authentication.html.
 Setup SSH key
 +++++++++++++
 
-To enable `git+ssh` based authentication for clients, associate your ssh-key to your user at *Settings->SSH keys* (https://gitlab.com/profile/keys).
+To enable `git+ssh` based authentication for clients, associate your ssh-key to your user at *Settings->SSH keys* (https://gitlab.com/-/profile/keys).
 
 SKA Organization
 ++++++++++++++++
@@ -109,7 +111,7 @@ Signing commits with GPG
 Developers are strongly encouraged to use a GPG key to sign Git commits.
 The procedure for
 obtaining a GPG key and uploading it to the GitLab account is described at
-https://docs.gitlab.com/ee/user/project/repository/gpg_signed_commits/, or got straight to uploading at https://gitlab.com/profile/gpg_keys.
+https://docs.gitlab.com/ee/user/project/repository/gpg_signed_commits/, or got straight to uploading at https://gitlab.com/-/profile/gpg_keys.
 
 
 The only difference from a non signed commit is the addition of the -S flag:
@@ -292,7 +294,7 @@ There are more additional settings in GitLab that only project maintainers could
 
 .. _figure-gitlab-mergerequest-settings:
 
-.. figure:: media/gitlab-mergerequest-settings.png
+.. figure:: images/gitlab-mergerequest-settings.png
    :scale: 80%
    :alt: GitLab Merge Request Settings, showing the default settings for SKA Organisation projects
    :align: center
@@ -313,8 +315,22 @@ It is advised to look for this comment and respond to any issue arisen.
 A check is either a:
 
 * Failure (🚫): The Merge Request is violating the SKA guidelines and it should be fixed by following the mitigation defined in the check
+
+  * Example
+  
+    * Branch name should start with a lowercase Jira Ticket ID - see :ref:`branching-policy`
+
 * Warning (⚠): The Merge Request is following anti patterns/non-advised guidelines/policies and it would be better if it is fixed by the mitigation defined in the check
+
+  * Example
+  
+    * Docker-Compose commands found on the repository
+
 * Information (📖): You should be aware of the information conveyed in this Merge Request quality check message
+  
+  * Example
+  
+    * The merge request does not present documentation changes
 
 Each check has a brief description that explains what it does and a mitigation/explanation (depending on check type) which gives detailed information about the check and how to fix it or explains its findings more. You can find a list of each check below.
 
@@ -325,7 +341,7 @@ When a new Merge Request is created, a webhook triggers the SKA MR Service to ca
 
 For the subsequent changes pushed to the Merge Request, the comment is updated to reflect the latest status of the Merge Request.
 
-.. figure:: media/marvin-check-table.png
+.. figure:: images/marvin-check-table.png
    :scale: 80%
    :alt: Marvin Merge Request Settings
    :align: center
@@ -333,65 +349,130 @@ For the subsequent changes pushed to the Merge Request, the comment is updated t
 
    Marvin's Check Table.
 
+*Automatic Fixing of Merge Request Settings*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+While the checks are being processed, several settings in the Project and the Merge Request that triggered the checks will be automatically fixed. These fixes include:
+
+* Disabling 'squash commits when merge request is accepted'.
+
+* Enabling 'delete source branch when merge request is accepted'.
+
+* Enabling 'automatically resolve mr diff discussions'.
+
+* Enabling 'remove all approvals when new commits are pushed'.
+
+* Enabling 'pipelines must succeed'.
+
+* Enabling 'delete source branch option by default'.
+
+* Enabling 'show link to create/view MR when pushing from the command line'.
+
+In addition to the above automatic fixes, there is a clickable Fix link next to each supported Merge Request Settings message, clicking on it will trigger Marvin to attempt to fix that setting if the triggering user is authenticated.
+
+All settings fixed by Marvin will result in a new comment in the Merge Request detailing the changes made and whether they were successful or not.
+Settings fixed automatically will be detailed together in a single comment, while each setting fixed through the clickable link will have their own individual comment.
+
+Please note that only users that are assigned to the Merge Request can use the clickable links to trigger the automatic setting fix feature.
+
+*Marvin Approval*
+^^^^^^^^^^^^^^^^^
+
+Marvin after creating the table will verify if there is any checks under the failure category failed, if so Marvin does not approve the MR, and in the case that that MR was already approved before by him he unapproves it. 
+If none of the checks under the failure category failed Marvin will approve the MR.
+
 Checks
 ++++++
 
-+------------+-----------------------+---------------------------------------------------------------------------------------+
-| Type       | Description           | Mitigation Strategy                                                                   |
-+============+=======================+=======================================================================================+
-| Warning    | Docker-Compose        | Please remove docker-compose from following files:                                    |
-|            | Usage                 |     *  At file: <file_location> on line <line_number>                                 |
-|            | Found                 |     *  At file: <file_location> on line <line_number>                                 |
-+------------+-----------------------+---------------------------------------------------------------------------------------+
-| Failure    | Missing Jira Ticket   | Branch name should start with a lowercase Jira ticket id                              |
-|            | In Branch Name        |                                                                                       |
-+------------+-----------------------+---------------------------------------------------------------------------------------+
-| Warning    | Missing Jira Ticket   | Following commit messages violate :ref:`committing-code`                              |
-|            | in commits            |      *   <commit-hash>                                                                |
-|            |                       |      *   <commit-hash>                                                                |
-+------------+-----------------------+---------------------------------------------------------------------------------------+
-| Failure    | Missing Jira Ticket ID| Title should include a valid Jira ticket id                                           |
-|            | in MR Title           |                                                                                       |
-+------------+-----------------------+---------------------------------------------------------------------------------------+
-| Failure    | Wrong Merge           | Reconfigure Merge Request Settings according to :ref:`merge-request`                  |
-|            | Request Setting       |                                                                                       |
-|            |                       | MR Settings Checks:                                                                   |
-|            |                       |    * You should assign one or more people as reviewer(s)                              |
-|            |                       |    * Automatically resolve mr diff discussions should be checked                      |
-|            |                       |    * Override approvers and approvals per MR should be checked                        |
-|            |                       |    * Remove all approvals when new commits are pushed should be checked               |
-|            |                       |    * Prevent approval of MR by the author should be checked                           |
-|            |                       |    * There should be at least 1 approval required                                     |
-|            |                       |    * Please uncheck Squash commits when Merge Request is accepted.                    |
-|            |                       |    *  Please check Delete source branch when merge request is accepted.               |
-|            |                       | Project Settings Checks(You may need Maintainer rights to change these):              |
-|            |                       |    * Pipelines must succeed should be checked                                         |
-|            |                       |    * Enable Delete source branch option by default should be checked                  |
-|            |                       |    * Show link to create/view MR when pushing from the command line should be checked |
-+------------+-----------------------+---------------------------------------------------------------------------------------+
-| Failure    | Missing Assignee      |  Please assign at least one person for the MR                                         |
-+------------+-----------------------+---------------------------------------------------------------------------------------+
-|Information | Documentation Changes | This MR doesn't introduce any documentation changes. Please consider                  |
-|            |                       | updating documentation to reflect your changes                                        |
-+------------+-----------------------+---------------------------------------------------------------------------------------+
-|Failure     | Read The Docs         | Please integrate this project with ReadtheDocs following the guidelines:              |
-|            | Integration           |  *  Please set up docs/ folder for sphinx documentation build following the guidelines|
-|            |                       |  *  Please add this project as a subproject on Read the Docs following the guidelines |
-|            |                       |  *  Please import your project into Read the Docs                                     |
-+------------+-----------------------+---------------------------------------------------------------------------------------+
-| Failure    | Pipeline Checks       | Please create a `pipeline </en/latest/tools/ci-                                       |
-|            |                       | cd.html>`_  on this Merge Request or please add the following jobs:                   |
-|            |                       |                                                                                       |
-|            |                       |   *  `ci-metrics  </en/lat                                                            |
-|            |                       |      est/tools/ci-cd/continuous-integration.html?highlight=post_step.yml#automated    |
-|            |                       |      -collection-of-ci-health-metrics-as-part-of-the-ci-pipeline>`_                   |
-|            |                       |   *  `helm-publish  </en/                                                             |
-|            |                       |      latest/tools/software-package-release-procedure.html?highlight=helm_publish.yml  |
-|            |                       |      #package-and-publish-helm-charts-to-the-skao-helm-chart-repository>`_            |
-+------------+-----------------------+---------------------------------------------------------------------------------------+
-| Warning    | Non-compliant License | Please update the license information according to                                    |
-|            | Information           | :doc:`/projects/licensing`                                                            |
-+------------+-----------------------+---------------------------------------------------------------------------------------+
++-------------+---------------------------------------+------------------------------------------------------------------------------------------+
+|    Type     |              Description              |                                   Mitigation Strategy                                    |
++=============+=======================================+==========================================================================================+
+| Warning     | Docker-Compose                        | Please remove docker-compose from following files:                                       |
+|             |                                       |                                                                                          |
+|             | Usage                                 | *  At file: <file_location> on line <line_number>                                        |
+|             | Found                                 | *  At file: <file_location> on line <line_number>                                        |
++-------------+---------------------------------------+------------------------------------------------------------------------------------------+
+| Failure     | Missing Jira Ticket                   | Branch name should start with a lowercase Jira ticket id                                 |
+|             | In Branch Name                        |                                                                                          |
++-------------+---------------------------------------+------------------------------------------------------------------------------------------+
+| Failure     | Missing Jira Ticket                   | Following commit messages violate :ref:`committing-code`                                 |
+|             | in commits                            |                                                                                          |
+|             |                                       | *   <commit-hash>                                                                        |
+|             |                                       | *   <commit-hash>                                                                        |
++-------------+---------------------------------------+------------------------------------------------------------------------------------------+
+| Failure     | Missing Jira Ticket ID                | Title should include a valid Jira ticket id                                              |
+|             | in MR Title                           |                                                                                          |
++-------------+---------------------------------------+------------------------------------------------------------------------------------------+
+| Failure     | Wrong Merge                           | Reconfigure Merge Request Settings according to :ref:`merge-request`                     |
+|             | Request Setting                       |                                                                                          |
+|             |                                       | MR Settings Checks(You may need Maintainer rights to change these):                      |
+|             |                                       |                                                                                          |
+|             |                                       | * You should assign one or more people as reviewer(s)                                    |
+|             |                                       | * There should be at least 1 approval required                                           |
+|             |                                       | * Please uncheck Squash commits when Merge Request is accepted.                          |
+|             |                                       | * Please check Delete source branch when merge request is accepted.                      |
+|             |                                       |                                                                                          |
+|             |                                       | Project Settings Checks(You may need Maintainer rights to change these):                 |
+|             |                                       |                                                                                          |
+|             |                                       | * Pipelines must succeed should be checked                                               |
+|             |                                       | * Remove all approvals when commits are added to the source branch should be checked     |
+|             |                                       | * Prevent approval of MR by the author should be checked                                 |
+|             |                                       | * Automatically resolve mr diff discussions should be checked                            |
+|             |                                       | * Prevent editing approval rules in merge requests should be checked                     |
+|             |                                       | * Enable Delete source branch option by default should be checked                        |
+|             |                                       | * Merge Method should be Merge Commit                                                    |
+|             |                                       | * Show link to create/view MR when pushing from the command line should be checked       |
++-------------+---------------------------------------+------------------------------------------------------------------------------------------+
+| Failure     | Missing Assignee                      | Please assign at least one person for the MR                                             |
++-------------+---------------------------------------+------------------------------------------------------------------------------------------+
+| Information | Documentation Changes                 | This MR doesn't introduce any documentation changes. Please consider                     |
+|             |                                       | updating documentation to reflect your changes                                           |
++-------------+---------------------------------------+------------------------------------------------------------------------------------------+
+| Failure     | Read The Docs                         | Please integrate this project with ReadtheDocs following the guidelines:                 |
+|             | Integration                           |                                                                                          |
+|             |                                       | *  Please set up docs/ folder for sphinx documentation build following the guidelines    |
+|             |                                       | *  Please add this project as a subproject on Read the Docs following the guidelines     |
+|             |                                       | *  Please import your project into Read the Docs                                         |
++-------------+---------------------------------------+------------------------------------------------------------------------------------------+
+| Failure     | Pipeline Checks                       | Please create a `pipeline </en/latest/tools/ci-                                          |
+|             |                                       | cd.html>`__  on this Merge Request or please add the following jobs:                     |
+|             |                                       |                                                                                          |
+|             |                                       | * `ci-metrics  </en/lat                                                                  |
+|             |                                       |   est/tools/ci-cd/continuous-integration.html?highlight=post_step.yml#automated          |
+|             |                                       |   -collection-of-ci-health-metrics-as-part-of-the-ci-pipeline>`__                        |
+|             |                                       | * `helm-publish  </en/                                                                   |
+|             |                                       |   latest/tools/software-package-release-procedure.html?highlight=helm_publish.yml        |
+|             |                                       |   #package-and-publish-helm-charts-to-the-skao-helm-chart-repository>`__                 |
++-------------+---------------------------------------+------------------------------------------------------------------------------------------+
+| Warning     | Missing CODEOWNERS                    | Please add a `CODEOWNERS <https://docs.gitlab.com/ee/user/project/code_owners.html>`__   |
+|             | file                                  | file to the root folder.                                                                 |
++-------------+---------------------------------------+------------------------------------------------------------------------------------------+
+| Warning     | Non-compliant License                 | Please update the license information according to                                       |
+|             | Information                           | :doc:`/projects/licensing`                                                               |
++-------------+---------------------------------------+------------------------------------------------------------------------------------------+
+| Warning     | Missing Test Coverage                 | This Project is missing test coverage Please have a look at the following `page <https   |
+|             |                                       | ://developer.skatelescope.org/en/latest/tools/ci-cd/continuous-integration.html?hig      |
+|             |                                       | hlight=coverage#automated-collection-of-ci-health-metrics-as-part-of-the-ci-pipeline>`__ |
++-------------+---------------------------------------+------------------------------------------------------------------------------------------+
+| Warning     | Non-Complaint                         | Project Slug should start with  **ska-** .                                               |
+|             | Project Slug Name                     | To change the slug go into: Settings->Advanced->Change Path                              |
+|             |                                       | If you don't have access to this settings, please contact the system team                |
+|             |                                       | at #team-system-support slack channel                                                    |
++-------------+---------------------------------------+------------------------------------------------------------------------------------------+
+| Warning     | Repository Structure is not following | Following rules failed for the repository structure:                                     |
+|             | standardised                          |                                                                                          |
+|             | `Project Structure                    |                                                                                          |
+|             | <https://confluence.skatelescope.org  |                                                                                          |
+|             | /display/SE/Standardising+Project+    |                                                                                          |
+|             | Structure+and+Content">`__            |                                                                                          |
+|             |                                       | * Python: There should be `pyproject.toml` file in the root folder                       |
+|             |                                       | * Python: Python files should be under a python module starting with                     |
+|             |                                       |   ska_(preferably project_slug) in the `src/` folder                                     |
+|             |                                       | * Helm: There should be at least one chart in the `charts/` folder                       |
+|             |                                       | * Helm: Charts should start with <project_slug> prefix                                   |
+|             |                                       | * ...                                                                                    |
+|             |                                       | * *See repository structure guidelines for all of the rules*                             |
++-------------+---------------------------------------+------------------------------------------------------------------------------------------+
 
 Docker-Compose Found
 ^^^^^^^^^^^^^^^^^^^^
@@ -430,6 +511,25 @@ Pipeline Checks
 ^^^^^^^^^^^^^^^
 This check warns users from merging their Merge Request without having a pipeline with the needed jobs like post_step.yml and build_push.yml. Including build_push.yml guarantees that container scanning job is included in your pipelines. The level of this check is a failure, and to avoid it 2 steps may be needed. The first one is to create a pipeline (i.e. add .gitlab-ci.yml) if there is not one created yet. The second one can only be done after the first one, and it consists on including the jobs that are listed on the mitigation strategy column (i.e. helm-publish) in the created pipeline. How to add the jobs to the pipeline is explained on the developer portal (job name as hyperlink).
 
+Missing CODEOWNERS File
+^^^^^^^^^^^^^^^^^^^^^^^
+This check warns users from merging their Merge Request without having a `CODEOWNERS <https://docs.gitlab.com/ee/user/project/code_owners.html>`__ file present in the root folder of the repository. This file specifies who owns the code and can be used to automatically setup who can approve Merge Requests.
+
 Non-compliant License Information
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 This check warns users if license in their project is not compatible with SKA approved license so that the quality of the software is improved and compliance is ensured with the SKA standards. This does not apply to projects in the 'External' project.
+
+Missing Test Coverage
+^^^^^^^^^^^^^^^^^^^^^
+This check warns users if test coverage is missing, by verifying if the file code-coverage.xml exists in the .post job (create-ci-metrics). To avoid it make sure your tests are exporting a build/reports/code-coverage.xml file, or simply use the `make submodule targets <https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile>`__.
+
+Non-Complaint Project Slug Name
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This check warns users if the project slug does not have a complaint name. For the slug to be complaint it needs to start with ska-. The level of this check is warning, to fix it you need to go into: Settings->Advanced->Change Path and change the slug to a complaint name, if you don't have the access to do it please contact the system team at #team-system-support slack channel
+
+Repository Structure Compliance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This check warns users if the project structure and content is not following the `SKAO standardised Project Structure <https://confluence.skatelescope.org/display/SE/Standardising+Project+Structure+and+Content>`__.
+The level of this check is warning.
+To fix it, please ensure you are compliant with all of the rules that's written in the Mitigation Strategy column.
+If you think there is an error/bug please contact the system team at #team-system-support slack channel

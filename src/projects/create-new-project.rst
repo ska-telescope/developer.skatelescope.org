@@ -11,7 +11,6 @@ Respositories will be created with public access by default. Other permissions s
 
 You will be given Maintainer privileges on this project. This will make it possible for you to (among other things) add users to the project and edit their permissions. For more information about permissions on Gitlab, go to `https://docs.gitlab.com/ee/user/permissions.html <https://docs.gitlab.com/ee/user/permissions.html>`_.
 
-In early 2020 the creation of repositories by developers or team members on the SKA Gitlab instance may be supported.
 
 .. admonition:: On groups in Gitlab
 
@@ -39,6 +38,8 @@ a repository should be created for every software component following this defin
 
   -- *adapted from 'Continuous Delivery'*
 
+SKAO advises one repository should only have one deliverable artefact which would mean that a repository may produce single python package/oci image/helm chart consisting of the same functionality. *Note that a repository can still supply different packages targeting different environments but still providing the same functionality on the target platforms*
+
 Naming a repository
 ###################
 
@@ -46,7 +47,7 @@ Repository names shall clearly map to a particular element of the SKA software a
 as described in the SKA software design documentation. That is to say, someone familiar with the
 SKA software architecture shuold be able to identify the content of a repository just by its name.
 
-Names shall be all lowercase, multiple words shall be separated by hyphens.
+Names shall be all lowercase starting with "ska-" whereas multiple words shall be separated by hyphens.
 
 
 .. _repository-checklist:

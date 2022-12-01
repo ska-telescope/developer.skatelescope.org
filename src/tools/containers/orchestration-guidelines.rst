@@ -15,6 +15,14 @@ Container Orchestration Guidelines
 **********************************
 
 This section describes a set of standards, conventions and guidelines for deploying application suites on Container Orchestration technologies.
+For a hands on training please check :
+
+`Containerisation and Orchestration Concept PDF <https://drive.google.com/file/d/1xKtFwl2Cas2yLIRt-v28XjHRtDYKm38Z/view?usp=sharing>`_
+
+`Containerisation and Orchestration exercises <https://gitlab.com/piersharding/containerisation-and-orchestration>`_
+
+.. warning::
+   Information regarding examples on these pages may be out of date
 
 .. contents:: Table of Contents
 
@@ -417,7 +425,7 @@ Then the result of the helm install command for chart A will be:
 
 Subcharts architecture
 **********************
-Considering the `Module Views <https://confluence.skatelescope.org/display/SWSI/Module+Views>`_ for the evolutionary prototype (section "Primary representation: MVP Uses in Kubernetes Deployment"), a partial dependency diagram for the helm charts available within the gitlab.com/ska-telescope group can be represented by the following diagram:
+Considering the `Module Views <https://confluence.skatelescope.org/pages/viewpage.action?pageId=102138997>`_ for the evolutionary prototype (section "Primary representation: MVP Uses in Kubernetes Deployment"), a partial dependency diagram for the helm charts available within the gitlab.com/ska-telescope group can be represented by the following diagram:
 
 .. _figure-subcharts-2:
 
@@ -491,13 +499,11 @@ Gitlab Helm/k8s testing pipeline
 
 In order to enable the GitLab pipeline to deploy and test the specific component each ska-telescope repository must:
 
-* contain at least one helm chart (i.e. starting point is skampi charts): `link to example <https://gitlab.com/ska-telescope/tango-example/-/tree/master/charts>`__
-* have an environment (i.e. test): `link to example <https://gitlab.com/ska-telescope/tango-example/-/environments>`__
-* adopt the Makefile for k8s testing: `link to example <­https://gitlab.com/ska-telescope/tango-example/-/blob/master/.make/k8s.mk>`__
-* use the environment keywords: `link to example <­https://gitlab.com/ska-telescope/tango-example/-/blob/master/.gitlab-ci.yml#L108>`__
-* have a common publish chart CI job step: `link to example <­https://gitlab.com/ska-telescope/tango-example/-/blob/master/.gitlab-ci.yml#L122>`__
+* contain at least one helm chart (i.e. starting point is skampi charts): `link to example <https://gitlab.com/ska-telescope/ska-tango-examples/-/tree/master/charts>`__
+* have an environment (i.e. test): `link to example <https://gitlab.com/ska-telescope/ska-tango-examples/-/environments>`__
+* adopt the Makefile for k8s testing: `link to example <https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile/-/blob/master/k8s.mk>`__
 
-Also, note that each project/repository in the ska-telescope group has a `Kubernetes cluster already enabled <https://gitlab.com/ska-telescope/tango-example/-/clusters>`_.
+Also, note that each project/repository in the ska-telescope group has a `Kubernetes cluster already enabled <https://gitlab.com/ska-telescope/ska-tango-examples/-/clusters>`_.
 
 The test job of the GitLab pipeline needs to be:
 
@@ -507,7 +513,7 @@ The test job of the GitLab pipeline needs to be:
     stage: test
     tags:
       - docker-executor
-    image: artefact.skao.int/ska-docker/deploy:0.4.1
+    image: artefact.skao.int/ska-cicd-k8s-tools-build-deploy:0.6.1
     script:
       - kubectl version
       - make install-chart
@@ -1277,7 +1283,7 @@ Gitlab
 Once the changes had been pushed it will be built in Gitlab.
 Find the pipeline builds at `https://gitlab.com/ska-telescope/ska-skampi/pipelines <https://gitlab.com/ska-telescope/ska-skampi/pipelines>`_.
 
-If the pipeline completes successfully, the full integration environment will be available at selected deployment environment which should be accessible from pipeline, i.e. https://integration.engageska-portugal.pt for syscore and http://k8s.stfc.skao.int for stfc.
+If the pipeline completes successfully, the full integration environment will be available at selected deployment environment which should be accessible from pipeline, i.e. http://k8s.stfc.skao.int for stfc.
 
 Kubernetes primitives
 =====================

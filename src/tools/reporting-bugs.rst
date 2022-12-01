@@ -175,6 +175,7 @@ Teams may need to collaborate with other teams during this process.
 Teams should progress their tickets to the Done status according to the timeline, and should adhere to the :doc:`Definition of Done </policies/definition-of-done>`.
 
 Before moving to the next status in the lifecycle, the bug fix must be:
+
 * Versioned - identified as part of a version of one or more software artefacts.
 * Published - be made available via the versioned software.
 * Deployed - be deployed on an integration test environment (as a minimum).
@@ -194,6 +195,7 @@ The Bug Owner (assignee) verifies the fix:
 
 * Outcomes have been captured, showing appropriate test results.
 * The Definition of Done has been met:
+
   * Team Tickets have been accepted.
   * Solution Intent has been updated (if applicable).
   * Tests are passing.
@@ -230,6 +232,7 @@ If the bug requires no further attention (perhaps because it's a duplicate), the
 We would expect considerable detail to explain why we are rejecting bugs as anything other than Duplicates.
 
 The *Resolution* should be set to one of:
+
 * Cannot reproduce
 * Rejected
 * Won't fix
@@ -245,6 +248,7 @@ Comments and Open Issues
 =============================
 
   * Committing “on-the-fly” fixes: Marvin requires a ticket number. One possible suggestion:
+  
       * Use the story ticket you are working on if the bug relates to the same feature/story.
    
 *Can we use gitlab issues?* Using GitLab Issues (or any other Issue Management solution) is problematic as our project management, methodology, and audit trail is held in Jira. 

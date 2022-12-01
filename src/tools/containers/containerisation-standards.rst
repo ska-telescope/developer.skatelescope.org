@@ -15,9 +15,17 @@ Containerisation Standards
 **************************
 
 This section describes a set of standards, conventions and guidelines for
-building, integrating and maintaining container technologies.
+building, integrating and maintaining container technologies. For a hands on training please check :
+
+`Containerisation and Orchestration Concept PDF <https://drive.google.com/file/d/1xKtFwl2Cas2yLIRt-v28XjHRtDYKm38Z/view?usp=sharing>`_
+
+`Containerisation and Orchestration exercises <https://gitlab.com/piersharding/containerisation-and-orchestration>`_
+
+.. warning::
+   Information regarding examples on these pages may be out of date
 
 .. contents:: Table of Contents
+
 
 Overview of Standards
 =====================
@@ -477,13 +485,13 @@ In any child image created ``FROM myimage:1.0.0-onbuild ...``, the parent image 
 Naming and Tagging
 ------------------
 
-Image names should reflect the application that will run in the resultant container, which ideally ties in directly with the repository name eg: ``tango-example/powersupply:latest``, is the image that represents the Tango `powersupply <https://gitlab.com/ska-telescope/tango-example/blob/master/Dockerfile>`_ device from the `tango-example <https://gitlab.com/ska-telescope/tango-example>`_ repository.
+Image names should reflect the application that will run in the resultant container, which ideally ties in directly with the repository name eg: ``ska-tango-examples/powersupply:latest``, is the image that represents the Tango `powersupply <https://gitlab.com/ska-telescope/ska-tango-examples/blob/master/Dockerfile>`_ device from the `ska-tango-examples <https://gitlab.com/ska-telescope/ska-tango-examples>`_ repository.
 
 Images should be tagged with:
 
 - short commit hash as derived by ``git rev-parse --verify --short=8 HEAD`` from the parent repository eg: bbedf059.  This is useful on each feature branch build as it uniquely identifies branch HEAD on each push when used in conjunction with Continuous Integration.
 - When an image version for an application is promoted to production, it should be tagged with the application version (using `Semantic Versioning <https://semver.org>`_).  For the latest most major.minor.patch image version the 'latest' tag should be added eg: for a tango device and a released image instance with hash tag: 9fab040a, added version tags are: ``1.13.2``, ``1.13``, ``1``, ``latest`` - where major/minor/patch version point to the latest in that series.
-- A production deployment should always be made with a fully qualified semantic version eg: ``tango-example/powersupply:1.13.2``.  This will ensure that partial upgrades will not inadvertently make their way into a deployment due to historical scheduling.  The ``latest`` tag today might point to the same hash as ``1.13.2``, but if a cluster recovery was enacted next week, it may now point to ``1.14.0``.
+- A production deployment should always be made with a fully qualified semantic version eg: ``ska-tango-examples/powersupply:1.13.2``.  This will ensure that partial upgrades will not inadvertently make their way into a deployment due to historical scheduling.  The ``latest`` tag today might point to the same hash as ``1.13.2``, but if a cluster recovery was enacted next week, it may now point to ``1.14.0``.
 
 While it is customary for th Docker community at large to support image variants based on different image OS bases and to denote this with tags eg: |python:<version>-slim|_ which represents the Debian Slim (A trimmed `Debian OS <https://hub.docker.com/_/debian>`_) version of a specific Python release, the SKA will endeavour to support only one OS base per image, removing this need as it does not strictly follow Semantic Versioning, and creates considerable maintenance overhead.
 
@@ -503,7 +511,7 @@ Any image build tool is acceptable so long as it adheres to the OCI image specif
 Development tools
 -----------------
 
-Debuging tools, profilers, and any tools not essential to the running of the target application should not be included in the target application production image.  Instead, a derivative image should be made solely for debugging purposes that can be swapped in for the running application as required.  This is to avoid image bloat, and to reduce the attack surface of running containers as a security consideration.  These derivative images should be named explicitly ``dev`` eg: ``tango-example/powersupply-dev:1.13.2``.
+Debuging tools, profilers, and any tools not essential to the running of the target application should not be included in the target application production image.  Instead, a derivative image should be made solely for debugging purposes that can be swapped in for the running application as required.  This is to avoid image bloat, and to reduce the attack surface of running containers as a security consideration.  These derivative images should be named explicitly ``dev`` eg: ``ska-tango-examples/powersupply-dev:1.13.2``.
 
 Image Storage
 -------------
