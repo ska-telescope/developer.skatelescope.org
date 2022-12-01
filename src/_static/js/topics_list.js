@@ -25,7 +25,7 @@ async function fetchRequest(url) {
 
 // Fill the topics table
 function topicsList() {
-  let areas = ["sdp", "simulations", "skampi"];
+  let areas = ["SDP", "simulations", "skampi"];
   let projectsUrl = new URL(
     "https://gitlab.com/api/v4/groups/3180705/projects?"
   );
