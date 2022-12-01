@@ -49,7 +49,6 @@ extensions = [
     "sphinx.ext.mathjax",
     "sphinx.ext.ifconfig",
     "sphinx.ext.viewcode",
-    "sphinx.ext.githubpages",
     "sphinx_gitstamp",
     "notfound.extension",
     "sphinx_copybutton",
@@ -155,6 +154,7 @@ html_context = {
     "gitlab_user": "ska-telescope",  # Username
     "gitlab_repo": "developer.skatelescope.org",  # Repo name
     "gitlab_version": "master",  # Version
+    "doc_path": "src", # gitlab docs path
     "conf_py_path": "/src/",  # Path in the checkout to the docs root
     # workaround for https://github.com/readthedocs/sphinx_rtd_theme/issues/701
     "theme_vcs_pageview_mode": "edit",
