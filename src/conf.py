@@ -24,14 +24,11 @@
 
 def setup(app):
     app.add_css_file('css/custom.css')
-    app.add_css_file('https://cdn.jsdelivr.net/npm/@docsearch/css@3')
     
     app.add_js_file('js/gitlab.js')
     app.add_js_file('js/groups_list.js')
     app.add_js_file('js/topics_list.js')
     app.add_js_file('js/project_table.js')
-    app.add_js_file('https://cdn.jsdelivr.net/npm/@docsearch/js@3')
-    app.add_js_file('js/algolia.js')
 
 # -- General configuration ------------------------------------------------
 
@@ -132,11 +129,10 @@ html_static_path = ["_static"]
 
 html_css_files = [
     'css/custom.css',
-    'https://cdn.jsdelivr.net/npm/@docsearch/css@3'
 ]
 
 html_theme_options = {
-    "navbar_start": ["navbar-logo", "search-field","algolia-search"], # adding a persistent search field 
+    "navbar_start": ["navbar-logo", "algolia-search"], # adding a persistent search field 
     # "navbar_center": [ "navbar-nav"],
     # "navbar_end": ["navbar-icon-links", "version-switcher"],
     "navbar_persistent": [], # used to delete search button
@@ -274,7 +270,7 @@ epub_copyright = copyright
 # epub_uid = ''
 
 # A list of files that should not be packed into the epub file.
-epub_exclude_files = ["search.html"]
+epub_exclude_files = ["search.html", "algolia-search.html"]
 
 
 # Example configuration for intersphinx: refer to the Python standard library.
