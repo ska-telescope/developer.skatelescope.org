@@ -132,18 +132,23 @@ html_css_files = [
 ]
 
 html_theme_options = {
-    "navbar_start": ["navbar-logo","search-field",],
+    # "navbar_start": ["navbar-logo","search-field",], # adding a persistent search field 
     # "navbar_center": [ "navbar-nav"],
     # "navbar_end": ["navbar-icon-links", "version-switcher"],
+    "navbar_persistent": ["custom-search"], # used to delete search button
+    "navbar_align": "left",
+    "footer_items": ["custom-footer"],
    "logo": {
       "image_light": "img/logo-default.png",
       "image_dark": "img/logo-dark.png",
    },
     "use_edit_page_button": True,
+    "search_bar_text": "Search..."
 }
 
 html_sidebars = {
-    "**": ["sidebar-nav-bs.html", "sidebar-ethical-ads.html"]
+    "**": ["sidebar-nav-bs", "sidebar-ethical-ads"],
+    "index": []
 }
 
 html_context = {

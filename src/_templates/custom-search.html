@@ -1,0 +1,21 @@
+<button
+  class="btn btn-sm navbar-btn search-button search-button__button bd-search d-flex align-items-center"
+  title="{{ _('Search') }}"
+  aria-label="{{ _('Search') }}"
+  data-bs-placement="bottom"
+  data-bs-toggle="tooltip"
+>
+  <form class="bd-search d-flex align-items-center" style="margin-right: .5em;">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         placeholder="{{ _(theme_search_bar_text) }}"
+         aria-label="{{ theme_search_bar_text }}"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"
+         readonly/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+</button>
