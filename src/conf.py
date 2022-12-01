@@ -24,11 +24,14 @@
 
 def setup(app):
     app.add_css_file('css/custom.css')
+    app.add_css_file('https://cdn.jsdelivr.net/npm/@docsearch/css@3')
+    
     app.add_js_file('js/gitlab.js')
     app.add_js_file('js/groups_list.js')
     app.add_js_file('js/topics_list.js')
     app.add_js_file('js/project_table.js')
-    app.add_js_file("js/feedback.js")
+    app.add_js_file('https://cdn.jsdelivr.net/npm/@docsearch/js@3')
+    app.add_js_file('js/algolia.js')
 
 # -- General configuration ------------------------------------------------
 
@@ -129,13 +132,14 @@ html_static_path = ["_static"]
 
 html_css_files = [
     'css/custom.css',
+    'https://cdn.jsdelivr.net/npm/@docsearch/css@3'
 ]
 
 html_theme_options = {
-    # "navbar_start": ["navbar-logo","search-field",], # adding a persistent search field 
+    "navbar_start": ["navbar-logo", "search-field","algolia-search"], # adding a persistent search field 
     # "navbar_center": [ "navbar-nav"],
     # "navbar_end": ["navbar-icon-links", "version-switcher"],
-    "navbar_persistent": ["custom-search"], # used to delete search button
+    "navbar_persistent": [], # used to delete search button
     "navbar_align": "left",
     "footer_items": ["custom-footer"],
    "logo": {
