@@ -29,7 +29,6 @@ def setup(app):
     app.add_js_file('js/groups_list.js')
     app.add_js_file('js/topics_list.js')
     app.add_js_file('js/project_table.js')
-    app.add_js_file("js/feedback.js")
 
 # -- General configuration ------------------------------------------------
 

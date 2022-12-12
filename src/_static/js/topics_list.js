@@ -43,7 +43,7 @@ function topicsList() {
       list.empty();
       // restrict the list to files with the right tag
       //
-      const data_filtered = data.filter((a) => a.tag_list.includes(area));
+      const data_filtered = data.filter((a) => a.topics.includes(area));
       // sort by name
       //
       data_filtered.sort((a, b) => a["name"].localeCompare(b["name"]));

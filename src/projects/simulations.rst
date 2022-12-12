@@ -12,8 +12,8 @@ interferometry calibration and imaging algorithms in Python and Numpy.
 
 RASCIL
 
-- `Repository <https://gitlab.com/ska-telescope/external/rascil>`__
-- `Documentation <https://ska-telescope.gitlab.io/external/rascil/>`__
+- `Repository <https://gitlab.com/ska-telescope/external/rascil-main>`__
+- `Documentation </projects/rascil/en/latest/>`__
 
 RASCIL examples
 
