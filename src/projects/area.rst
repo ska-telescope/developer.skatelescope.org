@@ -118,6 +118,8 @@ SKAMPI
 - `telescope-model project <https://gitlab.com/ska-telescope/ska-telmodel/>`_: library of data models shared between telescope elements.
 - `telescope-model documentation </projects/ska-telmodel/en/latest/?badge=latest>`_.
 
+Telescope Monitoring and Control (TMC)
+======================================
 - `Telescope Monitoring and Control repository <https://gitlab.com/ska-telescope/ska-tmc/>`_: Telescope Monitoring and Control functionality.
-- `Telescope Monitoring and Control documentation </projects/ska-tmc/en/latest/?badge=latest>`_.
+- `Telescope Monitoring and Control documentation </projects/ska-tmc/ska-tmc-integration/en/latest/?badge=latest>`_.
 
