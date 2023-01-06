@@ -117,21 +117,21 @@ Telescope Monitoring and Control (TMC)
    ============= =================
    ============= =================
 
-- `</projects/ska-telescope-ska-tmc-integration/en/latest/?badge=latest>`_.
+- `ska-tmc-integration documentation </projects/ska-telescope-ska-tmc-integration/en/latest/?badge=latest>`_.
 - `ska-tmc-integration repository <https://gitlab.com/ska-telescope/ska-tmc-integration/>`_.
 
-.. - `ska-tmc-centralnode documentation </projects/ska-tmc-centralnode/en/latest/?badge=latest>`_.
-.. - `Central Node <https://gitlab.com/ska-telescope/ska-tmc-centralnode-mid/>`_.
+- `ska-tmc-centralnode documentation </projects/ska-tmc-centralnode/en/latest/?badge=latest>`_.
+- `Central Node <https://gitlab.com/ska-telescope/ska-tmc-centralnode-mid/>`_.
 
-.. - `ska-tmc-subarraynode documentation </projects/ska-tmc-subarraynode/en/latest/?badge=latest>`_.
-.. - `Subarray Node <https://gitlab.com/ska-telescope/ska-tmc-subarraynode-mid/>`_.
+- `ska-tmc-subarraynode documentation </projects/ska-tmc-subarraynode/en/latest/?badge=latest>`_.
+- `Subarray Node <https://gitlab.com/ska-telescope/ska-tmc-subarraynode-mid/>`_.
 
-.. - `ska-tmc-subarraynode-mid documentation </projects/ska-tmc-subarraynode/en/latest/?badge=latest>`_.
-.. - `Subarray Node <https://gitlab.com/ska-telescope/ska-tmc-subarraynode-mid/>`_.
+- `ska-tmc-subarraynode-mid documentation </projects/ska-tmc-subarraynode/en/latest/?badge=latest>`_.
+- `Subarray Node <https://gitlab.com/ska-telescope/ska-tmc-subarraynode-mid/>`_.
 
-.. - `ska-tmc-subarraynode-mid documentation </projects/ska-tmc-subarraynode/en/latest/?badge=latest>`_.
-.. - `Subarray Node <https://gitlab.com/ska-telescope/ska-tmc-subarraynode-mid/>`_.
+- `ska-tmc-subarraynode-mid documentation </projects/ska-tmc-subarraynode/en/latest/?badge=latest>`_.
+- `Subarray Node <https://gitlab.com/ska-telescope/ska-tmc-subarraynode-mid/>`_.
 
-.. - `ska-tmc-common documentation </projects/ska-tmc-common/en/latest/?badge=latest>`_.
-.. - `ska-tmc-common <https://gitlab.com/ska-telescope/ska-tmc-common/>`_.
+- `ska-tmc-common documentation </projects/ska-tmc-common/en/latest/?badge=latest>`_.
+- `ska-tmc-common <https://gitlab.com/ska-telescope/ska-tmc-common/>`_.
 
