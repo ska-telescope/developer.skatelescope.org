@@ -121,5 +121,5 @@ SKAMPI
 Telescope Monitoring and Control (TMC)
 ======================================
 - `Telescope Monitoring and Control repository <https://gitlab.com/ska-telescope/ska-tmc/>`_: Telescope Monitoring and Control functionality.
-- `Telescope Monitoring and Control documentation <https://hm-134-test-1.readthedocs.io/en/hm-134/>`_.
+- `Telescope Monitoring and Control documentation <projects/ska-telescope-ska-tmc-integration/en/latest/?badge=latest>`_.
 
