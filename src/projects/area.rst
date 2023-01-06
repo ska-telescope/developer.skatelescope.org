@@ -117,7 +117,7 @@ Telescope Monitoring and Control (TMC)
    ============= =================
    ============= =================
 
-- `Telescope Monitoring and Control API documentation </projects/ska-telescope-ska-tmc-integration/en/latest/?badge=latest>`_.
+- `</projects/ska-telescope-ska-tmc-integration/en/latest/?badge=latest>`_.
 - `ska-tmc-integration repository <https://gitlab.com/ska-telescope/ska-tmc-integration/>`_.
 
 .. - `ska-tmc-centralnode documentation </projects/ska-tmc-centralnode/en/latest/?badge=latest>`_.
