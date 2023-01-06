@@ -100,15 +100,6 @@ SKAMPI
 - `ska-sdp-scripting repository <https://gitlab.com/ska-telescope/sdp/ska-sdp-scripting/>`_: high-level interface for writing processing scripts.
 - `ska-sdp-scripting documentation </projects/ska-sdp-scripting/en/latest/?badge=latest>`_.
 
-- `ska-tmc-common repository <https://gitlab.com/ska-telescope/ska-tmc-common/>`_.
-- `ska-tmc-common documentation </projects/ska-tmc-common/en/latest/?badge=latest>`_.
-
-- `ska-tmc-centralnode-mid repository <https://gitlab.com/ska-telescope/ska-tmc-centralnode-mid/>`_.
-- `ska-tmc-centralnode-mid documentation </projects/ska-tmc-centralnode-mid/en/latest/?badge=latest>`_.
-
-- `ska-tmc-subarraynode-mid repository <https://gitlab.com/ska-telescope/ska-tmc-subarraynode-mid/>`_.
-- `ska-tmc-subarraynode-mid documentation </projects/ska-tmc-subarraynode-mid/en/latest/?badge=latest>`_.
-
 - `ska-umbrellas repository <https://gitlab.com/ska-telescope/ska-umbrellas/>`_: contains a minimal set of skampi charts for SKA MID and LOW.
 - `ska-umbrellas documentation </projects/ska-umbrellas/en/latest/?badge=latest>`_.
 
@@ -120,6 +111,27 @@ SKAMPI
 
 Telescope Monitoring and Control (TMC)
 ======================================
-- `Telescope Monitoring and Control repository <https://gitlab.com/ska-telescope/ska-tmc/>`_: Telescope Monitoring and Control functionality.
-- `Telescope Monitoring and Control documentation <projects/ska-telescope-ska-tmc-integration/en/latest/?badge=latest>`_.
+
+   ============= =================
+   Documentation Gitlab repository
+   ============= =================
+   ============= =================
+
+- `Telescope Monitoring and Control API documentation <projects/ska-telescope-ska-tmc-integration/en/latest/?badge=latest>`_.
+- `ska-tmc-integration repository <https://gitlab.com/ska-telescope/ska-tmc-integration/>`_.
+
+.. - `ska-tmc-centralnode documentation </projects/ska-tmc-centralnode/en/latest/?badge=latest>`_.
+.. - `Central Node <https://gitlab.com/ska-telescope/ska-tmc-centralnode-mid/>`_.
+
+.. - `ska-tmc-subarraynode documentation </projects/ska-tmc-subarraynode/en/latest/?badge=latest>`_.
+.. - `Subarray Node <https://gitlab.com/ska-telescope/ska-tmc-subarraynode-mid/>`_.
+
+.. - `ska-tmc-subarraynode-mid documentation </projects/ska-tmc-subarraynode/en/latest/?badge=latest>`_.
+.. - `Subarray Node <https://gitlab.com/ska-telescope/ska-tmc-subarraynode-mid/>`_.
+
+.. - `ska-tmc-subarraynode-mid documentation </projects/ska-tmc-subarraynode/en/latest/?badge=latest>`_.
+.. - `Subarray Node <https://gitlab.com/ska-telescope/ska-tmc-subarraynode-mid/>`_.
+
+.. - `ska-tmc-common documentation </projects/ska-tmc-common/en/latest/?badge=latest>`_.
+.. - `ska-tmc-common <https://gitlab.com/ska-telescope/ska-tmc-common/>`_.
 
