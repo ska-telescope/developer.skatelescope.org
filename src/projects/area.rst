@@ -17,13 +17,14 @@ Projects by Area
 Telescope Monitoring and Control (TMC)
 ======================================
 
+.. include:: area/repos.rst
+
 .. toctree::
   :maxdepth: 2
+  :includehidden:
   
   area/repos
 
-.. include:: area/repos.rst
-   
 .. - `ska-tmc-integration </projects/ska-telescope-ska-tmc-integration/en/latest/?badge=latest>`_: test1.
 .. - `ska-tmc-integration repository <https://gitlab.com/ska-telescope/ska-tmc-integration/>`_.
 
