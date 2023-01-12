@@ -6,7 +6,6 @@
    So when a new section is added, the following section name
    should be added to the list in the above file (in lowercase)
 
-
 .. _topics:
 
 Projects by Area
