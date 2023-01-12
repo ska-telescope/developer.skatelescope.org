@@ -16,7 +16,7 @@ Projects by Area
 .. toctree::
   :maxdepth: 2
   
-  repos
+  area/repos
 
 Telescope Monitoring and Control (TMC)
 ======================================
