@@ -6,10 +6,40 @@
    So when a new section is added, the following section name
    should be added to the list in the above file (in lowercase)
 
+.. include:: repos.rst
+
 .. _topics:
 
 Projects by Area
 ****************
+
+.. toctree::
+  :maxdepth: 2
+  
+  repos
+
+Telescope Monitoring and Control (TMC)
+======================================
+
+
+.. - `ska-tmc-integration </projects/ska-telescope-ska-tmc-integration/en/latest/?badge=latest>`_: test1.
+.. - `ska-tmc-integration repository <https://gitlab.com/ska-telescope/ska-tmc-integration/>`_.
+
+.. - `ska-tmc-centralnode documentation </projects/ska-tmc-centralnode/en/latest/?badge=latest>`_: test1.
+.. - `Central Node <https://gitlab.com/ska-telescope/ska-tmc-centralnode-mid/>`_.
+
+.. - `ska-tmc-subarraynode documentation </projects/ska-tmc-subarraynode/en/latest/?badge=latest>`_: test1.
+.. - `Subarray Node <https://gitlab.com/ska-telescope/ska-tmc-subarraynode-mid/>`_.
+
+.. - `ska-tmc-subarraynode-mid documentation </projects/ska-tmc-subarraynode/en/latest/?badge=latest>`_: test1.
+.. - `Subarray Node <https://gitlab.com/ska-telescope/ska-tmc-subarraynode-mid/>`_.
+
+.. - `ska-tmc-subarraynode-mid documentation </projects/ska-tmc-subarraynode/en/latest/?badge=latest>`_: test1.
+.. - `Subarray Node <https://gitlab.com/ska-telescope/ska-tmc-subarraynode-mid/>`_.
+
+.. - `ska-tmc-common documentation </projects/ska-tmc-common/en/latest/?badge=latest>`_: test1.
+.. - `ska-tmc-common <https://gitlab.com/ska-telescope/ska-tmc-common/>`_.
+
 
 
 SDP
@@ -109,33 +139,3 @@ SKAMPI
 - `telescope-model project <https://gitlab.com/ska-telescope/ska-telmodel/>`_: library of data models shared between telescope elements.
 - `telescope-model documentation </projects/ska-telmodel/en/latest/?badge=latest>`_.
 
-.. toctree::
-  :maxdepth: 1
-
-Telescope Monitoring and Control (TMC)
-======================================
-
-   ============= =================
-   Documentation Gitlab repository
-   ============= =================
-   ============= =================
-
-- `ska-tmc-integration documentation </projects/ska-telescope-ska-tmc-integration/en/latest/?badge=latest>`_.
-- `ska-tmc-integration repository <https://gitlab.com/ska-telescope/ska-tmc-integration/>`_.
-
-- `ska-tmc-centralnode documentation </projects/ska-tmc-centralnode/en/latest/?badge=latest>`_.
-- `Central Node <https://gitlab.com/ska-telescope/ska-tmc-centralnode-mid/>`_.
-
-- `ska-tmc-subarraynode documentation </projects/ska-tmc-subarraynode/en/latest/?badge=latest>`_.
-- `Subarray Node <https://gitlab.com/ska-telescope/ska-tmc-subarraynode-mid/>`_.
-
-- `ska-tmc-subarraynode-mid documentation </projects/ska-tmc-subarraynode/en/latest/?badge=latest>`_.
-- `Subarray Node <https://gitlab.com/ska-telescope/ska-tmc-subarraynode-mid/>`_.
-
-- `ska-tmc-subarraynode-mid documentation </projects/ska-tmc-subarraynode/en/latest/?badge=latest>`_.
-- `Subarray Node <https://gitlab.com/ska-telescope/ska-tmc-subarraynode-mid/>`_.
-
-- `ska-tmc-common documentation </projects/ska-tmc-common/en/latest/?badge=latest>`_.
-- `ska-tmc-common <https://gitlab.com/ska-telescope/ska-tmc-common/>`_.
-
-============= =================
