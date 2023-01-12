@@ -12,39 +12,6 @@
 Projects by Area
 ****************
 
-
-
-Telescope Monitoring and Control (TMC)
-======================================
-
-.. include:: area/repos.rst
-
-.. toctree::
-  :maxdepth: 2
-  :includehidden:
-  
-  area/repos
-
-.. - `ska-tmc-integration </projects/ska-telescope-ska-tmc-integration/en/latest/?badge=latest>`_: test1.
-.. - `ska-tmc-integration repository <https://gitlab.com/ska-telescope/ska-tmc-integration/>`_.
-
-.. - `ska-tmc-centralnode documentation </projects/ska-tmc-centralnode/en/latest/?badge=latest>`_: test1.
-.. - `Central Node <https://gitlab.com/ska-telescope/ska-tmc-centralnode-mid/>`_.
-
-.. - `ska-tmc-subarraynode documentation </projects/ska-tmc-subarraynode/en/latest/?badge=latest>`_: test1.
-.. - `Subarray Node <https://gitlab.com/ska-telescope/ska-tmc-subarraynode-mid/>`_.
-
-.. - `ska-tmc-subarraynode-mid documentation </projects/ska-tmc-subarraynode/en/latest/?badge=latest>`_: test1.
-.. - `Subarray Node <https://gitlab.com/ska-telescope/ska-tmc-subarraynode-mid/>`_.
-
-.. - `ska-tmc-subarraynode-mid documentation </projects/ska-tmc-subarraynode/en/latest/?badge=latest>`_: test1.
-.. - `Subarray Node <https://gitlab.com/ska-telescope/ska-tmc-subarraynode-mid/>`_.
-
-.. - `ska-tmc-common documentation </projects/ska-tmc-common/en/latest/?badge=latest>`_: test1.
-.. - `ska-tmc-common <https://gitlab.com/ska-telescope/ska-tmc-common/>`_.
-
-
-
 SDP
 ===
 
@@ -142,3 +109,13 @@ SKAMPI
 - `telescope-model project <https://gitlab.com/ska-telescope/ska-telmodel/>`_: library of data models shared between telescope elements.
 - `telescope-model documentation </projects/ska-telmodel/en/latest/?badge=latest>`_.
 
+Telescope Monitoring and Control (TMC)
+======================================
+
+.. include:: area/tmc/repos.rst
+
+.. toctree::
+  :maxdepth: 2
+  :includehidden:
+  
+  area/tmc/repos
