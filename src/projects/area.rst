@@ -6,22 +6,24 @@
    So when a new section is added, the following section name
    should be added to the list in the above file (in lowercase)
 
-.. include:: repos.rst
 
 .. _topics:
 
 Projects by Area
 ****************
 
+
+
+Telescope Monitoring and Control (TMC)
+======================================
+
 .. toctree::
   :maxdepth: 2
   
   area/repos
 
-Telescope Monitoring and Control (TMC)
-======================================
-
-
+.. include:: area/repos.rst
+   
 .. - `ska-tmc-integration </projects/ska-telescope-ska-tmc-integration/en/latest/?badge=latest>`_: test1.
 .. - `ska-tmc-integration repository <https://gitlab.com/ska-telescope/ska-tmc-integration/>`_.
 

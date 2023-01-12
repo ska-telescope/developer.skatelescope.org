@@ -1,3 +1,5 @@
+.. _sdp:
+
 .. |int| replace:: `</projects/ska-telescope-ska-tmc-integration/en/latest/?badge=latest>`__
 .. |int_repo| replace:: `ska-tmc-integration repository <https://gitlab.com/ska-telescope/ska-tmc-integration/>`__
 
@@ -9,4 +11,5 @@
 Documentation    Gitlab repository
 ================ =================
 |int|            |int_repo|
+|cn|             |cn_repo|
 ================ =================
