@@ -51,7 +51,7 @@ SKAMPI
 - `Central Signal Processor Local Monitoring and Control repository <https://gitlab.com/ska-telescope/csp-lmc/>`_ CSP monitoring and control functionality for both SKA MID and LOW  telescopes.
 - `CSP LMC documentation </projects/csp-lmc-prototype/en/latest/?badge=latest>`_.
 
-- `Mid CBF MCS prototype repository <https://gitlab.com/ska-telescope/ska-mid-cbf-mcs/>`_
+- `Mid CBF MCS Repository <https://gitlab.com/ska-telescope/ska-mid-cbf-mcs/>`_
 - `Mid CBF MCS documentation </projects/ska-mid-cbf-mcs/en/latest/?badge=latest>`_.
 
 - `Observation Execution Control repository <https://gitlab.com/ska-telescope/ska-oso-oet/>`_
