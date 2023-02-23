@@ -19,7 +19,7 @@ An **Incident** is defined as:
 
 anomolous system conditions that lead to some form of service outage, unexpected system behaviour or degraded system performance that significantly impacts the delivery of correctly functioning services to the end user.
 
-As a general rule of thumb, do not invoke a full response for something that is easily recognisable as taking 30 minutes to solve, and has limited impact.  However, if it will take longer to solve and/or has significant impact on your user community such as Nexus, Confluence or Jira then consider a more focused response.  It is better to declare an Incident and then find a simple fix for it than for something that appears minor at first glance to spiral out of control into a large problem due to things quickly unravelling.  The bottom line is to exercise common sense, and be willing to postmortem the process with external stakeholers to evaluate the problem and the process in the pursuit of relentless improvment.
+As a general rule of thumb, do not invoke a full response for something that is easily recognisable as taking 30 minutes to solve, and has limited impact.  However, if it will take longer to solve and/or has significant impact on your user community such as Nexus, Confluence or Jira then consider a more focused response.  It is better to declare an Incident and then find a simple fix for it than for something that appears minor at first glance to spiral out of control into a large problem due to things quickly unravelling.  The bottom line is to exercise common sense, and be willing to perfrom a Post Incident Review the process with external stakeholers to evaluate the problem and the process in the pursuit of relentless improvment.
 
 Incident Workflow
 #################
@@ -36,7 +36,7 @@ The overall incident workflow could be summarised in steps like below:
 - Have a clear channel of communication with your user community
 - Identify the problem and assemble the team and resources
 - Incident Response
-- Incident Reports & the Postmortem
+- Incident Reports & the Post Incident Review
 
 
 Have a clear channel of communication with your user community
@@ -71,7 +71,7 @@ Once the problem/s is identified, then line up the team and resources that will 
 Incident Response
 #################
 
-* Tackle the immediate problem/s i.e. restore service whether it is fixing the failing system or enacting the recovery/fail over plan. Preserve the evidence of any system components involved in order to support the Postmortem.
+* Tackle the immediate problem/s i.e. restore service whether it is fixing the failing system or enacting the recovery/fail over plan. Preserve the evidence of any system components involved in order to support the Post Incident Review.
 
 * Apply separation of responsibilities and actions - having clearly defined roles and responsibilities during an Incident limits the chances of confusion as to who is doing what and frees the Ops lead (the technical or expert lead) up to concentrate on creating and delivering the solution for resolving the Incident issues.
 
@@ -79,7 +79,7 @@ Incident Response
 
 * Operations work - the Ops Team are solely responsible for making changes to the system to correct the situation.  This includes ensuring any other conflicting system support activities are halted as coordinated by the Incident Commander.
 
-* Live Incident State Document - Create a Jira ticket that is periodically (half hourly) updated with a distilation of how the Incident unfolds from identifaction to resolution.  The ticket is closed out only when the Postmortem is concluded linking to the Incident `Postmortem <https://confluence.skatelescope.org/display/SE/Incident+Management>`_ Confluence document.
+* Live Incident State Document - Create a Jira ticket that is periodically (half hourly) updated with a distilation of how the Incident unfolds from identifaction to resolution.  The ticket is closed out only when the Post Incident Review is concluded linking to the Incident `Post Incident Review <https://confluence.skatelescope.org/display/SE/Software+Incidents+and+Management>`_ Confluence document.
 
 * Communication - after the initial Incident appraisal, breakout a new slack channel (and link to it as appropriate) to compartmentalise the conversation around the response, and to create a chronological record of how the Incident unfolds from identification through to resolution.  Cross link to any other communication channels to create as complete a picture as possible of what is happening.  This also forms a virtual Incident Command Post for the Incident response team to gather round.  This can be augmented with a dedicated Zoom Room published in the channel, but it must be backed up with written in channel notes that track decisions, and discoveries.
 
@@ -89,7 +89,7 @@ Incident Response
 
 * Cleanup - organise the removal of temporary measures, and reverting services and system management to standard operational practices.  Ensure that all relevent data is preserved and offloaded to safe storage.
 
-* Postmortem - when the Incident is over, perform a Postmortem to understand what went wrong and what corrective measures should be put in place to reduce/eliminate further occurances.
+* Post Incident Review - when the Incident is over, perform a Post Incident Review to understand what went wrong and what corrective measures should be put in place to reduce/eliminate further occurances.
 
 
 Roles
@@ -109,7 +109,7 @@ All people assigned to the Incident treat the response as the highest priority t
 
 * Planner - supports Ops by tracking changes being made (system divergence that can evolve due to emergency action), filing bug reports, plotting the path for any system state cleanup required.
 
-* Postmortem Team - stake holders including user community representatives, and the Incident Response Team.
+* Post Incident Review Team - stake holders including user community representatives, and the Incident Response Team.
 
 
 Supporting Resources
@@ -124,8 +124,8 @@ Preparation, Planning and Practice
 Relative to your team, the Incident Response Plan is only as effective as it is workable and relevant.  The operation of the plan needs to be tested, and your team needs to practice fulfilling the various roles in the plan so that when it needs to swing into action all players understand what needs to happen and can purely focus on the problem at hand.
 
 
-Incident Reports & the Postmortem
-#################################
+Incident Reports & the Post Incident Review
+###########################################
 
-When the Incident is over, gather the Postmortem Team and follow the SKA Post Incident `Postmortem <https://confluence.skatelescope.org/display/SE/Incident+Management>`_ review process. To capture the relevant stakeholders and information fresh before they disperse it is important to finish the postmortem as soon as possible so the incident is served out of the oven.
+When the Incident is over, gather the Post Incident Review Team and follow the SKA Post Incident `Post Incident Review <https://confluence.skatelescope.org/display/SE/Software+Incidents+and+Management>`_ review process. To capture the relevant stakeholders and information fresh before they disperse it is important to finish the postmortem as soon as possible so the incident is served out of the oven.
 
