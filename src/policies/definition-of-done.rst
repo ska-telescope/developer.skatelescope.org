@@ -5,11 +5,13 @@ Definition of Done
 
 Done-ness is defined differently at different stages of development and for different purposes.
 
-The tables below describe the criteria that need to be taken into account by Product Owners (for Team Increment work), by Feature Owners (for System Increment), by Capability Owners (for Solution Increment work), and by Release Managers (TBC; for Software Releases).
+The tables below describe the criteria that need to be taken into account by Product Owners (for Team Increment work), by Feature Owners (for System Increment), by Capability Owners (for Solution Increment work), and by Release Managers (for Software Releases).
 
 Please note that when a Product/Feature/Capability Owner, or Release Manager marks a Story/Feature/Capability/Release as Done, **all applicable criteria** from the Definition of Done are expected to be fulfilled. When that is not possible, or applicable to an item, the Product/Feature/Capability Owner, or Release Manager MUST indicate in the comments why those elements of the Definition of Done do not apply to that Product/Feature/Capability or Release.
 
-Failure to justify the lack of complete compliance with the Definition of Done result in decreasing quality, and increased Technical Debt, so please be very mindful of this Definition of Done.
+Failure to justify the lack of complete compliance with the Definition of Done results in decreasing quality, and increased Technical Debt, so please be very mindful of this Definition of Done.
+
+Definition of Done checklists are mandated to be used at all stages of development.  The definition at the Team Increment may be customised to the context of a team e.g. Enabling Team vs Feature Team. Speak to an RTE to arrange this.
 
 Team Increment
 --------------
@@ -23,9 +25,10 @@ Issue Type          Definition of Done
                     * Adheres to SKA language :doc:`specific style </tools/codeguides>`.
                     * Checked into SKA repository with a :doc:`reference </tools/jira>` to a JIRA ticket ID.
                     * Passes the CI/CD pipeline including compiling cleanly and being linted with no warnings: :ref:`linting`.
-                    * Unit and module :ref:`tests <tests>` pass with adequate coverage (>= 75% with appropriate exclusions for boiler-plate code).
+                    * Unit and module :ref:`tests <tests>` pass with adequate coverage (>= 75% with the appropriate exclusions for boiler-plate code).
                     * Component, integration and system :ref:`tests <tests>` (appropriate for the context) pass.
                     * Regression :ref:`tests <tests>` pass.
+                    * Outstanding bugs and technical debt have been logged and triaged, Major or Critical severity issues have been fixed.
 
 
                     **Artefacts**
@@ -43,12 +46,11 @@ Issue Type          Definition of Done
                     **Integration**
 
                     * Deployed to a :doc:`/tools/ci-cd/continuous-integration` environment (staging environment during Construction).
-                    * Migrations are implemented with defined automated processes for roll-forward and rollback as appropriate.
 
 
                     **Process**
 
-                    * Peer-reviewed and integrated into the main branch via GitLab :ref:`merge-request`.
+                    * Peer-reviewed/approved and integrated into the default branch via GitLab :ref:`merge-request`.
                     * Relevant `NFRs <https://confluence.skatelescope.org/display/SWSI/Requirements>`_ are met
                     * Satisfies acceptance criteria
                     * Accepted by Product Owner
@@ -76,10 +78,12 @@ Issue Type          Definition of Done
 
                     **Documentation**
 
-                    * `Solution Intent <https://confluence.skatelescope.org/display/SWSI/Solution+Intent+Home>`_ or project documentation updated to reflect the actual implementation.
+                    * `Solution Intent <https://confluence.skatelescope.org/display/SWSI/Solution+Intent+Home>`_ and `User Documentation <https://confluence.skatelescope.org/display/UD/User+Documentation>`_ updated to reflect the actual implementation.
 
                     **Process**
 
+                    * UX deliverables (where applicable) are usable by end users or their proxies
+                    * Outstanding bugs and technical debt have been logged and triaged, Major or Critical severity issues have been fixed
                     * Satifies acceptance criteria
                     * Relevant `NFRs <https://confluence.skatelescope.org/display/SWSI/Requirements>`_ are met
                     * Demonstrated to relevant stakeholders
@@ -104,7 +108,7 @@ Issue Type             Definition of Done
 ====================== =========================================================================================================================
 **Capability/Enabler** **Child Stories/Enablers**
 
-                       * Completed by all ARTs and integrated in an :ref:`integration environment <verify-k8s>` (staging environment during Construction)
+                       * Completed by all teams, deployed and tested in a `Continuous Deployment <https://developer.skatelescope.org/en/latest/tools/ci-cd/continuous-integration.html>`_ environment (staging environment during Construction).
 
                        **Documentation**
 
@@ -112,10 +116,12 @@ Issue Type             Definition of Done
 
                        **Process**
 
+                       * Outstanding bugs and technical debt have been logged and triaged, Major or Critical severity issues have been fixed
                        * Satifies acceptance criteria
                        * Relevant `NFRs <https://confluence.skatelescope.org/display/SWSI/Requirements>`_ are met
                        * Demonstrated to relevant stakeholders
                        * Accepted by Capability Owner
+                       * Any remaining technical debt has been added to the backlog
 ====================== =========================================================================================================================
 
 Release
@@ -124,7 +130,15 @@ Release
 =================== =========================================================================================================================
 Issue Type          Definition of Done
 =================== =========================================================================================================================
-TBD                 TBD
+**Release**
+
+                       * Delivered items Done and meet Acceptance Criteria
+                       * Artifacts published in the Central Artefact Repository
+                       * A short clear description/summary of the release is provided
+                       * User facing change log provided
+                       * User facing documentation provided
+                       * Verification of the functionality, behavior, and performance of user interfaces provided by product, carried out in an relevant environment
+                       * Outstanding bugs and technical debt have been logged and triaged, Major or Critical severity issues have been fixed.
 =================== =========================================================================================================================
 
 
