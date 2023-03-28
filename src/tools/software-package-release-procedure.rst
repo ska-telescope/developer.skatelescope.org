@@ -183,7 +183,7 @@ After including the templates, the Release of a new artefact should be as follow
 
 - **1st**: Create a new issue on the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`_ Jira Project with a summary of your release, and set it to "IN PROGRESS".
 
-- **2**: Create and checkout a new `REL-XXX-release-v-1.2.2` branch (where `REL-XXX` is your Jira issue.)
+- **2**: Create and checkout a new `rel-XXX-release-v-1-2-2` branch (where `REL-XXX` is your Jira issue.)
 
 - **3**: Choose which bump version you want to use:
 
@@ -209,10 +209,10 @@ After including the templates, the Release of a new artefact should be as follow
 
 - **8**: Checkout and pull the main branch.
 
-- **9**: Run ``make git-create-tag``, assuming that the ticket created in the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`_ is the ticket REL-1234:
+- **9**: Run ``make git-create-tag``, which will show the new version number.
 
-    - Do you wish to continue (will commit outstanding changes) [N/y]: y
-    - Tell me your Jira Ticket ID (REL-999): REL-1234
+    - 1.2.2
+    - 1.2.2
 
 - **10**: ``make git-push-tag``
 
