@@ -116,7 +116,7 @@ Information about the SKA
   * We also expect you to sign your commits. GitLab provides instructions on `how to create a GPG key and use it to sign your commits <https://docs.gitlab.com/ee/user/project/repository/gpg_signed_commits/>`_.
     If you already have a GPG key, the same page tells you how to associate it with your GitLab account.
 
-* Finally, there's a `Glossary <https://confluence.skatelescope.org/display/GLOS/Glossary>`_. This lists many of the terms and acronyms in use in SKA. Also, don't be afraid to ask your team on Slack, or ask questions in meetings if you don't understand.
+* Finally, there's a `Glossary <https://confluence.skatelescope.org/terms/all>`_. This lists many of the terms and acronyms in use in SKA. Also, don't be afraid to ask your team on Slack, or ask questions in meetings if you don't understand.
 
 Information about People
 ************************
