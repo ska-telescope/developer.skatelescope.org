@@ -16,6 +16,8 @@ Jupyter notebooks are widely used across SKAO by a number of teams to share idea
       - Description
     * - Naming	
       - Use expressive names for your notebooks that describe what your notebook is doing.
+    * - Directory Structure
+      - Notebooks should be placed inside a /notebooks directory, at the root of your repository.
     * - Execution
       - Avoid ambiguous execution orders. To ensure that your notebook is reproducible and creates the expected results, restart the kernel and execute all cells of the notebook before you share your notebook.
     * - Modularisation
@@ -47,7 +49,7 @@ To lint notebooks, run:
   
     make notebook-lint
 
-This target uses the same plugins as the python-lint target (isort, black, flake8 and pylint), but runs them through nbQa as well. nbQa is a plugin that simply allows you to use python linters for Jupyter notebooks. By default, only notebooks inside your repository's src/ and tests/ directories will be linted.
+This target uses the same plugins as the python-lint target (isort, black, flake8 and pylint), but runs them through nbQa as well. nbQa is a plugin that simply allows you to use python linters for Jupyter notebooks. By default, all notebooks inside the repository will be linted.
 
 You can also format notebooks automatically using the target:
 
@@ -64,7 +66,7 @@ To test notebooks, run:
 
     make notebook-test
 
-This target uses Pytest and nbmake, which is a Pytest plugin. It verifies Jupyter notebooks can execute fully without error, the target execution fails if an error occurs. By default, notebooks must be placed inside the src/ directory in your repository for them to be tested with this target.
+This target uses Pytest and nbmake, which is a Pytest plugin. It verifies Jupyter notebooks can execute fully without error, the target execution fails if an error occurs. By default, all notebooks inside the repository will be tested.
 
 CICD Template
 #############
