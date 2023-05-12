@@ -6,7 +6,7 @@ Jupyter Notebook Coding Guidlines
 Best Practices
 ==============
 
-Jupyter notebooks are widely used across SKAO by a number of teams to share ideas, code snippets and break down largeer concepts into more managable chucks. Most usage of notebooks resides within Binderhub/Jupyterhub, see `here <https://developer.skao.int/en/latest/tools/binderhub.html>`_ for more. With the large number of notebooks produced it is very important to address the best practices of creating notebooks so that a standard approach can be utilised across the SKAO.
+Jupyter notebooks are widely used across SKAO by a number of teams to share ideas, code snippets and break down largeer concepts into more managable chucks. The usage of notebooks mostly resides within Binderhub/Jupyterhub, see :doc:`here </tools/binderhub>` for more. With the large number of notebooks produced it is very important to address the best practices of creating notebooks so that a standard approach can be utilised across the SKAO.
 
 .. list-table::
     :widths: 50 50
@@ -41,24 +41,27 @@ The CICD makefile repository contains make targets for the linting, formatting a
 Linting
 #######
 
-To lint a notebook, run:
+To lint notebooks, run:
 
 .. code-block:: bash
+  
     make notebook-lint
 
 This target uses the same plugins as the python-lint target (isort, black, flake8 and pylint), but runs them through nbQa as well. nbQa is a plugin that simply allows you to use python linters for Jupyter notebooks. By default, only notebooks inside your repository's src/ and tests/ directories will be linted.
 
 You can also format notebooks automatically using the target:
 
-.. code:block:: bash
+.. code-block:: bash
+
     make notebook-format
 
 Testing
 #######
 
-To test a notebook, run:
+To test notebooks, run:
 
 .. code-block:: bash
+
     make notebook-test
 
 This target uses Pytest and nbmake, which is a Pytest plugin. It verifies Jupyter notebooks can execute fully without error, the target execution fails if an error occurs. By default, notebooks must be placed inside the src/ directory in your repository for them to be tested with this target.
