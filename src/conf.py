@@ -133,9 +133,10 @@ html_theme_options = {
     # "vcs_pageview_mode": "edit" # Does not work see:h ttps://github.com/readthedocs/sphinx_rtd_theme/issues/701
 }
 
+html_logo = "_static/img/logo.png"
+html_favicon = "_static/img/favicon_mono.ico"
+
 html_context = {
-    "favicon": "img/favicon_mono.ico",
-    "logo": "img/logo.png",
     "theme_logo_only": True,
     "display_gitlab": True,  # Integrate Gitlab
     "gitlab_user": "ska-telescope",  # Username
