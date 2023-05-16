@@ -55,6 +55,7 @@ extensions = [
     "notfound.extension",
     "sphinx_copybutton",
     "sphinx.ext.autosectionlabel",
+    "sphinx_rtd_theme"
 ]
 
 # Set each document name as prefix to avoid duplication
