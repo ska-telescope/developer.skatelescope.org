@@ -1,12 +1,12 @@
 
-*********************************
+**********************************
 Jupyter Notebook Coding Guidelines
-*********************************
+**********************************
 
 Best Practices
 ==============
 
-Jupyter notebooks are widely used across the SKAO by a number of teams - mostly within :doc:`Binderhub/Jupyterhub </tools/binderhub>` - to share ideas, code snippets and break down larger concepts into more manageable chunks. The usage of notebooks mostly resides within Binderhub/Jupyterhub, see :doc:`here </tools/binderhub>` for more. With the large number of notebooks produced it is very important to address the best practices of creating notebooks so that a standard approach can be utilised across the SKAO.
+Jupyter notebooks are widely used across the SKAO by a number of teams - mostly within :doc:`Binderhub/Jupyterhub </tools/binderhub>` - to share ideas, code snippets and break down larger concepts into more manageable chunks. With the large number of notebooks produced it is very important to address the best practices of creating notebooks so that a standard approach can be utilised across the SKAO.
 
 .. list-table::
     :widths: 50 50
@@ -38,7 +38,14 @@ Jupyter notebooks are widely used across the SKAO by a number of teams - mostly 
 Pipeline Machinery
 ==================
 
-The CICD makefile repository contains make targets for the linting, formatting and testing of notebooks, all found `here <https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile/-/blob/master/python.mk>`_. Below describes the usage of these targets.
+The CICD makefile repository contains make targets for the linting, formatting and testing of notebooks, all found `here <https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile/-/blob/master/python.mk>`_. To access these new targets, ensure your repository's ``Makefile`` includes the python support makefile:
+
+.. code-block:: make
+
+  # Include Python support
+  include .make/python.mk
+
+Below describes the usage of these targets.
 
 Linting
 #######
@@ -79,3 +86,15 @@ Linting and testing of Jupyter notebooks is currently supported within CICD pipe
     # Jupyter notebook linting and testing
     - project: 'ska-telescope/templates-repository'
       file: 'gitlab-ci/includes/notebook.gitlab-ci.yml'
+
+Customising
+###########
+
+If you wish to exclude specific notebooks from being targetted by any of the above make targets, simply include the names of them in the ``NOTEBOOK_IGNORE_FILES`` environment variable. Define this in your repository's ``Makefile``, ensuring it appears before you include ``python.mk``. It must follow the form ``not <file1> and not <file2>...``:
+
+.. code-block:: make
+
+    NOTEBOOK_IGNORE_FILES = not notebook.ipynb and not another-notebook.ipynb
+
+    # Include Python support
+    include .make/python.mk
