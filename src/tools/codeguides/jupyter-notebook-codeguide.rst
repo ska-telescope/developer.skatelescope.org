@@ -1,12 +1,12 @@
 
 *********************************
-Jupyter Notebook Coding Guidlines
+Jupyter Notebook Coding Guidelines
 *********************************
 
 Best Practices
 ==============
 
-Jupyter notebooks are widely used across SKAO by a number of teams to share ideas, code snippets and break down largeer concepts into more managable chucks. The usage of notebooks mostly resides within Binderhub/Jupyterhub, see :doc:`here </tools/binderhub>` for more. With the large number of notebooks produced it is very important to address the best practices of creating notebooks so that a standard approach can be utilised across the SKAO.
+Jupyter notebooks are widely used across the SKAO by a number of teams - mostly within :doc:`Binderhub/Jupyterhub </tools/binderhub>` - to share ideas, code snippets and break down larger concepts into more manageable chunks. The usage of notebooks mostly resides within Binderhub/Jupyterhub, see :doc:`here </tools/binderhub>` for more. With the large number of notebooks produced it is very important to address the best practices of creating notebooks so that a standard approach can be utilised across the SKAO.
 
 .. list-table::
     :widths: 50 50
@@ -15,11 +15,11 @@ Jupyter notebooks are widely used across SKAO by a number of teams to share idea
     * - SKAO Jupyter Notebook Standard
       - Description
     * - Naming	
-      - Use expressive names for your notebooks that describe what your notebook is doing.
+      - Use expressive names that describe what your notebook is doing.
     * - Directory Structure
       - Notebooks should be placed inside a /notebooks directory, at the root of your repository.
     * - Execution
-      - Avoid ambiguous execution orders. To ensure that your notebook is reproducible and creates the expected results, restart the kernel and execute all cells of the notebook before you share your notebook.
+      - Avoid ambiguous execution orders. To ensure that your notebook is reproducible and creates the expected results, restart the kernel and execute all cells of the notebook before you share it.
     * - Modularisation
       - Use modularisation (i.e. modules, functions, classes) if reasonable.
     * - Testing	
@@ -27,7 +27,7 @@ Jupyter notebooks are widely used across SKAO by a number of teams to share idea
     * - Linting
       - Use the linting make target described below.
     * - Data Distribution
-      - Ensure that all data used in the notebook is distributed together with the notebook (or at least can be downloaded) and that you're using relative paths to access the data.
+      - Ensure that all data used in the notebook is distributed together with it (or at least can be downloaded) and that you're using relative paths to access the data.
     * - Dependencies
       - Ensure you are referencing the dependencies using .TOML for example to pin the versions of all used dependencies and import all dependencies at the beginning of a notebook.
     * - Outputs
