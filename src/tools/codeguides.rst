@@ -9,4 +9,5 @@ Coding guidelines
   codeguides/cplusplus-codeguide
   codeguides/javascript-codeguide
   codeguides/python-codeguide
+  codeguides/jupyter-notebook-codeguide
   codeguides/vhdl-codeguide
