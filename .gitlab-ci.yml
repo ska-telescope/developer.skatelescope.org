@@ -62,8 +62,7 @@ include:
   - project: 'ska-telescope/templates-repository'
     file: 'gitlab-ci/includes/docs.gitlab-ci.yml'
 
-pages:
-  extends: docs-pages
+docs-pages:
   artifacts:
     name: $CI_COMMIT_REF_SLUG
     paths:
