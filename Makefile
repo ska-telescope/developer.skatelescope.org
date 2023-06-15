@@ -7,7 +7,7 @@ DOCS_BUILDDIR=build
 # This is needed as long as the templates have pip install in before_script
 docs-pre-build:
 ifneq ($(strip $(CI_JOB_ID)),)
-	poetry config virtualenvs.create false && poetry install --only docs
+	poetry config virtualenvs.create false && poetry install --no-root --only docs
 endif
 
 docs-post-build:

@@ -15,9 +15,9 @@ build:
       # Tell poetry to not use a virtual environment
       - poetry config virtualenvs.create false
     post_install:
-      # Install dependencies with 'docs' dependency group. If you do not have docs group, please omit it
+      # Install only 'docs' dependency group. If you do not have docs group, please omit it
       # https://python-poetry.org/docs/managing-dependencies/#dependency-groups
-      - poetry install --no-root --with docs
+      - poetry install --no-root --only docs
 
 sphinx:
   configuration: src/conf.py
