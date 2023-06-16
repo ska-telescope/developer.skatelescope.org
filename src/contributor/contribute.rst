@@ -27,18 +27,14 @@ Then, you can follow the Merge Request page for status updates, make new contrib
 Static build
 ############
 
-First clone the `developer portal repo <https://gitlab.com/ska-telescope/developer.skatelescope.org>`_ from GitLab. We recommend using ssh to clone.
+First clone the `developer portal repo <https://gitlab.com/ska-telescope/developer.skatelescope.org>`_ from GitLab. We recommend using ssh to clone: ``git clone  --recurse-submodules git@gitlab.com:ska-telescope/developer.skatelescope.org.git`` or ``git clone  --recurse-submodules https://gitlab.com/ska-telescope/developer.skatelescope.org.git``
 
-Then create a virtual environment with ``python -m venv .venv`` and activate it by running ``source .venv/bin/activate`` to install dependencies: ``pip install -r requirements.txt``
+Then create a virtual environment with ``poetry shell``, poetry can be installed from `here <https://python-poetry.org/docs/master/>`_ and install dependencies: ``poetry install``
 
-You can then make changes to the repository. To build the documentation locally, run: ``make html`` inside the virtual environment
+You can then make changes to the repository. To build the documentation locally, run: ``make docs-build html`` inside the virtual environment
 
 This will create a subdirectory `/build/html`. To browse the documents created
 open `/build/html/index.html` in a web browser.
-
-.. note::
-   If you've been editing the developer portal files in a different shell window to the one that you run ``make html`` in, it will occasionally fail to trigger a full build. Running any command in the shell you're running the make command in will fix this, even if it's as trivial as ``ls``.
-   If you're working on the ``.js`` files, you may need to delete the ``/build`` directory for the build to handle the adjustments.
 
 Documentation Guidelines
 ########################
