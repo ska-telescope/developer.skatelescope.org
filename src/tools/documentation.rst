@@ -147,14 +147,26 @@ If there's an error it's best to delete the project and recreate it again.
    :align: center
    :figclass: figborder
 
+
+Set up documentation versioning
+-----------------------------------
+Next, create an automation rule that activates a new documentation version for any new git tag. Thus, whenever a new version of the code is released, ReadTheDocs will automatically activate a corresponding documentation version. To create this rule, navigate to **Admin**, **Automation Rules**, and then **Add rule**:
+
+.. figure:: images/automation_rule.png
+   :scale: 80%
+   :alt: Add an automation rule
+   :align: center
+   :figclass: figborder
+
+
 Add a special account as Maintainer
 -----------------------------------
 
-Importantly, the user `kurtcobain-19` must be added to the project as a Maintainer so that the System Team can add it as a Sub-project (see next step).
+Importantly, the user `kurtcobain-19` must be added to the project as a Maintainer so that the System Team can add it as a Sub-project (see next step). You might also add other team members at this step.
 
 .. figure:: images/kurtcobain.jpg
    :scale: 60%
-   :alt: Import a Project
+   :alt: Add a maintainer
    :align: center
    :figclass: figborder
 
