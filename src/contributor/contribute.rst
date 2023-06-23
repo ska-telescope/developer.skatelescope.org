@@ -27,7 +27,15 @@ Then, you can follow the Merge Request page for status updates, make new contrib
 Static build
 ############
 
-First clone the `developer portal repo <https://gitlab.com/ska-telescope/developer.skatelescope.org>`_ from GitLab. We recommend using ssh to clone: ``git clone  --recurse-submodules git@gitlab.com:ska-telescope/developer.skatelescope.org.git`` or ``git clone  --recurse-submodules https://gitlab.com/ska-telescope/developer.skatelescope.org.git``
+First clone the `developer portal repo <https://gitlab.com/ska-telescope/developer.skatelescope.org>`_ from GitLab. We recommend using ssh to clone: 
+
+``git clone  --recurse-submodules git@gitlab.com:ska-telescope/developer.skatelescope.org.git`` 
+
+or 
+
+``git clone  --recurse-submodules https://gitlab.com/ska-telescope/developer.skatelescope.org.git``
+
+If you already have a clone of the repository, run ``git submodule update --init --recursive`` inside your cloned repository to ensure the submodules are updated to build the portal locally.
 
 Then create a virtual environment with ``poetry shell``, poetry can be installed from `here <https://python-poetry.org/docs/master/>`_ and install dependencies: ``poetry install``
 
