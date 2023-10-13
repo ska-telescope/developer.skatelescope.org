@@ -3,6 +3,7 @@ SKAO Compute Access Policy
 **************************
 
 This policy is to be read in conjuction with the SKAO `Access Control and Physical Security Policy <https://intranet.skao.int/display/POL/Information+Security+Management+System+%28ISMS%29+Policies?preview=/7995544/9797797/SKA-GOV-0000016_03_POL_ISMSAccessControlAndPhysicalSecurityPolicySigned.pdf>`__. Authentication systems implemented to provide access to compute resources should adhere to the Access Control Policy.
+Note that this document is only accessible to SKAO staff and contractors.
 
 Principles
 ##########
@@ -22,11 +23,12 @@ Access needs and authorisers
 ############################
 
 In all cases, access can only be granted to people who already have an SKAO Confluence account (i.e. to people who are contractors, SKAO associates, or SKAO staff members), so they already have an identity within our systems.
+Access must be requested through the `SKAO External helpdesk <https://jira.skatelescope.org/servicedesk/customer/portal/34>`__.
 
 Bare metal ssh access to the hardware in the facilities should *not* be given out lightly.
-It is required that everyone on the #! team has this access; the SKAO Quality Engineer requires it; and the in-coutnry Platform and Storage engineers will require it once appointed.
+It is required that everyone on the #! team has this access; the SKAO Quality Engineer requires it; and the in-country Platform and Storage engineers will require it once appointed.
 
-This exceedingly high level of access can be authorised by the SRE managers, Heads of IT and Computing (including the HQ Head of IT), plus at least one person from the group consisting of the Quality Engineer, #! Scrum Master, #! Product Owner. 
+This exceedingly high level of access can be authorised by the SRE managers, Heads of IT and Computing (including the HQ Head of IT), plus at least one person from the group consisting of the Quality Engineer, #! Scrum Master, #! Product Owner (#!, also known as Team BANG! are responsible for maintaining the compute platform). 
 For authorisation of one of the aforementioned people, we would require authorisation from someone in a peer role (e.g. another SRE Manager) or above (e.g. a Head of IT can authorise an SRE manager).
 
 VPN access to the ITF can be authorised by members of the IT team, ITF managers, plus one of the team members of Viola or Atlas, for the Australian and South African ITFs respectively.
