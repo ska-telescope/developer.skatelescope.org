@@ -37,6 +37,8 @@ If someone were found to have abused their access, then removal of their permiss
 Any reason for so doing must be documented as part of the removal process.
 This is separate from any other processes that might need to be invoked under our Code of Conduct or contracting process.
 Once approved, the individual's access must be revoked.
+This does not cover any revocation of access required to address an attack by a malicious actor, where access may need to be revoked immediately.
+Any such revocation should be documented.
 
 Some examples of how people can abuse their access by:
 
@@ -54,6 +56,7 @@ For user roles, the group name should be prefixed with either mid- or low-, so l
 The sysadmin and switchadmin groups are very likely to be shared across telescopes, to allow for eventual follow-the-sun-support.
 
 We expect to use the same group types for AA0.5 and subsequent production environments; however, the group membership will differ.
+We expect to grant access sparingly to the production systems, in order to maintain their integrity.
 We would also expect to configure our tools differently, so that access tokens are much shorter-lived, and audit logs scrutinised more frequently.
 
 ========= ======== ====================== ================================================================================================================================
@@ -79,5 +82,3 @@ However, the AIV teams, and ultimately the relevant ITF manager, set the ground 
 User access to AA0.5 will be provided to those who have the telescope operator role, which during commissioning we expect to include people from AIV, Sci Ops and Ops. 
 Greater access levels will be granted sparingly.
 These roles and groups may require some revision as we learn from the process of commissioning and running AA0.5.
-
-
