@@ -11,24 +11,24 @@
   window.ATL_JQ_PAGE_PROPS = $.extend(window.ATL_JQ_PAGE_PROPS, {
 	// ==== default field values ====
 	fieldValues : function() {
- 
+
     // Current page of the feedback
     var currPage = window.location.href;
 
 		var values = {};
- 		
+
 		var error_message = $('.error_message');
 		if ( error_message.length !== 0 ) {
 			// record error message from the page context rather than asking the user to enter it
 			values[ 'summary' ] = error_message.children('.summary').text();
 			values[ 'description' ] = error_message.children('.description').text();
 		}
- 
+
 		return values;
- 
+
 	}
 });
-</script> 
+</script>
 
 {% extends "!footer.html" %} {% block extrafooter %}
 
@@ -46,7 +46,7 @@ by
   property="cc:attributionName"
   rel="cc:attributionURL"
 >
-  SKA organisation
+  SKA Observatory
 </a>
 is licensed under a
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">

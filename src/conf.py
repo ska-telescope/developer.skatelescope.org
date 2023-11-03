@@ -84,8 +84,8 @@ source_suffix = ".rst"
 master_doc = "index"
 
 # General information about the project.
-project = "developer.skatelescope.org"
-copyright = "2020, SKA Organization"
+project = "developer.skao.int"
+copyright = "2018-2023 SKA Observatory"
 author = "Marco Bartolini"
 
 # The version info for the project you're documenting, acts as replacement for
