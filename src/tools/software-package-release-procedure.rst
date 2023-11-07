@@ -170,8 +170,6 @@ Developers are strongly encouraged to use the default template to ensure that si
 
  - **CHANGELOG_FILE** - Used to specify the changelog file that is meant to keep the release notes for every release. Defaults to CHANGELOG.md.
 
- - **CHANGELOG_VERSION** - Used to change the default **git-chglog** version used. Defaults to **0.15.0**.
-
  - **CHANGELOG_CONFIG** - Used to overwrite the **git-chglog** config file. Defaults to `.make/.chglog/config.yml <https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile/-/blob/master/.chglog/config.yml>`_.
 
  - **CHANGELOG_TEMPLATE** - Used to overwrite the **git-chglog** template used to generate the changelog output. Defaults to `.make/.chglog/CHANGELOG.tpl.md <https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile/-/blob/master/.chglog/CHANGELOG.tpl.md>`_.
@@ -193,39 +191,36 @@ After including the templates, the Release of a new artefact should be as follow
   
   Run for example ``make bump-patch-release``, if for example .release was ``1.2.1`` it will be moved to ``1.2.2``.
 
-- **4**: If you have helm charts on your project, run ``make helm-set-release``. This will set all charts to example ``1.2.2`` version.
-
-- **5**: If you have python packages on your project, run ``make python-set-release``. This will set pyproject.toml to example ``1.2.2`` version.
+  * If you have helm charts on your project it will automatically run ``make helm-set-release`` which will set all charts to - following the example - version ``1.2.2``, as well as update the version on the charts' dependencies
+  * If you have python packages on your project it will automatically run ``make python-set-release``. This will set pyproject.toml to - following the example - version ``1.2.2``;
+  * The ``release`` variable in your ``docs/conf.py`` will also be automatically updated according to the version in .release, confirm if this is the correct version for the documentation;
  
-- **6**: Make any other manual changes that are necessary to bump the version. For example:
+- **4**: Make any other manual changes that are necessary to bump the version. For example:
 
-  * Updating the ``release`` variable in your ``docs/conf.py``;
   * Updating your python package's ``__version__`` attribute;
   * Updating python tests that check the version;
-  * Updating umbrella charts to use your new chart version;
   * Manually updating a human-readable ``CHANGELOG`` file.
 
-- **7**: Push your branch, create a merge request, get it approved and merged.
+- **5**: Push your branch, create a merge request, get it approved and merged.
 
-- **8**: Checkout and pull the main branch.
+- **6**: Checkout and pull the main branch.
 
-- **9**: Run ``make git-create-tag``, which will show the new version number.
+- **7**: Run ``make git-create-tag``, which will show the new version number.
 
     - 1.2.2
-    - 1.2.2
 
-- **10**: ``make git-push-tag``
+- **8**: ``make git-push-tag``
 
-Note: This final step will push the release tag direct to the main branch, so this step can only be performed by a repository maintainer. It is possible instead to push the tag onto the REL-XXX branch immediately before it is merged. In this case, it is very important that the tag is pushed to the branch only after the MR has been approved and no further commits will be made to it.
-
-Either way, once the tag has landed on the main branch, this will trigger a CI pipeline to publish the release. When the pipeline has completed, you can move your `REL-XXX` Jira issue to RELEASED.
+  *Note:* This final step will push the release tag direct to the main branch, so this step can only be performed by a repository maintainer. It is possible, instead, to push the tag onto the REL-XXX branch immediately before it is merged. In this case, it is very important that the tag is pushed to the branch only after the MR has been approved and no further commits will be made to it.
+  
+  Either way, once the tag has landed on the main branch, this will trigger a CI pipeline to publish the release. When the pipeline has completed, you can move your `REL-XXX` Jira issue to RELEASED.
 
 Release results
 ---------------
 
 After the tagged pipeline finishes, the new release generated with the git-chglog will be appended to the tag in the gitlab project, an example of the release notes can be seen `here <https://gitlab.com/ska-telescope/templates/ska-raw-skeleton/-/releases/0.0.1>`_. And the Jira ticket (preferable one created on the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`_ Jira Project) that is present on the commit message that triggered the tag pipeline will be updated with links to the gitlab release page.
 
-If you have had included the file ``gitlab-ci/includes/release.gitlab-ci.yml`` Marvin should also publish a message on this ` channel <https://skao.slack.com/archives/C02NW62R0SE>`_ annoucing the release.
+If you have included the file ``gitlab-ci/includes/release.gitlab-ci.yml`` Marvin should also publish a message on this `channel <https://skao.slack.com/archives/C02NW62R0SE>`_ announcing the release.
 
 Deploying Artefacts
 ===================
@@ -260,7 +255,7 @@ The procedure for building and pushing to the repository is carried out by build
     - project: 'ska-telescope/templates-repository'
       file: 'gitlab-ci/includes/build_push.yml'
 
-The variables used in the above job in templates repository are :
+The variables used in the above job in templates repository are:
 
  * PROJECT: name of the OCI image; default: the folder name
  * DOCKER: the command used for operations on OCI image; default: docker
