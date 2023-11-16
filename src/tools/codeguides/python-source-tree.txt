@@ -1,6 +1,8 @@
 .
 ├── CHANGELOG.rst
-├── docker-requirements.txt
+├── pyproject.toml
+├── poetry.lock
+├── notebooks
 ├── docs
 │   ├── Makefile
 │   └── src
