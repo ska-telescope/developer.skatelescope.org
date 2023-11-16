@@ -9,6 +9,8 @@ This guide will walk you through the steps to automate the release process of yo
 Prerequisites
 =============
 
+.. todo: add a link to repo creation tutorial
+
 - You have a GitLab account and a project repository where your software package is hosted.
 - You have setup the `ska-cicd-makefile` as a submodule in your project. If not, add it as a submodule to your project using the following command: `git submodule add https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile.git .make`. If you are working with an existing repository make sure the submodule is checked out using the following command: `git submodule update --init`
 
