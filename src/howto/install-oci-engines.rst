@@ -1,7 +1,7 @@
 OCI Engine Installation Guide
 ==============================
 
-This guide provides step-by-step instructions on how to install OCI engines recommended for development purposes. The well-known Docker Desktop now has a restrictive license which makes it unsuitable for SKAO use. Therefore we recommend the installation of Podman instead. In :doc:`explanation/open-container-initiative`, you can learn mode about the OCI (Open Container Initiative) and the various engines.
+This guide provides step-by-step instructions on how to install OCI engines recommended for development purposes. The well-known Docker Desktop now has a restrictive license which makes it unsuitable for SKAO use. Therefore we recommend the installation of Podman instead. In :doc:`explanation/containerization`, you can learn mode about the OCI (Open Container Initiative) and the various engines.
 
 Installing Podman
 -----------------
