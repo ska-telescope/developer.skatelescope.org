@@ -4,15 +4,17 @@
 Continuous Integration
 ======================
 
+.. ATTIC-BEGIN
+
 Configuring a CI pipeline
 -------------------------
 
-To enable the Gitlab automation, it is needed to insert a
+To enable the Gitlab automation insert a
 `configuration
 file <https://docs.gitlab.com/ee/ci/yaml/README.html>`_ that must be placed in the root of the repository and called ".gitlab-ci.yml". It mainly contains definitions of how your project should be built. An example of
-it can be found within the project "ska-python-skeleton" available
-`here <https://gitlab.com/ska-telescope/templates/ska-python-skeleton>`__.
-Once the file is in the root directory, it is possible to run the CI pipeline manually
+it can be found within the ska-python-skeleton
+`<https://gitlab.com/ska-telescope/templates/ska-python-skeleton>`__ project.
+he file is in the root directory, it is possible to run the CI pipeline manually
 (creating a pipeline) or with a commit in gitlab as soon as the
 mirroring finishes. The following pipeline was created manually pressing
 the button “Run pipeline” on a specific branch (i.e. master).
@@ -195,7 +197,6 @@ The metrics should be collected under the following structure:
 CI pipeline stage descriptions
 ------------------------------
 
-.. caution:: This section is a work in progress
 
 The CI/CD pipeline will ensure that software projects are packaged, tested and released in a consistent and predictable manner.
 SKA Pipelines are viewable and executable at https://gitlab.com/ska-telescope
@@ -449,3 +450,5 @@ Note: in order to run deploy clusters, the account permissions need to be set up
 Best Practices, Tips and Tricks
 -------------------------------------
 For referring to the best practices that must be followed while working with Gitlab CI, please refer the :doc:`/tools/ci-cd/best-practices-tips-and-tricks` used for projects.
+
+.. ATTIC-END
