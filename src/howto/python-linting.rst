@@ -22,18 +22,18 @@ To lint your python project locally, the following command can be used:
 
 
 Linting Automatically
-=================
+=====================
 
-To lint your python project automatically in a ci-cd pipeline, add the following to the include section of your .gitlab-ci.yml file:
+To lint your python project automatically in a ci-cd pipeline, add the following to the include section of your ``.gitlab-ci.yml`` file:
 
 .. code:: yaml
 
     include:
         # Python
-    - project: 'ska-telescope/templates-repository'
-        file: 'gitlab-ci/includes/python.gitlab-ci.yml'
+        - project: 'ska-telescope/templates-repository'
+            file: 'gitlab-ci/includes/python.gitlab-ci.yml'
 
-Then, make sure to define the ``lint`` stage in your .gitlab-ci.yml file as well:
+Then, make sure to define the ``lint`` stage in your ``.gitlab-ci.yml`` file as well:
 
 .. code:: yaml
 
