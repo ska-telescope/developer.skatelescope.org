@@ -82,7 +82,7 @@ This has now added the repository of all the SKAO Helnm charts.
 
 
 Configure database parameters (``values.yaml``)
--------------------------------------------
+-----------------------------------------------
 
 Prior to deploying the TangoDB, it maybe necessary to customise the configuration.
 Create a :literal:`values.yaml` and set parameters like so:
@@ -126,11 +126,45 @@ now be deployed for the TangoDB.
 Configure DatabaseDS parameters (``values.yaml``)
 -------------------------------------------------
 
+Prior to deploying the DatabaseDS, it maybe necessary to customise the configuration.
+Create a :literal:`values.yaml` and set parameters like so:
+
+.. code:: bash
+
+    cat << EOF >values.yaml
+    architecture: standalone
+    image:
+        tag: 10.11-debian-11
+    auth:
+        database: tango
+        username: $TANGO_USER
+        password: $TANGO_PASSWORD
+    initdbScriptsConfigMap: tangodb-init-script
+    EOF
+
+
 
 
 Deploy DatabaseDS
 -----------------
 
+Once the database parameters have been altered to requirements, the MariaDB can 
+now be deployed for the TangoDB.
+
+.. code:: bash
+
+    namespace=my-mariadb
+    port=63306
+    init="https://gitlab.com/ska-telescope/ska-databases-metadata-scripts/-/raw/main/tangodb/tng.sql?ref_type=heads"
+    curl $init > tng.sql
+    kubectl create namespace $namespace
+    kubectl create configmap tangodb-init-script --namespace=$namespace --from-file=tng.sql
+    helm install mariadb oci://registry-1.docker.io/bitnamicharts/mariadb --namespace=$namespace \
+    --values values.yaml
+    echo "Waiting for mariadb startup"
+    sleep 10
+    echo "Localhost forward on port $port"
+    kubectl port-forward -n $namespace svc/mariadb $port:3306
 
 
 
