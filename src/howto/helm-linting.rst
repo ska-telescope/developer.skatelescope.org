@@ -1,5 +1,5 @@
 Linting Helm Charts
-===================
++++++++++++++++++++
 
 Linting Locally
 ===============
@@ -21,8 +21,9 @@ To perform helm chart linting automatically through a CI/CD pipeline, add the fo
     - lint
 
     include:
-    - project: 'ska-telescope/templates-repository'
-      file: 'gitlab-ci/includes/helm-chart-lint.gitlab-ci.yml'
+      # Helm
+      - project: 'ska-telescope/templates-repository'
+        file: 'gitlab-ci/includes/helm-chart-lint.gitlab-ci.yml'
 
 
 
