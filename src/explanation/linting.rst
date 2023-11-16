@@ -160,3 +160,10 @@ An entity with a single clock, should have the input clock ``i_clk``, and with a
     end generate G_EACH_DATA;
     
 **C_6a)** Allow numeric_std version of unsigned and signed types in ports. This increases the information in port description, giving meaning to the bit vector that is not available when declared as a std_logic_vector.
+
+.. note::
+
+  Further discussion on firmware development process, continuous integration, automated testing and recommendations for best practices can be found in the following google doc.
+  This document will be gradually implemented and the resulting decision will be included in this developer portal.
+
+  https://docs.google.com/document/d/1Kfc_4vLUy-0pSbi9HVeEkAmhuvEIEnt4voFnXxsc0zM/edit?usp=sharing
