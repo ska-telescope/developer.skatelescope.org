@@ -124,7 +124,7 @@ Setup your Git global configuration
 Set python 3 as the default python version
 ==========================================
 
-Instructions will vary between OSs, but ubuntu already provides an handy utility package for this purpose:
+Instructions will vary between OSs, but Ubuntu already provides an handy utility package for this purpose:
 
 .. code-block:: bash
 
@@ -146,7 +146,7 @@ Install Docker
 ==============
 
 Follow the `Official docker documentation`_ for your OS to install docker.
-If you are using a linux flavour, make sure to follow the `linux post install`_ instructions as well.
+If you are using a Linux flavour, make sure to follow the `linux post install`_ instructions as well.
 
 .. _`Official docker documentation`: https://docs.docker.com/engine/install/
 .. _`linux post install`: https://docs.docker.com/engine/install/linux-postinstall/
