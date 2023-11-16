@@ -1,5 +1,5 @@
 Linting Notebooks
-=================
++++++++++++++++++
 
 Code Formatting
 ===============
@@ -32,8 +32,9 @@ To perform notebook linting automatically through a CI/CD pipeline, add the foll
     - lint
 
     include:
-    - project: 'ska-telescope/templates-repository'
-      file: 'gitlab-ci/includes/notebook-lint.gitlab-ci.yml'
+      # Notebook
+      - project: 'ska-telescope/templates-repository'
+        file: 'gitlab-ci/includes/notebook-lint.gitlab-ci.yml'
 
 
 
