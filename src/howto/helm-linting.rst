@@ -1,5 +1,5 @@
 Linting Helm Charts
-=================
+===================
 
 Linting Locally
 ===============
