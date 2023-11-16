@@ -52,7 +52,7 @@ Finally, we can check if Podman is up and running:
 Installing Docker
 -----------------
 
-Docker is the most popular containerization platform, with Linux, Windows (native) and macOS support. While being the most popular, it is now under a restrctive and commercial license.
+Docker is the most popular containerization platform, with Linux, Windows (native) and macOS support. While being the most popular, it is now under a restrictive and commercial license.
 
 **Linux/WSL**
 
