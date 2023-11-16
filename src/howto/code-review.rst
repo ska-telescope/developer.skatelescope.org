@@ -23,7 +23,7 @@ Duty of the Reviewer
 The duty of the reviewer is to address the following.
 
 * Ensure best practices in coding standards are being upheld.
-* Code coverage
+* Improve code coverage
 * Identify typos or gramatical errors.
 * Identify incorrect naming conventions.
 * Suggest improvements to the code e.g. more suitable methods available.
