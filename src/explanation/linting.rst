@@ -44,7 +44,7 @@ The python source code should be automatically validated using the pipeline mach
 C++ Coding Style/Conventions
 ============================
 
-The SKAO recommends that new software follow `The cplusplus Core Guidelines <http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines>`_. However, no automated linting exists.
+The SKAO recommends that new software follow `The C++ Core Guidelines <http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines>`_. However, no automated linting exists.
 
 
 Ansible Coding Style/Conventions
