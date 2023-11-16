@@ -29,12 +29,16 @@ Artefact Naming
 
 In addition to the semantic versioning scheme, when publishing artefacts to the repositories, the naming conventions for the artefact must be adhered to (also detailed in `ADR-25 - Software naming conventions <https://confluence.skatelescope.org/display/SWSI/ADR-25+General+software+naming+convention>`_).  The general rules are:
 
-* Prefix the artefact with the namespaced name of the GitLab repository that holds the source code
-* Name the artefact after its core function
-* Observe the Semantic Versioning standard for this kind of artefact
-* Do not use generic versions such as 'latest' tags for container images
-* Published artefacts are immutable - do not re-release an artefact version. To correct any errors, you will need to release a new version.
-* Filters and cleanup policies are implemented to purge artefacts that do not adhere to standards, and where possible validation hooks will deny publishing of incorrectly named/versioned artefacts.  For instance images with the tag 'latest' will be trapped by a cleanup policy.
+#. Prefix the artefact with the namespaced name of the GitLab repository that holds the source code
+#. Name the artefact after its core function or after its Gitlab repository name
+    
+    * **E.g. of artefact named after its Gitlab repository:** ska-tango-examples
+    * **E.g. of artefact named after its core function:** ska-tango-images-pytango-builder
+
+#. Observe the Semantic Versioning standard for this kind of artefact
+#. Do not use generic versions such as 'latest' tags for container images
+#. Published artefacts are immutable - do not re-release an artefact version. To correct any errors, you will need to release a new version.
+#. Filters and cleanup policies are implemented to purge artefacts that do not adhere to standards, and where possible validation hooks will deny publishing of incorrectly named/versioned artefacts.  For instance images with the tag 'latest' will be trapped by a cleanup policy.
 
 Artefact Versioning
 -------------------
