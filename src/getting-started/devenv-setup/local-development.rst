@@ -6,7 +6,7 @@ Setup local development environment
 
 These instructions assume you are using Ubuntu 22.04 as your development OS,
 but some brief explanation and/or official documentation will be provided so that
-you can adapt the instructions to other OSes.
+the user can adapt the instructions to other OSes.
 
 Install the needed base system packages
 =======================================
