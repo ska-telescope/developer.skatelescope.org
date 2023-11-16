@@ -24,7 +24,7 @@ Setup your Git global configuration
 .. code-block:: bash
 
     git config --global user.name "Your Name"
-    git config --global user.email "Your Email"
+    git config --global user.email "Your Institutional Email"
 
 Set python 3 as the default python version
 ==========================================
