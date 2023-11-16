@@ -1,4 +1,5 @@
 
+.. ATTIC-BEGIN
 .. note::
 
   Futher discussion on firmware development process, continuous integration, automated testing and recommendations for best practices can be found in the following google doc.
@@ -98,3 +99,4 @@ An entity with a single clock, should have the input clock ``i_clk``, and with a
     
 **C_6a)** Allow numeric_std version of unsigned and signed types in ports. This increases the information in port description, giving meaning to the bit vector that is not available when declared as a std_logic_vector.
 
+.. ATTIC-END
