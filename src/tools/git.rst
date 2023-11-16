@@ -300,6 +300,7 @@ It is not recommended to squash commits submitted to the remote server, in parti
 
 .. ATTIC-END
 
+.. ATTIC-BEGIN
 .. _merge-settings-maintainers:
 
 *Gitlab MR Settings for Project Maintainers*
@@ -319,6 +320,8 @@ There are more additional settings in GitLab that only project maintainers could
 
 
 Note that the System team may from time to time batch update all of the SKA projects' settings as to confirm with the policies and recommendations.
+
+.. ATTIC-END
 
 .. ATTIC-BEGIN
 
