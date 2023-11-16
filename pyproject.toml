@@ -8,7 +8,7 @@ readme = "README.md"
 packages = [{include = "developer"}]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.8"
 
 
 [tool.poetry.group.docs.dependencies]
