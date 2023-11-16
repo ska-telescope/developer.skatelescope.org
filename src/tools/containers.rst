@@ -13,4 +13,5 @@ Containers: containerisation and deployment
   containers/multitenancy
   containers/orchestration-guidelines
   containers/uploading-docker-nexus
+  ../howto/docker-vscode
 
