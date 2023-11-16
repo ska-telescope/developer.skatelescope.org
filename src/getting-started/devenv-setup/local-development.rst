@@ -6,7 +6,7 @@ Setup local development environment
 
 These instructions assume you are using Ubuntu 22.04 as your development OS,
 but some brief explanation and/or official documentation will be provided so that
-the user can adapt the instructions to other OSes.
+you can adapt the instructions to other OSes.
 
 Install the needed base system packages
 =======================================
@@ -18,8 +18,8 @@ On Ubuntu 22.04, you can install them with the following command:
 
     sudo apt install git python3-venv build-essential
 
-Setup your Git global configuration
-===================================
+Set up your Git global configuration
+====================================
 
 .. code-block:: bash
 
