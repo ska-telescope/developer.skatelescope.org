@@ -225,6 +225,7 @@ Questions frequently asked by developers.
   policies/fundamental-sw-requirements
   policies/sw-quality-assurance
   policies/sw-dev-security
+  policies/compute-access
   policies/definition-of-done
   policies/ska-testing-policy-and-strategy
   policies/decision-making
@@ -263,6 +264,14 @@ To ensure the smooth operation of the SKAO and minimise the risk of software vul
 within the software development lifecycle of SKAO software. This document describes how this must be achieved. 
 
 - :doc:`policies/sw-dev-security`
+
+Compute Access Policy
+=====================
+
+While we like to keep as much as possible open, we can't allow everyone access to the computing hardware that powers our telescopes. 
+Therefore we have defined groups who can get certain kinds of access to our computing hardware, and that is described in this document.
+
+- :doc:`policies/compute-access`
 
 Definition of Done
 ==================
