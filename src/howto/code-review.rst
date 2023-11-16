@@ -16,6 +16,7 @@ The main advantages of Code Reviews are listed below.
 
 Code reviews happen at multiple stages of the development process and it is beneficial to have reviews throughout the development process.
 This allows developers to add improvements on the go so they can avoid large changes at the end of their assignment. 
+It is sometimes beneficial to perform code reviews whilst pair programming. 
 
 Duty of the Reviewer
 ====================
