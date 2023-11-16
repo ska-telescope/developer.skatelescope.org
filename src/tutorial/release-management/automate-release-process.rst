@@ -18,7 +18,7 @@ Steps
 
 1. **Include the Release Makefile in Your Repo Makefile**
 
-   Open your `Makefile` file and include the release support from the `ska-cicd-makefile` repository.
+   Open your `Makefile` file and include the release support from the `ska-cicd-makefile` repository at the top of the file.
 
    .. code-block:: bash
 
@@ -29,7 +29,7 @@ A Jira ticket is added to the release notes to enable other teams to refer to th
 
 2. **Include the Release Template in Your GitLab CI/CD Configuration**
 
-   Open your `.gitlab-ci.yml` file and include the release template from the `templates-repository` project:
+   Open your `.gitlab-ci.yml` file and include the release template from the `templates-repository` project towards the ends of the file(preferably at the end):
 
    .. code-block:: yaml
 
@@ -37,7 +37,7 @@ A Jira ticket is added to the release notes to enable other teams to refer to th
         - project: 'ska-telescope/templates-repository'
           file : 'gitlab-ci/includes/release.gitlab-ci.yml'
 
-   This will add changelog generation and release note publishing mechanism (to #artefact-releases slack channel and as a Gitlab Release) support into the project.
+   This will add changelog generation and release note publishing mechanism (to `#artefact-releases <https://skao.slack.com/archives/C02NW62R0SE>`__ slack channel and as a Gitlab Release) support into the project.
 
 3. **Customize the Release Process (Optional)**
 
@@ -135,5 +135,3 @@ Release results
 ===============
 
 After the tagged pipeline finishes, the new release generated with the git-chglog will be appended to the tag in the gitlab project, an example of the release notes can be seen `here <https://gitlab.com/ska-telescope/templates/ska-raw-skeleton/-/releases/0.0.1>`_. And the Jira ticket (preferable one created on the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`_ Jira Project) that is present on the commit message that triggered the tag pipeline will be updated with links to the gitlab release page.
-
-If you have included the file ``gitlab-ci/includes/release.gitlab-ci.yml`` Marvin should also publish a message on this `channel <https://skao.slack.com/archives/C02NW62R0SE>`_ announcing the release.
