@@ -26,6 +26,40 @@ This section steps through the process of Integrating and Deploying the TangoDB 
 .. contents:: Table of Contents
 
 
+
+Prerequisites:
+
+Target Kubernetes enviroment set as the current `KUBECONFIG` context (mini-howto).
+kubectl
+helm
+
+
+Steps:
+
+Setup credentials (options):
+ - accept defaults (tango/tango)
+ - define environment variables
+ - create/update secrets
+
+Connect helm repository
+
+Configure database parameters (values.yaml)
+
+Deploy MariaDB
+
+Configure DatabaseDS parameters (values.yaml)
+
+Deploy DatabaseDS
+
+Extract connection details (DB conneciton and TANGO_HOST)
+
+
+
+
+
+
+
+
 Overview of Standards
 =====================
 
