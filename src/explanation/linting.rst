@@ -2,6 +2,9 @@
 Linting
 *******
 
+This page explains the linting rules in place for the various tools and languages in use at SKAO. For detailed instructions, see the how-to guides.
+
+
 Python & Jupyter Notebooks Coding Style/Conventions
 ===================================================
 
@@ -74,9 +77,7 @@ Terraform files should be automatically validated using the pipeline machinery, 
 VHDL Coding Style/Conventions
 =============================
 
-Following a coding style is an integral part of robust development. It should not be a burden, and something done afterwards to pass code review – it should be done continuously at all stages of code development. A clean coding style is desired. This allows other team members (and yourself in a month or a year) to read and digest your code quickly, and to use the code with a high confidence in its correctness.
-
-The VHDL coding guidelines developed and published by ALSE are excellent, and will form the basis of this coding guideline. They are available from their website: 
+The VHDL coding guidelines developed and published by ALSE are excellent, and form the basis of this coding guideline. They are available from their website: 
 
 http://www.alse-fr.com/VHDL-Coding-Guide.html 
 
