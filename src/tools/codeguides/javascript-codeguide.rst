@@ -35,7 +35,7 @@ reading that they suggest.
 
 
 File Suffixes
-----------------
+-------------
 
 * Use .jsx for any file which contains JSX, otherwise use .js
 * Test files should be prefixed .test.{js|jsx}
@@ -61,11 +61,11 @@ Locate CSS, JS, and tests together inside folders grouped by feature or route.
 The definition of a “feature” is not universal, and it is up to you to choose the granularity. If you can’t come up with a list of top-level folders, you can ask the users of your product what major parts it consists of, and use their mental model as a blueprint.
 
 
-Linting 
-=======
+Coding Guidelines 
+=================
 The react web skeleton project comes with ESLint and Prettier support already configured to
 support the AirBnB style guide rules.  
-We suggest that whenever possible you verify your code style and patterns in your editor as you code. 
+We suggest that whenever possible you lint your code style and patterns in your editor as you code. 
 
 Instructions for how to install plugins to support this do this for Visual Studio (VS Code) 
 and JetBrains (WebStorm, IntelliJ IDEA etc.) are include in the ska-react-webapp-skeleton readme_ file.
