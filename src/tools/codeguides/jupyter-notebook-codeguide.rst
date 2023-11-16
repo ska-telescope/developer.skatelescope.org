@@ -47,23 +47,6 @@ The CICD makefile repository contains make targets for the linting, formatting a
 
 Below describes the usage of these targets.
 
-Linting
-#######
-
-To lint notebooks, run:
-
-.. code-block:: bash
-  
-    make notebook-lint
-
-This target uses the same plugins as the python-lint target (isort, black, flake8 and pylint), but runs them through nbQa as well. nbQa is a plugin that simply allows you to use python linters for Jupyter notebooks. By default, all notebooks inside the repository will be linted.
-
-You can also format notebooks automatically using the target:
-
-.. code-block:: bash
-
-    make notebook-format
-
 Testing
 #######
 
