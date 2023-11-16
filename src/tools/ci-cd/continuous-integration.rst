@@ -266,7 +266,7 @@ Test types
    - Further define smoke/deployments tests
 
 Unit tests
-  The smallest possible units/components are tested in very fast tests. Each test should complete in milliseconds.
+  The smallest possible units/components are tested in very fast tests. Each test should complete in milliseconds and be able to run locally (the filesystem, the network, the database should not not be involved).
 
 Component tests
   Individual components are tested.
