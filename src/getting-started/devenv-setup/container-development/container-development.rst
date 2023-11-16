@@ -7,9 +7,17 @@ Development using containers
 In order to manage dependencies and versioning inside the project,
 developing using a containerized environment is recommended.
 
+You can use either Docker or Podman to run the containers, altough the tooling for Docker is more mature
+and better tested.
+
 Start by setting up your local environment as described in the
 :doc:`Setup local development environment</getting-started/devenv-setup/local-development>`
-documentation. This will set up the local environment with the necessary docker tools and Visual Studio Code.
+documentation. This will set up the local environment with the necessary containerization tools and Visual Studio Code.
+
+.. note::
+  Most of the instructions in this document assume that you are using Docker,
+  but should work with Podman except for the caveats mentioned on the
+  `Docker documentation <https://code.visualstudio.com/remote/advancedcontainers/docker-options#_podman>`_.
 
 VSCode can be configured to debug using the Python interpreter inside a Docker image, which allows:
 
