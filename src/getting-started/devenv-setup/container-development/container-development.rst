@@ -9,7 +9,7 @@ developing using a containerized environment is recommended.
 
 Start by setting up your local environment as described in the
 :doc:`Setup local development environment</getting-started/devenv-setup/local-development>`
-documentation. This will setup the local environment with the necessary docker tools and Visual Studio Code.
+documentation. This will set up the local environment with the necessary docker tools and Visual Studio Code.
 
 VSCode can be configured to debug using the Python interpreter inside a Docker image, which allows:
 
