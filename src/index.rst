@@ -23,28 +23,28 @@ SKA telescope developer portal
   :caption: Tutorials
   :glob:
 
-  tutorial/* 
+  tutorial/**/* 
   
 .. toctree::
   :maxdepth: 1
   :caption: How-To Guides
   :glob:
 
-  howto/* 
+  howto/**/*
 
 .. toctree::
   :maxdepth: 1
   :caption: References
   :glob:
 
-  reference/* 
+  reference/**/*
 
 .. toctree::
   :maxdepth: 1
   :caption: Explanations
   :glob:
 
-  explanation/* 
+  explanation/**/* 
 
 Welcome to the `Square Kilometre Array <http://www.skatelescope.org>`_ software
 documentation portal. Whether you are a developer involved in SKA or you are
