@@ -53,7 +53,7 @@ documented or linked to in this portal.
 
 The portal is frequently updated as the project evolves; if you feel that something is missing, please have a look at our :doc:`guide to contributing to the developer portal </contributor/contribute>`
 
-If you're new to developing the SKA, please have a look at :doc:`our Onboarding material </getting-started/getting-started>` and the :doc:`guideance on setting up your development environment </getting-started/devenv-setup>`.
+If you're new to developing the SKA, please have a look at :doc:`our Onboarding material </getting-started/onboarding>` and the :doc:`guideance on setting up your development environment </getting-started/devenv-setup/devenv-setup>`.
 
 .. note::
    Please also read the :doc:`/policies/code-of-conduct`, which governs all SKA interactions.
@@ -78,13 +78,13 @@ This section is about getting you up and running. It contains the onboarding mat
   :caption: Getting Started
   :hidden:
 
-  getting-started/getting-started
+  getting-started/onboarding
   getting-started/contrib-guidelines
-  getting-started/devenv-setup
+  getting-started/devenv-setup/devenv-setup
 
-- :doc:`getting-started/getting-started`
+- :doc:`getting-started/onboarding`
 - :doc:`getting-started/contrib-guidelines`
-- :doc:`getting-started/devenv-setup`
+- :doc:`getting-started/devenv-setup/devenv-setup`
 
 
 SKA Repositories
