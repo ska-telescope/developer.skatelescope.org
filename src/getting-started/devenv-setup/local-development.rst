@@ -4,9 +4,9 @@
 Setup local development environment
 ***********************************
 
-These instructions assume you are using Ubuntu 22.04 as your development OS,
-but some brief explanation and/or official documentation will be provided so that
-you can adapt the instructions to other OSes.
+Ubuntu 22.04 is the official development OS for the project, and the instructions
+assume that's the OS you are using. Still, some brief explanation and/or official documentation will be provided so that
+the user can adapt the instructions to other OSes.
 
 Install the needed base system packages
 =======================================
@@ -18,8 +18,8 @@ On Ubuntu 22.04, you can install them with the following command:
 
     sudo apt install git python3-venv build-essential
 
-Set up your Git global configuration
-====================================
+Setup your Git global configuration
+===================================
 
 .. code-block:: bash
 
@@ -50,12 +50,12 @@ Check the `Poetry official documentation`_ official documentation for more detai
 Install Docker
 ==============
 
-Follow the `Official docker documentation`_ for your OS to install docker.
-If you are using a Linux flavour, make sure to follow the `linux post install`_ instructions as well.
+Follow the `Official docker documentation`_ for Ubuntu to install docker, and make sure to also
+follow the `linux post install`_ instructions in order to configure the service and user permissions
+in case you prefer to call docker without sudo.
 
-.. _`Official docker documentation`: https://docs.docker.com/engine/install/
+.. _`Official docker documentation`: https://docs.docker.com/engine/install/ubuntu/
 .. _`linux post install`: https://docs.docker.com/engine/install/linux-postinstall/
-
 
 Configure Visual Studio Code for local development
 ==================================================
