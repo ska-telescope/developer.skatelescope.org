@@ -4,16 +4,16 @@
 Configuring your development environment
 ****************************************
 
-A completely configured development environment can be set up very easily. This will include
-TANGO, PyTANGO, docker and properly configured IDEs.
+Configuring your development environment depends on the type of development you want to do.
 
-VSCode(*Recommended*) and PyCharm are two IDEs that can be configured to support python and
-PyTANGO development activities. You will find detailed instructions and how-tos at:
+Container based development is the recommended way to develop when possible, but situations might arise where
+you need to develop locally or remotely over an ssh connection to an headless machine.
 
-Depending on your developer needs you might need to develop locally,
-remotely over an ssh connection to an headless machine,
-or inside a container running on your local machine.
-Follow the appropriate link below to get started:
+We go throtugh those three scenarios in the following sections and sugest you to start in the order they are presented.
+
+1. :doc:`Setup local development environment</getting-started/devenv-setup/local-development>`
+2. :doc:`Development using containers</getting-started/devenv-setup/container-development/container-development>`
+3. Remote development over ssh
 
 .. toctree::
    :maxdepth: 1 
