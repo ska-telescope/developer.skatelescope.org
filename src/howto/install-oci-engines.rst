@@ -1,14 +1,14 @@
 OCI Engine Installation Guide
 ==============================
 
-This guide provides step-by-step instructions on how to install OCI engines recommended for development purposes. The well-known Docker now has a restrictive license, so we recommend the installation of Podman instead. In :doc:`explanation/open-container-initiative`, you can learn mode about the OCI (Open Container Initiative) and the various engines.
+This guide provides step-by-step instructions on how to install OCI engines recommended for development purposes. The well-known Docker Desktop now has a restrictive license which makes it unsuitable for SKAO use. Therefore we recommend the installation of Podman instead. In :doc:`explanation/open-container-initiative`, you can learn mode about the OCI (Open Container Initiative) and the various engines.
 
 Installing Podman
 -----------------
 
-Podman is a Linux daemonless container engine for developing, managing, and running OCI Containers. While being built for Linux, Podman works on macOS and Windows by spinning up a guest Linux system, referred to a **Podman machine**.
+Podman is a Linux daemonless container engine for developing, managing, and running OCI Containers. While being built for Linux, Podman works on macOS and Windows by spinning up a guest Linux system, referred as a **Podman machine**.
 
-**Linux/WSL**
+**Ubuntu Linux/WSL**
 
 1. Update your package index:
 
@@ -24,13 +24,16 @@ Podman is a Linux daemonless container engine for developing, managing, and runn
 
 **macOS**
 
+.. note::
+   We strongly suggest to use [Homebrew](https://brew.sh/) to install software on macOS that we rely on when developing software for SKAO.
+
 1. Install QEMU (for the Podman machine):
 
    .. code-block:: bash
 
       brew install qemu
 
-2. Install Podman and dependent packages, and start a Podman machine:
+2. Install Podman. Dependent packages will automatically be installed too. Then start a Podman machine:
 
    .. code-block:: bash
 
@@ -38,7 +41,13 @@ Podman is a Linux daemonless container engine for developing, managing, and runn
       podman machine init
       podman machine start
 
-For other distributions and more details, please refer to `Podman’s installation guide <https://podman.io/getting-started/installation>`_.
+   Alternatively just install Podman Desktop:
+
+   .. code-block:: bash
+
+      brew install --cask podman-desktop
+
+We do not support other distributions or OSes that what is listed above, but more details about how to install and run Podman elsewhere can be found at the `Podman’s installation guide <https://podman.io/getting-started/installation>`_.
 
 **Wrapping up**
 
@@ -52,9 +61,9 @@ Finally, we can check if Podman is up and running:
 Installing Docker
 -----------------
 
-Docker is the most popular containerization platform, with Linux, Windows (native) and macOS support. While being the most popular, it is now under a restrictive and commercial license.
+Docker is the most popular containerization platform, with Linux, Windows (native) and macOS support. While being the most popular, the Docker Desktop product is now only available under a restrictive and commercial license. We do **not** recommend to use Docker Desktop for developing SKAO software.
 
-**Linux/WSL**
+**Ubuntu Linux/WSL**
 
 1. Update your package index:
 
@@ -74,13 +83,13 @@ Docker is the most popular containerization platform, with Linux, Windows (nativ
 
       curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
-4. Set up the stable repository:
+4. Add Docker's stable package repository:
 
    .. code-block:: bash
 
       sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
-5. Install Docker Engine:
+5. Install the Docker engine from the Docker repository:
 
    .. code-block:: bash
 
@@ -91,11 +100,18 @@ Docker is the most popular containerization platform, with Linux, Windows (nativ
 
 1. Follow the installation instructions from `Docker Hub <https://docs.docker.com/desktop/install/windows-install/>`_.
 
+.. note::
+   We do not support Windows as a development environment, so we strongly encourage setting up WSL instead. Check the official `Microsoft WSL installation instructions <https://learn.microsoft.com/en-us/windows/wsl/install>`_
+
 **macOS**
 
-1. Follow the installation instructions from `Docker Hub <https://docs.docker.com/desktop/install/mac-install/>`_.
+1. Install Docker:
 
-For detailed instructions, visit `Docker documentation <https://docs.docker.com/desktop/>`_.
+   .. code-block:: bash
+
+      brew install docker
+
+For more information, please visit the official `Docker documentation <https://docs.docker.com/desktop/>`_.
 
 **Wrapping up**
 
