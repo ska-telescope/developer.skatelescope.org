@@ -236,7 +236,6 @@ Guidelines to the coding standards we apply in the SKA. Not available for all la
 - :doc:`tools/codeguides/cplusplus-codeguide`
 - :doc:`tools/codeguides/javascript-codeguide`
 - :doc:`tools/codeguides/python-codeguide`
-- :doc:`tools/codeguides/vhdl-codeguide`
 
 FAQ
 ===
