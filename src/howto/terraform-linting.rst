@@ -4,7 +4,7 @@ Linting Terraform
 Code Formatting
 ===============
 
-You can format terraform automatically using the target:
+You can format Terraform automatically using the target:
 
 .. code-block:: bash
 
@@ -13,7 +13,7 @@ You can format terraform automatically using the target:
 Linting Locally
 ===============
 
-To lint terraform, run:
+To lint Terraform, run:
 
 .. code-block:: bash
   
@@ -22,7 +22,7 @@ To lint terraform, run:
 Linting Automatically
 =====================
 
-To perform terraform linting automatically through a CI/CD pipeline, add the following lines to the .gitlab-ci.yml file:
+To perform Terraform linting automatically through a CI/CD pipeline, add the following lines to the .gitlab-ci.yml file:
 
 .. code-block:: yaml
    
