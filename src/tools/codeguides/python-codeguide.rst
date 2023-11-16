@@ -79,41 +79,6 @@ For details on how to use the logging module with detailed examples, please refe
 https://gitlab.com/ska-telescope/ska-logging/tree/master#ska-logging-configuration-library
 
 
-Coding Style/Conventions
-========================
-
-* The code will follow the standard `PEP8 Style Guide for Python Code
-  <https://www.python.org/dev/peps/pep-0008/>`_. In particular, this includes
-  using only 4 spaces for indentation, and never tabs.
-
-* The ``import numpy as np``, ``import matplotlib as mpl``, and ``import
-  matplotlib.pyplot as plt`` naming conventions should be used wherever
-  relevant. ``from packagename import *`` should never be used, except as a
-  tool to flatten the namespace of a module. An example of the allowed usage
-  is given in :ref:`import-star-example`.
-
-* Classes should either use direct variable access, or Python’s property
-  mechanism for setting object instance variables. ``get_value``/``set_value``
-  style methods should be used only when getting and setting the values
-  requires a computationally-expensive operation. :ref:`prop-get-set-example`
-  below illustrates this guideline.
-
-* Classes should use the builtin :func:`super` function when making calls to
-  methods in their super-class(es) unless there are specific reasons not to.
-  :func:`super` should be used consistently in all subclasses since it does not
-  work otherwise.  :ref:`super-vs-direct-example` illustrates why this is
-  important.
-
-* Multiple inheritance should be avoided in general without good reason.
-
-* ``__init__.py`` files for modules should not contain any significant
-  implementation code. ``__init__.py`` can contain docstrings and code for
-  organizing the module layout, however (e.g. ``from submodule import *``
-  in accord with the guideline above). If a module is small enough that
-  it fits in one file, it should simply be a single file, rather than a
-  directory with an ``__init__.py`` file.
-
-
 .. _handling-unicode:
 
 Unicode guidelines
