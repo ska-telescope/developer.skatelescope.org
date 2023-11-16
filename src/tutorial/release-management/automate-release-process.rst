@@ -2,7 +2,9 @@
 How to Automate the Release Process Using Templates
 ===================================================
 
-This guide will walk you through the steps to automate the release process of your software package using GitLab CI/CD templates.
+This guide will walk you through the steps to automate the release process of your software package using GitLab CI/CD templates. The artefact names and versions are following the SKAO naming conventions. You can read more about them here(TODO: add the correct link)`<TODO>`__.
+
+.. todo:: fix the naming convention link
 
 Prerequisites
 =============

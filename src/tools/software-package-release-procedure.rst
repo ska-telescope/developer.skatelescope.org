@@ -144,7 +144,85 @@ Each validation has a brief description that explains what it does with a mitiga
 
 All the information listed on this page is used in the artefact validation, i.e. All artefacts are validated against `Artefact Naming`_, `Versioning`_ and `Metadata`_ and they are quarantined if they are not compliant.
 
+.. ATTIC-BEGIN
+Release Management
+=================================================
 
+
+Templates for automating the release process
+--------------------------------------------
+
+As part of the release notes publishing procedures developers should use a template job that uses changelogs to generate artefact releases. To use it, please include the below template job. The changelog generation process relies on the **generate-changelog** make target present in the **release.mk makefile**, this makefile is located in the `ska-cicd-makefile <https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile>`_ project. This repo should be added as a submodule to your own project, with the following command:
+
+.. code:: yaml
+
+  git submodule add https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile.git .make
+
+It requires a script that generates changelog documentation using **git-chglog** and it is meant to be used in a Gitlab tag pipeline job as it depends on the pipelines variables to publish the release notes to a newly created tagged commit. A Jira ticket is added to the release notes to enable other teams to refer to the documentation related to process and implementation of git-changelog.
+
+.. code:: yaml
+
+  include:
+  - project: 'ska-telescope/templates-repository'
+    file : 'gitlab-ci/includes/release.gitlab-ci.yml'
+
+
+Developers are strongly encouraged to use the default template to ensure that similar practices are followed in all SKA repositories, but if any departures from standard procedures are required the process can be customized using the following variables:
+
+ - **CHANGELOG_FILE** - Used to specify the changelog file that is meant to keep the release notes for every release. Defaults to CHANGELOG.md.
+
+ - **CHANGELOG_CONFIG** - Used to overwrite the **git-chglog** config file. Defaults to `.make/.chglog/config.yml <https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile/-/blob/master/.chglog/config.yml>`_.
+
+ - **CHANGELOG_TEMPLATE** - Used to overwrite the **git-chglog** template used to generate the changelog output. Defaults to `.make/.chglog/CHANGELOG.tpl.md <https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile/-/blob/master/.chglog/CHANGELOG.tpl.md>`_.
+
+Release steps
+-------------
+
+After including the templates, the Release of a new artefact should be as follows:
+
+- **1st**: Create a new issue on the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`_ Jira Project with a summary of your release, and set it to "IN PROGRESS".
+
+- **2**: Create and checkout a new `rel-XXX-release-v-1-2-2` branch (where `REL-XXX` is your Jira issue.)
+
+- **3**: Choose which bump version you want to use:
+
+    - bump-major-release
+    - bump-minor-release
+    - bump-patch-release
+  
+  Run for example ``make bump-patch-release``, if for example .release was ``1.2.1`` it will be moved to ``1.2.2``.
+
+  * If you have helm charts on your project it will automatically run ``make helm-set-release`` which will set all charts to - following the example - version ``1.2.2``, as well as update the version on the charts' dependencies
+  * If you have python packages on your project it will automatically run ``make python-set-release``. This will set pyproject.toml to - following the example - version ``1.2.2``;
+  * The ``release`` variable in your ``docs/conf.py`` will also be automatically updated according to the version in .release, confirm if this is the correct version for the documentation;
+ 
+- **4**: Make any other manual changes that are necessary to bump the version. For example:
+
+  * Updating your python package's ``__version__`` attribute;
+  * Updating python tests that check the version;
+  * Manually updating a human-readable ``CHANGELOG`` file.
+
+- **5**: Push your branch, create a merge request, get it approved and merged.
+
+- **6**: Checkout and pull the main branch.
+
+- **7**: Run ``make git-create-tag``, which will show the new version number.
+
+    - 1.2.2
+
+- **8**: ``make git-push-tag``
+
+  *Note:* This final step will push the release tag direct to the main branch, so this step can only be performed by a repository maintainer. It is possible, instead, to push the tag onto the REL-XXX branch immediately before it is merged. In this case, it is very important that the tag is pushed to the branch only after the MR has been approved and no further commits will be made to it.
+  
+  Either way, once the tag has landed on the main branch, this will trigger a CI pipeline to publish the release. When the pipeline has completed, you can move your `REL-XXX` Jira issue to RELEASED.
+
+Release results
+---------------
+
+After the tagged pipeline finishes, the new release generated with the git-chglog will be appended to the tag in the gitlab project, an example of the release notes can be seen `here <https://gitlab.com/ska-telescope/templates/ska-raw-skeleton/-/releases/0.0.1>`_. And the Jira ticket (preferable one created on the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`_ Jira Project) that is present on the commit message that triggered the tag pipeline will be updated with links to the gitlab release page.
+
+If you have included the file ``gitlab-ci/includes/release.gitlab-ci.yml`` Marvin should also publish a message on this `channel <https://skao.slack.com/archives/C02NW62R0SE>`_ announcing the release.
+.. ATTIC-BEGIN
 Deploying Artefacts
 ===================
 
