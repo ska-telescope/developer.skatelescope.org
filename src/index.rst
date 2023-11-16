@@ -15,6 +15,37 @@
 SKA telescope developer portal
 ------------------------------
 
+.. danger:: 
+   Developer Portal is under maintenance right now so you might see pages that are not ordered or structured correctly if you are seeing this warning.
+
+.. toctree::
+  :maxdepth: 1
+  :caption: Tutorials
+  :glob:
+
+  tutorial/* 
+  
+.. toctree::
+  :maxdepth: 1
+  :caption: How-To Guides
+  :glob:
+
+  howto/* 
+
+.. toctree::
+  :maxdepth: 1
+  :caption: References
+  :glob:
+
+  reference/* 
+
+.. toctree::
+  :maxdepth: 1
+  :caption: Explanations
+  :glob:
+
+  explanation/* 
+
 Welcome to the `Square Kilometre Array <http://www.skatelescope.org>`_ software
 documentation portal. Whether you are a developer involved in SKA or you are
 simply one of our many users, all of our software processes and projects are
@@ -28,6 +59,8 @@ If you're new to developing the SKA, please have a look at :doc:`our Onboarding 
    Please also read the :doc:`/policies/code-of-conduct`, which governs all SKA interactions.
 
 What follows is a brief guide to the headings you'll find in the left-hand sidebar of this site. Feel free to explore!
+
+
 
 
 Getting Started and the SKA Developer Community
