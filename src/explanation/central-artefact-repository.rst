@@ -16,7 +16,7 @@ The Central Artefact Repository plays a key role in regulating the flow of artef
 
 Whilst it is important for the Repository to be highly available and performant in the context of the SDLC, it is not responsible for directly servicing the delivery of artefacts into the operational environments.  This will be managed by high speed delivery services and caches.
 
-The repository is based on *Nexus* Repository Manager 3 deployed on an independent UK based hosting service. The core deployment is nexus-oss-edition with the nexus-core-feature, nexus-cma-feature, nexus-oss-feature features enabled. 
+The repository is based on *Nexus* Repository Manager 3 deployed on an independent UK based hosting service. The core deployment is `nexus-oss-edition <https://www.sonatype.com/products/sonatype-nexus-oss>`_ with the nexus-core-feature, nexus-cma-feature, nexus-oss-feature features enabled.
 
 LDAP authentication has been integrated for SKAO administration purposes, with an additional minimal set of accounts for publishing artefacts.  All repositories have read-only permissions for anonymous access.  Additionally, email has been integrated for handling task notifications.
 
