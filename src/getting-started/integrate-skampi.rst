@@ -97,6 +97,11 @@ contain lint, build, test, pages, publish and scan. For ska-tango-examples:
 So all relevant stages are there, with an extra step of joining the linting reports. Then you need to verify 
 that gitlab-ci.yml includes the default templating. For the ska-tango-examples:
 
+Then you need to verify 
+that gitlab-ci.yml includes the default templating. 
+
+
+
 .. code-block:: yaml
 
   # Include CI templates
