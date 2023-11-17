@@ -167,7 +167,7 @@ Release
   explanation/* 
   explanation/**/* 
 
-Welcome to the `Square Kilometre Array <http://www.skatelescope.org>`_ software
+Welcome to the `Square Kilometre Array <http://www.skao.int/>`_ software
 documentation portal. Whether you are a developer involved in SKA or you are
 simply one of our many users, all of our software processes and projects are
 documented or linked to in this portal.

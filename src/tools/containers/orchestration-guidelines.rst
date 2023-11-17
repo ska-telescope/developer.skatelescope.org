@@ -646,8 +646,8 @@ Example ``Chart.yaml`` file:
     keywords:
     - magic
     - mpi
-    home: https://www.skatelescope.org/
-    icon: http://www.skatelescope.org/wp-content/uploads/2016/07/09545_NEW_LOGO_2014.png
+    home: https://www.skao.int/
+    icon: http://www.skao.int/wp-content/uploads/2016/07/09545_NEW_LOGO_2014.png
     sources:
     - https://gitlab.com/ska-telescope/my-app
     maintainers:
