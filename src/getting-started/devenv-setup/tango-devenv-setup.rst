@@ -4,15 +4,15 @@
 Tango Development Environment set up
 ************************************
 
-Many of the projects teams' and developers are working on tango devices and device servers.
+Many of the project's teams and developers are working on Tango devices and device servers.
 This document describes how to set up a development environment for Tango controls.
 
 Using Minikube
 ==============
 
 During the initial years of the project, setting up a fully fledged Tango environment was a complex task that required
-compiling Tango CPP and Python from source, building the PyTango package and installing them on the local machine
-In order to minimize this effort and ensure that the result environment was using the blessed versions for the project,
+compiling tango-idl, cppTango and PyTango from source code to install them on the local machine.
+In order to minimize this effort and ensure that the resulting environment was using the blessed versions for the project,
 the SKAO created a set of container images and Helm deployment chart that should be used to set up a development environment.
 
 There are still use cases where a Tango developer should be using this method for local development, and when building the base images
