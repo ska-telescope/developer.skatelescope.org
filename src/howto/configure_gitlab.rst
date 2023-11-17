@@ -1,3 +1,5 @@
+.. _configure-gitlab:
+
 GitLab Configuration
 ====================================
 
