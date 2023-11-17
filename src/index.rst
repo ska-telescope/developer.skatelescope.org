@@ -19,7 +19,7 @@ SKA telescope developer portal
    Developer Portal is under maintenance right now so you might see pages that are not ordered or structured correctly if you are seeing this warning.
 
 
-Here is the SKA Developers journey throughout their daily tasks. Feel free to click on each item to navigate to relevant explainations, tutorials, howto guides or references.
+Here is the journey SKA Developers take to turn ideas into deployed code. Some of these tasks will be done every day; others less frequently. Feel free to click on each item to navigate to relevant explanations, tutorials, how-to guides or reference documentation.
 
 .. mermaid:: 
 
@@ -119,7 +119,7 @@ Continuous Deployment
 ---------------------
 
 1. Create/Update My Helm Chart
-2. Integrate with DBs
+2. Integrate with databases
 3. Integrate with Secrets
 4. Run Integration Tests
 
