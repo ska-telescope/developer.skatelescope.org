@@ -133,6 +133,35 @@ now be deployed for the PostgreSQL database.
     echo "Localhost forward on port $port"
     kubectl port-forward -n $namespace svc/$svcname $port:$svcport
 
+Connecting to the database
+--------------------------
 
+This is done with:
+
+.. code:: bash
+
+    $ psql -U $POSTGRES_USER -d $POSTGRES_DB -h localhost -p 65432
+    Password for user pg: 
+    psql (15.4, server 14.10)
+    Type "help" for help.
+
+    devdb=> \d
+                        List of relations
+    Schema |            Name             |   Type   | Owner 
+    --------+-----------------------------+----------+-------
+    public | tab_oda_eb                  | table    | pg
+    public | tab_oda_eb_id_seq           | sequence | pg
+    public | tab_oda_obs_prg             | table    | pg
+    public | tab_oda_obs_prg_id_seq      | sequence | pg
+    public | tab_oda_prj                 | table    | pg
+    public | tab_oda_prj_id_seq          | sequence | pg
+    public | tab_oda_sbd                 | table    | pg
+    public | tab_oda_sbd_id_seq          | sequence | pg
+    public | tab_oda_sbi                 | table    | pg
+    public | tab_oda_sbi_id_seq          | sequence | pg
+    public | tab_oda_sbi_sbd_version_seq | sequence | pg
+    (11 rows)
+
+    devdb=> 
 
 
