@@ -55,6 +55,26 @@ Setup the MariaDB database credentials (options):
 * define explicit environment variables for ``TANGO_USER`` / ``TANGO_PASSWORD``
 * create/update Vault secrets for ``TANGO_USER`` / ``TANGO_PASSWORD``
 
+Setup the MariaDB database credentials
+--------------------------------------
+
+Option 1: Development environment credentials
+The MariaDB credentials are required for the connection between the DatabaseDS and the
+database backend.  typically, the developer would just rely on the defaults which are 
+automatically set - these are username: ``tango`` password: ``tango``
+ 
+Option 2: Custom enviroment credentials
+To override the default credentials, define the following environment variables: ``TANGO_USER`` / ``TANGO_PASSWORD`` . 
+These will be picked up by the following steps to seed the TangoDB and configure the 
+connection with the DatabaseDS.
+
+Option 3: Production enviroment credentials
+Establish the associated secrets in Hashicorp Vault so that the secrets are picked up
+ by the following steps to seed the TangoDB and configure the connection with the DatabaseDS.
+
+Prepare your enviroment
+=======================
+
 Prepare for the deployment of components by exporting the following environment variables
 (substituting for your own values):
 
@@ -66,27 +86,10 @@ Prepare for the deployment of components by exporting the following environment 
     $ export KUBE_NAMESPACE=ska-tango-db
 
 
-Setup the MariaDB database credentials
---------------------------------------
-
-Option 1:
-The MariaDB credentials are required for the connection between the DatabaseDS and the
-database backend.  typically, the developer would just rely on the defaults which are 
-automatically set - these are username: ``tango`` password: ``tango``
-
-Option 2:
-To override the default credentials, define the following environment variables: ``TANGO_USER`` / ``TANGO_PASSWORD`` . 
-These will be picked up by the following steps to seed the TangoDB and configure the 
-connection with the DatabaseDS.
-
-Option 3:
-Establish the associated secrets in Hashicorp Vault so that the secrets are picked up
- by the following steps to seed the TangoDB and configure the connection with the DatabaseDS.
-
-
 Deployment Option 1: deploy using ``make``
 ==========================================
 
+Using the ``make`` style deployment is typically used for setting up a development enviroment.
 To deploy using ``make``, first clone the ``ska-tango-images`` repository:
 
 .. code:: bash
@@ -182,6 +185,8 @@ with the following:
 Deployment Option 2: deploy using ``helm``
 ==========================================
 
+Deploying the TangoDB is typically used for setting up a production like environment.  This fully 
+emulates the independent deployment of a separate High Availability database that the DatabaseDS talks to.
 
 Connect Helm repository
 -----------------------
