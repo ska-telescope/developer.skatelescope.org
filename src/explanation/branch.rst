@@ -23,7 +23,7 @@ The following sections discuss the two of the most common workflows:
 Trunk-based development
 ++++++++++++++++++++++++
 
-This core “trunk” branch in SKA repositories used to be named **baster**, in older repositories, but now is named **main** branch by default.
+This core “trunk” branch in SKA repositories used to be named **master**, in older repositories, but now is named **main** branch by default.
 
 Trunk-based development is a version control management practice where developers merge small, frequent updates to a core “trunk” or main branch.
 Teams may adopt a particular Git workflow designated as Trunk-based development approach,
@@ -52,14 +52,11 @@ Feature based branching
 
 The SKA organisation advocates adopting a story-based branching model, often referred to as
 **feature branching**. This workflow effectively leverages GitLab **Merge Requests** enabling code reviews and continuous branch testing, but it
-is important to stress the importance of having short lived branches. It is
-easy to abuse this policy and have long living branches resulting in painful
+is important to stress the importance of having short lived branches. It is easy to abuse this policy and have long living branches resulting in painful
 merge activities and dead or stale development lines.
-Bearing in mind that a *story* by definition is a
-piece of work a developer should conclude in the time of a sprint, the workflow
-should follow these steps:
+Bearing in mind that a *story* by definition is a piece of work a developer should conclude in the time of a sprint, the workflow should follow these steps:
 
-* As a developer starts working from main on a new story, they create a new branch.
+* As a developer starts working from the **main** branch on a new story, they create a new branch.
 * The new branch shall be named after the story, i.e. *at1-26-the-new-widget*.  Note: branch names are by convention all lower case.
 
 .. code:: bash
@@ -106,6 +103,14 @@ There are some considerations with Feature Branching:
 * branching requires discipline in that they should be short lived and developers need to remember to delete them after use
 * stale and orphaned branches can pollute the repository
 * developers must resolve merge conflicts with main before pushing changes, so there can be a race to merge to avoid these issues
+
+
+Long-lived release branches
++++++++++++++++++++++++++++
+
+Long-lived release branches are branches in a software development project that are maintained over a longer period of time, typically several months to several years. 
+These branches are used to develop and release stable versions, and are typically used in projects where frequent updates and changes are not necessary or desirable. 
+Long-lived release branches are often used for software that is used in critical systems, where stability and reliability are paramount.
 
 
 Alternate Strategy

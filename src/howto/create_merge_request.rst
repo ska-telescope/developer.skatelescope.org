@@ -1,3 +1,5 @@
+.. _create-merge-request:
+
 Create merge request
 ++++++++++++++++++++
 

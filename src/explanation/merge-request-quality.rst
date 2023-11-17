@@ -226,5 +226,3 @@ This check warns users if the project structure and content is not following the
 The level of this check is warning.
 To fix it, please ensure you are compliant with all of the rules that are written in the Mitigation Strategy column.
 If you think there is an error/bug please contact the System Team Support Center at https://jira.skatelescope.org/servicedesk/customer/portal/166.
-
-

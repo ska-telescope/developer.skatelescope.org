@@ -1,12 +1,14 @@
+.. _push-code-branch:
+
 Push code and branch
-+++++++++++++++++++++++
+++++++++++++++++++++
 
 Rememeber that all commits must have the story Jira Id prefixed in the git commit message:
 
 .. code:: bash
 
-  git add . # adds all staged changes
-  git commit -m "abc-123-add-awesome-code"
+  git add . # adds all changes to staging
+  git commit -m "ABC-123: Add awesome code"
 
 When you are ready, you can **push** your code to the remote repository in gitlab.
 If your team is using a main-branch-policy its a good practice to only push your code when it passes all the tests (if that's the case).
