@@ -1,7 +1,7 @@
 .. _merge-request:
 
-Merge requests
-++++++++++++++
+Merge request
++++++++++++++
 
 When a story is ready for acceptance a Merge Request should be created on GitLab to
 merge the story branch into the main branch. The Merge Request UI on GitLab includes a platform for the discussion threads, and indeed an important purpose of the Merge Request is to provide an online place for the team to discuss the changes and review the code before doing the actual merge.
