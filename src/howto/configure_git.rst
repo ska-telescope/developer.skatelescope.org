@@ -4,7 +4,7 @@ Configure Git
 Set Git institutional email address
 +++++++++++++++++++++++++++++++++++
 
-Setup Git so that it uses your institutional email account to sign commits,
+Set up Git so that it uses your institutional email account to sign commits,
 this can be done in your global Git configuration:
 
 .. code:: bash
@@ -24,7 +24,7 @@ Signing commits with GPG
 
 Developers are strongly encouraged to use a GPG key to sign Git commits.
 The procedure for obtaining a GPG key and uploading it to the GitLab account is described at
-https://docs.gitlab.com/ee/user/project/repository/gpg_signed_commits/, or got straight to uploading at https://gitlab.com/-/profile/gpg_keys.
+https://docs.gitlab.com/ee/user/project/repository/gpg_signed_commits/, or go straight to uploading at https://gitlab.com/-/profile/gpg_keys.
 
 
 The only difference from a non signed commit is the addition of the -S flag:
@@ -41,7 +41,7 @@ The passphrase of your GPG key will then be asked. To avoid having to type the -
 
 
 When working in a remote repository by ssh connection, you need to create new GPG key and add it as explained above or you can forward your existing gpg key to the remote machine following the instructions below.
-You can find more information `here <https://wiki.gnupg.org/AgentForwarding>`__.
+This is known as `agent forwarding <https://wiki.gnupg.org/AgentForwarding>`__.
 
 * Find your local socket: :code:`gpgconf --list-dir agent-extra-socket`
 * Find your remote socket: :code:`gpgconf --list-dir agent-socket`
