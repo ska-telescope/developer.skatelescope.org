@@ -23,6 +23,7 @@ SKA telescope developer portal
   :caption: Tutorials
   :glob:
 
+  tutorial/* 
   tutorial/**/* 
   
 .. toctree::
@@ -30,6 +31,7 @@ SKA telescope developer portal
   :caption: How-To Guides
   :glob:
 
+  howto/*
   howto/**/*
 
 .. toctree::
@@ -37,6 +39,7 @@ SKA telescope developer portal
   :caption: References
   :glob:
 
+  reference/*
   reference/**/*
 
 .. toctree::
@@ -44,6 +47,7 @@ SKA telescope developer portal
   :caption: Explanations
   :glob:
 
+  explanation/* 
   explanation/**/* 
 
 Welcome to the `Square Kilometre Array <http://www.skatelescope.org>`_ software
