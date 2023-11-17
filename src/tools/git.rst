@@ -15,6 +15,8 @@ how to use it. These online resources are a good starting point:
   * Official git reference at: https://git-scm.com/docs
   * Interactive Git cheatsheet: http://www.ndpsoftware.com/git-cheatsheet.html
 
+.. ATTIC-BEGIN
+
 GitLab as the Git repository manager
 ====================================
 
@@ -51,6 +53,8 @@ Code Snippets
 
 You can share code snippets (code blocks) within the SKA Organization using the *ska-snippets* repository, and also you can always share code snippets with the project members using project level snippets *(If they are enabled)*
 
+.. ATTIC-END
+
 .. _committing-code:
 
 Committing code
@@ -83,6 +87,8 @@ commit rules:
 
 
 You can find additional information on how to write a good commit message `here <https://chris.beams.io/posts/git-commit/>`__.
+
+.. ATTIC-BEGIN
 
 Configure Git
 =============
@@ -135,6 +141,7 @@ You can find more information `here <https://wiki.gnupg.org/AgentForwarding>`__.
 * Configure your SSH configuration file by adding the following line after your host settings: :code:`RemoteForward <socket_on_remote_box>  <extra_socket_on_local_box>`. Note that you need to reconnect to the remote machine to apply the changes.
 * Add :code:`StreamLocalBindUnlink yes` into :code:`/etc/ssh/sshd_config` in the remote machine and restart the sshd service to close the gpg forwarding socket when closing the ssh connection.
 
+.. ATTIC-END
 
 Squashing commits
 +++++++++++++++++
@@ -145,6 +152,8 @@ If you want to replace a series of small commits with a single commit or if you 
 * You should also never rebase commits authored by other people.
 
 In general the squashing of commits is discouraged for SKA repositories.
+
+.. ATTIC-BEGIN
 
 .. _branching-policy:
 
@@ -263,6 +272,10 @@ discussing it with the rest of the community.
 
 See a more detailed description of this workflow at https://docs.gitlab.com/ee/topics/gitlab_flow.html
 
+.. ATTIC-END
+
+.. ATTIC-BEGIN
+
 .. _merge-request:
 
 Merge requests
@@ -285,6 +298,9 @@ At the moment the SKA organisation does not enforce approval rules, but it is re
 As part of best practices it is important to delete feature branches on merge or after merging them to keep your repository clean, showing only work in progress.
 It is not recommended to squash commits submitted to the remote server, in particular if using GitLab and JIRA integration, so the enabling squash commits option should be left unchecked. However you can arrange your commits before pushing them to remote.
 
+.. ATTIC-END
+
+.. ATTIC-BEGIN
 .. _merge-settings-maintainers:
 
 *Gitlab MR Settings for Project Maintainers*
@@ -304,6 +320,10 @@ There are more additional settings in GitLab that only project maintainers could
 
 
 Note that the System team may from time to time batch update all of the SKA projects' settings as to confirm with the policies and recommendations.
+
+.. ATTIC-END
+
+.. ATTIC-BEGIN
 
 Merge Request Quality Checks
 ============================
@@ -533,3 +553,5 @@ This check warns users if the project structure and content is not following the
 The level of this check is warning.
 To fix it, please ensure you are compliant with all of the rules that's written in the Mitigation Strategy column.
 If you think there is an error/bug please contact the system team at #team-system-support slack channel
+
+.. ATTIC-END
