@@ -1,7 +1,7 @@
 OCI Engine Installation Guide
 ==============================
 
-This guide provides step-by-step instructions on how to install OCI engines recommended for development purposes. The well-known Docker Desktop now has a restrictive license which makes it unsuitable for SKAO use. Therefore we recommend the installation of Podman instead. In :doc:`explanation/open-container-initiative`, you can learn mode about the OCI (Open Container Initiative) and the various engines.
+This guide provides step-by-step instructions on how to install OCI engines recommended for development purposes. The well-known Docker Desktop now has a restrictive license which makes it unsuitable for SKAO use. Therefore we recommend the installation of Podman instead. In :doc:`explanation/containerization`, you can learn mode about the OCI (Open Container Initiative) and the various engines.
 
 Installing Podman
 -----------------
@@ -25,7 +25,7 @@ Podman is a Linux daemonless container engine for developing, managing, and runn
 **macOS**
 
 .. note::
-   We strongly suggest to use [Homebrew](https://brew.sh/) to install software on macOS that we rely on when developing software for SKAO.
+   We strongly suggest using Homebrew (https://brew.sh/) to install software on macOS that we rely on when developing software for SKAO.
 
 1. Install QEMU (for the Podman machine):
 
@@ -128,4 +128,4 @@ What's next
 
 You now have Docker or Podman installed on your system. These tools are at the forefront of containerization technology, allowing for efficient, isolated, and scalable application deployment.
 
-Now, feel free to explore the rest of the :doc:`tutorial/getting-started-with-containers`.
+Now, feel free to explore the rest of the :doc:`/tutorial/getting-started-with-containers`.
