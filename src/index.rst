@@ -96,7 +96,10 @@ Continuous Integration
 ----------------------
 
 1. Write Your Dockerfile
+  - :doc:`exp: Continuous Integration <src/explanation/continuous-integration.rst>`
+  - :doc:`exp: Optimize Oci Image Builder <src/explanation/optimize-oci-image-builder.rst>`
 2. Build and Run Your Dockerfile
+  - :doc:`exp: Central Artefact Repository <src/explanation/central-artefact-repository.rst>`
 3. Get Tests Running in Cloud/CICD
 
 Continuous Deployment
@@ -111,9 +114,10 @@ Release
 -------
 
 1. Update CHANGELOG/Documentation
-  1. :doc:`tutorial: Automate Release Process </tutorial/release-management/automate-release-process>`
+  1. :doc:`tutorial: Automate Release Process <src/tutorial/release-management/automate-release-process.rst>`
 2. Update Versions/Release
   1. :doc:`tutorial: Automate Release Process </tutorial/release-management/automate-release-process>`
+  2. :doc:`: Automate Release Process <src/tutorial/release-management/automate-release-process.rst>`
 3. Deploy to PSI/ITF?
 
 .. toctree::
