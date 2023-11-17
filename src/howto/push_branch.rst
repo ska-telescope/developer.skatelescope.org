@@ -3,7 +3,10 @@
 Push code and branch
 ++++++++++++++++++++
 
-Rememeber that all commits must have the story Jira Id prefixed in the git commit message:
+Whe commiting remember to always:
+
+* Prefixed your commit message with the story JIRA ID.
+* This Jira ID, by convention, should be all upper case and followd by "**:**" character
 
 .. code:: bash
 
