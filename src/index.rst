@@ -311,9 +311,6 @@ To facilitate code portability and reliability and test running, we use containe
 - :doc:`tools/containers/containerisation-standards`
 - :doc:`tools/containers/kubernetes-introduction`
 - :doc:`tools/containers/orchestration-guidelines`
-- :doc:`tools/containers/multitenancy`
-- :doc:`tools/containers/docker-proxy-cache`
-- :doc:`tools/containers/uploading-docker-nexus`
 
 Working with BinderHub
 ======================

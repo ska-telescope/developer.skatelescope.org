@@ -14,7 +14,7 @@ We have created a `Minikube setup <https://gitlab.com/ska-telescope/sdi/ska-cicd
 - **DNS Configuration**: For **systemd-resolved** enabled Linux systems, automatically updates the DNS to resolve **svc.cluster.local** queries
 - **Tango Operator**: Enables DeviceServer and DatabaseDS resources (CRDs) to be deployed to the cluster using the `SKA Tango Operator <https://gitlab.com/ska-telescope/ska-tango-operator>`_
 
-These addons are packaged to try and mimic the setup and tools available in the SKAO development clusters. To know more about what can be changed an what make targets are available, please check :doc:`/reference/deploy-minikube-reference`.
+These addons are packaged to try and mimic the setup and tools available in the SKAO development clusters. To know more about what can be changed an what make targets are available, please check :doc:`/reference/minikube-reference`.
 
 Prerequisites
 -------------
