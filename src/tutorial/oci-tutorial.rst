@@ -130,4 +130,4 @@ You are also able to jump into the container and execute commands there and for 
 VSCode
 ------
 
-If you went for docker installation this is also possible to be done using the docker extensions in vscode. Please refer to :doc:`/howto/docker-vscode`
+If you went for docker installation this is also possible using the docker extensions in vscode. Please refer to :doc:`/howto/docker-vscode`
