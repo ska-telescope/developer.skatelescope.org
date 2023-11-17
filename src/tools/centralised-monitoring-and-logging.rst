@@ -7,7 +7,7 @@ A centralised monitoring and logging solution was designed to eliminate the need
 Both the STFC and DP datacentres have been fully integrated into this solution.
 
 On the one hand, the central monitoring solution is based on *Prometheus*, integrated with *Thanos*, providing high-availability and long-term storage capabilities while allowing for the data aggregation from multiple Prometheus targets.
-Oh the other hand, the central logging solution is based on *Filebeat*, collecting logs from the referred datacentres and shipping them to *Elasticsearch*.
+On the other hand, the central logging solution is based on *Filebeat*, collecting logs from the referred datacentres and shipping them to *Elasticsearch*.
 
 *Grafana* and *Kibana* are the chosen observability and data visualisation tools, respectively.
 
