@@ -186,7 +186,7 @@ This check warns users from raising a Merge Request without a Jira ticket ID in 
 
 Wrong Merge Request Setting
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This check warns users from merging their branch without the Merge Request being configured with the right settings. The level of this check is a failure, and to avoid it the Merge Request should be configured as listed in :ref:`merge-request`. Some of the settings can only be changed by the maintainers.  These settings are listed in :ref:`merge-settings-maintainers`.
+This check warns users from merging their branch without the Merge Request being configured with the right settings. The level of this check is a failure, and to avoid it the Merge Request should be configured as listed in :ref:`merge-request`. Some of the settings can only be changed by the maintainers.
 
 Missing Assignee in MR
 ^^^^^^^^^^^^^^^^^^^^^^
