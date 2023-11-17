@@ -1,4 +1,4 @@
-.. _onboarding:
+.. _code-of-conduct:
 
 SKA Code of Conduct
 -------------------
