@@ -1,20 +1,83 @@
+*******
+Linting
+*******
 
-.. ATTIC-BEGIN
-.. note::
-
-  Futher discussion on firmware development process, continuous integration, automated testing and recommendations for best practices can be found in the following google doc.
-  This document will be gradully implemented and the resulting decision will for part of this developer portal.
-
-  https://docs.google.com/document/d/1Kfc_4vLUy-0pSbi9HVeEkAmhuvEIEnt4voFnXxsc0zM/edit?usp=sharing
+This page explains the linting rules in place for the various tools and languages in use at SKAO. For detailed instructions, see the how-to guides.
 
 
-****************************
-VHDL Coding Style Guidelines
-****************************
+Python & Jupyter Notebooks Coding Style/Conventions
+===================================================
 
-Following a coding style is an integral part of robust development. It should not be a burden, and something done afterwards to pass code review – it should be done continuously at all stages of code development. A clean coding style is desired. This allows other team members (and yourself in a month or a year) to read and digest your code quickly, and to use the code with a high confidence in its correctness.
+The SKAO enforces the following coding style rules and conventions for Python and Jupyter Notebooks:
 
-The VHDL coding guidelines developed and published by ALSE are excellent, and will form the basis of this coding guideline. They are available from their website: 
+* The code will follow the standard `PEP8 Style Guide for Python Code
+  <https://www.python.org/dev/peps/pep-0008/>`_. In particular, this includes
+  using only 4 spaces for indentation, and never tabs.
+
+* The ``import numpy as np``, ``import matplotlib as mpl``, and ``import
+  matplotlib.pyplot as plt`` naming conventions should be used wherever
+  relevant. ``from packagename import *`` should never be used, except as a
+  tool to flatten the namespace of a module. An example of the allowed usage
+  is given in :ref:`import-star-example`.
+
+* Classes should either use direct variable access, or Python’s property
+  mechanism for setting object instance variables. ``get_value``/``set_value``
+  style methods should be used only when getting and setting the values
+  requires a computationally-expensive operation. :ref:`prop-get-set-example`
+  below illustrates this guideline.
+
+* Classes should use the builtin :func:`super` function when making calls to
+  methods in their super-class(es) unless there are specific reasons not to.
+  :func:`super` should be used consistently in all subclasses since it does not
+  work otherwise.  :ref:`super-vs-direct-example` illustrates why this is
+  important.
+
+* Multiple inheritance should be avoided in general without good reason.
+
+* ``__init__.py`` files for modules should not contain any significant
+  implementation code. ``__init__.py`` can contain docstrings and code for
+  organizing the module layout, however (e.g. ``from submodule import *``
+  in accord with the guideline above). If a module is small enough that
+  it fits in one file, it should simply be a single file, rather than a
+  directory with an ``__init__.py`` file.
+
+The python source code should be automatically validated using the pipeline machinery, which uses the ``isort``, ``black``, ``flake8`` and ``pylint`` tools to enforce the above guidelines.
+
+
+C++ Coding Style/Conventions
+============================
+
+The SKAO recommends that new software follow `The C++ Core Guidelines <http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines>`_. However, no automated linting exists.
+
+
+Ansible Coding Style/Conventions
+================================
+
+Ansible playbooks should be automatically validated using the pipeline machinery, which uses the ``yamllint``, ``ansiblelint`` and ``flake8`` tools to enforce default guidelines.
+
+
+Helm Coding Style/Conventions
+=============================
+
+Helm charts should be automatically validated using the pipeline machinery, which uses the ``yamllint`` tool to enforce default guidelines.
+
+
+OCI Coding Style/Conventions
+============================
+
+OCI images should be automatically validated using the pipeline machinery, which uses the ``hadolint`` tool to enforce default guidelines.
+
+
+Terraform Coding Style/Conventions
+==================================
+
+Terraform files should be automatically validated using the pipeline machinery, which uses the ``tflint`` tool to enforce default guidelines.
+
+
+VHDL Coding Style/Conventions
+=============================
+
+The VHDL coding guidelines developed and published by ALSE are excellent, and form the basis of this coding guideline. They are available from their website: 
 
 http://www.alse-fr.com/VHDL-Coding-Guide.html 
 
@@ -99,4 +162,9 @@ An entity with a single clock, should have the input clock ``i_clk``, and with a
     
 **C_6a)** Allow numeric_std version of unsigned and signed types in ports. This increases the information in port description, giving meaning to the bit vector that is not available when declared as a std_logic_vector.
 
-.. ATTIC-END
+.. note::
+
+  Further discussion on firmware development process, continuous integration, automated testing and recommendations for best practices can be found in the following google doc.
+  This document will be gradually implemented and the resulting decision will be included in this developer portal.
+
+  https://docs.google.com/document/d/1Kfc_4vLUy-0pSbi9HVeEkAmhuvEIEnt4voFnXxsc0zM/edit?usp=sharing
