@@ -29,7 +29,7 @@ Setup your Git global configuration
 Set python 3 as the default python version
 ==========================================
 
-Instructions will vary between OSs, but Ubuntu already provides an handy utility package for this purpose:
+Instructions will vary between OSs, but Ubuntu already provides a handy utility package for this purpose:
 
 .. code-block:: bash
 

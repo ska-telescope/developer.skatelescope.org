@@ -11,7 +11,7 @@ You can use either Docker or Podman to run the containers, although the tooling 
 and better tested.
 
 Start by setting up your local environment as described in the
-:doc:`Setup local development environment</getting-started/devenv-setup/local-development>`
+:doc:`Set up local development environment</getting-started/devenv-setup/local-development>`
 documentation. This will set up the local environment with the necessary containerization tools and Visual Studio Code.
 
 .. note::
