@@ -87,7 +87,7 @@ Coding & Testing
   - :doc:`howto: Ansible Linting </howto/ansible-linting>`
   - :doc:`howto: Helm Linting </howto/helm-linting>`
   - :doc:`howto: Notebook Linting </howto/notebook-linting>`
-  - :doc:`howto: Oci Linting </howto/oci-linting>`
+  - :doc:`howto: OCI Linting </howto/oci-linting>`
   - :doc:`howto: Python Linting </howto/python-linting>`
   - :doc:`howto: Terraform Linting </howto/terraform-linting>`
 3. Build Python Wheel
@@ -120,6 +120,7 @@ Continuous Deployment
 
 1. Create/Update My Helm Chart
 2. Integrate with databases
+ - :doc:`tutorial: Database Integration </tutorial/database-integration>`
 3. Integrate with Secrets
 4. Run Integration Tests
 
