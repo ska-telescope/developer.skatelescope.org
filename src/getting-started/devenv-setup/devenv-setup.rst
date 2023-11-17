@@ -4,6 +4,9 @@
 Configuring your development environment
 ****************************************
 
+General purpose development
+===========================
+
 Configuring your development environment depends on the type of development you want to do.
 
 Container based development is the recommended way to develop when possible, but situations might arise where
@@ -11,15 +14,22 @@ you need to develop locally or remotely over an ssh connection to a headless mac
 
 We go through those three scenarios in the following sections and suggest the users to follow them in the order they are presented.
 
-1. :doc:`Setup local development environment</getting-started/devenv-setup/local-development>`
-2. :doc:`Development using containers</getting-started/devenv-setup/container-development/container-development>`
-3. Remote development over ssh
-
 .. toctree::
+   :numbered:
    :maxdepth: 1 
 
    local-development
    container-development/container-development
+
+.. Remote development over ssh
+
+
+Specific use cases
+==================
+
+There is a series of specific use cases that are documented in the following sections:
+
+.. toctree::
+   :maxdepth: 1 
+
    tango-devenv-setup
-   ../deploy-skampi
-   ../integrate-skampi
