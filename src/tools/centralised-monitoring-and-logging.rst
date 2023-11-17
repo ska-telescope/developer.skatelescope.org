@@ -22,7 +22,12 @@ Grafana
 
 To monitor SKA Infrastructure related metrics from, for example, Kubernetes, Gitlab Runners, Elasticstack or Ceph, Grafana dashboards should be used.
 
-The URL to access it is: https://k8s.stfc.skao.int/grafana/
+The URL to access it is: https://monitoring.skao.int
+
+.. DANGER::
+   Metrics are in the process of being migrated to all be collected and accessed at the above location.  
+   Until this is complete, the URL to access STFC metrics is: https://k8s.stfc.skao.int/grafana/
+
 
 To log in choose the "Sign in with Microsoft" option and use the *<jira-username>@ad.skatelescope.org* and *<jira-password>* combination.
 
