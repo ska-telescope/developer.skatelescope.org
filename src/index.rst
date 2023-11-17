@@ -80,16 +80,16 @@ Coding & Testing
 ----------------
 
 1. Write Code
-  - :doc:`howto: Integrate Cicd Make <src/howto/integrate-cicd-make>`
+  - :doc:`howto: Integrate Cicd Make </howto/integrate-cicd-make>`
   -  
 2. Lint Code
   - :doc:`exp: Linting </explanation/linting>` 
-  - :doc:`howto: Ansible Linting <src/howto/ansible-linting>`
-  - :doc:`howto: Helm Linting <src/howto/helm-linting>`
-  - :doc:`howto: Notebook Linting <src/howto/notebook-linting>`
-  - :doc:`howto: Oci Linting <src/howto/oci-linting>`
-  - :doc:`howto: Python Linting <src/howto/python-linting>`
-  - :doc:`howto: Terraform Linting <src/howto/terraform-linting>`
+  - :doc:`howto: Ansible Linting </howto/ansible-linting>`
+  - :doc:`howto: Helm Linting </howto/helm-linting>`
+  - :doc:`howto: Notebook Linting </howto/notebook-linting>`
+  - :doc:`howto: Oci Linting </howto/oci-linting>`
+  - :doc:`howto: Python Linting </howto/python-linting>`
+  - :doc:`howto: Terraform Linting </howto/terraform-linting>`
 3. Build Python Wheel
 4. Get Unit Tests Running Locally
 
@@ -99,20 +99,20 @@ Review
 1. Push Code to Gitlab
 2. Create MR
 3. Code Review
-  - :doc:`howto: Code Review <src/howto/code-review>`
+  - :doc:`howto: Code Review </howto/code-review>`
   -  
 
 Continuous Integration
 ----------------------
 
 1. Write Your Dockerfile
-  - :doc:`exp: Continuous Integration <src/explanation/continuous-integration.rst>`
-  - :doc:`howto: Install Oci Engines <src/howto/install-oci-engines>`
-  - :doc:`exp: Optimize Oci Image Builder <src/explanation/optimize-oci-image-builder.rst>`
-  - :doc:`exp: Containerization <src/explanation/containerization>`
+  - :doc:`exp: Continuous Integration </explanation/continuous-integration>`
+  - :doc:`howto: Install Oci Engines </howto/install-oci-engines>`
+  - :doc:`exp: Optimize Oci Image Builder </explanation/optimize-oci-image-builder>`
+  - :doc:`exp: Containerization </explanation/containerization>`
 2. Build and Run Your Dockerfile
-  - :doc:`exp: Central Artefact Repository <src/explanation/central-artefact-repository.rst>`
-  - :doc:`howto: Docker Vscode <src/howto/docker-vscode>`
+  - :doc:`exp: Central Artefact Repository </explanation/central-artefact-repository>`
+  - :doc:`howto: Docker Vscode </howto/docker-vscode>`
 3. Get Tests Running in Cloud/CICD
 
 Continuous Deployment
@@ -127,10 +127,10 @@ Release
 -------
 
 1. Update CHANGELOG/Documentation
-  1. :doc:`tutorial: Automate Release Process <src/tutorial/release-management/automate-release-process.rst>`
+  1. :doc:`tutorial: Automate Release Process </tutorial/release-management/automate-release-process>`
 2. Update Versions/Release
   1. :doc:`tutorial: Automate Release Process </tutorial/release-management/automate-release-process>`
-  2. :doc:`: Automate Release Process <src/tutorial/release-management/automate-release-process.rst>`
+  2. :doc:`: Automate Release Process </tutorial/release-management/automate-release-process>`
 3. Deploy to PSI/ITF?
 
 .. toctree::
