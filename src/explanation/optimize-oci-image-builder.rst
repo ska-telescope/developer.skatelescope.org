@@ -116,7 +116,7 @@ Best Practices for Building Images
 Pyproject as requirement
 ------------------------
 
-As the default python dependency manager for the project is poetry, this section explains the best way to install the dependencies from it. An example of it shows as follow:
+As the default python dependency manager for the project is poetry, this section explains the best way to install the dependencies from it. An example of it follows:
 
 .. code-block::
 
