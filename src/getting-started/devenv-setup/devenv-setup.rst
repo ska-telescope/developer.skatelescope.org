@@ -9,7 +9,7 @@ Configuring your development environment depends on the type of development you 
 Container based development is the recommended way to develop when possible, but situations might arise where
 you need to develop locally or remotely over an ssh connection to a headless machine.
 
-We go throtugh those three scenarios in the following sections and sugest you to start in the order they are presented.
+We go through those three scenarios in the following sections and suggest the users to follow them in the order they are presented.
 
 1. :doc:`Setup local development environment</getting-started/devenv-setup/local-development>`
 2. :doc:`Development using containers</getting-started/devenv-setup/container-development/container-development>`

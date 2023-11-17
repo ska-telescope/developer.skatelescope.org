@@ -7,7 +7,7 @@ Development using containers
 In order to manage dependencies and versioning inside the project,
 developing using a containerized environment is recommended.
 
-You can use either Docker or Podman to run the containers, altough the tooling for Docker is more mature
+You can use either Docker or Podman to run the containers, although the tooling for Docker is more mature
 and better tested.
 
 Start by setting up your local environment as described in the
