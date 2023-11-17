@@ -5,7 +5,7 @@ Push code and branch
 
 Whe commiting remember to always:
 
-* Prefixed your commit message with the story JIRA ID.
+* Prefix your commit message with the story JIRA ID.
 * This Jira ID, by convention, should be all upper case and followd by "**:**" character
 
 .. code:: bash
