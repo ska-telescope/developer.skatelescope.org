@@ -14,15 +14,8 @@
 Database Integration
 ********************
 
-This section steps through the process of Integrating and Deploying the TangoDB and
-DatabaseDS components both for development and the Production environment.  There are 
-multiple ways in which these components can be deployed driven by the requirements of 
-the target system - development, test, production.
-
-For instance - Developers can automatically deploy a combined TangoDB/DatabaseDS using
-the appropriate ``make`` targets, test environments can be deployed in the same way, or by 
-using ``helm`` to deploy the components independently, and production will be deployed
-using independent components and an HA MariaDB instance.
+This section steps through the process of integrating and deploying the TangoDB and
+DatabaseDS components both for development and the production environment.
 
 
 .. contents:: Table of Contents
