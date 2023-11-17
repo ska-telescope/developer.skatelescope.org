@@ -20,15 +20,15 @@ The SKAO aims to maintain `Nexus repositories <https://artefact.skao.int/#browse
 Additionally, there are also upstream proxy/caching facilities available for:
 
 * Docker (OCI Images - only available inside AWS VPC)
-* Helm - https://artefact.skao.int/repository/helm-proxy/ (from https://charts.helm.sh/stable)
-* PyPi - https://artefact.skao.int/repository/pypi-all/ (from pypi.python.org and include pypi-internal)
-* Conda - https://artefact.skao.int/repository/conda-proxy/ (from https://repo.continuum.io/pkgs/)
-* Conan - https://artefact.skao.int/repository/conan-proxy/ (from https://conan.bintray.com)
-* NPM - https://artefact.skao.int/repository/npm-all/ (from https://registry.npmjs.org and include npm-internal which is not active yet)
-* Maven - https://artefact.skao.int/repository/maven-public/ (from maven-release, maven-snapshots, https://repo1.maven.org/maven2/)
-* Apt - https://artefact.skao.int/repository/ubuntu-archive/, https://artefact.skao.int/repository/ubuntu18.04-proxy/, and https://artefact.skao.int/repository/ubuntu20.04-proxy/
-* Yum - CentOS7 https://artefact.skao.int/repository/yum_centos_7-internal/ (from http://download.fedoraproject.org/pub/epel/7/x86_64 and yum_centos_7-internal), CentOS8 https://artefact.skao.int/repository/yum_centos_8-internal/ (from http://download.fedoraproject.org/pub/epel/8/Everything/x86_64 and yum_centos_8-internal)
-* Go Lang - https://artefact.skao.int/repository/go-proxy/ (from https://golang.org/pkg/)
+* Helm - `helm-proxy repository <https://artefact.skao.int/repository/helm-proxy/>`_ (from https://charts.helm.sh/stable)
+* PyPi - `pypi-all repository <https://artefact.skao.int/repository/pypi-all/>`_ (from pypi.python.org and include pypi-internal)
+* Conda - `conda-proxy repository <https://artefact.skao.int/repository/conda-proxy/>`_ (from https://repo.continuum.io/pkgs/)
+* Conan - `conan-proxy repository <https://artefact.skao.int/repository/conan-proxy/>`_ (from https://conan.bintray.com)
+* NPM - `npm-all repository <https://artefact.skao.int/repository/npm-all/>`_ (from https://registry.npmjs.org and include npm-internal which is not active yet)
+* Maven - `maven-public repository <https://artefact.skao.int/repository/maven-public/>`_ (from maven-release, maven-snapshots, https://repo1.maven.org/maven2/)
+* Apt - `ubuntu-archive repository <https://artefact.skao.int/repository/ubuntu-archive/>`_, `ubuntu18.04-proxy repository <https://artefact.skao.int/repository/ubuntu18.04-proxy/>`_, `ubuntu20.04-proxy repository <https://artefact.skao.int/repository/ubuntu20.04-proxy/>`_ and `ubuntu22.04-proxy repository <https://artefact.skao.int/repository/ubuntu22.04-proxy/>`_ (from http://archive.ubuntu.com/ubuntu/)
+* Yum - `yum_centos_7-internal repository <https://artefact.skao.int/repository/yum_centos_7-internal/>`_ (from http://download.fedoraproject.org/pub/epel/7/x86_64) and `yum_centos_8-internal repository <https://artefact.skao.int/repository/yum_centos_8-internal/>`_ (from http://download.fedoraproject.org/pub/epel/8/Everything/x86_64)
+* Go Lang - `go-proxy repository <https://artefact.skao.int/repository/go-proxy/>`_ (from https://golang.org/pkg/)
 
 
 Finally, there are repositories that utilise the Nexus Raw format to provide library space for the following:
@@ -63,6 +63,42 @@ To be declared as valid, an artefact must be decorated with a set of metadata wh
  * GITLAB_USER_EMAIL
  * GITLAB_USER_LOGIN
  * GITLAB_USER_ID
+
+.. code-block:: yaml
+    :caption: Example from OCI image inspection snippet
+
+        "Labels": {
+                        "CI_COMMIT_AUTHOR": "Ugur Yilmaz <ugur.yilmaz@skao.int>",
+                        "CI_COMMIT_REF_NAME": "0.9.0",
+                        "CI_COMMIT_REF_SLUG": "0-9-0",
+                        "CI_COMMIT_SHA": "9262f0d42fffff549d85a0f93f102bc7ae8f4f6f",
+                        "CI_COMMIT_SHORT_SHA": "9262f0d4",
+                        "CI_COMMIT_TIMESTAMP": "2023-07-26T12:30:15+00:00",
+                        "CI_JOB_ID": "4744388752",
+                        "CI_JOB_URL": "https://gitlab.com/ska-telescope/ska-cicd-k8s-tools/-/jobs/4744388752",
+                        "CI_PIPELINE_ID": "946033414",
+                        "CI_PIPELINE_IID": "531",
+                        "CI_PIPELINE_URL": "https://gitlab.com/ska-telescope/ska-cicd-k8s-tools/-/pipelines/946033414",
+                        "CI_PROJECT_ID": "24071551",
+                        "CI_PROJECT_PATH_SLUG": "ska-telescope-ska-cicd-k8s-tools",
+                        "CI_PROJECT_URL": "https://gitlab.com/ska-telescope/ska-cicd-k8s-tools",
+                        "CI_RUNNER_ID": "25177620",
+                        "CI_RUNNER_REVISION": "85586bd1",
+                        "CI_RUNNER_TAGS": "[\"k8srunner\"]",
+                        "GITLAB_USER_EMAIL": "ugur.yilmaz@skao.int",
+                        "GITLAB_USER_ID": "3049864",
+                        "GITLAB_USER_LOGIN": "limonkufu",
+                        "GITLAB_USER_NAME": "Ugur Yilmaz",
+                        "author": "Matteo Di Carlo <matteo.dicarlo@inaf.it>",
+                        "description": "This image includes tools for the deployment of a chart and the execution of pytest",
+                        "int.skao.application": "SKA Deploy",
+                        "license": "BSD-3-Clause",
+                        "org.opencontainers.image.ref.name": "ubuntu",
+                        "org.opencontainers.image.version": "22.04",
+                        "org.skatelescope.team": "Systems Team",
+                        "org.skatelescope.version": "1.0.0",
+                        "registry": "/ska-cicd-build-deploy"
+                    }
 
 More information can be found in `Predefined variables reference <https://docs.gitlab.com/ee/ci/variables/predefined_variables.html>`_.
 The procedure for including these metadata is documented in **Deploying Artefacts**. 
