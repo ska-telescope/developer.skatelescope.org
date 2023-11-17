@@ -13,7 +13,8 @@ If you're working at the program or solution level, the Solution Engineer or you
 
 If you're joining as a Scrum Master, either the team's existing Scrum Master or the Release Train Engineer will help you.
 
-If you're an external contributor, then please look at the `SKA Code of Conduct <https://www.skatelescope.org/ska-organisation/ska-organisation-code-of-conduct-for-meetings/>`_ and the Contribution Guidelines for the GitLab project you intend to contribute to.
+If you're an external contributor, then please look at the `:ref:`SKA Code Of Conduct <code-of-conduct>`. and the Contribution Guidelines for the GitLab project you intend to contribute to.
+
 
 You may also wish to read through the relevant coding guidelines, testing policy, and some of the information on CI/CD.
 
