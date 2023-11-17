@@ -14,8 +14,8 @@
 Database Integration
 ********************
 
-This section steps through the process of Integrating and Deploying the TangoDB and
-DatabaseDS components both for development and the Production environment.
+This section steps through the process of integrating and deploying the TangoDB and
+DatabaseDS components both for development and the production environment.
 
 
 .. contents:: Table of Contents
