@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 .. _code-of-conduct:
-=======
-.. _onboarding:
->>>>>>> 9fd632a (ST-1757 fix code of conduct link)
 
 SKA Code of Conduct
 -------------------
