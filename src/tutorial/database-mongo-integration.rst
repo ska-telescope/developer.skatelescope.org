@@ -112,6 +112,7 @@ Once the database parameters have been altered to requirements, the MongoDB can
 now be deployed for the MongoDB database.
 
 .. code:: bash
+    
     #/bin/sh
     svcname=mongodb
     namespace=my-$svcname
