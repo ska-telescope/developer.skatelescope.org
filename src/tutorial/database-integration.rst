@@ -59,6 +59,8 @@ substituting for your own values:
 
     $ export TANGO_USER=tango
     $ export TANGO_PASSWORD=tango
+    $ export TANGO_HOST=ska-tango-base-tangodb
+    $ export KUBE_NAMESPACE=ska-tango-db
 
 
 Setup the MariaDB database credentials
@@ -113,7 +115,6 @@ Configure the deployment by creating a ``values.yaml`` file:
     global:
         minikube: true
         exposeDatabaseDS: true
-        exposeDatabaseDS: true
         tango_host: databaseds-tango-base:10000
         cluster_domain: cluster.local
     tangodb:
@@ -128,7 +129,7 @@ for deployment:
 .. code:: bash
 
     $ cd ska-tango-images
-    $ make k8s-install-chart KUBE_NAMESPACE=ska-tango-db \
+    $ make k8s-install-chart KUBE_NAMESPACE=${KUBE_NAMESPACE} \
       RELEASE_NAME=tangodb \
       K8S_CHART_PARAMS=--values values.yaml
     make helm-pre-publish
@@ -167,21 +168,21 @@ with the following:
 .. code:: bash
 
     $ # review the running service for the TangoDB
-    $ kubectl -n ska-tango-db get svc ska-tango-base-tangodb
+    $ kubectl -n ${KUBE_NAMESPACE} get svc ska-tango-base-tangodb
     NAME                     TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
     ska-tango-base-tangodb   NodePort   10.111.159.246   <none>        3306:32552/TCP   34m
     $ # extract the nodePort of the MariaDB
-    $ kubectl -n ska-tango-db get svc ska-tango-base-tangodb -o=jsonpath="{.spec.ports[0].nodePort}"
+    $ kubectl -n ${KUBE_NAMESPACE} get svc ska-tango-base-tangodb -o=jsonpath="{.spec.ports[0].nodePort}"
     32552
     $ # identify the IP address of the node that nodePort MariaDB is on
     $ kubectl config view | grep server | awk '{print $2}' | cut -d ':' -f 2 | sed 's#//##'
     192.168.105.3
     $ # review the running service for the DatabaseDS
-    $ kubectl -n ska-tango-db get svc databaseds-tango-base  
+    $ kubectl -n ${KUBE_NAMESPACE} get svc databaseds-tango-base  
     NAME                    TYPE           CLUSTER-IP       EXTERNAL-IP      PORT(S)           AGE
     databaseds-tango-base   LoadBalancer   10.100.154.253   192.168.105.97   10000:30150/TCP   31m
     $ # extract the external IP and Port
-    $ kubectl -n ska-tango-db get svc databaseds-tango-base -o=jsonpath="{.status.loadBalancer.ingress[0].ip}:{.spec.ports[0].port}"
+    $ kubectl -n ${KUBE_NAMESPACE} get svc databaseds-tango-base -o=jsonpath="{.status.loadBalancer.ingress[0].ip}:{.spec.ports[0].port}"
     192.168.105.97:10000
 
 
@@ -224,7 +225,12 @@ Create a :literal:`values.yaml` and set parameters like so:
         username: $TANGO_USER
         password: $TANGO_PASSWORD
     initdbScriptsConfigMap: tangodb-init-script
+    primary:
+        service:
+            type: LoadBalancer
     EOF
+
+Further details of configuration options are here https://github.com/bitnami/charts/blob/main/bitnami/mariadb/README.md .
 
 
 Deploy MariaDB
@@ -235,18 +241,56 @@ now be deployed for the TangoDB.
 
 .. code:: bash
 
-    namespace=my-mariadb
-    port=63306
     init="https://gitlab.com/ska-telescope/ska-databases-metadata-scripts/-/raw/main/tangodb/tng.sql?ref_type=heads"
     curl $init > tng.sql
-    kubectl create namespace $namespace
-    kubectl create configmap tangodb-init-script --namespace=$namespace --from-file=tng.sql
-    helm install mariadb oci://registry-1.docker.io/bitnamicharts/mariadb --namespace=$namespace \
+    kubectl create namespace ${KUBE_NAMESPACE}
+    kubectl create configmap tangodb-init-script --namespace=${KUBE_NAMESPACE} --from-file=tng.sql
+    helm install mariadb oci://registry-1.docker.io/bitnamicharts/mariadb --namespace=${KUBE_NAMESPACE} \
     --values values.yaml
-    echo "Waiting for mariadb startup"
-    sleep 10
-    echo "Localhost forward on port $port"
-    kubectl port-forward -n $namespace svc/mariadb $port:3306
+
+This has now deployed the TangoDB and the DatabaseDS. You can now find the connection details
+with the following:
+
+.. code:: bash
+
+    $ # review the running service for the TangoDB
+    $ $ kubectl -n ${KUBE_NAMESPACE} get svc mariadb
+    NAME      TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)          AGE
+    mariadb   LoadBalancer   10.107.114.11   192.168.105.97   3306:32765/TCP   7s
+    $ # extract the external IP and Port
+    $ kubectl -n ${KUBE_NAMESPACE} get svc mariadb -o=jsonpath="{.status.loadBalancer.ingress[0].ip}:{.spec.ports[0].port}"
+    192.168.105.97:3306
+
+Now add the expected ``Seervice`` name mapped to MariaDB so that the DatabaseDS
+can find it:
+
+
+.. code:: bash
+
+    $ cat << EOF >mariadb-internal-service.yaml
+    apiVersion: v1
+    kind: Service
+    metadata:
+    labels:
+        app.kubernetes.io/component: primary
+        app.kubernetes.io/instance: mariadb
+        app.kubernetes.io/name: mariadb-internal
+    name: ${TANGO_HOST}
+    spec:
+        type: ClusterIP
+        ports:
+        - name: mysql
+            port: 3306
+            protocol: TCP
+            targetPort: mysql
+        selector:
+            app.kubernetes.io/component: primary
+            app.kubernetes.io/instance: mariadb
+            app.kubernetes.io/name: mariadb
+    EOF
+
+    $ kubectl -n ${KUBE_NAMESPACE} apply -f mariadb-internal-service.yaml
+
 
 
 Configure DatabaseDS parameters (``values.yaml``)
@@ -254,6 +298,25 @@ Configure DatabaseDS parameters (``values.yaml``)
 
 Prior to deploying the DatabaseDS, it maybe necessary to customise the configuration.
 Create a :literal:`values.yaml` and set parameters like so:
+
+.. code:: bash
+
+    $ cd ska-tango-images
+    cat << EOF >values.yaml
+    global:
+        minikube: true
+        exposeDatabaseDS: true
+        exposeAllDS: false
+        tango_host: databaseds-tango-base:10000
+        cluster_domain: cluster.local
+    tangodb:
+        enabled: false
+        db:
+            host: $TANGO_HOST
+            user: $TANGO_USER
+            password: $TANGO_PASSWORD
+    EOF
+
 
 .. code:: bash
 
@@ -269,34 +332,63 @@ Create a :literal:`values.yaml` and set parameters like so:
     EOF
 
 
-
-
 Deploy DatabaseDS
 -----------------
 
-Once the database parameters have been altered to requirements, the MariaDB can 
-now be deployed for the TangoDB.
+
+Once the repository has been cloned (including submodules) as per the instructions 
+from Option 1 above, run the make targets for deployment:
 
 .. code:: bash
 
-    namespace=my-mariadb
-    port=63306
-    init="https://gitlab.com/ska-telescope/ska-databases-metadata-scripts/-/raw/main/tangodb/tng.sql?ref_type=heads"
-    curl $init > tng.sql
-    kubectl create namespace $namespace
-    kubectl create configmap tangodb-init-script --namespace=$namespace --from-file=tng.sql
-    helm install mariadb oci://registry-1.docker.io/bitnamicharts/mariadb --namespace=$namespace \
-    --values values.yaml
-    echo "Waiting for mariadb startup"
-    sleep 10
-    echo "Localhost forward on port $port"
-    kubectl port-forward -n $namespace svc/mariadb $port:3306
+    $ cd ska-tango-images
+    $ make k8s-install-chart KUBE_NAMESPACE=${KUBE_NAMESPACE} \
+      RELEASE_NAME=tangodb \
+      K8S_CHART_PARAMS=--values values.yaml
+    make helm-pre-publish
+    make[1]: Entering directory '/Users/p.harding/git/public/ska-telescope/ska-tango-images'
+    helm-pre-publish: generating charts/ska-tango-base/values.yaml
+    make[1]: Leaving directory '/Users/p.harding/git/public/ska-telescope/ska-tango-images'
+    k8s-pre-install-chart: setting up charts/values.yaml
+    ...
+    Update Complete. ⎈Happy Helming!⎈
+    Saving 2 charts
+    Deleting outdated charts
+    Name:         ska-tango-db
+    Labels:       kubernetes.io/metadata.name=ska-tango-db
+    Annotations:  <none>
+    Status:       Active
+
+    No resource quota.
+
+    No LimitRange resource.
+    install-chart: install ./charts/ska-tango-umbrella/  release: test in Namespace: ska-tango-db with params: --set global.minikube=true  --set global.exposeDatabaseDS=true  --set global.exposeAllDS=true  --set global.tango_host=databaseds-tango-base:10000 --set global.device_server_port=45450 --set global.cluster_domain=cluster.local
+    helm upgrade --install test \
+    --set global.minikube=true  --set global.exposeDatabaseDS=true  --set global.exposeAllDS=true  --set global.tango_host=databaseds-tango-base:10000 --set global.device_server_port=45450 --set global.cluster_domain=cluster.local \
+    ./charts/ska-tango-umbrella/  --namespace ska-tango-db
+    Release "test" has been upgraded. Happy Helming!
+    NAME: test
+    LAST DEPLOYED: Fri Nov 17 10:01:05 2023
+    NAMESPACE: ska-tango-db
+    STATUS: deployed
+    REVISION: 3
+    TEST SUITE: None
 
 
+This has now deployed the DatabaseDS. You can now find the connection details
+with the following:
 
-Extract connection details (DB connection and TANGO_HOST)
----------------------------------------------------------
+.. code:: bash
+
+    $ # review the running service for the DatabaseDS
+    $ kubectl -n ${KUBE_NAMESPACE} get svc databaseds-tango-base  
+    NAME                    TYPE           CLUSTER-IP       EXTERNAL-IP      PORT(S)           AGE
+    databaseds-tango-base   LoadBalancer   10.100.154.253   192.168.105.97   10000:30150/TCP   31m
+    $ # extract the external IP and Port
+    $ kubectl -n ${KUBE_NAMESPACE} get svc databaseds-tango-base -o=jsonpath="{.status.loadBalancer.ingress[0].ip}:{.spec.ports[0].port}"
+    192.168.105.97:10000
 
 
+This concludes the tutorial for deploying the TangoDB and DatabaseDS.
 
 
