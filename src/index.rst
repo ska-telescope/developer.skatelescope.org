@@ -81,7 +81,7 @@ Coding & Testing
 
 1. Write Code
 2. Lint Code
-  1. ::doc:`/explanation/linting` 
+  1. ::doc:`Exp Linting </explanation/linting>` 
 3. Build Python Wheel
 4. Get Unit Tests Running Locally
 
@@ -111,9 +111,9 @@ Release
 -------
 
 1. Update CHANGELOG/Documentation
-  1. :doc:`Automate Release Process </tutorial/release-management/automate-release-process>`
+  1. :doc:`tutorial: Automate Release Process </tutorial/release-management/automate-release-process>`
 2. Update Versions/Release
-  1. :doc:`Automate Release Process </tutorial/release-management/automate-release-process>`
+  1. :doc:`tutorial: Automate Release Process </tutorial/release-management/automate-release-process>`
 3. Deploy to PSI/ITF?
 
 .. toctree::
