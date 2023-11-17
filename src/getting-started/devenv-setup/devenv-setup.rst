@@ -20,16 +20,7 @@ We go through those three scenarios in the following sections and suggest the us
 
    local-development
    container-development/container-development
-
-.. Remote development over ssh
-
-
-Specific use cases
-==================
-
-There is a series of specific use cases that are documented in the following sections:
-
-.. toctree::
-   :maxdepth: 1 
-
    tango-devenv-setup
+   .. devenv-setup/pycharm/pycharm
+   .. deploy-skampi
+   .. integrate-skampi
