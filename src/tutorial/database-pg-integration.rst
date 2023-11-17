@@ -51,9 +51,7 @@ Setup the PostgreSQL credentials
 --------------------------------
 
 Option 1:
-The PostgreSQL credentials are required for the connection between the database and the
-Database backend.  typically, the developer would just rely on the defaults which are 
-automatically set - these are username: ``postgres`` password: ``postgres``
+The PostgreSQL credentials are required for the connection between the database and the Database backend. Typically the developer would just rely on the defaults which are automatically set(username: ``postgres``, password: ``postgres``).
 
 Option 2:
 To override the default credentials, define the following environment variables: ``POSTGRES_USER`` / ``POSTGRES_PASSWORD`` / ``POSTGRES_DB``. 
