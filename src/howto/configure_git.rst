@@ -1,5 +1,7 @@
-Configure Git
-=============
+.. _configure-git:
+
+Git Configuration
+=================
 
 Set Git institutional email address
 +++++++++++++++++++++++++++++++++++
