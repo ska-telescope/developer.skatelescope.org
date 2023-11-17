@@ -20,7 +20,6 @@ We go through those three scenarios in the following sections and suggest the us
 
    local-development
    container-development/container-development
-   .. devenv-setup/tango-devenv-setup
-   .. devenv-setup/pycharm/pycharm
-   .. deploy-skampi
-   .. integrate-skampi
+   tango-devenv-setup
+   ../deploy-skampi
+   ../integrate-skampi
