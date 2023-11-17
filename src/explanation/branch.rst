@@ -4,44 +4,48 @@ Branching policy
 The preference within the SKA is that a `feature branch workflow <https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow>`_ be adopted, however it is recognised that there are multiple workflows in use, and team requirements and composition vary.
 Regardless of the adopted workflow employed, two concepts are important to the SKA way of using Git:
 
-  1. The master branch of a repository shall always be stable, and tested.
-  2. Branches shall be short lived, merging into master as often as possible.
+  1. The main branch of a repository shall always be stable, and tested.
+  2. Branches shall be short lived, merging into main as often as possible.
+  3. All commits messages must be prefixed with the story Jira Id.
 
-Stable means that the master branch shall always compile and build correctly,
-and executing automated tests with success. Every time a master branch results
+Stable means that the main branch shall always compile and build correctly,
+and executing automated tests with success. Every time a main branch results
 in a condition of instability, reverting to a condition of stability shall have
 the precedence over any other activity on the repository.
 
 The following sections discuss the two of the most common workflows:
 
-* Master or trunk based development
+* Trunk-based development
 * Feature based branching
 
-.. _master-based-development:
+.. _trunk-based-development:
 
-Master based development
+Trunk-based development
 ++++++++++++++++++++++++
 
-Teams may adopt a particular Git workflow designated as Master based development approach,
-where each developer commits code into the master branch on a
+This core “trunk” branch in SKA repositories used to be named **baster**, in older repositories, but now is named **main** branch by default.
+
+Trunk-based development is a version control management practice where developers merge small, frequent updates to a core “trunk” or main branch.
+Teams may adopt a particular Git workflow designated as Trunk-based development approach,
+where each developer commits code into the main branch on a
 daily basis. While this practice may seem counter intuitive, there is good evidence
 in literature that it leads to a better performing system. Branches are
 reduced to a minimum in this model, and the discipline of daily commits into
-master greatly enhances the communication within the team and the modularity
+main greatly enhances the communication within the team and the modularity
 of the software system under construction. The workflow follows these steps:
 
   * As a developer starts working on a story, all their commits related to the story shall contain the story Jira ID in the message. i.e. *AT-51 method stubs*
-  * The developer continues working on their local master branch with multiple commits on the same story.
-  * Each day the local master pulls the remote and incorporates changes from others.
-  * The local master is tested successfully.
-  * The local commits are pushed onto the remote master.
-  * The CI pipeline is correctly executed on the remote master by the CI server.
+  * The developer continues working on their local main branch with multiple commits on the same story.
+  * Each day the local main pulls the remote and incorporates changes from others.
+  * The local main is tested successfully.
+  * The local commits are pushed onto the remote main.
+  * The CI pipeline is correctly executed on the remote main by the CI server.
 
 Implemented correctly, this practice leads to having an integrated, tested,
 working system at the end of each  development interval, that can be shipped
-directly from the master branch.
+directly from the main branch.
 
-However, this workflow relies on great discipline, and tends to suit small teams with a highly controlled work funnel that ensures work can be completed and tested on a daily iteration, with well defined and highly independent work packages.  There is no buffer against integration failures, so the discipline must extend to dropping all other tasks until the master branch is stable again should there be issues, which will have associated productivity costs against the entire team.
+However, this workflow relies on great discipline, and tends to suit small teams with a highly controlled work funnel that ensures work can be completed and tested on a daily iteration, with well defined and highly independent work packages.  There is no buffer against integration failures, so the discipline must extend to dropping all other tasks until the main branch is stable again should there be issues, which will have associated productivity costs against the entire team.
 
 Feature based branching
 +++++++++++++++++++++++
@@ -55,7 +59,7 @@ Bearing in mind that a *story* by definition is a
 piece of work a developer should conclude in the time of a sprint, the workflow
 should follow these steps:
 
-* As a developer starts working from master on a new story, they create a new branch.
+* As a developer starts working from main on a new story, they create a new branch.
 * The new branch shall be named after the story, i.e. *at1-26-the-new-widget*.  Note: branch names are by convention all lower case.
 
 .. code:: bash
@@ -63,10 +67,10 @@ should follow these steps:
   $ git clone git@gitlab.com:ska-telescope/ska-skampi.git
   $ cd ska-skampi
   $ git branch
-  * master
+  * main
   $ git checkout -b at1-26-the-new-widget
   $ git branch
-  master
+  main
   * at1-26-the-new-widget
 
 * All the commit messages contributing to the development of the story begin with the story ID, i.e. *AT1-26 - basic testing*.
@@ -91,17 +95,17 @@ should follow these steps:
   Branch 'at1-26-the-new-widget' set up to track remote branch 'at1-26-the-new-widget' from 'origin'.
 
 * The branch CI pipeline is automatically triggered.
-* A Merge Request is created on GitLab to merge the story branch into the master branch.  The above commit reponse shows a conveniently supplied URL to start this process.
+* A Merge Request is created on GitLab to merge the story branch into the main branch.  The above commit reponse shows a conveniently supplied URL to start this process.
 * Reviewers interact with comments on the Merge Request until all conflicts are resolved and reviewers accept the Merge Request.
-* The Merge Request is merged into Master.
-* The CI pipeline is executed successfully on the master branch by the CI server.
+* The Merge Request is merged into Main.
+* The CI pipeline is executed successfully on the main branch by the CI server.
 
 There are some considerations with Feature Branching:
 
 * continually branching and merging is an overhead for small teams and very short work packages where there is a high prevalence of one-commit to one-merge-request
 * branching requires discipline in that they should be short lived and developers need to remember to delete them after use
 * stale and orphaned branches can pollute the repository
-* developers must resolve merge conflicts with master before pushing changes, so there can be a race to merge to avoid these issues
+* developers must resolve merge conflicts with main before pushing changes, so there can be a race to merge to avoid these issues
 
 
 Alternate Strategy

@@ -9,13 +9,13 @@ Rememeber that all commits must have the story Jira Id prefixed in the git commi
   git commit -m "abc-123-add-awesome-code"
 
 When you are ready, you can **push** your code to the remote repository in gitlab.
-It's good policy to only push when you code passes all the tests (if that's the case).
+If your team is using a main-branch-policy its a good practice to only push your code when it passes all the tests (if that's the case).
 
 .. code:: bash
 
   git push
 
-If the branch as not been previously pushed to gitalb a message will apear in the command output
+If the branch has not been previously pushed to gitlab a message will appear in the command output
 that will provide the command to do this.
 
 .. code:: bash
