@@ -70,7 +70,7 @@ connection with the DatabaseDS.
 
 Option 3: Production enviroment credentials
 Establish the associated secrets in Hashicorp Vault so that the secrets are picked up
- by the following steps to seed the TangoDB and configure the connection with the DatabaseDS.
+by the following steps to seed the TangoDB and configure the connection with the DatabaseDS.
 
 Prepare your enviroment
 =======================
@@ -82,7 +82,7 @@ Prepare for the deployment of components by exporting the following environment 
 
     $ export TANGO_USER=tango
     $ export TANGO_PASSWORD=tango
-    $ export TANGO_HOST=ska-tango-base-tangodb
+    $ export TANGO_DB_HOST=ska-tango-base-tangodb
     $ export KUBE_NAMESPACE=ska-tango-db
 
 
@@ -265,7 +265,7 @@ now be deployed for the TangoDB.
     CHART VERSION: 14.1.2
     APP VERSION: 11.1.3
 
-This has now deployed the TangoDB and the DatabaseDS. You can now find the connection details
+This has now deployed the TangoDB. You can now find the connection details
 with the following:
 
 .. code:: bash
@@ -298,7 +298,7 @@ can find it:
         app.kubernetes.io/component: primary
         app.kubernetes.io/instance: mariadb
         app.kubernetes.io/name: mariadb-internal
-    name: ${TANGO_HOST}
+    name: ${TANGO_DB_HOST}
     spec:
         type: ClusterIP
         ports:
@@ -339,7 +339,7 @@ from Option 1 above, create a :literal:`values.yaml` and set parameters like so:
     tangodb:
         enabled: false
         db:
-            host: $TANGO_HOST
+            host: $TANGO_DB_HOST
             user: $TANGO_USER
             password: $TANGO_PASSWORD
     EOF
