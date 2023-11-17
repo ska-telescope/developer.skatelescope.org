@@ -631,7 +631,7 @@ shall include:
 
              a. Binary artefacts such as container images and
                 **software** packages are generated in a way that is
-                automated, traceable, and reproducible. See :doc:`/tools/software-package-release-procedure` in [RD6] for details.
+                automated, traceable, and reproducible. See :doc:`/tutorial/release-management/automate-release-process` in [RD6] for details.
 
              b. Binary artefacts are made available during the
                 development activity at relevant stages for integration
