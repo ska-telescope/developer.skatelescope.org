@@ -18,6 +18,121 @@ SKA telescope developer portal
 .. danger:: 
    Developer Portal is under maintenance right now so you might see pages that are not ordered or structured correctly if you are seeing this warning.
 
+
+Here is the journey SKA Developers take to turn ideas into deployed code. Some of these tasks will be done every day; others less frequently. Feel free to click on each item to navigate to relevant explanations, tutorials, how-to guides or reference documentation.
+
+.. mermaid:: 
+
+  flowchart TD
+    subgraph Getting Started
+        A[Develop Inside a Container] --> C[Setup PyTango]
+        B[Develop Locally] --> C
+        C --> D[Set up Environment: Clone the Repo]
+        C --> E[Set up Environment: Create the Repo]
+        E --> F[Create the Work Branch]
+        D --> F
+    end
+    subgraph Coding & Testing
+        F --> F1[Write Code]
+        F1 --> G[Lint Code]
+        G --> H[Build Python Wheel]
+        H --> S[Get Unit Tests Running Locally]
+        S --> F1
+    end
+    subgraph Review
+        S --> U[Push Code to Gitlab]
+        U --> V[Create MR]
+        V --> W[Code Review]
+        W --> F1
+    end
+    subgraph Continuous Integration
+        S --> I[Write Your Dockerfile]
+        I --> J[Build and Run Your Dockerfile]
+        J --> K[Get Tests Running in Cloud/CICD]
+    end
+    subgraph Continuous Deployment
+        K --> L[Create/Update My Helm Chart]
+        L --> M[Integrate with DBs]
+        L --> N[Integrate with Secrets]
+        M --> O[Run Integration Tests]
+        O --> L
+        N --> O
+    end
+    subgraph Release
+        O --> P[Update CHANGELOG/Documentation]
+        P --> Q[Update Versions/Release]
+        Q --> R[Deploy to PSI/ITF?]
+    end
+
+Getting Started
+---------------
+
+1. Develop Inside a Container
+  1. Setup PyTango
+  2. Set up Environment: Clone the Repo
+  3. Create the Work Branch
+2. Develop Locally
+  1. Setup PyTango
+  2. Set up Environment: Clone the Repo
+  3. Create the Work Branch
+
+Coding & Testing
+----------------
+
+1. Write Code
+  - :doc:`howto: Integrate Cicd Make <src/howto/integrate-cicd-make>`
+  -  
+2. Lint Code
+  - :doc:`exp: Linting </explanation/linting>` 
+  - :doc:`howto: Ansible Linting <src/howto/ansible-linting>`
+  - :doc:`howto: Helm Linting <src/howto/helm-linting>`
+  - :doc:`howto: Notebook Linting <src/howto/notebook-linting>`
+  - :doc:`howto: Oci Linting <src/howto/oci-linting>`
+  - :doc:`howto: Python Linting <src/howto/python-linting>`
+  - :doc:`howto: Terraform Linting <src/howto/terraform-linting>`
+3. Build Python Wheel
+4. Get Unit Tests Running Locally
+
+Review
+------
+
+1. Push Code to Gitlab
+2. Create MR
+3. Code Review
+  - :doc:`howto: Code Review <src/howto/code-review>`
+  -  
+
+Continuous Integration
+----------------------
+
+1. Write Your Dockerfile
+  - :doc:`exp: Continuous Integration <src/explanation/continuous-integration.rst>`
+  - :doc:`howto: Install Oci Engines <src/howto/install-oci-engines>`
+  - :doc:`exp: Optimize Oci Image Builder <src/explanation/optimize-oci-image-builder.rst>`
+  - :doc:`exp: Containerization <src/explanation/containerization>`
+2. Build and Run Your Dockerfile
+  - :doc:`exp: Central Artefact Repository <src/explanation/central-artefact-repository.rst>`
+  - :doc:`howto: Docker Vscode <src/howto/docker-vscode>`
+3. Get Tests Running in Cloud/CICD
+
+Continuous Deployment
+---------------------
+
+1. Create/Update My Helm Chart
+2. Integrate with databases
+3. Integrate with Secrets
+4. Run Integration Tests
+
+Release
+-------
+
+1. Update CHANGELOG/Documentation
+  1. :doc:`tutorial: Automate Release Process <src/tutorial/release-management/automate-release-process.rst>`
+2. Update Versions/Release
+  1. :doc:`tutorial: Automate Release Process </tutorial/release-management/automate-release-process>`
+  2. :doc:`: Automate Release Process <src/tutorial/release-management/automate-release-process.rst>`
+3. Deploy to PSI/ITF?
+
 .. toctree::
   :maxdepth: 1
   :caption: Tutorials
