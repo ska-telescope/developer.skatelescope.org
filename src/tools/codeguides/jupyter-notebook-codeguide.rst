@@ -56,7 +56,7 @@ To test notebooks, run:
 
     make notebook-test
 
-This target uses Pytest and nbmake, which is a Pytest plugin. It verifies Jupyter notebooks can execute fully without error, the target execution fails if an error occurs. By default, all notebooks inside the repository will be tested.
+This target uses Pytest and nbmake, which is a Pytest plugin. It verifies Jupyter notebooks can execute fully without error and the target execution fails if an error occurs. By default, all notebooks inside the repository will be tested.
 
 CICD Template
 #############
