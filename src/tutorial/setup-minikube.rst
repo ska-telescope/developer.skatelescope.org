@@ -6,7 +6,7 @@ Setup Minikube for local development
 
 We have created a `Minikube setup <https://gitlab.com/ska-telescope/sdi/ska-cicd-deploy-minikube>`_ with useful addons to power local development on Kubernetes. These addons include:
 
-- **Developer Tools**: Common developer tools like **kubectl**, **k9s** or **helm**
+- **Developer Tools**: Common developer tools like **kubectl**, **k9s** and **helm**
 - **Ingress/Load Balancer**: Load Balancer that exposes both HTTP (port 80) and HTTPS (port 443) ports on your host machine. This is helpful if you want to expose your cluster ingresses to the outside world
 - **OCI Registry**: OCI Registry making to allow locally-built images to be used within the Minikube cluster
 - **Metallb**: Allows to expose on a specific IP each of the Kubernetes **services** of type **LoadBalancer** by deploying `Metallb <https://metallb.universe.tf/>`_
@@ -19,7 +19,7 @@ These addons are packaged to try and mimic the setup and tools available in the 
 Prerequisites
 -------------
 
-Hop into :doc:`/howto/install-oci-engines` to install one of the suggested engines before setting up the Minikube cluster. If you do not install the suggested OCI engine, you need to make changes in the Minikube setup below.
+Head over to :doc:`/howto/install-oci-engines` where we show how to install one of the suggested engines before setting up the Minikube cluster. If you do not install the suggested OCI engine, you need to make changes in the Minikube setup below.
 
 Getting started
 ---------------
@@ -101,7 +101,7 @@ To expose the service FQDNs that are Kubernetes services of type **LoadBalancer*
 Exposing Minikube to the outside world
 --------------------------------------
 
-To share an application with people and machines outside of your local network, there are applications that we can use to expose a local server. Most commonly used, we have `Ngrok <https://ngrok.com/>`_ or `Localtunnel <https://theboroer.github.io/localtunnel-www//>`_. Lets `setup Ngrok <https://ngrok.com/docs/getting-started/>`_ that first requires a free account. Afterwards, we can:
+To share an application with people and machines outside of your local network, there are applications that we can use to expose a local server. Most commonly used, we have `Ngrok <https://ngrok.com/>`_ or `Localtunnel <https://theboroer.github.io/localtunnel-www//>`_. Let's `set up Ngrok <https://ngrok.com/docs/getting-started/>`_ that first requires a free account. Afterwards, we can:
 
    .. code-block:: bash
 
