@@ -179,7 +179,7 @@ following definitions, mostly derived from :ref:`ISTQB Glossary <ref-istqb-gloss
 Testing levels refer to the granularity of the system-under-test (SUT):
 
 **Unit testing**
-   The testing of individual software units (individual or clusters of functions, classes, methods, modules) that can be tested in isolation. In a stricter sense it means testing methods or functions in such a way that the filesystem, the network, the database are not involved. Usually these tests are fast (i.e. an execution of an entire test set provides feedback to the programmer in a matter of seconds; each test case runs for a few  milliseconds). Normally the unit under test is run in an environment that is totally under control of the developer.
+   The testing of individual software units (individual or clusters of functions, classes, methods, modules) that can be tested in isolation. In a stricter sense it means testing methods or functions in such a way that the filesystem, the network, the database are not involved. Usually these tests are fast (i.e. an execution of an entire test set provides feedback to the programmer in a matter of seconds; each test case runs for a few  milliseconds). Normally the unit under test is run in an environment that is totally under control of the developer. For SKA this means and unit tests must always run locally (and pass). 
 
 **Component testing**
    Component testing aims at exposing defects of a particular component when run in an environment where other components or services are available, either production ones or test doubles. 

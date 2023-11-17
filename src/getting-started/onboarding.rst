@@ -1,4 +1,4 @@
-.. _getting_started:
+.. _onboarding:
 
 **************************************************
 Onboarding: Welcome to the SKA developer community
@@ -13,7 +13,8 @@ If you're working at the program or solution level, the Solution Engineer or you
 
 If you're joining as a Scrum Master, either the team's existing Scrum Master or the Release Train Engineer will help you.
 
-If you're an external contributor, then please look at the `SKA Code of Conduct <https://www.skatelescope.org/ska-organisation/ska-organisation-code-of-conduct-for-meetings/>`_ and the Contribution Guidelines for the GitLab project you intend to contribute to.
+If you're an external contributor, then please look at the `:ref:`SKA Code Of Conduct <code-of-conduct>`. and the Contribution Guidelines for the GitLab project you intend to contribute to.
+
 
 You may also wish to read through the relevant coding guidelines, testing policy, and some of the information on CI/CD.
 
@@ -53,7 +54,7 @@ This section is designed to get you up and running, with all the accounts you'll
   * `GitLab <https://gitlab.com/>`_ (If you're not going to be contributing code or documentation, this step may be omitted or postponed.) Please make sure your institutional email address is associated with your GitLab ID if you've already got a GitLab account. See :ref:`git-use-institutional-email` for instructions on how to do this.
 
 Please be aware of the `Team Member Registration Confluence page <https://confluence.skatelescope.org/display/SE/Team+Member+Registration>`_, where the processes for requesting access to these tools is outlined. 
-There is also very informative `Guidance <https://confluence.skatelescope.org/display/SKAIT/Guidance>`_ page created by the SKAO IT team that you might want to consult, especially if you work at HQ.
+There is also very informative `Guidance <https://confluence.skatelescope.org/display/SIG/SKAO+IT+Guidance>`_ page created by the SKAO IT team that you might want to consult, especially if you work at HQ.
 
 Now you've got some accounts, you should log in to:
 
@@ -118,7 +119,7 @@ Information about the SKA
   * We also expect you to sign your commits. GitLab provides instructions on `how to create a GPG key and use it to sign your commits <https://docs.gitlab.com/ee/user/project/repository/gpg_signed_commits/>`_.
     If you already have a GPG key, the same page tells you how to associate it with your GitLab account.
 
-* Finally, there's a `Glossary <https://confluence.skatelescope.org/display/GLOS/Glossary>`_. This lists many of the terms and acronyms in use in SKA. Also, don't be afraid to ask your team on Slack, or ask questions in meetings if you don't understand.
+* Finally, there's a `Glossary <https://confluence.skatelescope.org/terms/all>`_. This lists many of the terms and acronyms in use in SKA. Also, don't be afraid to ask your team on Slack, or ask questions in meetings if you don't understand.
 
 Information about People
 ************************
@@ -138,7 +139,7 @@ Your Scrum Master should give you links to:
 
 * Your team's Google Drive space
 * Your team's Confluence area. Each team has a space in Confluence. All of the teams are listed in the `Software Teams and Organisation <https://confluence.skatelescope.org/display/SE/Software+Teams+and+Organisation>`_ pages.
-* Key SKA `Confluence Calendars <https://confluence.skatelescope.org/calendar/mycalendar.action>`_ and `instructions on how to copy them to your own calendar <https://confluence.skatelescope.org/display/SC/SKA+Calendar+Home>`_.
+* Key SKA `Confluence Calendars <https://confluence.skatelescope.org/calendar/mycalendar.action>`_ and `instructions on how to copy them to your own calendar <https://confluence.skatelescope.org/display/SC/SKAO+Calendar+Home>`_.
 * The main Slack channels in use. You should join your team's slack channel. We also suggest that you join some of the help channels (they all start #help-) , #announcements, #system-demos-buzz and #rand-chats. You may find other channels to join later on!
 
 If you are not employed by the SKA Organisation, you'll probably want to set up a Zoom account.
@@ -150,7 +151,7 @@ The SKA IT team should be able to assist.
 
 We also recommend that you set up a Miro account. You can use it as a guest for many applications, but it's sometimes useful to sign up with your institutional email address.
 If you are a new Scrum Master or Product Owner, you will definitely need a Miro account!
-You can familiarise yourself with Miro by playing in `this sandbox <https://miro.com/app/board/o9J_kvL9C7w=/>`_.
+You can familiarise yourself with Miro by playing in `this sandbox <https://miro.com/app/board/o9J_ksVmjXM=/>`_.
 
 Training
 ********
@@ -160,7 +161,7 @@ As a rough guide, you should be comfortable editing and creating new Confluence 
 If you're not, then spend some time with the documentation.
 SKA Confluence has a dedicated `Demonstration space <https://confluence.skatelescope.org/display/TS/Demonstration+space>`_ for you to test things out.
 
-If you've already used JIRA or Confluence before, we recommend reading the `JIRA and Confluence Usage Guidelines <https://confluence.skatelescope.org/display/SE/Jira+and+Confluence+Usage+Guidelines>`_ to find out how we're using them specifically in the SKA.
+If you've already used JIRA or Confluence before, we recommend reading the `JIRA Usage Guidelines <ttps://confluence.skatelescope.org/display/SE/Jira+Usage+Guidelines>`_ to find out how we're using them specifically in the SKA.
 It's also worth talking to your Scrum Master to find out how your team is using JIRA and Confluence.
 In general, developers are empowered to raise issues, but there is then a process to prioritise that activity, so that we're working on the most critical issues first.
 But that's just common sense.
@@ -182,8 +183,12 @@ Understanding more about the SKA
 
 * Find out about your ART (Agile Release Train). An overview of the `structure <https://confluence.skatelescope.org/display/SE/Software+Teams+and+Organisation>`_ will give a general picture. Then you should look at one or other of
 
+ 
+  * the `Mid Integration ART <https://confluence.skatelescope.org/display/SE/MID+Integration+Train>`_
+  * the `Low Integration ART <https://confluence.skatelescope.org/display/SE/LOW+Integration+Train>`_
   * the `DP ART <https://confluence.skatelescope.org/x/CXx0B>`_
-  * the `OMC ART <https://confluence.skatelescope.org/x/nH10B>`_.
+  * the `OMC ART <https://confluence.skatelescope.org/display/SE/Observation+Management+and+Controls+Agile+Release+Train>`_.
+  * the `Services ART <https://confluence.skatelescope.org/display/SE/Services+Agile+Release+Train>`_ 
   * Have a look at the pages on `Program Increments and PI Planning <https://confluence.skatelescope.org/display/SE/Program+Increments+and+PI+Planning>`_; they will tell you about the regular planning and evaluation cycles of the SKA.
   * And look at the `operational flow <https://confluence.skatelescope.org/display/SE/Observation+Management+and+Controls+Agile+Release+Train?preview=/74743196/74743245/OperationalFlow-v2.pdf>`_. The goal here is to find out where your team fits in the organisation, but with a bit more detail than we had time for in week one.
 
