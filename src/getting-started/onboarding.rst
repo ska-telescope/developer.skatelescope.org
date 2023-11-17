@@ -183,8 +183,10 @@ Understanding more about the SKA
 
 * Find out about your ART (Agile Release Train). An overview of the `structure <https://confluence.skatelescope.org/display/SE/Software+Teams+and+Organisation>`_ will give a general picture. Then you should look at one or other of
 
+ 
   * the `Mid Integration ART <https://confluence.skatelescope.org/display/SE/MID+Integration+Train>`_
   * the `Low Integration ART <https://confluence.skatelescope.org/display/SE/LOW+Integration+Train>`_
+  * the `DP ART <https://confluence.skatelescope.org/x/CXx0B>`_
   * the `OMC ART <https://confluence.skatelescope.org/display/SE/Observation+Management+and+Controls+Agile+Release+Train>`_.
   * the `Services ART <https://confluence.skatelescope.org/display/SE/Services+Agile+Release+Train>`_ 
   * Have a look at the pages on `Program Increments and PI Planning <https://confluence.skatelescope.org/display/SE/Program+Increments+and+PI+Planning>`_; they will tell you about the regular planning and evaluation cycles of the SKA.
