@@ -6,12 +6,12 @@ Containerization has revolutionized how applications are deployed and managed, m
 What is Containerization?
 -------------------------
 
-Containerization is a **lightweight** form of virtualization that involves encapsulating an application and its dependencies into a running **container**. Unlike VMs that require a full-blown operating system, containers **share** the host system's kernel, making them more efficient, portable, and resource-friendly. Dependencies, configurations and resources can be packaged in a distributable resource - an image. This image can be executed on any compatible host system, ensuring that the application runs **consistently** regardless of where it is deployed. 
+Containerization is a **lightweight** alternative for virtualization that involves encapsulating an application and its dependencies into a running **container**. Unlike VMs that require a full-blown operating system, containers **share** a host system's kernel and by this allow it to allocate resources more efficiently. Containers are usually portable and resource-friendly. Dependencies, configurations and resources are packaged in a distributable resource - an image. This image can be executed on any compatible host system, sometimes even on different system architectures (an x86_64 image running on an aarm64 system) ensuring that the application runs **consistently** regardless of where it is deployed. 
 
 Why Use Containerization Over Virtual Machines?
 -----------------------------------------------
 
-**Efficiency**: Requires less system resources than VMs as they don’t include operating system images.
+**Efficiency**: Requires less system resources than VMs as it does not include the operating system itself.
 
 **Speed**: Start up quickly as no OS boot is needed.
 
@@ -49,7 +49,7 @@ An OCI (Open Container Initiative) engine refers to a software component that ca
 Docker
 ~~~~~~
 
-Docker is a platform that revolutionized software containerization, making it simpler to create, deploy, and run applications by using containers. It is still the most used containerization engine, much because it brings a lot more that the engine itself.
+Docker is a platform that revolutionized software containerization, making it simpler to create, deploy, and run applications by using containers. It is still the most used containerization engine, because the Docker ecosystem consist of more than just the engine itself.
 
 - **Docker Hub**: A cloud-based registry service for sharing and managing container images. Look into :doc:`explanation/oci-registries` to know more about registries.
 - **Docker Compose**: A `tool <https://docs.docker.com/compose/>`_ for defining and running multi-container Docker applications, including network and storage. 
