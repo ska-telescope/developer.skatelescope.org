@@ -21,27 +21,27 @@ For intermediate artefacts, it is recommended that the built in `packages <https
     :local:
 
 
-
+.. ATTIC-BEGIN
 Central Artefact Repository
 ===========================
 
-The Central Artefact Repository provides the storage and library management facilities for artefacts throughout the Software Development Life Cycle.  Being central to the SDLC means that it is highly desirable that the Repository is stable, long lived, and can evolve with the SKAO requirements through the different stages of DevSecOps maturity, and the life time of the project.
+The Central Artefact Repository provides the storage and library management facilities for artefacts throughout the Software Development Life Cycle.  Being central to the SDLC means that it is highly desirable that the Repository is stable, long lived, and can evolve with the SKAO requirements through the different stages of DevSecOps maturity, and the life time of the project.
 
-An Artefact Repository is essentially a content management system for software artefacts delivered in their published form.  The Artefact Repository makes it possible to publish and retrieve the artefacts using the native tools, processes and protocols commonly associated with the related programming language and/or language based framework.  The Artefacts are versioned, and decorated with extensible metadata that is used to help manage the life cycle of the Artefacts.  The Central Artefact Repository provides APIs and reporting interfaces to provide integration into extended DevSecOps processes such as CI/CD, BoM and dependency management, license management, provenance, vulnerability scanning and release management.   It also provides controlled access to Artefacts through IAM, and offers notary features for provenance through TLS/SSL and signatures.
+An Artefact Repository is essentially a content management system for software artefacts delivered in their published form.  The Artefact Repository makes it possible to publish and retrieve the artefacts using the native tools, processes and protocols commonly associated with the related programming language and/or language based framework.  The Artefacts are versioned, and decorated with extensible metadata that is used to help manage the life cycle of the Artefacts.  The Central Artefact Repository provides APIs and reporting interfaces to provide integration into extended DevSecOps processes such as CI/CD, BoM and dependency management, license management, provenance, vulnerability scanning and release management. It also provides controlled access to Artefacts through IAM, and offers notary features for provenance through TLS/SSL and signatures.
 
-The purpose of the Central Artefact Repository within the context of the SKAO, is to provide a controlled single source of truth for all artefacts that enter the software delivery and verification processes through to the curation and maintenance of approved software artefacts available for production deployment and historical reference for the life time of the Observatory.  This means that the Central Artefact Repository not only holds the canonical reference versions of all artefacts within the SKAO landscape, but it also holds the stateful context of these artefacts as they progress through their continuous life-cycle from development to production deployment, to decommissioning.  
+The purpose of the Central Artefact Repository within the context of the SKAO, is to provide a controlled single source of truth for all artefacts that enter the software delivery and verification processes through to the curation and maintenance of approved software artefacts available for production deployment and historical reference for the life time of the Observatory.  This means that the Central Artefact Repository not only holds the canonical reference versions of all artefacts within the SKAO landscape, but it also holds the stateful context of these artefacts as they progress through their continuous life-cycle from development to production deployment, to decommissioning.
 
 
 Deployment
 ==========
 
-The Central Artefact Repository plays a key role in regulating the flow of artefacts throughout the Software Development Life Cycle.  It is highly integrated into all the phases of software development, build, test, and publish.  In this position, it can ensure that only approved software artefacts are included in composite products, and subsequently delivered to the production environments.
+The Central Artefact Repository plays a key role in regulating the flow of artefacts throughout the Software Development Life Cycle.  It is highly integrated into all the phases of software development, build, test, and publish.  In this position, it can ensure that only approved software artefacts are included in composite products, and subsequently delivered to the production environments.
 
-Whilst it is important for the Repository to be highly available and performant in the context of the SDLC, it is not responsible for directly servicing the delivery of artefacts into the operational environments.  This will be manged by high speed delivery services and caches.
+Whilst it is important for the Repository to be highly available and performant in the context of the SDLC, it is not responsible for directly servicing the delivery of artefacts into the operational environments.  This will be manged by high speed delivery services and caches.
 
-The repository is based on *Nexus* Repository Manager 3 deployed on an independent UK based hosting service.  The core deployment is nexus-oss-edition with the nexus-core-feature, nexus-cma-feature, nexus-oss-feature features enabled. 
+The repository is based on *Nexus* Repository Manager 3 deployed on an independent UK based hosting service.  The core deployment is nexus-oss-edition with the nexus-core-feature, nexus-cma-feature, nexus-oss-feature features enabled.
 
-LDAP authentication has been integrated for SKAO administration purposes, with an additional minimal set of accounts managed for publishing artefacts.  All repositories are enable read-only for anonymous access.  Additionally, email has been integrated for handling task notifications.
+LDAP authentication has been integrated for SKAO administration purposes, with an additional minimal set of accounts managed for publishing artefacts.  All repositories are enable read-only for anonymous access.  Additionally, email has been integrated for handling task notifications.
 
 
 Configured Repositories
@@ -109,7 +109,6 @@ To be declared as valid, an artefact must be decorated with a set of metadata wh
 
 More information can be found on `Predefined variables reference <https://docs.gitlab.com/ee/ci/variables/predefined_variables.html>`_.
 Procedure for including those metadata is documented in `Deploying Artefacts`_.
-
 
 Versioning
 ==========
@@ -221,7 +220,7 @@ Release results
 After the tagged pipeline finishes, the new release generated with the git-chglog will be appended to the tag in the gitlab project, an example of the release notes can be seen `here <https://gitlab.com/ska-telescope/templates/ska-raw-skeleton/-/releases/0.0.1>`_. And the Jira ticket (preferable one created on the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`_ Jira Project) that is present on the commit message that triggered the tag pipeline will be updated with links to the gitlab release page.
 
 If you have included the file ``gitlab-ci/includes/release.gitlab-ci.yml`` Marvin should also publish a message on this `channel <https://skao.slack.com/archives/C02NW62R0SE>`_ announcing the release.
-
+.. ATTIC-BEGIN
 Deploying Artefacts
 ===================
 

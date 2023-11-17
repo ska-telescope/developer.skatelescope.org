@@ -15,6 +15,37 @@
 SKA telescope developer portal
 ------------------------------
 
+.. danger:: 
+   Developer Portal is under maintenance right now so you might see pages that are not ordered or structured correctly if you are seeing this warning.
+
+.. toctree::
+  :maxdepth: 1
+  :caption: Tutorials
+  :glob:
+
+  tutorial/**/* 
+  
+.. toctree::
+  :maxdepth: 1
+  :caption: How-To Guides
+  :glob:
+
+  howto/**/*
+
+.. toctree::
+  :maxdepth: 1
+  :caption: References
+  :glob:
+
+  reference/**/*
+
+.. toctree::
+  :maxdepth: 1
+  :caption: Explanations
+  :glob:
+
+  explanation/**/* 
+
 Welcome to the `Square Kilometre Array <http://www.skatelescope.org>`_ software
 documentation portal. Whether you are a developer involved in SKA or you are
 simply one of our many users, all of our software processes and projects are
@@ -22,12 +53,14 @@ documented or linked to in this portal.
 
 The portal is frequently updated as the project evolves; if you feel that something is missing, please have a look at our :doc:`guide to contributing to the developer portal </contributor/contribute>`
 
-If you're new to developing the SKA, please have a look at :doc:`our Onboarding material </getting-started/getting-started>` and the :doc:`guideance on setting up your development environment </getting-started/devenv-setup>`.
+If you're new to developing the SKA, please have a look at :doc:`our Onboarding material </getting-started/onboarding>` and the :doc:`guideance on setting up your development environment </getting-started/devenv-setup/devenv-setup>`.
 
 .. note::
    Please also read the :doc:`/policies/code-of-conduct`, which governs all SKA interactions.
 
 What follows is a brief guide to the headings you'll find in the left-hand sidebar of this site. Feel free to explore!
+
+
 
 
 Getting Started and the SKA Developer Community
@@ -45,13 +78,13 @@ This section is about getting you up and running. It contains the onboarding mat
   :caption: Getting Started
   :hidden:
 
-  getting-started/getting-started
+  getting-started/onboarding
   getting-started/contrib-guidelines
-  getting-started/devenv-setup
+  getting-started/devenv-setup/devenv-setup
 
-- :doc:`getting-started/getting-started`
+- :doc:`getting-started/onboarding`
 - :doc:`getting-started/contrib-guidelines`
-- :doc:`getting-started/devenv-setup`
+- :doc:`getting-started/devenv-setup/devenv-setup`
 
 
 SKA Repositories
