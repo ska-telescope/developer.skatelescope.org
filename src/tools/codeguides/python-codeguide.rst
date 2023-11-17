@@ -25,7 +25,7 @@ The recommended project layout is as follows:
 Interface and Dependencies
 ==========================
 
-* All code must be compatible with Python 3.7 and later.
+* All code must be compatible with Python 3.10 and later.
 
 * The new Python 3 formatting style should be used (i.e.
   ``"{0:s}".format("spam")`` instead of ``"%s" % "spam"``),
@@ -39,8 +39,8 @@ Documentation and Testing
   must follow the form outlined by `PEP8 Docstring Conventions <https://www.python.org/dev/peps/pep-0257/>`_.
 
 * Unit tests should be provided for as many public methods and functions as
-  possible, and should adhere to `Pytest best practices <https://docs.pytest.org/en/latest/goodpractices.html>`_.
-
+  possible, and should adhere to `Pytest best practices <https://docs.pytest.org/en/latest/goodpractices.html>`_. These tests should always be able to run locally  
+(the filesystem, the network, the database should not not be involved) and pass.
 
 Data and Configuration
 ======================

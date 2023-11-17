@@ -1,3 +1,5 @@
+.. _code-of-conduct:
+
 SKA Code of Conduct
 -------------------
 

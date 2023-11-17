@@ -147,7 +147,7 @@ Assumption 2:
 Syslog (RFC5424)
 -----------------
 
-We question the need for conforming to syslog standard in container level logs that print to `stdout`. From prior investigations, the existing log practices in the SKA codebase do not necessarily conform to syslog either, nor is there a consistent pattern. We used this opportunity to propose a log format the meets the folllowing goals:
+We question the need for conforming to syslog standard in container level logs that print to `stdout`. From prior investigations, the existing log practices in the SKA codebase do not necessarily conform to syslog either, nor is there a consistent pattern. We used this opportunity to propose a log format that meets the following goals:
 
 As such we believe the most important features of a standard log message are:
 
