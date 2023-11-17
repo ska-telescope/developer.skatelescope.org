@@ -10,7 +10,7 @@ We have created a `Minikube setup <https://gitlab.com/ska-telescope/sdi/ska-cicd
 - **Ingress/Load Balancer**: Load Balancer that exposes both HTTP (port 80) and HTTPS (port 443) ports on your host machine. This is helpful if you want to expose your cluster ingresses to the outside world
 - **OCI Registry**: OCI Registry making to allow locally-built images to be used within the Minikube cluster
 - **Metallb**: Allows to expose on a specific IP each of the Kubernetes **services** of type **LoadBalancer** by deploying `Metallb <https://metallb.universe.tf/>`_
-- **Extdns**: External DNS server to expose the FQDNS of the Kubernetes LoadBalancer services supported by Metallb
+- **Extdns**: External DNS server to expose the FQDNs (Fully Qualified Domain Name) of the Kubernetes LoadBalancer services supported by Metallb
 - **DNS Configuration**: For **systemd-resolved** enabled Linux systems, automatically updates the DNS to resolve **svc.cluster.local** queries
 - **Tango Operator**: Enables DeviceServer and DatabaseDS resources (CRDs) to be deployed to the cluster using the `SKA Tango Operator <https://gitlab.com/ska-telescope/ska-tango-operator>`_
 
@@ -31,6 +31,7 @@ Before we can create the cluster, we need an OCI engine running. :
    .. code-block:: bash
 
       git clone git@gitlab.com:ska-telescope/sdi/ska-cicd-deploy-minikube.git
+      git submodule update --recursive --init
 
 2. Create a customization file at the root directory of the repository:
 
@@ -49,7 +50,7 @@ Before we can create the cluster, we need an OCI engine running. :
 **macOS**
 
 .. note::
-  Given the recent updates to the macOS platform, setting up Minikube in macOS is not fully functional. If you face any issues, ask for help in `#team-system-support <https://skao.slack.com/archives/CEMF9HXUZ>`_. For Apple Sillicon platforms, you must use DRIVER=docker. Note that currently, setting up the ExternalDNS service is not working. 
+  Given the recent updates to the macOS platform, setting up Minikube in macOS is not fully functional. If you face any issues, raise a `support ticket <https://jira.skatelescope.org/servicedesk/customer/portal/166>`_. For Apple Silicon platforms, you must use DRIVER=docker. Note that currently, setting up the ExternalDNS service is not working. 
 
 4. Deploy the Minikube cluster and the bundled addons
 
@@ -76,12 +77,12 @@ We can use the already deployed SKA Tango Operator and query its metric server:
 
    .. code-block:: bash
 
-      curl localhost/ska-tango-operator/metrics
+      curl localhost:80/ska-tango-operator/metrics
 
 Metallb
 ~~~~~~~
 
-We can use the already deployed SKA Tango Operator and query its metric server:
+We can use the already deployed SKA Tango Operator and query its metric server, using the IP published by Metallb. Note that in the previous example, we've used the cluster ingress controller. Now we are talking directly to Metallb LoadBalancer instead:
 
    .. code-block:: bash
 
