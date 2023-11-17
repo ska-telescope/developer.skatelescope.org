@@ -151,7 +151,7 @@ The SKA IT team should be able to assist.
 
 We also recommend that you set up a Miro account. You can use it as a guest for many applications, but it's sometimes useful to sign up with your institutional email address.
 If you are a new Scrum Master or Product Owner, you will definitely need a Miro account!
-You can familiarise yourself with Miro by playing in `this sandbox <https://miro.com/app/board/o9J_kvL9C7w=/>`_.
+You can familiarise yourself with Miro by playing in `this sandbox <https://miro.com/app/board/o9J_ksVmjXM=/>`_.
 
 Training
 ********
