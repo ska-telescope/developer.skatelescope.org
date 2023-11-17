@@ -31,7 +31,7 @@ def format_path(path):
     }
     prefix = prefix_map.get(dir, "")
     # delete the .rst prefix
-    new_path = path.split(".rst")[0]
+    new_path = path.split("src")[1].split(".rst")[0]
     # Return the formatted string
     return f":doc:`{prefix}: {title} <{new_path}>`"
 
