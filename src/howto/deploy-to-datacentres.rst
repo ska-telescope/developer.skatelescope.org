@@ -1,6 +1,6 @@
-****************************
+***********************************
 Deploying to Multiple SKAO Clusters
-****************************
+***********************************
 
 This guide is designed for developers working with the Square Kilometre Array Observatory (SKAO) and outlines the process of configuring repositories and deploying applications to various K8s clusters within SKAO, each serving different purposes.
 
@@ -54,12 +54,12 @@ Runner for PSI-MID
     .
     .
 
-A comprehensive list of all available runners is accessible at `https://gitlab.com/groups/ska-telescope/-/runners?status[]=ONLINE`.
+A comprehensive list of all available runners is accessible at https://gitlab.com/groups/ska-telescope/-/runners?status[]=ONLINE.
 
 Debug Clusters
 ==============
 
-To diagnose issues within the cluster pods, developers should utilize `kibana <https://k8s.stfc.skao.int/kibana/app/logs/>`. Select the appropriate datacentre by setting the **ska.datacentre** variable as shown:
+To diagnose issues within the cluster pods, developers should utilize `kibana <https://k8s.stfc.skao.int/kibana/app/logs/>`_ . Select the appropriate datacentre by setting the **ska.datacentre** variable as shown:
 
 .. figure:: images/logging/kibana-datacentre-logs.png
    :scale: 60%

@@ -132,6 +132,7 @@ Release
   1. :doc:`tutorial: Automate Release Process </tutorial/release-management/automate-release-process>`
   2. :doc:`: Automate Release Process </tutorial/release-management/automate-release-process>`
 3. Deploy to PSI/ITF?
+  3. :doc:`: Deploying to Multiple SKAO Clusters </howto/deploy-to-datacentres>`
 
 .. toctree::
   :maxdepth: 1
