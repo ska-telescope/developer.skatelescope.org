@@ -13,7 +13,8 @@ If you're working at the program or solution level, the Solution Engineer or you
 
 If you're joining as a Scrum Master, either the team's existing Scrum Master or the Release Train Engineer will help you.
 
-If you're an external contributor, then please look at the `:ref:`SKA Code Of Conduct <code-of-conduct>`. and the Contribution Guidelines for the GitLab project you intend to contribute to.
+If you're an external contributor, then please look at the :doc:`/policies/code-of-conduct`
+and the Contribution Guidelines for the GitLab project you intend to contribute to.
 
 
 You may also wish to read through the relevant coding guidelines, testing policy, and some of the information on CI/CD.
@@ -62,7 +63,6 @@ Now you've got some accounts, you should log in to:
 * Confluence. This is the SKA's internal wiki. You may want to look at the `Software Engineering <https://confluence.skatelescope.org/display/SE/Software+Engineering>`_ pages.
 * Slack - visit your team channel! You will be added to the SKA's default slack channels: #announcements and #rand-chats. Reading the 'Pinned' items on the #announcements channel will help you in using the SKA Slack workspace more effectively.
 
-You should read the `SKA Code of Conduct <https://www.skatelescope.org/ska-organisation/ska-organisation-code-of-conduct-for-meetings/>`_.
 The SKA is an inclusive organisation, and we want to make sure that everyone is respected and has a pleasant experience working for SKA.
 We therefore have a Code of Conduct, and reading, understanding, and adhering to that Code is a key part of your onboarding and your future work at SKA.
 
