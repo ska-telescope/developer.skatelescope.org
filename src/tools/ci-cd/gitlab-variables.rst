@@ -36,6 +36,8 @@ Variables Description
    :header: "Key", "Description"
    :widths: auto
 
+   .. ATTIC-BEGIN
+   
    ``CAR_OCI_REGISTRY_HOST``, "Is the FQDN of the Central Artefact Repository - artefact.skao.int"
    ``CAR_OCI_REGISTRY_USERNAME``, "OCI Image Publishing user name"
    ``CAR_OCI_REGISTRY_PASSWORD``, "OCI Publishing user password"
@@ -54,6 +56,9 @@ Variables Description
    ``CAR_CONAN_REPOSITORY_URL``, "Conan Artefact Repository URL - https://artefact.skao.int/repository/conan-internal"
    ``CAR_CONAN_USERNAME``, "Conan Repository Publishing user name"
    ``CAR_CONAN_PASSWORD``, "Conan Repository Publishing user password"
+
+   .. ATTIC-END
+
    ``JIRA_AUTH``, "JIRA Authentication token for uploading XRAY Test Results"
    ``SKA_K8S_TOOLS_BUILD_DEPLOY``, "Latest OCI image for build and test jobs- artefact.skao.int/ska-cicd-k8s-tools-build-deploy:x.x.x"
    ``SKA_K8S_TOOLS_BUILD_DEPLOY_ALPINE``, "Latest OCI image for build and test jobs (Alpine based) - artefact.skao.int/ska-cicd-k8s-tools-build-deploy-alpine:x.x.x"
