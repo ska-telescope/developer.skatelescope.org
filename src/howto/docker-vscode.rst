@@ -8,7 +8,7 @@ Prerequisites
 =============
 Before getting started, ensure you have the following prerequisites in place:
 
-- **Docker**: Install Docker on your system. Please refer to :doc:`howto/install-oci-engines`.
+- **Docker**: Install Docker on your system. Please refer to :doc:`/howto/install-oci-engines`.
 - **Visual Studio Code**: Download and install VSCode from the `official website <https://code.visualstudio.com/download>`_ .
 - **Docker Extension for VSCode**: Install the Docker extension for VSCode from the `VSCode Marketplace <https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker>`_.
 

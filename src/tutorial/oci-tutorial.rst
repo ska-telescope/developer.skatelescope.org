@@ -1,4 +1,4 @@
-Building a OCI Image 
+Building a OCI Image
 ====================
 This tutorial demonstrates how to create a OCI image for a simple web server written in Go, using a multi-stage build process. The Dockerfile consists of two stages: a build stage and a run stage. For more information on multi-stage and other oci optimizations refer to :doc:`/explanation/optimize-oci-image-builder`
 
@@ -84,7 +84,7 @@ Once the image is built, run it using:
 
    $ podman run -d -p 8080:8080 --name my-go-server  my-go-server
 
-This command runs the container, mapping port 8080 of the host to port 8080 of the container. The `-d` flags makes podman to run the container in the backgroud without attaching the shell into it. For more information about the OCI commands and its options visit :doc:`/reference/oci-commands`.
+This command runs the container, mapping port 8080 of the host to port 8080 of the container. The `-d` flags makes podman to run the container in the background without attaching the shell into it. For more information about the OCI commands and its options visit the official `reference <https://docs.docker.com/engine/reference/commandline/cli/>`__.
 
 Verification
 ------------
@@ -107,7 +107,7 @@ To check the logs you can run the command:
 
 .. code-block:: bash
 
-    $ podman logs my-go-server 
+    $ podman logs my-go-server
     2013/03/01 00:00:00 Starting server on port 8080
 
 And with that you verify that the server has started.
@@ -120,11 +120,11 @@ You are also able to jump into the container and execute commands there and for 
 
 .. code-block:: bash
 
-    $ podman exec -it my-go-server ash
-    / # ls
+    $ podman exec -it my-go-server bash
+    / \# ls
     bin     etc     lib     mnt     proc    run     server  sys     usr
     dev     home    media   opt     root    sbin    srv     tmp     var
-    / # 
+    / \#
 
 
 VSCode

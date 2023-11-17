@@ -272,11 +272,7 @@ discussing it with the rest of the community.
 
 See a more detailed description of this workflow at https://docs.gitlab.com/ee/topics/gitlab_flow.html
 
-.. ATTIC-END
-
-.. ATTIC-BEGIN
-
-.. _merge-request:
+.. _merge-requests:
 
 Merge requests
 ++++++++++++++
@@ -298,9 +294,7 @@ At the moment the SKA organisation does not enforce approval rules, but it is re
 As part of best practices it is important to delete feature branches on merge or after merging them to keep your repository clean, showing only work in progress.
 It is not recommended to squash commits submitted to the remote server, in particular if using GitLab and JIRA integration, so the enabling squash commits option should be left unchecked. However you can arrange your commits before pushing them to remote.
 
-.. ATTIC-END
 
-.. ATTIC-BEGIN
 .. _merge-settings-maintainers:
 
 *Gitlab MR Settings for Project Maintainers*
@@ -321,9 +315,6 @@ There are more additional settings in GitLab that only project maintainers could
 
 Note that the System team may from time to time batch update all of the SKA projects' settings as to confirm with the policies and recommendations.
 
-.. ATTIC-END
-
-.. ATTIC-BEGIN
 
 Merge Request Quality Checks
 ============================

@@ -168,7 +168,7 @@ Release
   :caption: References
   :glob:
 
-..  reference/*
+  reference/*
 ..  reference/**/*
 
 .. toctree::

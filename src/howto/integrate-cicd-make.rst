@@ -46,7 +46,7 @@ Using the OCI Makefile targets
 
 After adding the **ska-cicd-makefile** repository as a submodule, you should now have a `.make` folder in your project's root directory. This repository is composed of several **sections** with Makefile inclusions. Each of these inclusions wraps functionality for a particular artefact lifecycle or technology (i.e., oci, python). Add **include** statements at the **top** of your **Makefile** as follows:
 
-.. code-block:: make
+.. code-block::
 
    ...
 
@@ -65,7 +65,7 @@ To get the list of available targets and variables for each section, you can run
 
 To make jobs more dynamic and adaptable to different repositories, you can override variables in your **Makefile**. Using the **oci** Makefile as an example:
 
-.. code-block:: make
+.. code-block::
 
    OCI_BUILDER=podman
 
@@ -87,19 +87,19 @@ In the Makefiles of the several sections, the targets follow a customizable work
 
 * **<section>-pre-<job>**: This target is used to perform actions before the main job. It is **empty** and meant to be overridden according to the repository's needs. Again, using **oci** as an example, we can lock a specific package before building:
 
-  .. code-block:: make
+.. code-block::
 
-     ...
+   ...
 
-     # Include makefile targets for OCI images management
-     -include .make/oci.mk
+   \# Include makefile targets for OCI images management
+   -include .make/oci.mk
 
-     oci-pre-build:
-         @if [[ ! -z "$(PYTANGO_VERSION)" ]]; then \
-            echo "Locking pytango version: $(PYTANGO_VERSION)"; \
-            poetry add --lock pytango==$(PYTANGO_VERSION); \
-         fi
+   oci-pre-build:
+      @if [[ ! -z "$(PYTANGO_VERSION)" ]]; then \
+         echo "Locking pytango version: $(PYTANGO_VERSION)"; \
+         poetry add --lock pytango==$(PYTANGO_VERSION); \
+      fi
 
-     ...
+   ...
 
 * **<section>-post-<job>**: Similar to the pre hook, this target is also empty and can be used for actions after the job is finished, with the same override principles applying.
