@@ -9,6 +9,7 @@ packages = [{include = "developer"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+sphinxcontrib-mermaid = "^0.9.2"
 
 
 [tool.poetry.group.docs.dependencies]

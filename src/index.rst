@@ -18,6 +18,104 @@ SKA telescope developer portal
 .. danger:: 
    Developer Portal is under maintenance right now so you might see pages that are not ordered or structured correctly if you are seeing this warning.
 
+
+Here is the SKA Developers journey throughout their daily tasks. Feel free to click on each item to navigate to relevant explainations, tutorials, howto guides or references.
+
+.. mermaid:: 
+
+  flowchart TD
+    subgraph Getting Started
+        A[Develop Inside a Container] --> C[Setup PyTango]
+        B[Develop Locally] --> C
+        C --> D[Set up Environment: Clone the Repo]
+        C --> E[Set up Environment: Create the Repo]
+        E --> F[Create the Work Branch]
+        D --> F
+    end
+    subgraph Coding & Testing
+        F --> F1[Write Code]
+        F1 --> G[Lint Code]
+        G --> H[Build Python Wheel]
+        H --> S[Get Unit Tests Running Locally]
+        S --> F1
+    end
+    subgraph Review
+        S --> U[Push Code to Gitlab]
+        U --> V[Create MR]
+        V --> W[Code Review]
+        W --> F1
+    end
+    subgraph Continuous Integration
+        S --> I[Write Your Dockerfile]
+        I --> J[Build and Run Your Dockerfile]
+        J --> K[Get Tests Running in Cloud/CICD]
+    end
+    subgraph Continuous Deployment
+        K --> L[Create/Update My Helm Chart]
+        L --> M[Integrate with DBs]
+        L --> N[Integrate with Secrets]
+        M --> O[Run Integration Tests]
+        O --> L
+        N --> O
+    end
+    subgraph Release
+        O --> P[Update CHANGELOG/Documentation]
+        P --> Q[Update Versions/Release]
+        Q --> R[Deploy to PSI/ITF?]
+    end
+
+Getting Started
+---------------
+
+1. Develop Inside a Container
+  1. Setup PyTango
+  2. Set up Environment: Clone the Repo
+  3. Create the Work Branch
+2. Develop Locally
+  1. Setup PyTango
+  2. Set up Environment: Clone the Repo
+  3. Create the Work Branch
+
+Coding & Testing
+----------------
+
+1. Write Code
+2. Lint Code
+  1. ::doc:`/explanation/linting` 
+3. Build Python Wheel
+4. Get Unit Tests Running Locally
+
+Review
+------
+
+1. Push Code to Gitlab
+2. Create MR
+3. Code Review
+
+Continuous Integration
+----------------------
+
+1. Write Your Dockerfile
+2. Build and Run Your Dockerfile
+3. Get Tests Running in Cloud/CICD
+
+Continuous Deployment
+---------------------
+
+1. Create/Update My Helm Chart
+2. Integrate with DBs
+3. Integrate with Secrets
+4. Run Integration Tests
+
+Release
+-------
+
+1. Update CHANGELOG/Documentation
+  1. :doc:`Automate Release Process </tutorial/release-management/automate-release-process>`
+2. Update Versions/Release
+  1. :doc:`Automate Release Process </tutorial/release-management/automate-release-process>`
+3. Deploy to PSI/ITF?
+
 .. toctree::
   :maxdepth: 1
   :caption: Tutorials
