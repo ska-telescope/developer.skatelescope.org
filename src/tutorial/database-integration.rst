@@ -49,18 +49,18 @@ There are three options for handling database credentials when deploying the Tan
 component.  These directly relate to the target environment and require the selection 
 and configuration of different credentials for each.
 
-Setup the MariaDB database credentials (options):
+Set up the MariaDB database credentials (options):
 
 * accept default values for ``TANGO_USER`` / ``TANGO_PASSWORD`` (tango/tango) - the most common option for a development enviroment
 * define explicit environment variables for ``TANGO_USER`` / ``TANGO_PASSWORD``
 * create/update Vault secrets for ``TANGO_USER`` / ``TANGO_PASSWORD``
 
-Setup the MariaDB database credentials
---------------------------------------
+Set up the MariaDB database credentials
+---------------------------------------
 
 Option 1: Development environment credentials
 The MariaDB credentials are required for the connection between the DatabaseDS and the
-database backend.  typically, the developer would just rely on the defaults which are 
+database backend.  Typically, the developer would just rely on the defaults which are 
 automatically set - these are username: ``tango`` password: ``tango``
  
 Option 2: Custom enviroment credentials
@@ -214,7 +214,7 @@ This has now added the repository of all the SKAO Helm charts.
 Configure database parameters (``values.yaml``)
 -----------------------------------------------
 
-Prior to deploying the TangoDB, it maybe necessary to customise the configuration.
+Prior to deploying the TangoDB, it may be necessary to customise the configuration.
 Create a :literal:`values.yaml` and set parameters like so:
 
 .. code:: bash
@@ -239,7 +239,7 @@ Further details of configuration options are in the `Bitnami charts <https://git
 Deploy MariaDB
 --------------
 
-Once the database parameters have been altered to requirements, the MariaDB can 
+Once the database parameters have been altered to meet your requirements, the MariaDB can 
 now be deployed for the TangoDB.
 
 .. code:: bash
@@ -322,7 +322,7 @@ can find it:
 Configure DatabaseDS parameters (``values.yaml``)
 -------------------------------------------------
 
-Prior to deploying the DatabaseDS, it maybe necessary to customise the configuration.
+Prior to deploying the DatabaseDS, it may be necessary to customise the configuration.
 Once the repository has been cloned (including submodules) as per the instructions 
 from Option 1 above, create a :literal:`values.yaml` and set parameters like so:
 
