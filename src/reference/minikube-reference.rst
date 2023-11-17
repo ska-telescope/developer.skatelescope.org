@@ -3,6 +3,8 @@ Deploy Minikube Reference
 
 Looking into the `Minikube setup <https://gitlab.com/ska-telescope/sdi/ska-cicd-deploy-minikube>`_ repository, we can find the following useful variables:
 
+- ``BIN_DIR``: Directory where the Minikube DRIVER is installed
+- ``EXE_DIR``: Directory where Minikube and tools (e.g., kubectl, helm) are installed
 - ``DRIVER``: Driver used to spin up the VM where Minikube runs. Defaults to **podman** on Linux/WSL and **hyperkit** on macOS. For Apple Sillicon, use **docker**
 - ``RUNTIME``: OCI engine used within the VM. Defaults to **docker**
 - ``NODES``: Number of (VM) Nodes for Minikube to create and join to the cluster
