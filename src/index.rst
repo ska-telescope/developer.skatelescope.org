@@ -130,7 +130,9 @@ Continuous Deployment
 
 1. Create/Update My Helm Chart
 2. Integrate with databases
+
  - :doc:`tutorial: Database Integration </tutorial/database-integration>`
+
 3. Integrate with Secrets
 4. Run Integration Tests
 
