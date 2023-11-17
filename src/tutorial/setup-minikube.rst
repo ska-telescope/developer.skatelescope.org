@@ -50,7 +50,7 @@ Before we can create the cluster, we need an OCI engine running. :
 **macOS**
 
 .. note::
-  Given the recent updates to the macOS platform, setting up Minikube in macOS is not fully functional. If you face any issues, raise a `support ticket <https://jira.skatelescope.org/servicedesk/customer/portal/166>`_. For Apple Silicon platforms, you must use DRIVER=docker. Note that currently, setting up the ExternalDNS service is not working. 
+  Given the recent updates to the macOS platform, setting up Minikube in macOS is not fully functional. If you face any issues, raise a `support ticket <https://jira.skatelescope.org/servicedesk/customer/portal/166>`_. For Apple Silicon platforms, you must use **DRIVER=docker**. Note that currently, setting up the ExternalDNS service is **NOT** working. For encrypted filesystems, you must use **DRIVER=kvm2**. For more information, check the repository `README <https://gitlab.com/ska-telescope/developer.skatelescope.org/-/merge_requests/271>`_. 
 
 4. Deploy the Minikube cluster and the bundled addons
 
@@ -133,3 +133,5 @@ The same can be done, for instance, to expose any HTTP server in the cluster. If
    .. code-block:: bash
 
       ngrok http http://<loadbalancer ip>:<loadbalancer port>
+
+To know more about the Minikube setup, please refer to the repository's `README <https://gitlab.com/ska-telescope/developer.skatelescope.org/-/merge_requests/271>`_.
