@@ -6,7 +6,7 @@ Containerization has revolutionized how applications are deployed and managed, m
 What is Containerization?
 -------------------------
 
-Containerization is a **lightweight** alternative for virtualization that involves encapsulating an application and its dependencies into a running **container**. Unlike VMs that require a full-blown operating system, containers **share** a host system's kernel and by this allow it to allocate resources more efficiently. Containers are usually portable and resource-friendly. Dependencies, configurations and resources are packaged in a distributable resource - an image. This image can be executed on any compatible host system, sometimes even on different system architectures (an x86_64 image running on an aarm64 system) ensuring that the application runs **consistently** regardless of where it is deployed. 
+Containerization is a **lightweight** alternative for virtualization that involves encapsulating an application and its dependencies into a running **container**. Unlike VMs that require a full-blown operating system, containers **share** a host system's kernel and by this allow it to allocate resources more efficiently. Containers are usually portable and resource-friendly. Dependencies, configurations and resources are packaged in a distributable resource - an image. This image can be executed on any compatible host system, sometimes even on different system architectures (an x86_64 image running on an arm64 system) ensuring that the application runs **consistently** regardless of where it is deployed. 
 
 Why Use Containerization Over Virtual Machines?
 -----------------------------------------------
@@ -58,7 +58,7 @@ Docker is a platform that revolutionized software containerization, making it si
 Podman
 ~~~~~~
 
-Unlike Docker that runs as a client-server architecture, where the Docker daemon is the server, Podman is designed as a **daemonless** container engine. It does not require a running daemon to function, which simplifies the architecture and enhances security. It is generally compatible with Docker's CLI interface, making it smooth learning curve between the platforms. As both engines abide by the OCI, they can run and manage the same images.
+Unlike Docker that runs as a client-server architecture, where the Docker daemon is the server, Podman is designed as a **daemonless** container engine. It does not require a running daemon to function, which simplifies the architecture and enhances security. It is generally compatible with Docker's CLI interface, making a smooth learning curve between the platforms. As both engines abide by the OCI, they can run and manage the same images.
 
 - **Daemonless architecture**: Increases security and reduces complexity.
 - **Rootless mode**: Allows users to run containers without root privileges.
@@ -70,4 +70,4 @@ Containerd
 
 Containerd is an **industry-standard** container runtime with an emphasis on simplicity, robustness, and portability. It's a core component of **Docker** (since 1.11) but is also designed to be embedded into larger systems, like **Kubernetes**.
 
-As it primarily acts as a container runtime, needs other tools to perform other tasks that more complete engines provide. To build images, we can use Docker, Podman or `Buildah <https://buildah.io/>`_, among other options. It also has its own CLI - **ctr** - to manage the containers, this time not compatible with Docker or Podman's CLI.
+As it primarily acts as a container runtime, it needs other tools to perform other tasks that more complete engines provide. To build images, we can use Docker, Podman or `Buildah <https://buildah.io/>`_, among other options. It also has its own CLI - **ctr** - to manage the containers, this time not compatible with Docker or Podman's CLI.
