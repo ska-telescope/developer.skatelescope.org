@@ -158,7 +158,7 @@ The assignee then populates the *Agile Team(s)* field with the teams needed to w
 If the Bug Owner is the original reporter, at this point, they should assign the ticket to a Product Owner or Manager who will be able to ensure that the bug is addressed by the team(s).
 Otherwise, the Bug Owner remains the assignee.
 
-Weekly sync meetings are used to communicate assigned bugs to teams; however, the very highest priority bugs will require speedier action, and Slack or email amy be used to make contact with the teams.
+Weekly sync meetings are used to communicate assigned bugs to teams; however, the very highest priority bugs will require speedier action, and Slack or email may be used to make contact with the teams.
 
 Assigned
 ^^^^^^^^
