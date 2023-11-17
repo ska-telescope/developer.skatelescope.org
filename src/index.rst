@@ -15,13 +15,13 @@
 SKA telescope developer portal
 ------------------------------
 
-.. danger:: 
+.. danger::
    Developer Portal is under maintenance right now so you might see pages that are not ordered or structured correctly if you are seeing this warning.
 
 
 Here is the journey SKA Developers take to turn ideas into deployed code. Some of these tasks will be done every day; others less frequently. Feel free to click on each item to navigate to relevant explanations, tutorials, how-to guides or reference documentation.
 
-.. mermaid:: 
+.. mermaid::
 
   flowchart TD
     subgraph Getting Started
@@ -68,28 +68,34 @@ Getting Started
 ---------------
 
 1. Develop Inside a Container
+
   1. Setup PyTango
   2. Set up Environment: Clone the Repo
   3. Create the Work Branch
+
 2. Develop Locally
-  1. Setup PyTango
-  2. Set up Environment: Clone the Repo
-  3. Create the Work Branch
+
+  4. Setup PyTango
+  5. Set up Environment: Clone the Repo
+  6. Create the Work Branch
 
 Coding & Testing
 ----------------
 
 1. Write Code
+
   - :doc:`howto: Integrate Cicd Make </howto/integrate-cicd-make>`
-  -  
+
 2. Lint Code
-  - :doc:`exp: Linting </explanation/linting>` 
+
+  - :doc:`exp: Linting </explanation/linting>`
   - :doc:`howto: Ansible Linting </howto/ansible-linting>`
   - :doc:`howto: Helm Linting </howto/helm-linting>`
   - :doc:`howto: Notebook Linting </howto/notebook-linting>`
   - :doc:`howto: OCI Linting </howto/oci-linting>`
   - :doc:`howto: Python Linting </howto/python-linting>`
   - :doc:`howto: Terraform Linting </howto/terraform-linting>`
+  
 3. Build Python Wheel
 4. Get Unit Tests Running Locally
 
@@ -99,20 +105,24 @@ Review
 1. Push Code to Gitlab
 2. Create MR
 3. Code Review
+
   - :doc:`howto: Code Review </howto/code-review>`
-  -  
 
 Continuous Integration
 ----------------------
 
 1. Write Your Dockerfile
+
   - :doc:`exp: Continuous Integration </explanation/continuous-integration>`
   - :doc:`howto: Install Oci Engines </howto/install-oci-engines>`
   - :doc:`exp: Optimize Oci Image Builder </explanation/optimize-oci-image-builder>`
   - :doc:`exp: Containerization </explanation/containerization>`
+
 2. Build and Run Your Dockerfile
+
   - :doc:`exp: Central Artefact Repository </explanation/central-artefact-repository>`
   - :doc:`howto: Docker Vscode </howto/docker-vscode>`
+
 3. Get Tests Running in Cloud/CICD
 
 Continuous Deployment
@@ -120,7 +130,9 @@ Continuous Deployment
 
 1. Create/Update My Helm Chart
 2. Integrate with databases
+
  - :doc:`tutorial: Database Integration </tutorial/database-integration>`
+
 3. Integrate with Secrets
 4. Run Integration Tests
 
@@ -128,28 +140,33 @@ Release
 -------
 
 1. Update CHANGELOG/Documentation
+
   1. :doc:`tutorial: Automate Release Process </tutorial/release-management/automate-release-process>`
+
 2. Update Versions/Release
-  1. :doc:`tutorial: Automate Release Process </tutorial/release-management/automate-release-process>`
-  2. :doc:`: Automate Release Process </tutorial/release-management/automate-release-process>`
+
+  2. :doc:`tutorial: Automate Release Process </tutorial/release-management/automate-release-process>`
+  3. :doc:`: Automate Release Process </tutorial/release-management/automate-release-process>`
+
 3. Deploy to PSI/ITF?
-  3. :doc:`: Deploying to Multiple SKAO Clusters </howto/deploy-to-datacentres>`
+
+  4. :doc:`: Deploying to Multiple SKAO Clusters </howto/deploy-to-datacentres>`
 
 .. toctree::
   :maxdepth: 1
   :caption: Tutorials
   :glob:
 
-  tutorial/* 
-  tutorial/**/* 
-  
+  tutorial/*
+  tutorial/**/*
+
 .. toctree::
   :maxdepth: 1
   :caption: How-To Guides
   :glob:
 
   howto/*
-  howto/**/*
+..  howto/**/*
 
 .. toctree::
   :maxdepth: 1
@@ -157,15 +174,15 @@ Release
   :glob:
 
   reference/*
-  reference/**/*
+..  reference/**/*
 
 .. toctree::
   :maxdepth: 1
   :caption: Explanations
   :glob:
 
-  explanation/* 
-  explanation/**/* 
+  explanation/*
+..  explanation/**/*
 
 Welcome to the `Square Kilometre Array <http://www.skao.int/>`_ software
 documentation portal. Whether you are a developer involved in SKA or you are
@@ -294,9 +311,6 @@ To facilitate code portability and reliability and test running, we use containe
 - :doc:`tools/containers/containerisation-standards`
 - :doc:`tools/containers/kubernetes-introduction`
 - :doc:`tools/containers/orchestration-guidelines`
-- :doc:`tools/containers/multitenancy`
-- :doc:`tools/containers/docker-proxy-cache`
-- :doc:`tools/containers/uploading-docker-nexus`
 
 Working with BinderHub
 ======================
@@ -356,7 +370,7 @@ Guidelines to the coding standards we apply in the SKA. Not available for all la
 - :doc:`tools/codeguides/cplusplus-codeguide`
 - :doc:`tools/codeguides/javascript-codeguide`
 - :doc:`tools/codeguides/python-codeguide`
-- :doc:`tools/codeguides/vhdl-codeguide`
+- :doc: `explanation/linting`
 
 FAQ
 ===
@@ -399,29 +413,29 @@ but the essential information is here:
 Software Product Quality Assurance plan
 =======================================
 
-This Software Product Quality Assurance Plan (SPQAP) defines the Quality Assurance requirements and management 
-activities for the development of software by the Agile Development Teams through the PSSC Contracting arrangements, 
+This Software Product Quality Assurance Plan (SPQAP) defines the Quality Assurance requirements and management
+activities for the development of software by the Agile Development Teams through the PSSC Contracting arrangements,
 and the delivery of the software by the SKAO.
 
-This document is a mapping to the SKA Product Quality Assurance (PQA) Plan, that describes the roles and 
-responsibilities of the SKAO and the Contractors and provides an itemised response to the Product Quality Assurance Management, 
+This document is a mapping to the SKA Product Quality Assurance (PQA) Plan, that describes the roles and
+responsibilities of the SKAO and the Contractors and provides an itemised response to the Product Quality Assurance Management,
 and the PQA Requirements sections.
 
 - :doc:`policies/sw-quality-assurance`
 
-Software Development Security Policy 
+Software Development Security Policy
 ====================================
 
-Most of the software used for the control and operation of the SKAO telescopes will be developed by SKA Community members and contributors. 
-To ensure the smooth operation of the SKAO and minimise the risk of software vulnerabilities, information security must be incorporated 
-within the software development lifecycle of SKAO software. This document describes how this must be achieved. 
+Most of the software used for the control and operation of the SKAO telescopes will be developed by SKA Community members and contributors.
+To ensure the smooth operation of the SKAO and minimise the risk of software vulnerabilities, information security must be incorporated
+within the software development lifecycle of SKAO software. This document describes how this must be achieved.
 
 - :doc:`policies/sw-dev-security`
 
 Compute Access Policy
 =====================
 
-While we like to keep as much as possible open, we can't allow everyone access to the computing hardware that powers our telescopes. 
+While we like to keep as much as possible open, we can't allow everyone access to the computing hardware that powers our telescopes.
 Therefore we have defined groups who can get certain kinds of access to our computing hardware, and that is described in this document.
 
 - :doc:`policies/compute-access`

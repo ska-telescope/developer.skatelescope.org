@@ -7,7 +7,7 @@ The SKA Software team have adopted the GitLab social coding platform as the main
 
 The following describes how to access the service, and how to set up the basic working environment to integrate with GitLab for the SKA.
 
-.. _git-use-institutional-email:
+.. _gitlab-use-institutional-email:
 
 Use institutional email
 +++++++++++++++++++++++

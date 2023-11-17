@@ -33,7 +33,7 @@ Issue Type          Definition of Done
 
                     **Artefacts**
 
-                    * Packaged software artefacts are published to the Central Artefact Repository inline with  :doc:`SKA naming and semantic versioning standards </tools/software-package-release-procedure>`.
+                    * Packaged software artefacts are published to the Central Artefact Repository inline with  :doc:`SKA naming and semantic versioning standards </explanation/central-artefact-repository>`.
 
 
                     :doc:`Code Documentation </tools/documentation>`

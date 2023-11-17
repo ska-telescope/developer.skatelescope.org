@@ -51,9 +51,9 @@ Docker
 
 Docker is a platform that revolutionized software containerization, making it simpler to create, deploy, and run applications by using containers. It is still the most used containerization engine, because the Docker ecosystem consist of more than just the engine itself.
 
-- **Docker Hub**: A cloud-based registry service for sharing and managing container images. Look into :doc:`explanation/oci-registries` to know more about registries.
-- **Docker Compose**: A `tool <https://docs.docker.com/compose/>`_ for defining and running multi-container Docker applications, including network and storage. 
-- **Docker Swarm**: A `tool <https://docs.docker.com/engine/swarm/>`_ to manage a cluster of Docker daemons (i.e., machines running Docker).
+- **Docker Hub**: A cloud-based registry service for sharing and managing container images. Look into :doc:`/explanation/oci-registries` to know more about registries.
+- **Docker Compose**: A `tool <https://docs.docker.com/compose/>`__ for defining and running multi-container Docker applications, including network and storage. 
+- **Docker Swarm**: A `tool <https://docs.docker.com/engine/swarm/>`__ to manage a cluster of Docker daemons (i.e., machines running Docker).
 
 Podman
 ~~~~~~

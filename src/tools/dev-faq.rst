@@ -138,7 +138,7 @@ To add the SKA Helm chart repo to your local Helm, simply run
 
  $ helm repo add skao https://artefact.skao.int/repository/helm-internal
 
-Working with the Helm chart repository, including how to package and upload charts to our repository, is described :ref:`here in detail <helm-chart-repo>`.
+Working with the Helm chart repository, including how to package and upload charts to our repository, is described `here in detail <helm-chart-repo>`__.
 
 Deploy the TMC prototype and Webjive in kubernetes
 ```````````````````````````````````````````````````

@@ -39,8 +39,7 @@ Documentation and Testing
   must follow the form outlined by `PEP8 Docstring Conventions <https://www.python.org/dev/peps/pep-0257/>`_.
 
 * Unit tests should be provided for as many public methods and functions as
-  possible, and should adhere to `Pytest best practices <https://docs.pytest.org/en/latest/goodpractices.html>`_. These tests should always be able to run locally  
-(the filesystem, the network, the database should not not be involved) and pass.
+  possible, and should adhere to `Pytest best practices <https://docs.pytest.org/en/latest/goodpractices.html>`_. These tests should always be able to run locally (the filesystem, the network, the database should not not be involved) and pass.
 
 Data and Configuration
 ======================

@@ -221,7 +221,7 @@ Build
 """""
 The build stage packages/compiles the software project into distributable units of software.
 The project will be checked out at the git commit hash. This specific version of the code must then be built. Failing the build stage will stop the further steps from being executed. Where possible Semantic Versioning should be used.
-To create a release a git tag should be used. See :doc:`/tools/software-package-release-procedure` for details.
+To create a release a git tag should be used. See :doc:`/tutorial/release-management/automate-release-process` for details.
 
 Input
   Git commit hash

@@ -3,6 +3,8 @@
 Git Configuration
 =================
 
+.. _git-use-institutional-email:
+
 Set Git institutional email address
 +++++++++++++++++++++++++++++++++++
 

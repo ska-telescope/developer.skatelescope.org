@@ -10,4 +10,4 @@ Coding guidelines
   codeguides/javascript-codeguide
   codeguides/python-codeguide
   codeguides/jupyter-notebook-codeguide
-  codeguides/vhdl-codeguide
+  /explanation/linting

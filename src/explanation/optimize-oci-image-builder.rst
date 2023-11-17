@@ -64,7 +64,7 @@ Best Practices for Building Images
   
   Let's take as an example a simple example where we copied the required artifact from **stage 1** to **stage 2** without compromising the Dockerfile and successfully created the most **optimized** and **reduced** image. :
 
-  .. code-block:: make
+  .. code-block:: dockerfile
 
     # Stage1
     FROM ubuntu:20.04 as stage1
