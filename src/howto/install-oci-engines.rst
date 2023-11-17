@@ -25,7 +25,7 @@ Podman is a Linux daemonless container engine for developing, managing, and runn
 **macOS**
 
 .. note::
-   We strongly suggest to use [Homebrew](https://brew.sh/) to install software on macOS that we rely on when developing software for SKAO.
+   We strongly suggest using Homebrew (https://brew.sh/) to install software on macOS that we rely on when developing software for SKAO.
 
 1. Install QEMU (for the Podman machine):
 
@@ -128,4 +128,4 @@ What's next
 
 You now have Docker or Podman installed on your system. These tools are at the forefront of containerization technology, allowing for efficient, isolated, and scalable application deployment.
 
-Now, feel free to explore the rest of the :doc:`tutorial/getting-started-with-containers`.
+Now, feel free to explore the rest of the :doc:`/tutorial/getting-started-with-containers`.
