@@ -28,7 +28,7 @@ You can now make changes to your code and commit that changes.
 When doing so, remember to always:
 
 * Prefixed your commit message with the story JIRA ID.
-* This Jira ID, by convention, should be all upper case and followd by "**:**" character
+* This Jira ID, by convention, should be all upper case and followed by the "**:**" character
 
 .. code:: bash
 
