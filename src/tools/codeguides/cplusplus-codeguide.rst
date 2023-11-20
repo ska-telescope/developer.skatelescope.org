@@ -316,27 +316,6 @@ the file and install the requirements.
 .. todo:: Should such a line to the CI pipeline for the installation of cfitsio as an example, together with a Findcfitsio.cmake module in the ska cmake-modules repository.
 
 
-
-Coding Style & Conventions
---------------------------
-
-We are not advocating that software be restructured and rewritten before
-on-boarding - However we recommend that new software follow `The cplusplus Core
-Guidelines <http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines>`_.
-
-The clang/llvm compiler tools have an extension which can provide some direct
-criticism of your code for stylistic errors (and even automatically fix them). For example in our lint step we
-suggest you run:: 
-
-    run-clang-tidy -checks='cppcoreguidelines-*,performance-*,readibility-*,modernize-*,misc-*,clang-analyzer-*,google-*'
-
-.. note:: The GoogleTest  macros generate a lot of warnings ... Google have their own code guidelines ...
-
-In the linting stage we also run cppcheck as a separate step. 
-
-.. warning:: The linting stage as presented here is spotting an error in the GTest macros. So we have explicitly removed the test directory from the cppcheck path. 
-
-
 Unit testing
 ------------
 
@@ -414,7 +393,7 @@ But you can access the artifact from the pipeline.
 Summary
 =======
 
-This basic template project is available `on GitLab <https://gitlab.com/ska-telescope/ska-cpp-template.git>`_. And demonstrates the following:
+This basic template project is available `on GitLab <https://gitlab.com/ska-telescope/templates/ska-cpp-template>`_. And demonstrates the following:
 
 1) Provides a base image on which to run C++ builds
 2) Describes example basic dependency management is possible at least based on CMake but way of CMake External projects and git submodules

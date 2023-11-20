@@ -114,12 +114,6 @@ Test that the connectivity in the cluster works
 
   ...
 
-.. note::
-  Until recently, we have been using Helm 2 in all our Ansible Playbooks for provisioning machines and development environments. Helm 2 used Tiller as a deployment service, and would be started in your environment by running the ``helm init`` command. **This is no longer the case with Helm 3.** `More info here <https://dev.to/ridaehamdani/some-changes-between-helm-v2-and-helm-v3-that-you-should-know-32ga>`_ .
-
-  Use this `ansible playbook </projects/ansible-playbooks/en/latest/playbooks/upgrade_helm.html>`_ to upgrade your existing Helm 2 to Helm 3.
-
-
 Once Helm is installed, develop a helm chart for the project. Refer to :ref:`Helm instructions <orchestration-guidelines-templating-application>` for guidelines.
 
 .. _Helm Chart Repository: https://artefact.skao.int/#browse/browse:helm-internal
@@ -138,7 +132,7 @@ To add the SKA Helm chart repo to your local Helm, simply run
 
  $ helm repo add skao https://artefact.skao.int/repository/helm-internal
 
-Working with the Helm chart repository, including how to package and upload charts to our repository, is described :ref:`here in detail <helm-chart-repo>`.
+Working with the Helm chart repository, including how to package and upload charts to our repository, is described `here in detail <helm-chart-repo>`__.
 
 Deploy the TMC prototype and Webjive in kubernetes
 ```````````````````````````````````````````````````

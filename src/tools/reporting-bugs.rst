@@ -81,7 +81,11 @@ Bug Triage
 
 In the SKA Project the process of triaging a bug report will assess and set values for severity, priority and assignee.
 
-At the present time SKB bugs that are in the Status “TODO” are triaged by someone in the management teams as soon as possible if they seem (or are labelled) Critical and if they are noticed. However, there is no need to wait: All teams and team members are encouraged to triage bugs themselves if they feel able. Otherwise remaining SKB bugs in the “TODO” state are triaged at the Bi-weekly Release Management Forum.
+Once the Reporter judges enough information to make an informed assessment has been provided, the bug needs to be triaged.
+At a minimum, there should be instructions to reproduce the bug, or a description of why that's not possible, plus any logs and error messages seen. 
+The Reporter should then put the bug into the Assessment state, after considering whether the bug needs to be reassigned to an architect for consideration. 
+If the Reporter cannot triage the bug themselves, they should assign to a Program Level Architect, who becomes the Bug Owner. 
+This may be necessary for bugs where the impact is unclear, or where additional visibility is needed.
 
 .. _bug-priority:
 

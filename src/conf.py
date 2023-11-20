@@ -55,6 +55,8 @@ extensions = [
     "sphinx_copybutton",
     "sphinx.ext.autosectionlabel",
     "sphinx_design",
+    "sphinx_rtd_theme",
+    "sphinxcontrib.mermaid"
 ]
 
 # Set each document name as prefix to avoid duplication
@@ -83,8 +85,8 @@ source_suffix = ".rst"
 master_doc = "index"
 
 # General information about the project.
-project = "developer.skatelescope.org"
-copyright = "2020, SKA Organization"
+project = "developer.skao.int"
+copyright = "2018-2023 SKA Observatory"
 author = "Marco Bartolini"
 
 # The version info for the project you're documenting, acts as replacement for
@@ -147,9 +149,10 @@ html_sidebars = {
     "**": ["sidebar-nav-bs.html", "sidebar-ethical-ads.html"]
 }
 
+html_logo = "_static/img/logo.png"
+html_favicon = "_static/img/favicon_mono.ico"
+
 html_context = {
-    "favicon": "img/favicon_mono.ico",
-    "logo": "img/logo.png",
     "theme_logo_only": True,
     "display_gitlab": True,  # Integrate Gitlab
     "gitlab_user": "ska-telescope",  # Username
@@ -269,6 +272,6 @@ epub_exclude_files = ["search.html"]
 
 
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {"https://docs.python.org/": None}
+intersphinx_mapping = {'python': ('https://docs.python.org/3', None)}
 
 # %%

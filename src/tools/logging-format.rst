@@ -147,7 +147,7 @@ Assumption 2:
 Syslog (RFC5424)
 -----------------
 
-We question the need for conforming to syslog standard in container level logs that print to `stdout`. From prior investigations, the existing log practices in the SKA codebase do not necessarily conform to syslog either, nor is there a consistent pattern. We used this opportunity to propose a log format the meets the folllowing goals:
+We question the need for conforming to syslog standard in container level logs that print to `stdout`. From prior investigations, the existing log practices in the SKA codebase do not necessarily conform to syslog either, nor is there a consistent pattern. We used this opportunity to propose a log format that meets the following goals:
 
 As such we believe the most important features of a standard log message are:
 
@@ -216,35 +216,6 @@ A list of tags (identifiers) we want to add to log messages for easy filtering a
 
   - Description: For software that are not TANGO devices, the name of the telescope sub-system [2].
   - Example: ``SDP``
-
-Filtering the Logs on Kibana
-============================
-
-Log messages for stfc cluster can be checked on our monitoring platform at http://k8s.stfc.skao.int/kibana/app/logs/stream .
-
-Kibana allows for filtering on log messages on the basis of a series of fields. These fields can be added as columns to display information using the **Settings** option, and filtering based on the values of those fields can be done directly on the **Search** box or by selecting the **View details** menu:
-
-.. image:: images/kibana-ns0.png
-  :alt: kibana log stream, selecting "view details" for a particular CI pipeline
-
-In the example above in order to retrieve only the log messages relevant for the skampi development pipeline ``ci-skampi-st-605-mid`` one should then select the corresponding ``kubernetes.namespace`` field value. 
-
-.. image:: images/kibana-ns1.png
-  :alt: Kibana Log event document details, selecting the kubernetes.namespace
-
-There are many other field options using kubernetes information, for example ``kubernetes.node.name`` and ``kubernetes.pod.name`` that can be used for efficient filtering. 
-
-The fact the SKA logging format allows for simple key-value pairs (SKA Tags) to be included in log messages let us refine the filtering. Tags are parsed to a field named ``ska_tags`` and on this field there can be one or more device properties separated by commas.
-
-.. image:: images/kibana-tag0.png
-  :alt: logs for the specified namespace
-
-The field ``ska_tags`` is also parsed so that the key is added to a ``ska_tags_field`` prefix that will store the value. For the example above, this means filtering the messages using the value of the ``ska_tags_field.tango-device`` field.
-
-.. image:: images/kibana-tag1.png
-  :alt: selecting ska-tags to look at tango-device log messages
-
-Making the selection illustrated above means that only messages with the value ``ska_mid/tm_leaf_node/d0003`` for the ``ska_tags_field.tango-device`` field would be displayed.
 
 [1] Optional, since it won't apply to all contexts, e.g. third-party applications.
 

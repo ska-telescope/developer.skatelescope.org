@@ -1,50 +1,55 @@
+.. _tango-devenv-setup:
+
+************************************
 Tango Development Environment set up
-------------------------------------
+************************************
 
-Definition
-===========================
-The Development Environment is the set of processes and software tools used to create software.
+Many of the project's teams and developers are working on Tango devices and device servers.
+This document describes how to set up a development environment for Tango controls.
 
-Tools include:
- - python version 3.8
- - TANGO-controls '9.3.3'
- - Visual Studio Code
- - ZEROMQ '4.3.2'
- - OMNIORB '4.2.3'
+Using Minikube
+==============
 
-Processes include:
- - writing code,
- - testing code,
- - packaging it.
+During the initial years of the project, setting up a fully fledged Tango environment was a complex task that required
+compiling tango-idl, cppTango and PyTango from source code to install them on the local machine.
+In order to minimize this effort and ensure that the resulting environment was using the blessed versions for the project,
+the SKAO created a set of container images and Helm deployment chart that should be used to set up a development environment.
 
-The main process is a python/c++ developer working with one tango device server writing one or more devices:
+There are still use cases where a Tango developer should be using this method for local development, and when building the base images
+we still need to use this method. But for most cases, the developer can simply install it locally inside a virtual environment.
 
-1. (optional) Work with pogo and create the device(s) needed;
-2. Work with a text editor (such as VSCode);
-3. The tango framework is running locally (with containers) together with other runtime application (generally other devices) needed for the specific development so that the developer can test the device(s) just created;
-4. In order to test the work done, the developer creates unit tests (with pytest);
-5. The developer creates (if needed) a document for non-trivial testing (for instance for integration testing, usability testing and so on) if the test automation is not possible;
-6. The developer creates (if not done before) the `Dockerfile` in order to ship its work and execute it in a different environment (GitLab CI infrastructure); note that this step can be deleted if the `Dockerfile` is already available for some kind of development (i.e. for python tango devices the `Dockerfile` can be the same for every project);
-7. The developer creates the file '.gitlab-ci.yml' for the GitLab CI integration;
-8. The developer tests the project in GitLab.
+In any case, if a developer wants to use the kubernetes based approach, they should `Deploy minikube </tutorial/setup-minikube>`_ on their local machine and then follow the instructions on the
+`Tango Examples Project <https://gitlab.com/ska-telescope/ska-tango-examples>`_.
+
+After this, your system will be ready with a Minikube kubernetes deployment running the Tango operator and a set of Tango examples which you
+can modify, or you can create your own project inside a new namespace.
 
 
-Creating a Development Environment
-==================================================
-
-Working with Tango
+Local installation
 ==================
 
-In order to start working with tango you should refer to the documentation on `Tango Example Project </projects/ska-tango-examples/en/latest/?badge=latest#>`_.
-This project describes how to install a tango environment including pytango with containers in a kubernetes(minikube) environment so that is structured to use k8s for development and testing so that the build environment, test environment and test results are all completely reproducible and are independent of host environment
+Presently, deploying Tango locally for development, is a much simpler task than it used to be.
 
-You should follow this documentation to start tango on a kubernetes environment using `Minikube <https://gitlab.com/ska-telescope/sdi/ska-cicd-deploy-minikube>`_.*(Note: This project is already mentioned the above project but to get the latest minikube environment follow the documentation)*
+It is suggested to use a virtual environment to install Tango and PyTango, so that you can have multiple versions of PyTango installed in your system
+and you can keep your base environment clean.
 
-The `Tango Example Project </projects/ska-tango-examples/en/latest/?badge=latest#>`_ project describes 
+Create a new Poetry project:
 
-Other information
-=================
-Please visit the following gitlab pages for more information:
+.. code-block:: bash
 
-1. https://gitlab.com/ska-telescope/ska-tango-images.
-2. https://gitlab.com/ska-telescope/ska-skampi.
+    poetry new my-tango-project
+
+
+Add the pytango dependency to your project:
+
+.. code-block:: bash
+
+    poetry add pytango
+
+And now activate the environment with:
+
+.. code-block:: bash
+
+    poetry shell
+
+You can also check the official `PyTango documentation <https://pytango.readthedocs.io/en/stable/contents.html>`_ for more information on how to use it.
