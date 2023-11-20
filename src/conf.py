@@ -24,11 +24,11 @@
 
 def setup(app):
     app.add_css_file('css/custom.css')
+    
     app.add_js_file('js/gitlab.js')
     app.add_js_file('js/groups_list.js')
     app.add_js_file('js/topics_list.js')
     app.add_js_file('js/project_table.js')
-    app.add_js_file("js/feedback.js")
 
 # -- General configuration ------------------------------------------------
 
@@ -49,7 +49,6 @@ extensions = [
     "sphinx.ext.mathjax",
     "sphinx.ext.ifconfig",
     "sphinx.ext.viewcode",
-    "sphinx.ext.githubpages",
     "sphinx_gitstamp",
     "notfound.extension",
     "sphinx_copybutton",
@@ -158,6 +157,7 @@ html_context = {
     "gitlab_user": "ska-telescope",  # Username
     "gitlab_repo": "developer.skatelescope.org",  # Repo name
     "gitlab_version": "master",  # Version
+    "doc_path": "src", # gitlab docs path
     "conf_py_path": "/src/",  # Path in the checkout to the docs root
     # workaround for https://github.com/readthedocs/sphinx_rtd_theme/issues/701
     "theme_vcs_pageview_mode": "edit",
@@ -268,7 +268,7 @@ epub_copyright = copyright
 # epub_uid = ''
 
 # A list of files that should not be packed into the epub file.
-epub_exclude_files = ["search.html"]
+epub_exclude_files = ["search.html", "algolia-search.html"]
 
 
 # Example configuration for intersphinx: refer to the Python standard library.

@@ -72,7 +72,7 @@ Monitoring Dashboards
 
 You've deployed your code on one of our test systems. Now you want to monitor it.
 
-- :doc:`monitoring-dashboards/monitoring-dashboards`
+- :doc:`centralised-monitoring-and-logging`
 
 Bug Reporting
 =============
@@ -112,10 +112,12 @@ Questions frequently asked by developers.
   bdd-walkthrough
   test-infrastructure
   containers
+  binderhub
   documentation
   software-package-release-procedure
+  secret-management
   logging-format
-  monitoring-dashboards/monitoring-dashboards
+  centralised-monitoring-and-logging
   reporting-bugs
   codeguides
   dev-faq

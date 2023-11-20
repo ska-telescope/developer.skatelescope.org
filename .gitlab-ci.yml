@@ -21,7 +21,35 @@ stages:
 cache:
   paths:
     - .cache/pip
-    - .venv
+    - venv
+
+before_script:
+  - python -V               # Print out python version for debugging
+  - pip install virtualenv
+  - virtualenv venv
+  - source venv/bin/activate
+
+#pages is a special job that is used to upload static content to GitLab that can be used to serve your website
+#in this case the developer portal
+pages:
+  script:
+  - pip install -r requirements.txt
+  - make html SPHINXOPTS="--keep-going"
+  - ls build/html
+  - mkdir .public
+  - cp -r build/html/* .public
+  - rm -rf public/$CI_COMMIT_REF_SLUG
+  - mkdir .public/$CI_COMMIT_REF_SLUG
+  - cp -r build/html/* .public/$CI_COMMIT_REF_SLUG
+  - mkdir -p public # create folder if not exists (if cache is deleted)
+  - cp -r .public/* public/
+  artifacts:
+    name: "$CI_COMMIT_REF_SLUG"
+    paths:
+    - public
+    expire_in: 1 week
+ # only:
+ # - master
 
 deploy_staging:
   stage: deploy
