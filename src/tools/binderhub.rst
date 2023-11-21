@@ -15,8 +15,8 @@ To access both services a user should sign in using *<jira-username>@ad.skateles
 
 The following URLs should be used to access the corresponding services:
 
-* **BinderHub** - https://k8s.stfc.skao.int/binderhub/
-* **JupyterHub** - https://k8s.stfc.skao.int/binderhub/jupyterhub/
+* **BinderHub** - https://k8s-cicd.skao.int/binderhub/
+* **JupyterHub** - https://k8s-cicd.skao.int/binderhub/jupyterhub/
  
 BinderHub usage
 ================
