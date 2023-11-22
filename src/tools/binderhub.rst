@@ -15,8 +15,8 @@ To access both services a user should sign in using *<jira-username>@ad.skateles
 
 The following URLs should be used to access the corresponding services:
 
-* **BinderHub** - https://k8s-cicd.skao.int/binderhub/
-* **JupyterHub** - https://k8s-cicd.skao.int/binderhub/jupyterhub/
+* **BinderHub** - https://k8s.stfc.skao.int/binderhub/
+* **JupyterHub** - https://k8s.stfc.skao.int/binderhub/jupyterhub/
  
 BinderHub usage
 ================
@@ -79,6 +79,13 @@ This will show the previously launched servers - if any - and provide options to
    JupyterHub Home
 
 An important note is that, when starting the work from JupyterHub, all the dependencies required will need to be installed manually, as no image is built containing these. 
+
+Jupyterhub Profiles
+===================
+
+Jupyterhub allows the use of multiple proiles each of which is attached to a set of configuration options that override your jupyterhub's default configuration.
+Each configuration is a set of options for KubeSpawner, which defines how Kubernetes should launch a new server pod. Any configuration options passed to the profileList configuration will overwrite the defaults in KubeSpawner 
+(or any configuration you’ve added elsewhere in your helm chart).
 
 Policies
 ========
