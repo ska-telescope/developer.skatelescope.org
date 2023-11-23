@@ -84,7 +84,7 @@ Jupyterhub Profiles
 ===================
 
 Jupyterhub allows the use of multiple profiles that override Jupyterhub's default configurations.
-Currently there are two user profiles available by default in the Jupyterhub deployment.
+We are in the process of gathering feedback from the teams on what profiles would be useful to have, as those can only be deployed by a cluster administrator. Currently there are two test profiles available in Jupyterhub:
 
 * default
 * test
