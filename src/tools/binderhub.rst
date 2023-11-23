@@ -87,6 +87,15 @@ Jupyterhub allows the use of multiple proiles each of which is attached to a set
 Each configuration is a set of options for KubeSpawner, which defines how Kubernetes should launch a new server pod. Any configuration options passed to the profileList configuration will overwrite the defaults in KubeSpawner 
 (or any configuration you’ve added elsewhere in your helm chart).
 
+Currently there are two user profiles available by default in the Jupyterhub deployment.
+
+* default
+* test
+
+System team members can generate more profiles if teams have a specific need for them. Profiles can be configured with specific requirements
+such as storage, CPU and Memory. If your team requires a specific profile for Jupyterhub please get in contact with the System Team by
+raising a `support ticket <https://jira.skatelescope.org/servicedesk/customer/portal/166>`_. 
+
 Policies
 ========
 
