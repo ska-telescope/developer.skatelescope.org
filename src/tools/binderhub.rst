@@ -80,6 +80,35 @@ This will show the previously launched servers - if any - and provide options to
 
 An important note is that, when starting the work from JupyterHub, all the dependencies required will need to be installed manually, as no image is built containing these. 
 
+Jupyterhub Profiles
+===================
+
+Jupyterhub allows the use of multiple profiles that override Jupyterhub's default configurations.
+We are in the process of gathering feedback from the teams on what profiles would be useful to have, as those can only be deployed by a cluster administrator. Profiles can be accessed by adding a new server and selecting the profile:
+
+.. figure:: images/Jupyter_Profiles_1.png
+   :scale: 40%
+   :alt: Jupyter_Profiles_1
+   :align: center
+   :figclass: figborder
+
+   Select Add New Server
+
+The developer will then be able to select a profile from the list available and select start.
+
+.. figure:: images/Jupyter_Profiles_2.png
+   :scale: 40%
+   :alt: Jupyter_Profiles_2
+   :align: center
+   :figclass: figborder
+
+   Choose a profile
+
+
+Currently there are no profiles available, these are illustrative examples. Profiles can be configured with specific requirements
+such as storage, CPU and Memory. If your team requires a specific profile for Jupyterhub please get in contact with the System Team by
+raising a `support ticket <https://jira.skatelescope.org/servicedesk/customer/portal/166>`_. 
+
 Policies
 ========
 
