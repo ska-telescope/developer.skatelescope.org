@@ -83,10 +83,7 @@ An important note is that, when starting the work from JupyterHub, all the depen
 Jupyterhub Profiles
 ===================
 
-Jupyterhub allows the use of multiple proiles each of which is attached to a set of configuration options that override your jupyterhub's default configuration.
-Each configuration is a set of options for KubeSpawner, which defines how Kubernetes should launch a new server pod. Any configuration options passed to the profileList configuration will overwrite the defaults in KubeSpawner 
-(or any configuration you’ve added elsewhere in your helm chart).
-
+Jupyterhub allows the use of multiple profiles that override Jupyterhub's default configurations.
 Currently there are two user profiles available by default in the Jupyterhub deployment.
 
 * default
