@@ -105,7 +105,7 @@ The developer will then be able to select a profile from the list available and 
    Choose a profile
 
 
-System team members have the capability to generate more profiles if teams have a specific need for them. Profiles can be configured with specific requirements
+Currently there are no profiles available, these are illustrative examples. Profiles can be configured with specific requirements
 such as storage, CPU and Memory. If your team requires a specific profile for Jupyterhub please get in contact with the System Team by
 raising a `support ticket <https://jira.skatelescope.org/servicedesk/customer/portal/166>`_. 
 
