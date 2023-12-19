@@ -15,9 +15,87 @@
 SKA telescope developer portal
 ------------------------------
 
-.. danger::
-   Developer Portal is under maintenance right now so you might see pages that are not ordered or structured correctly if you are seeing this warning.
+Welcome to the `Square Kilometre Array <http://www.skao.int/>`_ software
+documentation portal. Whether you are a developer involved in SKA or you are
+simply one of our many users, all of our software processes and projects are
+documented or linked to in this portal.
 
+The portal is frequently updated as the project evolves; if you feel that something is missing, please have a look at our :doc:`guide to contributing to the developer portal </contributor/contribute>`
+
+If you're new to developing the SKA, please have a look at :doc:`our Onboarding material </getting-started/onboarding>` and the :doc:`guideance on setting up your development environment </getting-started/devenv-setup/devenv-setup>`.
+
+.. note::
+   Please also read the :doc:`/policies/code-of-conduct`, which governs all SKA interactions.
+
+What follows is a brief guide to the headings you'll find in the left-hand sidebar of this site. Feel free to explore!
+
+
+
+
+Getting Started and the SKA Developer Community
+-----------------------------------------------
+
+This section is about getting you up and running. It contains the onboarding material for all new SKA developers, the general contribution guidelines when working on SKA projects, guidance on setting up your development environment, and a list of projects, so you know what the SKA is working on. There is also a wealth of information about our development tools and practices, which you can read as you start development work.
+
+
+.. GETTING STARTED SECTION ==================================================
+
+.. Hidden toctree to manage the sidebar navigation.
+
+.. toctree::
+  :maxdepth: 1
+  :caption: Getting Started
+  :hidden:
+
+  getting-started/onboarding
+  getting-started/contrib-guidelines
+  getting-started/devenv-setup/devenv-setup
+
+- :doc:`getting-started/onboarding`
+- :doc:`getting-started/contrib-guidelines`
+- :doc:`getting-started/devenv-setup/devenv-setup`
+
+.. REPOSITORIES SECTION ========================================================
+
+.. Hidden toctree to manage sidebar navigation
+
+.. toctree::
+  :maxdepth: 1
+  :caption: Repositories
+  :hidden:
+
+  projects/area
+  projects/list
+  projects/create-new-project
+  projects/licensing
+
+.. DEVELOPMENT TOOLS SECTION ==================================================
+
+.. Hidden toctree to manage the sidebar navigation.
+
+.. toctree::
+  :maxdepth: 1
+  :caption: Development tools
+  :hidden:
+
+  tools/git
+  tools/jira
+  tools/ci-cd
+  tools/bdd-test-context
+  tools/bdd-walkthrough
+  tools/test-infrastructure
+  tools/containers
+  tools/binderhub
+  tools/documentation
+  tools/secret-management
+  tools/logging-format
+  tools/centralised-monitoring-and-logging
+  tools/reporting-bugs
+  tools/codeguides
+  tools/dev-faq
+
+Development tools and practices
+-------------------------------
 
 Here is the journey SKA Developers take to turn ideas into deployed code. Some of these tasks will be done every day; others less frequently. Feel free to click on each item to navigate to relevant explanations, tutorials, how-to guides or reference documentation.
 
@@ -64,8 +142,15 @@ Here is the journey SKA Developers take to turn ideas into deployed code. Some o
         Q --> R[Deploy to PSI/ITF?]
     end
 
-Getting Started
----------------
+PyTango Developer Journey
+=========================
+
+.. note:: 
+  This journey is based on a pytango developer journey for now but will be changed to support more later.
+
+
+Setup Environment
+#################
 
 1. Develop Inside a Container
 
@@ -80,7 +165,7 @@ Getting Started
   6. Create the Work Branch
 
 Coding & Testing
-----------------
+################
 
 1. Write Code
 
@@ -100,7 +185,7 @@ Coding & Testing
 4. Get Unit Tests Running Locally
 
 Review
-------
+######
 
 1. Push Code to Gitlab
 2. Create MR
@@ -109,7 +194,7 @@ Review
   - :doc:`howto: Code Review </howto/code-review>`
 
 Continuous Integration
-----------------------
+######################
 
 1. Write Your Dockerfile
 
@@ -126,7 +211,7 @@ Continuous Integration
 3. Get Tests Running in Cloud/CICD
 
 Continuous Deployment
----------------------
+#####################
 
 1. Create/Update My Helm Chart
 2. Integrate with databases
@@ -137,7 +222,7 @@ Continuous Deployment
 4. Run Integration Tests
 
 Release
--------
+#######
 
 1. Update CHANGELOG/Documentation
 
@@ -156,6 +241,7 @@ Release
   :maxdepth: 1
   :caption: Tutorials
   :glob:
+  :hidden:
 
   tutorial/*
   tutorial/**/*
@@ -164,6 +250,7 @@ Release
   :maxdepth: 1
   :caption: How-To Guides
   :glob:
+  :hidden:
 
   howto/*
 ..  howto/**/*
@@ -172,6 +259,7 @@ Release
   :maxdepth: 1
   :caption: References
   :glob:
+  :hidden:
 
   reference/*
 ..  reference/**/*
@@ -180,95 +268,12 @@ Release
   :maxdepth: 1
   :caption: Explanations
   :glob:
+  :hidden:
 
   explanation/*
 ..  explanation/**/*
 
-Welcome to the `Square Kilometre Array <http://www.skao.int/>`_ software
-documentation portal. Whether you are a developer involved in SKA or you are
-simply one of our many users, all of our software processes and projects are
-documented or linked to in this portal.
 
-The portal is frequently updated as the project evolves; if you feel that something is missing, please have a look at our :doc:`guide to contributing to the developer portal </contributor/contribute>`
-
-If you're new to developing the SKA, please have a look at :doc:`our Onboarding material </getting-started/onboarding>` and the :doc:`guideance on setting up your development environment </getting-started/devenv-setup/devenv-setup>`.
-
-.. note::
-   Please also read the :doc:`/policies/code-of-conduct`, which governs all SKA interactions.
-
-What follows is a brief guide to the headings you'll find in the left-hand sidebar of this site. Feel free to explore!
-
-
-
-
-Getting Started and the SKA Developer Community
------------------------------------------------
-
-This section is about getting you up and running. It contains the onboarding material for all new SKA developers, the general contribution guidelines when working on SKA projects, guidance on setting up your development environment, and a list of projects, so you know what the SKA is working on. There is also a wealth of information about our development tools and practices, which you can read as you start development work.
-
-
-.. GETTING STARTED SECTION ==================================================
-
-.. Hidden toctree to manage the sidebar navigation.
-
-.. toctree::
-  :maxdepth: 1
-  :caption: Getting Started
-  :hidden:
-
-  getting-started/onboarding
-  getting-started/contrib-guidelines
-  getting-started/devenv-setup/devenv-setup
-
-- :doc:`getting-started/onboarding`
-- :doc:`getting-started/contrib-guidelines`
-- :doc:`getting-started/devenv-setup/devenv-setup`
-
-
-SKA Repositories
-----------------
-
-.. REPOSITORIES SECTION ========================================================
-
-.. Hidden toctree to manage sidebar navigation
-
-.. toctree::
-  :maxdepth: 1
-  :caption: Repositories
-  :hidden:
-
-  projects/area
-  projects/list
-  projects/create-new-project
-  projects/licensing
-
-.. DEVELOPMENT TOOLS SECTION ==================================================
-
-.. Hidden toctree to manage the sidebar navigation.
-
-.. toctree::
-  :maxdepth: 1
-  :caption: Development tools
-  :hidden:
-
-  tools/git
-  tools/jira
-  tools/ci-cd
-  tools/bdd-test-context
-  tools/bdd-walkthrough
-  tools/test-infrastructure
-  tools/containers
-  tools/binderhub
-  tools/documentation
-  tools/secret-management
-  tools/logging-format
-  tools/centralised-monitoring-and-logging
-  tools/reporting-bugs
-  tools/codeguides
-  tools/dev-faq
-
-Development tools and practices
--------------------------------
 SKA git repositories
 ====================
 
