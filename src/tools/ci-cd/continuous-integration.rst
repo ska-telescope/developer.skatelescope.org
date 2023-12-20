@@ -428,7 +428,7 @@ For development purposes, STFC-backed clusters are the preferred method of deplo
 Currently we have two clusters, both with the same capabilities (Gitlab integration, Binderhub, etc):
 
 * **techops** - Main cluster used by the whole project for CI/CD. It has limited support for GPUs, being mainly used to build artefacts that require GPUs
-* **dp/sdhp** - Cluster used by the DP ART that provides more GPUs to run actual workloads
+* **dp** - Cluster used by the DP ART that provides more GPUs to run actual workloads
 
 STFC Techops
 ============
@@ -477,6 +477,7 @@ Deploy to GPU nodes
 **Using the GPU Runner**
 
 To run a job on a GPU runner, you can set the tag on your Gitlab job to one of the available GPU tags:
+
 * **techops** - k8srunner-gpu-v100
 * **dp** - ska-k8srunner-dp-gpu-a100
 
@@ -494,14 +495,14 @@ If you have pods that need to run on GPU nodes, they must have special configura
 
 **POD configurations:**
 
-* **nodeSelector** - This must be set to force the pods to be scheduled to GPU nodes
+* **nodeSelector** - This must be set to force the pods to be scheduled to GPU nodes.
 
 .. code-block:: bash
 
     node_selector:
     "nvidia.com/gpu": "true"
 
-* **tolerations**: Given the node **taint**, the pods must **tolerate** that taint
+* **tolerations**: Given the node **taint**, the pods must **tolerate** that taint.
 
 .. code-block:: bash
 
@@ -511,7 +512,7 @@ If you have pods that need to run on GPU nodes, they must have special configura
         effect: "NoSchedule"
 
 **CONTAINER configurations:**
-* resource **limits** and **requirements** - Needed to claim X amount of GPU instances, just like any other resource
+* resource **limits** and **requirements** - Needed to claim X amount of GPU instances, just like any other resource.
 
 .. code-block:: bash
 
@@ -525,7 +526,7 @@ If you have pods that need to run on GPU nodes, they must have special configura
       memory: ...
       nvidia.com/gpu: "<number of GPUs>"
 
-* **runtimeClass**: You need to properly set the **runtimeClass** so that the container runtime knows what profile to use to bind GPUs to a pod container
+* **runtimeClass**: You need to properly set the **runtimeClass** so that the container runtime knows what profile to use to bind GPUs to a pod container.
 
 .. code-block:: bash
 
