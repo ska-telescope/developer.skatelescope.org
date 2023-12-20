@@ -1,5 +1,42 @@
+======================================
+Kubernetes based Runners Architecture
+======================================
+
+GitLab runners are orchestrated by Kubernetes cluster. They could be deployed to any Kubernetes clusters with following the instructions on deploy-gitlab-runners repository. The main architecture is illustrated below.
+
+.. figure:: images/runners-on-kubernetes.png
+   :scale: 80%
+   :alt: Table with marvin feedback type (error/warning), descrition and mitigation strategy
+   :align: center
+   :figclass: figborder
+
+Features
+________
+
+- The main runner pod is deployed with Helm Chart under **gitlab** namespace with the repository.
+- Main runner pod is registered to **ska-telescope group** shared runners with configurable tags.
+- The main pod picks up **GitLab Jobs** and creates **on-demand pods**. This is configured using helm chart values file/or config.toml file of GitLab runners below.
+- Runners are scaled according to configuration.
+- Runners have resource **limits** *i.e. cpuRequests, memoryRequests, cpuLimit, memoryLimit*. This is not applied at the moment.
+- Runners are running in nodes that are **specifically labelled** for ci/cd jobs.
+- Runners share a **cache** between them that is used to speed up the job times.
+- **Docker support**
+- **Kubernetes support**
+
+With this approach, GitLab Runners are proven to be a viable option to be used in a cluster with auto-scaling and easy management.
+Docker Support
+
+Docker can be used in the CI/CD jobs as with the normal runners. Note that: docker-compose cannot be used in conjunction with Kubernetes! You should follow the instruction on the developer portal to set up your repo.
+
+To elevate some of the security concerns listed below with using Docker in Docker, another docker daemon is deployed in the nodes. This daemon then used as default docker-daemon in the runner pods.
+Kubernetes Support
+
+Kubernetes clusters could be created in ci/cd jobs. These clusters are created on the ci-worker nodes and destroyed at the end of the job.
+
+Note: in order to run deploy clusters, the account permissions need to be set up correctly for the runner services.
+
 STFC Cloud Kubernetes Clusters
-_______________________________
+------------------------------
 
 For development purposes, STFC-backed clusters are the preferred method of deployment and testing, using Gitlab to deploy workloads into clusters. 
 Currently we have two clusters, both with the same capabilities (Gitlab integration, Binderhub, etc):
@@ -108,5 +145,3 @@ If you have pods that need to run on GPU nodes, they must have special configura
 .. code-block:: bash
 
     runtimeClassName: "nvidia"
-
-

@@ -390,36 +390,6 @@ Note the following:
   - make DOCKER_BUILD_ARGS="--no-cache" DOCKER_REGISTRY_USERNAME=$CAR_OCI_REGISTRY_USERNAME DOCKER_REGISTRY_HOST=$CAR_OCI_REGISTRY_HOST build
   - make DOCKER_REGISTRY_USERNAME=$CAR_OCI_REGISTRY_USERNAME DOCKER_REGISTRY_HOST=$CAR_OCI_REGISTRY_HOST push
 
-Kubernetes based Runners Architecture
--------------------------------------
-GitLab runners are orchestrated by Kubernetes cluster. They could be deployed to any Kubernetes clusters with following the instructions on deploy-gitlab-runners repository. The main architecture is illustrated below.
-
-|runners-on-kubernetes|
-
-Features
-________
-
-- The main runner pod is deployed with Helm Chart under **gitlab** namespace with the repository.
-- Main runner pod is registered to **ska-telescope group** shared runners with configurable tags.
-- The main pod picks up **GitLab Jobs** and creates **on-demand pods**. This is configured using helm chart values file/or config.toml file of GitLab runners below.
-- Runners are scaled according to configuration.
-- Runners have resource **limits** *i.e. cpuRequests, memoryRequests, cpuLimit, memoryLimit*. This is not applied at the moment.
-- Runners are running in nodes that are **specifically labelled** for ci/cd jobs.
-- Runners share a **cache** between them that is used to speed up the job times.
-- **Docker support**
-- **Kubernetes support**
-
-With this approach, GitLab Runners are proven to be a viable option to be used in a cluster with auto-scaling and easy management.
-Docker Support
-
-Docker can be used in the CI/CD jobs as with the normal runners. Note that: docker-compose cannot be used in conjunction with Kubernetes! You should follow the instruction on the developer portal to set up your repo.
-
-To elevate some of the security concerns listed below with using Docker in Docker, another docker daemon is deployed in the nodes. This daemon then used as default docker-daemon in the runner pods.
-Kubernetes Support
-
-Kubernetes clusters could be created in ci/cd jobs. These clusters are created on the ci-worker nodes and destroyed at the end of the job.
-
-Note: in order to run deploy clusters, the account permissions need to be set up correctly for the runner services.
 
 .. |image0| image:: ../images/image1.png
    :width: 6.27083in
@@ -445,7 +415,6 @@ Note: in order to run deploy clusters, the account permissions need to be set up
 .. |image7| image:: ../images/image0.png
    :width: 6.27083in
    :height: 4.63889in
-.. |runners-on-kubernetes| image:: ../images/runners-on-kubernetes.png
 
 Best Practices, Tips and Tricks
 -------------------------------------
