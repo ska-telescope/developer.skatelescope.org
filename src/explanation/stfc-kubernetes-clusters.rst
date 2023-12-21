@@ -2,7 +2,7 @@
 Kubernetes based Runners Architecture
 ======================================
 
-GitLab runners are orchestrated by Kubernetes cluster. They could be deployed to any Kubernetes clusters using the `gitlab_runner ansible collection <https://gitlab.com/ska-telescope/sdi/ska-ser-ansible-collections/-/tree/main/ansible_collections/ska_collections/gitlab_runner?ref_type=heads>`_. 
+GitLab runners are orchestrated by a Kubernetes cluster. They could be deployed to any Kubernetes clusters using the `gitlab_runner ansible collection <https://gitlab.com/ska-telescope/sdi/ska-ser-ansible-collections/-/tree/main/ansible_collections/ska_collections/gitlab_runner?ref_type=heads>`_. 
 The main architecture is illustrated below.
 
 .. figure:: images/runners-on-kubernetes.png
