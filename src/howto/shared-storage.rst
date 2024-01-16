@@ -108,14 +108,14 @@ Enforcements
 ------------
 Adherence to the **third, fourth and fifth rules** is essential for ensuring uninterrupted storage and the effectiveness of the automation process. Violations may lead to errors:
 
-- **Violation of Rule 4**: Creating a PVC with the prefix **shared-*** with the wrong StorageClass name.
+- **Violation of Rule 3**: Creating a PVC with the prefix **shared-*** with the wrong StorageClass name.
 
    .. code:: bash
 
-      resource PersistentVolumeClaim/bang3/shared-dp-pvcss was blocked due to the following policies
-      validation-shared-pv-add:
-         validation-shared-pv-add: This is the first volume created of the shared volume
-            group. So it needs to be inside a namespace starting with shared-*
+      resource PersistentVolumeClaim/bang3/shared-dp-pvc was blocked due to the following policies
+      validation-shared-pvc-storage-add:
+         validation-shared-pvc-storage-add: 'Storage Class does not allow shared storage.
+            Classes that do are: ceph-cephfs '
 
 - **Violation of Rule 4**: Creating a PVC with the prefix **shared-*** as the first in its group outside a namespace starting with **shared-*** will be blocked.
 
