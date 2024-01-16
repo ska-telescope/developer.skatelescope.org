@@ -12,8 +12,11 @@ The shared storage feature is not enabled by default in K8s. An automated proces
 
 1. **Naming Convention**: All shared PVCs must follow the regex pattern **shared-***.
 2. **Consistent Naming**: All shared PVCs across different namespaces must have the **same name**, such as `shared-dp-mccs`.
-3. **Namespace Requirement**: The first PVC must be in a namespace matching the regex pattern **shared-***.
-4. **Deletion Order**: The first PVC must be the **last** one to be deleted.
+3. **StorageClass Requirment**: Not all StorageClasses allow Shared Volumes, the ones that do are: 
+   
+   - **ceph-cephfs**
+4. **Namespace Requirement**: The first PVC must be in a namespace matching the regex pattern **shared-***.
+5. **Deletion Order**: The first PVC must be the **last** one to be deleted.
 
 Example
 -------
@@ -103,9 +106,9 @@ This example demonstrates how to share storage between two pods in different nam
 
 Enforcements
 ------------
-Adherence to the **third and fourth rules** is essential for ensuring uninterrupted storage and the effectiveness of the automation process. Violations may lead to errors:
+Adherence to the **third, fourth and fifth rules** is essential for ensuring uninterrupted storage and the effectiveness of the automation process. Violations may lead to errors:
 
-- **Violation of Rule 3**: Creating a PVC with the prefix **shared-*** as the first in its group outside a namespace starting with **shared-*** will be blocked.
+- **Violation of Rule 4**: Creating a PVC with the prefix **shared-*** with the wrong StorageClass name.
 
    .. code:: bash
 
@@ -114,11 +117,20 @@ Adherence to the **third and fourth rules** is essential for ensuring uninterrup
          validation-shared-pv-add: This is the first volume created of the shared volume
             group. So it needs to be inside a namespace starting with shared-*
 
-- **Violation of Rule 4**: Attempting to delete the first/main PVC before deleting all other PVs will be blocked to prevent data loss or disruption.
+- **Violation of Rule 4**: Creating a PVC with the prefix **shared-*** as the first in its group outside a namespace starting with **shared-*** will be blocked.
+
+   .. code:: bash
+
+      resource PersistentVolumeClaim/bang3/shared-dp-pvcss was blocked due to the following policies
+      validation-shared-pv-add:
+         validation-shared-pv-add: This is the first volume created of the shared volume
+            group. So it needs to be inside a namespace starting with shared-*
+
+- **Violation of Rule 5**: Attempting to delete the first/main PVC before deleting all other PVs will be blocked to prevent data loss or disruption.
 
    .. code:: bash
 
       resource PersistentVolumeClaim/shared-dp/shared-dp-pvc was blocked due to the following policies
       validation-shared-pv-del:
-      validation-shared-pv-del: 'This is the first volume created of the shared volume
-         group. Please first delete the other Replicated Volumes: ["pvc-899bf991-53d5-49d5-806d-be7c18e93ce1-bang-how-to"]'
+         validation-shared-pv-del: 'This is the first volume created of the shared volume
+            group. Please first delete the other Replicated Volumes: ["pvc-899bf991-53d5-49d5-806d-be7c18e93ce1-bang-how-to"]'
