@@ -37,7 +37,7 @@ Simulations
 
   simulations
 
-SKAMPI
+MVP
 ======
 
    ============= =================
@@ -45,8 +45,8 @@ SKAMPI
    ============= =================
    ============= =================
 
-- `SKAMPI repository <https://gitlab.com/ska-telescope/ska-skampi/>`_: the SKA MVP Integration project. Contains helm charts and automation for deployment.
-- `SKAMPI documentation </projects/ska-skampi/en/latest/?badge=latest>`_.
+- `[Deprecated] SKAMPI repository <https://gitlab.com/ska-telescope/ska-skampi/>`_: the SKA MVP Integration project. Contains helm charts and automation for deployment.
+- `[Deprecated] SKAMPI documentation </projects/ska-skampi/en/latest/?badge=latest>`_.
 
 - `Central Signal Processor Local Monitoring and Control repository <https://gitlab.com/ska-telescope/csp-lmc/>`_ CSP monitoring and control functionality for both SKA MID and LOW  telescopes.
 - `CSP LMC documentation Mid </projects/ska-csp-lmc-mid/en/latest/lmc/mid_csp_lmc.html>`_.
