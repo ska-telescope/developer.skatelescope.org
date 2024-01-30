@@ -2,16 +2,18 @@
 Policy Agent
 ======================
 
-The policy agent is a deployable service within a Kubernetes cluster that extends the capabilities of the Kubernetes API and implements custom behaviors.
+The policy agent is a deployable service within a Kubernetes cluster that extends the capabilities of the Kubernetes API and implements custom behaviours.
 Rather than constructing native Kubernetes resources and dealing with the coding, building, and management of webhooks code, the policy agent offers a more streamlined solution.
 It dynamically applies behaviors based on static configurations, which are created as regular Kubernetes objects (each policy agent comes with its own Custom Resource Definitions).
 These behaviors can be classified into three types:
 
 - **Validation** - Verifies the conformity of objects (such as pods and services) submitted to the API.
 
-- **Mutation** - Modifies objects submitted to the API..
+- **Mutation** - Modifies objects submitted to the API.
 
 - **Generation** - Generates new objects in response to the submission of other objects to the API.
+
+System Team is using `Kyverno <https://kyverno.io/>`__ as its policy agent. Below are the active policies that are applied to **STFC TechOps** cluster.
 
 Active Policies
 --------------------
@@ -25,11 +27,11 @@ In order to mitigate risks and ensure that only authorized workloads are deploye
 
 Developer Workflow
 --------------------
-When applying a change a cluster with an active policy, the developer will be informed if there is a conflict.
+When applying a change in a cluster with an active policy, the developer will be informed if there is a conflict.
 
 Examples:
 
-- When applying a deployment which uses an unsigned image:
+- When applying a deployment that uses an unsigned image:
 
 .. code-block:: bash
 
