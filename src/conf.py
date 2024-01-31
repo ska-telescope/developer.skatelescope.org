@@ -29,8 +29,9 @@ def setup(app):
     app.add_js_file('js/groups_list.js')
     app.add_js_file('js/topics_list.js')
     app.add_js_file('js/project_table.js')
-    app.add_js_file("js/feedback.js")
-    app.add_js_file('js/policies.js')
+    # app.add_js_file("js/feedback.js", type='module')
+    app.add_js_file('js/webllm.js', type='module')
+    app.add_js_file('js/policies.js', type='module')
 
 # -- General configuration ------------------------------------------------
 
