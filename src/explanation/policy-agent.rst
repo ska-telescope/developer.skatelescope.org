@@ -22,7 +22,6 @@ In order to mitigate risks and ensure that only authorized workloads are deploye
 .. raw:: html
 
     <script src="https://cdn.jsdelivr.net/npm/js-yaml/dist/js-yaml.min.js"></script>
-    <script src="src/_static/js/policies.js"></script>
     <div id="container"></div>
 
 Developer Workflow
