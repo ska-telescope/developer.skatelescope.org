@@ -10,13 +10,11 @@ Rules
 -----
 The shared storage feature is not enabled by default in K8s. An automated process has been developed for this purpose, which requires adherence to specific rules:
 
-1. **Naming Convention**: All shared PVCs must follow the regex pattern **shared-***.
-2. **Consistent Naming**: All shared PVCs across different namespaces must have the **same name**, such as `shared-dp-mccs`.
-3. **StorageClass Requirment**: Not all StorageClasses allow Shared Volumes, the ones that do are: 
+1. **Labels Requirements**: The specific labels **skao.int/clone-pvc** and **skao.int/clone-pvc-namespace** need to be set in the metadata path of the PVC
+2. **StorageClass Requirment**: Not all StorageClasses allow Shared Volumes, the ones that do are: 
    
    - **ceph-cephfs**
-4. **Namespace Requirement**: The first PVC must be in a namespace matching the regex pattern **shared-***.
-5. **Deletion Order**: The first PVC must be the **last** one to be deleted.
+3. **Deletion Order**:  PVCs that are being deleted must be the **last** one to be deleted on the shared chain.
 
 Example
 -------
@@ -39,26 +37,29 @@ This example demonstrates how to share storage between two pods in different nam
       resources:
          requests:
             storage: 1Gi
-      storageClassName: nfss1
+      storageClassName: ceph-cephfs
       volumeMode: Filesystem
 
 2. **Creating a PVC in Another Namespace**:
-   Following **rule 2**, this PVC will have the same name, **shared-dp-pvc**, in the namespace **bang-how-to**.
+   Following **rule 1**, this PVC will be pointing to share the same storage as the PVC created in the first step.
 
    .. code:: yaml
 
       kind: PersistentVolumeClaim
       apiVersion: v1
       metadata:
-         name: shared-dp-pvc
+         name: second-pvc
          namespace: bang-how-to
+         labels:
+            skao.int/clone-pvc: shared-dp-pvc
+            skao.int/clone-pvc-namespace:  shared-dp
       spec:
       accessModes:
          - ReadWriteMany
       resources:
          requests:
             storage: 1Gi
-      storageClassName: nfss1
+      storageClassName: ceph-cephfs
       volumeMode: Filesystem
 
 3. **Creating Pods to Test Shared Storage**:
@@ -102,13 +103,13 @@ This example demonstrates how to share storage between two pods in different nam
       volumes:
          - name: shared-volume
             persistentVolumeClaim:
-            claimName: shared-dp-pvc
+            claimName: second-pvc
 
 Enforcements
 ------------
-Adherence to the **third, fourth and fifth rules** is essential for ensuring uninterrupted storage and the effectiveness of the automation process. Violations may lead to errors:
+Adherence to the **second and third rules** is essential for ensuring uninterrupted storage and the effectiveness of the automation process. Violations may lead to errors:
 
-- **Violation of Rule 3**: Creating a PVC with the prefix **shared-*** with the wrong StorageClass name.
+- **Violation of Rule 2**: Creating a PVC with the clone labels and the wrong StorageClass name will be blocked.
 
    .. code:: bash
 
@@ -117,20 +118,12 @@ Adherence to the **third, fourth and fifth rules** is essential for ensuring uni
          validation-shared-pvc-storage-add: 'Storage Class does not allow shared storage.
             Classes that do are: ceph-cephfs '
 
-- **Violation of Rule 4**: Creating a PVC with the prefix **shared-*** as the first in its group outside a namespace starting with **shared-*** will be blocked.
 
-   .. code:: bash
-
-      resource PersistentVolumeClaim/bang3/shared-dp-pvcss was blocked due to the following policies
-      validation-shared-pv-add:
-         validation-shared-pv-add: This is the first volume created of the shared volume
-            group. So it needs to be inside a namespace starting with shared-*
-
-- **Violation of Rule 5**: Attempting to delete the first/main PVC before deleting all other PVs will be blocked to prevent data loss or disruption.
+- **Violation of Rule 3**: Attempting to delete the first/main PVC before deleting all other PVs will be blocked to prevent data loss or disruption.
 
    .. code:: bash
 
       resource PersistentVolumeClaim/shared-dp/shared-dp-pvc was blocked due to the following policies
       validation-shared-pv-del:
          validation-shared-pv-del: 'This is the first volume created of the shared volume
-            group. Please first delete the other Replicated Volumes: ["pvc-899bf991-53d5-49d5-806d-be7c18e93ce1-bang-how-to"]'
+            group. Please first delete the other Replicated Volumes: ["second-pvc"]'
