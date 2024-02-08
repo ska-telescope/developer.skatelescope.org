@@ -11,7 +11,7 @@ Logging into Vault with Gitlab and Add Secrets
 
 Any developer that is part of the skao-dev group has access to the SKAO Vault service by logging in with their Gitlab Account.
 
-The logging URL is the following: https://vault-test-1.skao.int/ui/vault/auth?with=gitlab%2F, and a page like the one below should be shown.
+The logging URL is the following: https://vault.skao.int/ui/vault/auth?with=oidc/, and a page like the one below should be shown.
 
 .. image:: images/vault-login.png
   :alt: Login Vault Page
@@ -200,7 +200,7 @@ Admiting that we have a Values.yaml with these fields:
     name: vault-ska-vault-example-csi
     provider: 
         name: "vault"
-        vaultAddress: "https://vault-test-1.skao.int"
+        vaultAddress: "https://vault.skao.int"
         roleName: "kube-role"
         secretsPath: "PATH_TO_SECRET_VAULT"
         secrets:
