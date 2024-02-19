@@ -11,8 +11,8 @@ Rules
 The shared storage feature is not enabled by default in K8s. An automated process has been developed for this purpose, which requires adherence to specific rules:
 
 1. **Labels Requirements**: The specific labels **skao.int/clone-pvc** and **skao.int/clone-pvc-namespace** need to be set in the metadata path of the PVC
-2. **StorageClass Requirment**: Not all StorageClasses allow Shared Volumes, the ones that do are: 
-   
+2. **StorageClass Requirment**: Not all StorageClasses allow Shared Volumes, the ones that do are:
+
    - **ceph-cephfs**
 3. **Deletion Order**:  PVCs that are being deleted must be the **last** one to be deleted on the shared chain.
 
@@ -29,16 +29,16 @@ This example demonstrates how to share storage between two pods in different nam
       kind: PersistentVolumeClaim
       apiVersion: v1
       metadata:
-         name: shared-dp-pvc
-         namespace: shared-dp
+        name: shared-dp-pvc
+        namespace: shared-dp
       spec:
-      accessModes:
-         - ReadWriteMany
-      resources:
-         requests:
+        accessModes:
+        - ReadWriteMany
+        resources:
+          requests:
             storage: 1Gi
-      storageClassName: ceph-cephfs
-      volumeMode: Filesystem
+        storageClassName: ceph-cephfs
+        volumeMode: Filesystem
 
 2. **Creating a PVC in Another Namespace**:
    Following **rule 1**, this PVC will be pointing to share the same storage as the PVC created in the first step.
@@ -48,19 +48,19 @@ This example demonstrates how to share storage between two pods in different nam
       kind: PersistentVolumeClaim
       apiVersion: v1
       metadata:
-         name: second-pvc
-         namespace: bang-how-to
-         labels:
-            skao.int/clone-pvc: shared-dp-pvc
-            skao.int/clone-pvc-namespace:  shared-dp
+        name: second-pvc
+        namespace: bang-how-to
+        labels:
+          skao.int/clone-pvc: shared-dp-pvc
+          skao.int/clone-pvc-namespace:  shared-dp
       spec:
-      accessModes:
-         - ReadWriteMany
-      resources:
-         requests:
+        accessModes:
+        - ReadWriteMany
+        resources:
+          requests:
             storage: 1Gi
-      storageClassName: ceph-cephfs
-      volumeMode: Filesystem
+        storageClassName: ceph-cephfs
+        volumeMode: Filesystem
 
 3. **Creating Pods to Test Shared Storage**:
    Pods in both namespaces will use the shared storage.
@@ -72,18 +72,18 @@ This example demonstrates how to share storage between two pods in different nam
       apiVersion: v1
       kind: Pod
       metadata:
-      name: pod1
-      namespace: shared-dp
+        name: pod1
+        namespace: shared-dp
       spec:
-      containers:
-         - name: container
-            image: nginx
-            volumeMounts:
-            - name: shared-volume
-               mountPath: /data
-      volumes:
-         - name: shared-volume
-            persistentVolumeClaim:
+        containers:
+        - name: container
+          image: nginx
+          volumeMounts:
+          - name: shared-volume
+            mountPath: /data
+        volumes:
+        - name: shared-volume
+          persistentVolumeClaim:
             claimName: shared-dp-pvc
 
       # Pod in bang-how-to namespace
@@ -91,18 +91,18 @@ This example demonstrates how to share storage between two pods in different nam
       apiVersion: v1
       kind: Pod
       metadata:
-      name: pod2
-      namespace: bang-how-to
+        name: pod2
+        namespace: bang-how-to
       spec:
-      containers:
-         - name: container
-            image: nginx
-            volumeMounts:
-            - name: shared-volume
-               mountPath: /data
-      volumes:
-         - name: shared-volume
-            persistentVolumeClaim:
+        containers:
+        - name: container
+          image: nginx
+          volumeMounts:
+          - name: shared-volume
+            mountPath: /data
+        volumes:
+        - name: shared-volume
+          persistentVolumeClaim:
             claimName: second-pvc
 
 Enforcements
