@@ -62,8 +62,63 @@ function ProjectTable(data) {
   return table.outerHTML;
 }
 
-function fetchSubgroups() {
-  return fetch(buildSubgroupApiUrl()).then((response) => response.json());
+// Add cache logic to fetchSubgroups
+// to avoid unnecessary API requests.
+
+const cacheExpiration = 60 * 1000; // 60 seconds
+
+const subgroupCache = {}; // Simple object for caching
+
+async function fetchSubgroups() {
+  const cacheKey = "subgroups"; // Since you're likely fetching all subgroups at once
+
+  if (
+    subgroupCache[cacheKey] &&
+    subgroupCache[cacheKey].timestamp + cacheExpiration > Date.now()
+  ) {
+    return subgroupCache[cacheKey]; // Return cached data
+  }
+
+  const subgroups = await fetch(buildSubgroupApiUrl()).then((response) =>
+    response.json()
+  );
+
+  subgroupCache[cacheKey] = { timestamp: Date.now(), data: subgroups }; // Cache the results
+  return subgroups;
+}
+
+// Add cache logic to fetchProjectsWithPagination
+// to avoid unnecessary API requests.
+const projectsCache = new {}();
+async function fetchProjectsWithPagination() {
+  let allProjects = [];
+  let page = 1;
+  let hasNextPage = true;
+
+  while (hasNextPage) {
+    const cacheKey = `projects_page_${page}`;
+
+    if (
+      projectsCache[cacheKey] &&
+      projectsCache[cacheKey].timestamp + cacheExpiration > Date.now()
+    ) {
+      allProjects = allProjects.concat(projectCache[cacheKey]);
+    } else {
+      const projectsResponse = await fetch(buildProjectApiUrl(page));
+      const projectsPage = await projectsResponse.json();
+
+      allProjects = allProjects.concat(projectsPage);
+      projectsCache[cacheKey] = { timestamp: Date.now(), data: projectsPage }; // Cache this page
+      projectsPage.forEach((project) => projectsCache.set(project.id, project));
+
+      const linkHeader = projectsResponse.headers.get("Link");
+      hasNextPage = hasLinkHeaderWithRel(linkHeader, "next");
+
+      page++;
+    }
+  }
+
+  return allProjects;
 }
 
 async function fetchProjectsWithPagination() {
