@@ -2,7 +2,7 @@
    for populating this page using Gitlab APIs,
    Do not edit it
    Note that the section titles are used in
-   `src/_static/js/topics_list.js` to populate the tables
+   `src/_static/js/project_lists.js` to populate the tables
    So when a new section is added, the following section name
    should be added to the list in the above file (in lowercase)
 
