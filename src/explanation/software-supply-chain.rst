@@ -19,7 +19,7 @@ Lets look at the various stages in the supply chain:
   :alt: Software supply chain stages
 
 1. **Development**:
-   This is first stage of the production of software products. The supply chain is secured at this stage by good design principles of the software features, as well as by establishing and following development guidelines. Following such guidelines and having a code-review policy helps team drives quality up from the first stage.
+   This is first stage of the production of software products. The supply chain is secured at this stage by good design principles of the software features, as well as by establishing and following development guidelines. Following such guidelines and having a code-review policy helps teams drive quality up from the first stage.
 
 2. **Building, Linting & Testing**:
    Modern linters can help spot bugs, anti-patterns and bad design, as well as make the coding style uniform. It is paramount that software goes through automated linting - which usually relies on community and industry standards for each language - in order to guarantee that generic quality standards are met. Software then goes through testing to ensure it functions correctly and meets functional and performance standards. This involves various types of testing such as unit testing (testing individual components), integration testing (testing how components work together), and system testing (testing the entire software system).
@@ -28,7 +28,7 @@ Lets look at the various stages in the supply chain:
    Once the software passes testing, it needs to be packaged for distribution. Packaging involves bundling the necessary files, libraries, documentation, and other resources into a format suitable for distribution. This could be an installer for desktop applications, a package for server deployment, or a container image for cloud deployment.
 
 4. **Distribution**:
-   Distribution involves making the packaged software available to be be deployed. Distributing a Python package involves different infrastructure and requirements than, for instance, OCI images. Provisioning a stable and secure distribution pipeline is **paramount** to the overall security of the supply chain.
+   Distribution involves making the packaged software available to be deployed. Distributing a Python package involves different infrastructure and requirements than, for instance, OCI images. Provisioning a stable and secure distribution pipeline is **paramount** to the overall security of the supply chain.
 
 5. **Deployment**:
    Deployment is the process of installing and configuring the software for use in the target environment. This could involve installing the software on individual servers, or deploying it to cloud platforms. Deployment also includes setting up configurations, databases, and any necessary integrations, as well as handling secret information.

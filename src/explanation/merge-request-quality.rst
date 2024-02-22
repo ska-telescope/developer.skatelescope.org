@@ -3,8 +3,8 @@
 Merge Request Quality Checks
 ============================
 
-To ensure the guidelines and policies described in this Developer Portal are followed for consistent and robust development/security/review and  Software Quality Assurance processes for SKA repositories, there are a series of automated checks in place.
-The result of the checks are reported back to the developers in the main Merge Request page on GitLab.
+To ensure that the Software Quality Assurance processes for SKA repositories as well as the guidelines and policies described in this Developer Portal are followed for consistent and robust development/security/review there are a series of automated checks in place.
+The results of these checks are reported back to the developers in the main Merge Request page on GitLab.
 It is advised to look for this comment and respond to any issue arising.
 
 A check is either a:
