@@ -1,3 +1,5 @@
+.. _tutorial_release_mgmt:
+
 ===================================================
 How to Automate the Release Process Using Templates
 ===================================================

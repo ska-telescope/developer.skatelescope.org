@@ -1,3 +1,5 @@
+.. _cicd-makefile:
+
 Integrating CICD Makefile Submodule
 ===================================
 
