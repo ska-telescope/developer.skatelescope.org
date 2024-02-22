@@ -1,3 +1,5 @@
+.. _marvin:
+
 Merge Request Quality Checks
 ============================
 

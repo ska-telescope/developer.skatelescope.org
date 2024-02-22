@@ -1,3 +1,5 @@
+.. _ssc:
+
 ======================
 Software Supply Chain
 ======================
@@ -6,10 +8,15 @@ The software supply chain refers to the entire process involved in creating, del
 
 Different package types require different solutions, and may include different stages in the supply chain. As an example, it is crucial to look for `CVEs <https://cve.mitre.org/>`_ in OCI images, which include thousands of pieces of third-party software, that may include vulnerabilities that allow attackers to compromise a whole software system.
 
+There has been a great increase in worldwide attention on the **packaging & distribution** end of the supply chain, after the `2021's White House executive order <https://www.whitehouse.gov/briefing-room/presidential-actions/2021/05/12/executive-order-on-improving-the-nations-cybersecurity/>`_ mandating several of its institutes to issue standards and guidance on the usage of `SBOMs <https://security.cms.gov/learn/software-bill-materials-sbom>`_  to enhance the security of the software supply chain, putting the software industry to work.
+
 Supply Chain Stages
 -------------------
 
 Lets look at the various stages in the supply chain:
+
+.. image:: images/ssc_base.png
+  :alt: Software supply chain stages
 
 1. **Development**:
    This is first stage of the production of software products. The supply chain is secured at this stage by good design principles of the software features, as well as by establishing and following development guidelines. Following such guidelines and having a code-review policy helps team drives quality up from the first stage.
@@ -63,7 +70,7 @@ The supply chain for SKA software products is protected as follows:
    Developers have specific permissions in Gitlab to be able to contribute to specific projects, as well as 2FA protection.
 
 2. **Building, Linting, Testing & Packaging**:
-   For the packaging, only (if using pipeline machinery) **secure** runners are used, running on our own infrastructure so that the secret information exposed to Gitlab pipelines is secured. These runners also identify to the upstream (distribution) systems. A System Team managed service - Marvin - checks the **merge requests** for overall compliance with the SKA Guidelines, also providing detailed information about the MR contents, documentation and standards. These help bolster the quality of software contributions.
+   For the packaging, only (if using pipeline machinery) **secure** runners are used, running on our own infrastructure so that the secret information exposed to Gitlab pipelines is secured. These runners also identify to the upstream (distribution) systems. A System Team managed service - :ref:`Marvin <marvin>` - checks the **merge requests** for overall compliance with the SKA Guidelines, also providing detailed information about the MR contents, documentation and standards. These help bolster the quality of software contributions.
 
 .. image:: images/marvin.png
   :alt: Example of Marvin checks
@@ -81,6 +88,6 @@ Artefact Specifics
 .. note::
    Other artefact types will be added as the Software Supply Chain is updated
 
-As mentioned before, different artefact types might have different infrastructure components with different requirements. Find below the specifics of each artifact type:
+As mentioned before, different artefact types might have different infrastructure components with different requirements. Find below the specifics of each artefact type:
 
 - :ref:`OCI <oci-ssc>`

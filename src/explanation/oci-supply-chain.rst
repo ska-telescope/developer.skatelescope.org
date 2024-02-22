@@ -4,7 +4,7 @@
 OCI Supply Chain
 ======================
 
-OCI artefacts and registries provide the ability to further increase the security in the **delivery** stage of the Software supply chain. Among several new features coming into the software delivery realm like `SBOMs <https://security.cms.gov/learn/software-bill-materials-sbom>`_, we are now providing signing and signature validation of our OCI images. In the future, we will also target third-party images that are vetted for SKA usage. The list of artefacts will also expand to cover other types of artefacts such as Helm Charts, python packages, and executables.
+OCI artefacts and registries provide the ability to further increase the security in the **delivery** stage of the Software supply chain. Among several new features coming into the software delivery realm like `SBOMs <https://security.cms.gov/learn/software-bill-materials-sbom>`_, we are now providing :ref:`signing and signature validation of our OCI images <oci-signatures>`. In the future, we will also target third-party images that are vetted for SKA usage. The list of artefacts will also expand to cover other types of artefacts such as Helm Charts, python packages, and executables.
 
 .. image:: images/ssc_oci.png
   :alt: OCI supply chain specificities

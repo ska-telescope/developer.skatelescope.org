@@ -1,0 +1,83 @@
+# OpenSSL root CA configuration file.
+# Copy to `/root/ca/openssl.cnf`.
+
+[ ca ]
+# `man ca`
+default_ca = CA_default
+
+[ CA_default ]
+# The root key and root certificate.
+
+dir               = ./intermediate-ca
+certs             = $dir/certs
+crl_dir           = $dir/crl
+new_certs_dir     = $dir/newcerts
+database          = $dir/index.txt
+serial            = $dir/serial
+
+private_key       = oci.key
+certificate       = oci.pem
+
+default_md        = sha256
+default_days      = 375
+preserve          = no
+policy            = policy_strict
+
+[ policy_strict ]
+# The root CA should only sign intermediate certificates that match.
+# See the POLICY FORMAT section of `man ca`.
+countryName             = match
+stateOrProvinceName     = match
+organizationName        = match
+organizationalUnitName  = optional
+commonName              = supplied
+emailAddress            = optional
+
+[ policy_loose ]
+# Allow the intermediate CA to sign a more diverse range of certificates.
+# See the POLICY FORMAT section of the `ca` man page.
+countryName             = optional
+stateOrProvinceName     = optional
+localityName            = optional
+organizationName        = optional
+organizationalUnitName  = optional
+commonName              = supplied
+emailAddress            = optional
+
+[ req ]
+# Options for the `req` tool (`man req`).
+default_bits        = 2048
+distinguished_name  = req_distinguished_name
+string_mask         = utf8only
+
+# SHA-1 is deprecated, so use SHA-2 instead.
+default_md          = sha256
+
+# Extension to add when the -x509 option is used.
+x509_extensions     = v3_signer
+
+[ req_distinguished_name ]
+# See <https://en.wikipedia.org/wiki/Certificate_signing_request>.
+countryName                     = Country Name (2 letter code)
+stateOrProvinceName             = State or Province Name
+localityName                    = Locality Name
+0.organizationName              = Organization Name
+organizationalUnitName          = Organizational Unit Name
+commonName                      = Common Name
+emailAddress                    = Email Address
+
+# Optionally, specify some defaults.
+countryName_default             = UK
+stateOrProvinceName_default     = England
+localityName_default            = Cheshire
+0.organizationName_default      = SKAO
+organizationalUnitName_default  = SKAO
+commonName_default              = SKAO OCI Signing Identity
+emailAddress_default            = enquiries@skao.int
+
+[ v3_signer ]
+subjectKeyIdentifier            = hash
+authorityKeyIdentifier          = keyid:always,issuer
+keyUsage                        = critical, digitalSignature
+subjectAltName                  = email:ca@skao.int
+issuerAltName                   = email:ca@skao.int
