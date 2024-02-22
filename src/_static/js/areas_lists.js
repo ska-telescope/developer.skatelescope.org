@@ -1,12 +1,20 @@
 $(document).ready(
   (async function () {
     try {
+      const loaders = new Map();
+      const areas = ["sdp", "simulations", "mvp"];
+      for (const area of areas) {
+        // Show loader if list is empty
+        const loader = new SimpleLoader(area);
+        loader.show();
+        loaders.set(area, loader);
+      }
       const projects = await fetchProjectsWithPagination(); // From utils.js
-      const areas = ["sdp", "simulations", "skampi"];
 
       for (const area of areas) {
         const filteredProjects = filterProjectsByArea(projects, area);
         renderProjects(filteredProjects, area + " table");
+        loaders.get(area).hide();
       }
     } catch (error) {
       console.error("Error fetching or processing projects:", error);

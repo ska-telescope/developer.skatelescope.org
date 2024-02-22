@@ -172,3 +172,34 @@ function hasLinkHeaderWithRel(linkHeader, relValue) {
     });
   });
 }
+
+class SimpleLoader {
+  constructor(targetElementId) {
+    this.targetElement = document.getElementById(targetElementId);
+    this.loader = document.createElement("div");
+    this.loader.style.width = "50px";
+    this.loader.style.height = "50px";
+    this.loader.style.border = "5px solid #f3f3f3";
+    this.loader.style.borderTop = "5px solid #070068";
+    this.loader.style.borderRadius = "50%";
+    this.loader.style.animation = "spin 2s linear infinite";
+    this.loader.style.margin = "auto";
+    this.loader.style.display = "none";
+
+    // Add the loader to the target element
+    this.targetElement.insertBefore(this.loader, this.targetElement.children[1]);
+
+    // Add CSS for animation
+    const style = document.createElement("style");
+    style.innerHTML = `@keyframes spin {0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); }}`;
+    document.head.appendChild(style);
+  }
+
+  show() {
+    this.loader.style.display = "block";
+  }
+
+  hide() {
+    this.loader.style.display = "none";
+  }
+}
