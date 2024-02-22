@@ -53,9 +53,9 @@ The supply chain for these products looks like:
 .. image:: images/ssc.png
   :alt: General software supply chain
 
-From development to the actual deployment of the software products, we mainly make use of Gitlab and the **pipeline machinery**, as well as the **CICD Kubernetes cluster** (STFC) to run secure Gitlab runners to perform tasks. These runners run the Gitlab pipelines in secure (not using shared runners) infrastructure, and the packages hosted in a secure Central Artefact Repository (CAR). Finally, for each datacentre - that might contain multiple environments - we host a local cache (mostly for OCI images and APT packages) to improve deployment times.
+From development to the deployment of the software products, we mainly make use of Gitlab and the **pipeline machinery**, as well as the **CICD Kubernetes cluster** (STFC) to run secure Gitlab runners to perform CI related tasks. These runners run the Gitlab pipelines in secure (not using shared runners) infrastructure, and the packages hosted in a secure Central Artefact Repository (CAR). Finally, for each datacentre - that might contain multiple environments - we host a local cache to improve deployment times.
 
-The final cosumers can be simple VMs running the software products, or Kubernetes clusters.
+The final consumers can be simple VMs running the software products, Kubernetes clusters or anything else that the datacentre supports.
 
 The supply chain for SKA software products is protected as follows:
 
@@ -63,16 +63,16 @@ The supply chain for SKA software products is protected as follows:
    Developers have specific permissions in Gitlab to be able to contribute to specific projects, as well as 2FA protection.
 
 2. **Building, Linting, Testing & Packaging**:
-   Only (if using pipeline machinery) **secure** runners are used, running on our own infrastructure. This means that the secret information exposed to Gitlab pipelines is **relatively** secure. These runners also identify to the upstream (distribution) systems. A System Team managed service - Marvin - checks the **merge requests** for overall compliance with the SKA Guidelines, also providing detailed information about the MR contents like the makefile submodule, usage of outdated/deprecated Helm Charts, etc. These help bolster the quality of software contributions.
+   For the packaging, only (if using pipeline machinery) **secure** runners are used, running on our own infrastructure so that the secret information exposed to Gitlab pipelines is secured. These runners also identify to the upstream (distribution) systems. A System Team managed service - Marvin - checks the **merge requests** for overall compliance with the SKA Guidelines, also providing detailed information about the MR contents, documentation and standards. These help bolster the quality of software contributions.
 
 .. image:: images/marvin.png
   :alt: Example of Marvin checks
 
 4. **Distribution**:
-   Credential protected systems that require authentication to **push** artefacts. Also, the System Team provides an artefact validation system that can **quarantine** artefacts that do not comply with the SKA Standards. Where applicable, vulnerability scannings are performed to validate artefacts against known vulnerabilities, increasing the level of confidence in the produced software products. Note that these vulnerabilities keep changing, so, running vulnerability scannings **often** is very important to keeping the security levels.  
+   The distribution is done through credential protected systems that require authentication to **push** artefacts. Also, the System Team provides an artefact validation system that can **quarantine** artefacts that do not comply with the SKA Standards. Where applicable, vulnerability scannings are performed to validate artefacts against known vulnerabilities, increasing the level of confidence in the produced software products. Note that these vulnerabilities keep changing, so, running vulnerability scannings **often** is very important to keeping the security levels as well as frequently following with security patches.
 
 5. **Deployment & Updates**:
-   Similar to the production of the artefacts, its deployment is done using **secure** runners that access the infrastructure.
+   Similar to the production of the artefacts, its deployment is done using **secure** runners that access the infrastructure to eliminate tampering attempts.
 
 
 Artefact Specifics
