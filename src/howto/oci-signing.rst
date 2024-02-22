@@ -4,12 +4,15 @@
 OCI Images Signature Management
 *******************************
 
-As mentioned in the :ref:`Software Supply Chain <ssc>`, securing artefacts by the mean of signatures and `SBOMs <https://security.cms.gov/learn/software-bill-materials-sbom>`_ gained traction after the 2021 White House executive order. The software industry got to work and implemented, place in their roadmap or made known features to support those procedures. OCI registries have the capability of hosting OCI image signatures so that consumers can verify the provenance of the artefacts they are trying to pull. Signing images at the SKAO is done with `notation <https://notaryproject.dev/>`_ as it is in **incubation** by the `CNCF <https://www.cncf.io/projects/notary/>`_ with a promising roadmap, mainly the support for the `ORAS <https://oras.land/>`_ specification. This specification allows OCI registries to host other types of artefacts. Lets looks at the stages needed to **sign** and then to **verify** the signature of an OCI image.
+Lets looks at the stages needed to **sign** and then to **verify** the signature of an OCI image. Please refer to the :ref:`Software Supply Chain <ssc>` to know more about it.
+
+.. note::
+    This guide is for knowledge sharing and should not be used to sign images by developers. CAR or the OCI image consumers that validate signatures will **not accept** self-signed certificates. Be sure to use the :ref:`pipeline machinery <ci-cd>` Gitlab templates and :ref:`makefile submodules <cicd-makefile>` guarantee your OCI images are properly signed when pushed to CAR and can be deployed to SKA Kubernetes clusters.
 
 Signing OCI Images
 ------------------
 
-Due to the facts highlighted above, we are using **notation** for image signing, which relies on a Private Key Infrastructure (PKI). Other solutions like `Cosign <https://docs.sigstore.dev/certificate_authority/certificate-issuing-overview/>`_ are capable of working with keyless signatures using a public ledger.
+We are using **notation** for image signing, which relies on a Private Key Infrastructure (PKI). Other solutions like `Cosign <https://docs.sigstore.dev/certificate_authority/certificate-issuing-overview/>`_ are capable of working with keyless signatures using a public ledger.
 
 PKI setup
 ~~~~~~~~~

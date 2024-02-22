@@ -90,4 +90,5 @@ Artefact Specifics
 
 As mentioned before, different artefact types might have different infrastructure components with different requirements. Find below the specifics of each artefact type:
 
-- :ref:`OCI <oci-ssc>`
+- :ref:`OCI <oci-ssc>`:
+   OCI registries have the capability of hosting OCI image signatures so that consumers can verify the provenance of the artefacts they are trying to pull. Signing images at the SKAO is done with `notation <https://notaryproject.dev/>`_ as it is in **incubation** by the `CNCF <https://www.cncf.io/projects/notary/>`_ with a promising roadmap, mainly the support for the `ORAS <https://oras.land/>`_ specification. This specification allows OCI registries to host other types of artefacts.
