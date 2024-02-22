@@ -1,9 +1,12 @@
 $(document).ready(function () {
   const list = $("#list-of-projects-and-subgroups p:eq(1)");
+  const loader = new SimpleLoader("list-of-projects-and-subgroups");
 
   if (list.length) {
     list.empty();
+    loader.show();
     fetchAndProcessData();
+    loader.hide();
   }
 
   async function fetchAndProcessData() {

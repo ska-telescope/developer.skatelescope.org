@@ -173,9 +173,20 @@ function hasLinkHeaderWithRel(linkHeader, relValue) {
   });
 }
 
+function initializeLoaders(elements) {
+  const loaders = new Map();
+  elements.forEach((element) => {
+    const loader = new SimpleLoader(element);
+    loader.show();
+    loaders.set(element, loader);
+  });
+  return loaders;
+}
+
 class SimpleLoader {
   constructor(targetElementId) {
     this.targetElement = document.getElementById(targetElementId);
+    if (!this.targetElement) return;
     this.loader = document.createElement("div");
     this.loader.style.width = "50px";
     this.loader.style.height = "50px";
@@ -187,7 +198,14 @@ class SimpleLoader {
     this.loader.style.display = "none";
 
     // Add the loader to the target element
-    this.targetElement.insertBefore(this.loader, this.targetElement.children[1]);
+    if (this.targetElement.children && this.targetElement.children.length > 0) {
+      this.targetElement.insertBefore(
+        this.loader,
+        this.targetElement.children[1]
+      );
+    } else {
+      this.targetElement.appendChild(this.loader);
+    }
 
     // Add CSS for animation
     const style = document.createElement("style");
@@ -196,10 +214,14 @@ class SimpleLoader {
   }
 
   show() {
-    this.loader.style.display = "block";
+    if (this.loader) {
+      this.loader.style.display = "block";
+    }
   }
 
   hide() {
-    this.loader.style.display = "none";
+    if (this.loader) {
+      this.loader.style.display = "none";
+    }
   }
 }

@@ -1,14 +1,8 @@
 $(document).ready(
   (async function () {
+    const areas = ["sdp", "simulations", "mvp"];
+    const loaders = initializeLoaders(areas);
     try {
-      const loaders = new Map();
-      const areas = ["sdp", "simulations", "mvp"];
-      for (const area of areas) {
-        // Show loader if list is empty
-        const loader = new SimpleLoader(area);
-        loader.show();
-        loaders.set(area, loader);
-      }
       const projects = await fetchProjectsWithPagination(); // From utils.js
 
       for (const area of areas) {
