@@ -62,63 +62,62 @@ function ProjectTable(data) {
   return table.outerHTML;
 }
 
-// Add cache logic to fetchSubgroups
-// to avoid unnecessary API requests.
-
-const cacheExpiration = 60 * 1000; // 60 seconds
-
-const subgroupCache = {}; // Simple object for caching
-
 async function fetchSubgroups() {
-  const cacheKey = "subgroups"; // Since you're likely fetching all subgroups at once
+  const cacheKey = "subgroups";
+  const cacheExpiration = 60 * 1000; // Example: Expire after 60 seconds
 
-  if (
-    subgroupCache[cacheKey] &&
-    subgroupCache[cacheKey].timestamp + cacheExpiration > Date.now()
-  ) {
-    return subgroupCache[cacheKey]; // Return cached data
+  if (sessionStorage.getItem(cacheKey)) {
+    const cachedData = JSON.parse(sessionStorage.getItem(cacheKey));
+    if (cachedData && cachedData.timestamp + cacheExpiration > Date.now()) {
+      return cachedData.data; // Return cached subgroups
+    }
   }
 
   const subgroups = await fetch(buildSubgroupApiUrl()).then((response) =>
     response.json()
   );
 
-  subgroupCache[cacheKey] = { timestamp: Date.now(), data: subgroups }; // Cache the results
+  sessionStorage.setItem(
+    cacheKey,
+    JSON.stringify({ timestamp: Date.now(), data: subgroups })
+  );
   return subgroups;
 }
 
-// Add cache logic to fetchProjectsWithPagination
-// to avoid unnecessary API requests.
-const projectsCache = new {}();
-async function fetchProjectsWithPagination() {
-  let allProjects = [];
-  let page = 1;
-  let hasNextPage = true;
+async function fetchProjectsPage(page) {
+  const cacheKey = `projectsPage_${page}`;
+  const cacheExpiration = 60 * 1000; // Example: Expire after 60 seconds
+  let hasNextPage = false; // Default to false
 
-  while (hasNextPage) {
-    const cacheKey = `projects_page_${page}`;
-
-    if (
-      projectsCache[cacheKey] &&
-      projectsCache[cacheKey].timestamp + cacheExpiration > Date.now()
-    ) {
-      allProjects = allProjects.concat(projectCache[cacheKey]);
-    } else {
-      const projectsResponse = await fetch(buildProjectApiUrl(page));
-      const projectsPage = await projectsResponse.json();
-
-      allProjects = allProjects.concat(projectsPage);
-      projectsCache[cacheKey] = { timestamp: Date.now(), data: projectsPage }; // Cache this page
-      projectsPage.forEach((project) => projectsCache.set(project.id, project));
-
-      const linkHeader = projectsResponse.headers.get("Link");
-      hasNextPage = hasLinkHeaderWithRel(linkHeader, "next");
-
-      page++;
+  // Try to retrieve cached data
+  const cachedData = sessionStorage.getItem(cacheKey);
+  if (cachedData) {
+    const parsedData = JSON.parse(cachedData);
+    if (parsedData && parsedData.timestamp + cacheExpiration > Date.now()) {
+      // Additionally check if we have a cached indicator for hasNextPage
+      hasNextPage = parsedData.hasNextPage;
+      return { projectsPage: parsedData.data, hasNextPage };
     }
   }
 
-  return allProjects;
+  // Fetch data from the API if no valid cache is found
+  const response = await fetch(buildProjectApiUrl(page));
+  if (!response.ok) {
+    throw new Error("Failed to fetch projects: " + response.statusText);
+  }
+  const projectsPage = await response.json();
+
+  // Use the 'Link' header to determine if there's a next page
+  const linkHeader = response.headers.get("Link");
+  hasNextPage = hasLinkHeaderWithRel(linkHeader, "next");
+
+  // Update the cache with the new data and the hasNextPage indicator
+  sessionStorage.setItem(
+    cacheKey,
+    JSON.stringify({ timestamp: Date.now(), data: projectsPage, hasNextPage })
+  );
+
+  return { projectsPage, hasNextPage };
 }
 
 async function fetchProjectsWithPagination() {
@@ -127,17 +126,12 @@ async function fetchProjectsWithPagination() {
   let hasNextPage = true;
 
   while (hasNextPage) {
-    const projectsResponse = await fetch(buildProjectApiUrl(page));
-    const projectsPage = await projectsResponse.json();
-
+    const { projectsPage, hasNextPage: nextPageExists } =
+      await fetchProjectsPage(page);
     allProjects = allProjects.concat(projectsPage);
-
-    const linkHeader = projectsResponse.headers.get("Link");
-    hasNextPage = hasLinkHeaderWithRel(linkHeader, "next");
-
+    hasNextPage = nextPageExists; // Update based on the current page's response
     page++;
   }
-
   return allProjects;
 }
 
