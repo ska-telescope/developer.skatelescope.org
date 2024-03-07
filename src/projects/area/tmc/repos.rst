@@ -35,10 +35,10 @@
             :alt: Documentation Status
 .. |dln_repo| replace:: `ska-tmc-dishleafnode <https://gitlab.com/ska-telescope/ska-tmc/ska-tmc-dishleafnode/>`__
 
-.. |dln_doc| image:: https://readthedocs.org/projects/ska-telescope-ska-tmc-dishleafnode/badge/?version=latest
-            :target: https://developer.skao.int/projects/ska-tmc-dishleafnode/en/latest/?badge=latest
+.. |mccsln_doc| image:: https://readthedocs.org/projects/ska-telescope-ska-tmc-mccsleafnode/badge/?version=latest
+            :target: https://developer.skao.int/projects/ska-tmc-mccsleafnode/en/latest/?badge=latest
             :alt: Documentation Status
-.. |dln_repo| replace:: `ska-tmc-dishleafnode <https://gitlab.com/ska-telescope/ska-tmc/ska-tmc-dishleafnode/>`__
+.. |mccsln_repo| replace:: `ska-tmc-mccsleafnode <https://gitlab.com/ska-telescope/ska-tmc/ska-tmc-mccsleafnode/>`__
 
 .. |com_doc| image:: https://readthedocs.org/projects/ska-telescope-ska-tmc-common/badge/?version=latest
          :target: https://developer.skao.int/projects/ska-tmc-common/en/latest/?badge=latest
@@ -81,14 +81,17 @@ Documentation    Gitlab repository
 EDA repositories
 ----------------
 
+================ =================
 Documentation    Gitlab repository
 ================ =================
 |eda_doc|        |eda_repo|
-
+================ =================
 
 Alarm Handler repository
 --------------------------
 
-Documentation        Gitlab repository
-==================== ====================
-|alarmhandler_doc|   |alarmhandler_repo|
+================== =================
+Documentation      Gitlab repository
+================== =================
+|alarmhandler_doc| |alarmhandler_repo|
+================== =================
