@@ -4,7 +4,7 @@ BinderHub/JupyterHub
 *********************
 
 BinderHub is a service that allows developers/scientists to share reproducible computational resources and code using Jupyter Notebooks in a kubernetes-based cluster environment.
-A developer can create his Jupyter Notebooks, push them into a repository and, through BinderHub, create an environment where he can both execute and modify his code while collaborating with other developers.
+A developer can create their Jupyter Notebooks, push them into a repository and, through BinderHub, create an environment where they can both execute and modify their code while collaborating with other developers.
 
 JupyterHub is a Hub for single-user Jupyter notebook servers spawning and management, allowing for users to start, stop and delete their servers whenever needed to support the creation and execution of their Jupyter notebooks.
 
