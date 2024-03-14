@@ -1,0 +1,11 @@
+# Default catch all
+* @ska-telescope/ska-dev/skao-team-system @ska-telescope/ska-dev/skao-bang-team @flyingfrog81 @vla22 @benmort
+
+# Everyone should own documentation
+*.rst @ska-telescope/ska-dev
+
+# System team should own pipeline
+.gitlab-ci.yml @ska-telescope/ska-dev/skao-team-system
+Makefile @ska-telescope/ska-dev/skao-team-system
+LICENCE @ska-telescope/ska-dev/skao-team-system
+pyproject.toml @ska-telescope/ska-dev/skao-team-system
