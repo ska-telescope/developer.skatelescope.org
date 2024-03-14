@@ -85,11 +85,11 @@ Enter your real name, the email address to be associated with this key (should m
 
    GnuPG needs to construct a user ID to identify your key.
  
-   Real name: Mr. Robot
+   Real name: Mx. Robot
    Email address: <YOUR_EMAIL>
    Comment:
    You selected this USER-ID:
-       "Mr. Robot <YOUR_EMAIL>"
+       "Mx. Robot <YOUR_EMAIL>"
  
    Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? O
    
