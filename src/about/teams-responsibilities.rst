@@ -23,7 +23,7 @@ The SKA Scrum Masters are also responsible for:
 
   * Make sure all team members have access to SKA video conferencing tools.
 
-  * Create a team page on the `SKA confluence portal <https://confluence.skatelescope.org/display/SE/Software+Teams+and+Organisation>`__ describing who belongs to the team and his/her role. This page will serve as an entry point for team related information.
+  * Create a team page on the `SKA confluence portal <https://confluence.skatelescope.org/display/SE/Software+Teams+and+Organisation>`__ describing who belongs to the team and their role. This page will serve as an entry point for team related information.
 
   * Use the Team Jira board to plan and report team activity happening in the development sprints.
 
@@ -39,7 +39,7 @@ The SKA Scrum Masters are also responsible for:
 
   * Maintain consistency between the team composition on the various tools and platforms, and make sure that team members are using those in an appropriate way.
 
-  * Take part in the Scrum Of Scrums meeting, coordinating his/her activity with all the SMs participating in the development effort.
+  * Take part in the Scrum Of Scrums meeting, coordinating their activity with all the SMs participating in the development effort.
 
 Product Owner
 =============

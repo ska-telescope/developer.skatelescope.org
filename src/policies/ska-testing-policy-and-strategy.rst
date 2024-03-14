@@ -535,7 +535,7 @@ should be classified also (in addition to belonging to one or more test
 sets) in terms of their speed of execution, like “fast”, “medium”,
 “slow”. In this way a programmer that wants a quick feedback (less than
 1 minute) would run only the fast tests, the same programmer that is
-about to commit/push his/her code at the end of the day might want to run
+about to commit/push their code at the end of the day might want to run
 fast and medium tests and be willing to wait some 10 minutes to get
 feedback, and finally a programmer ready to merge a branch into master
 might want to run all tests, and be willing to wait half an hour or

@@ -73,7 +73,7 @@ Please note that only users that are assigned to the Merge Request can use the c
 *Marvin Approval*
 ^^^^^^^^^^^^^^^^^
 
-Marvin after creating the table will verify if there is any checks under the failure category failed. If so, Marvin does not approve the MR, and in the case that MR was already approved before by him he unapproves it. 
+Marvin after creating the table will verify if there is any checks under the failure category failed. If so, Marvin does not approve the MR, and in the case that MR was already approved before by him, he unapproves it. 
 If none of the checks under the failure category failed Marvin will approve the MR.
 
 Checks
