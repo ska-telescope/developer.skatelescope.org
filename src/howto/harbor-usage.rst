@@ -34,7 +34,7 @@ Once a user logs in the Harbor Project's main page is shown, as the image below 
 |
 
 The staging project is the primary location to where every OCI artefact published will be pushed. Once it is validated that the artefact has *no critical vulnerabilities* 
-and has been signed it is automatically promoted to the production project.
+and has been signed it is automatically promoted to the production project. This is done to ensure the security of the `software supply chain <https://developer.skao.int/en/latest/explanation/software-supply-chain.html>`__.
 
 Finding an Artefact
 ====================
