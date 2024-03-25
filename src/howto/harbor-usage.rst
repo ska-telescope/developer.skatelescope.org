@@ -8,7 +8,7 @@ the CAR OCI.
 Harbor Access and Overview
 ===============================
 
-To access Harbor the user should go to the following URL: `https://harbor.skao.int/ <https://harbor.skao.int/>`_
+To access Harbor the user should go to the following URL: `https://harbor.skao.int/ <https://harbor.skao.int/>`__
 
 There are two login options:
 
