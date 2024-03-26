@@ -88,7 +88,7 @@ If you entered the correct pin, GitLab displays a list of recovery codes. Downlo
     SKAO does not have the ability to reset your MFA codes as they are attached to gitlab.com itself.
 
 Committing with 2FA enabled
----------------------------
++++++++++++++++++++++++++++
 
 When 2FA is enabled, you can’t use your password to authenticate with Git over HTTPS or the GitLab API. You can use your SSH Key (as described in the `Set up SSH key`_ section) as the preferred method or a `personal access token <https://gitlab.com/profile/personal_access_tokens>`__ instead.
 
@@ -97,3 +97,38 @@ You can find more integration instructions for Personal Access Tokens `here <htt
 .. _Google Authenticator: https://google.com/authenticator
 .. _Microsoft Authenticator: https://microsoft.com/authenticator
 .. _Aegis Authenticator: https://getaegis.app/
+
+Switching Git Repository to SSH
+-------------------------------
+
+To switch your Git repository to SSH, you need to update the remote URL of your repository. You can do this by running the following command in your terminal:
+
+TL:DR; run the below command to switch your repository to from HTTPS to SSH:
+
+.. code-block:: bash
+    
+    git remote set-url origin $(git remote get-url origin | sed -e 's/https:\/\/\(.*\)@\(.*\)\//git@\2:/' -e 's/https:\/\//git@/' -e 's/\/\//\//') && git remote -v
+
+Steps:
+
+1. List your current remote URL. `origin` is the default name for the remote repository but you may have something else so replace `origin` with the name of your remote repository in  further steps.
+
+.. code-block:: bash
+
+    $ git remote -v
+    > origin  https://gitlab.com/ska-telescope/ska-snippets.git (fetch)
+    > origin  https://gitlab.com/ska-telescope/ska-snippets.git (push)
+
+2. Change the remote URL to the SSH URL. 
+
+.. code-block:: bash
+
+    $ git remote set-url origin git@gitlab.com/ska-telescope/ska-snippets.git
+
+3. Verify that the remote URL has been updated:
+
+.. code-block:: bash
+
+    $ git remote -v
+    > origin git@gitlab.com/ska-telescope/ska-snippets.git (fetch)
+    > origin git@gitlab.com/ska-telescope/ska-snippets.git (push)
