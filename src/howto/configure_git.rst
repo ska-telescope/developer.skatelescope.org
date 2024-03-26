@@ -23,6 +23,8 @@ Or you can configure the mail address on a project basis.
   $ cd your/git/project
   $ git config user.email "your@institutional.email"
 
+.. _git-signing-commits:
+
 Signing commits with GPG
 ++++++++++++++++++++++++
 

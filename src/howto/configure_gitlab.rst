@@ -35,6 +35,8 @@ Set up SSH key
 
 To enable `git+ssh` based authentication for clients, associate your ssh-key to your user at (https://gitlab.com/-/profile/keys).
 
+It's also advised to sign your commits as described in the :ref:`git-signing-commits` section.
+
 Set up 2FA authentication
 +++++++++++++++++++++++++
 
@@ -106,7 +108,7 @@ To switch your Git repository to SSH, you need to update the remote URL of your 
 TL:DR; run the below command to switch your repository to from HTTPS to SSH:
 
 .. code-block:: bash
-    
+
     git remote set-url origin $(git remote get-url origin | sed -e 's/https:\/\/\(.*\)@\(.*\)\//git@\2:/' -e 's/https:\/\//git@/' -e 's/\/\//\//') && git remote -v
 
 Steps:
