@@ -15,7 +15,8 @@ build:
     post_install:
       # Install only 'docs' dependency group. If you do not have docs group, please omit it
       # https://python-poetry.org/docs/managing-dependencies/#dependency-groups
-      - VIRTUAL_ENV=$READTHEDOCS_VIRTUALENV_PATH poetry install --only docs
+      # --no-root option is added to avoid installing the package itself as there's no package
+      - VIRTUAL_ENV=$READTHEDOCS_VIRTUALENV_PATH poetry install --only docs --no-root
 
 sphinx:
   configuration: src/conf.py
