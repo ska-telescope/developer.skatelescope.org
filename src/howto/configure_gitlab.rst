@@ -109,7 +109,7 @@ TL:DR; run the below command to switch your repository to from HTTPS to SSH:
 
 .. code-block:: bash
 
-    git remote set-url origin $(git remote get-url origin | sed -e 's/https:\/\/\(.*\)@\(.*\)\//git@\2:/' -e 's/https:\/\//git@/' -e 's/\/\//\//') && git remote -v
+    git remote set-url origin $(git remote get-url origin | sed -e 's/https:\/\/\([^/]*\)\/\(.*\)/git@\1:\2/') && git remote -v
 
 Steps:
 
@@ -125,12 +125,12 @@ Steps:
 
 .. code-block:: bash
 
-    $ git remote set-url origin git@gitlab.com/ska-telescope/ska-snippets.git
+    $ git remote set-url origin git@gitlab.com:ska-telescope/ska-snippets.git
 
 3. Verify that the remote URL has been updated:
 
 .. code-block:: bash
 
     $ git remote -v
-    > origin git@gitlab.com/ska-telescope/ska-snippets.git (fetch)
-    > origin git@gitlab.com/ska-telescope/ska-snippets.git (push)
+    > origin git@gitlab.com:ska-telescope/ska-snippets.git (fetch)
+    > origin git@gitlab.com:ska-telescope/ska-snippets.git (push)
