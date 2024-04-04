@@ -87,7 +87,7 @@ master_doc = "index"
 
 # General information about the project.
 project = "developer.skao.int"
-copyright = "2018-2023 SKA Observatory"
+copyright = "2018-2024 SKA Observatory"
 author = "Marco Bartolini"
 
 # The version info for the project you're documenting, acts as replacement for
@@ -133,7 +133,7 @@ html_theme_options = {
     # 'logo_only' : False,
     # 'logo_only' : 'ska_logo.jpg',
     # 'logo' : 'ska_logo.jpg',
-    # "vcs_pageview_mode": "edit" # Does not work see:h ttps://github.com/readthedocs/sphinx_rtd_theme/issues/701
+    "vcs_pageview_mode": "edit"
 }
 
 html_logo = "_static/img/logo.png"
@@ -145,9 +145,7 @@ html_context = {
     "gitlab_user": "ska-telescope",  # Username
     "gitlab_repo": "developer.skatelescope.org",  # Repo name
     "gitlab_version": "master",  # Version
-    "conf_py_path": "/src/",  # Path in the checkout to the docs root
-    # workaround for https://github.com/readthedocs/sphinx_rtd_theme/issues/701
-    "theme_vcs_pageview_mode": "edit",
+    "conf_py_path": "/src/"  # Path in the checkout to the docs root
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
