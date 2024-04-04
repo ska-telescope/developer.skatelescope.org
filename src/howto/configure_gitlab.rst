@@ -67,7 +67,7 @@ Then, you can follow the below steps to enable 2FA on your GitLab account:
 
 
 1. In GitLab:
-    a. Access your `User settings <https://gitlab.com/user/settings>`__.
+    a. Access your `User settings <https://gitlab.com/-/profile/account>`__.
     b. Select Account.
     c. Select Enable Two-factor Authentication.
 
