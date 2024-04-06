@@ -59,7 +59,7 @@ Clone the ska-tango-examples project and get VSCode to recognize it
 Build the application image (this step is optional)
 ===================================================
 
-With the source code source code checked out, the next step is to build a
+With the source code checked out, the next step is to build a
 Docker image for the application. This image will contain the Python
 environment which will we will later connect to VSCode.
 
