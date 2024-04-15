@@ -24,14 +24,14 @@ After logging in you should be given access to the secrets page. Each user, when
   :align: center
 
 
-You can also notice that you can see paths to other users secrets but cannot read them. To create your own secrets you need to have the following path with your gitlab_username in it: `` kv/users/gitlab_username/directory_name `` . Example below, where the username was Bruno_Ribeiro.
+You can also notice that you can see paths to other users secrets but cannot read them. To create your own secrets you need to have the following path with your gitlab_username in it: ``kv/users/gitlab_username/directory_name`` . Example below, where the username was ``Bruno_Ribeiro``.
 
 .. image:: images/vault-secrets-path.png
   :alt: Vault Secrets Created
   :align: center
 
 
-Note that if you try to use the root path of your user, i.e. `` kv/users/gitlab_username/ `` , you won't be able to add any secrets since it's mandatory to have folders to group the secrets created.
+Note that if you try to use the root path of your user, i.e. ``kv/users/gitlab_username/`` , you won't be able to add any secrets since it's mandatory to have folders to group the secrets created.
 Using Secrets with K8s Pod
 ==========================
 
@@ -136,7 +136,7 @@ In this case the annotations where added, this will create an init container tha
     export USERNAME=user
     export PASSWORD=1111
 
-For these variables to be declared environment variables inside the running pod you will also need to add the command `[ "sh", "-c", ". /vault/secrets/config" ]` to source those variables.
+For these variables to be declared environment variables inside the running pod you will also need to add the command ``[ "sh", "-c", ". /vault/secrets/config" ]`` to source those variables.
 
 A working example on the SKA projects of this method can be checked `here <https://gitlab.com/ska-telescope/ska-tango-images/-/blob/master/charts/ska-tango-base/templates/databaseds.yaml#L75>`_
 
