@@ -6,8 +6,8 @@ This tool has various types of authentications being one of them Kubernetes Auth
 
 
 
-Logging into Vault with Gitlab and Add Secrets
-==============================================
+Logging into Vault with Gitlab and Adding Secrets
+==================================================
 
 Any developer that is part of the skao-dev group has access to the SKAO Vault service by logging in with their Gitlab Account.
 
@@ -17,21 +17,21 @@ The logging URL is the following: https://vault.skao.int/ui/vault/auth?with=oidc
   :alt: Login Vault Page
   :align: center
 
-After logging in you should be given access to the secrets page. Each user when logged in for the first time should have access to check the paths on the kv path. A similiar environment can be seen in the image below:
+After logging in you should be given access to the secrets page. Each user, when logged in for the first time, should have access to check the paths on the kv path. A similiar environment can be seen in the image below:
 
 .. image:: images/vault-secrets-engine.png
   :alt: Vault Secrets Path Engine
   :align: center
 
 
-You can also notice that you can see paths to other users secrets but cannot read them. To create your own secrets it needs to have the following path with your gitlab_username in it: `` kv/users/gitlab_username `` . Example below, where the username was Bruno_Ribeiro.
+You can also notice that you can see paths to other users secrets but cannot read them. To create your own secrets you need to have the following path with your gitlab_username in it: `` kv/users/gitlab_username/directory_name `` . Example below, where the username was Bruno_Ribeiro.
 
 .. image:: images/vault-secrets-path.png
   :alt: Vault Secrets Created
   :align: center
 
 
-
+Note that if you try to use the root path of your user, i.e. `` kv/users/gitlab_username/ `` , you won't be able to add any secrets since it's mandatory to have folders to group the secrets created.
 Using Secrets with K8s Pod
 ==========================
 
