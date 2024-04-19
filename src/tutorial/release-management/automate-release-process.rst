@@ -62,13 +62,13 @@ The changelog is a file that contains a curated, chronologically ordered list of
 
    Create a new file named `CHANGELOG.md` in the root of your project repository. This file will contain the changelog for your project.
 
-2. **Create a symlink to the `CHANGELOG.md` file in the `docs/` folder of your project repository. This will allow the Read the Docs to include the changelog in the documentation.**
+2. **Create a symlink to the `CHANGELOG.md` file in the `docs/src/` folder of your project repository. This will allow the Read the Docs to include the changelog in the documentation.**. Make sure to use the correct path for your documentation and CHANGELOG.md file.
 
    .. code-block:: bash
+      cd docs/src
+      ln -s ../../CHANGELOG.md docs/CHANGELOG.rst
 
-      ln -s CHANGELOG.md docs/CHANGELOG.rst
-
-3. **Update your index file in the `docs/` folder to include the changelog in the documentation.**
+3. **Update your index file in the `docs/src/` folder to include the changelog in the documentation.**
 
    Open the `docs/index.rst` file and add the following line to include the changelog in the documentation:
 
@@ -78,9 +78,30 @@ The changelog is a file that contains a curated, chronologically ordered list of
       :maxdepth: 1
       :caption: Releases
 
-      releases/changelog
+      CHANGELOG.rst
 
-3. **Commit and push the changes to the repository**
+4. **Add the required dependencies to build markdown files**
+
+`recommonmark` package is needed to build our markdown files.
+
+   .. code-block:: bash
+
+      poetry add recommonmark --group docs
+
+Update the `conf.py` file to include `recommonmark` as an extension and make sure `.md` files are included as source file suffix.
+
+   .. code-block:: bash
+   
+      extensions = [
+         ...,
+         "recommonmark"
+      ]
+      source_suffix = ['.rst', '.md']
+
+
+
+
+5. **Commit and push the changes to the repository**
 
 Now, everytime a release happens the changelog will be updated with the new release notes that will be pulled from the CHANGELOG.md file. One example can be seen in this repository: `CHANGELOG.md <https://gitlab.com/ska-telescope/sdp/ska-sdp-integration/-/blob/master/CHANGELOG.md?ref_type=heads>`__ with associated RTD documentation `here <https://developer.skao.int/projects/ska-sdp-integration/en/latest/releases/changelog.html>`__.
 
