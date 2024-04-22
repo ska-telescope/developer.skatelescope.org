@@ -65,6 +65,7 @@ The changelog is a file that contains a curated, chronologically ordered list of
 2. **Create a symlink to the `CHANGELOG.md` file in the `docs/src/` folder of your project repository. This will allow the Read the Docs to include the changelog in the documentation.**. Make sure to use the correct path for your documentation and CHANGELOG.md file.
 
    .. code-block:: bash
+   
       cd docs/src
       ln -s ../../CHANGELOG.md docs/CHANGELOG.rst
 
