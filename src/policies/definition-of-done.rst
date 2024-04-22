@@ -137,8 +137,10 @@ Issue Type          Definition of Done
                        * A short clear description/summary of the release is provided
                        * User facing change log provided
                        * User facing documentation provided
+                       * Test evidences are linked (preferred ways are Unit test reports and high level XRAY test plans execution)
                        * Verification of the functionality, behavior, and performance of user interfaces provided by product, carried out in an relevant environment
                        * Outstanding bugs and technical debt have been logged and triaged, Major or Critical severity issues have been fixed.
+                       * Verified by design authority/delegated design authority/release manager 
 =================== =========================================================================================================================
 
 
