@@ -161,7 +161,7 @@ As a rough guide, you should be comfortable editing and creating new Confluence 
 If you're not, then spend some time with the documentation.
 SKA Confluence has a dedicated `Demonstration space <https://confluence.skatelescope.org/display/TS/Demonstration+space>`_ for you to test things out.
 
-If you've already used JIRA or Confluence before, we recommend reading the `JIRA Usage Guidelines <ttps://confluence.skatelescope.org/display/SE/Jira+Usage+Guidelines>`_ to find out how we're using them specifically in the SKA.
+If you've already used JIRA or Confluence before, we recommend reading the `JIRA Usage Guidelines <https://confluence.skatelescope.org/display/SE/Jira+Usage+Guidelines>`__ to find out how we're using them specifically in the SKA.
 It's also worth talking to your Scrum Master to find out how your team is using JIRA and Confluence.
 In general, developers are empowered to raise issues, but there is then a process to prioritise that activity, so that we're working on the most critical issues first.
 But that's just common sense.
