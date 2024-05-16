@@ -53,8 +53,8 @@ MVP
 - `CSP LMC documentation Low </projects/ska-csp-lmc-low/en/latest/lmc/low_csp_lmc.html>`_.
 - `CSP LMC documentation Common </projects/ska-csp-lmc-common/en/latest/csp_lmc_common.html>`_.
 
-- `SKA Dish LMC repository <https://gitlab.com/ska-telescope/ska-dish-lmc>`_ Dish local monitoring and control functionality for SKA MID telescope.
-- `Dish LMC documentation </projects/ska-dish-lmc/en/latest/?badge=latest>`_.
+- `SKA Dish LMC repository <https://gitlab.com/ska-telescope/ska-dish-lmc>`_: Dish local monitoring and control functionality for SKA MID telescope.
+- `Dish LMC documentation </projects/ska-dish-lmc/en/latest/?badge=latest>`_
 
 - `Mid CBF MCS Repository <https://gitlab.com/ska-telescope/ska-mid-cbf-mcs/>`_
 - `Mid CBF MCS documentation </projects/ska-mid-cbf-mcs/en/latest/?badge=latest>`_.
