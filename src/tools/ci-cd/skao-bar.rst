@@ -2,7 +2,7 @@
 SKAO Binary Artefacts Repository (BAR)
 **************************************
 
-The SKAO Binary Artefacts Repository (BAR) is a FastAPI web application that enables the ability to publish binary artefacts in the CAR so that they are archived and made available as part of the SKAO digital infrastructure.
+The SKAO Binary Artefacts Repository (BAR) is an application that enables the ability to publish and store binary artefacts so that they are archived and made available as part of the SKAO digital infrastructure.
 
 The tool is available at the following link: `SKAO BAR <https://k8s-services.skao.int/binary_artefacts_ui/upload>`_, 
 
