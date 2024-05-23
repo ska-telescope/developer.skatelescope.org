@@ -13,7 +13,7 @@ An artefact is identified with an hash (sha256) and, optionally, with a tag and 
 
 The SKAO BAR allows the user (developer and not) to be able to upload a new repository which can include more than one artefact. No conversion will be done and the uploaded files will be exactly the same that will be downloaded. 
 
-Even if the tag for an artefact is optional, with the SKAO Bar tool, it is not possible to upload an artefact with it therefore the user will always refer to an artefact with a name and tag where the name refer to the repository and the tag to the artefact. 
+Even if the tag for an artefact is optional, with the SKAO BAR tool, it is not possible to upload an artefact without a tag due to SKAO policies therefore the user will always refer to an artefact with a name and tag where the name refer to the repository and the tag to the artefact. 
 
 Security
 ========
