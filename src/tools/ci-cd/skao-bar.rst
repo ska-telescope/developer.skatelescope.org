@@ -27,7 +27,7 @@ The tool include the following pages:
 * `Upload an artefact <https://k8s-services.skao.int/binary_artefacts_ui/upload>`__, 
 * `List repositories <https://k8s-services.skao.int/binary_artefacts_ui/repositories>`__,
 
-From the repositories page it is possible to access the artefact page. For example if a user uploaded a repository with name xxx, it will be possible to see the information about the artefacts at the following link: https://k8s-services.skao.int/binary_artefacts_ui/xxx/artefacts.
+From the repositories page it is possible to access the artefact page. For example if a user uploaded a repository with name XYZ, it will be possible to see the information about the artefacts at the following link: https://k8s-services.skao.int/binary_artefacts_ui/xyz/artefacts.
 
 It is possible to download a specific artefact in 2 possible ways: by downloading all the files composing it or by selecting a specific file. For example if a user wants to download all files from a repository called xxx with tag yyy, then the link will be: https://k8s-services.skao.int/binary_artefacts_ui/download/xxx/yyy
 
