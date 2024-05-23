@@ -18,7 +18,7 @@ Even if the tag for an artefact is optional, with the SKAO BAR tool, it is not p
 Security
 ========
 
-To be able to access the tool, a gitlab authentication is required. At the moment only member of the group "ska-telescope" will be able to log into it. The user information will be also attached to the annotations in the artefact. Users can only see, with this tool, the artefacts they have uploaded but they can see all the repositories. Binary artefacts are immutable, they cannot be changed, they cannot be deleted
+To be able to access the tool, a gitlab account is required. This needs to be requested from the System Team in Slack or `System Team Support Desk<https://jira.skatelescope.org/servicedesk/customer/portal/166>`__. The user information will be also attached to the annotations in the artefact. Users can only see, with this tool, the artefacts they have uploaded but they can see all the repositories. Binary artefacts are immutable, they cannot be changed, they cannot be deleted
 
 Detailed Operation list
 =======================
