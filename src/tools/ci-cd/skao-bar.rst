@@ -11,7 +11,7 @@ Repository and artefacts
 `Harbor <goharbor.io>`__ has been selected as preferred solution for storing artefacts within SKAO. This technology includes two main concepts: repository and artefact. A repository is identified with a name and is composed by a collection of artefacts. 
 An artefact is identified with an hash (sha256) and, optionally, with a tag and is composed by one or more files. 
 
-The SKAO Bar allows the user (developer and non) to be able to upload a new repository which can include more than one artefact. No conversion will be done and the uploaded file will be exactly the same that will be download. 
+The SKAO BAR allows the user (developer and not) to be able to upload a new repository which can include more than one artefact. No conversion will be done and the uploaded files will be exactly the same that will be downloaded. 
 
 Even if the tag for an artefact is optional, with the SKAO Bar tool, it is not possible to upload an artefact with it therefore the user will always refer to an artefact with a name and tag where the name refer to the repository and the tag to the artefact. 
 
