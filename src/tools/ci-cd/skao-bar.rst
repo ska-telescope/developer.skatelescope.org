@@ -8,7 +8,7 @@ The tool is available at the following link: `SKAO BAR <https://k8s-services.ska
 
 Repository and artefacts
 ========================
-`Harbor <goharbor.io>`_ has been selected as preferred solution for storing artefacts within SKAO. This tecnology includes two main concepts: repository and artefact. A repository is identified with a name and is composed by a collection of artefacts. 
+`Harbor <goharbor.io>`__ has been selected as preferred solution for storing artefacts within SKAO. This technology includes two main concepts: repository and artefact. A repository is identified with a name and is composed by a collection of artefacts. 
 An artefact is identified with an hash (sha256) and, optionally, with a tag and is composed by one or more files. 
 
 The SKAO Bar allows the user (developer and non) to be able to upload a new repository which can include more than one artefact. No conversion will be done and the uploaded file will be exactly the same that will be download. 
