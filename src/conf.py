@@ -63,6 +63,7 @@ extensions = [
 ]
 
 # Algolia Settings
+# Algolia recommends saving these here as they are not secret and they block anything if it's coming outside of our domain
 docsearch_app_id = "0L8XXGSE8Z"
 docsearch_api_key = "ab9d760fbbc7330bfba95689b744a98a"
 docsearch_index_name = "skao"
@@ -74,8 +75,6 @@ autosectionlabel_prefix_document = True
 notfound_context = {
     "body": "<h3>Unfortunately, we couldn't locate the object you are searching for, yet!</h3> <p> In the meantime, please feel free to explore the rest of the Portal!</p>",
 }
-
-notfound_no_urls_prefix = True
 
 # Date format for git timestamps
 gitstamp_fmt = "%b %d, %Y"
@@ -265,7 +264,7 @@ epub_copyright = copyright
 # epub_uid = ''
 
 # A list of files that should not be packed into the epub file.
-epub_exclude_files = ["search.html", "algolia-search.html"]
+epub_exclude_files = ["search.html"]
 
 
 # Example configuration for intersphinx: refer to the Python standard library.
