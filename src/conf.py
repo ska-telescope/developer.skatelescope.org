@@ -57,8 +57,16 @@ extensions = [
     "sphinx_copybutton",
     "sphinx.ext.autosectionlabel",
     "sphinx_rtd_theme",
-    "sphinxcontrib.mermaid"
+    "sphinxcontrib.mermaid",
+    "sphinx_docsearch",
+    
 ]
+
+# Algolia Settings
+# Algolia recommends saving these here as they are not secret and they block anything if it's coming outside of our domain
+docsearch_app_id = "0L8XXGSE8Z"
+docsearch_api_key = "ab9d760fbbc7330bfba95689b744a98a"
+docsearch_index_name = "skao"
 
 # Set each document name as prefix to avoid duplication
 autosectionlabel_prefix_document = True
@@ -67,8 +75,6 @@ autosectionlabel_prefix_document = True
 notfound_context = {
     "body": "<h3>Unfortunately, we couldn't locate the object you are searching for, yet!</h3> <p> In the meantime, please feel free to explore the rest of the Portal!</p>",
 }
-
-notfound_no_urls_prefix = True
 
 # Date format for git timestamps
 gitstamp_fmt = "%b %d, %Y"
