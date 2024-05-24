@@ -57,8 +57,15 @@ extensions = [
     "sphinx_copybutton",
     "sphinx.ext.autosectionlabel",
     "sphinx_rtd_theme",
-    "sphinxcontrib.mermaid"
+    "sphinxcontrib.mermaid",
+    "sphinx_docsearch",
+    
 ]
+
+# Algolia Settings
+docsearch_app_id = "0L8XXGSE8Z"
+docsearch_api_key = "ab9d760fbbc7330bfba95689b744a98a"
+docsearch_index_name = "skao"
 
 # Set each document name as prefix to avoid duplication
 autosectionlabel_prefix_document = True
@@ -258,7 +265,7 @@ epub_copyright = copyright
 # epub_uid = ''
 
 # A list of files that should not be packed into the epub file.
-epub_exclude_files = ["search.html"]
+epub_exclude_files = ["search.html", "algolia-search.html"]
 
 
 # Example configuration for intersphinx: refer to the Python standard library.
