@@ -65,7 +65,7 @@ extensions = [
 # Algolia Settings
 # Algolia recommends saving these here as they are not secret and they block anything if it's coming outside of our domain
 docsearch_app_id = "0L8XXGSE8Z"
-docsearch_api_key = "ab9d760fbbc7330bfba95689b744a98a"
+docsearch_api_key = "066262b710a990a497e7639ad6bcf655"
 docsearch_index_name = "skao"
 
 # Set each document name as prefix to avoid duplication
