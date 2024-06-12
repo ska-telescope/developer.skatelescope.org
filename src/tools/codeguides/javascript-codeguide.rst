@@ -1,7 +1,9 @@
 
 ********************************
-SKA Javascript Coding Guidelines
+Javascript Coding Guidelines
 ********************************
+
+This section describes requirements and guidelines.
 
 Prerequisites:
 ==============
@@ -13,8 +15,8 @@ As a javascript developer you will need the following:
 * Access to git (e.g. Git Bash if on Windows environment (https://gitforwindows.org/)
 * Access to node and the node package manager (npm)
 
-Setting up a new web project
-============================
+Getting started with JS development in SKA
+==========================================
 
 Each new web project should start by creating a new SKA gitlab project as a fork of the 
 ska-telescope/ska-react-webapp-skeleton project.  
@@ -61,8 +63,8 @@ Locate CSS, JS, and tests together inside folders grouped by feature or route.
 The definition of a “feature” is not universal, and it is up to you to choose the granularity. If you can’t come up with a list of top-level folders, you can ask the users of your product what major parts it consists of, and use their mental model as a blueprint.
 
 
-Complying with Coding Style/Conventions
-=======================================
+Code Style
+==========
 The react web skeleton project comes with ESLint and Prettier support already configured to
 support the AirBnB style guide rules.  
 We suggest that whenever possible you lint your code style and patterns in your editor as you code. 
@@ -71,35 +73,6 @@ Instructions for how to install plugins to support this do this for Visual Studi
 and JetBrains (WebStorm, IntelliJ IDEA etc.) are include in the ska-react-webapp-skeleton readme_ file.
 
 .. _readme: https://gitlab.com/ska-telescope/ska-react-webapp-skeleton
-
-Dependencies
-============
-
-* The use  of node and npm is assumed for package management. 
-  All packages and dependencies required to build and run the code should be defined in the ``package.json.``
-  for the project.
-* Avoid relying on any the installation of any global packages to run or build the code. 
-* Take care to differentiate between dependencies and devDependencies when installing packages. The ‘dependencies’ section should only include the dependencies required to run the code. The devDependencies should be used for any packages required to build, test or to deploy the code. 
-* Only install packages for a reason. Adding any new third party dependency should be a team decision, and preferably discussed with the system team.
-* Remove unused packages 
-* Prefer popular packages. Sites such as  https://www.npmjs.com/search and https://npms.io can be used to get an analysed ranking, as well as checking out the number of stars on gitlab.
-* Prefer packages with a good coverage of working tests provided
-* Any 3rd party packages used should be compatible with the SKA BSD-3  Licence terms. 
-
-When developing packages and modules either for your own project or for sharing with other SKA javascript teams.
-
-* Prefer smaller modules with a coherent closely related purpose
-* Prefer files with a single named export where possible
-* Ensure all imports use the same names for exports as used in the file where the export is defined.
-* Avoid default exports or imports. 
-
-Named exports (and using the same names consistently throughout the code) make life easier 
-for anyone using your code. 
-
-Having a name makes it possible for IDEs to find and import dependencies for you automatically. 
-For a good perspective on this read:
-https://humanwhocodes.com/blog/2019/01/stop-using-default-exports-javascript-module/
-
 
 Documentation and Testing
 =========================
@@ -121,9 +94,63 @@ Data and Configuration Files
   Any explicit paths should be derived from a consistent configuration source. 
   (See for example https://facebook.github.io/create-react-app/docs/proxying-api-requests-in-development#configuring-the-proxy-manually
 
-Console output, warnings and errors
-===================================
+Standard output, warnings, and errors
+=====================================
+
+[TODO: Ensure Standard output, warnings, and error best practices are noted and up to date]
+
+Logging implementation
+=========================================================
 
 * Use the debugger rather than console statements. 
 
 * Remove all console statements when done. Production code should not contain any console statements.
+
+[TODO: Ensure logging best practices are noted and up to date]
+
+Examples and where to get help
+==============================
+
+This section shows examples in order to illustrate points from the guidelines.
+
+[TODO: Add Examples]
+
+Packaging & Dependencies
+========================
+
+[TODO: Add Packaging and dependency details]
+
+
+* The use  of node and npm is assumed for package management.
+  All packages and dependencies required to build and run the code should be defined in the ``package.json.``
+  for the project.
+* Avoid relying on any the installation of any global packages to run or build the code.
+* Take care to differentiate between dependencies and devDependencies when installing packages. The ‘dependencies’ section should only include the dependencies required to run the code. The devDependencies should be used for any packages required to build, test or to deploy the code.
+* Only install packages for a reason. Adding any new third party dependency should be a team decision, and preferably discussed with the system team.
+* Remove unused packages
+* Prefer popular packages. Sites such as  https://www.npmjs.com/search and https://npms.io can be used to get an analysed ranking, as well as checking out the number of stars on gitlab.
+* Prefer packages with a good coverage of working tests provided
+* Any 3rd party packages used should be compatible with the SKA BSD-3  Licence terms.
+
+When developing packages and modules either for your own project or for sharing with other SKA javascript teams.
+
+* Prefer smaller modules with a coherent closely related purpose
+* Prefer files with a single named export where possible
+* Ensure all imports use the same names for exports as used in the file where the export is defined.
+* Avoid default exports or imports.
+
+Named exports (and using the same names consistently throughout the code) make life easier
+for anyone using your code.
+
+Having a name makes it possible for IDEs to find and import dependencies for you automatically.
+For a good perspective on this read:
+https://humanwhocodes.com/blog/2019/01/stop-using-default-exports-javascript-module/
+
+
+Acknowledgements
+================
+
+The present document's coding guidelines are derived from
+
+
+[TODO: Add Acknowledgements]
