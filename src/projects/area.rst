@@ -24,6 +24,19 @@ SDP
 
   area/sdp
 
+SRCNet
+======
+
+   ============= =================
+   Documentation Gitlab repository
+   ============= =================
+   ============= =================
+
+.. toctree::
+  :maxdepth: 1
+
+  srcnet/srcnet
+
 Simulations
 ===========
 
