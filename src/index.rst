@@ -55,6 +55,24 @@ This section is about getting you up and running. It contains the onboarding mat
 - :doc:`getting-started/contrib-guidelines`
 - :doc:`getting-started/devenv-setup/devenv-setup`
 
+The SRCNet Developer Community
+-----------------------------------------------
+
+This section contain information that are specific to the SRCNet software development and the SRCNet community.
+
+.. SRCNet SECTION ==================================================
+
+.. Hidden toctree to manage the sidebar navigation.
+
+.. toctree::
+  :maxdepth: 1
+  :caption: SRCNet
+  :hidden:
+
+  srcnet/srcnet
+
+- :doc:`srcnet/srcnet`
+
 .. REPOSITORIES SECTION ========================================================
 
 .. Hidden toctree to manage sidebar navigation
