@@ -43,3 +43,30 @@ This is testing that extends further than e2e testing and makes use of real appl
 data.  As this is using information outside the direct control of the application great care should be taken with the
 tests written and it is important that these are retested should any of the repositories providing associated applications
 to ensure that there are no unforeseen ramifications to the changes made
+
+Using the ``testId`` property
+-----------------------------
+
+Below is an example of a standard SKA Button with the testId defined.
+
+.. code-block:: Javascript
+  :emphasize-lines: 8 
+
+  <Button
+      ariaDescription="Button that will add a record to the list when clicked"
+      ariaText="Add Button"
+      color={ButtonColorTypes.Secondary}
+      disabled={!enabled()}
+      icon={getIcon()}
+      label={t('button.add')}
+      testId="addButton"
+      onClick={buttonClicked}
+      variant={ButtonVariantTypes.Contained}
+    />
+
+This can be used to locate the component for testing purposes as shown here.
+
+.. code-block:: Javascript
+
+   cy.get('[data-testid="testId"]').click({ multiple: true });
+   

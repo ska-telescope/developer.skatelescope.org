@@ -52,7 +52,7 @@ To ensure that there are no security concerns it is recommended that the followi
 in use are identified and resolved before they become critical.  To aid with this, the following script has also been added to the
 CI/CD process
 
-> yarn audit
+``yarn audit``
 
 Checking for dependency updates
 -------------------------------
@@ -60,4 +60,4 @@ Checking for dependency updates
 It is recommended that the dependencies are checked and updated regularly. To do this the following command with identify
 dependencies that have available updates which can be updated or skipped as required.
 
-> yarn upgrade-interactive
+``yarn upgrade-interactive``

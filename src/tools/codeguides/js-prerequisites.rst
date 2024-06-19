@@ -39,7 +39,7 @@ Alternatively the official Node docker image can be used. Instructions can be fo
 
 To confirm that node has been installed correctly run the following command from the prompt.
 
-> node –version
+``node –version``
 
 Access to a package manager
 ---------------------------
@@ -50,4 +50,4 @@ Currently the SKAO recommends yarn for use.  Existing applications using npm are
 
 To confirm that yarn has been installed correctly run the following command from the prompt.
 
-> yarn –version
+``yarn –version``

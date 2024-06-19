@@ -45,4 +45,4 @@ examples within the codebase.
 
 To update the libraries to the latest version:
 
-> yarn skao:update
+``yarn skao:update``
