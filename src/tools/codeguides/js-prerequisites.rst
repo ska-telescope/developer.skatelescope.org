@@ -2,7 +2,7 @@ Prerequisites
 =============
 
 As a member of the SKAO, most of the standard requirements as a developer should be covered.  Documentation of this
-is here for convenience.
+is here for convenience. [ https://developer.skao.int/en/latest/getting-started/onboarding.html ]
 
 As a JS developer you will need the following:
 
