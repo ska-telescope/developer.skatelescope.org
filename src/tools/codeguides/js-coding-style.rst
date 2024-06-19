@@ -15,8 +15,8 @@ reading that they suggest.
 File Suffixes
 -------------
 
-* For standard Javascript, use the suffix .js  
-* If JavaSCript extension is used, then the suffix should be .jsx
+* For standard JavaScript, use the suffix .js  
+* If JavaScript extension is used, then the suffix should be .jsx
 * Test files should be prefixed .test.{js|jsx}
 
 Data and Configuration Files
