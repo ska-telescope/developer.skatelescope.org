@@ -20,11 +20,3 @@ for use within the SKAO.
    js-linting
    js-testing
    js-documentation
-
-Acknowledgements
-================
-
-The present document's coding guidelines are derived from
-
-
-[TODO: Add Acknowledgements]
