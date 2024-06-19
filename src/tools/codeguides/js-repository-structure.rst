@@ -5,7 +5,7 @@ Repository structure
 --------------------
 
 It is recommended that the JS repository is set out in the following structure so that it is simple for all SKAO
-developers to navigate thru repositories and there is a consistency. Below is a sample structure which should be
+developers to navigate through repositories and there is a consistency. Below is a sample structure which should be
 used and extended as required.
 
 |    src
