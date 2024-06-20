@@ -1,19 +1,23 @@
 Code format and layout
 ======================
 
-[ESLint](https://ESLint.org/) and [Prettier](https://prettier.io/) are included as code analysis and formatting tools. 
+`ESLint`_ and `Prettier`_ are included as code analysis and formatting tools. 
 These do not need installing as they’re included in node_modules by running 
 
 ``yarn init.``
 
 These tools can be run in the command line or integrated into your IDE.
 
+.. _`ESLint`: https://ESLint.org/
+
 .. tip:: 
 
    Ensure that prettier and lint in that sequence are both run before any commits as these are also run as part of the pipeline
 
-Prettier
---------
+`Prettier`_
+-----------
+
+.. _`Prettier`: https://prettier.io/
 
 This will check the JS Code and reformat to a standard structure.  
 
@@ -25,8 +29,8 @@ Run the following to allow the library to automatically update the layout:
 
 ``yarn prettier:fix``
 
-linting
--------
+`ESLint`_
+----------
 
 This will check the JS Code and ensure that the code meets required standards.  It should be noted that this should be
 run after prettier as it has been noted that prettier has not always formatted as per the SKAO linting standards

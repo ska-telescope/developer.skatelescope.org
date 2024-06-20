@@ -2,14 +2,15 @@ Creating a new repository for JS applications
 =============================================
 
 Each new web project should start by creating a new SKA gitlab project as a fork of the 
-ska-telescope/ska-react-webapp-skeleton project, which will provide a basic structure and an example component for reference.
+`ska-telescope/ska-react-webapp-skeleton`_ project, which will provide a basic structure and an example component for reference.
 
 Application template repository
 -------------------------------
 
 Each new web project should start by creating a new SKA gitlab project as a fork of the 
-ska-telescope/ska-react-webapp-skeleton project, which will provide a basic structure and an example component for reference.
-[https://gitlab.com/ska-telescope/templates/ska-react-webapp-skeleton]
+`ska-telescope/ska-react-webapp-skeleton`_ project, which will provide a basic structure and an example component for reference.
+
+.. _`ska-telescope/ska-react-webapp-skeleton`: https://gitlab.com/ska-telescope/templates/ska-react-webapp-skeleton
 
 .. tip::
 
@@ -19,29 +20,34 @@ ska-telescope/ska-react-webapp-skeleton project, which will provide a basic stru
 Migrating the template for a new application
 --------------------------------------------
 
-Details of this process is detailed within the Read-the-docs information of the template.
-The link is provided below for convenience.
-( https://developer.skao.int/projects/ska-react-webapp-skeleton/en/latest/Overview.html )
+Details of this process is detailed within the Read-the-docs information of the template. ( See `here`_ )
+
+.. _`here`: https://developer.skao.int/projects/ska-react-webapp-skeleton/en/latest/Installation.html
 
 SKAO Libraries
 --------------
 
 There are a number of libraries that are available for use.   The react template has implemented them and so there are
-examples within the codebase.   
+examples within the codebase.   Documentation on the components within these libraries are available by following the 
+links.
 
-* ska-javascript-components : Contains a few basic components.
-  [ https://developer.skao.int/projects/ska-javascript-components/en/latest/?badge=latest ]
+* `ska-javascript-components`_.
+   Contains basic components, without specific SKAO styling.
 
-* ska-gui-components : Contains a number of components, based on Material-UI.  It also inherits all components from ska-javascript-components
-  [ https://developer.skao.int/projects/ska-gui-components/en/latest/?badge=latest ]
+.. _`ska-javascript-components`: https://developer.skao.int/projects/ska-javascript-components/en/latest/?badge=latest
 
-* ska-gui-local-storage : Provides local storage functionality using Redux
-  [ https://developer.skao.int/projects/ska-gui-local-storage/en/latest/?badge=latest ]
+* `ska-gui-components`_ 
+    Contains a number of components, with SKAO styling added by implementing Material-UI Themes.  
+    It also inherits all components from ska-javascript-components, so with this library included, there is no additional need
+    to include the ska-javascript-components library.
 
-.. tip:: 
+.. _`ska-gui-components`: https://developer.skao.int/projects/ska-gui-components/en/latest/?badge=latest
 
-   The components from ska-javascript-components library are provided in addition as part of the ska-gui-components library, 
-   so separate inclusion is not required.
+* `ska-gui-local-storage`_
+    Provides local storage functionality using Redux.
+
+.. _`ska-gui-local-storage`: https://developer.skao.int/projects/ska-gui-local-storage/en/latest/?badge=latest
+
 
 To update the libraries to the latest version:
 

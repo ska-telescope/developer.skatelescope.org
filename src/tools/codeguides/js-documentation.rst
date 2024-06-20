@@ -23,11 +23,13 @@ of use to the users of the repository.
    As comprehensive details are expected to be provided in Read-the-docs,  It is highly recommended that
    a link to the initial page of the Read-the-docs should be provided
 
-Read-the-docs
--------------
+`Read-the-docs`_
+----------------
+
+.. _`Read-the-docs`: https://sublime-and-sphinx-guide.readthedocs.io/en/latest/index.html
 
 Read-the-docs should be used for detailing the content and usage of the application.  
-Content of this should provide a comprehensive guide to the application including usage, tutorials and guides as appropriate
+Content of this should provide a comprehensive guide to the application including usage, tutorials and guides as appropriate.
 
 .. tip::
 
@@ -38,9 +40,10 @@ Content of this should provide a comprehensive guide to the application includin
 
    A git badge has been added labelled docs, which will navigate to the landing page of the documentation when clicked
 
-JSDocs
-------
+`JSDocs`_
+---------
 
-JSDoc 3 is an API documentation generator for JavaScript. Documentation comments directly to the source code, 
+.. _`JSDocs`: https://jsdoc.app/
+
+JSDoc is an API documentation generator for JavaScript. Documentation comments directly to the source code, 
 right alongside the code itself. The JSDoc tool will scan the code and generate an HTML documentation website.
-( https://jsdoc.app/ )

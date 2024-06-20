@@ -1,8 +1,10 @@
 Prerequisites
 =============
 
-As a member of the SKAO, most of the standard requirements as a developer should be covered.  Documentation of this
-is here for convenience. [ https://developer.skao.int/en/latest/getting-started/onboarding.html ]
+As a member of the SKAO, most of the standard requirements as a developer should already be covered via the `SKAO onboarding
+process`_.  
+
+.. _`SKAO onboarding process`: https://developer.skao.int/en/latest/getting-started/onboarding.html
 
 As a JS developer you will need the following:
 
@@ -27,7 +29,7 @@ This should be appropriate for the OS in use, for example Git Bash for Windows [
 .. tip:: Development OS
 
    Development within a Unix environment is recommended due to the need to be able to access and run 
-   Python Backends locally during development.
+   Python applications locally during development.  For Windows uses, this can be done via the use of WSL2
 
 Access to node 
 --------------
