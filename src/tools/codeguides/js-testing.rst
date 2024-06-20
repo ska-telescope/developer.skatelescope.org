@@ -10,7 +10,8 @@ Unit/Component testing
 
 These are tests that check and validate that a single component or group of components work as expected.
 The test files for these tests should reside in the same location as the component they are testing so that
-it is easy to locate and update as required.
+it is easy to locate and update as required.  These tests will make use of mocked API calls to simulate responses
+from external sources
 
 .. note:: git badges
 
@@ -24,9 +25,9 @@ end-to-end ( e2e ) testing
 --------------------------
 
 These are tests that check and validate user journeys throughout the application and encompass the use of multiple components
-across one or more pages, including navigation between pages.  This testing includes the mocking of any used endpoints
-ensuring that a common and consistent set of results is maintained.  As a result of this, it is important that the
-mocked data is complete and suitable for the checking of all the paths thru the application
+across one or more pages, including navigation between pages.  This testing includes the makes use of real external application 
+calls for the realization of data. It is important that the mocked data is complete and suitable for the checking of all the 
+paths thru the application
 
 .. note:: git badges
 
@@ -35,14 +36,6 @@ mocked data is complete and suitable for the checking of all the paths thru the 
 .. tip:: e2e testing with Cypress
 
   Please refer to https://docs.cypress.io/guides/end-to-end-testing/writing-your-first-end-to-end-test.
-
-Integration testing
--------------------
-
-This is testing that extends further than e2e testing and makes use of real application calls for the realization of
-data.  As this is using information outside the direct control of the application great care should be taken with the
-tests written and it is important that these are retested should any of the repositories providing associated applications
-to ensure that there are no unforeseen ramifications to the changes made
 
 Using the ``testId`` property
 -----------------------------
