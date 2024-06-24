@@ -1,9 +1,6 @@
 Creating a new repository for JS applications
 =============================================
 
-Each new web project should start by creating a new SKA gitlab project as a fork of the 
-`ska-telescope/ska-react-webapp-skeleton`_ project, which will provide a basic structure and an example component for reference.
-
 Application template repository
 -------------------------------
 
