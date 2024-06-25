@@ -118,7 +118,7 @@ Pyproject as requirement
 
 As the default python dependency manager for the project is poetry, this section explains the best way to install the dependencies from it. An example of it follows:
 
-.. code-block::
+.. ::
 
 
     FROM python:3.9 as base

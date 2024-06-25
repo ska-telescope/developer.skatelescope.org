@@ -16,22 +16,19 @@ Local Compulsory Services
 
 Each node must have the following services running locally
 
-Common data-related services
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Data Management Services
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-Rucio prototype (RSE)
+.. toctree::
+  :maxdepth: 1
+  :caption: Rucio RSE
+  :hidden:
+
+  services/iam-client-configuration/iam-client-configuration
+  services/rucio-rse
+
+- :doc:`services/iam-client-configuration/iam-client-configuration`
+- :doc:`services/rucio-rse`
 
 
-Local data parsing services and visualisation services
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Visualisation tools
-^^^^^^^^^^^^^^^^^^^
-
-Interactive analysis interface
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
-Monitoring Services
-^^^^^^^^^^^^^^^^^^^
 
