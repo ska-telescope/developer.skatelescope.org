@@ -3,8 +3,13 @@
 WebDav
 ======
 
-To install Rucio RSE with WebDav it is recommended to use the StormWebDav 
-client on the CentOS flavours.
+WebDAV is a protocol for file management and is an integral part of scientific 
+data management when working with Rucio. 
+It offers scalable storage solutions and streamlined data access, enhancing 
+management and supporting efficient scientific workflows within the 
+Rucio RSE ecosystem.
+
+To install your Rucio RSE with the WebDav protocol it is recommended to use the StormWebDav.
 
 Manual installation on Rocky Linux 9
 ------------------------------------
