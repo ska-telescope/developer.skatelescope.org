@@ -35,11 +35,11 @@ or
 
 ``git clone  --recurse-submodules https://gitlab.com/ska-telescope/developer.skatelescope.org.git``
 
-If you already have a clone of the repository, run ``git submodule update --init --recursive`` inside your cloned repository to ensure the submodules are updated to build the portal locally.
+If you already have a clone of the repository, run ``git submodule update --init --recursive`` inside your cloned repository to ensure the submodules are updated to build the portal locally. (If you do not do this, you may run into errors later such as unexpected behaviour from the "make" command.)
 
 Then create a virtual environment with ``poetry shell``, poetry can be installed from `here <https://python-poetry.org/docs/master/>`_ and install dependencies: ``poetry install``
 
-You can then make changes to the repository. To build the documentation locally, run: ``make docs-build html`` inside the virtual environment
+You can then make changes to the repository. To build the documentation locally, run: ``make docs-build html`` inside the virtual environment. (If this is run outside of the virtual environment you created earlier, it may error.)
 
 This will create a subdirectory `/build/html`. To browse the documents created
 open `/build/html/index.html` in a web browser.
