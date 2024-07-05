@@ -3,6 +3,12 @@
 WebDav
 ======
 
+.. toctree::
+  :maxdepth: 2
+  :caption: Implementations for the Storage Elements
+  :hidden:
+  
+
 WebDAV is a protocol for file management and is an integral part of scientific 
 data management when working with Rucio. 
 It offers scalable storage solutions and streamlined data access, enhancing 
@@ -11,8 +17,8 @@ Rucio RSE ecosystem.
 
 To install your Rucio RSE with the WebDav protocol it is recommended to use the StormWebDav.
 
-Manual installation on Rocky Linux 9
-------------------------------------
+Manual installation of StoRM-webdav Rocky Linux 9
+-------------------------------------------------
 
 Install packages and add user for `storm-webdav`:
 
@@ -97,7 +103,7 @@ Then, lets configure the IAM A&A client for ```storm-webdav```. To do it, edit t
     
     sudo vi /etc/storm/webdav/config/application.ym
 
-Include the next, changing ```client-name```, ```client-id``` and ```client-secret``` with the client your previously created in the preliminary step :doc:`../iam-client-configuration/iam-client-configuration`. Maintaing the ```issuer``` and ```issuer-uri``` as follows: 
+Include the next, changing ```client-name```, ```client-id``` and ```client-secret``` with the client your previously created in the preliminary step :doc:`../../../iam-client-configuration/iam-client-configuration`. Maintaing the ```issuer``` and ```issuer-uri``` as follows: 
 
 .. code-block:: bash
 
@@ -194,3 +200,38 @@ Finally, restart the ```storm-webdav``` to apply the changes:
 
      The last configuration step is to contact the `SKA Rucio Platform <https://skao.slack.com/archives/C047DPDKRN0>`_ team to to include this new Rucio RSE to the SKA Rucio Platform.
 
+
+
+Containerised instance of StoRM-webdav
+--------------------------------------
+
+This deployment is based on docker containers. To start with this
+installation procedure, first clone the next repository:
+
+.. code-block:: bash
+
+    git clone https://gitlab.com/ska-telescope/src/ska-src-storm-webdav.git
+    cd ska-src-storm-webdav
+
+
+Build the container image:
+
+.. code-block:: bash
+
+    docker build -t storm-webdav:v1 .
+
+Once built, run this container image with the following 
+environments variables:
+
+
+.. code-block:: bash
+
+    docker run ...
+
+
+Helm package of StoRM-WebDav on kubernentes
+-------------------------------------------
+
+For an installation on a kubernentes cluster follow the next steps:
+
+- `Helm package for StoRM-WebDav <https://gitlab.com/ska-telescope/src/ska-src-storm-webdav>`_

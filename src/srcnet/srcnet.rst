@@ -54,12 +54,12 @@ infrastructure:
 
 .. toctree::
   :maxdepth: 1
-  :caption: Rucio RSE
+  :caption: Storage Element
   :hidden:
 
-  services/rucio-rse
+  services/data-management/storage-element/storage-element
 
-- :doc:`services/rucio-rse`
+- :doc:`services/data-management/storage-element/storage-element`
 
 
 
