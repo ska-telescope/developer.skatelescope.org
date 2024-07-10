@@ -2,17 +2,21 @@
 
 
 
-IAM Client Configuration
-========================
+Rucio RSE - IAM Client Configuration
+====================================
 
 .. toctree::
   :maxdepth: 1
-  :caption: IAM Client Configuration
+  :caption: Rucio RSE - IAM Client Configuration
   :hidden:
   
-Many SRCNet services require authentication through an IAM client. 
+Rucio RSE requires authentication through an IAM client. 
 Additionally, the user creating the IAM client must belong to the 
-groups specific to the service being configure.
+groups specific to the service being configure, in this case 
+the groups are the next:
+
+- `escape`
+- `escape/ska``
 
 1. **Create an Account**
 
@@ -29,7 +33,6 @@ groups specific to the service being configure.
    - On the *Main* tab:
 
        - Enter a name and description (i.e. ```espsrc-client-rse````).
-       - Enter a ```Redirect URI```. Ensure it matches the URI defined in the file configuration of your service deployment.
 
 
 4. **Credentials**
@@ -42,11 +45,11 @@ groups specific to the service being configure.
 
    - On the *Scopes* tab:
 
-       - This will depend on the service you are deploying. For example for Rucio-RSE and most of the services, you will need to select ```email offline_access openid profile```.
+       - For the Rucio RSE you will need to select ```email offline_access openid profile```.
 
 6. **Save the Client**
 
-   - One saved, get the ```Client ID```, ```Redirect URIs```, ```Client Secret``` and ```Client Scopes```, to include them into your configuration file of your service authentication.
+   - One saved, get the ```Client ID```, ```Redirect URIs```, ```Client Secret``` and ```Client Scopes```, to include them into your configuration file of the Rucio RSE client.
 
 For more information, visit: `IAM Client Registration <https://indigo-iam.github.io/v/v1.9.0/docs/tasks/user/client-registration/>`_.
 

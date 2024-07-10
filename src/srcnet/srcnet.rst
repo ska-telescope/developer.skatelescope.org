@@ -24,19 +24,18 @@ SRCNet platform, ensuring the fundamental operations and baseline functionality.
 Interfaces and Integration with Global Services
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For many of the Local Compulsory Services, it is necessary to integrate with other 
-global services such as IAM-based authentication and authorisation (A&A). 
-
+Part of the compulsory Local Services, they need to be integrated with other 
+global services, such as IAM-based authentication and authorisation (A&A). 
 Follow the instructions below if your service requires SKAO IAM-based A&A: 
 
 .. toctree::
   :maxdepth: 1
-  :caption: IAM Client Configuration
+  :caption: IAM configuration for the Storage Element - Rucio RSE
   :hidden:
   
-  services/iam-client-configuration/iam-client-configuration
+  services/iam-client-configuration/rucio-rse-iam-client-configuration
 
-- :doc:`services/iam-client-configuration/iam-client-configuration`
+- :doc:`services/iam-client-configuration/rucio-rse-iam-client-configuration`
 
 Data Management Services
 ^^^^^^^^^^^^^^^^^^^^^^^^

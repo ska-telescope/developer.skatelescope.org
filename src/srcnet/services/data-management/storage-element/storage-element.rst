@@ -33,9 +33,9 @@ Follow the next instructions to create and manage this IAM A&A client:
   :caption: IAM Client Configuration
   :hidden:
   
-  ../../iam-client-configuration/iam-client-configuration
+  ../../iam-client-configuration/rucio-rse-iam-client-configuration
 
-- :doc:`../../iam-client-configuration/iam-client-configuration`
+- :doc:`../../iam-client-configuration/rucio-rse-iam-client-configuration`
 
 Storage Element deployment options
 ----------------------------------
@@ -47,11 +47,12 @@ to your needs and the features of your storage infrastructure:
    :header-rows: 1
 
    * - Protocol
-     - Service
-     - Version
-     - Method
+     - Methods
    * - WebDav
-     - StoRM WebDav
-     - 1.4.2-1
-     - :doc:`Manual on Rocky Linux 9 <implementation/webdav>`
+     - | `Manual <implementation/webdav#webdav>`  
+       | `Docker container <implementation/webdav#containerised_webdav>` 
+       | `Helm package <implementation/webdav#helm_webdav>`
+
+   
+
    

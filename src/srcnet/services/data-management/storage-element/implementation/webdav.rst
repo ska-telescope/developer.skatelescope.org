@@ -201,6 +201,7 @@ Finally, restart the ```storm-webdav``` to apply the changes:
      The last configuration step is to contact the `SKA Rucio Platform <https://skao.slack.com/archives/C047DPDKRN0>`_ team to to include this new Rucio RSE to the SKA Rucio Platform.
 
 
+.. _containerised_webdav:
 
 Containerised instance of StoRM-webdav
 --------------------------------------
@@ -228,6 +229,8 @@ environments variables:
 
     docker run ...
 
+
+.. _helm_webdav:
 
 Helm package of StoRM-WebDav on kubernentes
 -------------------------------------------
