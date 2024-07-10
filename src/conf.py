@@ -140,7 +140,8 @@ html_theme_options = {
     # 'logo_only' : False,
     # 'logo_only' : 'ska_logo.jpg',
     # 'logo' : 'ska_logo.jpg',
-    "vcs_pageview_mode": "edit"
+    "vcs_pageview_mode": "edit",
+    "navigation_depth": 6
 }
 
 html_logo = "_static/img/logo.png"

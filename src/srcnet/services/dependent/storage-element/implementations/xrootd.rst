@@ -3,4 +3,4 @@
 xrootd
 ======
 
-TBC.
+.. _manual_xrootd:

@@ -1,11 +1,10 @@
-.. _webdav:
+.. _storm-webdav:
 
-WebDav
-======
+StoRM-webdav
+============
 
 .. toctree::
   :maxdepth: 2
-  :caption: Implementations for the Storage Elements
   :hidden:
   
 
@@ -16,6 +15,8 @@ management and supporting efficient scientific workflows within the
 Rucio RSE ecosystem.
 
 To install your Rucio RSE with the WebDav protocol it is recommended to use the StormWebDav.
+
+.. _manual_storm_webdav:
 
 Manual installation of StoRM-webdav Rocky Linux 9
 -------------------------------------------------
@@ -103,7 +104,7 @@ Then, lets configure the IAM A&A client for ```storm-webdav```. To do it, edit t
     
     sudo vi /etc/storm/webdav/config/application.ym
 
-Include the next, changing ```client-name```, ```client-id``` and ```client-secret``` with the client your previously created in the preliminary step :doc:`../../../iam-client-configuration/iam-client-configuration`. Maintaing the ```issuer``` and ```issuer-uri``` as follows: 
+Include the next, changing ```client-name```, ```client-id``` and ```client-secret``` with the client your previously created in the preliminary step. Maintaing the ```issuer``` and ```issuer-uri``` as follows:
 
 .. code-block:: bash
 
@@ -201,7 +202,7 @@ Finally, restart the ```storm-webdav``` to apply the changes:
      The last configuration step is to contact the `SKA Rucio Platform <https://skao.slack.com/archives/C047DPDKRN0>`_ team to to include this new Rucio RSE to the SKA Rucio Platform.
 
 
-.. _containerised_webdav:
+.. _containerised_storm_webdav:
 
 Containerised instance of StoRM-webdav
 --------------------------------------
@@ -230,7 +231,7 @@ environments variables:
     docker run ...
 
 
-.. _helm_webdav:
+.. _helm_storm_webdav:
 
 Helm package of StoRM-WebDav on kubernentes
 -------------------------------------------
