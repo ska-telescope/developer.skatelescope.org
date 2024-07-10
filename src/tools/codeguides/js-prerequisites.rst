@@ -19,7 +19,7 @@ Access to the SKA gitlab account
 
 [https://gitlab.com/ska-telescope]
 
-A request to submitted to the System team who will provide standard Access
+A request to submitted to the System team who will provide standard access
 
 Access to git 
 -------------
@@ -41,7 +41,13 @@ Alternatively the official Node docker image can be used. Instructions can be fo
 
 To confirm that node has been installed correctly run the following command from the prompt.
 
-``node –version``
+``node –-version``
+
+.. tip:: NVM
+
+   Version manager for node.js, designed to be installed per-user, and invoked per-shell. nvm works on 
+   any POSIX-compliant shell (sh, dash, ksh, zsh, bash), in particular on these platforms: unix, macOS, and windows WSL.
+   https://github.com/nvm-sh/nvm
 
 Access to a package manager
 ---------------------------
@@ -52,4 +58,4 @@ Currently the SKAO recommends yarn for use.  Existing applications using npm are
 
 To confirm that yarn has been installed correctly run the following command from the prompt.
 
-``yarn –version``
+``yarn –-version``

@@ -1,6 +1,9 @@
 Code format and layout
 ======================
 
+It is recommended that all react applications are based upon ska-react-webapp-skeleton, which provides all of the basic format and
+layout, as well as all of the scripts as described here.    https://gitlab.com/ska-telescope/templates/ska-react-webapp-skeleton
+
 `ESLint`_ and `Prettier`_ are included as code analysis and formatting tools. 
 These do not need installing as they’re included in node_modules by running 
 
@@ -62,7 +65,7 @@ and correction of the code.
 
 1. ``yarn test:component:headless`` - Runs that testing and produces the results
 2. ``yarn test:coverage:report`` - Convert the output into a file that can be accessed in a browser
-3. ``file:///home/{{username}}/ska/{{repository}}/build/reports/index.html`` - Drop a URL into a browser which will show coverage breakdown
+3. ``file:///{{repository location}}/build/reports/index.html`` - Drop a URL into a browser which will show coverage breakdown
 
 .. image:: images/codeCoverageOverview.png
    :alt: Code coverage overview

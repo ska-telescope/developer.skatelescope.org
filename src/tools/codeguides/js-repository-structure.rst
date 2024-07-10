@@ -40,13 +40,20 @@ used and extended as required.
 Packaging & Dependencies
 ------------------------
 
-Packages and dependant libraries are identified in the ``package.json.`` contained in the repository, which also Contains
-standard scripts that are used by the CI/CD process and as an aid to developers.   The packages are split into dependencies
-and devDependencies.  DevDependencies should be used for those libraries that are used for any packages required to build, 
-test or to deploy the code. Any 3rd party packages used should be compatible with the SKA BSD-3 License terms.
+Packages and dependant libraries are identified in the ``package.json.`` contained in the repository, which also contains
+standard scripts that are used by the CI/CD process and/or as an aid to developers.   
 
-Checking for dependency issues
-------------------------------
+The packages are split into dependencies and devDependencies.  
+
+- DevDependencies should be used for those libraries that are used for any packages required to build, test or to deploy the code. 
+
+- Dependencies should contain only those packages that will be required for the effective running of the production application.
+
+Any 3rd party packages used should be compatible with the SKA BSD-3 License terms.
+Here is a link to clause 3 of the BSD license for reference : https://opensource.org/license/bsd-3-clause
+
+Checking for dependency/security issues
+---------------------------------------
 
 To ensure that there are no security concerns it is recommended that the following be run so that any issues with the dependencies
 in use are identified and resolved before they become critical.  To aid with this, the following script has also been added to the
