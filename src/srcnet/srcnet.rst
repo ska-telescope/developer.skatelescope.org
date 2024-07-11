@@ -60,6 +60,27 @@ infrastructure:
 
 - :doc:`services/data-management/storage-element/storage-element`
 
+Local Optional Services
+-----------------------
 
+Optional Local Services are subsystems that can be installed 
+in a complementary way on each node of the SRCNet.
 
+Science Platform
+^^^^^^^^^^^^^^^^
+
+The Science Platform for the SRCNet will be a comprehensive data 
+management and analysis system designed to support the SKA's radio astronomy projects. 
+It will provides tools for accessing, processing, and analyzing astronomical data 
+collected by the SKA telescopes. The following subsection covers the deployment of 
+`OpenCADC CANFAR<https://github.com/opencadc/science-platform>`_ science platform.
+
+.. toctree::
+  :maxdepth: 1
+  :caption: OpenCADC - CANFAR
+  :hidden:
+
+  services/science-platform/canfar
+
+- :doc:`  services/science-platform/canfar`
 
