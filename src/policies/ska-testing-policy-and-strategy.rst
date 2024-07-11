@@ -610,9 +610,9 @@ Relevant "How To Pages" are:
 
 - `On Test-Driven Development <https://confluence.skatelescope.org/display/SE/On+Test-Driven+Development>`_
 
-- :doc: `BDD walkthrough <tools/bdd-walkthrough>`
+- :doc:`/tools/bdd-walkthrough`
 
-- :doc: `BDD testing guide </tools/bdd-test-context>`.
+- :doc:`BDD testing guide </tools/bdd-test-context>`.
 
 Relevant textbooks include:
 
