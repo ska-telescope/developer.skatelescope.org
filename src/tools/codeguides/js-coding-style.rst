@@ -7,10 +7,21 @@ Conventions
 JavaScript has many code style guides. For the SKA Projects we have settled 
 on the `AirBnB JavaScript Style Guide`_. 
 
-.. _`AirBnB JavaScript Style Guide`: https://github.com/airbnb/javascript/
+.. _`AirBnB JavaScript Style Guide`: https://github.com/airbnb/javascript/tree/master/react
 
 As a developer it is worth familiarizing yourself with the AirBnB guide above, and some of the background 
 reading that they suggest.
+
+Use of TypeScript
+-----------------
+
+Although it is not the purpose of this guide to dictate the use of TypeScript over JavaScript, 
+there are a number of benefits of doing so, some of which are listed below:
+
+* Static Typing, which improves code predictability and early error detection
+* Interfaces, allowing the developer to define contracts for Objects
+* Enums, Enabling a developer to declare a set of named constants, which aids in code readability
+* Advanced type checking features
 
 File Suffixes
 -------------
