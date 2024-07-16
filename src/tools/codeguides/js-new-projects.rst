@@ -17,7 +17,7 @@ Each new web project should start by creating a new SKA gitlab project as a fork
 Migrating the template for a new application
 --------------------------------------------
 
-Details of this process is detailed within the Read-the-docs information of the template. ( See `here`_ )
+Details of this process is detailed within the Read-the-docs information of the template ( See `here`_ ).
 
 .. _`here`: https://developer.skao.int/projects/ska-react-webapp-skeleton/en/latest/Installation.html
 

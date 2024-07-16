@@ -1,7 +1,7 @@
 Testing
 =======
 
-Working tests should exist for as much code as possible. At a minimum code developed or 
+Working tests should exist for as much code as possible. At a minimum, code developed or 
 modified within the SKA Project should have working tests. Overall code coverage for all web projects
 is expected to be at a minimum acceptable level of 75%, but it is hoped that this level will be much higher
 

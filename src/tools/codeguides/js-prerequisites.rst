@@ -11,7 +11,7 @@ As a JS developer you will need the following:
 Account on gitlab
 -----------------
 
-This is done via https://gitlab.com/ where the standard sign up processes is completed and then passed 
+This is done via https://gitlab.com/, where the standard sign up processes is completed and then passed 
 to the System team in preparation for the next section
 
 Access to the SKA gitlab account
@@ -19,7 +19,7 @@ Access to the SKA gitlab account
 
 [https://gitlab.com/ska-telescope]
 
-A request to submitted to the System team who will provide standard access
+A request needs to be submitted to the System team who will provide standard access.
 
 Access to git 
 -------------
@@ -29,14 +29,14 @@ This should be appropriate for the OS in use, for example Git Bash for Windows [
 .. tip:: Development OS
 
    Development within a Unix environment is recommended due to the need to be able to access and run 
-   Python applications locally during development.  For Windows uses, this can be done via the use of WSL2
+   Python applications locally during development.  For Windows users, this can be done via the use of WSL2.
 
 Access to node 
 --------------
 
 [https://nodejs.org/en/download/]
 
-Alternatively the official Node docker image can be used. Instructions can be found on 
+Alternatively, the official Node docker image can be used. Instructions can be found on 
 (https://github.com/nodejs/docker-node/blob/master/README.md#how-to-use-this-image).
 
 To confirm that node has been installed correctly run the following command from the prompt.

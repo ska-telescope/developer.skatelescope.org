@@ -2,7 +2,7 @@ Documentation
 =============
 
 There is a number of different area's of documentation that is required as part of an application repository, which
-are outlined in the sections below.  As an overarching consideration, 
+are outlined in the sections below.  As an overarching consideration: 
 
 * All interface implementations should be fully documented. 
 

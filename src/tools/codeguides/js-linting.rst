@@ -55,7 +55,7 @@ To run the analysis tools, execute
 
 This will display any errors in the command line. If there are any errors, YARN will exit with a non-zero code, 
 the -s argument suppresses this and cleans up the output.  This command is also used as part of the CI/CD process,
-so it is recommended to run this so that any issues are identified and can be resolved prior to the build
+so it is recommended to run this so that any issues are identified and can be resolved prior to the build.
 
 code-coverage
 -------------
@@ -75,5 +75,5 @@ Clicking on one of the links will drill down until a file is reached, at which p
 .. image:: images/codeCoverageDetail.png
    :alt: Code coverage detail
 
-In this example, the code marked in red has no code coverage at all, whereas the the code marked in yellow indicates that the
+In this example, the code marked in red has no code coverage at all, whereas the code marked in yellow indicates that the
 code has partial coverage. Code with no highlighting has full coverage.

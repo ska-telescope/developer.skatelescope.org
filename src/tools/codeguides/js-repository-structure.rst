@@ -25,10 +25,10 @@ used and extended as required.
 .. csv-table:: Folder usage
    :header: "Folder", "Descriptions"
 
-    "components", "Contains the base and group components. Each component is in its own folder together with associated tests and CSS as needed"
-    "pages", "Pages of the application.  They are separated to simplify page identification and usage"
-    "services", "Methods and calls to external applications and utilities"
-    "utils", "Standard methods and functions that are used internally within the application without external references"
+    "components", "Contains the base and group components. Each component is in its own folder together with associated tests and CSS as needed."
+    "pages", "Pages of the application.  They are separated to simplify page identification and usage."
+    "services", "Methods and calls to external applications and utilities."
+    "utils", "Standard methods and functions that are used internally within the application without external references."
 
 .. note:: 
 
