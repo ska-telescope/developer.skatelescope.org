@@ -8,7 +8,7 @@ This guide provides step-by-step instructions on how to set up your repository t
 Directory structure and versioning
 ----------------------------------
 
-By default, the Makefile looks into the `images/` directory for images. You can change this directory by setting `OCI_IMAGE_ROOT_DIR=<directory where images are available>` in your top-level Makefile. Although this is possible, its is **discouraged**.
+By default, the Makefile looks into the `images/` directory for images. You can change this directory by setting `OCI_IMAGE_ROOT_DIR=<directory where images are available>` in your top-level Makefile. Although this is possible, it is **discouraged**.
 
 It expects a structure like this:
 
@@ -21,7 +21,7 @@ It expects a structure like this:
    │   ├── Dockerfile
    │   └── ...
 
-By defaults, all images will be versions with the version present in the repository's top-level `.release`. Now, we can add a `.release` file local to the image, so that we can have images with different versions:
+By default, all images will be versioned with the version present in the repository's top-level `.release` file. Now, we can add a `.release` file to the directory of the image, so that we can have images with different versions:
 
 .. code-block:: bash
    release=0.1.1
@@ -36,7 +36,7 @@ To build multiple images, we run:
 
       make oci-build-all
 
-By default, this command will look into all directories under the `images/` directories and build them. If we want to filter what images we want to build, we can do:
+By default, this command will look into all directories under the `images/` directory and build them. If we want to filter what images we want to build, we can do:
 
 1. Configure images to build:
 
