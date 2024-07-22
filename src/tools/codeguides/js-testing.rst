@@ -9,7 +9,8 @@ is expected to adhere to the `Software Testing Policy and Strategy`_.
 
 .. note::
 
-  It is generally agreed in the industry that each software project should aim for a code coverage percentage of between 60% and 90%.
+  It is generally agreed in the industry that each software project should aim for a code coverage percentage of between 60% and 90%. 
+  SKA :doc:`Fundamental software standards </policies/fundamental-sw-requirements>` are prescriptive about test coverage larger than 75%. 
 
 What is unit testing?
 ---------------------
