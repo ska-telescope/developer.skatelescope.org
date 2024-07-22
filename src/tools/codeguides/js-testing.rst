@@ -3,9 +3,7 @@ Testing
 
 Working tests should exist for as much code as possible. At a minimum code developed or 
 modified within the SKA Project should have working tests. Overall code coverage for all web projects
-is expected to adhere to the `Software Testing Policy and Strategy`_. 
-
-.. _`Software Testing Policy and Strategy`: https://developer.skao.int/en/latest/policies/ska-testing-policy-and-strategy.html 
+is expected to adhere to the :doc:`Software Testing Policy and Strategy </policies/ska-testing-policy-and-strategy>`. 
 
 .. note::
 
