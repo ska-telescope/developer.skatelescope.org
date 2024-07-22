@@ -2,7 +2,7 @@ Documentation
 =============
 
 There is a number of different area's of documentation that is required as part of an application repository, which
-are outlined in the sections below.  As an overarching consideration: 
+are outlined in the sections below.  As an overarching consideration, 
 
 * All interface implementations should be fully documented. 
 
@@ -35,10 +35,6 @@ Content of this should provide a comprehensive guide to the application includin
 
    It is possible to link the documentation directly to an icon in the standard header.  In this case it is recommended
    that this is linked to a user guide section
-
-.. note::
-
-   A git badge has been added labelled docs, which will navigate to the landing page of the documentation when clicked
 
 JSDocs
 ------

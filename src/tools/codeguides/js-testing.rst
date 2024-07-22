@@ -1,16 +1,24 @@
 Testing
 =======
 
-Working tests should exist for as much code as possible. At a minimum, code developed or 
+Working tests should exist for as much code as possible. At a minimum code developed or 
 modified within the SKA Project should have working tests. Overall code coverage for all web projects
-is expected to be at a minimum acceptable level of 75%, but it is hoped that this level will be much higher
+is expected to adhere to the `Software Testing Policy and Strategy`_. 
+
+.. _`Software Testing Policy and Strategy`: https://developer.skao.int/en/latest/policies/ska-testing-policy-and-strategy.html 
+
+.. note::
+
+  It is generally agreed in the industry that each software project should aim for a code coverage percentage of between 60% and 90%.
 
 What is unit testing?
 ---------------------
 
-Form of open-box testing method that involves testing individual pieces (units) of code in isolation from the rest 
-of the software. By focusing on the smallest testable parts of an application—typically functions or methods—unit 
-testing ensures that each segment performs as expected before it is integrated with other parts of the application.
+A unit is a small part of an application, that can be usefully tested.
+
+Unit testing is a form of open-box testing method that involves testing individual pieces (units) of code in isolation from the 
+rest of an application. By focusing on the smallest testable parts of an application, unit testing ensures that each segment 
+performs as expected before it is integrated with other parts of the application.
 
 This is faster than component testing, however usually focuses on the function as opposed to a use case 
 
@@ -22,6 +30,8 @@ Examples : Jest, viTest
 
 What is component testing?
 --------------------------
+
+A component refers to a self-contained module or a group of related functions within the software.
 
 Component testing is a form of closed-box testing, meaning that the test evaluates the behavior of the component without 
 considering the details of the underlying code. Component testing is done on the section of code in its entirety, 
@@ -42,10 +52,6 @@ Whether unit or component testing is employed at the lowest level, the test file
 same location as the application component they are testing so that it is easy to locate and update as required.  
 These tests should make use of mocked API calls to simulate responses from external sources
 
-.. note:: git badges
-
-   Badges have been added providing counts and percentages to indicate coverage and tests totals, passed, failed and skipped.
-
 end-to-end ( e2e ) testing
 --------------------------
 
@@ -53,10 +59,6 @@ These are tests that check and validate user journeys throughout the application
 across one or more pages, including navigation between pages.  This testing includes the makes use of real external application 
 calls for the realization of data. It is important that the mocked data is complete and suitable for the checking of all the 
 paths thru the application
-
-.. note:: git badges
-
-   Badges have been added providing counts and percentages to indicate e2e coverage and e2e tests totals, passed, failed and skipped.
 
 .. tip:: e2e testing with Cypress
 
@@ -92,4 +94,3 @@ This can be used to locate the component for testing purposes as shown here.
 .. code-block:: Javascript
 
    cy.get('[data-testid="testId"]').click({ multiple: true });
-   
