@@ -67,7 +67,7 @@ Using the ``testId`` property
 -----------------------------
 
 There is an industry recommendation to use specific testing identifiers as opposed to relying on a component label, or it being the only
-component of it's type visible.  This reduces the need for testing to be re-written should labels or page positioning change.
+component of its type visible.  This reduces the need for testing to be re-written should labels or page positioning change.
 Within the standard SKAO Component libraries, there has been an active decision to provide a ``testId`` property to components to 
 encourage the use of this recommendation.
  

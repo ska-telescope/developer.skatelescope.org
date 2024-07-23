@@ -8,7 +8,7 @@ for use within the SKAO.
 
 .. note:: TypeScript
 
-   TypeScript is a super-set of JavaScript. It's usage is implied and so is not specifically mentioned unless required.
+   TypeScript is a super-set of JavaScript. Its usage is implied and so is not specifically mentioned unless required.
 
 .. toctree::
    :maxdepth: 2
