@@ -73,5 +73,5 @@ For more information, visit: `IAM Client Registration <https://indigo-iam.github
 Deployment
 ----------
 
-Choose **one** of the :doc:`storage-element <../../../dependent/storage-element/storage-element>` implementations that
+Choose the :doc:`storage-element <../../../dependent/storage-element/storage-element>` implementation that
 fits best to your needs and the features of your storage infrastructure.
