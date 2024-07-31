@@ -1,3 +1,7 @@
+:orphan:
+
+.. _home:
+
 .. developer.skao.int documentation master file, created by
    sphinx-quickstart on Wed Dec 13 11:59:38 2017.
    You can adapt this file completely to your liking, but it should at least
@@ -54,24 +58,6 @@ This section is about getting you up and running. It contains the onboarding mat
 - :doc:`getting-started/onboarding`
 - :doc:`getting-started/contrib-guidelines`
 - :doc:`getting-started/devenv-setup/devenv-setup`
-
-The SRCNet Developer Community
------------------------------------------------
-
-This section contain information that are specific to the SRCNet software development and the SRCNet community.
-
-.. SRCNet SECTION ==================================================
-
-.. Hidden toctree to manage the sidebar navigation.
-
-.. toctree::
-  :maxdepth: 1
-  :caption: SRCNet
-  :hidden:
-
-  srcnet/srcnet
-
-- :doc:`srcnet/srcnet`
 
 .. REPOSITORIES SECTION ========================================================
 
