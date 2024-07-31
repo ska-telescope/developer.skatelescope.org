@@ -1,10 +1,13 @@
-. _data-management-api:
+.. _data-management-api:
 
 Data Management API
 ===================
 
 Pre-requisites
 --------------
+
+IAM Configuration
+^^^^^^^^^^^^^^^^^
 
 Follow the next instructions to create and manage this IAM A&A client:
 
@@ -62,6 +65,8 @@ The first step is to clone the next repository and `cd` to the folder of the ser
 
 Then, continue with your installation method, via docker-compose or via helm.
 
+.. _container-data-management-api:
+
 Container - docker compose
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -79,6 +84,8 @@ Run the service:
 .. code-block:: bash
 
     docker-compose up -d
+
+.. _helm-data-management-api:
 
 Kubernetes - Helm 
 ^^^^^^^^^^^^^^^^^

@@ -1,15 +1,25 @@
 .. _canfar:
 
+Science Platform
+================
+
 OpenCADC CANFAR Deployment
-==========================
+--------------------------
 
 Pre-requisites
---------------
+^^^^^^^^^^^^^^
+
+**General**
 
 - A kubernetes cluster (version `1.22` or higher).
 - Storage available in the Kubernetes cluster and a Storage class according to your configuration, for example Cinder, CephFS, or local-path among others, to be used by Persistent Volumes (PV) and Persistent Volumes Claim (PCV).
 - A load balancer is available for better performance and functionality.
 
+
+IAM Configuration
+^^^^^^^^^^^^^^^^^
+
+TBC.
 
 Deployment
 ----------

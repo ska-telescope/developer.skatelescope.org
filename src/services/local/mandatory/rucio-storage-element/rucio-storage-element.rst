@@ -1,12 +1,12 @@
 .. _rucio-storage-element:
 
 
-Rucio Storage Element (RSE)
-===========================
+Rucio Storage Element
+=====================
 
 .. toctree::
   :maxdepth: 1
-  :caption: Rucio Storage Elements (RSE)
+  :caption: Rucio Storage Element
   :hidden:
 
 
@@ -14,12 +14,11 @@ A Rucio Storage Element (RSE) is the logical abstraction of a storage
 system for physical files. Each of the installation methods for the
 implementations supported by the SKAO Rucio Datalake are described here.
 
+Pre-requisites
+--------------
 
-Prerequisites
--------------
-
-IAM integration
-^^^^^^^^^^^^^^^
+IAM Configuration
+^^^^^^^^^^^^^^^^^
 
 To be part of the SKAO Datalake, it is necessary that the service for
 the RSE in the local node is integrated within IAM Authorisation and
