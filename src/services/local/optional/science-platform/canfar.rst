@@ -6,6 +6,10 @@ Science Platform
 OpenCADC CANFAR Deployment
 --------------------------
 
+.. note::
+    - Support: https://skao.slack.com/archives/C04RSSADLF2
+    - Code Repository: https://github.com/opencadc/science-containers/
+
 Pre-requisites
 ^^^^^^^^^^^^^^
 

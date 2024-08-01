@@ -3,6 +3,10 @@
 Data Management API
 ===================
 
+.. note::
+    - Support: https://skao.slack.com/archives/C05A1D147FV
+    - Code Repository: https://gitlab.com/ska-telescope/src/src-service-apis/ska-src-data-management-api
+
 Pre-requisites
 --------------
 

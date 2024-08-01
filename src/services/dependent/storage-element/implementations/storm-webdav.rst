@@ -3,15 +3,10 @@
 StoRM-webdav
 ============
 
-.. note::
-    - Support: https://skao.slack.com/archives/C047DPDKRN0
-    - Status: https://skao.slack.com/archives/C0243CKRR6G 
-
 .. toctree::
   :maxdepth: 2
   :hidden:
   
-
 WebDAV is a protocol for file management and is an integral part of scientific 
 data management when working with Rucio. 
 It offers scalable storage solutions and streamlined data access, enhancing 

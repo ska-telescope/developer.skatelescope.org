@@ -3,6 +3,10 @@
 Visualisation services
 ======================
 
+.. note::
+    - Support: https://skao.slack.com/archives/C03ASTELLMA
+    - Code Repository: https://gitlab.com/ska-telescope/src/visivo-vlkb-soda/
+
 Pre-requisites
 --------------
 
