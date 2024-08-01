@@ -17,6 +17,8 @@ implementations supported by the SKAO Rucio Datalake are described here.
 Pre-requisites
 --------------
 
+.. _iam-rucio-storage-element:
+
 IAM Configuration
 ^^^^^^^^^^^^^^^^^
 

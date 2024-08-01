@@ -62,40 +62,44 @@ Local SRCNet Services are those installed on the SRCNet nodes, classified into m
     - Container
     - Helm
     - GitOps
-  * - Data Management API - **Mandatory** 
-    - :ref:`IAM <container-data-management-api>`
+  * - | Data Management API 
+      | **Mandatory** 
+    - :ref:`IAM <iam-data-management-api>`
     - 
     - :ref:`Link <container-data-management-api>`
     - :ref:`Link <helm-data-management-api>`
     - 
-  * - Rucio Storage Element - **Mandatory** 
-    - :ref:`IAM <container-data-management-api>`
+  * - | Rucio Storage Element
+      | **Mandatory** 
+    - :ref:`IAM <iam-rucio-storage-element>`
     - | :ref:`Manual (WebDav) <manual_storm_webdav>`
-      | :ref:`Manual (xrootd) <manual_storm_webdav>`
-    - | :ref:`Docker (WebDav) <containerised_storm_webdav>`
-      | :ref:`Manual (xrootd) <manual_storm_webdav>`
+      | :ref:`Manual (xrootd) <manual_xrootd_webdav>`
+    - | :ref:`Docker (WebDav) <container_storm_webdav>`
+      | :ref:`Docker (xrootd) <container_storm_webdav>`
     - | :ref:`Helm (WebDav) <helm_storm_webdav>`
       |
     - 
-  * - Visualisation Services **Mandatory** 
-    - :ref:`IAM <container-data-management-api>`
+  * - | Visualisation Services
+      | **Mandatory** 
+    - :ref:`IAM <iam-visualisation-services>`
     - 
-    - :ref:`Docker Compose <container-data-management-api>`
-    - 
-    - 
-  * - Monitoring tools - **Mandatory**
-    - 
-    - :ref:`Manual <manual_storm_webdav>`
+    - :ref:`Docker Compose <docker-compose-visualisation-services>`
     - 
     - 
+  * - | Monitoring tools
+      | **Mandatory**
     - 
-  * - Science Platform - **Optional** 
-    - :ref:`IAM <container-data-management-api>`
-    - :ref:`Manual <manual_storm_webdav>`
+    - :ref:`Manual <manual-monitoring-tools>`
     - 
     - 
-    - :ref:`CI/CD <manual_storm_webdav>`
-  
+    - 
+  * - | Science Platform
+      | **Optional** 
+    - :ref:`IAM <iam-science-platform>`
+    - :ref:`Manual <manual-science-platform>`
+    - 
+    - 
+    - :ref:`Argo CI/CD <gitops>`
 
 Local Mandatory SRC Services
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -3,6 +3,10 @@
 StoRM-webdav
 ============
 
+.. note::
+    - Support: https://skao.slack.com/archives/C047DPDKRN0
+    - Status: https://skao.slack.com/archives/C0243CKRR6G 
+
 .. toctree::
   :maxdepth: 2
   :hidden:
@@ -202,7 +206,7 @@ Finally, restart the ```storm-webdav``` to apply the changes:
      The last configuration step is to contact the `SKA Rucio Platform <https://skao.slack.com/archives/C047DPDKRN0>`_ team to to include this new Rucio RSE to the SKA Rucio Platform.
 
 
-.. _containerised_storm_webdav:
+.. _container_storm_webdav:
 
 Containerised instance of StoRM-webdav
 --------------------------------------

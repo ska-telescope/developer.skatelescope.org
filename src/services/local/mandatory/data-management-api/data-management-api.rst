@@ -6,6 +6,8 @@ Data Management API
 Pre-requisites
 --------------
 
+.. _iam-data-management-api:
+
 IAM Configuration
 ^^^^^^^^^^^^^^^^^
 

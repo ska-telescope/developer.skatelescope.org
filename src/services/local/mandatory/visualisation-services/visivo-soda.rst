@@ -6,6 +6,8 @@ Visualisation services
 Pre-requisites
 --------------
 
+.. _iam-visualisation-services:
+
 IAM Configuration
 ^^^^^^^^^^^^^^^^^
 
@@ -58,8 +60,6 @@ Then create a file named `iamtoken.properties`:
     client_name=<CLIENT_NAME>
     client_password=<CLIENT_PASSWORD>
 
-
-
 VisIVO-SODA Service
 -------------------
 
@@ -79,6 +79,8 @@ The files under ``datasets`` should have read-only access. Files can be in sub-d
 
 The ``datasets`` directory must be visible from Docker-host and is external to the SODA-container. It will be mapped to a fixed internal path of the SODA-service when the SODA-container is started.
 
+
+.. _docker-compose-visualisation-services:
 
 Deployment
 ^^^^^^^^^^

@@ -15,11 +15,14 @@ Pre-requisites
 - Storage available in the Kubernetes cluster and a Storage class according to your configuration, for example Cinder, CephFS, or local-path among others, to be used by Persistent Volumes (PV) and Persistent Volumes Claim (PCV).
 - A load balancer is available for better performance and functionality.
 
+.. _iam-science-platform:
 
 IAM Configuration
 ^^^^^^^^^^^^^^^^^
 
 TBC.
+
+.. _manual-science-platform:
 
 Deployment
 ----------

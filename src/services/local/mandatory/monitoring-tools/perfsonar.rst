@@ -3,6 +3,9 @@
 Monitoring tools
 ================
 
+.. note::
+    - Support: https://skao.slack.com/archives/C03B3650U0Z
+
 perfSONAR
 ---------
 
@@ -37,6 +40,7 @@ It has increased accuracy over tools like ping without the same clock synchroniz
 
 - ping - The classic utility for determining reachability, round-trip time (RTT) and basic packet loss.
 
+.. _manual-monitoring-tools:
 
 Deployment
 ----------
