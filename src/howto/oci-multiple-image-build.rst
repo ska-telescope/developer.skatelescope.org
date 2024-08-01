@@ -13,6 +13,7 @@ By default, the Makefile looks into the `images/` directory for images. You can 
 It expects a structure like this:
 
 .. code-block:: bash
+
    images/.
    ├── some-image
    │   ├── Dockerfile
@@ -24,6 +25,7 @@ It expects a structure like this:
 By default, all images will be versioned with the version present in the repository's top-level `.release` file. Now, we can add a `.release` file to the directory of the image, so that we can have images with different versions:
 
 .. code-block:: bash
+
    release=0.1.1
    tag=some-image-0.1.1
 
