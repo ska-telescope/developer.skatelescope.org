@@ -13,13 +13,10 @@ is expected to adhere to the :doc:`Software Testing Policy and Strategy </polici
 What is unit testing?
 ---------------------
 
-A unit is a small part of an application, that can be usefully tested.
+The SKA definition is in the :doc:`Software Testing Policy and Strategy </policies/ska-testing-policy-and-strategy>`.
 
-Unit testing is a form of open-box testing method that involves testing individual pieces (units) of code in isolation from the 
-rest of an application. By focusing on the smallest testable parts of an application, unit testing ensures that each segment 
-performs as expected before it is integrated with other parts of the application.
-
-This is faster than component testing, however usually focuses on the function as opposed to a use case 
+For developers, this is realized as a form of open-box testing, which is faster than component testing, however usually 
+focuses on the function as opposed to a use case 
 
 Examples : Jest, viTest
 
@@ -30,13 +27,10 @@ Examples : Jest, viTest
 What is component testing?
 --------------------------
 
-A component refers to a self-contained module or a group of related functions within the software.
+The SKA definition is in the :doc:`Software Testing Policy and Strategy </policies/ska-testing-policy-and-strategy>`.
 
-Component testing is a form of closed-box testing, meaning that the test evaluates the behavior of the component without 
-considering the details of the underlying code. Component testing is done on the section of code in its entirety, 
-after the development has been completed.
-
-This often follows specific use cases, and so is slower than unit testing 
+For developers, this is realized as a form of closed-box testing, which often follows specific use cases, and so is 
+slower than unit testing 
 
 Examples : Cypress, Selenium
 
