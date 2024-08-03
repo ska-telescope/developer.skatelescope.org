@@ -1,5 +1,10 @@
 .. dependent:
 
+.. toctree::
+   :hidden:
+
+   self
+
 Dependent
 ----------
 

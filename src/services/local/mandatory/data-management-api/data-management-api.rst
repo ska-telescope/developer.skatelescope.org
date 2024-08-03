@@ -69,7 +69,7 @@ The first step is to clone the next repository and `cd` to the folder of the ser
     git clone  https://gitlab.com/ska-telescope/src/src-service-apis/ska-src-data-management-api.git
     cd ska-src-data-management-api
 
-Then, continue with your installation method, via docker-compose or via helm.
+Then, continue with your installation method, via `docker-compose` or via helm.
 
 .. _container-data-management-api:
 
@@ -136,14 +136,7 @@ First, edit the `values.yaml` (template in `/etc/helm/values.yaml.template`):
         api:
             host: data-management.srcdev.skao.int
 
-Change the next fields with the corresponding values:
-
-    - `<IAM_CLIENT_ID>`: 
-    - `<IAM_CLIENT_SECRET>`:
-    - `<SITE_CAPABILITIES_CLIENT_ID>`: 
-    - `<SITE_CAPABILITIES_CLIENT_SECRET>`:
-    - `<RUCIO_ADMIN_CLIENT_ID>`:
-    - `<RUCIO_ADMIN_CLIENT_SECRET>`:
+Change the next fields with the corresponding values of `<IAM_CLIENT_ID>`, `<IAM_CLIENT_SECRET>`, `<SITE_CAPABILITIES_CLIENT_ID>`, `<SITE_CAPABILITIES_CLIENT_SECRET>`, `<RUCIO_ADMIN_CLIENT_ID>` and `<RUCIO_ADMIN_CLIENT_SECRET>`.
 
 Then, create a new namespace in kubernetes:
 

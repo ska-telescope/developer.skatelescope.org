@@ -1,5 +1,10 @@
 .. _gitops:
 
+.. toctree::
+   :hidden:
+
+   self
+
 GitOps
 ======
 

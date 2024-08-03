@@ -1,6 +1,5 @@
 .. _rucio-storage-element:
 
-
 Rucio Storage Element
 =====================
 
@@ -71,8 +70,8 @@ Follow the next instructions to create and manage this IAM A&A client:
 For more information, visit: `IAM Client Registration <https://indigo-iam.github.io/v/v1.9.0/docs/tasks/user/client-registration/>`_.
 
 
-Deployment
-----------
+Deployment of the storage element
+---------------------------------
 
 Choose the :doc:`storage-element <../../../dependent/storage-element/storage-element>` implementation that
 fits best to your needs and the features of your storage infrastructure.

@@ -1,5 +1,10 @@
 .. _xrootd:
 
+.. toctree::
+   :hidden:
+
+   self
+
 xrootd
 ======
 
