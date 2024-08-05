@@ -1,10 +1,5 @@
 .. _storage-element:
 
-.. toctree::
-   :hidden:
-
-   self
-
 Storage Element (SE)
 =====================
 

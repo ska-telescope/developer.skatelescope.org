@@ -1,5 +1,9 @@
 .. _storm-webdav:
 
+.. note::
+    - Support: https://skao.slack.com/archives/C047DPDKRN0
+    - Status: https://skao.slack.com/archives/C0243CKRR6G 
+
 StoRM-webdav
 ============
 
@@ -16,6 +20,12 @@ Rucio RSE ecosystem.
 To install your Rucio RSE with the WebDav protocol it is recommended to use the StormWebDav.
 
 .. _manual_storm_webdav:
+
+Pre-requisites
+--------------
+
+Configure your IAM A&A account and create a IAM client following :ref:`IAM <iam-rucio-storage-element>`.
+
 
 Manual installation of StoRM-webdav Rocky Linux 9
 -------------------------------------------------

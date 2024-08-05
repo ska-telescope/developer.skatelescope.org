@@ -1,9 +1,8 @@
 .. _gitops:
 
-.. toctree::
-   :hidden:
 
-   self
+.. note::
+    - Support: TBC
 
 GitOps
 ======
