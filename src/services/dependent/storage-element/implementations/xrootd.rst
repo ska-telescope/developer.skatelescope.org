@@ -3,6 +3,10 @@
 xrootd
 ======
 
+.. note::
+    - Support: https://skao.slack.com/archives/C047DPDKRN0
+    - Status: https://skao.slack.com/archives/C0243CKRR6G 
+
 .. _manual_xrootd_webdav:
 
 Pre-requisites
