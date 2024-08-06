@@ -8,6 +8,7 @@ commit rules:
 
 * Work in feature branches where possible (see :ref:`branching-policy`)
 * Commit early, commit often.
+* Don't Commit Half-Done Work
 * Have the **Jira story ID** at the beginning of your commit messages. (You can also use Gitlab and JIRA integration defined in :doc:`/tools/jira`)
 * Git logs shall be human readable in sequence, describing the development activity.
 * Use imperative forms in the commit message:
