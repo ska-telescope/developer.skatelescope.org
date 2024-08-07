@@ -18,7 +18,7 @@ If you commit message or make a merge request (MR) in GitLab has **Jira Issue ID
 
 If you mention that **a commit or MR ‘closes’, ‘resolves’, or ‘fixes’ a Jira issue ID**, then:
 
-- GitLab’s merge request page displays a note that it “Closed” the Jira issue, with a link to the issue. (Note: Before the merge, an MR will display that it “Closes” the Jira issue.)
+- GitLab’s merge request page displays a note that it “Closed” the Jira issue, with a link to the issue. (Note: Prior the merge, an MR will display that it “Closes” the Jira issue.)
 - Jira issue will transition to ``READY FOR ACCEPTANCE`` status if applicable
 
   *Example Commit Message:* ``closes SKA-34``
