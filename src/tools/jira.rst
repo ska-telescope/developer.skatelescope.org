@@ -7,41 +7,50 @@ Working with Jira
 GitLab to Jira Integration
 --------------------------
 
-If you commit message or make a merge request (MR) in GitLab has **Jira Issue ID mentioned**, then:
+If you mention a Jira Issue ID in a GitLab commit message or merge request (MR), the following happens:
 
-- GitLab will hyperlink the issue for easy navigation
-- Jira issue will have an issue link to the commit/MR
-- Jira issue will have a comment reflecting the comment made in GitLab, the comment author, and a link to the commit/MR in GitLab (If it is enabled)
+- GitLab hyperlinks the issue for easy navigation
+- The Jira issue gets an issue link to the commit/MR
+- The Jira issue receives a comment reflecting the GitLab comment, author, and a link to the commit/MR (if enabled)
 
-  *Example Commit Message:* ``SKA-34 added gitlab-jira integration``
+  *Example Commit Message:* `SKA-34 added gitlab-jira integration`
 
 
 If you mention that **a commit or MR ‘closes’, ‘resolves’, or ‘fixes’ a Jira issue ID**, then:
 
-- GitLab’s merge request page displays a note that it “Closed” the Jira issue, with a link to the issue. (Note: Prior the merge, an MR will display that it “Closes” the Jira issue.)
-- Jira issue will transition to ``READY FOR ACCEPTANCE`` status if applicable
+- GitLab’s merge request page displays a note that it “Closed” the Jira issue, with a link to the issue. 
+- Before the merge, an MR will display that it "Closes" the Jira issue
+- The Jira issue transitions to ``READY FOR ACCEPTANCE`` status (if applicable)
 
-  *Example Commit Message:* ``closes SKA-34``
+  *Example Commit Message:* ``SKA-34 closes``
 
-Also, You can do other things like adding comments to Jira issues, time-tracking and transitioning Jira issue states directly from GitLab commits. You can find more about it in `Jira Smart Commits`_.
+Additionally, you can:
+ 
+- Add comments to Jira issues
+- Track time
+- Transition Jira issue states directly from GitLab commits
+ 
+Learn more about these features in `Jira Smart Commits`_.
 
 *More info could be found at* |gitlab-jira-integration-link|_
 
 Jira to GitLab Integration
 --------------------------
 
-A Development Panel is added automatically to any Jira issues referred
+A Development Panel is automatically added to any Jira issue that is referred to
 by its ID in:
 
--  branch names
+-  Branch names
 
--  commit messages
+-  Commit messages
 
--  merge request titles
+-  Merge request titles in Gitlab
 
-in GitLab and you will be able to see the linked ``branches``,
-``commits``, and ``merge requests`` when entering a Jira issue (inside 
-the Jira issue, merge requests will be called “pull requests”).
+Inside the Jira issue, you will be able to see the linked ``branches``,
+``commits``, and ``merge requests``(called "pull requests" in Jira)
+ 
+This integration allows for easy tracking and visibility of GitLab development work related to specific Jira issues.
+
 
 .. _figure-1-jira-dev-panel:
 
