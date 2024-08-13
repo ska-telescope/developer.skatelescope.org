@@ -7,8 +7,8 @@ The preference within the SKA is that a `feature branch workflow <https://www.at
 Regardless of the adopted workflow employed, two concepts are important to the SKA way of using Git:
 
   1. The main branch of a repository shall always be stable, and tested.
-  2. Branches shall be short lived, merging into main as often as possible.
-  3. All commits messages must be prefixed with the story Jira Id.
+  2. Short-Lived Branches: Merge into main as often as possible.
+  3. Commit Message Prefix: All commit messages must start with the story Jira ID.
 
 Stable means that the main branch shall always compile and build correctly,
 and executing automated tests with success. Every time a main branch results
@@ -25,7 +25,7 @@ The following sections discuss the two of the most common workflows:
 Trunk-based development
 ++++++++++++++++++++++++
 
-This core “trunk” branch in SKA repositories used to be named **master**, in older repositories, but now is named **main** branch by default.
+Core "trunk" branch in SKA repositories, previously named "master", now named "main" by default.
 
 Trunk-based development is a version control management practice where developers merge small, frequent updates to a core “trunk” or main branch.
 Teams may adopt a particular Git workflow designated as Trunk-based development approach,
@@ -102,10 +102,9 @@ Bearing in mind that a *story* by definition is a piece of work a developer shou
 There are some considerations with Feature Branching:
 
 * continually branching and merging is an overhead for small teams and very short work packages where there is a high prevalence of one-commit to one-merge-request
-* branching requires discipline in that they should be short lived and developers need to remember to delete them after use
+* Discipline Required: Branches should be short-lived, and developers need to remember to delete them after use.
 * stale and orphaned branches can pollute the repository
-* developers must resolve merge conflicts with main before pushing changes, so there can be a race to merge to avoid these issues
-
+* Merge Conflicts: Developers must resolve merge conflicts with main before pushing changes, which can lead to a race to merge and avoid issues.
 
 Long-lived release branches
 +++++++++++++++++++++++++++
