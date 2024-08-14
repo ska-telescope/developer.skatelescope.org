@@ -115,12 +115,12 @@ These settings are specific to managing and configuring merge requests within Gi
      - 
      -
 
-   * - `Pipelines must succeed <https://docs.gitlab.com/ee/user/project/merge_requests/>`_
+   * - `Pipelines must succeed <https://docs.gitlab.com/ee/user/project/merge_requests/>`__
      - Mandatory
      - Enabled
      - Disabled
 
-   * - `Skipped pipelines are considered successful <https://docs.gitlab.com/ee/user/project/merge_requests/>`_
+   * - `Skipped pipelines are considered successful <https://docs.gitlab.com/ee/user/project/merge_requests/>`__
      - Mandatory
      - Disabled
      - Disabled
@@ -130,7 +130,7 @@ These settings are specific to managing and configuring merge requests within Gi
      - 
      -
 
-   * - `All threads must be resolved <https://docs.gitlab.com/ee/user/project/merge_requests/>`_
+   * - `All threads must be resolved <https://docs.gitlab.com/ee/user/project/merge_requests/>`__
      - Best Practice
      - Enabled
      - Disabled
