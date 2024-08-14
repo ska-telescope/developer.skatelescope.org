@@ -61,6 +61,7 @@ extensions = [
 #     "sphinx_docsearch", # disabled due to ST-2103
     
 ]
+suppress_warnings = ['autosectionlabel.*']
 
 # Algolia Settings
 # Algolia recommends saving these here as they are not secret and they block anything if it's coming outside of our domain

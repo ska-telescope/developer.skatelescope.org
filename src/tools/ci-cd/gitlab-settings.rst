@@ -27,7 +27,7 @@ These variables can significantly streamline the setup of pipelines across multi
 
 Understanding and correctly configuring these variables is crucial for maintaining efficiency and security at the group level.
 
-General Settings
+**General Settings**
 ====================
 
 These settings apply to the overall configuration of GitLab groups, impacting the fundamental operations and access controls.
@@ -115,12 +115,12 @@ These settings are specific to managing and configuring merge requests within Gi
      - 
      -
 
-   * - `Pipelines must succeed <https://docs.gitlab.com/ee/user/project/merge_requests/>`_
+   * - `Pipelines must succeed <https://docs.gitlab.com/ee/user/project/merge_requests/>`__
      - Mandatory
      - Enabled
      - Disabled
 
-   * - `Skipped pipelines are considered successful <https://docs.gitlab.com/ee/user/project/merge_requests/>`_
+   * - `Skipped pipelines are considered successful <https://docs.gitlab.com/ee/user/project/merge_requests/>`__
      - Mandatory
      - Disabled
      - Disabled
@@ -130,7 +130,7 @@ These settings are specific to managing and configuring merge requests within Gi
      - 
      -
 
-   * - `All threads must be resolved <https://docs.gitlab.com/ee/user/project/merge_requests/>`_
+   * - `All threads must be resolved <https://docs.gitlab.com/ee/user/project/merge_requests/>`__
      - Best Practice
      - Enabled
      - Disabled
@@ -258,7 +258,7 @@ These variables can significantly streamline the setup of pipelines within a pro
 
 Understanding and correctly configuring these variables is crucial for maintaining efficiency and security at the project level.
 
-General Settings
+**General Settings**
 ====================
 
 These settings apply to the overall configuration of GitLab projects, impacting the fundamental operations and access controls.
