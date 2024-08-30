@@ -1,5 +1,4 @@
 -include .make/base.mk
--include .make/docs.mk
 
 DOCS_SOURCEDIR=src
 DOCS_BUILDDIR=build
