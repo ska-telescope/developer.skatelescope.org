@@ -3,35 +3,92 @@
 Centralised Monitoring and Logging
 **********************************
 
-A centralised monitoring and logging solution was designed to eliminate the need for having many dashboards and services to access monitoring while enabling the aggregation of data from different datacentres, centralising monitoring dashboards and alerting and secure communication with monitoring systems with zero trust principles.
-Both the STFC and DP datacentres have been fully integrated into this solution.
+A centralised monitoring and logging solution was designed to eliminate the need for having many dashboards and services spread across different datacentres to access monitoring while enabling the aggregation of data, centralising monitoring dashboards and alerting and secure communication with monitoring systems with zero trust principles.
+All SKAO datacentres used for testing, staging, integration or production have been fully integrated into this solution.
 
-On the one hand, the central monitoring solution is based on *Prometheus*, integrated with *Thanos*, providing high-availability and long-term storage capabilities while allowing for the data aggregation from multiple Prometheus targets.
-On the other hand, the central logging solution is based on *Filebeat*, collecting logs from the referred datacentres and shipping them to *Elasticsearch*.
+Developer friendly Dashboards
+=============================
 
-*Grafana* and *Kibana* are the chosen observability and data visualisation tools, respectively.
+To address the evolving needs of developers, several new Grafana dashboards have been introduced. These dashboards provide detailed insights into Kubernetes resource usage, CI/CD pipeline statuses, and namespace management. Developers can now easily monitor their deployments, resource utilization, and logs through these comprehensive dashboards.
 
-Services access and guidelines
-==============================
+These dashbaord can be accessed by following the links printed out in Gitlab CI Job output as the example figure shown below. These are prepopulated with the namespace and time range of the job so that the user can easily monitor the deployment.
 
-Depending on what is to be monitored and the datacentre to which it belongs, there are several services that can be used. 
-The following sections highlight the purpose of each service available as well as the URLs and underlying conditions to access them.
+.. figure:: images/job_output_dashboards.png
+   :scale: 40%
+   :alt: Grafana Dashboard Links
+   :align: center
+   :figclass: figborder
+
+   Dashboard Links
+
+Real-Time Dashboards
+--------------------
+
+These dashboards are *currently* only available for CI/CD jobs running in STFC. They are based on Headlamp which is graphical user interface specifically tailored for simplfying the monitoring of Kubernetes Deployments. It allows real time monitoring of the deployments such as pod status, custom resource definitions such as TangoDBs and investigate the deployment events, logs and metadata.
+
+- `Namespace Overview <https://k8s.stfc.skao.int/headlamp/c/developers/namespaces/>`__
+- `Tango DeviceServers <https://k8s.stfc.skao.int/headlamp/c/developers/customresources/deviceservers.tango.tango-controls.org>`__: *These are specific to the Tango Controls Applications*
+- `DatabaseDS <https://k8s.stfc.skao.int/headlamp/c/developers/customresources/databaseds.tango.tango-controls.org>`__: *These are specific to the Tango Controls Applications*
+
+Logs
+----
+
+There are prepoulated and filtered log views as shown in the above figure for Job, Test Pod, Namespace and more deployment related logs. These are useful for debugging and monitoring the deployment logs. 
+As Kibana URLs are hard to generate and would fail if they don't exist, please follow the URLs in the job output to access the logs.
+
+Kubernetes Dashboards
+---------------------
+
+The dashboards provide detailed insights into resource utilization across the deployments. Developers can monitor deployment health, CPU, memory, and storage usage, and identify any resource constraints. This helps in optimizing resource allocation and ensuring that applications run smoothly. These dashboards are also enriched with log integration to provide a comprehensive view of the deployments.
+
+They can be found by following the URLs in the Gitlab CI Job output. Some of the dashboards are shown below. Note that you need to filter these for your specific namespace and time range. 
+
+- `Namespace Resources <https://monitoring.skao.int/d/85a562078cdf77779eaa1add43ccec1e/kubernetes-compute-resources-namespace-pods?orgId=1&var-datasource=default&var-logdatasource=PAE1B8C8635429669&var-cluster=stfc-ska-monitor&var-namespace=gitlab>`__
+- `Device Servers <https://monitoring.skao.int/d/e0tiv654z/kubernetes-compute-resources-deviceserver-operator?orgId=1&var-datasource=default&var-cluster=stfc-ska-monitor&var-namespace=ci-ska-tmc-mid-integration-e4206304-tmc-sdp&var-pod=&from=now-1h&to=now>`__
+- `Compute Resources by Workload <https://monitoring.skao.int/d/a87fb0d919ec0ea5f6543124e16c42a5/kubernetes-compute-resources-namespace-workloads?orgId=1&var-datasource=default&var-cluster=stfc-ska-monitor&var-namespace=binderhub&var-type=All&from=now-1h&to=now&var-logdatasource=PAE1B8C8635429669>`__
+- `Compute Resources by Pod <https://monitoring.skao.int/d/85a562078cdf77779eaa1add43ccec1e/kubernetes-compute-resources-namespace-pods?orgId=1&var-datasource=default&var-cluster=stfc-ska-monitor&var-namespace=ci-ska-tmc-mid-integration-e4206304-tmc-sdp&from=now-1h&to=now>`__
+	
+
+CI/CD pipeline Dashboards
+-------------------------
+
+The dashboards provide detailed insights into the CI/CD pipeline statuses. Developers can monitor the pipeline health, job statuses, and identify any issues. This helps in optimizing the pipeline and ensuring that the pipelines are healthy.
+
+They can be found by following the URLs below. Note that you need to filter these for your specific namespace and time range.
+
+- `CI/CD Pipeline Jobs <https://monitoring.skao.int/d/gitlab_ci_jobs/gitlab-ci-jobs?orgId=1>`__
+- `CI/CD Pipeline Status <https://monitoring.skao.int/d/gitlab_ci_pipelines/gitlab-ci-pipelines?orgId=1>`__
+
+Namespace Management Dashboards
+-------------------------------
+
+The dashboards provide detailed insights into the namespace management. Developers can monitor the namespace health, resource utilization, and identify any issues. This helps in optimizing the namespace and ensuring that the namespaces are healthy. They also give an overview on the namespace usage and the resources allocated to the namespace per gitlab project, team or user. 
+
+They can be found by following the URLs below.
+
+- `Namespace Overview <https://monitoring.skao.int/d/edvfag7wkt7nke/namespace-manager-overall?orgId=1&var-datasource=default&var-cluster=stfc-ska-monitor>`__
+- `Namespace Usage <https://monitoring.skao.int/d/e374e7bb-e223-4398-aaa8-f15845755fd6/namespace-manager-namespaces?orgId=1&var-datasource=default&var-cluster=stfc-ska-monitor&var-project=All&var-team=All&var-user=All&var-namespace=All>`__
+
+
+Monitoring Solution
+===================
+
+Prometheus and Thanos
+---------------------
+
+The central monitoring solution is based on `Prometheus <https://prometheus.io/>`__, integrated with `Thanos <https://thanos.io/>`__, providing high-availability and long-term storage capabilities while allowing for the data aggregation from multiple Prometheus targets.
 
 Grafana
 -------
 
-To monitor SKA Infrastructure related metrics from, for example, Kubernetes, Gitlab Runners, Elasticstack or Ceph, Grafana dashboards should be used.
+To monitor SKA Infrastructure related metrics from, for example, Kubernetes, Gitlab Runners, Elasticstack or Ceph, `Grafana <https://grafana.com/>`__ dashboards should be used.
 
-The URL to access it is: https://monitoring.skao.int
+- **URL**: https://monitoring.skao.int
+- **STFC Metrics URL**: https://k8s.stfc.skao.int/grafana/ (until migration is complete)
 
-.. DANGER::
-   Metrics are in the process of being migrated to all be collected and accessed at the above location.  
-   Until this is complete, the URL to access STFC metrics is: https://k8s.stfc.skao.int/grafana/
+.. admonition:: Info
 
-
-To log in choose the "Sign in with Microsoft" option and use the *<jira-username>@ad.skatelescope.org* and *<jira-password>* combination.
-
-Once logged in a user can browse through the existing dashboards and monitor the desired metrics.
+   To log in, choose the "Sign in with Azure AD" option and use the *<jira-username>@ad.skatelescope.org* and *<jira-password>* combination. Once logged in, users can browse through the existing dashboards and monitor the desired metrics.
 
 .. figure:: images/dashboards-browse-example-stfc.png
    :scale: 40%
@@ -41,7 +98,7 @@ Once logged in a user can browse through the existing dashboards and monitor the
 
    STFC Dashboards Browsing page
 
-Besides taking advantage of the already existing dashboards, users can also `create their own dashboards <https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/>`_ and share them, as shown below, displaying the information that they require.
+Users can also `create their own dashboards <https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/>`__ and share them.
 
 .. figure:: images/grafana-share-dashboard.png
    :scale: 40%
@@ -51,12 +108,54 @@ Besides taking advantage of the already existing dashboards, users can also `cre
 
    New Dashboard Sharing example
 
+Prometheus Alerts
+^^^^^^^^^^^^^^^^^
+
+To check the prometheus alerts, generated for the core kubernetes cluster and the infrastructure VMs, a user can choose between the web access to the Prometheus Alert Manager UI and the Slack alerts channels.
+
+The URLs to access the Prometheus Alert Manager are:
+
+* **STFC datacentre** - http://monitoring.skao.stfc:9093/#/alerts 
+* **DP datacentre** - http://monitoring.sdhp.skao:9093/#/alerts
+
+.. figure:: images/prometheus-alert-manager-example-stfc.png
+   :scale: 40%
+   :alt: STFC Alert Manager homepage
+   :align: center
+   :figclass: figborder
+
+   STFC Alert Manager homepage
+
+It is important to note that these URLs are behind a VPN, so VPN access to the corresponding datacentre is required to access them.
+
+There are also two sets of Slack alerts channels, one that serves application alerts and another that serves developer related alerts. These are:
+
+* **STFC datacentre**
+   * Application alerts - `#techops-alerts <https://skao.slack.com/archives/C047BDYR4LA>`__
+   * Developer alerts - `#techops-user-alerts <https://skao.slack.com/archives/C04815GKLSU>`__
+
+* **DP datacentre**
+   * Application alerts - `#dp-platform-alerts <https://skao.slack.com/archives/C0478FG3HMK>`__
+   * Developer alerts - `#dp-platform-user-alerts <https://skao.slack.com/archives/C047DTS4FNY>`__
+
+Logging Solution
+================
+
+Filebeat and Elasticsearch
+--------------------------
+
+The central logging solution is based on `Filebeat <https://www.elastic.co/beats/filebeat>`__, collecting logs from the referred datacentres and shipping them to `Elasticsearch <https://www.elastic.co/elasticsearch>`__.
+
+
 Kibana
 ------
 
-To check the logs collected by Filebeats from a single or multiple clusters, Kibana should be used.
+- **URL**: https://k8s.stfc.skao.int/kibana/app/logs/stream
 
-The URL to access it is: https://k8s.stfc.skao.int/kibana/app/logs/stream being that the user should log in as described in the Grafana section and, then, choose the option "Continue as Guest".
+
+.. admonition:: Info
+   
+   To log in to Kibana, open the URL https://k8s.stfc.skao.int/kibana/app/logs/stream, choose the "Sign in with Azure AD" option, use your <jira-username>@ad.skatelescope.org and <jira-password> combination to log in, and after logging in, choose the option "Continue as Guest" to access Kibana.
 
 Kibana allows for filtering of log messages on the basis of a series of fields. 
 These fields can be added as columns to display information, using the **Settings** option, and filtering by the values of those fields can be done directly on the **Search** box or by selecting the **View details** menu:
@@ -82,33 +181,3 @@ The field ``ska_tags`` is also parsed so that the key is added to a ``ska_tags_f
   :alt: selecting ska-tags to look at tango-device log messages
 
 Making the selection illustrated above means that only messages with the value ``ska_mid/tm_leaf_node/d0003`` for the ``ska_tags_field.tango-device`` field would be displayed.
-
-Prometheus Alerts
------------------
-
-To check the prometheus alerts, generated for the core kubernetes cluster and the infrastructure VMs, a user can choose between the web access to the Prometheus Alert Manager UI and the Slack alerts channels.
-
-The URLs to access the Prometheus Alert Manager are:
-
-* **STFC datacentre** - http://monitoring.skao.stfc:9093/#/alerts 
-* **DP datacentre** - http://monitoring.sdhp.skao:9093/#/alerts
-
-.. figure:: images/prometheus-alert-manager-example-stfc.png
-   :scale: 40%
-   :alt: STFC Alert Manager homepage
-   :align: center
-   :figclass: figborder
-
-   STFC Alert Manager homepage
-
-It is important to note that these URLs are behind a VPN, so VPN access to the corresponding datacentre is required to access them.
-
-There are also two sets of Slack alerts channels, one that serves application alerts and another that serves developer related alerts. These are:
-
-* **STFC datacentre**
-   * Application alerts - `#techops-alerts <https://skao.slack.com/archives/C047BDYR4LA>`_
-   * Developer alerts - `#techops-user-alerts <https://skao.slack.com/archives/C04815GKLSU>`_
-
-* **DP datacentre**
-   * Application alerts - `#dp-platform-alerts <https://skao.slack.com/archives/C0478FG3HMK>`_
-   * Developer alerts - `#dp-platform-user-alerts <https://skao.slack.com/archives/C047DTS4FNY>`_
