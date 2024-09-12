@@ -12,19 +12,19 @@ A check is either a:
 * Failure (🚫): The Merge Request is violating the SKA guidelines and it should be fixed by following the mitigation defined in the check
 
   * Example
-  
+
     * Branch name must start with a lowercase Jira Ticket ID - see :ref:`branching-policy`
 
 * Warning (⚠): The Merge Request is following anti patterns/non-advised guidelines/policies and it would be better if it is fixed by the mitigation defined in the check
 
   * Example
-  
+
     * Docker-Compose commands found on the repository
 
 * Information (📖): You should be aware of the information conveyed in this Merge Request quality check message
-  
+
   * Example
-  
+
     * The merge request does not present documentation changes
 
 Each check has a brief description that explains what it does and a mitigation/explanation (depending on check type) which gives detailed information about the check and how to fix it or explains its findings more. You can find a list of each check below.
@@ -32,7 +32,8 @@ Each check has a brief description that explains what it does and a mitigation/e
 Workflow
 ++++++++
 
-When a new Merge Request is created, a webhook triggers the SKA MR Service to carry out the checks described below and **Marvin the Paranoid Android** (*username: marvin-42*) happily reports back to the Merge Request by adding a comment (probably the first comment). The comment includes a table (like the example below) with each check and associated information.
+When a new Merge Request is created, a webhook triggers the SKA MR Service to carry out the checks described below and **Marvin the Paranoid Android** (*username: marvin-42*) happily reports back to the Merge Request by adding a comment (probably the first comment). The comment includes a table (like the example below) with each check and associated information..
+Marvin also includes a random quote at the end of the table while staying in the spirit of the paranoid android (as he is from the Hitchhiker's Guide to the Galaxy). These quotes handwritten from actual quotes or AI assisted and they are meant to be fun and light-hearted to make the process more enjoyable and make the table more appealing to check.
 
 For subsequent changes pushed to the Merge Request, the comment is updated to reflect the latest status of the Merge Request.
 
@@ -73,7 +74,7 @@ Please note that only users that are assigned to the Merge Request can use the c
 *Marvin Approval*
 ^^^^^^^^^^^^^^^^^
 
-Marvin after creating the table will verify if there is any checks under the failure category failed. If so, Marvin does not approve the MR, and in the case that MR was already approved before by him, he unapproves it. 
+Marvin after creating the table will verify if there is any checks under the failure category failed. If so, Marvin does not approve the MR, and in the case that MR was already approved before by him, he unapproves it.
 If none of the checks under the failure category failed Marvin will approve the MR.
 
 Checks
