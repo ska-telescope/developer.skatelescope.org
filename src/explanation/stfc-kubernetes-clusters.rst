@@ -2,7 +2,7 @@
 Kubernetes based Runners Architecture
 ======================================
 
-GitLab runners are orchestrated by a Kubernetes cluster. They could be deployed to any Kubernetes clusters using the `gitlab_runner ansible collection <https://gitlab.com/ska-telescope/sdi/ska-ser-ansible-collections/-/tree/main/ansible_collections/ska_collections/gitlab_runner?ref_type=heads>`_. 
+GitLab runners are orchestrated by a Kubernetes cluster. They could be deployed to any Kubernetes clusters using the `gitlab_runner ansible collection <https://gitlab.com/ska-telescope/sdi/ska-ser-ansible-collections/-/tree/main/ansible_collections/ska_collections/gitlab_runner?ref_type=heads>`_.
 The main architecture is illustrated below.
 
 .. figure:: images/runners-on-kubernetes.png
@@ -18,9 +18,10 @@ ________
 - Main runner pod is registered to **ska-telescope group** shared runners with configurable tags.
 - The main pod picks up **GitLab Jobs** and creates **on-demand pods**. This is configured using helm chart values file/or config.toml file of GitLab runners below.
 - Runners are scaled according to configuration.
-- Runners have resource **limits** *i.e. cpuRequests, memoryRequests, cpuLimit, memoryLimit*. This is not applied at the moment.
+- Runners have resource **limits** *i.e. cpuRequests, memoryRequests, memoryLimit*.
 - Runners are running in nodes that are **specifically labelled** for ci/cd jobs.
 - Runners share a **cache** between them that is used to speed up the job times.
+- Specific runners exist for Kubernetes Deployment/Integration testing. (*ska-k8s* tag).
 - **Docker support**
 - **Kubernetes support**
 
@@ -39,7 +40,7 @@ Note: in order to run deploy clusters, the account permissions need to be set up
 STFC Cloud Kubernetes Clusters
 ------------------------------
 
-For development purposes, STFC-backed clusters are the preferred method of deployment and testing, using Gitlab to deploy workloads into clusters. 
+For development purposes, STFC-backed clusters are the preferred method of deployment and testing, using Gitlab to deploy workloads into clusters.
 Currently we have two clusters, both with the same capabilities (Gitlab integration, Binderhub, etc):
 
 * **techops** - Main cluster used by the whole project for CI/CD. It has limited support for GPUs, being mainly used to build artefacts that require GPUs
@@ -53,21 +54,22 @@ STFC Techops
 ======================================== ======== ====== ========== =========================== ===================== ========================= ======================== ===============================
 Type                                     Amount   CPU    Memory     GPU                         Kubernetes Version    OS Version                Kernal Version           GPU Driver Version
 ======================================== ======== ====== ========== =========================== ===================== ========================= ======================== ===============================
-stfc-techops-production-k8s-md-0         35       30     120GiB                                 v1.26.4               Ubuntu 22.04.1 LTS        5.15.0-48-generic        
-stfc-techops-production-k8s-gpu-md-0     1        30     100GiB     1 (NVIDIA A100-PCIE-40GB)   v1.26.4               Ubuntu 22.04.1 LTS        5.15.0-88-generic        Cuda: 11.4 | Driver: 470.223.02
+stfc-techops-production-k8s-*             61       16     64GiB                                  v1.29.2               Ubuntu 22.04.1 LTS        5.15.0-48-generic
+stfc-techops-production-k8s-gpu-*         1        30     100GiB     1 (NVIDIA A100-PCIE-40GB)   v1.29.2               Ubuntu 22.04.1 LTS        5.15.0-48-generic        Cuda: 11.4 | Driver: 470.223.02
 ======================================== ======== ====== ========== =========================== ===================== ========================= ======================== ===============================
 
 **Runners**
 
-===================================== ====================== ========= ================= =============== ================ ===============
-Runner                                Tag                    Version   CPU Limit         Memory Limit    GPUs Available   Concurrent Jobs
-SKA-K8s-CAPI-Runner (default runner)  k8srunner              v16.5.0   5                 10Gi                             30 
-SKA-K8s-CAPI-Runner-L                 k8srunner-large        v16.5.0   Unlimited (~30)   32Gi                             5 
-SKA-K8s-CAPI-Runner-XL                k8srunner-xlarge       v16.5.0   Unlimited (~30)   128Gi                            2
-SKA-K8s-CAPI-Runner-GPU-V100          k8srunner-gpu-v100     v16.5.0   5                 10Gi            1                30 
-===================================== ====================== ========= ================= =============== ================ ===============
+===================================== ====================== ===== ======== ================= =============== ================ ===============
+Runner                                Tag                    CPU   Memory   CPU Limit         Memory Limit    GPUs Available   Concurrent Jobs
+SKA-K8s-CAPI-Runner (default runner)  ska-default            2     8G       Unlimited (~16)   16Gi                             100
+SKA-K8s-CAPI-K8s-Runner               ska-k8s                2     8G       Unlimited (~16)   16Gi                             42
+SKA-K8s-CAPI-Runner-L                 ska-default-large      4     16G      Unlimited (~30)   32Gi                             5
+SKA-K8s-CAPI-Runner-XL                ska-default-xlarge     16    64G      Unlimited (~30)   128Gi                            2
+SKA-K8s-CAPI-Runner-GPU-A100          ska-gpu-a100           2     8Gi      Unlimited (~30)   16Gi            1                30
+===================================== ====================== ===== ======== ================= =============== ================ ===============
 
-STFC DP (Kubernetes v1.26.4)
+STFC DP
 ============================
 
 **Nodes**
@@ -75,26 +77,26 @@ STFC DP (Kubernetes v1.26.4)
 ======================================== ======== ====== ========== =========================== ===================== ========================= ======================== ===============================
 Type                                     Amount   CPU    Memory     GPU                         Kubernetes Version    OS Version                Kernal Version           GPU Driver Version
 ======================================== ======== ====== ========== =========================== ===================== ========================= ======================== ===============================
-stfc-dp-production-k8s-md-1              5        30     120GiB     4 (NVIDIA A100-PCIE-40GB)   v1.26.4               Ubuntu 22.04.1 LTS        5.15.0-48-generic        
+stfc-dp-production-k8s-md-1              5        30     120GiB     4 (NVIDIA A100-PCIE-40GB)   v1.26.4               Ubuntu 22.04.1 LTS        5.15.0-48-generic
 stfc-dp-production-k8s-gpu-md-1          1        60     800GiB     1 (NVIDIA A100-PCIE-40GB)   v1.26.4               Ubuntu 22.04.1 LTS        5.15.0-88-generic        Cuda: 11.4 | Driver: 470.223.02
 stfc-dp-production-k8s-gpu-md-2          2        28     240GiB     2 (NVIDIA A100-PCIE-40GB)   v1.26.4               Ubuntu 22.04.1 LTS        5.15.0-88-generic        Cuda: 11.4 | Driver: 470.223.02
 ======================================== ======== ====== ========== =========================== ===================== ========================= ======================== ===============================
 
 **Runners**
 
-===================================== ============================ ========= ========== ============== ==============
-Runner                                Tag                          Version   CPU Limit  Memory Limit   GPUs Available 
-SKA-K8s-CAPI-Runner-DPGPU             ska-k8srunner-dp             v16.5.0   3          1Gi                              
-SKA-K8s-CAPI-Runner-DP-GPU-A100       ska-k8srunner-dp-gpu-a100    v16.5.0   5          10Gi           8
-===================================== ============================ ========= ========== ============== ==============
+===================================== ============================ ===== ======== ================= ============== ==============
+Runner                                Tag                          CPU   Memory    CPU Limit        Memory Limit   GPUs Available
+SKA-K8s-CAPI-Runner-DPGPU             ska-dp-default               2     8Gi       Unlimited (~16)  16Gi           0
+SKA-K8s-CAPI-Runner-DP-GPU-A100       ska-dp-gpu-a100              2     8Gi       Unlimited (~16)  16Gi           8
+===================================== ============================ ===== ======== ================= ============== ==============
 
 Deploy to GPU nodes
 **Using the GPU Runner**
 
 To run a job on a GPU runner, you can set the tag on your Gitlab job to one of the available GPU tags:
 
-* **techops** - k8srunner-gpu-v100
-* **dp** - ska-k8srunner-dp-gpu-a100
+* **techops** - ska-gpu-a100
+* **dp** - ska-dp-gpu-a100
 
 You can configure as follows:
 
