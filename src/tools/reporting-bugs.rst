@@ -209,7 +209,7 @@ The Bug Owner (assignee) verifies the fix:
 If verification fails, the status is changed back to *Assigned*, and the Product Owner(s) for the relevant teams must be informed of any issues.
 Otherwise, the status is updated to *Validating*, and the Assignee is updated to an appropriate validator.
 The original reporter is usually a good candidate for performing validation tests.
-Less severe and lower priority bugs may be transitioned directly to Done.
+Less severe and lower priority bugs may be transitioned directly to *Done*.
 
 Validating
 ^^^^^^^^^^
