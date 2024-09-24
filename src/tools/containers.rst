@@ -10,5 +10,6 @@ Containers: containerisation and deployment
   containers/container-cheat-sheet
   containers/kubernetes-introduction
   containers/orchestration-guidelines
+  containers/base-images
   ../howto/docker-vscode
 
