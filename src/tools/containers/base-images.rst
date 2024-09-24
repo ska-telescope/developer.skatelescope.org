@@ -27,7 +27,7 @@ For easier traceability, security and management purposes, The following metadat
 Rationale
 =========
 
-* The build image is needed in order to automate the construction of an image both locally and in a Gitlab pipeline (using the cicd infrastructure) transparently. Without it, every time the image has to be built an new environment should be created. 
+* The build image is needed in order to automate the construction of an image both locally and in a Gitlab pipeline (using the cicd infrastructure) transparently. Without it, every time the image has to be built an new environment should be created. The image is advised to be used when building applications
 * In order to have zero critical vulnerabilities, the base image must be well known and must include the security patched and every required upgrade. By giving to the SKAO developers a secure image, vulnerabilities would be only in the image they are working on. 
 
 Example Dockerfile
