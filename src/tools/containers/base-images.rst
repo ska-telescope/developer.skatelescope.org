@@ -45,5 +45,5 @@ Below it is possible to see an example of a Dockerfile which install a virtual e
     FROM ska-python
     COPY --from build /code /code
     EXPOSE...
-    RUN python3 app-mudule
+    RUN python3 app-module
     ...
