@@ -33,7 +33,7 @@ Rationale
 Example Dockerfile
 ==================
 
-Below it is possible to see an example of a Dockerfile which install a virtual environment with poetry in the build image and that copy it to the runtime. 
+Below it is possible to see an example of a Dockerfile which install a virtual environment with poetry in the build image and that copy it to the runtime using multi-stage builds. 
 
 .. code:: Dockerfile
 
