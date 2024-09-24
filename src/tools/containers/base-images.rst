@@ -7,6 +7,9 @@ In order to meet the security recommendations and in specific to have zero criti
 
 The list of the images provided are shown below:
 
+.. note:: The build image tools is a work in progress as the required tools are identified and support is expanded!
+   The aim is to have one container that can be used as a build image for all SKAO software
+   
 * ska-base: Default image derived from ubuntu:22.04 with no application dependencies and security patches.
 * ska-build: Build image based on `ska-base` with the following tools: python, pip, poetry (with pipx), C++ build tools (build-essentials), Python build tools (libffi-dev python3-dev).
 * ska-build-python: Build image based on `ska-build` for python. 
