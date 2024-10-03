@@ -226,7 +226,7 @@ This guide complements the information described on how to make a release, in th
    This command will add the '-rc.1' to the version of the project you previously bumped or, if you run it multiple times with an RC version, it will keep incrementing the '-rc.N'.
    It should be noted that, for a python package, the version format added will be an exception and will follow the pattern 'rcN' (creating the version X.Y.ZrcN instead of X.Y.Z-rc.N).
 
-4. **The remaining release steps should be followed according to the How to Make a Release section**
+4. **The remaining release steps should be followed according to the How to Make a Release section (``i.e.`` steps 5 and 6)**
 
 
 
@@ -239,8 +239,16 @@ This guide complements the information described on how to make a release, in th
       make rc-to-release
 
    This command will take your existing "X.Y.Z-rc.N" version and promote it to a release version with the format "X.Y.Z".
-   
-   Note that the remaining formal release steps described in the How to Make a Release section should be followed after this.
+
+   .. code-block:: bash
+
+      # Current version: 2.0.1-rc.1
+
+      make rc-to-release
+
+      # New version: 2.0.1
+
+   Note that the remaining formal release steps described in the How to Make a Release section - steps 5 and 6 - should be followed after this.
 
 
 Release results
