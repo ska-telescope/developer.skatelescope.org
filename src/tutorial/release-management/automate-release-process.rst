@@ -11,7 +11,6 @@ Prerequisites
 
 - You have a GitLab account and a project repository where your software package is hosted.
 - You have set up the `ska-cicd-makefile` as a submodule in your project. If not, add it as a submodule to your project using the following command: `git submodule add https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile.git .make`. If you are working with an existing repository make sure the submodule is checked out using the following command: `git submodule update --init`
-- You have a dependencies file set up with poetry
 
    
 Steps
@@ -63,12 +62,14 @@ The changelog is a file that contains a curated, chronologically ordered list of
 
    Create a new file named `CHANGELOG.md` in the root of your project repository. This file will contain the changelog for your project.
 
-2. **Create a symlink to the `CHANGELOG.md` file in the `docs/` folder of your project repository. This will allow the Read the Docs to include the changelog in the documentation.**. Make sure to use the correct path for your documentation and CHANGELOG.md file.
+2. **Create a symlink to the `CHANGELOG.md` file in the `docs/src` folder of your project repository. This will allow the Read the Docs to include the changelog in the documentation.**. Make sure to use the correct path for your documentation and CHANGELOG.md file.
+
+   If the docs/src folder doesn't exist, please create it before executing this step.
 
    .. code-block:: bash
    
-      cd docs/
-      ln -s ../CHANGELOG.md docs/CHANGELOG.rst
+      cd docs/src
+      ln -s ../../CHANGELOG.md docs/CHANGELOG.rst
 
 3. **Update your index file in the `docs/src/` folder to include the changelog in the documentation. (if applicable)**
 
@@ -90,7 +91,7 @@ The changelog is a file that contains a curated, chronologically ordered list of
 
       poetry add recommonmark --group docs
 
-Create/Update the `conf.py` file to include `recommonmark` as an extension and make sure `.md` files are included as source file suffix.
+Update the `conf.py` file to include `recommonmark` as an extension and make sure `.md` files are included as source file suffix.
 
    .. code-block:: bash
    
@@ -223,6 +224,7 @@ This guide complements the information described on how to make a release, in th
       make bump-rc
 
    This command will add the '-rc.1' to the version of the project you previously bumped or, if you run it multiple times with an RC version, it will keep incrementing the '-rc.N'.
+   It should be noted that, for a python package, the version format added will be an exception and will follow the pattern 'rcN' (creating the version X.Y.ZrcN instead of X.Y.Z-rc.N).
 
 4. **The remaining release steps should be followed according to the How to Make a Release section**
 
@@ -239,27 +241,6 @@ This guide complements the information described on how to make a release, in th
    This command will take your existing "X.Y.Z-rc.N" version and promote it to a release version with the format "X.Y.Z".
    
    Note that the remaining formal release steps described in the How to Make a Release section should be followed after this.
-
-
-The following examples demonstrate the execution of the steps described above.
-
-.. figure:: ../images/release-management/create-the-rc-example.png
-   :scale: 40%
-   :align: center
-   :figclass: figborder
-
-   Creating the RC Example
-
-|
-
-.. figure:: ../images/release-management/move-rc-to-rel-example.png
-   :scale: 40%
-   :align: center
-   :figclass: figborder
-
-   Moving from a Release Candidate to a Release Example
-
-|
 
 
 Release results
