@@ -37,13 +37,21 @@ Below it is possible to see an example of a Dockerfile which install a virtual e
 
 .. code:: Dockerfile
 
-    FROM ska-base AS build
-    
-    WORKDIR /code
-    RUN poetry install
-    
-    FROM ska-python
-    COPY --from build /code /code
-    EXPOSE...
-    RUN python3 app-module
+   FROM ska-build-python:0.1.1 as build
+
+   WORKDIR /app
+
+   COPY pyproject.toml poetry.lock ./
+
+   COPY src /app/src
+
+   RUN poetry config virtualenvs.create false && poetry install
+
+   FROM ska-python:0.1.1
+
+   COPY src /app/src
+
+   COPY --from=build /usr/local/lib/python3.10 /usr/local/lib/python3.10
+
+   ENV PATH=$PATH:/app/src
     ...
