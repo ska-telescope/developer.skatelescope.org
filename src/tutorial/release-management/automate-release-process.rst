@@ -118,9 +118,10 @@ This guide provides practical steps on how to make a patch release using the pro
 
    Note: The steps described here can be run on any branch (including the default (master/main) branch). The steps should work with any branching policy.
    Examples:
-     - Using a new branch for Jira Release Management (REL) tickets. i.e. rel-xxx-release-v-x-y-z
-     - Using an existing branch. i.e. key-1234-story-work
-     - Using default branch. i.e. main/master
+
+    - Using a new branch for Jira Release Management (REL) tickets. i.e. rel-xxx-release-v-x-y-z
+    - Using an existing branch. i.e. key-1234-story-work
+    - Using default branch. i.e. main/master
 
 1. **(Optional) Create a JIRA issue and the branch**
    
@@ -190,8 +191,7 @@ This guide provides practical steps on how to make a patch release using the pro
    This command will push the new git tag to your remote repository triggering the release process.
 
    .. warning::
-
-   *Note:* This final step will push the release tag directly to the Gitlab, so this step should be performed with correct permissions to push tags. i.e. If the tag is supposed to be pushed to the main/master branch, only project maintainers have the correct permission by default. However, it is possible, instead, to push the tag onto your branch immediately before it is merged. In this case, it is very important that the tag is pushed to the branch only after the MR has been approved and no further commits will be made to it.
+      *Note:* This final step will push the release tag directly to the Gitlab, so this step should be performed with correct permissions to push tags. i.e. If the tag is supposed to be pushed to the main/master branch, only project maintainers have the correct permission by default. However, it is possible, instead, to push the tag onto your branch immediately before it is merged. In this case, it is very important that the tag is pushed to the branch only after the MR has been approved and no further commits will be made to it.
 
 That's it! You have successfully made a patch release for your project.
 Your release process is now automated. Whenever a new tag is pushed to the repository, the release process will be triggered, and the release notes will be generated and published automatically.
