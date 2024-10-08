@@ -1,7 +1,7 @@
 .. _tutorial_release_mgmt:
 
 ===================================================
-How to Automate the Release Process Using Templates
+Automate the Release Process Using Templates
 ===================================================
 
 This guide will walk you through the steps to automate the release process of your software package using GitLab CI/CD templates. The artefact names and versions are following the SKAO naming conventions. You can read more about them `here <https://confluence.skatelescope.org/display/SWSI/ADR-25+General+software+naming+convention>`__. Note that this requires a SKAO login but generally the artefact names are in the format of `ska-<package-name>` and the versions are following `Semantic Versioning <https://semver.org/>`__ like `<major>.<minor>.<patch>`.
@@ -10,7 +10,7 @@ Prerequisites
 =============
 
 - You have a GitLab account and a project repository where your software package is hosted.
-- You have setup the `ska-cicd-makefile` as a submodule in your project. If not, add it as a submodule to your project using the following command: `git submodule add https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile.git .make`. If you are working with an existing repository make sure the submodule is checked out using the following command: `git submodule update --init`
+- You have set up the `ska-cicd-makefile` as a submodule in your project. If not, add it as a submodule to your project using the following command: `git submodule add https://gitlab.com/ska-telescope/sdi/ska-cicd-makefile.git .make`. If you are working with an existing repository make sure the submodule is checked out using the following command: `git submodule update --init`
 
    
 Steps
@@ -25,11 +25,10 @@ Steps
       -include .make/release.mk
 
 This will add supporting scripts for changelog generation using `git-chglog` and `GitLab release pages <https://docs.gitlab.com/ee/user/project/releases/>`__.
-A Jira ticket is added to the release notes to enable other teams to refer to the documentation related to process and implementation of git-changelog.
 
 2. **Include the Release Template in Your GitLab CI/CD Configuration**
 
-   Open your `.gitlab-ci.yml` file and include the release template from the `templates-repository` project towards the ends of the file(preferably at the end):
+   Open your `.gitlab-ci.yml` file and include the release template from the `templates-repository` project towards the ends of the file (preferably at the end):
 
    .. code-block:: yaml
 
@@ -39,9 +38,9 @@ A Jira ticket is added to the release notes to enable other teams to refer to th
 
    This will add changelog generation and release note publishing mechanism (to `#artefact-releases <https://skao.slack.com/archives/C02NW62R0SE>`__ slack channel and as a Gitlab Release) support into the project.
 
-3. **Customize the Release Process (Optional)**
+3. **Customise the Release Process (Optional)**
 
-   Developers are strongly encouraged to use the default template to ensure that similar practices are followed in all SKA repositories, but if any departures from standard procedures are required the process can be customized. 
+   Developers are strongly encouraged to use the default template to ensure that similar practices are followed in all SKA repositories, but if any departures from standard procedures are required the process can be customised. 
    You can learn about the variables and how to override them by running `make help release` or `make long-help release`.
 
 4. **Commit and Push Your Changes**
@@ -62,14 +61,16 @@ The changelog is a file that contains a curated, chronologically ordered list of
 
    Create a new file named `CHANGELOG.md` in the root of your project repository. This file will contain the changelog for your project.
 
-2. **Create a symlink to the `CHANGELOG.md` file in the `docs/src/` folder of your project repository. This will allow the Read the Docs to include the changelog in the documentation.**. Make sure to use the correct path for your documentation and CHANGELOG.md file.
+2. **Create a symlink to the `CHANGELOG.md` file in the `docs/src` folder of your project repository. This will allow the Read the Docs to include the changelog in the documentation.**. Make sure to use the correct path for your documentation and CHANGELOG.md file.
+
+   If the docs/src folder doesn't exist, please create it before executing this step.
 
    .. code-block:: bash
    
       cd docs/src
       ln -s ../../CHANGELOG.md docs/CHANGELOG.rst
 
-3. **Update your index file in the `docs/src/` folder to include the changelog in the documentation.**
+3. **Update your index file in the `docs/src/` folder to include the changelog in the documentation. (if applicable)**
 
    Open the `docs/index.rst` file and add the following line to include the changelog in the documentation:
 
@@ -83,7 +84,7 @@ The changelog is a file that contains a curated, chronologically ordered list of
 
 4. **Add the required dependencies to build markdown files**
 
-`recommonmark` package is needed to build our markdown files.
+`recommonmark` package is needed to build our markdown files. Note that the below code assumes you are using `poetry` with `docs` group to manage documentation dependencies.
 
    .. code-block:: bash
 
@@ -111,13 +112,21 @@ For further customisation of the changelog, please refer to the `make help relea
 How to Make a Release
 =====================
 
-This guide provides practical steps on how to make a patch release using the provided Makefile. For making major or minor version, the equiavelent commands should be used.
+This guide provides practical steps on how to make a patch release using the provided Makefile. For making major or minor version, the equivalent commands should be used.
 
-1. **Create a JIRA issue and the branch**
+.. important::
+
+   Note: The steps described here can be run on any branch (including the default (master/main) branch). The steps should work with any branching policy.
+   Examples:
+
+    - Using a new branch for Jira Release Management (REL) tickets. i.e. rel-xxx-release-v-x-y-z
+    - Using an existing branch. i.e. key-1234-story-work
+    - Using default branch. i.e. main/master
+
+1. **(Optional) Create a JIRA issue and the branch**
    
-   **1st**: Create a new issue on the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`__ Jira Project with a summary of your release, and set it to "IN PROGRESS".
+   **1st**: Create a new issue on the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`__ Jira Project with a summary of your release, and set it to "IN PROGRESS". This is applicable if your release is integrated with Release Management and a Jira ticket is required. 
 
-   **2nd**: Create and checkout a new `rel-XXX-release-v-1-2-2` branch (where `REL-XXX` is your Jira issue.)
 
 2. **Check the Current Version**
 
@@ -181,10 +190,74 @@ This guide provides practical steps on how to make a patch release using the pro
 
    This command will push the new git tag to your remote repository triggering the release process.
 
-   *Note:* This final step will push the release tag direct to the main branch, so this step can only be performed by a repository maintainer. It is possible, instead, to push the tag onto your branch immediately before it is merged. In this case, it is very important that the tag is pushed to the branch only after the MR has been approved and no further commits will be made to it.
+   .. warning::
+      *Note:* This final step will push the release tag directly to the Gitlab, so this step should be performed with correct permissions to push tags. i.e. If the tag is supposed to be pushed to the main/master branch, only project maintainers have the correct permission by default. However, it is possible, instead, to push the tag onto your branch immediately before it is merged. In this case, it is very important that the tag is pushed to the branch only after the MR has been approved and no further commits will be made to it.
 
 That's it! You have successfully made a patch release for your project.
 Your release process is now automated. Whenever a new tag is pushed to the repository, the release process will be triggered, and the release notes will be generated and published automatically.
+
+How to Make a Release Candidate
+===============================
+
+This guide complements the information described on how to make a release, in the previous section, and describes the steps required to create a release candidate.
+
+1. **Check the Current Version**
+
+   Before creating a release candidate (RC), you should check the current version of your project. Run the following command:
+
+   .. code-block:: bash
+
+      make show-version
+
+   This command will display the current version of your project.
+
+2. **Decide on the version to be targetted for the RC and bump it**
+
+   To create a release candidate you should, firstly, bump the version level desired (i.e. major, minor or patch). 
+
+   You can do this by running the appropriate make target bump command (as described for step 3 of How To Make a Release):
+
+   .. code-block:: bash
+
+      make bump-<level>-release
+
+   This command will bump the version to the level indicated and display the version of the project you are updating to.
+
+3. **Create the RC version**
+
+   Once the version has been bumped to the desired level, the release candidate version can be created. Run the following command:
+
+   .. code-block:: bash
+
+      make bump-rc
+
+   This command will add the '-rc.1' to the version of the project you previously bumped or, if you run it multiple times with an RC version, it will keep incrementing the '-rc.N'.
+   It should be noted that, for a python package, the version format added will be an exception and will follow the pattern 'rcN' (creating the version X.Y.ZrcN instead of X.Y.Z-rc.N).
+
+4. **The remaining release steps should be followed according to the How to Make a Release section (``i.e.`` steps 5 and 6)**
+
+
+
+5. **Promote a Release Candidate to a Release**
+
+   If the Release Candidate has been successfully tested and you want to promote it to a release, run the following command:
+
+   .. code-block:: bash
+
+      make rc-to-release
+
+   This command will take your existing "X.Y.Z-rc.N" version and promote it to a release version with the format "X.Y.Z".
+
+   .. code-block:: bash
+
+      # Current version: 2.0.1-rc.1
+
+      make rc-to-release
+
+      # New version: 2.0.1
+
+   Note that the remaining formal release steps described in the How to Make a Release section - steps 5 and 6 - should be followed after this.
+
 
 Release results
 ===============
