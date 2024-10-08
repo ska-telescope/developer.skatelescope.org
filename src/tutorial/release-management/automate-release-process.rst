@@ -25,7 +25,6 @@ Steps
       -include .make/release.mk
 
 This will add supporting scripts for changelog generation using `git-chglog` and `GitLab release pages <https://docs.gitlab.com/ee/user/project/releases/>`__.
-A Jira ticket is added to the release notes to enable other teams to refer to the documentation related to process and implementation of git-changelog.
 
 2. **Include the Release Template in Your GitLab CI/CD Configuration**
 
@@ -85,7 +84,7 @@ The changelog is a file that contains a curated, chronologically ordered list of
 
 4. **Add the required dependencies to build markdown files**
 
-`recommonmark` package is needed to build our markdown files.
+`recommonmark` package is needed to build our markdown files. Note that the below code assumes you are using `poetry` with `docs` group to manage documentation dependencies.
 
    .. code-block:: bash
 
@@ -115,11 +114,18 @@ How to Make a Release
 
 This guide provides practical steps on how to make a patch release using the provided Makefile. For making major or minor version, the equivalent commands should be used.
 
-1. **Create a JIRA issue and the branch**
-   
-   **1st**: Create a new issue on the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`__ Jira Project with a summary of your release, and set it to "IN PROGRESS".
+.. important::
 
-   **2nd**: Create and checkout a new `rel-XXX-release-v-1-2-2` branch (where `REL-XXX` is your Jira issue.)
+   Note: The steps described here can be run on any branch (including the default (master/main) branch). The steps should work with any branching policy.
+   Examples:
+     - Using a new branch for Jira Release Management (REL) tickets. i.e. rel-xxx-release-v-x-y-z
+     - Using an existing branch. i.e. key-1234-story-work
+     - Using default branch. i.e. main/master
+
+1. **(Optional) Create a JIRA issue and the branch**
+   
+   **1st**: Create a new issue on the `Release Management <https://jira.skatelescope.org/projects/REL/summary>`__ Jira Project with a summary of your release, and set it to "IN PROGRESS". This is applicable if your release is integrated with Release Management and a Jira ticket is required. 
+
 
 2. **Check the Current Version**
 
@@ -183,7 +189,9 @@ This guide provides practical steps on how to make a patch release using the pro
 
    This command will push the new git tag to your remote repository triggering the release process.
 
-   *Note:* This final step will push the release tag direct to the main branch, so this step can only be performed by a repository maintainer. It is possible, instead, to push the tag onto your branch immediately before it is merged. In this case, it is very important that the tag is pushed to the branch only after the MR has been approved and no further commits will be made to it.
+   .. warning::
+
+   *Note:* This final step will push the release tag directly to the Gitlab, so this step should be performed with correct permissions to push tags. i.e. If the tag is supposed to be pushed to the main/master branch, only project maintainers have the correct permission by default. However, it is possible, instead, to push the tag onto your branch immediately before it is merged. In this case, it is very important that the tag is pushed to the branch only after the MR has been approved and no further commits will be made to it.
 
 That's it! You have successfully made a patch release for your project.
 Your release process is now automated. Whenever a new tag is pushed to the repository, the release process will be triggered, and the release notes will be generated and published automatically.
