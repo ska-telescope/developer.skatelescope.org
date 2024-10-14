@@ -37,6 +37,8 @@ Kubernetes clusters could be created in ci/cd jobs. These clusters are created o
 
 Note: in order to run deploy clusters, the account permissions need to be set up correctly for the runner services.
 
+.. _stfc_kubernetes_runners:
+
 STFC Cloud Kubernetes Clusters
 ------------------------------
 
