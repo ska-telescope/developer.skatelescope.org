@@ -37,21 +37,37 @@ Below it is possible to see an example of a Dockerfile which install a virtual e
 
 .. code:: Dockerfile
 
-   FROM ska-build-python:0.1.1 as build
+   FROM artefact.skao.int/ska-build-python:0.1.1 as build
 
-   WORKDIR /app
+   WORKDIR /src
 
-   COPY pyproject.toml poetry.lock ./
+   COPY pyproject.toml poetry.lock* ./
 
-   COPY src /app/src
+   ENV POETRY_NO_INTERACTION=1
+   ENV POETRY_VIRTUALENVS_IN_PROJECT=1
+   ENV POETRY_VIRTUALENVS_CREATE=1
 
-   RUN poetry config virtualenvs.create false && poetry install
+   #no-root is required because in the build
+   #step we only want to install dependencies
+   #not the code under development
+   RUN poetry install --no-root
 
-   FROM ska-python:0.1.1
+   FROM artefact.skao.int/ska-python:0.1.2
 
-   COPY src /app/src
+   WORKDIR /src
 
-   COPY --from=build /usr/local/lib/python3.10 /usr/local/lib/python3.10
+   #Adding the virtualenv binaries
+   #to the PATH so there is no need
+   #to activate the venv
+   ENV VIRTUAL_ENV=/src/.venv
+   ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
-   ENV PATH=$PATH:/app/src
+   COPY --from=build ${VIRTUAL_ENV} ${VIRTUAL_ENV}
+
+   COPY ./src/my_project ./my_project
+
+   #Add source code to the PYTHONPATH
+   #so python is able to find our package
+   #when we use it on imports
+   ENV PYTHONPATH=${PYTHONPATH}:/src/
     ...
