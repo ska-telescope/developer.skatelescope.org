@@ -1,3 +1,5 @@
+.. _tutorial_setup_minikube:
+
 Setup Minikube for local development
 ====================================
 
