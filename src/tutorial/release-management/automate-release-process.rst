@@ -171,6 +171,9 @@ This guide provides practical steps on how to make a patch release using the pro
 
 5. **Create a Git Tag**
 
+   .. warning::
+      *Note:* The creation of git tag marks this point as the release and once it's pushed (in next step) a release is made. So this step should be performed with correct permissions to push tags. i.e. If the tag is supposed to be pushed to the main/master branch, only project maintainers have the correct permission by default. However, it is possible, instead, to push the tag onto your branch immediately before it is merged. In this case, it is very important that the tag is pushed to the branch only after the MR has been approved and no further commits will be made to it.
+
    After bumping the patch version, you should create a git tag for the new version. By this point you'll also require a JIRA ticket to link your release. 
    The following target will ask you for the ticket as a prompt. This can be skipped by setting `AUTO_RELEASE` variable.
    
@@ -190,8 +193,6 @@ This guide provides practical steps on how to make a patch release using the pro
 
    This command will push the new git tag to your remote repository triggering the release process.
 
-   .. warning::
-      *Note:* This final step will push the release tag directly to the Gitlab, so this step should be performed with correct permissions to push tags. i.e. If the tag is supposed to be pushed to the main/master branch, only project maintainers have the correct permission by default. However, it is possible, instead, to push the tag onto your branch immediately before it is merged. In this case, it is very important that the tag is pushed to the branch only after the MR has been approved and no further commits will be made to it.
 
 That's it! You have successfully made a patch release for your project.
 Your release process is now automated. Whenever a new tag is pushed to the repository, the release process will be triggered, and the release notes will be generated and published automatically.
@@ -234,7 +235,7 @@ This guide complements the information described on how to make a release, in th
    This command will add the '-rc.1' to the version of the project you previously bumped or, if you run it multiple times with an RC version, it will keep incrementing the '-rc.N'.
    It should be noted that, for a python package, the version format added will be an exception and will follow the pattern 'rcN' (creating the version X.Y.ZrcN instead of X.Y.Z-rc.N).
 
-4. **The remaining release steps should be followed according to the How to Make a Release section (``i.e.`` steps 5 and 6)**
+4. **The remaining release steps should be followed according to the How to Make a Release section (i.e. steps 5 and 6)**
 
 
 
@@ -258,6 +259,33 @@ This guide complements the information described on how to make a release, in th
 
    Note that the remaining formal release steps described in the How to Make a Release section - steps 5 and 6 - should be followed after this.
 
+How to Undo a Release Mistake
+===============================
+
+When using the make targets to bump a release/release candidate version there might be the case that one of the following mistakes is made:
+
+   1. The version was bumped to the wrong level on the local environment (`e.g.` bumped to a major version instead of a patch version)
+   2. The version was bumped to the wrong level and the files with the updated versions have been commited and pushed to the repository
+   3. The version was bumped to the wrong level and the release was created and published
+
+
+For **problem 1**, having only updated the files locally and not commiting any changes, one can simply run the git command to undo the changes:
+
+   .. code-block:: bash
+
+      # Current version: 2.0.1
+      make bump-major-release
+      # New version: 3.0.0
+      git restore .
+      # Restored version: 2.0.1
+
+   It is important to note that this approach should only be used **if there are no other uncommitted changes** in the repo. If there are, the git restore should be run
+   specifically for the files where the version change needs to be undone.
+
+For **problem 2**, even though the wrong versions have been pushed to the repository, as long as a tagging pipeline hasn't been run, the release hasn't been created yet.
+This allows the user to undo their changes locally and push the correct version to the repo and - only then - following the usual remaining release steps.
+
+**Problem 3** cannot be undone, the process to follow should be to mark the published release as incorrect and to create a new release with the correct versioning.
 
 Release results
 ===============
