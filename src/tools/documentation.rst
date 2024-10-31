@@ -101,6 +101,16 @@ Every SKA project's documentation is hosted on Readthedocs as a :ref:`subproject
 
 In order to add the project's documentation as a subproject on ReadTheDocs, a project must first be imported into Readthedocs.
 
+Setting up your Project
+-----------------------
+SKA provides a predefined template for setting up ReadTheDocs in the `SKA Python skeleton <https://gitlab.com/ska-telescope/templates/ska-python-skeleton>`_ project. This repository contains all the necessary files for setting up your ReadTheDocs integration.
+
+The first step is to copy the ``docs`` folder and all its contents into your project. This folder includes the ``conf.py`` file, which is essential for generating documentation, as it configures Sphinx. Additionally, you will need the ``.readthedocs.yml`` file, located in the project’s root folder; this file is also essential, as it specifies the path to ``conf.py`` and provides configuration for how ReadTheDocs builds the documentation.
+
+This project uses :doc:`Poetry </getting-started/devenv-setup/local-development>` to manage the dependencies for building the documentation on ReadTheDocs. To support this, copy and add the ``[tool.poetry.group.docs.dependencies]`` dependency group in your ``pyproject.toml``. If you are not using Poetry, it’s best to follow the `tutorial <https://docs.readthedocs.io/en/stable/tutorial/index.html>`_ from ReadTheDocs.
+
+Now, the repository should be ready to generate documentation. To preview the process, use the `make docs-build html` target.
+
 `Accessing ReadTheDocs`_
 ========================
 Developers working on the SKA are members of the ska-telescope organisation on GitLab. Accessing ReadTheDocs using OAuth credentials such as their GitLab account is recommended, as the integration between the SKA GitLab and SKA ReadTheDocs services is done automatically. The integrations can also be set up manually later, and is not difficult.
@@ -141,7 +151,29 @@ Find the project you want to import. You can filter the projects using the list 
 Name the project correctly
 --------------------------
 
-When importing the project, the **Name/Project Slug** should have SKA Telescope (or ska-telescope-, if the project name is in this format) as a prefix followed by the gitlab repository slug. i.e. for `ska-tango-examples` gitlab repository, the rtd project name should be `ska-telescope-ska-tango-examples` when being created. This ensures that RTD project slug is correctly set. The RTD project name is used to create the RTD project slug and the slug cannot be changed later whereas the project name can be changed in the settings to "SKA Tango Examples" for readability. If your git repo uses the `main` branch instead of `master`, you **must** fill in the field *Default branch:* as it is not detected automatically. 
+When importing the project, the **Name/Project Slug** should have SKA Telescope (or ska-telescope-, if the project name is in this format) as a prefix followed by the gitlab repository slug.
+
+.. list-table::
+   :widths: 30 50
+   :header-rows: 1
+
+   * - Repository Name
+     - Required RTD Project Slug
+   * - ska-tango-examples
+     - ska-telescope-ska-tango-examples
+   * - ska-python-skeleton
+     - ska-telescope-ska-python-skeleton
+   * - ska-nextjs-skeleton
+     - ska-telescope-ska-nextjs-skeleton
+
+.. warning::
+   The RTD project name is used to create the RTD project slug and the slug cannot be changed later, whereas the project name can be changed in the settings to "SKA Tango Examples" for readability. 
+
+.. note::
+   Regardless of the project being part of a subgroup or many subgroups, the RTD project name will only contain the repository slug, never the subgroups.
+   i.e. project url: https://gitlab.com/ska-telescope/templates/ska-python-skeleton, the RTD project name should be `ska-telescope-ska-python-skeleton`.
+
+It's **important** to note that if the ``docs`` directory is not in your default branch, the build process will not succeed. If your ``docs`` directory is in a different branch(i.e. `dev`), you can set that branch as the default. Later, once you merge your branch, you can go back to the ReadTheDocs settings and change the default branch back to main/master.
 If there's an error it's best to delete the project and recreate it again.
 
 .. figure:: images/rtd_prefix.jpg
