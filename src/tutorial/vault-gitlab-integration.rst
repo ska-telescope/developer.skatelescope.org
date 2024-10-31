@@ -4,7 +4,9 @@
 Gitlab CICD Vault Integration
 *****************************
 
-This tutorial describes how to integrate GitLab CI/CD with HashiCorp Vault using **OIDC** (OpenID Connect) with seamless authentication for secret retrieval. This method allows GitLab jobs to authenticate with Vault securely without additional service tokens or passwords. For more information, check how `ID tokens <https://docs.gitlab.com/ee/ci/secrets/convert-to-id-tokens.html>`_ are used. To be able to use Gitlab's integration, we will use the production Vault instance and not a local one. By default, Gitlab has the same access level as all SKAO developers: **read** access to the **dev** and **kv** KV engines in Vault. Having that in mind, we will use one of these KV engines in our tutorial instructions.
+GitLab CI/CD can integrate with HashiCorp Vault using **OIDC** (OpenID Connect) with seamless authentication for secret retrieval. This method allows GitLab jobs to authenticate with Vault securely without additional service tokens or passwords. For more information, check how `ID tokens <https://docs.gitlab.com/ee/ci/secrets/convert-to-id-tokens.html>`_ are used. To be able to use Gitlab's integration, we will use the production Vault instance and not a local one. By default, Gitlab has the same access level as all SKAO developers: **read** access to the **dev** and **kv** KV engines in Vault. Having that in mind, we will use one of these KV engines in our tutorial instructions.
+
+In this tutorial you will learn how to create jobs in your Gitlab CICD pipeline that retrieve configurations from Vault and how to inject them as **files** or **environment variables**.
 
 We will cover:
 
@@ -74,7 +76,7 @@ Now that we have a stage to run on, we can setup a job to expose a secret as an 
 
 By default, secrets are mounted into files where the path to the file is the value of the environment variable. In this case, `TEST` would point to the path containing the secret at `dev/<your team>/vault-tutorial/env`. It is common practice - although strongly advised against - to modify Helm values on installation using environment variables in the repository's Makefile. With this approach you can securely inject secrets from Vault into your deployment, as the secrets get exposed as an environment variables. If you are going to use the secrets in Kubernetes, we strongly advise to use Kubernetes secrets. To know more about it, please checkout the tutorial that covers :ref:`Vault in Kubernetes <tutorial-vault>`.
 
-If you still want to use secrets in the deployment directly, a better way lies in using files - for instance - to be passed as `values.yml` to `make k8s-install-chart`. If we use files directly, we can at least have an idea of what the injected values were by comparing the job date and looking for the version of the secret in Vault that was in place at that point in time.
+If you still want to use secrets in the deployment directly, a better way lies in using files - for instance - to be passed as `values.yml` to `make k8s-install-chart`. If we use files directly, we can at least have an idea of what the injected values were by comparing the job date and looking for the version of the secret in Vault that was in place at that point in time. If you are interested, you can do a deep dive on how to implement :ref:`Vault helm values injection <how-vault-gitlab-helm>`.
 
 Lets look at an example of file usage:
 

@@ -3,7 +3,11 @@
 Use Vaults secrets in Kubernetes
 ================================
 
-Vault allows multiple ways of reading secrets - cli, the UI itself, :ref:`Gitlab <tutorial-vault-gitlab-integration>` or Kubernetes integrations - in order to give developers maximum flexibility while maintaining maximum security. To support Kubernetes native integrations, we previously provided **Vault Injector** and **Vault CSI Driver**, which have lots of shortcomings that sometimes make their use impractical, and are currently **deprecated** in SKAO.
+Vault allows multiple ways of reading secrets - cli, the UI itself, :ref:`Gitlab <tutorial-vault-gitlab-integration>` or Kubernetes integrations - in order to give developers maximum flexibility while maintaining maximum security.
+
+.. note::
+
+   **Vault Injector** and **Vault CSI Driver** are currently **deprecated** in SKAO, their support will be terminated by Sprint #2 of PI 25.
 
 In this tutorial, you'll learn how to setup Vault and synchronize secrets in Kubernetes from Vault using the `Vault Secrets Operator <https://developer.hashicorp.com/vault/tutorials/kubernetes/vault-secrets-operator>`_ - VSO - which is a direct replacement of the previous solutions whith a much richer featureset.
 
@@ -275,7 +279,7 @@ You might notice that, even though the secret has been updated, it is not propag
 Secrets live update and deployment rollout
 ------------------------------------------
 
-To overcome the time it might take for the secret to update in the actual pod, we can use VaultStaticSecret `rolloutRestartTargets` to automatically rollout an update to a resource of type `Deployment`, `DaemonSet`, `StatefulSet`.
+To overcome the time it might take for the secret to update in the actual pod, we can use VaultStaticSecret `rolloutRestartTargets` to automatically rollout an update to a resource of type `Deployment`, `DaemonSet`, `StatefulSet`. Together with VSO's automatic synchronization, this can be used to implement :ref:`automatic secret rotation <how-vault-secret-rotation>`, for instance, to cover leaked secrets.
 
 .. code-block:: bash
 

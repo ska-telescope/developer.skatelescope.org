@@ -1,3 +1,5 @@
+.. _tools-vault:
+
 Secret & Configuration Management
 =================================
 
@@ -242,7 +244,7 @@ Vault Secrets Operator
 
 Vault Secrets Operator breaks away from the inefficient limitations of the previous solutions by implementing an `operator <https://kubernetes.io/docs/concepts/extend-kubernetes/operator/>`_ and `CRDs <https://developer.hashicorp.com/vault/docs/platform/k8s/vso/sources/vault>`_. The main difference to the previous solutions is that it is no longer needed for a Vault secret "link" to be present on a workload - simply defining on of the VaultStaticSecret or VaultDynamicSecret CRDs is enough to have the operator synchronize secrets as Kubernetes secrets. From that point forward, we can leverage secrets the way we would any other secret without having second considerations.
 
-Adapting the previous example, we no longer create a **SecretProviderClass** resource, but a VaultStaticSecret:
+Adapting the previous example, we no longer create a SecretProviderClass resource, but a **VaultStaticSecret**:
 
 .. code-block:: yaml
     :caption: VaultStaticSecret resource
