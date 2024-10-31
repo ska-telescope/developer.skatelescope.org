@@ -171,6 +171,9 @@ This guide provides practical steps on how to make a patch release using the pro
 
 5. **Create a Git Tag**
 
+   .. warning::
+      *Note:* The creation of git tag marks this point as the release and once it's pushed (in next step) a release is made. So this step should be performed with correct permissions to push tags. i.e. If the tag is supposed to be pushed to the main/master branch, only project maintainers have the correct permission by default. However, it is possible, instead, to push the tag onto your branch immediately before it is merged. In this case, it is very important that the tag is pushed to the branch only after the MR has been approved and no further commits will be made to it.
+
    After bumping the patch version, you should create a git tag for the new version. By this point you'll also require a JIRA ticket to link your release. 
    The following target will ask you for the ticket as a prompt. This can be skipped by setting `AUTO_RELEASE` variable.
    
@@ -190,8 +193,6 @@ This guide provides practical steps on how to make a patch release using the pro
 
    This command will push the new git tag to your remote repository triggering the release process.
 
-   .. warning::
-      *Note:* This final step will push the release tag directly to the Gitlab, so this step should be performed with correct permissions to push tags. i.e. If the tag is supposed to be pushed to the main/master branch, only project maintainers have the correct permission by default. However, it is possible, instead, to push the tag onto your branch immediately before it is merged. In this case, it is very important that the tag is pushed to the branch only after the MR has been approved and no further commits will be made to it.
 
 That's it! You have successfully made a patch release for your project.
 Your release process is now automated. Whenever a new tag is pushed to the repository, the release process will be triggered, and the release notes will be generated and published automatically.
