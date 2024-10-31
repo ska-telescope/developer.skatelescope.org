@@ -219,6 +219,10 @@ Continuous Deployment
  - :doc:`tutorial: Database Integration </tutorial/database-integration>`
 
 3. Integrate with Secrets
+
+ - :doc:`tutorial: Vault Kubernetes Integration </tutorial/vault>`
+ - :doc:`tutorial: Vault Gitlab CICD Integration </tutorial/vault-gitlab-integration>`
+
 4. Run Integration Tests
 
 Release
@@ -233,7 +237,7 @@ Release
   2. :doc:`tutorial: Automate Release Process </tutorial/release-management/automate-release-process>`
   3. :doc:`: Automate Release Process </tutorial/release-management/automate-release-process>`
 
-3. Deploy to PSI/ITF?
+3. Deploy to PSI/ITF
 
   4. :doc:`: Deploying to Multiple SKAO Clusters </howto/deploy-to-datacentres>`
 

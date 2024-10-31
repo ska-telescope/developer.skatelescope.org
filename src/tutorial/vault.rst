@@ -5,7 +5,7 @@ Use Vaults secrets in Kubernetes
 
 Vault allows multiple ways of reading secrets - cli, the UI itself, :ref:`Gitlab <tutorial-vault-gitlab-integration>` or Kubernetes integrations - in order to give developers maximum flexibility while maintaining maximum security. To support Kubernetes native integrations, we previously provided **Vault Injector** and **Vault CSI Driver**, which have lots of shortcomings that sometimes make their use impractical, and are currently **deprecated** in SKAO.
 
-In this tutorial, you'll learn how to setup Vault and synchronize secrets in Kubernetes from Vault using the **Vault Secrets Operator** - VSO - which is a direct replacement of the previous solutions whith a much richer featureset.
+In this tutorial, you'll learn how to setup Vault and synchronize secrets in Kubernetes from Vault using the `Vault Secrets Operator <https://developer.hashicorp.com/vault/tutorials/kubernetes/vault-secrets-operator>`_ - VSO - which is a direct replacement of the previous solutions whith a much richer featureset.
 
 We will cover:
 
