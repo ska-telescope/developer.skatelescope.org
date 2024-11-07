@@ -34,6 +34,7 @@ Deploy Vault into Minikube
 The first step we need to do is to have a working Kubernetes cluster with Vault. It is already part of the ska-cicd-deploy-minikube repository, but needs to be manually deployed:
 
 .. code-block:: bash
+   :caption: Deploy the minikube cluster, Vault and VSO
 
    make all # Deploy the minikube cluster
 
@@ -48,6 +49,7 @@ Create test KV engine and configure Kubernetes cluster access
 We need to create and populate a test KV engine:
 
 .. code-block:: bash
+   :caption: Add test data to Vault
 
    eval $(make vault-cli-config)
 
@@ -64,12 +66,14 @@ We need to create and populate a test KV engine:
 Now that we have a working Vault instance with test data, we need to configure the access from the Kubernetes cluster:
 
 .. code-block:: bash
+   :caption: Integrate the cluster with Vault
 
    make vault-k8s-integration
 
 We can inspect the policy that this target created by doing:
 
 .. code-block:: bash
+   :caption: Inspect the Kubernetes cluster Vault policy
 
    eval $(make vault-cli-config)
    vault policy read k8spolicy
@@ -82,6 +86,7 @@ Deploy the Vault Secrets Operator
 Now we need to deploy the **Vault Secrets Operator**. We can also then if the connection to Vault has been properly made:
 
 .. code-block:: bash
+   :caption: Inspect VSO resources
 
    make vault-deploy-secrets-operator
 
@@ -101,6 +106,7 @@ After setting up the access between Kubernetes and Vault and having VSO configur
 Here is an example `VaultStaticSecret <https://developer.hashicorp.com/vault/docs/platform/k8s/vso/api-reference#vaultstaticsecret>`_ resource definition:
 
 .. code-block:: bash
+   :caption: Create a VaultStaticSecret resource
 
    kubectl apply -f - << EOF
    apiVersion: secrets.hashicorp.com/v1beta1
@@ -121,12 +127,14 @@ Here is an example `VaultStaticSecret <https://developer.hashicorp.com/vault/doc
 Note that the **destination** is set to `myapp-secret`, which will be the Kubernetes secret created. We can check the status of our vault secret by doing:
 
 .. code-block:: bash
+   :caption: Inspect the status of the VaultStaticSecret resource
 
    kubectl describe vaultstaticsecret/test-secret
 
 Which should throw:
 
 .. code-block:: bash
+   :caption: Inspect the status of the VaultStaticSecret resource
 
    Events:
    Type     Reason            Age   From               Message
@@ -142,6 +150,7 @@ Which should throw:
 As we mentioned earlier, the policy `k8spolicy` didn't give access to our new KV engine, so we need to address that. To know more about policies, please visit Vault's `policy documentation <https://developer.hashicorp.com/vault/docs/concepts/policies>`_:
 
 .. code-block:: bash
+   :caption: Fix Kubernetes cluster auth policy
 
    eval $(make vault-cli-config)
    vault policy read k8spolicy >> /tmp/k8spolicy.hcl
@@ -157,6 +166,7 @@ As we mentioned earlier, the policy `k8spolicy` didn't give access to our new KV
 Now, if we can describe again our `vaultstaticsecret/test-secret`:
 
 .. code-block:: bash
+   :caption: Inspect VaultStaticSecret resource status
 
    Status:
       Last Generation:  2
@@ -175,12 +185,14 @@ Transform secrets
 You can verify that the secret was created in Kubernetes by running:
 
 .. code-block:: bash
+   :caption: Inspect created Kubernetes Secret
 
    kubectl get secret myapp-secret -o yaml
 
 Note that the synchronized secret also has the **.raw** field, which contains the complete information on the Vault secret.
 
 .. code-block:: bash
+   :caption: Decode Kubernetes Secret
 
    kubectl get secret myapp-secret -o jsonpath='{.data._raw}' | base64 -d
 
@@ -189,6 +201,7 @@ Vault Secrets Operator introduces a `transformation <https://developer.hashicorp
 Lets configure our VaultStaticSecret to exclude the `.raw` and `password` fields. Also, we want to add a field named `basicAuth` to be the `basic authentication <https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization#basic_authentication>`_ representation of the username and password:
 
 .. code-block:: bash
+   :caption: Use tranformation to exclude fields and create a new field
 
    kubectl apply -f - << EOF
    apiVersion: secrets.hashicorp.com/v1beta1
@@ -220,6 +233,7 @@ Lets configure our VaultStaticSecret to exclude the `.raw` and `password` fields
 We can now see the `password` and `.raw` fields are no longer present. We can also validate the `basicAuth` field:
 
 .. code-block:: bash
+   :caption: Inspect transformed secret
 
    kubectl get secret myapp-secret -o yaml
    kubectl get secret myapp-secret -o jsonpath='{.data.basicAuth}' | base64 -d | base64 -d
@@ -227,9 +241,12 @@ We can now see the `password` and `.raw` fields are no longer present. We can al
 Automatic secret synchronization
 --------------------------------
 
+.. _tutorial-vault-secret-sync:
+
 Picking on the previous example, we can experiment changing the password in Vault, and see the synchornization happening in real time. We can do that using a simple pod running a bash script. Note that in Kubernetes, secrets mounted as volumes are **automatically updated**, while environment variables are not:
 
 .. code-block:: bash
+   :caption: Create pod that consumes the secret
 
    kubectl apply -f - << EOF
    apiVersion: v1
@@ -263,6 +280,7 @@ Picking on the previous example, we can experiment changing the password in Vaul
 Using three shells, one can observe the pod's logs, the state of the secret and change the value in Vault:
 
 .. code-block:: bash
+   :caption: Update the secret in Vault and monitor synchronization
 
    # Shell #1: Change value in Vault
    eval $(make vault-cli-config)
@@ -282,7 +300,7 @@ Secrets live update and deployment rollout
 To overcome the time it might take for the secret to update in the actual pod, we can use VaultStaticSecret `rolloutRestartTargets` to automatically rollout an update to a resource of type `Deployment`, `DaemonSet`, `StatefulSet`. Together with VSO's automatic synchronization, this can be used to implement :ref:`automatic secret rotation <how-vault-secret-rotation>`, for instance, to cover leaked secrets.
 
 .. code-block:: bash
-
+   :caption: Create deployment that consumes the secret
 
    # Delete previous pod
    kubectl delete pod myapp-pod
@@ -329,6 +347,7 @@ To overcome the time it might take for the secret to update in the actual pod, w
 Now, we can patch our `VaultStaticSecret` accordingly so that it does a rollout on our deployment upon an update of the secret:
 
 .. code-block:: bash
+   :caption: Configure automatic rollout for deployment
 
    kubectl apply -f - << EOF
    apiVersion: secrets.hashicorp.com/v1beta1
@@ -363,6 +382,7 @@ Now, we can patch our `VaultStaticSecret` accordingly so that it does a rollout 
 Again, using two shells, we can observe the deployment's logs and change the value in Vault. To facilitate viewing the logs of multiple pods in a deployment, we can use `stern <https://github.com/stern/stern/releases>`_:
 
 .. code-block:: bash
+   :caption: Update the secret in Vault and monitor synchronization
 
    # Shell #1: Change value in Vault
    eval $(make vault-cli-config)
@@ -400,6 +420,7 @@ Typically, a chart with device servers is composed by:
 Where the `templates/deviceservers.yaml` will use the templates in `ska-tango-util` to generate the Kubernetes resources required to run a Device Server. In the `data` directory, we find the definitions of the device servers themselves. Lets look at an example **device server**:
 
 .. code-block:: yaml
+   :caption: Configure TANGO device to read secret from Vault
 
    instances: ["test"]
    entrypoints:
@@ -430,4 +451,18 @@ Where the `templates/deviceservers.yaml` will use the templates in `ska-tango-ut
        envName: TEST
        default: "minikube-case"
 
-We can add a `secrets` entry per device server, letting you inject secret keys in Vault as environment variables in the Device Server. In the future, we expect to provide more functionality to leverage VSO's **transform** and to allow mounting secrets as files. Please refer to the `TANGO examples <https://gitlab.com/ska-telescope/ska-tango-examples>`_ for up-to-date and more in depth examples.
+We can add a `secrets` entry per device server, letting you inject secret keys in Vault as environment variables in the Device Server. We can also set the `transform` field. Note that we need to add the transformation expression as **{{`<transformation expression>`}}** so that Helm doesn't template it:
+
+.. code-block:: yaml
+   :caption: Adding a secret with transformation
+
+   secrets:
+   - secretPath: dev/skao-team-system/vault-tutorial
+     env:
+     - secretKey: env
+       envName: TEST
+       default: "minikube-case"
+       transform: >-
+         {{`{{ printf "some-secret: %s" (get .Secrets "test_key") }}`}}
+
+In the future, we expect to provide more functionality, as allowing to mount secrets as files. Please refer to the `TANGO examples <https://gitlab.com/ska-telescope/ska-tango-examples>`_ for up-to-date and more in depth examples.

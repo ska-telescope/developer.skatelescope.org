@@ -285,10 +285,7 @@ Adapting the previous example, we no longer create a SecretProviderClass resourc
     apiVersion: secrets.hashicorp.com/v1beta1
     kind: VaultStaticSecret
     metadata:
-      name: api-key-{{ include "ska-tango-ping.fullname" . }}
-      namespace: {{ .Release.Namespace }}
-      labels:
-        {{- include "ska-tango-ping.labels" . | nindent 4 }}
+      name: my-app-secret
     spec:
       type: kv-v2
       mount: <engine>

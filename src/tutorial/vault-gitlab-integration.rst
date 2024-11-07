@@ -33,6 +33,7 @@ Creating a secret in Vault's dev KV engine
 For this first step, you can do it through the `UI <https://vault.skao.int/ui/vault/secrets/dev/kv/list>`_ or, preferably, you can do it using the CLI:
 
 .. code-block:: bash
+   :caption: Add test data to Vault
 
    export VAULT_ADDR=https://vault.skao.int
    export VAULT_TOKEN=$(vault login -address=${VAULT_ADDR} -field=token -no-store -method=oidc role=developer)
@@ -51,6 +52,7 @@ Using Vault secrets in GitLab CI/CD pipelines
 Now that we have data and GitLab's access is provisioned, we simply need to define a job in GitLab - using the `.gitlab-ci.yml` file - to be able to grab secrets from Vault. Note that secrets injected from Vault as environment variables or files are **masked** for security purposes:
 
 .. code-block:: yaml
+   :caption: Add test stage to your pipeline
 
    stages:
      - test-vault
@@ -59,6 +61,7 @@ Now that we have data and GitLab's access is provisioned, we simply need to defi
 Having a stage to run on, we can set up a job to expose a secret as an environment variable:
 
 .. code-block:: yaml
+   :caption: Gitlab job using a secret as an environment variable
 
    vault-secret-env:
      stage: test-vault
@@ -87,6 +90,7 @@ If you are interested, you can do a deep dive on how to implement :ref:`Vault he
 Lets look at an example of file usage:
 
 .. code-block:: yaml
+   :caption: Gitlab job using a secret as a file
 
    vault-secret-file:
      stage: test-vault
