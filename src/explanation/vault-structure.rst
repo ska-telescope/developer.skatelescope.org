@@ -169,7 +169,7 @@ Teams can then manage their own configurations and secrets while being able to s
 Together with the improvement of the :ref:`Kubernetes integration <tutorial-vault>`, the goal is for development teams to cease the usage of GitLab secrets and Makefile changes to the Helm chart **values**
 so that `auditing` and `tracing` of a deployment can be done reliably, replacing it with proper :ref:`GitLab integration <tutorial-vault-gitlab-integration>`.
 
-In order to use the **shared** engines for deployment without a custom solution, like `Flux CD`, teams can simply leverage Makefile operations to source, merge and use multiple values from the target engines.
+In order to use the **shared** engines for deployment without a custom solution, like `Flux CD`, teams can simply leverage :ref:`Makefile <how-vault-gitlab-helm>` operations to source, merge and use multiple values from the target engines.
 
 
 Current Structure

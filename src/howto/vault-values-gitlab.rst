@@ -5,6 +5,11 @@ Using Vault to supply Helm values in Gitlab CICD pipelines
 
 This page covers how we can leverage :ref:`Vault integration with Gitlab <tutorial-vault-gitlab-integration>` and the :ref:`Vault structure <explanation-vault-structure>` to efficiently pass values to the Helm chart installation command. We will use this `repository <https://gitlab.com/ska-telescope/ska-tango-charts>`_ as an example, but the changes done can be replicated to any SKAO repository. You can view the complete `Merge Request <https://gitlab.com/ska-telescope/ska-tango-charts/-/merge_requests/5>`_ for the full set of changes.
 
+.. note::
+
+   Currently Gitlab's `native` integration with Vault doesn't allow to specify a version. This can easily be overcome by implementing custom code to pull the secrets with a particular version and merge them in the supplied order. If you are interested in using this deployment and configuration management strategy, please reach out to the `System Team <https://skao.slack.com/archives/CEMF9HXUZ>`_.
+
+
 Setting up configurations in Vault
 ----------------------------------
 
@@ -260,4 +265,4 @@ This will call the **envsubst** that replaces environment variables in files. Ag
      operator: false
      tango_host: tango-databaseds:10000
 
-This pattern makes it possible to have predefined datacentre/environment-specific values and enables good practice configurations to be re-used by different Helm charts, as setting **global.minikube**, **global.cluster_domain** and perhaps add default **labels** or **annotations** to track the provenance of a deployment to its pipeline or job. More than that, it enables the **sharing** nature of the :ref:`Vault structure <explanation-vault-structure>` without using a third-party service like a `GitOps Kubernetes Operator <https://docs.gitlab.com/ee/user/clusters/agent/gitops.html>`_. If you are interested in using this deployment technology, please reach out to the `System Team <https://skao.slack.com/archives/CEMF9HXUZ>`_ for a collaboration.
+This pattern makes it possible to have predefined datacentre/environment-specific values and enables good practice configurations to be re-used by different Helm charts, as setting **global.minikube**, **global.cluster_domain** and perhaps add default **labels** or **annotations** to track the provenance of a deployment to its pipeline or job. More than that, it enables the **sharing** nature of the :ref:`Vault structure <explanation-vault-structure>` without using a third-party service like a `GitOps Kubernetes Operator <https://docs.gitlab.com/ee/user/clusters/agent/gitops.html>`_. If you are interested in using this deployment and configuration management strategy, please reach out to the `System Team <https://skao.slack.com/archives/CEMF9HXUZ>`_.

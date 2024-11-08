@@ -294,6 +294,42 @@ Using three shells, one can observe the pod's logs, the state of the secret and 
 
 You might notice that, even though the secret has been updated, it is not propagated right away to the pod. Depending on the cluster setup, this can take some minutes to happen.
 
+Pinning a secret's version
+--------------------------
+
+Using other methods, it is hard to **pin** a certain configuration. With Vault Secrets Operator and VaultStaticSecret, we can set the `version <https://developer.hashicorp.com/vault/docs/platform/k8s/vso/api-reference#vaultstaticsecret>`_ field to use a specific **version** in Vault. This ensures that we are using consistent inputs and we can control when these secrets get updated. 
+
+.. code-block:: bash
+   :caption: Pinning a secret version
+
+   kubectl apply -f - << EOF
+   apiVersion: secrets.hashicorp.com/v1beta1
+   kind: VaultStaticSecret
+   metadata:
+     name: test-secret
+     namespace: default
+   spec:
+     refreshAfter: 10s
+     path: myservice/myapp
+     type: kv-v2
+     mount: test-kv
+     version: 3
+     destination:
+       name: myapp-secret
+       create: true
+       overwrite: true
+       labels:
+         skao.int/tutorial: secrets
+       transformation:
+         excludeRaw: true
+         excludes:
+           - password
+         templates:
+           basicAuth:
+             text: >-
+               {{- b64enc (printf "%s:%s" (get .Secrets "username") (get .Secrets "password")) -}}
+   EOF
+
 Secrets live update and deployment rollout
 ------------------------------------------
 
@@ -465,4 +501,4 @@ We can add a `secrets` entry per device server, letting you inject secret keys i
        transform: >-
          {{`{{ printf "some-secret: %s" (get .Secrets "test_key") }}`}}
 
-In the future, we expect to provide more functionality, as allowing to mount secrets as files. Please refer to the `TANGO examples <https://gitlab.com/ska-telescope/ska-tango-examples>`_ for up-to-date and more in depth examples.
+In the future, we expect to provide more functionality, as allowing to mount secrets as files or specifying the secret **version** in Vault. Please refer to the `TANGO examples <https://gitlab.com/ska-telescope/ska-tango-examples>`_ for up-to-date and more in depth examples.
