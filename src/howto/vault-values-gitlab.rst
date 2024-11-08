@@ -12,6 +12,10 @@ We will use this `repository <https://gitlab.com/ska-telescope/ska-tango-charts>
    If you are interested in using this deployment and configuration management strategy, please reach out to the `System Team <https://skao.slack.com/archives/CEMF9HXUZ>`_.
 
 
+.. note::
+
+   Currently Gitlab's `native` integration with Vault doesn't allow to specify a version. This can be overcome by implementing custom code to pull the secrets with a particular version and merge them in the supplied order, keeping compatibility with Helm's `-f` argument precedence. If you are interested in using this deployment and configuration management strategy, please reach out to the `System Team <https://skao.slack.com/archives/CEMF9HXUZ>`_.
+
 Setting up configurations in Vault
 ----------------------------------
 
@@ -186,33 +190,7 @@ On the pipeline, we set:
          vault: skao-team-system/ska-tango-charts/values.yml@dev
          file: true
 
-It then becomes very clear what we are going to supply and the order of precedence. Note that the only change we are making between the two jobs for the values files is the path we are reading from for `DEP_STRATEGY_VALUES` to enable or disable the operator.
-
-Looking at the `pipeline <https://gitlab.com/ska-telescope/ska-tango-charts/-/pipelines/1532315319>`__ (e.g., for the **no operator** job), the code becomes cleaner:
-
-.. code-block:: bash
-   :caption: Command and user-supplied values when using `K8S_VALUES_FILES`
-   
-   $ helm upgrade --install test \
-     -f /builds/ska-telescope/ska-tango-charts.tmp/ENVIRONMENT_VALUES \
-     -f /builds/ska-telescope/ska-tango-charts.tmp/DEP_STRATEGY_VALUES \
-     -f /builds/ska-telescope/ska-tango-charts.tmp/APP_VALUES \
-     ./charts/ska-tango-umbrella/ \
-     --namespace ci-ska-tango-charts-db00c1fe-no-op
-
-   $ helm get values test -n ci-ska-tango-charts-db00c1fe-no-op
-   USER-SUPPLIED VALUES:
-   global:
-     cluster_domain: techops.internal.skao.int
-     device_server_port: 45450
-     exposeAllDS: false
-     exposeDatabaseDS: false
-     minikube: false
-     operator: false
-     tango_host: tango-databaseds:10000
-
-These inputs match the ones provided and are very much predictable and easy to understand. If we want to have dynamic values in the values files, we should always make sure they are related to the current context and not involving logic
-(e.g., if namespace starts with `dev`, set ten different flags). Lets look at an example:
+It becomes very clear what we are going to supply and the order of precedence. Note that the only change we are making between the two jobs for the values files is the path we reading from for `DEP_STRATEGY_VALUES` to enable or disable the operator. If we want to have dynamic values in the values files, we should always make sure they are related to the current context and not involving logic (e.g., if namespace starts with `dev`, set some flag to false). Lets look at an example:
 
 .. code-block:: yaml
    :caption: Contextual values file: shared/default/context/values.yml@dev
@@ -239,7 +217,7 @@ We would need to refactor our Makefile to call the environment substitution tool
    K8S_CHART_PARAMS ?= $(foreach f,$(K8S_VALUES_FILES),-f <(envsubst < $(f)))
    endif
 
-This will call the **envsubst** that replaces environment variables in files. Again, inspecting the `pipeline <https://gitlab.com/ska-telescope/ska-tango-charts/-/pipelines/1532348364>`_ (e.g., for the **no operator** job), the code becomes cleaner:
+This will call the **envsubst** that replaces environment variables in files. Again, inspecting the `no-operator <https://gitlab.com/ska-telescope/ska-tango-charts/-/jobs/8308326263>`_ the code becomes cleaner:
 
 .. code-block:: bash
    :caption: Command and user-supplied values when using `K8S_VALUES_FILES`
@@ -250,24 +228,24 @@ This will call the **envsubst** that replaces environment variables in files. Ag
      -f <(envsubst < /builds/ska-telescope/ska-tango-charts.tmp/DEP_STRATEGY_VALUES) \
      -f <(envsubst < /builds/ska-telescope/ska-tango-charts.tmp/APP_VALUES) \
      ./charts/ska-tango-umbrella/ \
-     --namespace ci-ska-tango-charts-ff1fdcee-no-op
+     --namespace ci-ska-tango-charts-56b90a08-no-op
 
-   $ helm get values test -n ci-ska-tango-charts-ff1fdcee-no-op
+   $ helm get values test -n ci-ska-tango-charts-56b90a08-no-op
    USER-SUPPLIED VALUES:
    global:
      cluster_domain: techops.internal.skao.int
      context:
        gitlab:
          author: Pedro Osório Silva <pedroosorio.eeic@gmail.com>
-         commit: ff1fdcee3636d03e605643d37bc51a31c846b6b1
-         pipelineId: 1532348364
+         commit: 56b90a08873b6e9202a5dec7a491ca6d298d9ed5
+         pipelineId: 1533436116
          project: ska-telescope/ska-tango-charts
          projectId: 61564537
          ref: st-2137-demo-vault-value-injection
        kubernetes:
          datacentre: stfc-techops
          environment: production
-         namespace: ci-ska-tango-charts-ff1fdcee-no-op
+         namespace: ci-ska-tango-charts-56b90a08-no-op
      device_server_port: 45450
      exposeAllDS: false
      exposeDatabaseDS: false
@@ -280,3 +258,79 @@ adding default **labels** or **annotations** to track the provenance of a deploy
 a `GitOps Kubernetes Operator <https://docs.gitlab.com/ee/user/clusters/agent/gitops.html>`_.
 
 If you are interested in using this deployment and configuration management strategy, please reach out to the `System Team <https://skao.slack.com/archives/CEMF9HXUZ>`_.
+
+Reusing supplied values
+-----------------------
+
+Sometimes we need to use variables for tests that we used for deployment. If we no longer use environment variables but instead use **values files**, we need to get the actual supplied values from Helm itself. That can be acomplished by adding a post-job to the chart installation that dumps the release values. In this repository, we care about the `SKA_TANGO_OPERATOR` and `TANGO_HOST` values for the `k8s-test` job. With that in mind, we can retrieve the configurations:
+
+::
+
+   RELEASE_VALUES_FILE ?= $(RELEASE_NAME).$(KUBE_NAMESPACE).values.yml
+   ifneq ($(K8S_VALUES_FILES),)
+   K8S_CHART_PARAMS ?= $(foreach f,$(K8S_VALUES_FILES),-f <(envsubst < $(f)))
+   ifneq ("$(wildcard $(RELEASE_VALUES_FILE))","")
+   $(info Infering environment from release information ...)
+   SKA_TANGO_OPERATOR := $(shell jq -r '.global.operator' $(RELEASE_VALUES_FILE))
+   TANGO_HOST := $(shell jq -r '.global.tango_host' $(RELEASE_VALUES_FILE))
+   $(info Setting SKA_TANGO_OPERATOR=$(SKA_TANGO_OPERATOR))
+   $(info Setting TANGO_HOST=$(TANGO_HOST))
+   endif
+   endif
+
+   ...
+
+   k8s-post-install-chart:
+	   @helm get values $(RELEASE_NAME) -n $(KUBE_NAMESPACE) -o json 2>/dev/null > $(RELEASE_VALUES_FILE)
+
+Comparing both jobs - `with <https://gitlab.com/ska-telescope/ska-tango-charts/-/jobs/8308326248>`_ and `without <https://gitlab.com/ska-telescope/ska-tango-charts/-/jobs/8308326263>`_ the operator - we get:
+
+.. code-block:: bash
+   :caption: Variable inference with the operator
+
+   USER-SUPPLIED VALUES:
+   global:
+     cluster_domain: techops.internal.skao.int
+     device_server_port: 45450
+     exposeAllDS: false
+     exposeDatabaseDS: false
+     minikube: false
+     operator: true
+     tango_host: tango-databaseds:10000
+   
+   $ make k8s-test || true
+   Infering environment from release information ...
+   Setting SKA_TANGO_OPERATOR=true
+   Setting TANGO_HOST=tango-databaseds:10000
+
+.. code-block:: bash
+   :caption: Variable inference without the operator
+
+   USER-SUPPLIED VALUES:
+   global:
+     cluster_domain: techops.internal.skao.int
+     context:
+       gitlab:
+         author: Pedro Osório Silva <pedroosorio.eeic@gmail.com>
+         commit: 56b90a08873b6e9202a5dec7a491ca6d298d9ed5
+         pipelineId: 1533436116
+         project: ska-telescope/ska-tango-charts
+         projectId: 61564537
+         ref: st-2137-demo-vault-value-injection
+       kubernetes:
+         datacentre: stfc-techops
+         environment: production
+         namespace: ci-ska-tango-charts-56b90a08-no-op
+     device_server_port: 45450
+     exposeAllDS: false
+     exposeDatabaseDS: false
+     minikube: false
+     operator: false
+     tango_host: tango-databaseds:10000
+   
+   $ make k8s-test || true
+   Infering environment from release information ...
+   Setting SKA_TANGO_OPERATOR=false
+   Setting TANGO_HOST=tango-databaseds:10000
+
+This in turn enables us to be **sure** of the value of these flags, as we lose that assurance with internal Makefile logic. Having inputs that come from a single source of truth enable teams to improve the stability of the deployments, as well as making them more maintainable and scalable.
