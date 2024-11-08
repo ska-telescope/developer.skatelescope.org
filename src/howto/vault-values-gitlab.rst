@@ -1,19 +1,22 @@
 .. _how-vault-gitlab-helm:
 
-Using Vault to supply Helm values in Gitlab CICD pipelines
-**********************************************************
+Using Vault to supply Helm values in GitLab CI/CD pipelines
+***********************************************************
 
-This page covers how we can leverage :ref:`Vault integration with Gitlab <tutorial-vault-gitlab-integration>` and the :ref:`Vault structure <explanation-vault-structure>` to efficiently pass values to the Helm chart installation command. We will use this `repository <https://gitlab.com/ska-telescope/ska-tango-charts>`_ as an example, but the changes done can be replicated to any SKAO repository. You can view the complete `Merge Request <https://gitlab.com/ska-telescope/ska-tango-charts/-/merge_requests/5>`_ for the full set of changes.
+This page covers how we can leverage :ref:`Vault integration with GitLab <tutorial-vault-gitlab-integration>` and the :ref:`Vault structure <explanation-vault-structure>` to efficiently pass values to the Helm chart installation command. 
+We will use this `repository <https://gitlab.com/ska-telescope/ska-tango-charts>`_ as an example, but the changes done can be replicated to any SKAO repository. You can see the complete `Merge Request <https://gitlab.com/ska-telescope/ska-tango-charts/-/merge_requests/5>`_ for the full set of changes.
 
 .. note::
 
-   Currently Gitlab's `native` integration with Vault doesn't allow to specify a version. This can easily be overcome by implementing custom code to pull the secrets with a particular version and merge them in the supplied order. If you are interested in using this deployment and configuration management strategy, please reach out to the `System Team <https://skao.slack.com/archives/CEMF9HXUZ>`_.
+   Currently GitLab's `native` integration with Vault doesn't allow for a version to be specified. This can easily be overcome by implementing custom code to pull the secrets with a particular version and merge them in the supplied order.
+   If you are interested in using this deployment and configuration management strategy, please reach out to the `System Team <https://skao.slack.com/archives/CEMF9HXUZ>`_.
 
 
 Setting up configurations in Vault
 ----------------------------------
 
-First, we should analyze what values we are currently being passed using Makefile arguments. This pipeline has two test jobs - deploy with and without the **SKA Tango Operator**. We will analyze both to demonstrate also how easy it is to setup a pipeline with jobs that have differing inputs. Lets look at the supplied values:
+First, we should analyse what values we are currently being passed using Makefile arguments. This pipeline has two test jobs: deploy with and without the **SKA Tango Operator**. We will analyse both to demonstrate also how easy it is to set up a pipeline with jobs that have differing inputs.
+Lets look at the supplied values:
 
 .. code-block:: yaml
    :caption: Values passed for the deployment without the operator
@@ -29,7 +32,7 @@ First, we should analyze what values we are currently being passed using Makefil
      tango_host: tango-databaseds:10000
 
 .. code-block:: yaml
-   :caption: Values passed for the deployment without the operator
+   :caption: Values passed for the deployment with the operator
 
    USER-SUPPLIED VALUES:
    global:
@@ -41,11 +44,11 @@ First, we should analyze what values we are currently being passed using Makefil
      operator: true
      tango_host: tango-databaseds:10000
 
-Note that the only difference is how we the `operator` flag is set. We can identify three types of configurations in these values:
+Note that the only difference is how the `operator` flag is set. We can identify three types of configurations in these values:
 
 - Datacentre/environment specific configurations:
     - cluster_domain: specific to the cluster the chart will be deployed to
-    - exposeAllDS: configure LoadBalancer creation by default (e.g, it can quickly exhaust NodePorts in a cluster like the CICD cluster if set to true)
+    - exposeAllDS: configure LoadBalancer creation by default (e.g, it can quickly exhaust NodePorts in a cluster like the CI/CD cluster if set to true)
     - exposeDatabaseDS: same as `exposeAllDS`
     - minikube: Control if deploying to a minikube cluster or not
 - Deployment strategy configurations:
@@ -54,7 +57,7 @@ Note that the only difference is how we the `operator` flag is set. We can ident
     - tango_host: Target TANGO database address
     - device_server_port: Target Device Server port
 
-Splitting the values, we end up with the following values files, that we can add to Vault:
+Splitting the values, we end up with the following values files that can be added to Vault:
 
 #. Environment-specific values
 
@@ -93,7 +96,7 @@ Splitting the values, we end up with the following values files, that we can add
         operator: false
 
 
-Modifying the Makefile and Gitlab pipeline definition
+Modifying the Makefile and GitLab pipeline definition
 -----------------------------------------------------
 
 It is a widespread pattern to supply Helm chart configurations using Makefile logic as switches (flags), as we currently use in ska-tango-charts repository:
@@ -114,7 +117,11 @@ It is a widespread pattern to supply Helm chart configurations using Makefile lo
      --set global.operator=$(SKA_TANGO_OPERATOR) \
      --set global.cluster_domain=$(CLUSTER_DOMAIN)
 
-This is an inefficient pattern, as it highly reduces the readability and predictability of the supplied values. We have the defaults in the Makefile, and then we need to trace the logic we might implement to set these variables, as well as the value of a particular environment variable at that time, for the specific job in the pipeline. The maintainability and usability of a chart that needs a Makefile to be deployed is severely **degraded**. In the pipeline, we install the chart using:
+This is an inefficient pattern, as it highly reduces the readability and predictability of the supplied values. We have the defaults in the Makefile, and then we
+need to trace the logic we might implement to set these variables, as well as the value of a particular environment variable at that time, for the specific job in the pipeline.
+The maintainability and usability of a chart that needs a Makefile to be deployed is severely **degraded**.
+
+In the pipeline, we install the chart using:
 
 .. code-block:: bash
    :caption: Command using switches passed in the Makefile
@@ -130,7 +137,7 @@ This is an inefficient pattern, as it highly reduces the readability and predict
      ./charts/ska-tango-umbrella/ \
      --namespace ci-ska-tango-charts-9c805bda-no-op
 
-This `train` of switches can quickly grow, as well as the internal logic in the Makefile that make them up. It is also difficul to establish a precedence of values without reading the complete Makefile. We can adapt it to use the values files we are created previously:
+This `train` of switches can quickly grow, as well as the internal logic in the Makefile that makes these up. It is also difficult to establish a precedence of values without reading the complete Makefile. We can adapt it to use the values files we are created previously:
 
 ::
 
@@ -141,7 +148,7 @@ This `train` of switches can quickly grow, as well as the internal logic in the 
 On the pipeline, we set:
 
 .. code-block:: yaml
-   :caption: CICD pipeline changes
+   :caption: CI/CD pipeline changes
 
    k8s-test:
      variables:
@@ -179,7 +186,9 @@ On the pipeline, we set:
          vault: skao-team-system/ska-tango-charts/values.yml@dev
          file: true
 
-It becomes very clear what we are going to supply and the order of precedence. Note that the only change we are making between the two jobs for the values files is the path we reading from for `DEP_STRATEGY_VALUES` to enable or disable the operator. Looking at the `pipeline <https://gitlab.com/ska-telescope/ska-tango-charts/-/pipelines/1532315319>`__ (e.g., for the **no operator** job), the code becomes cleaner:
+It then becomes very clear what we are going to supply and the order of precedence. Note that the only change we are making between the two jobs for the values files is the path we are reading from for `DEP_STRATEGY_VALUES` to enable or disable the operator.
+
+Looking at the `pipeline <https://gitlab.com/ska-telescope/ska-tango-charts/-/pipelines/1532315319>`__ (e.g., for the **no operator** job), the code becomes cleaner:
 
 .. code-block:: bash
    :caption: Command and user-supplied values when using `K8S_VALUES_FILES`
@@ -202,7 +211,8 @@ It becomes very clear what we are going to supply and the order of precedence. N
      operator: false
      tango_host: tango-databaseds:10000
 
-These inputs match the ones provided and are very much predictable and easy to understand. If we want to have dynamic values in the values files, we should always make sure they are related to the current context and not involving logic (e.g., if namespace starts with `dev`, set ten different flags). Lets look at an example:
+These inputs match the ones provided and are very much predictable and easy to understand. If we want to have dynamic values in the values files, we should always make sure they are related to the current context and not involving logic
+(e.g., if namespace starts with `dev`, set ten different flags). Lets look at an example:
 
 .. code-block:: yaml
    :caption: Contextual values file: shared/default/context/values.yml@dev
@@ -265,4 +275,8 @@ This will call the **envsubst** that replaces environment variables in files. Ag
      operator: false
      tango_host: tango-databaseds:10000
 
-This pattern makes it possible to have predefined datacentre/environment-specific values and enables good practice configurations to be re-used by different Helm charts, as setting **global.minikube**, **global.cluster_domain** and perhaps add default **labels** or **annotations** to track the provenance of a deployment to its pipeline or job. More than that, it enables the **sharing** nature of the :ref:`Vault structure <explanation-vault-structure>` without using a third-party service like a `GitOps Kubernetes Operator <https://docs.gitlab.com/ee/user/clusters/agent/gitops.html>`_. If you are interested in using this deployment and configuration management strategy, please reach out to the `System Team <https://skao.slack.com/archives/CEMF9HXUZ>`_.
+This pattern makes it possible to have predefined datacentre/environment-specific values and enables good practice configurations to be re-used by different Helm charts, as setting **global.minikube**, **global.cluster_domain** and perhaps
+adding default **labels** or **annotations** to track the provenance of a deployment to its pipeline or job. More than that, it enables the **sharing** nature of the :ref:`Vault structure <explanation-vault-structure>` without using a third-party service like
+a `GitOps Kubernetes Operator <https://docs.gitlab.com/ee/user/clusters/agent/gitops.html>`_.
+
+If you are interested in using this deployment and configuration management strategy, please reach out to the `System Team <https://skao.slack.com/archives/CEMF9HXUZ>`_.
