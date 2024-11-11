@@ -302,7 +302,7 @@ You might notice that, even though the secret has been updated, it is not propag
 Pinning a secret's version
 --------------------------
 
-Using other methods, it is hard to **pin** a certain configuration. With Vault Secrets Operator and VaultStaticSecret, we can set the `version <https://developer.hashicorp.com/vault/docs/platform/k8s/vso/api-reference#vaultstaticsecret>`_ field to use a specific **version** in Vault. This ensures that we are using consistent inputs and we can control when these secrets get updated. 
+With Vault Secrets Operator and VaultStaticSecret, we can set the `version <https://developer.hashicorp.com/vault/docs/platform/k8s/vso/api-reference#vaultstaticsecret>`_ field to use a specific **version** in Vault. This ensures that we are using consistent inputs and we can control when these secrets get updated. 
 
 .. code-block:: bash
    :caption: Pinning a secret version

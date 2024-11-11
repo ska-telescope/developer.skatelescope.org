@@ -115,8 +115,10 @@ Lets consider the following example of a simple deployment with 2 environment va
                 - name: PASSWORD
                   value: "{{ .Values.password }}"
 
-With this approach we need to pass the environment variables to the Helm values file where these can be overridden. 
-To do so we need to have those variables stored somewhere - like Gitlab CI variables - and pass them using Helm arguments in the Makefile. 
+With this approach we need to pass the environment variables to the Helm values file where these can be overridden.
+
+To do so we need to have those variables stored somewhere - like Gitlab CI variables - and pass them using Helm arguments in the Makefile.
+
 This is insecure - as we cannot efficiently manage access control to the variables - and it is not traceable.
 
 Deprecated: Vault Sidecar Injector
@@ -180,9 +182,7 @@ Deprecated: Vault CSI Provider
 
 The CSI Secrets Store driver allows users to inject data in pods as volumes, regardless of the provider, if these follow the `CSI <https://kubernetes.io/blog/2019/01/15/container-storage-interface-ga/>`_ - Container Storage Interface.
 
-For secret stores, we can define a `SecretProviderClass <https://secrets-store-csi-driver.sigs.k8s.io/getting-started/usage>`_ that defines which secret provider to use and what secrets to retrieve. When, using Vault, pods requesting CSI volumes are created,
-the CSI Secrets Store driver will send the request to the `Vault CSI Provider <https://developer.hashicorp.com/vault/docs/platform/k8s/csi>`_. The CSI Provider will then use the `SecretProviderClass` specification and the pod's service account to retrieve the secrets´
-from Vault and mount them into the pod's CSI volume.
+For secret stores, we can define a `SecretProviderClass <https://secrets-store-csi-driver.sigs.k8s.io/getting-started/usage>`_ that defines which secret provider to use and what secrets to retrieve. When, using Vault, pods requesting CSI volumes are created, the CSI Secrets Store driver will send the request to the `Vault CSI Provider <https://developer.hashicorp.com/vault/docs/platform/k8s/csi>`_. The CSI Provider will then use the `SecretProviderClass` specification and the pod's service account to retrieve the secrets´ from Vault and mount them into the pod's CSI volume.
 
 To adapt the previous example to use the CSI Provider, we first need to add a `SecretProviderClass` resource:
 
@@ -217,6 +217,7 @@ To adapt the previous example to use the CSI Provider, we first need to add a `S
 This is more convenient than adding annotations to pods, as now we can actually construct a secret in Kubernetes that we can compose from multiple secrets.
 
 Under `parameters` we specify how to get to and authenticate with Vault and which **objects** - secret keys named by `objectName` - to pull. Then, under `secretObjects`, we instruct the CSI driver what Kubernetes Secrets to create and how to structure them.
+
 Now, we can change our deployment:
 
 .. code-block:: yaml
@@ -275,6 +276,7 @@ Vault Secrets Operator
 ######################
 
 The Vault Secrets Operator breaks away from the inefficient limitations of the previous solutions by implementing an `operator <https://kubernetes.io/docs/concepts/extend-kubernetes/operator/>`_ and `CRDs <https://developer.hashicorp.com/vault/docs/platform/k8s/vso/sources/vault>`_. The main difference to the previous solutions is that it is no longer needed for a Vault secret "link" to be present on a workload - simply defining the VaultStaticSecret or VaultDynamicSecret CRDs is enough to have the operator synchronise secrets as Kubernetes secrets.
+
 From that point onwards we can leverage secrets the way we would any other secret without having second considerations.
 
 Adapting the previous example, we no longer create a SecretProviderClass resource but a **VaultStaticSecret**:
@@ -340,8 +342,7 @@ Now, we can simplify the deployment manifest compared to either of the previous 
 
 Note that, now, we don't need to define `Volumes` or `VolumeMounts` and the secret will be created regardless of a pod referring to it.
 
-VSO not only brings the simplicity of defining secrets but also brings new powerful features. To know more about them, please follow the :ref:`tutorial <tutorial-vault>` where we cover,
-end-to-end, the configuration of a Vault instance in a Minikube cluster, the deployment of Vault Secrets Operator and we explore some of its novel features like automatic `rollout restarts <https://developer.hashicorp.com/vault/docs/platform/k8s/vso/api-reference#rolloutrestarttarget>`_ and `transformations <https://developer.hashicorp.com/vault/docs/platform/k8s/vso/secret-transformation>`_.
+VSO not only brings the simplicity of defining secrets but also brings new powerful features. To know more about them, please follow the :ref:`tutorial <tutorial-vault>` where we cover, end-to-end, the configuration of a Vault instance in a Minikube cluster, the deployment of Vault Secrets Operator and we explore some of its novel features like automatic `rollout restarts <https://developer.hashicorp.com/vault/docs/platform/k8s/vso/api-reference#rolloutrestarttarget>`_ and `transformations <https://developer.hashicorp.com/vault/docs/platform/k8s/vso/secret-transformation>`_.
 
 A working example on the SKA projects of this method can be found `here <https://gitlab.com/ska-telescope/ska-tango-ping/-/tree/254646c59f1e6a916f2451dc007037787a4448d2>`__:
 

@@ -1,7 +1,7 @@
 .. _how-vault-secret-rotation:
 
-Rotate secrets with Vault Secrets Operator and Kubernetes
-*********************************************************
+How to rotate secrets with Vault Secrets Operator and Kubernetes
+****************************************************************
 
 This page covers how to automatically rotate secrets in a Kubernetes cluster in case of a secret leak or something similar.
 

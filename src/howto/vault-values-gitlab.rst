@@ -1,14 +1,16 @@
 .. _how-vault-gitlab-helm:
 
-Using Vault to supply Helm values in GitLab CI/CD pipelines
-***********************************************************
+How to use Vault to supply Helm values in GitLab CI/CD pipelines
+****************************************************************
 
-This page covers how we can leverage :ref:`Vault integration with GitLab <tutorial-vault-gitlab-integration>` and the :ref:`Vault structure <explanation-vault-structure>` to efficiently pass values to the Helm chart installation command. 
+This page covers how we can leverage :ref:`Vault integration with GitLab <tutorial-vault-gitlab-integration>` and the :ref:`Vault structure <explanation-vault-structure>` to efficiently pass values to the Helm chart installation command.
+
 We will use this `repository <https://gitlab.com/ska-telescope/ska-tango-charts>`_ as an example, but the changes done can be replicated to any SKAO repository. You can see the complete `Merge Request <https://gitlab.com/ska-telescope/ska-tango-charts/-/merge_requests/5>`_ for the full set of changes.
 
 .. note::
 
    Currently GitLab's `native` integration with Vault doesn't allow for a version to be specified. This can easily be overcome by implementing custom code to pull the secrets with a particular version and merge them in the supplied order.
+
    If you are interested in using this deployment and configuration management strategy, please reach out to the `System Team <https://skao.slack.com/archives/CEMF9HXUZ>`_.
 
 
@@ -141,7 +143,7 @@ In the pipeline, we install the chart using:
      ./charts/ska-tango-umbrella/ \
      --namespace ci-ska-tango-charts-9c805bda-no-op
 
-This `train` of switches can quickly grow, as well as the internal logic in the Makefile that makes these up. It is also difficult to establish a precedence of values without reading the complete Makefile. We can adapt it to use the values files we are created previously:
+This `chain` of switches can quickly grow, as well as the internal logic in the Makefile that makes these up. It is also difficult to establish a precedence of values without reading the complete Makefile. We can adapt it to use the values files we are created previously:
 
 ::
 

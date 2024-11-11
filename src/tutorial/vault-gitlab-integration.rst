@@ -85,6 +85,7 @@ With this approach you can securely inject secrets from Vault into your deployme
 If you are going to use the secrets in Kubernetes, we strongly advise to use Kubernetes secrets. To know more about it, please check out the tutorial that covers :ref:`Vault in Kubernetes <tutorial-vault>`.
 
 If you still want to use secrets in the deployment directly, a better way lies in using files - for instance - to be passed as `values.yml` to `make k8s-install-chart`. If we use files directly, we can at least have an idea of what the injected values were by comparing the job date and looking for the version of the secret in Vault that was in place at that point in time.
+
 If you are interested, you can do a deep dive on how to implement :ref:`Vault helm values injection <how-vault-gitlab-helm>`.
 
 Lets look at an example of file usage:

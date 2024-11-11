@@ -5,7 +5,9 @@ Vault Structure
 ===============
 
 In modern cloud environments, securely and efficiently managing sensitive information - like API keys and/or credentials - as well as configuration files is crucial. Vault KV engines offer a secure way to store and manage this data, acting as a secure store for configurations in general.
+
 By utilising KV paths, we can implement a **structure** - driven by path naming standards and access-control policies - that brings flexibility and practicality when managing configurations and secrets. Understanding how these are structured and accessed will help their integration in SKAO applications and infrastructure.
+
 Note that this structure is transversal to the SKAO, as it is used by the System and Platform Teams for infrastructure and services, AIV and Development teams for application deployments regarding testing, integration, staging and production.
 
 .. note::
