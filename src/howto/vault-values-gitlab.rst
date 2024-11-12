@@ -13,11 +13,6 @@ We will use this `repository <https://gitlab.com/ska-telescope/ska-tango-charts>
 
    If you are interested in using this deployment and configuration management strategy, please reach out to the `System Team <https://skao.slack.com/archives/CEMF9HXUZ>`_.
 
-
-.. note::
-
-   Currently Gitlab's `native` integration with Vault doesn't allow to specify a version. This can be overcome by implementing custom code to pull the secrets with a particular version and merge them in the supplied order, keeping compatibility with Helm's `-f` argument precedence. If you are interested in using this deployment and configuration management strategy, please reach out to the `System Team <https://skao.slack.com/archives/CEMF9HXUZ>`_.
-
 Setting up configurations in Vault
 ----------------------------------
 
