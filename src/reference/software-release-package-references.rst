@@ -101,11 +101,6 @@ To be declared as valid, an artefact must be decorated with a set of metadata wh
                     }
 
 More information can be found in `Predefined variables reference <https://docs.gitlab.com/ee/ci/variables/predefined_variables.html>`_.
-The procedure for including these metadata is documented in `Deploying Artefacts <url to be added>`_.
-
-.. todo::
-
-    Deploying Artefacts to be linked to Ugur's How-to page on this
 
 Global Gitlab Variables for the Central Artefact Repository (CAR)
 =================================================================
