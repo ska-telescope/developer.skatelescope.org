@@ -3,23 +3,23 @@
 Vault
 =====
 
-This reference page provides quick access to all documentation related to SKAO's Vault usage. Below you'll find a list of resources categorized for easy navigation.
+This reference page provides quick access to all documentation related to SKAO's Vault usage. Below you'll find a list of resources categorised for easy navigation.
 
 .. list-table:: Vault Documentation Reference
    :header-rows: 0
    :widths: 20 80
 
    * - :ref:`Vault Reference <reference-vault>`
-     - Overview of Vault usage, including key references to tools, structure, integrations, and best practices.
+     - Overview of Vault usage, including key references to tools, structure, integrations and best practices.
    * - :ref:`Vault as a secrets management tool <tools-vault>`
-     - Detailed explanation of how HashiCorp Vault is utilized for secrets management, authentication methods, and all integrations with Kubernetes.
+     - Detailed explanation of how HashiCorp Vault is utilised for secrets management, authentication methods and all integrations with Kubernetes.
    * - :ref:`Vault Structure <explanation-vault-structure>`
-     - Comprehensive guide on the hierarchical organization of Vault KV engines, path naming standards, and access-control policies within SKAO.
+     - Comprehensive guide on the hierarchical organisation of Vault KV engines, path naming standards and access-control policies within SKAO.
    * - :ref:`Current Vault secret hierarchy <explanation-vault-current-structure>`
-     - Current representation and organization of Vault secrets across various datacentres and environments.
+     - Current representation and organisation of Vault secrets across various datacentres and environments.
    * - :ref:`Vault-Kubernetes integration with Vault Secrets Operator <tutorial-vault>`
-     - Tutorial on setting up Vault Secrets Operator (VSO) for synchronizing secrets in Kubernetes, including deployment steps and resource creation.
-   * - :ref:`Vault-Gitlab integration tutorial <tutorial-vault-gitlab-integration>`
+     - Tutorial on setting up Vault Secrets Operator (VSO) for synchronising secrets in Kubernetes, including deployment steps and resource creation.
+   * - :ref:`Vault-GitLab integration tutorial <tutorial-vault-gitlab-integration>`
      - Guide on integrating GitLab CI/CD pipelines with Vault using OIDC for secure secret retrieval and injection as environment variables or files.
    * - :ref:`How to use Vault provided values.yml to deploy Helm charts <how-vault-gitlab-helm>`
      - Instructions on leveraging Vault to supply `values.yml` for Helm chart deployments within GitLab CI/CD pipelines, enhancing security and maintainability.
@@ -34,7 +34,7 @@ Kubernetes integration
 VaultStaticSecret resource
 --------------------------
 
-The `VaultStaticSecret <https://developer.hashicorp.com/vault/docs/platform/k8s/vso/api-reference#vaultstaticsecret>`_ resource instructs the Vault Secrets Operator to synchronize a Vault secret into a Kubernetes Secret. Below, you can find the resource manifest with the most useful fields explained:
+The `VaultStaticSecret <https://developer.hashicorp.com/vault/docs/platform/k8s/vso/api-reference#vaultstaticsecret>`_ resource instructs the Vault Secrets Operator to synchronise a Vault secret into a Kubernetes Secret. Below, you can find the resource manifest with the most useful fields explained:
 
 .. code-block:: yaml
    :caption: VaultStaticSecret resource
@@ -67,7 +67,7 @@ The `VaultStaticSecret <https://developer.hashicorp.com/vault/docs/platform/k8s/
            <key name>:
              text: <Go template expression: https://pkg.go.dev/text/template>
 
-This is extremely versatile as it allows data transformation and allows for instantaneous or periodic synchronization. To use it, simply use the secret as any other Kubernetes `secret <https://kubernetes.io/docs/concepts/configuration/secret/>`_. To know more about it, check our tutorial on :ref:`Kubernetes integration <tutorial-vault>`.
+This is extremely versatile as it allows data transformation and allows for instantaneous or periodic synchronisation. To use it, simply use the secret as any other Kubernetes `secret <https://kubernetes.io/docs/concepts/configuration/secret/>`_. To know more about it, check our tutorial on :ref:`Kubernetes integration <tutorial-vault>`.
 
 DeviceServer resource
 ---------------------
@@ -127,7 +127,7 @@ Which can output:
    * 1 error occurred:
       * permission denied
 
-The output will be the same as Vault CLI's output. It can include any of the errors specified in the `documentation <https://developer.hashicorp.com/vault/api-docs#http-status-codes>`_, more notably:
+The output will be the same as the Vault CLI's output. It can include any of the errors specified in the `documentation <https://developer.hashicorp.com/vault/api-docs#http-status-codes>`_, more notably:
 
 - **400**: Invalid request, missing or invalid data.
 - **403**: Forbidden, your authentication details are either incorrect, you don't have access to this secret.
@@ -138,13 +138,13 @@ You can also view these status in **Headlamp** by going into the `VaultStaticSec
 .. image:: images/vss-headlamp.png
   :alt: Headlamp VaultStaticSecret page
 
-Gitlab integration
+GitLab integration
 ******************
 
-We can integrate Gitlab pipelines with Vault to securely retrieve secrets or configuration files. Those can be injected into the **job** as either **environment variables** or **files**:
+We can integrate GitLab pipelines with Vault to securely retrieve secrets or configuration files. Those can be injected into the **job** as either **environment variables** or **files**:
 
 .. code-block:: yaml
-   :caption: Gitlab job using a secret as an environment variable
+   :caption: GitLab job using a secret as an environment variable
 
    <job>:
      stage: <stage>
@@ -162,12 +162,12 @@ We can integrate Gitlab pipelines with Vault to securely retrieve secrets or con
          file: <true to inject as a file, false otherwise>
      ...
 
-If the secret is injected as a file, the environment variable contains the **path** to the secret. If it is as environment variable, it will hold the **value**.
+If the secret is injected as a file, the environment variable contains the **path** to the secret. If it is as an environment variable, it will hold the **value**.
 
 Debugging
 ---------
 
-Debugging is simpler, as if anything is wrong the job will not start. The debug messages are not always helpful, but they will probably revolve around either access to the secret or the authentication:
+Debugging is simpler as, if anything is wrong with the job, it will not start. The debug messages are not always helpful, but they will probably revolve around either access to the secret or the authentication:
 
 - Authentication configuration:
 
@@ -194,4 +194,4 @@ Debugging is simpler, as if anything is wrong the job will not start. The debug 
   Using "vault" secret resolver...
   ERROR: Job failed (system failure): resolving secrets: secret not found: CONTEXT_VALUES
 
-On the other hand, if the job starts, it means that Gitlab was able to handle all operations.
+On the other hand, if the job starts, it means that GitLab was able to handle all operations.
