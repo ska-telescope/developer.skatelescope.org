@@ -212,7 +212,7 @@ Add project as a sub-project on ReadTheDocs
 
 A sub-project must be added by a user with Maintainer privileges on the main project.
 
-Currently only the System Team members have these permissions. Please ask on the Slack channel `#team-system-support <https://skao.slack.com/messages/CEMF9HXUZ>`_ to have your project added.
+Currently only the System Team members have these permissions. Please create a System team Support request on `STS Service Desk <https://jira.skatelescope.org/servicedesk/customer/portal/166/create/465>`_ to have your project added.
 
 For more information on how to add a subproject, go to `Read The Docs <https://docs.ReadTheDocs.io/en/stable/subprojects.html>`_.
 
