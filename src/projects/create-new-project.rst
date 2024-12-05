@@ -6,7 +6,7 @@ Create a new project
 
 The SKA code repositories are all stored on the SKA Gitlab account, on `gitlab.com/ska-telescope <http://gitlab.com/ska-telescope>`_.
 The SKA's repositories on Gitlab have to be created by a member of the Systems team.
-If you need a repository simply go to the Slack channel `#team-system-support <https://skao.slack.com/messages/CEMF9HXUZ>`_ and ask for a new repository to be created. Choose the name well (see below).
+If you need a repository simply go to the SKAO `System Team Support Center <https://jira.skatelescope.org/servicedesk/customer/portal/166>`_ and raise a ticket to `Create a project in Gitlab <https://jira.skatelescope.org/servicedesk/customer/portal/166/create/1866>`_. Choose the name well (see below).
 Respositories will be created with public access by default. Other permissions schemes, such as private and IP protected repositories, are also possible upon request.
 
 You will be given Maintainer privileges on this project. This will make it possible for you to (among other things) add users to the project and edit their permissions. For more information about permissions on Gitlab, go to `https://docs.gitlab.com/ee/user/permissions.html <https://docs.gitlab.com/ee/user/permissions.html>`_.
