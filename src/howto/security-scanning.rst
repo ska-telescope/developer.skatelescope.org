@@ -2,7 +2,7 @@
 Enable and Customise CI/CD Security Scanning
 ********************************************
 
-.. note::
+.. warning::
 
     The previously defined oci-image-scan and python-gemnasium-scan jobs have been deprecated and are no longer supported as part of the SKAO templates.
     If your repo contains any reference to these it should be removed as, currently, these are placeholder templates to avoid any pipelines' breakages.
