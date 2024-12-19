@@ -5,7 +5,7 @@ Enable and Customise CI/CD Security Scanning
 .. note::
 
     The previously defined oci-image-scan and python-gemnasium-scan jobs have been deprecated and are no longer supported as part of the SKAO templates.
-    If your repo contains any reference to these it should be removed as currently these are placeholder templates to avoid any pipelines breakages.
+    If your repo contains any reference to these it should be removed as, currently, these are placeholder templates to avoid any pipelines' breakages.
     By January 17th 2025 these placeholders will be removed and only the gitlab-templates.gitlab-ci.yml defined jobs will be supported.
 
 
