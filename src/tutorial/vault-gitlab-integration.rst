@@ -49,7 +49,7 @@ Vault is already integrated with GitLab, so we don't need to worry about setting
 Using Vault secrets in GitLab CI/CD pipelines
 ---------------------------------------------
 
-Now that we have data and GitLab's access is provisioned, we simply need to define a job in GitLab - **using the `.gitlab-ci.yml` file ** - to be able to grab secrets from Vault. Note that secrets injected from Vault as environment variables or files are **masked** for security purposes:
+Now that we have data and GitLab's access is provisioned, we simply need to define a job in GitLab - **using the `.gitlab-ci.yml` file** - to be able to grab secrets from Vault. Note that secrets injected from Vault as environment variables or files are **masked** for security purposes:
 
 .. code-block:: yaml
    :caption: Add test stage to your pipeline
