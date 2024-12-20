@@ -49,7 +49,7 @@ Vault is already integrated with GitLab, so we don't need to worry about setting
 Using Vault secrets in GitLab CI/CD pipelines
 ---------------------------------------------
 
-Now that we have data and GitLab's access is provisioned, we simply need to define a job in GitLab - using the `.gitlab-ci.yml` file - to be able to grab secrets from Vault. Note that secrets injected from Vault as environment variables or files are **masked** for security purposes:
+Now that we have data and GitLab's access is provisioned, we simply need to define a job in GitLab - **using the `.gitlab-ci.yml` file** - to be able to grab secrets from Vault. Note that secrets injected from Vault as environment variables or files are **masked** for security purposes:
 
 .. code-block:: yaml
    :caption: Add test stage to your pipeline
@@ -65,10 +65,6 @@ Having a stage to run on, we can set up a job to expose a secret as an environme
 
    vault-secret-env:
      stage: test-vault
-     variables:
-       VAULT_SERVER_URL: https://vault.skao.int # GitLab URL
-       VAULT_AUTH_PATH: jwt # GitLab auth method
-       VAULT_AUTH_ROLE: developer # GitLab auth method's role
      id_tokens:
        VAULT_ID_TOKEN:
          aud: https://gitlab.com # bound_audiences in GitLab's `VAULT_AUTH_ROLE` of `VAULT_AUTH_PATH` auth method
@@ -96,9 +92,6 @@ Lets look at an example of file usage:
    vault-secret-file:
      stage: test-vault
      variables:
-       VAULT_SERVER_URL: https://vault.skao.int # GitLab URL
-       VAULT_AUTH_PATH: jwt # GitLab auth method
-       VAULT_AUTH_ROLE: developer # GitLab auth method's role
        SOME_VAR: file
      id_tokens:
        VAULT_ID_TOKEN:
