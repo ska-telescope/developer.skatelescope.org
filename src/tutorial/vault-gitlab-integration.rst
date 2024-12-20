@@ -92,9 +92,6 @@ Lets look at an example of file usage:
    vault-secret-file:
      stage: test-vault
      variables:
-       VAULT_SERVER_URL: https://vault.skao.int # GitLab URL
-       VAULT_AUTH_PATH: jwt # GitLab auth method
-       VAULT_AUTH_ROLE: developer # GitLab auth method's role
        SOME_VAR: file
      id_tokens:
        VAULT_ID_TOKEN:
