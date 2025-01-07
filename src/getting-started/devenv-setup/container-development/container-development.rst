@@ -51,9 +51,19 @@ Clone the ska-tango-examples project and get VSCode to recognize it
 
 #. Clone the `ska-tango-examples repository`_ in your local machine.
 
+    .. code-block:: bash
+
+        git clone https://gitlab.com/ska-telescope/ska-tango-examples.git --recurse-submodules
+
 #. Open VSCode from inside the *ska-tango-examples* folder.
 
+    .. code-block:: bash
+      
+        cd ska-tango-examples && code
+
+
 .. _`ska-tango-examples repository`: https://gitlab.com/ska-telescope/ska-tango-examples
+
 
 
 Build the application image (this step is optional)
