@@ -140,7 +140,7 @@ Checks
 |             |                                       |   latest/tools/software-package-release-procedure.html?highlight=helm_publish.yml        |
 |             |                                       |   #package-and-publish-helm-charts-to-the-skao-helm-chart-repository>`__                 |
 +-------------+---------------------------------------+------------------------------------------------------------------------------------------+
-| Warning     | Missing CODEOWNERS                    | Please add a `CODEOWNERS <https://docs.gitlab.com/ee/user/project/code_owners.html>`__   |
+| Warning     | Missing CODEOWNERS                    | Please add a `CODEOWNERS <https://docs.gitlab.com/ee/user/project/codeowners/>`__        |
 |             | file                                  | file to the root folder.                                                                 |
 +-------------+---------------------------------------+------------------------------------------------------------------------------------------+
 | Warning     | Non-compliant License                 | Please update the license information according to                                       |
