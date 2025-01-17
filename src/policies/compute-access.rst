@@ -2,7 +2,7 @@
 SKAO Compute Access Policy
 **************************
 
-This policy is to be read in conjuction with the SKAO `Access Control and Physical Security Policy <https://intranet.skao.int/display/POL/Information+Security+Management+System+%28ISMS%29+Policies?preview=/7995544/9797797/SKA-GOV-0000016_03_POL_ISMSAccessControlAndPhysicalSecurityPolicySigned.pdf>`__. Authentication systems implemented to provide access to compute resources should adhere to the Access Control Policy.
+This policy is to be read in conjunction with the SKAO `Access Control and Physical Security Policy <https://intranet.skao.int/display/POL/Information+Security+Management+System+%28ISMS%29+Policies?preview=/7995544/9797797/SKA-GOV-0000016_03_POL_ISMSAccessControlAndPhysicalSecurityPolicySigned.pdf>`__. Authentication systems implemented to provide access to compute resources should adhere to the Access Control Policy.
 Note that this document is only accessible to SKAO staff and contractors.
 
 Principles
@@ -46,7 +46,7 @@ Some examples of how people can abuse their access by:
 * significantly damaging a service or platform
 * materially degrading systems integrity and security (for example, turning off MFA or similar)
 
-This list is not exhaustive; it is only indicative, and should be read in conjuction with `SKAO's own acceptable use policies <https://ska-aw.bentley.com/SKAProd/Search/QuickLink.aspx?n=SKA-GOV-0000014&t=3&d=Main%5ceB_PROD&sc=Global&r=04&i=view>`__ and those of `JANET <https://community.ja.net/library/acceptable-use-policy>`__.
+This list is not exhaustive; it is only indicative, and should be read in conjunction with `SKAO's own acceptable use policies <https://ska-aw.bentley.com/SKAProd/Search/QuickLink.aspx?n=SKA-GOV-0000014&t=3&d=Main%5ceB_PROD&sc=Global&r=04&i=view>`__ and those of `JANET <https://community.ja.net/library/acceptable-use-policy>`__.
 
 Roles and Access
 ################

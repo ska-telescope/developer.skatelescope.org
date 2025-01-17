@@ -265,11 +265,11 @@ How to Undo a Release Mistake
 When using the make targets to bump a release/release candidate version there might be the case that one of the following mistakes is made:
 
    1. The version was bumped to the wrong level on the local environment (`e.g.` bumped to a major version instead of a patch version)
-   2. The version was bumped to the wrong level and the files with the updated versions have been commited and pushed to the repository
+   2. The version was bumped to the wrong level and the files with the updated versions have been committed and pushed to the repository
    3. The version was bumped to the wrong level and the release was created and published
 
 
-For **problem 1**, having only updated the files locally and not commiting any changes, one can simply run the git command to undo the changes:
+For **problem 1**, having only updated the files locally and not committing any changes, one can simply run the git command to undo the changes:
 
    .. code-block:: bash
 

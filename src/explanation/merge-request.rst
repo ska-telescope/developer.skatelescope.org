@@ -13,7 +13,7 @@ It is recommended that a new Merge Request will include, among others, the follo
 * Merge Request Description should include a concise, brief description about the issue.
 * Add approval rules.
 * For assignee, select all people that worked in this branch.
-* For reviewers. select one or more people to review the work done in the branch. (Group assingment can be done in the description field by typing: /assign_reviewer @... and searching for a team group name. After saving the description the users of the group will be added as reviewers.)
+* For reviewers. select one or more people to review the work done in the branch. (Group assignment can be done in the description field by typing: /assign_reviewer @... and searching for a team group name. After saving the description the users of the group will be added as reviewers.)
 * Delete source branch when Merge Request is accepted.
 * Do not Squash commits when Merge Request is accepted.
 

@@ -3,8 +3,8 @@
 Centralised Monitoring and Logging
 **********************************
 
-A centralised monitoring and logging solution was designed to eliminate the need for having many dashboards and services spread across different datacentres to access monitoring while enabling the aggregation of data, centralising monitoring dashboards and alerting and secure communication with monitoring systems with zero trust principles.
-All SKAO datacentres used for testing, staging, integration or production have been fully integrated into this solution.
+A centralised monitoring and logging solution was designed to eliminate the need for having many dashboards and services spread across different data centres to access monitoring while enabling the aggregation of data, centralising monitoring dashboards and alerting and secure communication with monitoring systems with zero trust principles.
+All SKAO data centres used for testing, staging, integration or production have been fully integrated into this solution.
 
 Developer friendly Dashboards
 =============================
@@ -144,7 +144,7 @@ Logging Solution
 Filebeat and Elasticsearch
 --------------------------
 
-The central logging solution is based on `Filebeat <https://www.elastic.co/beats/filebeat>`__, collecting logs from the referred datacentres and shipping them to `Elasticsearch <https://www.elastic.co/elasticsearch>`__.
+The central logging solution is based on `Filebeat <https://www.elastic.co/beats/filebeat>`__, collecting logs from the referred data centres and shipping them to `Elasticsearch <https://www.elastic.co/elasticsearch>`__.
 
 
 Kibana

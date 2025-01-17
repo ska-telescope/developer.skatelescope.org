@@ -5,7 +5,7 @@ New Environments on STFC
 
 In order to provide a way for SKA developers to install, uninstall or update their artefacts into an isolated environment, a unified approach - based on GitOps - has been created.
 
-Once a developer pushes a change to the repo, the repo detects this change, updates and pushes the manifest into the cluster and a new environment can be created to test the commited changes. 
+Once a developer pushes a change to the repo, the repo detects this change, updates and pushes the manifest into the cluster and a new environment can be created to test the committed changes. 
 
 This unified approach adds a new stage - the deploy stage - to the pipeline that will make 4 jobs available:
 
@@ -13,7 +13,7 @@ This unified approach adds a new stage - the deploy stage - to the pipeline that
 
 * **Info Dev Environment** - once the deploy and test jobs have been executed successfully, this job can be executed to provide an overview of the environment deployed
 
-* **Stop Dev Environment**  - job automatically executed after 4 hours, deleting the created envrionment. It can also be executed manually, if necessary, before the defined 4 hours
+* **Stop Dev Environment**  - job automatically executed after 4 hours, deleting the created environment. It can also be executed manually, if necessary, before the defined 4 hours
 
 * **Test Dev Environment** - second job to be executed, automatically, once the deploy job finishes to check that something has been deployed and is running
 
@@ -33,7 +33,7 @@ To enable this new stage, in your *.gitlab-ci.yml*, add the deploy stage and inc
 
    Adding the deploy stage to the pipeline
 
-In your *values.yaml* file, the "deploy_service" parameter should be set to *true* if, for the service for which this is set, you want it to be deployed into the development environment, ignoring the parameter alltogether works as setting to *true* as well. If you don't want to deploy the service to the environment and prefer to work on it locally, this parameter should be set to *false*. 
+In your *values.yaml* file, the "deploy_service" parameter should be set to *true* if, for the service for which this is set, you want it to be deployed into the development environment, ignoring the parameter altogether works as setting to *true* as well. If you don't want to deploy the service to the environment and prefer to work on it locally, this parameter should be set to *false*. 
 
 
 .. code-block:: yaml

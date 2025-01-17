@@ -83,7 +83,7 @@ In the example above Podman will be used as the OCI engine to build the image in
 Customizing Makefile targets
 ----------------------------
 
-In the Makefiles of the several sections, the targets follow a customizable workflow: `<section>-pre-<job>`, `<section>-do-<job>`, and `<section>-post-<job>`. The **pre** and **post** targets act as hooks so that you can customize the overall behavior of the target. These targets must be defined **AFTER** the include statements.
+In the Makefiles of the several sections, the targets follow a customizable workflow: `<section>-pre-<job>`, `<section>-do-<job>`, and `<section>-post-<job>`. The **pre** and **post** targets act as hooks so that you can customize the overall behaviour of the target. These targets must be defined **AFTER** the include statements.
 
 * **<section>-do-<job>**: This make target performs the core job (e.g., running the lint procedure for an OCI image). It is well-defined in the templates and should **never** be overridden in the root Makefile.
 

@@ -69,7 +69,7 @@ MVP
 - `PSS test vector generator documentation </projects/pss-test-vector-generator/en/latest/?badge=latest>`_.
 
 - `PSS-CentOS-docker repository <https://gitlab.com/ska-telescope/pss-centos-docker/>`_ Allows PSS integration with skampi.
-- `PSS-CentOS-docker documetation </projects/pss-centos-docker/en/latest/?badge=latest>`_.
+- `PSS-CentOS-docker documentation </projects/pss-centos-docker/en/latest/?badge=latest>`_.
 
 - `ska-low-mccs repository <https://gitlab.com/ska-telescope/ska-low-mccs/>`_ for the monitoring, control and calibration subsystem for the LOW telescope.
 - `ska-low-mccs documentation </projects/ska-low-mccs/en/master/?badge=latest>`_.
@@ -107,7 +107,7 @@ MVP
 - `ska-umbrellas repository <https://gitlab.com/ska-telescope/ska-umbrellas/>`_: contains a minimal set of skampi charts for SKA MID and LOW.
 - `ska-umbrellas documentation </projects/ska-umbrellas/en/latest/?badge=latest>`_.
 
-- `tangogql project <https://gitlab.com/ska-telescope/tangogql/>`_: for of an externl project to provide a GraphQL interface to Tango.
+- `tangogql project <https://gitlab.com/ska-telescope/tangogql/>`_: for of an external project to provide a GraphQL interface to Tango.
 - `tangogql documentation </projects/tangogql/en/latest/?badge=latest>`_.
 
 - `telescope-model project <https://gitlab.com/ska-telescope/ska-telmodel/>`_: library of data models shared between telescope elements.

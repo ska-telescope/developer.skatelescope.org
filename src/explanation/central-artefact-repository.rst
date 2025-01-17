@@ -45,7 +45,7 @@ Artefact Versioning
 
 As part of the goal to align all developmental efforts to one standard, we have defined a procedure of how we would like all the *SKAO* developers to
 version their releases and what process to follow in ensuring that they are able to make use of the existing Gitlab CI/CD pipeline to automate the building
-of artefacts. This standard is defined in detail for each artefact type in `ADR-25 - Software naming conventions <https://confluence.skatelescope.org/display/SWSI/ADR-25+General+software+naming+convention>`_.  These convetions are fundamentally derived from the `Sematic Versioning standard 2.0.0 <https://semver.org/>`_.  In a nutshell, this follows a dotted numeric notation for `Major`.`Minor`.`Patch` eg: `1.2.3`, but please check the above guidance for the details, and language specifics.
+of artefacts. This standard is defined in detail for each artefact type in `ADR-25 - Software naming conventions <https://confluence.skatelescope.org/display/SWSI/ADR-25+General+software+naming+convention>`_.  These conventions are fundamentally derived from the `Sematic Versioning standard 2.0.0 <https://semver.org/>`_.  In a nutshell, this follows a dotted numeric notation for `Major`.`Minor`.`Patch` eg: `1.2.3`, but please check the above guidance for the details, and language specifics.
 
 Artefact Validation
 --------------------
@@ -54,6 +54,6 @@ To ensure the guidelines and policies described in this Developer Portal are fol
 If an artefact fails validation, then it is quarantined and the result of the validations are reported back to the developers in a newly created Merge Request.  This Merge Request is assigned to the developer who triggered the pipeline job that pushed the artefact.
 The Merge Request title includes the name and version of the artefact and a table composed of the failed validations and instructions on how to mitigate them are given in the MR description.
 
-Each validation has a brief description that explains what it does with a mitigation or explanation (depending on validation type).  This gives detailed information about the artefact and how to fix the issue or provides further explaination of the findings.
+Each validation has a brief description that explains what it does with a mitigation or explanation (depending on validation type).  This gives detailed information about the artefact and how to fix the issue or provides further explanation of the findings.
 
 All the information listed on this page is used in the artefact validation, i.e. all artefacts are validated against naming, versioning and metadata conventions and they are quarantined if they are not compliant.

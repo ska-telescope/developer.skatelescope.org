@@ -9,7 +9,7 @@ Vault allows multiple ways of reading secrets - cli, the UI itself, :ref:`GitLab
 
    **Vault Injector** and **Vault CSI Driver** are currently **deprecated** in SKAO, their support will be terminated by Sprint #2 of PI 25.
 
-In this tutorial, you'll learn how to set up Vault and synchronise secrets in Kubernetes from Vault using the `Vault Secrets Operator <https://developer.hashicorp.com/vault/tutorials/kubernetes/vault-secrets-operator>`_ - VSO - which is a direct replacement of the previous solutions whith a much richer featureset.
+In this tutorial, you'll learn how to set up Vault and synchronise secrets in Kubernetes from Vault using the `Vault Secrets Operator <https://developer.hashicorp.com/vault/tutorials/kubernetes/vault-secrets-operator>`_ - VSO - which is a direct replacement of the previous solutions with a much richer featureset.
 
 We will cover:
 

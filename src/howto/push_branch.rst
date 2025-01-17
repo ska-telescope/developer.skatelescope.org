@@ -3,10 +3,10 @@
 Push code and branch
 ++++++++++++++++++++
 
-Whe commiting remember to always:
+Whe committing remember to always:
 
 * Prefix your commit message with the story JIRA ID.
-* This Jira ID, by convention, should be all upper case and followd by "**:**" character
+* This Jira ID, by convention, should be all upper case and followed by "**:**" character
 
 .. code:: bash
 

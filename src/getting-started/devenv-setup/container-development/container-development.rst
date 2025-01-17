@@ -53,7 +53,7 @@ Clone the ska-tango-examples project and get VSCode to recognize it
 
     .. code-block:: bash
 
-        git clone https://gitlab.com/ska-telescope/ska-tango-examples.git --recurse-submodules
+        git clone --recurse-submodules https://gitlab.com/ska-telescope/ska-tango-examples.git
 
 #. Open VSCode from inside the *ska-tango-examples* folder.
 
@@ -79,7 +79,7 @@ Start a terminal session inside VSCode:
     :align: center
 
 
-On the terminal tab build the image by typing ``make build``. *This step is
+On the terminal tab build the image by typing ``make oci-build``. *This step is
 optional since the ``make interactive`` command described bellow, takes
 care of this task if needed*:
 
@@ -120,7 +120,7 @@ for the debugger attachment:
 .. image:: vscode-breakpoints.png
     :align: center
 
-* Start the debugger from whitin VSCode by pressing ``F5`` or the *debug*
+* Start the debugger from within VSCode by pressing ``F5`` or the *debug*
   button under the debug tab:
 
 .. image:: vscode-debug.png

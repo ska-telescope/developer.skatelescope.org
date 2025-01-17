@@ -36,7 +36,7 @@ Lets look at the various stages in the supply chain:
 6. **Maintenance and Updates**:
    Software requires ongoing maintenance and updates to keep it functioning smoothly and securely. This includes bug-fixing, addressing security vulnerabilities, adding new features, and releasing functional updates.
 
-All of the steps are handled by the various development teams at the SKA, with the infrastructure and procedures being provided - at least for the widely-used technologies - by the :ref:`pipeline machinery <ci-cd>` Gitlab templates and :ref:`makefile submodules <cicd-makefile>`. These work in tandem to provide out-of-the-box support to all of the sofware supply chain stages, giving development teams an easier time complying with the supply chain requirements. We pay special attention to the  :ref:`release procedures <tutorial_release_mgmt>` as they provide not only the distribution of software, but visibility for the project as a whole.
+All of the steps are handled by the various development teams at the SKA, with the infrastructure and procedures being provided - at least for the widely-used technologies - by the :ref:`pipeline machinery <ci-cd>` Gitlab templates and :ref:`makefile submodules <cicd-makefile>`. These work in tandem to provide out-of-the-box support to all of the software supply chain stages, giving development teams an easier time complying with the supply chain requirements. We pay special attention to the  :ref:`release procedures <tutorial_release_mgmt>` as they provide not only the distribution of software, but visibility for the project as a whole.
 
 Software Supply Chain Infrastructure
 ------------------------------------
@@ -76,7 +76,7 @@ The supply chain for SKA software products is protected as follows:
   :alt: Example of Marvin checks
 
 4. **Distribution**:
-   The distribution is done through credential protected systems that require authentication to **push** artefacts. Also, the System Team provides an artefact validation system that can **quarantine** artefacts that do not comply with the SKA Standards. Where applicable, vulnerability scannings are performed to validate artefacts against known vulnerabilities, increasing the level of confidence in the produced software products. Note that these vulnerabilities keep changing, so, running vulnerability scannings **often** is very important to keeping the security levels as well as frequently following with security patches.
+   The distribution is done through credential protected systems that requires authentication to **push** artefacts. Also, the System Team provides an artefact validation system that can **quarantine** artefacts that do not comply with the SKA Standards. Where applicable, vulnerability scans are performed to validate artefacts against known vulnerabilities, increasing the level of confidence in the software products. Note that these vulnerabilities keep changing, so running vulnerability scans **often** is very important in order to keep the security levels to a high standard, as well as keeping up to date with security patches.
 
 5. **Deployment & Updates**:
    Similar to the production of the artefacts, its deployment is done using **secure** runners that access the infrastructure to eliminate tampering attempts.

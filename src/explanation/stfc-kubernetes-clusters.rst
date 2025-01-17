@@ -7,7 +7,7 @@ The main architecture is illustrated below.
 
 .. figure:: images/runners-on-kubernetes.png
    :scale: 80%
-   :alt: Table with marvin feedback type (error/warning), descrition and mitigation strategy
+   :alt: Table with marvin feedback type (error/warning), description and mitigation strategy
    :align: center
    :figclass: figborder
 
@@ -54,7 +54,7 @@ STFC Techops
 **Nodes**
 
 ======================================== ======== ====== ========== =========================== ===================== ========================= ======================== ===============================
-Type                                     Amount   CPU    Memory     GPU                         Kubernetes Version    OS Version                Kernal Version           GPU Driver Version
+Type                                     Amount   CPU    Memory     GPU                         Kubernetes Version    OS Version                Kernel Version           GPU Driver Version
 ======================================== ======== ====== ========== =========================== ===================== ========================= ======================== ===============================
 stfc-techops-production-k8s-*             61       16     64GiB                                  v1.29.2               Ubuntu 22.04.1 LTS        5.15.0-48-generic
 stfc-techops-production-k8s-gpu-*         1        30     100GiB     1 (NVIDIA A100-PCIE-40GB)   v1.29.2               Ubuntu 22.04.1 LTS        5.15.0-48-generic        Cuda: 11.4 | Driver: 470.223.02
@@ -77,7 +77,7 @@ STFC DP
 **Nodes**
 
 ======================================== ======== ====== ========== =========================== ===================== ========================= ======================== ===============================
-Type                                     Amount   CPU    Memory     GPU                         Kubernetes Version    OS Version                Kernal Version           GPU Driver Version
+Type                                     Amount   CPU    Memory     GPU                         Kubernetes Version    OS Version                Kernel Version           GPU Driver Version
 ======================================== ======== ====== ========== =========================== ===================== ========================= ======================== ===============================
 stfc-dp-production-k8s-md-1              5        30     120GiB     4 (NVIDIA A100-PCIE-40GB)   v1.26.4               Ubuntu 22.04.1 LTS        5.15.0-48-generic
 stfc-dp-production-k8s-gpu-md-1          1        60     800GiB     1 (NVIDIA A100-PCIE-40GB)   v1.26.4               Ubuntu 22.04.1 LTS        5.15.0-88-generic        Cuda: 11.4 | Driver: 470.223.02

@@ -25,7 +25,7 @@ Once the above three steps are followed, you shall be able to connect.
 Create your GPG key
 ===================
 
-If you don’t already have a GPG key, the following steps can help you get started. As a prerequiste you need to install GPG for your operating system. If your operating system has gpg2 installed, replace gpg with gpg2 in the following commands.
+If you don’t already have a GPG key, the following steps can help you get started. As a prerequisite you need to install GPG for your operating system. If your operating system has gpg2 installed, replace gpg with gpg2 in the following commands.
 
 If you are using Windows, you can install Gpg4win. IMPORTANT NOTE: tick all the boxes (GPA is deselected by default) when installing. Then create your GPG key following either the guide for the Command Line or the GUI below.
 

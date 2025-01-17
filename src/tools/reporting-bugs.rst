@@ -150,7 +150,7 @@ This may be necessary for bugs where the impact is unclear, or where additional 
 Assessment
 ^^^^^^^^^^
 The Bug Owner (the current Assignee) reviews the information provided, and assesses the Severity and Priority of the bug.
-If there is insufficent information, the issue is re-assigned to the original Reporter to provide more information.
+If there is insufficient information, the issue is re-assigned to the original Reporter to provide more information.
 The issue may be discarded at this point; perhaps it is a non-issue, or a duplicate of a previous bug.
 
 The assignee then populates the *Agile Team(s)* field with the teams needed to work on the bug, as well as the Severity and Priority fields..

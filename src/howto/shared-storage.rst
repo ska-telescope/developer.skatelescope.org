@@ -11,7 +11,7 @@ Rules
 The shared storage feature is not enabled by default in K8s. An automated process has been developed for this purpose, which requires adherence to specific rules:
 
 1. **Labels Requirements**: The specific labels **skao.int/clone-pvc** and **skao.int/clone-pvc-namespace** need to be set in the metadata path of the PVC
-2. **StorageClass Requirment**: Not all StorageClasses allow Shared Volumes, the ones that do are:
+2. **StorageClass Requirement**: Not all StorageClasses allow Shared Volumes, the ones that do are:
 
    - **ceph-cephfs**
 3. **Deletion Order**:  PVCs that are being deleted must be the **last** one to be deleted on the shared chain.

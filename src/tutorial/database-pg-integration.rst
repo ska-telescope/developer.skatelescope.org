@@ -27,7 +27,7 @@ Prerequisites
 The following preconditions are required, so that there is a connection available to 
 the target Kubernetes cluster for the Database deployment:
 
-* A target Kubernetes enviroment set as the current ``KUBECONFIG`` context (mini-howto)
+* A target Kubernetes environment set as the current ``KUBECONFIG`` context (mini-howto)
 * ``kubectl`` is installed
 * ``helm`` is installed
 
@@ -40,7 +40,7 @@ credentials for each.
 
 Setup the PostgreSQL database credentials (options):
 
-* accept default values for ``POSTGRES_USER`` / ``POSTGRES_PASSWORD`` / ``POSTGRES_DB`` (postgres/postgres/pgdb) - the most common option for a development enviroment
+* accept default values for ``POSTGRES_USER`` / ``POSTGRES_PASSWORD`` / ``POSTGRES_DB`` (postgres/postgres/pgdb) - the most common option for a development environment
 * define explicit environment variables for ``POSTGRES_USER`` / ``POSTGRES_PASSWORD`` and ``POSTGRES_DB``
 * create/update Vault secrets for ``POSTGRES_USER`` / ``POSTGRES_PASSWORD``
 

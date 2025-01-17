@@ -215,7 +215,7 @@ Then there are a few sections on general programming skills.
 This arrangement can only be approximate; there are many ways to arrange this, and the order in which you tackle these is something you should discuss with your Scrum Master.
 We do recommend that everyone makes sure they can do the basic tasks in JIRA, Confluence, and Zoom.
 
-You should work through the skills specified by your Scrum Master, and see wheter you can do the associated activity.
+You should work through the skills specified by your Scrum Master, and see whether you can do the associated activity.
 Even if you can do the activity, you may need to do some reading to find out how the SKA does things.
 You can also sign up for training on the `Confluence training pages <https://confluence.skatelescope.org/display/SE/Training>`_.
 
@@ -253,7 +253,7 @@ Suggested activities for other roles
 Scrum Masters: lead a stand up, then a review and retrospective session, and a planning meeting!
 
 Product Owners: create new tickets for your team.
-Remember that we want measureable outcomes, and the Definition of Done.
+Remember that we want measurable outcomes, and the Definition of Done.
 
 Members of the Solution or Program Management: attend feature development workshops as soon as you can.
 Also talk to the teams, and find out what they think they're doing.

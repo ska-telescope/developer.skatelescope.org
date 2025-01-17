@@ -39,7 +39,7 @@ For subsequent changes pushed to the Merge Request, the comment is updated to re
 
 .. figure:: images/marvin-check-table.png
    :scale: 80%
-   :alt: Table with marvin feedback type (error/warning), descrition and mitigation strategy
+   :alt: Table with marvin feedback type (error/warning), description and mitigation strategy
    :align: center
    :figclass: figborder
 

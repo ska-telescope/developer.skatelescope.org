@@ -34,7 +34,7 @@ develop and release independent features.
 Both scenarios can be approached with the aid of right tooling and processes, but in general
 a repository should be created for every software component following this definition:
 
-  *All software and firmware source code handed over to the SKA organisation shall be organised into source code repositories. A source code repository is a set of files and metadata, organized in a directory structure. It is expected that source code repositories map to individual applications or modules according to the following definition: A module is reusable, replaceable with something else that implements the same API, independently deployable, and encapsulates some coherent set of behaviors and responsibilities of the system.*
+  *All software and firmware source code handed over to the SKA organisation shall be organised into source code repositories. A source code repository is a set of files and metadata, organized in a directory structure. It is expected that source code repositories map to individual applications or modules according to the following definition: A module is reusable, replaceable with something else that implements the same API, independently deployable, and encapsulates some coherent set of behaviours and responsibilities of the system.*
 
   -- *adapted from 'Continuous Delivery'*
 

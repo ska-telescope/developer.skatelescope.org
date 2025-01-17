@@ -94,7 +94,7 @@ Bearing in mind that a *story* by definition is a piece of work a developer shou
   Branch 'at1-26-the-new-widget' set up to track remote branch 'at1-26-the-new-widget' from 'origin'.
 
 * The branch CI pipeline is automatically triggered.
-* A Merge Request is created on GitLab to merge the story branch into the main branch.  The above commit reponse shows a conveniently supplied URL to start this process.
+* A Merge Request is created on GitLab to merge the story branch into the main branch.  The above commit response shows a conveniently supplied URL to start this process.
 * Reviewers interact with comments on the Merge Request until all conflicts are resolved and reviewers accept the Merge Request.
 * The Merge Request is merged into Main.
 * The CI pipeline is executed successfully on the main branch by the CI server.

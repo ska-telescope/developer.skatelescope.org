@@ -16,7 +16,7 @@ This reference page provides quick access to all documentation related to SKAO's
    * - :ref:`Vault Structure <explanation-vault-structure>`
      - Comprehensive guide on the hierarchical organisation of Vault KV engines, path naming standards and access-control policies within SKAO.
    * - :ref:`Current Vault secret hierarchy <explanation-vault-current-structure>`
-     - Current representation and organisation of Vault secrets across various datacentres and environments.
+     - Current representation and organisation of Vault secrets across various data centres and environments.
    * - :ref:`Vault-Kubernetes integration with Vault Secrets Operator <tutorial-vault>`
      - Tutorial on setting up Vault Secrets Operator (VSO) for synchronising secrets in Kubernetes, including deployment steps and resource creation.
    * - :ref:`Vault-GitLab integration tutorial <tutorial-vault-gitlab-integration>`
