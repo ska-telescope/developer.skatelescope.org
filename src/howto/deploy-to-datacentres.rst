@@ -126,7 +126,7 @@ To diagnose issues within the cluster pods, developers should utilize `kibana <h
 Monitor Clusters
 ================
 
-Monitoring the status and health of different clusters is crucial. Developers can access https://k8s.stfc.skao.int/grafana/ for comprehensive dashboards with varied information about the clusters. For example, the dashboard `kubernetes-compute-resources-node-pods <https://k8s.stfc.skao.int/grafana/d/200ac8fdbfbb74b39aff88118e4d1c2c/kubernetes-compute-resources-node-pods?orgId=1&refresh=10s&from=now-6h&to=now>`_ allows you to switch between different datacentres using the Grafana variable 'cluster' at the top of the dashboards, as illustrated below:
+Monitoring the status and health of different clusters is crucial. Developers can access https://k8s.stfc.skao.int/grafana/ for comprehensive dashboards with varied information about the clusters. For example, the dashboard `kubernetes-compute-resources-node-pods <https://k8s.stfc.skao.int/grafana/d/200ac8fdbfbb74b39aff88118e4d1c2c/kubernetes-compute-resources-node-pods?orgId=1&refresh=10s&from=now-6h&to=now>`_ allows you to switch between different data centres using the Grafana variable 'cluster' at the top of the dashboards, as illustrated below:
 
 .. figure:: images/monitoring/grafana-datacentres-variable.JPG
    :scale: 60%

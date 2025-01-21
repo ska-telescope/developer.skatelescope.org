@@ -3,7 +3,7 @@
 Create work branch
 +++++++++++++++++++++++
 
-Usualy work branches are created from the **main** repository branch, althouh they can be created from other working branches.
+Usually work branches are created from the **main** repository branch, although they can be created from other working branches.
 Regardless you should make sure you **pull** the latest changes from the branch you are branching from.
 
 .. code:: bash
@@ -14,7 +14,7 @@ Then when creating a new branch, its name must be:
 
 * prefixed with the story Jira ID
 * all lower case
-* use the character **-** to separe words
+* use the character **-** to separate words
   
 i.e *abc-123-the-new-widget*
 

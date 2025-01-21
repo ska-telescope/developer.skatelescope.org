@@ -76,7 +76,7 @@ specific meaning in the document. The first usage of the term will
 generally represent a definition. For example, in this document:
 
 -  A **Hardware Description Language** is a specialized computer
-   language used to describe the structure and behavior of electronic
+   language used to describe the structure and behaviour of electronic
    circuits, and most commonly, digital logic circuits [1]_.
 
 -  **Firmware** is a combination of a hardware device and computer

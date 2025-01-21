@@ -23,11 +23,11 @@ Understanding the Structure
 
 We mainly contemplate three levels of ownership of data when structuring Vault KV engines and path naming standards:
 
-- **Datacentre**: Refers to a physical infrastructure where multiple environments can be deployed;
+- **Data centre**: Refers to a physical infrastructure where multiple environments can be deployed;
 - **Environment**: Refers to a set of applications, services, or infrastructure components deployed together to deliver functionality to end-users;
 - **Application/Service/Infrastructure Component**: Pieces of software or infrastructure components that can be deployed to an environment to fulfill a role.
 
-In the current Vault structure, secrets are organised hierarchically to ensure clear separation of concerns between different datacentres, environments and applications, services or infrastructure components. This allows us to tightly control access and facilitate the management of data at scale.
+In the current Vault structure, secrets are organised hierarchically to ensure clear separation of concerns between different data centres, environments and applications, services or infrastructure components. This allows us to tightly control access and facilitate the management of data at scale.
 
 The structure of a Vault configuration or secret follows the pattern:
 
@@ -49,7 +49,7 @@ In a more practical example of the SKAO's context, this can be represented by:
 .. image:: images/vault-config-hierarchy.png
   :alt: Vault configuration structure
 
-This structure simplifies the management of access control to the various KV engines and subpaths. Now, we must look at the various KV engines available and how they are meant to be used.
+This structure simplifies the management of access control to the various KV engines and sub-paths. Now, we must look at the various KV engines available and how they are meant to be used.
 
 Vault KV Engines
 ================
@@ -58,8 +58,8 @@ Vault KV engines offer a secure way to store and manage **key-value pairs**. Val
 Also, it has an unlimited number of "directories" - powered by its path-based flat structure - where data can be stored. They are organised into three main categories:
 
 - **Dev KV Engine**: Stores configurations to be used in development deployments and CI/CD;
-- **Shared KV Engine**: Stores configurations that are shared across datacentres and environments (production-grade deployments);
-- **Datacentre-Specific KV Engines**: Stores configurations specific to each datacentre with segregation by environment (production-grade deployments).
+- **Shared KV Engine**: Stores configurations that are shared across data centres and environments (production-grade deployments);
+- **Datacentre-Specific KV Engines**: Stores configurations specific to each data centre with segregation by environment (production-grade deployments).
 
 Separating secrets into multiple engines allows us to:
 
@@ -72,11 +72,11 @@ Let's look at the various KV engines and the roles they are designed to play, in
 Shared
 ------
 
-The **Shared KV Engine** is used for configurations that need to be shared across multiple datacentres or environments of the same type. This engine is structured to enable secure access at both the global and environment-specific levels while allowing efficient data sharing. It is composed of two categorical sections - **global** and **environment/environment-type** specific:
+The **Shared KV Engine** is used for configurations that need to be shared across multiple data centres or environments of the same type. This engine is structured to enable secure access at both the global and environment-specific levels while allowing efficient data sharing. It is composed of two categorical sections - **global** and **environment/environment-type** specific:
 
 - **Global Section**:
     - **Path**: `shared/global/`
-    - **Contents**: Secrets that are common to all datacentres and environments
+    - **Contents**: Secrets that are common to all data centres and environments
     - **Examples**:
         - API keys for external or central services:
             - InfraHQ access key
@@ -105,15 +105,15 @@ Example structure:
 ::
 
    shared/
-     ├── global/                 # Shared across all datacentres
+     ├── global/                 # Shared across all data centres
      ├── production/             # Shared across all production environments
      └── staging/                # Shared across all staging environments
 
 Datacentre-Specific
 -------------------
 
-Each datacentre has its own dedicated KV engine, which stores configurations specific to that datacentre. Within each engine, configurations are organised by environment, with an additional **shared** section for data that
-is shared across environments within the same datacentre. Again, it has two section categories: **per-environment** and **shared**.
+Each data centre has its own dedicated KV engine, which stores configurations specific to that data centre. Within each engine, configurations are organised by environment, with an additional **shared** section for data that
+is shared across environments within the same data centre. Again, it has two section categories: **per-environment** and **shared**.
 
 - **Per-Environment Section**:
     - **Path**: `<datacentre>/<environment>/`
@@ -126,9 +126,9 @@ is shared across environments within the same datacentre. Again, it has two sect
 
 - **Datacentre-Shared Section**:
     - **Path**: `<datacentre>/shared/`
-    - **Contents**: Secrets shared across multiple environments within the datacentre.
+    - **Contents**: Secrets shared across multiple environments within the data centre.
     - **Examples**:
-        - Common infrastructure configurations within the datacentre
+        - Common infrastructure configurations within the data centre
         - Shared network settings
     - **Users**: SRE and AIV Teams
 
@@ -137,7 +137,7 @@ These KV engines will have wider write access, as the various teams managing dep
 Dev
 ---
 
-The **Dev KV Engine** is meant to be a "meta-engine," acting like a separate Vault instance with multiple engines in it. The main idea is for development teams to replicate the structure of Vault itself, but instead of the first level being per-datacentre, it must be per-team.
+The **Dev KV Engine** is meant to be a "meta-engine," acting like a separate Vault instance with multiple engines in it. The main idea is for development teams to replicate the structure of Vault itself, but instead of the first level being per data centre, it must be per-team.
 
 Your team's slug at `https://gitlab.com/groups/ska-telescope/ska-dev` must be used. If your team doesn't have a GitLab group, please reach out to the System Team via `STS <https://jira.skatelescope.org/servicedesk/customer/portal/166>`_.
 
@@ -150,7 +150,7 @@ Your team's slug at `https://gitlab.com/groups/ska-telescope/ska-dev` must be us
     - **Path**: `dev/shared/`
     - **Contents**: Secrets shared across multiple teams for development, integration and staging deployments
     - **Examples**:
-        - Common infrastructure configurations within the datacentre the integration and staging environments live in
+        - Common infrastructure configurations within the data centre the integration and staging environments live in
     - **Users**: SRE, AIV and Development Teams
 
 Example structure:
@@ -183,7 +183,7 @@ Below you can find the current representation of the engines at the time of this
 
 ::
 
-    shared/ [desc=Cross datacentre shared secrets] [type=kv2]
+    shared/ [desc=Cross data centre shared secrets] [type=kv2]
     ├── default [v=1]
     │
     ├── global

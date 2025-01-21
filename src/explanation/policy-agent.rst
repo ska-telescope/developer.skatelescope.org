@@ -6,8 +6,8 @@ Policy Agent
 
 The policy agent is a deployable service within a Kubernetes cluster that extends the capabilities of the Kubernetes API and implements custom behaviours.
 Rather than constructing native Kubernetes resources and dealing with the coding, building, and management of webhooks code, the policy agent offers a more streamlined solution.
-It dynamically applies behaviors based on static configurations, which are created as regular Kubernetes objects (each policy agent comes with its own Custom Resource Definitions).
-These behaviors can be classified into three types:
+It dynamically applies behaviours based on static configurations, which are created as regular Kubernetes objects (each policy agent comes with its own Custom Resource Definitions).
+These behaviours can be classified into three types:
 
 - **Validation** - Verifies the conformity of objects (such as pods and services) submitted to the API.
 

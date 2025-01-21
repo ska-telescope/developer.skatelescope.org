@@ -55,7 +55,7 @@ When adding files of any kind to this project, do not use underscores in filenam
 
 If you are adding image files, we recommend using a ``/images`` directory in the same directory as the ``.rst`` file you are editing. These directories exist in several locations already. Image and other media files should be named using the same conventions as is used for the ``.rst`` files that generate the pages. Any images added should adhere to the :doc:`SKA contribution guidelines </getting-started/contrib-guidelines>`.
 
-If you wish to `cross-reference <https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#ref-role>`__ other pages on the developer portal, you must use the ``:doc:`` syntax. This allows the Sphinx documentation generator to detect broken links within the site. Do not refer to pages within thie site using the syntax for URLs.
+If you wish to `cross-reference <https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#ref-role>`__ other pages on the developer portal, you must use the ``:doc:`` syntax. This allows the Sphinx documentation generator to detect broken links within the site. Do not refer to pages within the site using the syntax for URLs.
 
 We use `Thomas Cokelaer's headings syntax <https://thomas-cokelaer.info/tutorials/sphinx/rest_syntax.html#headings>`__; if you find a page that does not conform, please update it as you edit it.
 
@@ -66,7 +66,7 @@ When you've created a merge request, you can get feedback from a wider number of
 .. image:: images/view-app.png
    :alt: The view app button on GitLab.
 
-Clicking this button allows people to view your changes without having to build the documentation themselves. If you need very wide consultation, a ReadtheDocs admin (ask on the `team-system support Slack channel <https://skao.slack.com/archives/CEMF9HXUZ/>`__ to find one) can add your version to the list of version accesible from the site's "versions" dropdown:
+Clicking this button allows people to view your changes without having to build the documentation themselves. If you need very wide consultation, a ReadtheDocs admin (ask on the `team-system support Slack channel <https://skao.slack.com/archives/CEMF9HXUZ/>`__ to find one) can add your version to the list of version accessible from the site's "versions" dropdown:
 
 .. image:: images/rtd-versions.png
    :alt: The Read the Docs version dropdown expanded to show a list of clickable versions.

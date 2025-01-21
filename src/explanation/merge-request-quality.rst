@@ -39,7 +39,7 @@ For subsequent changes pushed to the Merge Request, the comment is updated to re
 
 .. figure:: images/marvin-check-table.png
    :scale: 80%
-   :alt: Table with marvin feedback type (error/warning), descrition and mitigation strategy
+   :alt: Table with marvin feedback type (error/warning), description and mitigation strategy
    :align: center
    :figclass: figborder
 
@@ -140,7 +140,7 @@ Checks
 |             |                                       |   latest/tools/software-package-release-procedure.html?highlight=helm_publish.yml        |
 |             |                                       |   #package-and-publish-helm-charts-to-the-skao-helm-chart-repository>`__                 |
 +-------------+---------------------------------------+------------------------------------------------------------------------------------------+
-| Warning     | Missing CODEOWNERS                    | Please add a `CODEOWNERS <https://docs.gitlab.com/ee/user/project/code_owners.html>`__   |
+| Warning     | Missing CODEOWNERS                    | Please add a `CODEOWNERS <https://docs.gitlab.com/ee/user/project/codeowners/>`__        |
 |             | file                                  | file to the root folder.                                                                 |
 +-------------+---------------------------------------+------------------------------------------------------------------------------------------+
 | Warning     | Non-compliant License                 | Please update the license information according to                                       |

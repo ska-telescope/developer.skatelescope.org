@@ -37,7 +37,7 @@ The process works as follows:
 
 #. **The decision will be analysed.** At this stage alternatives (which might be simply yes/no) and their impact on the system should be developed and analysed. This should generally involve talking to possibly impacted teams and stakeholders, looking to build consensus. 
 
-   - The decision might be **discarded** at this stage for many different reasons. This does not mean that the propsed implementation is not proceeding, just that it is not documented as an ADR. 
+   - The decision might be **discarded** at this stage for many different reasons. This does not mean that the proposed implementation is not proceeding, just that it is not documented as an ADR. 
    - A slot in the next available **Architecture synch** meeting will be used to socialise the newly created ADR and discuss the related proposals. **Everyone** is welcome to attend.
    - A new confluence page is created using the ADR template in the Solution Intent Home to record in depth analysis of the architectural issue.
 

@@ -27,7 +27,7 @@ Prerequisites
 The following preconditions are required, so that there is a connection available to 
 the target Kubernetes cluster for the Database deployment:
 
-* A target Kubernetes enviroment set as the current ``KUBECONFIG`` context (mini-howto)
+* A target Kubernetes environment set as the current ``KUBECONFIG`` context (mini-howto)
 * ``kubectl`` is installed
 * ``helm`` is installed
 
@@ -40,7 +40,7 @@ credentials for each.
 
 Setup the MongoDB database credentials (options):
 
-* accept default values for ``MONGO_USER`` / ``MONGO_PASSWORD`` / ``MONGO_DB`` (mongo/mongo/mongodb) - the most common option for a development enviroment
+* accept default values for ``MONGO_USER`` / ``MONGO_PASSWORD`` / ``MONGO_DB`` (mongo/mongo/mongodb) - the most common option for a development environment
 * define explicit environment variables for ``MONGO_USER`` / ``MONGO_PASSWORD`` and ``MONGO_DB``
 * create/update Vault secrets for ``MONGO_USER`` / ``MONGO_PASSWORD``
 

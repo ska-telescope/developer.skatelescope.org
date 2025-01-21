@@ -127,14 +127,14 @@ A detailed discussion of these features can be found in the main Kubernetes docu
 Structuring Application Suites
 ------------------------------
 
-Architecting software to run in an orchestration environment builds on the guidelines given in the :ref:`Container Standards 'Structuring Containerised Applications' <container-structure>` section.  The key concepts of treating run time containers as immutable and atomic applications where any application state is explicitly dealt with through connections to storage mechanisms, is key.
+Designing software to run in an orchestration environment builds on the guidelines given in the :ref:`Container Standards 'Structuring Containerised Applications' <container-structure>` section.  The key concepts of treating run time containers as immutable and atomic applications where any application state is explicitly dealt with through connections to storage mechanisms, is key.
 
 The application should be broken into components that represent:
 
 * an application component has an independent development lifecycle
 * individual process that performs a discrete task such as a micro service, specific database/web service, device, computational task etc.
 * component that exposes a specific service to another application eg. a micro service or database
-* a reusable component that is applicable to multiple application deployments eg. a co-routine or proximity depdendent service (logger, metrics collector, network helper, private database etc)
+* a reusable component that is applicable to multiple application deployments eg. a co-routine or proximity dependent service (logger, metrics collector, network helper, private database etc)
 * an independently scalable unit that can be replicated to match demand
 * the minimum unit required to match a resource profile at scheduling time such as storage, memory, cpu, specialised device
 
@@ -261,11 +261,11 @@ Even though it is possible to specify the namespace directly in the Metadata, it
 Name and Labels
 ~~~~~~~~~~~~~~~
 
-Naming and labelling of all resources associated with a deployment should be consistent.  This ensures that deployments that land in the same namespace can be identified along with all inter-dependencies.  This is particulaly useful when using the ``kubectl`` command line tool as label based filtering can be employed to sieve out all related objects.
+Naming and labelling of all resources associated with a deployment should be consistent.  This ensures that deployments that land in the same namespace can be identified along with all inter-dependencies.  This is particularly useful when using the ``kubectl`` command line tool as label based filtering can be employed to sieve out all related objects.
 
 Labels are entirely flexible and free form, but as a minimum specify:
 
-* the ``name`` and ``app.kubernetes.io/name`` with the same identifier with sufficient precision that the same application component deplyed in the same namespace can be distinguished eg: a concatenation of <application>-<suite>-<release>.  ``name`` and ``app.kubernetes.io/name`` are duplicated because label filter interaction between resources relies on labels eg: ``Service`` exposing ``Pods`` of a ``Deployment``.
+* the ``name`` and ``app.kubernetes.io/name`` with the same identifier with sufficient precision that the same application component deployed in the same namespace can be distinguished eg: a concatenation of <application>-<suite>-<release>.  ``name`` and ``app.kubernetes.io/name`` are duplicated because label filter interaction between resources relies on labels eg: ``Service`` exposing ``Pods`` of a ``Deployment``.
 * the labels of the deployment suite such as the ``helm.sh/chart`` for Helm, including the version.
 * the ``app.kubernetes.io/instance`` (which is ``release``) of the deployment suite.
 * ``app.kubernetes.io/managed-by`` what tooling is used to manage this deployment - most likely ``helm``.
@@ -916,7 +916,7 @@ Helm charts and the Go templating engine enable separation of application manage
 * Application specific configuration values are placed in ``ConfigMaps``.
 * volatile run time configuration values are placed in the ``values.yaml`` file, and then templated into ``ConfigMaps``, container commandline parameters or environment variables as required.
 * sensitive configuration is placed in ``Secrets``.
-* template content is programable (iterators and operators) and this can be parameterised at template rendering time.
+* template content is programmable (iterators and operators) and this can be parameterised at template rendering time.
 
 
 Variable names for template substitution should observe the following rules:
@@ -1337,7 +1337,7 @@ This is a complete example that demonstrates container patterns, initContainers 
                 app: pod-examples
             spec:
               volumes:
-              # lifecyle containers as hooks share state using volumes
+              # lifecycle containers as hooks share state using volumes
               - name: shared-data
                 emptyDir: {}
               - name: the-end
@@ -1442,10 +1442,10 @@ Container patterns
 
 The ``Pod`` is a cluster of one or more containers that share the same resource namespaces.  This enables the Pod cluster to communicate as though they are on the same host which is ideal for preserving the one-process-per-container ideal, but be able to deliver orchestrated processes as a single application that can be separately maintained.
 
-All ``Pod`` deployments should be designed around having a core or leading container.  All other containers in the ``Pod`` provide auxillary or secondary services.  There are three main patterns for multi-container ``Pods``:
+All ``Pod`` deployments should be designed around having a core or leading container.  All other containers in the ``Pod`` provide auxiliary or secondary services.  There are three main patterns for multi-container ``Pods``:
 
 * Sidecar - extend the primary container functionality eg: adds logging, metrics, health checks (as input to livenessProbe/readinessProbe).
-* Ambasador - container that acts as an out-bound proxy for the primary container by handling translations to external services.
+* Ambassador - container that acts as an out-bound proxy for the primary container by handling translations to external services.
 * Adapter - container that acts as an in-bound proxy for the primary container aligning interfaces with alternative standards.
 
 
@@ -1457,7 +1457,7 @@ Any serial container action that does not neatly fit into the one-process-per-co
 postStart/preStop
 ~~~~~~~~~~~~~~~~~
 
-Life-cycle hooks have very few effective usecases as there is no guarantee that a ``postStart`` task will run before the main container command does (this is demonstrated above), and there is no guarantee that a ``preStop`` task (which is only issued when a Pod is terminated - not completed) will complete before the ``KILL`` signal is issued to the parent container after the cluster wide configured grace period (30s).
+Life-cycle hooks have very few effective use cases as there is no guarantee that a ``postStart`` task will run before the main container command does (this is demonstrated above), and there is no guarantee that a ``preStop`` task (which is only issued when a Pod is terminated - not completed) will complete before the ``KILL`` signal is issued to the parent container after the cluster wide configured grace period (30s).
 
 The value of the lifecycle hooks are generally reserved for:
 
@@ -1494,7 +1494,7 @@ While probes can be a `command <https://kubernetes.io/docs/tasks/configure-pod-c
 Sharing, Networking, Devices, Host Resource Access
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Sharing resources is often the bottle neck in High Performance Computing, and where the greatest attention to detail is required with containerised applications in order to gain acceptable performance and efficency.
+Sharing resources is often the bottle neck in High Performance Computing, and where the greatest attention to detail is required with containerised applications in order to gain acceptable performance and efficiency.
 
 Containers within a ``Pod`` can share resources with each other directly using shared volumes, network, and memory.  These are the preferred methods because they are cross-platform portable for containers in general, Kubernetes and OS/hardware.
 
@@ -1867,7 +1867,7 @@ The following example demonstrates how to share over a named pipe between contai
                 app: pod-sharing-examples
             spec:
               volumes:
-              # lifecyle containers as hooks share state using volumes
+              # lifecycle containers as hooks share state using volumes
               - name: shared-data
                 emptyDir: {}
 
@@ -2135,7 +2135,7 @@ It should be assumed that Kubernetes clusters will run restrictive `Pod security
 * `Capabilities <http://man7.org/linux/man-pages/man7/capabilities.7.html>`_ maybe dropped and a restricted list put in place to determine what can be added.
 * it should be expected that the ``default`` service account credentials will **NOT** be mounted into the running containers by default - applications should rarely need to query the Kubernetes API, so access will be removed by default.
 
-In general, only system level deployments such as Kubernetes control plane components (eg: adminsion controllers, device drivers, Operators, etc.) are the only deployments that should have cluster level rights.
+In general, only system level deployments such as Kubernetes control plane components (eg: admission controllers, device drivers, Operators, etc.) are the only deployments that should have cluster level rights.
 
 Network Policies
 ~~~~~~~~~~~~~~~~
@@ -2591,7 +2591,7 @@ Scenario obs5 - run 3 Pods using required Pod Anti Affinity with self (force sch
 obs6 - Taint NoSchedule
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-kubernetes.io/hostname ie. the node identifier.  The topology key sets the scope for implementing the rule, so could be a node, a group of nodes, an OS or device classificaton etc.
+kubernetes.io/hostname ie. the node identifier.  The topology key sets the scope for implementing the rule, so could be a node, a group of nodes, an OS or device classification etc.
 
 
 .. code:: bash

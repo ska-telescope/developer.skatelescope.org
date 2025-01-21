@@ -28,7 +28,7 @@ Then provide the test details:
       * Cucumber type: scenario
       * Cucmber scenario: write your Gherkin (given, when, then) steps here.
 
-   * Link your test to the relevent Test Set or Test Sets. If you wish to link an existing test to a new Test Set, that's encouraged, and you can skip the test creation steps.
+   * Link your test to the relevant Test Set or Test Sets. If you wish to link an existing test to a new Test Set, that's encouraged, and you can skip the test creation steps.
 
 * Once all the tests for the Test Set are defined, you can export the ``.feature`` file. 
    * Find the relevant Test Set.

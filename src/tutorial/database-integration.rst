@@ -34,7 +34,7 @@ Prerequisites
 The following preconditions are required, so that there is a connection available to 
 the target Kubernetes cluster for the Database deployment:
 
-* A target Kubernetes enviroment set as the current ``KUBECONFIG`` context (mini-howto)
+* A target Kubernetes environment set as the current ``KUBECONFIG`` context (mini-howto)
 * ``kubectl`` is installed
 * ``helm`` is installed
 * ``make`` is installed
@@ -51,7 +51,7 @@ and configuration of different credentials for each.
 
 Set up the MariaDB database credentials (options):
 
-* accept default values for ``TANGO_USER`` / ``TANGO_PASSWORD`` (tango/tango) - the most common option for a development enviroment
+* accept default values for ``TANGO_USER`` / ``TANGO_PASSWORD`` (tango/tango) - the most common option for a development environment
 * define explicit environment variables for ``TANGO_USER`` / ``TANGO_PASSWORD``
 * create/update Vault secrets for ``TANGO_USER`` / ``TANGO_PASSWORD``
 
@@ -63,16 +63,16 @@ The MariaDB credentials are required for the connection between the DatabaseDS a
 database backend.  Typically, the developer would just rely on the defaults which are 
 automatically set - these are username: ``tango`` password: ``tango``
  
-Option 2: Custom enviroment credentials
+Option 2: Custom environment credentials
 To override the default credentials, define the following environment variables: ``TANGO_USER`` / ``TANGO_PASSWORD`` . 
 These will be picked up by the following steps to seed the TangoDB and configure the 
 connection with the DatabaseDS.
 
-Option 3: Production enviroment credentials
+Option 3: Production environment credentials
 Establish the associated secrets in Hashicorp Vault so that the secrets are picked up
 by the following steps to seed the TangoDB and configure the connection with the DatabaseDS.
 
-Prepare your enviroment
+Prepare your environment
 =======================
 
 Prepare for the deployment of components by exporting the following environment variables
@@ -89,7 +89,7 @@ Prepare for the deployment of components by exporting the following environment 
 Deployment Option 1: deploy using ``make``
 ==========================================
 
-Using the ``make`` style deployment is typically used for setting up a development enviroment.
+Using the ``make`` style deployment is typically used for setting up a development environment.
 To deploy using ``make``, first clone the ``ska-tango-images`` repository:
 
 .. code:: bash

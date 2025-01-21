@@ -84,7 +84,7 @@ Issue Type          Definition of Done
 
                     * UX deliverables (where applicable) are usable by end users or their proxies
                     * Outstanding bugs and technical debt have been logged and triaged, Major or Critical severity issues have been fixed
-                    * Satifies acceptance criteria
+                    * Satisfies acceptance criteria
                     * Relevant `NFRs <https://confluence.skatelescope.org/display/SWSI/Requirements>`_ are met
                     * Demonstrated to relevant stakeholders
                     * Accepted by Feature Owner
@@ -117,7 +117,7 @@ Issue Type             Definition of Done
                        **Process**
 
                        * Outstanding bugs and technical debt have been logged and triaged, Major or Critical severity issues have been fixed
-                       * Satifies acceptance criteria
+                       * Satisfies acceptance criteria
                        * Relevant `NFRs <https://confluence.skatelescope.org/display/SWSI/Requirements>`_ are met
                        * Demonstrated to relevant stakeholders
                        * Accepted by Capability Owner
@@ -138,7 +138,7 @@ Issue Type          Definition of Done
                        * User facing change log provided
                        * User facing documentation provided
                        * Test evidences are linked (preferred ways are Unit test reports and high level XRAY test plans execution)
-                       * Verification of the functionality, behavior, and performance of user interfaces provided by product, carried out in an relevant environment
+                       * Verification of the functionality, behaviour, and performance of user interfaces provided by product, carried out in an relevant environment
                        * Outstanding bugs and technical debt have been logged and triaged, Major or Critical severity issues have been fixed.
                        * Verified by design authority/delegated design authority/release manager 
 =================== =========================================================================================================================

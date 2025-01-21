@@ -5,7 +5,7 @@ SKA Code of Conduct
 
 SKA Organisation (SKAO) is committed to the highest standards of business
 ethics and as such expects everyone involved in SKAO-related business to
-uphold the standards and expected professional behavior set out in
+uphold the standards and expected professional behaviour set out in
 `SKA Code of Ethics page <https://www.skao.int/en/about-us/ethics>`_ .
 
 The code of ethics applies to every SKA collaborators and it is the

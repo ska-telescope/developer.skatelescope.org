@@ -52,7 +52,7 @@ The SKAO IT's recommended Authenticator is `Google Authenticator`_ as this can w
 
 The `Microsoft Authenticator`_ is also supported but by default this uses push notifications for Microsoft/Azure authentication, which will not work if your device has no mobile or network connectivity.
 
-Alternatively, you can use `Aegis Authenticator`_, which is an open-source alternative with in-place encryiption to Google Authenticator and Microsoft Authenticator.
+Alternatively, you can use `Aegis Authenticator`_, which is an open-source alternative with in-place encryption to Google Authenticator and Microsoft Authenticator.
 
 Both of the Google and Microsoft mobile apps are automatically installed on all SKAO iPhones and iPads.
 To Setup and use Google Authenticator (preferred option), follow the guidance in this link: `Google Authenticator`_

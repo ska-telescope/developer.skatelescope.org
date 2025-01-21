@@ -250,7 +250,7 @@ This will call the **envsubst** that replaces environment variables in files. Ag
      operator: false
      tango_host: tango-databaseds:10000
 
-This pattern makes it possible to have predefined datacentre/environment-specific values and enables good practice configurations to be re-used by different Helm charts, as setting **global.minikube**, **global.cluster_domain** and perhaps
+This pattern makes it possible to have predefined data centre/environment-specific values and enables good practice configurations to be re-used by different Helm charts, as setting **global.minikube**, **global.cluster_domain** and perhaps
 adding default **labels** or **annotations** to track the provenance of a deployment to its pipeline or job. More than that, it enables the **sharing** nature of the :ref:`Vault structure <explanation-vault-structure>` without using a third-party service like
 a `GitOps Kubernetes Operator <https://docs.gitlab.com/ee/user/clusters/agent/gitops.html>`_.
 
@@ -259,7 +259,7 @@ If you are interested in using this deployment and configuration management stra
 Reusing supplied values
 -----------------------
 
-Sometimes we need to use variables for tests that we used for deployment. If we no longer use environment variables but instead use **values files**, we need to get the actual supplied values from Helm itself. That can be acomplished by adding a post-job to the chart installation that dumps the release values. In this repository, we care about the `SKA_TANGO_OPERATOR` and `TANGO_HOST` values for the `k8s-test` job. With that in mind, we can retrieve the configurations:
+Sometimes we need to use variables for tests that we used for deployment. If we no longer use environment variables but instead use **values files**, we need to get the actual supplied values from Helm itself. That can be accomplished by adding a post-job to the chart installation that dumps the release values. In this repository, we care about the `SKA_TANGO_OPERATOR` and `TANGO_HOST` values for the `k8s-test` job. With that in mind, we can retrieve the configurations:
 
 ::
 

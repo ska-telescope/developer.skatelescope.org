@@ -62,7 +62,7 @@ Naming and Tagging
 * A production deployment should always be made with a fully qualified semantic version eg: ``ska-tango-examples/powersupply:1.13.2``.
 * The SKA will endeavour to support only one OS base per image as the practice of multi-OS bases does not strictly follow Semantic Versioning, and creates considerable maintenance overhead.
 * Within the SKA hosted Continuous Integration infrastructure, all production images are kept indefinitely.
-* Images with debuging tools, profilers, and any tools not essential to the running of the target application should be contained in a derivative image that is named explicitly ``dev`` eg: ``ska-tango-examples/powersupply-dev:1.13.2``.
+* Images with debugging tools, profilers, and any tools not essential to the running of the target application should be contained in a derivative image that is named explicitly ``dev`` eg: ``ska-tango-examples/powersupply-dev:1.13.2``.
 * All images should be stored in a Docker v2 Registry API compliant repository, protected by HTTPS.
 * All containerised software used within the SKA, will be served out of the hosted repository service.
 
@@ -87,7 +87,7 @@ Running Containerised Applications
 * Configuration passed into a container should not directly rely on a 3rd party secret/configuration service integration.
 * Appropriate configuration defaults should be defined in the image build using :ref:`image environment variables<header-3-environment-variables>`, along with default configuration files. These defaults should be enough to launch the application into it's minimal state unaided by specifics from the user.
 * Runtime constraints for Memory and CPU should be specified, to ensure that an application does not exhaust host resources, or behave badly with co-located applications.
-* Although Container Orchestration is not covered by these standards, it is important to note that the leading Orchestration solutons (Docker Swarm, Kubernetes, Mesos) use DNS as the primary service discovery mechanism.  This should be considered when designing containerised applications so that they inherrently expect to resolve dependent services by DNS, and in return expose their own services over DNS.  This will ensure that when in future the containerised application is integrated as part of an Orchestrated solution, it will conform to that architecture seamlessly.
+* Although Container Orchestration is not covered by these standards, it is important to note that the leading Orchestration solutions (Docker Swarm, Kubernetes, Mesos) use DNS as the primary service discovery mechanism.  This should be considered when designing containerised applications so that they inherently expect to resolve dependent services by DNS, and in return expose their own services over DNS.  This will ensure that when in future the containerised application is integrated as part of an Orchestrated solution, it will conform to that architecture seamlessly.
 
 Logging
 =======

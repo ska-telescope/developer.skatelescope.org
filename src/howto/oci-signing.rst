@@ -17,7 +17,7 @@ We are using **notation** for image signing, which relies on a Private Key Infra
 PKI setup
 ~~~~~~~~~
 
-To generate the PKI to sign the images, we are going to setup a **CA**, an **intermediate CA** and a (leaf) **certificate** for signing. Afterwads, we can distribute the CA certificate to our systems, to validate the signature. We issue the leaf certificate from an intermediate so that we can control and rotate these certificates more often.
+To generate the PKI to sign the images, we are going to setup a **CA**, an **intermediate CA** and a (leaf) **certificate** for signing. Afterwards, we can distribute the CA certificate to our systems, to validate the signature. We issue the leaf certificate from an intermediate so that we can control and rotate these certificates more often.
 
 Using the CA OpenSSL configuration :download:`file <files/openssl.cnf>` do:
 
@@ -118,7 +118,7 @@ To validate the signature, we need to configure **notation's** validation policy
     
     notation policy import ./policy.json
 
-We can tailor this policy to only target specific images by chaning the **registryScopes** field. Finally, we can verify the signature:
+We can tailor this policy to only target specific images by chaining the **registryScopes** field. Finally, we can verify the signature:
 
 .. code-block:: bash
 

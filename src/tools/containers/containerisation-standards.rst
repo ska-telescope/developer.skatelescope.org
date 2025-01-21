@@ -131,7 +131,7 @@ Each containerised application should be a single discrete application.  A good 
 * is the process independently maintainable and upgradable?
 * is the running process independently scalable?
 
-For example, ``iperf``, or ``apache2`` as separate containerised applications are correct, but putting ``NGiNX`` and ``PostgreSQL`` in a single container is wrong.  This is because ``NGiNX`` and ``PostgreSQL`` should be independently maintained, upgraded and scaled, an init process handler would be required to support multiple parenet processes, and signals would not be correctly propagated to these parent processes (eg: Postgres and NGiNX) from the Container Engine.
+For example, ``iperf``, or ``apache2`` as separate containerised applications are correct, but putting ``NGiNX`` and ``PostgreSQL`` in a single container is wrong.  This is because ``NGiNX`` and ``PostgreSQL`` should be independently maintained, upgraded and scaled, an init process handler would be required to support multiple parent processes, and signals would not be correctly propagated to these parent processes (eg: Postgres and NGiNX) from the Container Engine.
 
 A containerised application should not need a specialised multi-process init process such as ``supervisord``.  As soon as this is forming part of the design, there should almost always be an alternative where each application controlled by the ``init`` process is put into a separate container.  Often this can be because the design is trying to treat a container like a full blown Virtual Machine through adding ``sshd``, ``syslog`` and other core OS services.  This is not an optimal design because these services will be multiplied up with horizontal scaling of the containerised application wasting resources.  In both these example cases, ``ssh`` is not required because a container can be attached to for diagnostic purposes eg: ``docker exec ...``, and it is possible to bind mount ``/dev/log`` from the host into a container or configure the containerised application to point to ``syslog`` over TCP/UDP.
 
@@ -214,7 +214,7 @@ Always be careful to exclude unnecessary and sensitive files from the image buil
 Minimise Layers
 ~~~~~~~~~~~~~~~
 
-Image builds tend to be highly information dense, therefore it is important to keep the scripting of the build process in the ``Dockerfile`` short and succint.  Break the build process into multiple images as it is likely that part of your proposed image build is core and common to other applications. Sharing base images (and layers) between derivative images will improve download time of images, and reduce storage requirements.  The Container Engine should only download layers that it does not already have - remember, the UnionFS shares the layers between running containers as it is only the upper most layer that is writable.  The following example illustrates a parent image with children:
+Image builds tend to be highly information dense, therefore it is important to keep the scripting of the build process in the ``Dockerfile`` short and succinct.  Break the build process into multiple images as it is likely that part of your proposed image build is core and common to other applications. Sharing base images (and layers) between derivative images will improve download time of images, and reduce storage requirements.  The Container Engine should only download layers that it does not already have - remember, the UnionFS shares the layers between running containers as it is only the upper most layer that is writable.  The following example illustrates a parent image with children:
 
 .. code:: docker
 
@@ -251,7 +251,7 @@ Within a ``Dockerfile`` it is possible to specify multiple dependent build stage
     COPY --from=builder /usr/local /usr/local
     ...
 
-This uses an imaginary Python image with all the development tools, and necessary compilers as a named intermediate image called ``builder`` where dependent libraries are compiled, and built and then the target image is created from an imaginary streamlined Python runtime image which has the built libraries copied into it from the original build, leaving behind all of the nolonger required build tools.
+This uses an imaginary Python image with all the development tools, and necessary compilers as a named intermediate image called ``builder`` where dependent libraries are compiled, and built and then the target image is created from an imaginary streamlined Python runtime image which has the built libraries copied into it from the original build, leaving behind all of the no longer required build tools.
 
 Encapsulation of Data with Code
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -317,14 +317,14 @@ Consider the following:
     COPY ./app /app
     ...
 
-Looking at the example above, during the intensive development build phase of an application, it is likely that the most volitile element is the ``./app`` itself, followed by the Python dependencies in the ``requirements.txt`` file, then finally the least changeable element is the specific postgresql client libraries (the base image is always at the top).
+Looking at the example above, during the intensive development build phase of an application, it is likely that the most volatile element is the ``./app`` itself, followed by the Python dependencies in the ``requirements.txt`` file, then finally the least changeable element is the specific postgresql client libraries (the base image is always at the top).
 
 Laying out the build process in this way ensures that the build exploits as much as possible the build cache that the Container Engine holds locally.  The cache calculates a hash of each element of the ``Dockerfile`` linked to all the previous elements.  If this hash has not changed then the build process will skip the rebuild of that layer and pull it from the cache instead.  If in the above example, the ``COPY ./app /app`` step was placed before the ``RUN apt-get install``, then the package install would be triggered every time the code changed in the application unnecessarily.
 
 Volumes
 ~~~~~~~
 
-Volumes definitions are not strictly required inorder to make a container function, but it is still useful to add as it provides documentary evidence of expected behaviour.
+Volumes definitions are not strictly required in order to make a container function, but it is still useful to add as it provides documentary evidence of expected behaviour.
 
 .. code:: docker
 
@@ -338,7 +338,7 @@ Volumes definitions are not strictly required inorder to make a container functi
 Ports
 ~~~~~
 
-Ports, like Volumes definitions, are not strictly required inorder to make a container function, but it is still useful to add as it provides documentary evidence of expected behaviour.
+Ports, like Volumes definitions, are not strictly required in order to make a container function, but it is still useful to add as it provides documentary evidence of expected behaviour.
 
 .. code:: docker
 
@@ -443,7 +443,7 @@ The above example downloads and installs the software archive, and then removes 
 USER and WORKDIR
 ~~~~~~~~~~~~~~~~
 
-It is good practice to switch the container user to a non privelleged account when possible for the application, as this is good security practice, eg: ``RUN groupadd -r userX && useradd --no-log-init -r -g userX userX``, and then specify the user with ``USER userX[:userX]``.
+It is good practice to switch the container user to a non privileged account when possible for the application, as this is good security practice, eg: ``RUN groupadd -r userX && useradd --no-log-init -r -g userX userX``, and then specify the user with ``USER userX[:userX]``.
 
 Never use sudo - there should never be a need for an account to elevate permissions.  If this seems to be required then please revisit the architecture, discuss with the Systems Team and be sure of the reasoning.
 
@@ -602,7 +602,7 @@ Storage
 ~~~~~~~
 
 As previously stated, all storage shared into a container is achieved through bind mounting.  This is true for both directory mount points and individual files. While it is not mandatory to use the ``VOLUME`` directive in the image ``Dockerfile``, it is good practice to do this for all directories to be mounted as it provides annotation of the image requirements.
-These volumes and files can be populated with default data, but be aware they are completely masked at runtime when overlayed by a mount.
+These volumes and files can be populated with default data, but be aware they are completely masked at runtime when overlaid by a mount.
 
 When adding a volume at runtime, consider whether write access is really required.  As with the example above ``--volume /etc/passwd:/etc/passwd:ro`` ensures that the ``/etc/passwd`` file is read only in the container reducing the security concerns.
 
@@ -650,7 +650,7 @@ In the above scenario, the PostgreSQL database would have a 1GB of memory limit 
 Service Discovery
 -----------------
 
-Although Container Orchestration is not covered by these standards, it is important to note that the leading Orchestration solutons (Docker Swarm, Kubernetes, Mesos) use DNS as the primary service discovery mechanism.  This should be considered when designing containerised applications so that they inherrently expect to resolve dependent services by DNS, and in return expose their own services over DNS.  This will ensure that when in future the containerised application is integrated as part of an Orchestrated solution, it will conform to that architecture seamlessly.
+Although Container Orchestration is not covered by these standards, it is important to note that the leading Orchestration solutions (Docker Swarm, Kubernetes, Mesos) use DNS as the primary service discovery mechanism.  This should be considered when designing containerised applications so that they inherently expect to resolve dependent services by DNS, and in return expose their own services over DNS.  This will ensure that when in future the containerised application is integrated as part of an Orchestrated solution, it will conform to that architecture seamlessly.
 
 
 Standard input, output, and errors
@@ -667,7 +667,7 @@ Because of this, the application is expected to respond to all the standard inpu
 
 The primary use case for stdin is where the container is launched replacing the entry point with a shell such as ``bash``.  This enables a DevOps engineer to enter into the container namespace for diagnostic and debug purposes.  While it is possible to do, it is not good practice to design a containerised application to read from stdin as this will make an assumption that any scheduling and orchestration service that executes the container will be able to enact UNIX pipes which is not the case.
 
-stdout and stderr are sent straight to the Container Engine logging system.  In Docker, this is the `logging sub-system <https://docs.docker.com/config/containers/logging/configure/>`_ which combines the output for viewing purposes with ``docker logs ...``.  Because these logging systems are configurable, and can be syndicated into unviversal logging solutions, using stdout/stderr is used as a defacto standard for logging.
+stdout and stderr are sent straight to the Container Engine logging system.  In Docker, this is the `logging sub-system <https://docs.docker.com/config/containers/logging/configure/>`_ which combines the output for viewing purposes with ``docker logs ...``.  Because these logging systems are configurable, and can be syndicated into universal logging solutions, using stdout/stderr is used as a defacto standard for logging.
 
 .. _container-logging:
 
@@ -693,7 +693,7 @@ Aside from communication over TCP/UDP sockets between processes, it is possible 
 * Named pipes
 * Shared volumes
 
-SysV/POSIX shared memory segments, semaphores and message queues can be shared using the ``--ipc=host|container-id`` option for ``docker run ...``.  However, this is specific to the runtime enviroment and the orchestration solution.  The ``host`` option is a security risk that must be evaluated as any joining containers will be pushed into the host OS namespace.
+SysV/POSIX shared memory segments, semaphores and message queues can be shared using the ``--ipc=host|container-id`` option for ``docker run ...``.  However, this is specific to the runtime environment and the orchestration solution.  The ``host`` option is a security risk that must be evaluated as any joining containers will be pushed into the host OS namespace.
 
-Named pipes, are straight forward as these are achieved through shared hostpath mounts between the containers where the pipe can be created using ``mkfifo``.
+Named pipes, are straight forward as these are achieved through shared host path mounts between the containers where the pipe can be created using ``mkfifo``.
 
