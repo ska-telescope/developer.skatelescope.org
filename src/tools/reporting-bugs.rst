@@ -249,7 +249,7 @@ If validation fails, the status is changed back to *Assigned*, and the previous 
 
 If validation passes, the status should be updated to *Done*, and the *Resolution* field to *Resolved*.
 
-Less severse and lower priority bugs will automatically transition to *Done* if they are not validated within 2 weeks unless the reporter flagged the bug as *Validation Required*. 
+Less severe and lower priority bugs will automatically transition to *Done* if they are not validated within 2 weeks unless the reporter flagged the bug as *Validation Required*. 
 Bugs automatically transitioned to *Done* will have a resolution set to *Not Validated* and hence can always be identified in case Validation needs to be performed at a later stage.
 
 Done
