@@ -1,6 +1,6 @@
+********************************
 Reporting and Management of Bugs
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+********************************
 
 .. toctree::
     :maxdepth: 1
@@ -14,7 +14,8 @@ Introduction
 
    A Software Bug is an error, flaw or fault in a computer program or system that causes it to produce an incorrect or unexpected result, or to behave in unintended ways.
 
-The purpose of this chapter is to outline the processes by which the SKA Project will report and track software bugs. After this introduction there is a brief description of how to report bugs, an outline of the bug triaging processes and lastly a description of the process for fixing bugs and the responsibilities of different stakeholders.
+The purpose of this chapter is to outline the processes by which the SKA Project will report and track software bugs. 
+After this introduction there is a brief description of how to report bugs, an outline of the bug triaging processes and lastly a description of the process for fixing bugs and the responsibilities of different stakeholders.
 
 The SKA uses JIRA as its bug tracking system, for alignment with all software development processes.
 
@@ -26,7 +27,8 @@ Categorising Bug Scope
 
 To try and minimise the number of bug reports exposed to the whole project the SKA recognises two main types of bug, “system-level” bugs and “team-level” bugs. These are reported in different JIRA projects.
 
-A team-level bug is one that is judged to affect only one team and also not affect the functionality of the SKA system as a whole. It would normally be discovered within that team during their testing (though of course team level bugs could be found by other teams).
+A team-level bug is one that is judged to affect only one team and also not affect the functionality of the SKA system as a whole. 
+It would normally be discovered within that team during their testing (though of course team level bugs could be found by other teams).
 
 A system-level bug is one that is judged to affect the wider SKA system beyond repos managed by one team.
 
@@ -57,15 +59,24 @@ Priority            Provide your own estimates of the Priority. (See below)
 
 If there is more information you can provide (e.g. Linked Issues, suggested Collaborators who may be interested) please do.
 
-You may not be or feel able to provide all of this information, but please try - the more information you can provide (while your memory is fresh) will help to reproduce and fix the problem. If you can access logs that may contain useful information, please link to them or attach them to the ticket. If there are any error messages, please provide them in your bug report.
+You may not be or feel able to provide all of this information, but please try - the more information you can provide (while your memory is fresh) will help to reproduce and fix the problem. 
+If you can access logs that may contain useful information, please link to them or attach them to the ticket. 
+If there are any error messages, please provide them in your bug report.
 
 A useful guide to how to report bugs effectively can be found here: https://www.chiark.greenend.org.uk/~sgtatham/bugs.html.
 
-Team-level bugs (not affecting wider system or other teams) should be reported in the relevant agile team’s JIRA project, using the issue type “bug”. The same guidelines for reporting may be used, but of course please tailor to the needs of your team.
+Team-level bugs (not affecting wider system or other teams) should be reported in the relevant agile team’s JIRA project, using the issue type “bug”. 
+The same guidelines for reporting may be used, but of course please tailor to the needs of your team.
 
-**Do I need to report a bug that I fixed as soon as I saw it?** The SKA Project encourages bug fixing “on-the-fly”, i.e. without the need to enter a bug report JIRA ticket. However, “on-the-fly” means that any discovered bug must be fixed *in the same sprint*. If the bug will take longer to fix, or there is no time now then it should be reported. It should also be reported if it affects more than one team, so that all the teams know about it.
+**Do I need to report a bug that I fixed as soon as I saw it?** 
+The SKA Project encourages bug fixing “on-the-fly”, i.e. without the need to enter a bug report JIRA ticket. 
+However, “on-the-fly” means that any discovered bug must be fixed *in the same sprint*. 
+If the bug will take longer to fix, or there is no time now then it should be reported. 
+It should also be reported if it affects more than one team, so that all the teams know about it.
 
-The SKB JIRA Project also supports the reporting of incidents, by selecting the JIRA issue type of “Incident”. Incidents, when a bug has a more direct impact on stakeholders, should be reported in more or less the same way. There is more information on :doc:`Incident Management </policies/incident-management>`.
+The SKB JIRA Project also supports the reporting of incidents, by selecting the JIRA issue type of “Incident”. 
+Incidents, when a bug has a more direct impact on stakeholders, should be reported in more or less the same way. 
+There is more information on :doc:`Incident Management </policies/incident-management>`.
 
 
 .. TODO::
@@ -116,7 +127,8 @@ Lowest              A resolution is required when it is convenient.
      Security Issues will normally be classified as Critical - there is a potential for a critical loss of functionality and/or data.
 
 
-Some of the possible extreme combinations here (e.g. a Critical bug of Lowest priority) will seem unlikely, though it may be possible to understand some apparently contradictory combinations where work-arounds are available and it is clear the bug may take a while to fix and/or will be fixed in a later release. These judgements should be part of the triage process.
+Some of the possible extreme combinations here (e.g. a Critical bug of Lowest priority) will seem unlikely, though it may be possible to understand some apparently contradictory combinations where work-arounds are available and it is clear the bug may take a while to fix and/or will be fixed in a later release. 
+These judgements should be part of the triage process.
 
 "Trivial" bugs could be assigned to new developers as introductory exercises.
 
