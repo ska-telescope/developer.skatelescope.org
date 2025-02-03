@@ -147,6 +147,8 @@ The Reporter should then put the bug into the *Assessment* state, after consider
 If the Reporter cannot triage the bug themselves, they should assign to a Program Level Architect, who becomes the Bug Owner.
 This may be necessary for bugs where the impact is unclear, or where additional visibility is needed.
 
+The reporter may elect to set the *Validation Required* checkbox on the SKB bug to ensure that the bug goes through the Validation phase, rather than allowing the bug to be fast tracked bypassing this phase. 
+
 Assessment
 ^^^^^^^^^^
 The Bug Owner (the current Assignee) reviews the information provided, and assesses the Severity and Priority of the bug.
@@ -158,7 +160,7 @@ The assignee then populates the *Agile Team(s)* field with the teams needed to w
 If the Bug Owner is the original reporter, at this point, they should assign the ticket to a Product Owner or Manager who will be able to ensure that the bug is addressed by the team(s).
 Otherwise, the Bug Owner remains the assignee.
 
-Weekly sync meetings are used to communicate assigned bugs to teams; however, the very highest priority bugs will require speedier action, and Slack or email amy be used to make contact with the teams.
+Weekly sync meetings are used to communicate assigned bugs to teams; however, the very highest priority bugs will require speedier action, and Slack or email may be used to make contact with the teams.
 
 Assigned
 ^^^^^^^^
@@ -172,6 +174,15 @@ Once work begins to fix the bug, the status should be updated to *In Progress*.
 Any member of the team may make this status update.
 We intend to automate this, so that progress on the child issues automatically sets the parent Bug to the *In Progress* status.
 
+If the Product Owner determines that the bug is rather a *new requirement* instead of an existing requirement that is not working, then the following actions should be taken:
+
+   * From the *More* menu, select *Create Linked Issue*
+   * Create a new Story or Feature/Enabler as appropriate
+   * Ensure that a *Relates To* link is established between the Bug and new issue
+   * *Discard* the bug with a resolution set to *Transferred*
+
+The original reporter will be notified of the above actions on the bug, with traceability to the new requirement.
+
 In Progress
 ^^^^^^^^^^^
 At this point, teams are actively investigating and/or fixing the bug. 
@@ -180,51 +191,58 @@ Teams should progress their tickets to the Done status according to the timeline
 
 Before moving to the next status in the lifecycle, the bug fix must be:
 
-* Versioned - identified as part of a version of one or more software artefacts.
+* Versioned - identified as part of a product version of one or more software artefacts.
 * Published - be made available via the versioned software.
 * Deployed - be deployed on an integration test environment (as a minimum).
 
-.. note:: To Do.
-   The SKAO software release process is still a work in progress. This page will be updated with links once it is approved.
+Refer to the `Release Management Process <https://confluence.skatelescope.org/display/SE/Release+Management>`_ for details relating to the management of product versions. 
 
 A Product Version would typically be associated with the bug ticket using the "Is Delivered By" relationship, where the bug fix is delivered by the Version.
-
-Once the bug fix has been deployed, and a test (or set of tests) confirms that it addresses the original issue, the result of the tests should be captured in the Bug ticket, using the *Outcomes* field.
+The next step is for the Team(s) to prove that the new product version(s) fixes the bug i.e. to verify the bug has been addressed. 
 
 At this point any Product Owner involved in fixing the bug may update the bug status to Verifying.
 
 Verifying
 ^^^^^^^^^
-The Bug Owner (assignee) verifies the fix:
+Verification is a test of a system to prove that it meets all its specified requirements at a particular stage of its developement. Verification occurs during the development phase and is performed by the development team(s) fixing the bug.
 
-* Outcomes have been captured, showing appropriate test results.
-* The Definition of Done has been met:
+  * Team Issues marked Done
+  * Solution Intent is Updated (if applicable)
+  * Functional Testing Passes
+  * Integration Testing Passes
+  * Regression Testing Passes
+  * Non-functional requirements (NFRs) are Met
+  * Outcomes Reviewed
+  * Accepted by Content Authority
 
-  * Team Tickets have been accepted.
-  * Solution Intent has been updated (if applicable).
-  * Tests are passing.
-  * Non-functional requirements (NFRs) are met.
-  * The new software versions have passed integration tests.
+If verification fails, the status is changed back to *In Progress*, and the relevant teams continue to investigate and prepare an updated product version.
 
-If verification fails, the status is changed back to *Assigned*, and the Product Owner(s) for the relevant teams must be informed of any issues.
-Otherwise, the status is updated to *Validating*, and the Assignee is updated to an appropriate validator.
-The original reporter is usually a good candidate for performing validation tests.
-Less severe and lower priority bugs may be transitioned directly to *Done*.
+If verification succeeds, please update the *Outcomes* field with the results of the verification tests.
+The status is updated to *Validating*, and the Assignee is set to the original reporter, usually a good candidate for performing validation tests.
+Please also set the *Agile Teams* field to the team that the original reporter belongs to. This ensures that the bug becomes visible on the relevant team dashboard or ART Sync.
+
+Less severe and lower priority bugs may be transitioned directly to *Done* unless the reporter flagged the bug as *Validation Required* during the *Identified* stage.
 
 Validating
 ^^^^^^^^^^
-This should be performed on the same system that the bug was reported on, if at all possible.
-This ensures that the feedback loop is closed from the original bug report to the fix being applied and working as expected in the same environment in which it originally failed. 
+Validation is an activity that ensures that an end product stakeholder's true needs and expectations are met. Validation typically occurs at the end of the development phase and exercises real-world scenarios.
+Validation involves end product stakeholders (users) e.g. AIV teams. This should be performed on the same system that the bug was reported on, if at all possible. 
+Validation ensures that the feedback loop is closed from the original bug report to the fix being applied and working as expected in the same environment in which it originally failed. 
 
-If validation fails, the status is changed back to *Assigned*, and the previous Bug Owner becomes the Assignee.
+  * Reproduced Bug (where applicable)
+  * Retest with Fix Passes
+  * Regression Testing Passes
+
+If validation fails, the status is changed back to *Assigned*, and the previous Bug Owner becomes the Assignee (please also ensure the relevant Agile Teams are selected.
 
 If validation passes, the status should be updated to *Done*, and the *Resolution* field to *Resolved*.
 
-Bugs will automatically transition to *Done* if they are not validated within 2 weeks. Bugs automatically transitioned to *Done* will have a resolution set to *Not Validated* and hence can always be identified in case Validation need to be performed at a later stage.
+Less severse and lower priority bugs will automatically transition to *Done* if they are not validated within 2 weeks unless the reporter flagged the bug as *Validation Required*. 
+Bugs automatically transitioned to *Done* will have a resolution set to *Not Validated* and hence can always be identified in case Validation needs to be performed at a later stage.
 
 Done
 ^^^^
-The bug has been verified by a Bug Owner, and validated by an appropriate user.
+The bug has been verified by a Bug Owner, and validated by an appropriate end product stakeholder.
 The bug will not receive further attention.
 
 Blocked
