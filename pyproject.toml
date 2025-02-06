@@ -6,10 +6,10 @@ authors = ["Ugur Yilmaz <ugur.yilmaz@skao.int>"]
 license = "BSD-3"
 readme = "README.md"
 packages = [{include = "developer"}]
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.10"
-
 
 [tool.poetry.group.docs.dependencies]
 docutils = "0.20"
