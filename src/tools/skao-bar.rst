@@ -142,8 +142,8 @@ Using Python
     response = requests.post(url, files=files)
     # you should then log the response status code and content depending on your needs
 
-Downloading an artefact by name and version tag after checking its metadata
-```````````````````````````````````````````````````````````````````````````
+Check artifact metadata and download it by name and version tag
+```````````````````````````````````````````````````````````````
 This is another straightforward example. We have an artefact that we want to download from the repository.
 For identifying it all we will need is the name and the tag of the artefact.
 
@@ -192,22 +192,41 @@ Using Python to download the artefact
 
 The artefact assets (files) will now be in the ``myartefact.zip`` file. You can then extract them and use them as needed.
 
-Downloading an artefact by sha key
-``````````````````````````````````
-This is another way to download an artefact. We will use the sha key of the artefact to download it.
-For identifying it all we will need is the name of the artefact and the sha key of the version we want to download.
+List artefact versions, get sha key for specific version, and download artefact by sha key
+``````````````````````````````````````````````````````````````````````````````````````````
+Another way to download an artefact, is by referencing its name and sha key.
+in this example we will list all versions of an artefact, get the sha key for a specific version, and then download the artefact by that sha key.
 
 - Name: ``myartefact``
 - SHA: ``730b95bd``
 
-Using CURL
-^^^^^^^^^^
+Using CURL to list all versions of an artefact
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+::
+
+    curl -X GET "https://CHANGEME/binary_artefacts/v1/artefacts/myartefact"
+
+Using Python to list all versions of an artefact
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+::
+
+    import requests
+
+    url = "https://CHANGEME/binary_artefacts/v1/artefacts/myartefact"
+    
+    response = requests.get(url)
+    # you should then log the response status code and content depending on your needs
+
+We will now get a json response with all the versions of the artefact. One of the fields of the response will be ``sha256``. This is the sha key we need to download the artefact.
+
+Using CURL to download the artefact by sha key
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ::
 
     curl -X GET "https://CHANGEME/binary_artefacts/v1/artefacts/myartefact/sha/730b95bd?format=zip" -o myartefact.zip
 
-Using Python
-^^^^^^^^^^^^
+Using Python to download the artefact by sha key
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ::
 
     import requests
@@ -220,3 +239,51 @@ Using Python
     # you should then log the response status code and content depending on your needs
 
 The artefact assets (files) will now be in the ``myartefact.zip`` file. You can then extract them and use them as needed.
+
+List all assets of an artefact version and download a specific asset
+````````````````````````````````````````````````````````````````````
+In this example we will list all assets of an artefact version and download a specific asset.
+
+- Name: ``myartefact``
+- Tag: ``v1.0.0``
+- Asset: ``myfile1.txt``
+
+Using CURL to list all assets of an artefact version
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+::
+
+    curl -X GET "https://CHANGEME/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0/assets"
+
+Using Python to list all assets of an artefact version
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+::
+
+    import requests
+
+    url = "https://CHANGEME/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0/assets"
+    
+    response = requests.get(url)
+    # you should then log the response status code and content depending on your needs
+
+We will now get a json response where the body will be a list of all the assets of the artefact version: ``"myfile1.txt; myfile2.txt"``. Using this information we can now download a specific asset.
+
+Using CURL to download a specific asset
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+::
+
+    curl -X GET "https://CHANGEME/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0/assets/myfile1.txt" -o myfile1.txt
+
+Using Python to download a specific asset
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+::
+
+    import requests
+
+    url = "https://CHANGEME/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0/assets/myfile1.txt"
+    
+    response = requests.get(url)
+    with open("myfile1.txt", "wb") as f:
+        f.write(response.content)
+    # you should then log the response status code and content depending on your needs
+
+The asset will now be in the ``myfile1.txt`` file. You can then use it as needed.
