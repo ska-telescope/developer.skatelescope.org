@@ -1,7 +1,6 @@
 **************************************
 SKAO Binary Artefacts Repository (BAR)
 **************************************
-
 The SKAO Binary Artefacts Repository (BAR) is an application that enables the ability to publish and store binary artefacts so that they are archived and made available as part of the SKAO digital infrastructure.
 
 The tool is available at the following link: `SKAO BAR <https://k8s-services.skao.int/binary_artefacts_ui/upload>`__, 
@@ -17,7 +16,6 @@ Even if the tag for an artefact is optional, with the SKAO BAR tool, it is not p
 
 Security
 ========
-
 To be able to access the tool, a gitlab account is required. This needs to be requested from the System Team in Slack or `System Team Support Desk <https://jira.skatelescope.org/servicedesk/customer/portal/166>`__. The user information will be also attached to the annotations in the artefact. Users can only see, with this tool, the artefacts they have uploaded but they can see all the repositories. Binary artefacts are immutable, they cannot be changed, they cannot be deleted
 
 Detailed Operation list
@@ -48,7 +46,6 @@ parts of the project while always providing the same interface to the end user.
 
 REST API
 --------
-
 The principle of the REST API is to provide a separation between artefacts and their assets inside a single repository. This allows the user to manage the artefacts in a more granular way and to be able to upload and download only the assets that are needed.
 
 TODO: The REST API is available at the following link: `SKAO RAW <https://CHANGEME>`__ where you can check its documentation.
@@ -96,7 +93,6 @@ Example Usage Scenarios
 Let's now see some examples of how to use the REST API to manage artefacts.
 These examples are taken from real use cases we had - at the time of this writing - in the project.
 
-
 Uploading an artefact with multiple assets (files)
 ``````````````````````````````````````````````````
 This is one of the most straightforward examples. We have an artefact with multiple files that we want to upload to the repository.
@@ -112,7 +108,6 @@ We are assuming the files are on the current directory and are named ``myfile1.t
     curl -X POST "https://CHANGEME/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0" \
               -F "files=@myfile1.txt" \
               -F "files=@myfile2.zip"
-
 
 **Using Python:**
 ::
@@ -137,7 +132,6 @@ Imagine you want to update an artefact version with a new asset. This implies up
 - Tag: ``v1.0.0``
 - Assets: ``myfile3.txt, myfile4.zip``
 
-
 **Using CURL:**
 ::
 
@@ -158,7 +152,6 @@ Imagine you want to update an artefact version with a new asset. This implies up
     
     response = requests.put(url, files=files)
     # you should then log the response status code and content depending on your needs
-
 
 The artefact version will now be updated with the new assets. The assets for this artefact version will now be ``"myfile3.txt, myfile4.zip"``.
 
