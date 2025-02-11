@@ -54,53 +54,42 @@ The principle of the REST API is to provide a separation between artefacts and t
 TODO: The REST API is available at the following link: `SKAO RAW <https://CHANGEME>`__ where you can check its documentation.
 
 .. list-table:: Artefact API Endpoints
-   :widths: 10 40 30 40
+   :widths: 10 40 30
    :header-rows: 1
 
    * - Method
      - Endpoint
      - Description
-     - Example
    * - GET
      - /artefacts
      - List all artefacts with optional filtering
-     - GET /artefacts?name=test&tag=v1.0.0
    * - GET
      - /artefacts/{name}
      - List all versions/tags of an artefact
-     - GET /artefacts/test
    * - GET
      - /artefacts/{name}/sha/{sha}
      - Get metadata for a specific artefact version by SHA
-     - GET /artefacts/test/sha/730b95bd
    * - GET
      - /artefacts/{name}/tags/{tag}
      - Get metadata for a specific artefact version
-     - GET /artefacts/test/tags/v1.0.0
    * - GET
      - /artefacts/{name}/tags/{tag}/assets
      - List files in artefact version
-     - GET /artefacts/test/tags/v1.0.0/assets
    * - GET
      - /artefacts/{name}/tags/{tag}/assets/{asset_name}
      - Get specific file
-     - GET /artefacts/test/tags/v1.0.0/assets/config.json
    * - GET
      - /artefacts/{name}/tags/{tag}?format=zip
      - Download complete artefact version as zip
-     - GET /artefacts/test/v1.0.0?format=zip
    * - POST
      - /artefacts/{name}/tags/{tag}
      - Create new artefact version
-     - POST /artefacts/test/tags/v2.0.0
    * - PUT
      - /artefacts/{name}/tags/{tag}
      - Update already existing artefact version
-     - PUT /artefacts/test/tags/v1.0.0
    * - DELETE
      - /artefacts/{name}/tags/{tag}
      - Delete artefact version
-     - DELETE /artefacts/test/tags/v1.0.0
 
 Example Usage Scenarios
 -----------------------
@@ -117,8 +106,7 @@ We are assuming the files are on the current directory and are named ``myfile1.t
 - Tag: ``v1.0.0``
 - Assets: ``myfile1.txt, myfile2.zip``
 
-Using CURL
-^^^^^^^^^^
+**Using CURL:**
 ::
 
     curl -X POST "https://CHANGEME/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0" \
@@ -126,8 +114,7 @@ Using CURL
               -F "files=@myfile2.zip"
 
 
-Using Python
-^^^^^^^^^^^^
+**Using Python:**
 ::
 
     import requests
@@ -142,6 +129,64 @@ Using Python
     response = requests.post(url, files=files)
     # you should then log the response status code and content depending on your needs
 
+Update an artefact version with a new asset
+```````````````````````````````````````````
+Imagine you want to update an artefact version with a new asset. This implies updating the all artefact version. You can't update a single asset and in fact are creating a new artefact and replacing the old one.
+
+- Name: ``myartefact``
+- Tag: ``v1.0.0``
+- Assets: ``myfile3.txt, myfile4.zip``
+
+
+**Using CURL:**
+::
+
+    curl -X PUT "https://CHANGEME/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0" \
+              -F "
+
+**Using Python:**
+::
+
+    import requests
+
+    url = "https://CHANGEME/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0"
+    
+    files = [
+        ("files", ("myfile3.txt", open("myfile3.txt", "rb"))),
+        ("files", ("myfile4.zip", open("myfile4.zip", "rb")))
+    ]
+    
+    response = requests.put(url, files=files)
+    # you should then log the response status code and content depending on your needs
+
+
+The artefact version will now be updated with the new assets. The assets for this artefact version will now be ``"myfile3.txt, myfile4.zip"``.
+
+Delete an artefact version
+``````````````````````````
+This functionality is not intended to be used often, but yet, we do provide a way to delete an uploaded artifact version in case the need arises.
+The procedure is straightforward and can be done with a single request.
+
+- Name: ``myartefact``
+- Tag: ``v1.0.0``
+
+**Using CURL:**
+::
+
+    curl -X DELETE "https://CHANGEME/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0"
+
+**Using Python:**
+::
+
+    import requests
+
+    url = "https://CHANGEME/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0"
+    
+    response = requests.delete(url)
+    # you should then log the response status code and content depending on your needs
+
+The artefact version will now be deleted and will no longer be available in the repository.
+
 Check artifact metadata and download it by name and version tag
 ```````````````````````````````````````````````````````````````
 This is another straightforward example. We have an artefact that we want to download from the repository.
@@ -152,14 +197,12 @@ For identifying it all we will need is the name and the tag of the artefact.
 
 Optionally, we will first check the metadata of the artefact to see if it is the one we want to download.
 
-Using CURL to check metadata
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Using CURL to check metadata:**
 ::
 
     curl -X GET "https://CHANGEME/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0"
 
-Using Python to check metadata
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Using Python to check metadata:**
 ::
 
     import requests
@@ -171,14 +214,12 @@ Using Python to check metadata
 
 Now that we have checked the metadata and we are sure we want to download the artefact, we can proceed with the download.
 
-Using CURL to download the artefact
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Using CURL to download the artefact:**
 ::
 
     curl -X GET "https://CHANGEME/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0?format=zip" -o myartefact.zip
 
-Using Python to download the artefact
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Using Python to download the artefact:**
 ::
 
     import requests
@@ -200,14 +241,12 @@ in this example we will list all versions of an artefact, get the sha key for a 
 - Name: ``myartefact``
 - SHA: ``730b95bd``
 
-Using CURL to list all versions of an artefact
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Using CURL to list all versions of an artefact:**
 ::
 
     curl -X GET "https://CHANGEME/binary_artefacts/v1/artefacts/myartefact"
 
-Using Python to list all versions of an artefact
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Using Python to list all versions of an artefact:**
 ::
 
     import requests
@@ -219,14 +258,12 @@ Using Python to list all versions of an artefact
 
 We will now get a json response with all the versions of the artefact. One of the fields of the response will be ``sha256``. This is the sha key we need to download the artefact.
 
-Using CURL to download the artefact by sha key
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Using CURL to download the artefact by sha key:**
 ::
 
     curl -X GET "https://CHANGEME/binary_artefacts/v1/artefacts/myartefact/sha/730b95bd?format=zip" -o myartefact.zip
 
-Using Python to download the artefact by sha key
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Using Python to download the artefact by sha key:**
 ::
 
     import requests
@@ -248,14 +285,12 @@ In this example we will list all assets of an artefact version and download a sp
 - Tag: ``v1.0.0``
 - Asset: ``myfile1.txt``
 
-Using CURL to list all assets of an artefact version
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Using CURL to list all assets of an artefact version:**
 ::
 
     curl -X GET "https://CHANGEME/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0/assets"
 
-Using Python to list all assets of an artefact version
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Using Python to list all assets of an artefact version:**
 ::
 
     import requests
@@ -267,14 +302,12 @@ Using Python to list all assets of an artefact version
 
 We will now get a json response where the body will be a list of all the assets of the artefact version: ``"myfile1.txt; myfile2.txt"``. Using this information we can now download a specific asset.
 
-Using CURL to download a specific asset
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Using CURL to download a specific asset:**
 ::
 
     curl -X GET "https://CHANGEME/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0/assets/myfile1.txt" -o myfile1.txt
 
-Using Python to download a specific asset
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Using Python to download a specific asset:**
 ::
 
     import requests
