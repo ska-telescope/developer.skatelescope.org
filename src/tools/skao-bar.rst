@@ -95,8 +95,7 @@ These examples are taken from real use cases we had - at the time of this writin
 
 Uploading an artefact with multiple assets (files)
 ``````````````````````````````````````````````````
-This is one of the most straightforward examples. We have an artefact with multiple files that we want to upload to the repository.
-We are assuming the files are on the current directory and are named ``myfile1.txt`` and ``myfile2.zip``.
+We have an artefact with multiple files that we want to upload to the repository.  We are assuming the files are on the current directory and are named ``myfile1.txt`` and ``myfile2.zip``.
 
 - Name: ``myartefact``
 - Tag: ``v1.0.0``
@@ -159,7 +158,7 @@ The artefact version will now be updated with the new assets. The assets for thi
 Delete an artefact version
 ``````````````````````````
 This functionality is not intended to be used often, but, yet, there is a process in place to delete an uploaded artefact version in case the need arises.
-The procedure is straightforward and can be done with a single request.
+The procedure can be done with a single request.
 
 - Name: ``myartefact``
 - Tag: ``v1.0.0``
@@ -183,8 +182,7 @@ The artefact version will now be deleted and will no longer be available in the 
 
 Check artefact metadata and download it by name and version tag
 ```````````````````````````````````````````````````````````````
-This is another straightforward example. We have an artefact that we want to download from the repository.
-For identifying it all we will need is the name and the tag of the artefact.
+We have an artefact that we want to download from the repository. For identifying it all we will need is the name and the tag of the artefact.
 
 - Name: ``myartefact``
 - Tag: ``v1.0.0``
