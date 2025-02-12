@@ -136,7 +136,8 @@ Imagine you want to update an artefact version with a new asset. This implies up
 ::
 
     curl -X PUT "https://binary.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0" \
-              -F "
+              -F "files=@myfile3.txt" \
+              -F "files=@myfile4.zip"
 
 **Using Python:**
 ::
