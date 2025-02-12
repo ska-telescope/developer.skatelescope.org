@@ -48,7 +48,7 @@ REST API
 --------
 The principle of the REST API is to provide a separation between artefacts and their assets inside a single repository. This allows the user to manage the artefacts in a more granular way and to be able to upload and download only the assets that are needed.
 
-The REST API is available at the following link: `SKAO RAW <https://binaries.artefact.skao.int>`__ where you can check its documentation.
+The REST API is available at the following link: `SKAO RAW <https://binary.artefact.skao.int>`__ where you can check its documentation.
 
 .. list-table:: Artefact API Endpoints
    :widths: 10 40 30
@@ -105,7 +105,7 @@ We are assuming the files are on the current directory and are named ``myfile1.t
 **Using CURL:**
 ::
 
-    curl -X POST "https://binaries.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0" \
+    curl -X POST "https://binary.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0" \
               -F "files=@myfile1.txt" \
               -F "files=@myfile2.zip"
 
@@ -114,7 +114,7 @@ We are assuming the files are on the current directory and are named ``myfile1.t
 
     import requests
 
-    url = "https://binaries.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0"
+    url = "https://binary.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0"
     
     files = [
         ("files", ("myfile1.txt", open("myfile1.txt", "rb"))),
@@ -135,7 +135,7 @@ Imagine you want to update an artefact version with a new asset. This implies up
 **Using CURL:**
 ::
 
-    curl -X PUT "https://binaries.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0" \
+    curl -X PUT "https://binary.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0" \
               -F "
 
 **Using Python:**
@@ -143,7 +143,7 @@ Imagine you want to update an artefact version with a new asset. This implies up
 
     import requests
 
-    url = "https://binaries.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0"
+    url = "https://binary.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0"
     
     files = [
         ("files", ("myfile3.txt", open("myfile3.txt", "rb"))),
@@ -166,14 +166,14 @@ The procedure is straightforward and can be done with a single request.
 **Using CURL:**
 ::
 
-    curl -X DELETE "https://binaries.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0"
+    curl -X DELETE "https://binary.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0"
 
 **Using Python:**
 ::
 
     import requests
 
-    url = "https://binaries.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0"
+    url = "https://binary.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0"
     
     response = requests.delete(url)
     # you should then log the response status code and content depending on your needs
@@ -193,14 +193,14 @@ Optionally, we will first check the metadata of the artefact to see if it is the
 **Using CURL to check metadata:**
 ::
 
-    curl -X GET "https://binaries.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0"
+    curl -X GET "https://binary.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0"
 
 **Using Python to check metadata:**
 ::
 
     import requests
 
-    url = "https://binaries.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0"
+    url = "https://binary.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0"
     
     response = requests.get(url)
     # you should then log the response status code and content depending on your needs
@@ -210,14 +210,14 @@ Now that we have checked the metadata and we are sure we want to download the ar
 **Using CURL to download the artefact:**
 ::
 
-    curl -X GET "https://binaries.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0?format=zip" -o myartefact.zip
+    curl -X GET "https://binary.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0?format=zip" -o myartefact.zip
 
 **Using Python to download the artefact:**
 ::
 
     import requests
 
-    url = "https://binaries.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0?format=zip"
+    url = "https://binary.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0?format=zip"
     
     response = requests.get(url)
     with open("myartefact.zip", "wb") as f:
@@ -237,14 +237,14 @@ in this example we will list all versions of an artefact, get the sha key for a 
 **Using CURL to list all versions of an artefact:**
 ::
 
-    curl -X GET "https://binaries.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact"
+    curl -X GET "https://binary.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact"
 
 **Using Python to list all versions of an artefact:**
 ::
 
     import requests
 
-    url = "https://binaries.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact"
+    url = "https://binary.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact"
     
     response = requests.get(url)
     # you should then log the response status code and content depending on your needs
@@ -254,14 +254,14 @@ We will now get a json response with all the versions of the artefact. One of th
 **Using CURL to download the artefact by sha key:**
 ::
 
-    curl -X GET "https://binaries.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/sha/730b95bd?format=zip" -o myartefact.zip
+    curl -X GET "https://binary.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/sha/730b95bd?format=zip" -o myartefact.zip
 
 **Using Python to download the artefact by sha key:**
 ::
 
     import requests
 
-    url = "https://binaries.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/sha/730b95bd?format=zip"
+    url = "https://binary.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/sha/730b95bd?format=zip"
     
     response = requests.get(url)
     with open("myartefact.zip", "wb") as f:
@@ -281,14 +281,14 @@ In this example we will list all assets of an artefact version and download a sp
 **Using CURL to list all assets of an artefact version:**
 ::
 
-    curl -X GET "https://binaries.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0/assets"
+    curl -X GET "https://binary.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0/assets"
 
 **Using Python to list all assets of an artefact version:**
 ::
 
     import requests
 
-    url = "https://binaries.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0/assets"
+    url = "https://binary.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0/assets"
     
     response = requests.get(url)
     # you should then log the response status code and content depending on your needs
@@ -298,7 +298,7 @@ We will now get a json response where the body will be a list of all the assets 
 **Using CURL to download a specific asset:**
 ::
 
-    curl -X GET "https://binaries.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0/assets/myfile1.txt" -o myfile1.txt
+    curl -X GET "https://binary.artefact.skao.int/binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0/assets/myfile1.txt" -o myfile1.txt
 
 **Using Python to download a specific asset:**
 ::
