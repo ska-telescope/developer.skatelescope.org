@@ -8,7 +8,6 @@ Continuous Integration
 
 Configuring a CI pipeline
 -------------------------
-
 To enable the Gitlab automation insert a
 `configuration
 file <https://docs.gitlab.com/ee/ci/yaml/README.html>`_ that must be placed in the root of the repository and called ".gitlab-ci.yml". It mainly contains definitions of how your project should be built. An example of
@@ -23,7 +22,6 @@ the button “Run pipeline” on a specific branch (i.e. master).
 
 Using a specific executor
 -------------------------
-
 The pipeline by default will run with a shared runner made available from GitLab.
 It is also possible to assign specific SKA runners to the project (by adding the `tags <https://docs.gitlab.com/ee/ci/yaml/README.html#tags>`__).
 To do that the option must be enabled:
@@ -107,21 +105,15 @@ In order to automate the process as much as possible for the teams, the
 metrics collection, and badge creation as long as the 5 points above are
 observed.
 
-In order to use this automation, the `post_step` from the `templates-repository` must be included, i.e.:
+In order to use this automation, the `finaliser` from the `templates-repository` must be included, i.e.:
 :code:`.gitlab-ci.yml`.
 
 .. code-block:: yaml
 
-  # Create Gitlab CI badges from CI metrics
-  # https://developer.skao.int/en/latest/tools/continuousintegration.html#automated-collection-of-ci-health-metrics-as-part-of-the-ci-pipeline
   include:
-    - project: 'ska-telescope/templates-repository'
-      file: 'gitlab-ci/includes/post_step.yml'
+  - project: 'ska-telescope/templates-repository'
+    file: 'gitlab-ci/includes/finaliser.gitlab-ci.yml'
 .. _ManualMetrics:
-
-**Note:** You can't redefine the `.post` step in your CI code, or it will break the functionality.
-In case you need to use the `.post` step for the CI pipeline then you must use the manual method for
-generating the badges.
 
 Manual Collection of CI health metrics as part of the CI pipeline
 ------------------------------------------------------------------
@@ -135,8 +127,6 @@ of the CI pipeline by the teams by collecting the relevant information from the
 **An important point to notice, is that** :code:`ci-metrics.json` **shouldn't
 exist as part of the repository, but, be created specifically as part of the CI
 pipeline.**
-The file must be created and properly populated before the start of the marked
-:code:`stage: .post` step in the  CI pipeline (:code:`.gitlab-ci.yml` file).
 
 The metrics should be collected under the following structure:
 
@@ -196,8 +186,6 @@ The metrics should be collected under the following structure:
 
 CI pipeline stage descriptions
 ------------------------------
-
-
 The CI/CD pipeline will ensure that software projects are packaged, tested and released in a consistent and predictable manner.
 SKA Pipelines are viewable and executable at https://gitlab.com/ska-telescope
 
@@ -249,7 +237,6 @@ Test
 """"
 The test stage must install/make use of the packages created during the build stage and execute tests on the installed software. Tests should be grouped into Fast / Medium / Slow / Very Slow categories. For more details, read the :doc:`/policies/ska-testing-policy-and-strategy`.
 
-
 Input
   The output from the Build stage. E.g .deb or .whl or docker image.
   Input could also consist of test data or environment.
@@ -286,8 +273,6 @@ System tests
   The complete solution, integrated hardware and software is tested. There tests ensure that the system requirements are met.
 
 
-
-
 Publish
 """""""
 Once the build and test stages have completed successfully the output from the build stage is uploaded to the SKA software repository. This stage may only be applicable on git tag commits for full releases in certain projects.
@@ -307,7 +292,6 @@ Input
 
 Output
   The generated output in JUnit format containing the pipeline container scanning results. 
-
 
 Pages
 """""
@@ -333,10 +317,8 @@ Input
 Output
   The generated HTML containing the latest documentation.
 
-
 Using environment variables in the CI pipeline to upload to the Central Artefact Repository
 -------------------------------------------------------------------------------------------
-
 There are several environment variables available in the CI pipeline that should be used when uploading Python packages and Docker images to the Central Artefact Repository.
 This will make these packages available to the rest of the SKA project.
 This section describes some of these variables.
@@ -344,7 +326,6 @@ A :ref:`full list <gitlab-variables>` is also available.
 
 Python Modules
 ______________
-
 The Central Artefact Repository PYPI destination as well as a username and password is available.
 For a reference implementation see the `ska-tango-base .gitlab-ci.yaml <https://gitlab.com/ska-telescope/ska-tango-base/-/blob/main/.gitlab-ci.yml>`_
 
@@ -371,11 +352,8 @@ Note the following:
         - $CI_COMMIT_MESSAGE =~ /^.+$/ # Confirm tag message exists
         - $CI_COMMIT_TAG =~ /^((([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?)(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?)$/ # Confirm semantic versioning of tag
 
-
-
 OCI images
 _____________
-
 The Central Artefact Repository Docker registery host and user is available.
 For a reference implementation see the `SKA docker gitlab-ci.yml <https://gitlab.com/ska-telescope/ska-tango-images/blob/master/.gitlab-ci.yml>`_
 
