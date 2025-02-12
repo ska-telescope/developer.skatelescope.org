@@ -35,7 +35,7 @@ Using RAW Artefacts
 ====================
 Due to the non standard nature of RAW artefacts, these don't have a standardised tool to manage them.
 
-While for Python we use `pip` and for `C++` we use `conan`, for RAW artefacts we don't have a standard tool to manage them. 
+While for Python we use `pip` and for `C++` we use `conan`, for RAW artefacts similar tools aren't accepted as standards.
 This is because RAW artefacts are not meant to be used as a dependency in other projects, but rather as a standalone artefact
 that can be used to build other artefacts.
 
@@ -157,7 +157,7 @@ The artefact version will now be updated with the new assets. The assets for thi
 
 Delete an artefact version
 ``````````````````````````
-This functionality is not intended to be used often, but yet, we do provide a way to delete an uploaded artifact version in case the need arises.
+This functionality is not intended to be used often, but, yet, there is a process in place to delete an uploaded artefact version in case the need arises.
 The procedure is straightforward and can be done with a single request.
 
 - Name: ``myartefact``
@@ -180,7 +180,7 @@ The procedure is straightforward and can be done with a single request.
 
 The artefact version will now be deleted and will no longer be available in the repository.
 
-Check artifact metadata and download it by name and version tag
+Check artefact metadata and download it by name and version tag
 ```````````````````````````````````````````````````````````````
 This is another straightforward example. We have an artefact that we want to download from the repository.
 For identifying it all we will need is the name and the tag of the artefact.
