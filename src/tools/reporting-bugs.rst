@@ -1,6 +1,6 @@
+********************************
 Reporting and Management of Bugs
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+********************************
 
 .. toctree::
     :maxdepth: 1
@@ -14,7 +14,8 @@ Introduction
 
    A Software Bug is an error, flaw or fault in a computer program or system that causes it to produce an incorrect or unexpected result, or to behave in unintended ways.
 
-The purpose of this chapter is to outline the processes by which the SKA Project will report and track software bugs. After this introduction there is a brief description of how to report bugs, an outline of the bug triaging processes and lastly a description of the process for fixing bugs and the responsibilities of different stakeholders.
+The purpose of this chapter is to outline the processes by which the SKA Project will report and track software bugs. 
+After this introduction there is a brief description of how to report bugs, an outline of the bug triaging processes and lastly a description of the process for fixing bugs and the responsibilities of different stakeholders.
 
 The SKA uses JIRA as its bug tracking system, for alignment with all software development processes.
 
@@ -26,7 +27,8 @@ Categorising Bug Scope
 
 To try and minimise the number of bug reports exposed to the whole project the SKA recognises two main types of bug, “system-level” bugs and “team-level” bugs. These are reported in different JIRA projects.
 
-A team-level bug is one that is judged to affect only one team and also not affect the functionality of the SKA system as a whole. It would normally be discovered within that team during their testing (though of course team level bugs could be found by other teams).
+A team-level bug is one that is judged to affect only one team and also not affect the functionality of the SKA system as a whole. 
+It would normally be discovered within that team during their testing (though of course team level bugs could be found by other teams).
 
 A system-level bug is one that is judged to affect the wider SKA system beyond repos managed by one team.
 
@@ -57,15 +59,24 @@ Priority            Provide your own estimates of the Priority. (See below)
 
 If there is more information you can provide (e.g. Linked Issues, suggested Collaborators who may be interested) please do.
 
-You may not be or feel able to provide all of this information, but please try - the more information you can provide (while your memory is fresh) will help to reproduce and fix the problem. If you can access logs that may contain useful information, please link to them or attach them to the ticket. If there are any error messages, please provide them in your bug report.
+You may not be or feel able to provide all of this information, but please try - the more information you can provide (while your memory is fresh) will help to reproduce and fix the problem. 
+If you can access logs that may contain useful information, please link to them or attach them to the ticket. 
+If there are any error messages, please provide them in your bug report.
 
 A useful guide to how to report bugs effectively can be found here: https://www.chiark.greenend.org.uk/~sgtatham/bugs.html.
 
-Team-level bugs (not affecting wider system or other teams) should be reported in the relevant agile team’s JIRA project, using the issue type “bug”. The same guidelines for reporting may be used, but of course please tailor to the needs of your team.
+Team-level bugs (not affecting wider system or other teams) should be reported in the relevant agile team’s JIRA project, using the issue type “bug”. 
+The same guidelines for reporting may be used, but of course please tailor to the needs of your team.
 
-**Do I need to report a bug that I fixed as soon as I saw it?** The SKA Project encourages bug fixing “on-the-fly”, i.e. without the need to enter a bug report JIRA ticket. However, “on-the-fly” means that any discovered bug must be fixed *in the same sprint*. If the bug will take longer to fix, or there is no time now then it should be reported. It should also be reported if it affects more than one team, so that all the teams know about it.
+**Do I need to report a bug that I fixed as soon as I saw it?** 
+The SKA Project encourages bug fixing “on-the-fly”, i.e. without the need to enter a bug report JIRA ticket. 
+However, “on-the-fly” means that any discovered bug must be fixed *in the same sprint*. 
+If the bug will take longer to fix, or there is no time now then it should be reported. 
+It should also be reported if it affects more than one team, so that all the teams know about it.
 
-The SKB JIRA Project also supports the reporting of incidents, by selecting the JIRA issue type of “Incident”. Incidents, when a bug has a more direct impact on stakeholders, should be reported in more or less the same way. There is more information on :doc:`Incident Management </policies/incident-management>`.
+The SKB JIRA Project also supports the reporting of incidents, by selecting the JIRA issue type of “Incident”. 
+Incidents, when a bug has a more direct impact on stakeholders, should be reported in more or less the same way. 
+There is more information on :doc:`Incident Management </policies/incident-management>`.
 
 
 .. TODO::
@@ -116,7 +127,8 @@ Lowest              A resolution is required when it is convenient.
      Security Issues will normally be classified as Critical - there is a potential for a critical loss of functionality and/or data.
 
 
-Some of the possible extreme combinations here (e.g. a Critical bug of Lowest priority) will seem unlikely, though it may be possible to understand some apparently contradictory combinations where work-arounds are available and it is clear the bug may take a while to fix and/or will be fixed in a later release. These judgements should be part of the triage process.
+Some of the possible extreme combinations here (e.g. a Critical bug of Lowest priority) will seem unlikely, though it may be possible to understand some apparently contradictory combinations where work-arounds are available and it is clear the bug may take a while to fix and/or will be fixed in a later release. 
+These judgements should be part of the triage process.
 
 "Trivial" bugs could be assigned to new developers as introductory exercises.
 
@@ -147,6 +159,8 @@ The Reporter should then put the bug into the *Assessment* state, after consider
 If the Reporter cannot triage the bug themselves, they should assign to a Program Level Architect, who becomes the Bug Owner.
 This may be necessary for bugs where the impact is unclear, or where additional visibility is needed.
 
+The reporter may elect to set the *Validation Required* checkbox on the SKB bug to ensure that the bug goes through the Validation phase, rather than allowing the bug to be fast tracked bypassing this phase. 
+
 Assessment
 ^^^^^^^^^^
 The Bug Owner (the current Assignee) reviews the information provided, and assesses the Severity and Priority of the bug.
@@ -158,7 +172,7 @@ The assignee then populates the *Agile Team(s)* field with the teams needed to w
 If the Bug Owner is the original reporter, at this point, they should assign the ticket to a Product Owner or Manager who will be able to ensure that the bug is addressed by the team(s).
 Otherwise, the Bug Owner remains the assignee.
 
-Weekly sync meetings are used to communicate assigned bugs to teams; however, the very highest priority bugs will require speedier action, and Slack or email amy be used to make contact with the teams.
+Weekly sync meetings are used to communicate assigned bugs to teams; however, the very highest priority bugs will require speedier action, and Slack or email may be used to make contact with the teams.
 
 Assigned
 ^^^^^^^^
@@ -172,6 +186,15 @@ Once work begins to fix the bug, the status should be updated to *In Progress*.
 Any member of the team may make this status update.
 We intend to automate this, so that progress on the child issues automatically sets the parent Bug to the *In Progress* status.
 
+If the Product Owner determines that the bug is rather a *new requirement* instead of an existing requirement that is not working, then the following actions should be taken:
+
+   * From the *More* menu, select *Create Linked Issue*
+   * Create a new Story or Feature/Enabler as appropriate
+   * Ensure that a *Relates To* link is established between the Bug and new issue
+   * *Discard* the bug with a resolution set to *Transferred*
+
+The original reporter will be notified of the above actions on the bug, with traceability to the new requirement.
+
 In Progress
 ^^^^^^^^^^^
 At this point, teams are actively investigating and/or fixing the bug. 
@@ -180,51 +203,58 @@ Teams should progress their tickets to the Done status according to the timeline
 
 Before moving to the next status in the lifecycle, the bug fix must be:
 
-* Versioned - identified as part of a version of one or more software artefacts.
+* Versioned - identified as part of a product version of one or more software artefacts.
 * Published - be made available via the versioned software.
 * Deployed - be deployed on an integration test environment (as a minimum).
 
-.. note:: To Do.
-   The SKAO software release process is still a work in progress. This page will be updated with links once it is approved.
+Refer to the `Release Management Process <https://confluence.skatelescope.org/display/SE/Release+Management>`_ for details relating to the management of product versions. 
 
 A Product Version would typically be associated with the bug ticket using the "Is Delivered By" relationship, where the bug fix is delivered by the Version.
-
-Once the bug fix has been deployed, and a test (or set of tests) confirms that it addresses the original issue, the result of the tests should be captured in the Bug ticket, using the *Outcomes* field.
+The next step is for the Team(s) to prove that the new product version(s) fixes the bug i.e. to verify the bug has been addressed. 
 
 At this point any Product Owner involved in fixing the bug may update the bug status to Verifying.
 
 Verifying
 ^^^^^^^^^
-The Bug Owner (assignee) verifies the fix:
+Verification is a test of a system to prove that it meets all its specified requirements at a particular stage of its developement. Verification occurs during the development phase and is performed by the development team(s) fixing the bug.
 
-* Outcomes have been captured, showing appropriate test results.
-* The Definition of Done has been met:
+  * Team Issues marked Done
+  * Solution Intent is Updated (if applicable)
+  * Functional Testing Passes
+  * Integration Testing Passes
+  * Regression Testing Passes
+  * Non-functional requirements (NFRs) are Met
+  * Outcomes Reviewed
+  * Accepted by Content Authority
 
-  * Team Tickets have been accepted.
-  * Solution Intent has been updated (if applicable).
-  * Tests are passing.
-  * Non-functional requirements (NFRs) are met.
-  * The new software versions have passed integration tests.
+If verification fails, the status is changed back to *In Progress*, and the relevant teams continue to investigate and prepare an updated product version.
 
-If verification fails, the status is changed back to *Assigned*, and the Product Owner(s) for the relevant teams must be informed of any issues.
-Otherwise, the status is updated to *Validating*, and the Assignee is updated to an appropriate validator.
-The original reporter is usually a good candidate for performing validation tests.
-Less severe and lower priority bugs may be transitioned directly to *Done*.
+If verification succeeds, please update the *Outcomes* field with the results of the verification tests.
+The status is updated to *Validating*, and the Assignee is set to the original reporter, usually a good candidate for performing validation tests.
+Please also set the *Agile Teams* field to the team that the original reporter belongs to. This ensures that the bug becomes visible on the relevant team dashboard or ART Sync.
+
+Less severe and lower priority bugs may be transitioned directly to *Done* unless the reporter flagged the bug as *Validation Required* during the *Identified* stage.
 
 Validating
 ^^^^^^^^^^
-This should be performed on the same system that the bug was reported on, if at all possible.
-This ensures that the feedback loop is closed from the original bug report to the fix being applied and working as expected in the same environment in which it originally failed. 
+Validation is an activity that ensures that an end product stakeholder's true needs and expectations are met. Validation typically occurs at the end of the development phase and exercises real-world scenarios.
+Validation involves end product stakeholders (users) e.g. AIV teams. This should be performed on the same system that the bug was reported on, if at all possible. 
+Validation ensures that the feedback loop is closed from the original bug report to the fix being applied and working as expected in the same environment in which it originally failed. 
 
-If validation fails, the status is changed back to *Assigned*, and the previous Bug Owner becomes the Assignee.
+  * Reproduced Bug (where applicable)
+  * Retest with Fix Passes
+  * Regression Testing Passes
+
+If validation fails, the status is changed back to *Assigned*, and the previous Bug Owner becomes the Assignee (please also ensure the relevant Agile Teams are selected.
 
 If validation passes, the status should be updated to *Done*, and the *Resolution* field to *Resolved*.
 
-Bugs will automatically transition to *Done* if they are not validated within 2 weeks. Bugs automatically transitioned to *Done* will have a resolution set to *Not Validated* and hence can always be identified in case Validation need to be performed at a later stage.
+Less severe and lower priority bugs will automatically transition to *Done* if they are not validated within 2 weeks unless the reporter flagged the bug as *Validation Required*. 
+Bugs automatically transitioned to *Done* will have a resolution set to *Not Validated* and hence can always be identified in case Validation needs to be performed at a later stage.
 
 Done
 ^^^^
-The bug has been verified by a Bug Owner, and validated by an appropriate user.
+The bug has been verified by a Bug Owner, and validated by an appropriate end product stakeholder.
 The bug will not receive further attention.
 
 Blocked
