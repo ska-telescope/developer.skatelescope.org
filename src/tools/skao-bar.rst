@@ -22,6 +22,7 @@ Detailed Operation list
 =======================
 
 The tool includes the following pages: 
+
 * `Upload an artefact <https://k8s-services.skao.int/binary_artefacts_ui/upload>`__, 
 * `List repositories <https://k8s-services.skao.int/binary_artefacts_ui/repositories>`__,
 
@@ -35,7 +36,7 @@ Using RAW Artefacts
 ====================
 Due to the non standard nature of RAW artefacts, these don't have a standardised tool to manage them.
 
-While for Python we use `pip` and for `C++` we use `conan`, for RAW artefacts similar tools aren't accepted as standards.
+While for Python we use `wheels` and for `C++` we use `conan`, for RAW artefacts similar tools aren't accepted as standards.
 This is because RAW artefacts are not meant to be used as a dependency in other projects, but rather as a standalone artefact
 that can be used to build other artefacts.
 
@@ -158,6 +159,7 @@ The artefact version will now be updated with the new assets. The assets for thi
 Delete an artefact version
 ``````````````````````````
 This functionality is not intended to be used often, but, yet, there is a process in place to delete an uploaded artefact version in case the need arises.
+
 The procedure can be done with a single request.
 
 - Name: ``myartefact``
