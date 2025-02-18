@@ -34,11 +34,7 @@ To access a specific file called zzz, the link will be: https://k8s-services.ska
 
 Using RAW Artefacts
 ====================
-Due to the non standard nature of RAW artefacts, these don't have a standardised tool to manage them.
-
-While for Python we use `wheels` and for `C++` we use `conan`, for RAW artefacts similar tools aren't accepted as standards.
-This is because RAW artefacts are not meant to be used as a dependency in other projects, but rather as a standalone artefact
-that can be used to build other artefacts.
+Due to the non standard nature of RAW artefacts, these don't have an universal standardised tool to manage them and instead go on a project by project basis.
 
 As an effort to align their usage inside the SKAO, we have defined a procedure to follow when creating and using RAW artefacts and are
 providing a REST API to manage them, making the bridge between the end user and the Nexus Repository Manager API. This will provide
@@ -49,7 +45,7 @@ REST API
 --------
 The principle of the REST API is to provide a separation between artefacts and their assets inside a single repository. This allows the user to manage the artefacts in a more granular way and to be able to upload and download only the assets that are needed.
 
-The REST API is available at the following link: `SKAO RAW <https://binary.artefact.skao.int>`__ where you can check its documentation.
+The REST API is available at the following location: ``<https://binary.artefact.skao.int>``.
 
 .. list-table:: Artefact API Endpoints
    :widths: 10 40 30
@@ -92,7 +88,6 @@ The REST API is available at the following link: `SKAO RAW <https://binary.artef
 Example Usage Scenarios
 -----------------------
 Let's now see some examples of how to use the REST API to manage artefacts.
-These examples are taken from real use cases we had - at the time of this writing - in the project.
 
 .. _bar_api_example_post:
 
@@ -128,7 +123,11 @@ We have an artefact with multiple files that we want to upload to the repository
 
 Update an artefact version with a new asset
 ```````````````````````````````````````````
-Imagine you want to update an artefact version with a new asset. This implies updating the all artefact version. You can't update a single asset and in fact are creating a new artefact and replacing the old one.
+Imagine you want to update an artefact version with a new asset. This implies updating the all artefact version. 
+
+.. Warning::
+
+    You can't update a single asset and in fact are creating a new artefact and replacing the old one.
 
 - Name: ``myartefact``
 - Tag: ``v1.0.0``
@@ -278,6 +277,7 @@ We will now get a json response with all the versions of the artefact. One of th
 The artefact assets (files) will now be in the ``myartefact.zip`` file. You can then extract them and use them as needed.
 
 .. _bar_api_example_get_asset:
+
 List all assets of an artefact version and download a specific asset
 ````````````````````````````````````````````````````````````````````
 In this example we will list all assets of an artefact version and download a specific asset.
