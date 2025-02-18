@@ -3,7 +3,7 @@ SKAO Binary Artefacts Repository (BAR)
 **************************************
 The SKAO Binary Artefacts Repository (BAR) is an application that enables the ability to publish and store binary artefacts so that they are archived and made available as part of the SKAO digital infrastructure.
 
-The tool is available at the following link: `SKAO BAR <https://k8s-services.skao.int/binary_artefacts_ui/upload>`__, 
+The tool is available at the following link: `SKAO BAR <https://k8s-services.skao.int/binary_artefacts_ui/upload>`__.
 
 Repository and artefacts
 ========================
@@ -23,8 +23,8 @@ Detailed Operation list
 
 The tool includes the following pages: 
 
-* `Upload an artefact <https://k8s-services.skao.int/binary_artefacts_ui/upload>`__, 
-* `List repositories <https://k8s-services.skao.int/binary_artefacts_ui/repositories>`__,
+* `Upload an artefact <https://k8s-services.skao.int/binary_artefacts_ui/upload>`__
+* `List repositories <https://k8s-services.skao.int/binary_artefacts_ui/repositories>`__
 
 From the repositories page it is possible to access the artefacts page. For example, if a user uploads a repository named XYZ the information about those artefacts will be accessible at the following link: https://k8s-services.skao.int/binary_artefacts_ui/xyz/artefacts.
 
@@ -93,6 +93,8 @@ Example Usage Scenarios
 -----------------------
 Let's now see some examples of how to use the REST API to manage artefacts.
 These examples are taken from real use cases we had - at the time of this writing - in the project.
+
+.. _bar_api_example_post:
 
 Uploading an artefact with multiple assets (files)
 ``````````````````````````````````````````````````
@@ -182,6 +184,8 @@ The procedure can be done with a single request.
 
 The artefact version will now be deleted and will no longer be available in the repository.
 
+.. _bar_api_example_get_name_tag:
+
 Check artefact metadata and download it by name and version tag
 ```````````````````````````````````````````````````````````````
 We have an artefact that we want to download from the repository. For identifying it all we will need is the name and the tag of the artefact.
@@ -227,6 +231,8 @@ Now that we have checked the metadata and we are sure we want to download the ar
 
 The artefact assets (files) will now be in the ``myartefact.zip`` file. You can then extract them and use them as needed.
 
+.. _bar_api_example_get_sha:
+
 List artefact versions, get sha key for specific version, and download artefact by sha key
 ``````````````````````````````````````````````````````````````````````````````````````````
 Another way to download an artefact, is by referencing its name and sha key.
@@ -271,6 +277,7 @@ We will now get a json response with all the versions of the artefact. One of th
 
 The artefact assets (files) will now be in the ``myartefact.zip`` file. You can then extract them and use them as needed.
 
+.. _bar_api_example_get_asset:
 List all assets of an artefact version and download a specific asset
 ````````````````````````````````````````````````````````````````````
 In this example we will list all assets of an artefact version and download a specific asset.
