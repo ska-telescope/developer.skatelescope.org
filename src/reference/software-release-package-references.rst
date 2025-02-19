@@ -22,7 +22,6 @@ Additionally, there are also upstream proxy/caching facilities available for:
 * Docker (OCI Images - only available inside AWS VPC)
 * Helm - `helm-proxy repository <https://artefact.skao.int/repository/helm-proxy/>`_ (from https://charts.helm.sh/stable)
 * PyPi - `pypi-all repository <https://artefact.skao.int/repository/pypi-all/>`_ (from pypi.python.org and include pypi-internal)
-* Conda - `conda-proxy repository <https://artefact.skao.int/repository/conda-proxy/>`_ (from https://repo.continuum.io/pkgs/)
 * Conan - `conan-proxy repository <https://artefact.skao.int/repository/conan-proxy/>`_ (from https://conan.bintray.com)
 * NPM - `npm-all repository <https://artefact.skao.int/repository/npm-all/>`_ (from https://registry.npmjs.org and include npm-internal which is not active yet)
 * Maven - `maven-public repository <https://artefact.skao.int/repository/maven-public/>`_ (from maven-release, maven-snapshots, https://repo1.maven.org/maven2/)
