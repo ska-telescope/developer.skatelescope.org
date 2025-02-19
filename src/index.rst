@@ -93,6 +93,8 @@ This section is about getting you up and running. It contains the onboarding mat
   tools/reporting-bugs
   tools/codeguides
   tools/dev-faq
+  tools/skao-bar
+  tools/skao-bar-migration-guidelines
 
 Development tools and practices
 -------------------------------
