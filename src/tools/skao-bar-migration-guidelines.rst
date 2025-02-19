@@ -4,6 +4,16 @@ Migration Guidelines for Binary Artefacts Repository (BAR) from Nexus Raw Artefa
 
 This page describes some examples use cases that have been identified on the SKAO project and gives guidelines for an easier migration.
 
+General Guidance
+================
+
+1. **Do**: Use the BAR API instead of Nexus search API to find the correct artefact to download following this example: :ref:`bar_api_example_get_name_tag`.
+2. **Do**: Flatten the target path/repo into the artefact name and use the version field to keep track of changes.
+3. **Do**: Push the files that are connected to that artefact version as artefact assets using the linked example: :ref:`bar_api_example_post`.
+4. **Do not**: Use hardcoded paths to download/upload artifacts.
+5. **Do not**: Use sha256 as part of the name as this is created automatically and added as a metadata property for the artefact.
+6. **Do not**: Parse the HTML output of the BAR UI to find and  download artefacts.
+
 STS-608 - SDP TelModel
 ======================
 
@@ -21,23 +31,6 @@ Uploading Artefacts
 4. Push the files using the linked example: :ref:`bar_api_example_post`.
 
     a) Please note that artefacts need a version field now. This can be any alphanumerical.
-
-raw-internal
-============
-
-There are too many different use cases for this repository for us to go through all of them. As such, we are going to provide some general guidance on how to migrate artefacts from this repository.
-
-Downloading Artefacts
----------------------
-
-1. Use the BAR API instead of Nexus search API to find the correct artefact to download following this example: :ref:`bar_api_example_get_name_tag`.
-
-Uploading artefacts
--------------------
-
-1. Request an API key for machine usage and use it as part of auth flow.
-2. The target repo/asset can be flattened into the name. i.e. ``ska-mid-cbf-talondx/fpga-test`` becomes ``ska-mid-cbf-talondx-fpga-test`` as the artifact name, and the version can be anything to keep track of changes.
-3. Push the diferent files presently under ``ska-mid-cbf-talondx/fpga-test`` using the linked example: :ref:`bar_api_example_post`
 
 p4-switch-internal
 ==================
@@ -105,13 +98,19 @@ Uploading artefacts
 2. The target asset can be flattened into the name. i.e. ``k8s-ci-ska-tmc-low-integration-41-sa-ci-ska-tmc-low-integration-41a2cebd-conf`` becomes ``k8s-ci-ska-tmc-low-integration`` as the artifact name, and the version can be anything to keep track of changes.
 3. Push the files ``conf``, ``on-demand-conf`` and ``low-ith-conf`` using the linked example: :ref:`bar_api_example_post`
 
-General Guidance
-================
+raw-internal
+============
 
-1. **Do**: Use the BAR API instead of Nexus search API to find the correct artefact to download following this example: :ref:`bar_api_example_get_name_tag`.
-2. **Do**: Flatten the target path/repo into the artefact name and use the version field to keep track of changes.
-3. **Do**: Push the files that are connected to that artefact version as artefact assets using the linked example: :ref:`bar_api_example_post`.
-4. **Do not**: Use hardcoded paths to download/upload artifacts.
-5. **Do not**: Use sha256 as part of the name as this is created automatically and added as a metadata property for the artefact.
-6. **Do not**: Parse the HTML output of the BAR UI to find and  download artefacts.
- 
+There are too many different use cases for this repository for us to go through all of them. As such, we are going to provide some general guidance on how to migrate artefacts from this repository.
+
+Downloading Artefacts
+---------------------
+
+1. Use the BAR API instead of Nexus search API to find the correct artefact to download following this example: :ref:`bar_api_example_get_name_tag`.
+
+Uploading artefacts
+-------------------
+
+1. Request an API key for machine usage and use it as part of auth flow.
+2. The target repo/asset can be flattened into the name. i.e. ``ska-mid-cbf-talondx/fpga-test`` becomes ``ska-mid-cbf-talondx-fpga-test`` as the artifact name, and the version can be anything to keep track of changes.
+3. Push the different files presently under ``ska-mid-cbf-talondx/fpga-test`` using the linked example: :ref:`bar_api_example_post`
