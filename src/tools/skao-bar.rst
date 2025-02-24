@@ -3,7 +3,7 @@ SKAO Binary Artefacts Repository (BAR)
 **************************************
 The SKAO Binary Artefacts Repository (BAR) is an application that enables the ability to publish and store binary artefacts so that they are archived and made available as part of the SKAO digital infrastructure.
 
-The tool is available at the following link: `SKAO BAR <https://k8s-services.skao.int/binary_artefacts_ui/upload>`__.
+The tool is available at the following link: `SKAO BAR <https://binary.artefact.skao.int>`__.
 
 Repository and artefacts
 ========================
@@ -18,19 +18,14 @@ Security
 ========
 To be able to access the tool a Gitlab account is required. This needs to be requested from the System Team in Slack or `System Team Support Desk <https://jira.skatelescope.org/servicedesk/customer/portal/166>`__. The user information will also be attached to the annotations in the artefact. Users can only see, with this tool, the artefacts they have uploaded but they can see all the repositories. Binary artefacts are immutable, they cannot be changed and they cannot be deleted.
 
-Detailed Operation list
+Web UI
 =======================
 
-The tool includes the following pages: 
+The tool features a `Web UI <https://binary.artefact.skao.int>`__ that enables users to:
 
-* `Upload an artefact <https://k8s-services.skao.int/binary_artefacts_ui/upload>`__
-* `List repositories <https://k8s-services.skao.int/binary_artefacts_ui/repositories>`__
-
-From the repositories page it is possible to access the artefacts page. For example, if a user uploads a repository named XYZ the information about those artefacts will be accessible at the following link: https://k8s-services.skao.int/binary_artefacts_ui/xyz/artefacts.
-
-A specific artefact can be downloaded in 2 possible ways: by downloading all the files composing it or by selecting a specific file. For example, if a user wants to download all the files from a repository called xxx with tag yyy then the link will be: https://k8s-services.skao.int/binary_artefacts_ui/download/xxx/yyy
-
-To access a specific file called zzz, the link will be: https://k8s-services.skao.int/binary_artefacts_ui/download/yetest/v1/zzz.
+* Search & Browse: Find artefacts quickly using a responsive search with filtering options.
+* Download Artefacts: Retrieve specific artefacts, including different versions, with an intuitive interface.
+* Upload & Manage: Securely upload new artefacts, attach metadata, and ensure proper versioning.
 
 Using RAW Artefacts
 ====================
@@ -45,7 +40,7 @@ REST API
 --------
 The principle of the REST API is to provide a separation between artefacts and their assets inside a single repository. This allows the user to manage the artefacts in a more granular way and to be able to upload and download only the assets that are needed.
 
-The REST API is available at the following location: ``<https://binary.artefact.skao.int>``.
+The REST API is available at the following location: ``https://binary.artefact.skao.int/api/v1``.
 
 .. list-table:: Artefact API Endpoints
    :widths: 10 40 30
@@ -313,7 +308,7 @@ We will now get a json response where the body will be a list of all the assets 
 
     import requests
 
-    url = "https://binary_artefacts/v1/artefacts/myartefact/tags/v1.0.0/assets/myfile1.txt"
+    url = "https://binary.artefact.skao.int/api/v1/artefacts/myartefact/tags/v1.0.0/assets/myfile1.txt"
     
     response = requests.get(url)
     with open("myfile1.txt", "wb") as f:

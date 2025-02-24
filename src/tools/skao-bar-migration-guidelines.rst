@@ -49,7 +49,7 @@ Uploading artefacts
 
     a) Alternative 1: artifact name: ``sde``; version: ``bf-reference-bsp-9.13.0``.
     b) Alternative 2: artifact name: ``sde-bf-reference-bsp``; version ``9.13.0``.
-3. Push the files using the instructions at :ref:`bar_api_example_post`, or manually using the `UI <https://k8s-services.skao.int/binary_artefacts_ui/upload>`__.
+3. Push the files using the instructions at :ref:`bar_api_example_post`, or manually using the `UI <https://binary.artefact.skao.int>`__.
 
 raw-telmodel
 ============
@@ -89,7 +89,7 @@ Downloading Artefacts
 ---------------------
 
 1. Ideally migrate to an automated process as described at :ref:`bar_api_example_get_name_tag` to avoid the need to download the artefacts manually.
-If this is not possible, use the `BAR UI <https://k8s-services.skao.int/binary_artefacts_ui>`__.
+If this is not possible, use the `BAR UI <https://binary.artefact.skao.int>`__.
 
 Uploading artefacts
 -------------------
