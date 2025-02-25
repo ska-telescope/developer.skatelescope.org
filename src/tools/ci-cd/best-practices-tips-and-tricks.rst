@@ -26,7 +26,7 @@ Below guidelines should be followed as the best practices for ensuring the secur
 If project token can not be used somewhere then private token should be used which will be your access token.
 The ci token can be found in the pipeline by default.
 
-For more details on CI/CD job token, please see `GitLab CI/CD Job Tokens <https://docs.gitlab.com/ee/api/README.html#gitlab-cicd-job-token>`__.
+For more details on CI/CD job token, please see `GitLab CI/CD Job Tokens <https://docs.gitlab.com/ee/ci/jobs/ci_job_token.html>`__.
 
 The project access tokens can be found at : https://gitlab.com/ska-telescope/<project_name>/-/settings/access_tokens. For example for developer portal project, project access tokens can be found at : https://gitlab.com/ska-telescope/developer.skatelescope.org/-/settings/access_tokens
 
