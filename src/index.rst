@@ -99,13 +99,15 @@ This section is about getting you up and running. It contains the onboarding mat
 Development tools and practices
 -------------------------------
 
-Here is the journey SKA Developers take to turn ideas into deployed code. Some of these tasks will be done every day; others less frequently. Feel free to click on each item to navigate to relevant explanations, tutorials, how-to guides or reference documentation.
+Here is the journey SKA Developers take to turn ideas into deployed code. 
+Some of these tasks will be done every day; others less frequently. 
+Feel free to click on each item to navigate to relevant explanations, tutorials, how-to guides or reference documentation.
 
 .. mermaid::
 
   flowchart TD
     subgraph Getting Started
-        A[Develop Inside a Container] --> C[Setup PyTango]
+        A[Develop Inside a Container] --> C[Setup]
         B[Develop Locally] --> C
         C --> D[Set up Environment: Clone the Repo]
         C --> E[Set up Environment: Create the Repo]
@@ -115,7 +117,7 @@ Here is the journey SKA Developers take to turn ideas into deployed code. Some o
     subgraph Coding & Testing
         F --> F1[Write Code]
         F1 --> G[Lint Code]
-        G --> H[Build Python Wheel]
+        G --> H[Build Artifacts]
         H --> S[Get Unit Tests Running Locally]
         S --> F1
     end
@@ -141,30 +143,26 @@ Here is the journey SKA Developers take to turn ideas into deployed code. Some o
     subgraph Release
         O --> P[Update CHANGELOG/Documentation]
         P --> Q[Update Versions/Release]
-        Q --> R[Deploy to PSI/ITF?]
+        Q --> R[Deploy to PSI/ITF]
+        R --> Z[Deploy to Production]
     end
 
-PyTango Developer Journey
+
+Python Developer Journey
 =========================
-
-.. note:: 
-  This journey is based on a pytango developer journey for now but will be changed to support more later.
-
 
 Setup Environment
 #################
 
 1. Develop Inside a Container
 
-  1. Setup PyTango
-  2. Set up Environment: Clone the Repo
-  3. Create the Work Branch
+  1. Set up Environment: Clone the Repo
+  2. Create the Work Branch
 
 2. Develop Locally
 
-  4. Setup PyTango
-  5. Set up Environment: Clone the Repo
-  6. Create the Work Branch
+  1. Set up Environment: Clone the Repo
+  2. Create the Work Branch
 
 Coding & Testing
 ################

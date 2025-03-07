@@ -73,7 +73,7 @@ Establish the associated secrets in Hashicorp Vault so that the secrets are pick
 by the following steps to seed the TangoDB and configure the connection with the DatabaseDS.
 
 Prepare your environment
-=======================
+========================
 
 Prepare for the deployment of components by exporting the following environment variables
 (substituting for your own values):
