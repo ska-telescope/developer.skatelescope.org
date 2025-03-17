@@ -37,6 +37,17 @@ Simulations
 
   simulations
 
+Tango
+=====
+
+   ============= =================
+   Documentation Gitlab repository
+   ============= =================
+   ============= =================
+
+.. toctree::
+  :maxdepth: 1
+
 MVP
 ===
 
