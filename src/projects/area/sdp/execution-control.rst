@@ -27,15 +27,6 @@ How to use the console is described in the `SDP Integration documentation
 `configuration database CLI <https://developer.skao.int/projects/ska-sdp-config/en/latest/cli.html>`__
 (``ska-sdp`` command).
 
-Operator Interface
-++++++++++++++++++
-
-The operator interface provides a web interface to monitor the configuration of
-the SDP.
-
-- `Repository <https://gitlab.com/ska-telescope/sdp/ska-sdp-opinterface>`__
-- `Documentation </projects/ska-sdp-opinterface/en/latest/>`__
-
 Jupyter Notebooks
 +++++++++++++++++
 
