@@ -31,7 +31,7 @@ Python Processing Function Wrappers
 +++++++++++++++++++++++++++++++++++
 
 Contains processing function wrappers and reference implementations for imaging, calibration,
-coordinate systems, etc, implemented in Python. It meant to allow low-level processing function
+coordinate systems, etc, implemented in Python. It is meant to allow low-level processing function
 libraries (e.g ska-sdp-func) to present high-level interfaces using ska-sdp-datamodel.
 
 - `Repository <https://gitlab.com/ska-telescope/sdp/ska-sdp-func-python>`__
