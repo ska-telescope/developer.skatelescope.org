@@ -10,7 +10,7 @@ Memory Data Models
 The repository provides a set of data models involved in radio astronomy
 visibility processing. The models are specifically meant to facilitate
 passing data between services and processing components within the SDP.
-They are mostly based on xarray.Dataset.
+They are mostly based on `xarray.Dataset <https://docs.xarray.dev/en/stable/user-guide/data-structures.html#dataset>`__.
 
 - `Repository <https://gitlab.com/ska-telescope/sdp/ska-sdp-datamodels>`__
 - `Documentation </projects/ska-sdp-datamodels/en/latest/>`__
