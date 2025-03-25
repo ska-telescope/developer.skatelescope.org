@@ -15,7 +15,7 @@ In general, this approach adds, for each stage - deploy, integration and staging
 
 * **Info Environment** - once the deploy and test jobs have been executed successfully, this job can be executed to provide an overview of the environment deployed
 
-* **Stop Environment**  - job automatically executed after 4 hours, deleting the created envrionment. It can also be executed manually, if necessary, before the defined 4 hours
+* **Stop Environment**  - job automatically executed after 4 hours for development environments only, deleting the created environment. It can also be executed manually, if necessary, before the defined 4 hours
 
 Once, at least, the Deploy and Test Environment jobs are executed successfully a new test environment will be deployed into STFC. If you have feedback about this, please raise it in #team-system-support to improve the solution.
 
