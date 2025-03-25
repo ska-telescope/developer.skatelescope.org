@@ -11,11 +11,11 @@ In general, this approach adds, for each stage - deploy, integration and staging
 
 * **Deploy Environment** - first job to be executed to create the new environment
 
+* **Test Environment** - second job to be executed, automatically, once the deploy job finishes to check that something has been deployed and is running
+
 * **Info Environment** - once the deploy and test jobs have been executed successfully, this job can be executed to provide an overview of the environment deployed
 
 * **Stop Environment**  - job automatically executed after 4 hours, deleting the created envrionment. It can also be executed manually, if necessary, before the defined 4 hours
-
-* **Test Environment** - second job to be executed, automatically, once the deploy job finishes to check that something has been deployed and is running
 
 Once, at least, the Deploy and Test Environment jobs are executed successfully a new test environment will be deployed into STFC. If you have feedback about this, please raise it in #team-system-support to improve the solution.
 
@@ -101,8 +101,7 @@ In addition, the instructions on how to connect to the created environment are a
    Info job outputs
 
 
-Having connected to the environment you can start using it as needed. The example below shows a simple test to confirm that the local machine and the remote cluster are able to communicate.
-
+Having connected to the environment you can start using it as needed. To be able to connect to any service inside a namespace in the k8s cluster (the environment), it is possible to access it with its name which is (the standard k8s name for a service) in the form: <service name>.<namespace>.svc.<cluster domain>. The example below shows a simple test to confirm that the local machine and the remote cluster are able to communicate in the context of a TANGO environment. In this case the service where we want to connect is the databaseds called "tango-databaseds" in the namespace "ci-dev-ska-tango-examples" with cluster domain "techops.internal.skao.int".
 
 .. code-block:: bash
   
