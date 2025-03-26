@@ -15,8 +15,10 @@ $(document).ready(
     }
 
     function filterProjectsByArea(projects, area) {
-      return projects.filter((a) => a.tag_list.includes(area));
-    }
+      return projects.filter((a) =>
+        a.tag_list.some((tag) => tag.toLowerCase() === area.toLowerCase())
+      );
+    }    
 
     function renderProjects(projects, tableId) {
       const list = $("#" + tableId);

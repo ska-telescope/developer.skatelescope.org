@@ -10,7 +10,7 @@ Memory Data Models
 The repository provides a set of data models involved in radio astronomy
 visibility processing. The models are specifically meant to facilitate
 passing data between services and processing components within the SDP.
-They are mostly based on xarray.Dataset.
+They are mostly based on `xarray.Dataset <https://docs.xarray.dev/en/stable/user-guide/data-structures.html#dataset>`__.
 
 - `Repository <https://gitlab.com/ska-telescope/sdp/ska-sdp-datamodels>`__
 - `Documentation </projects/ska-sdp-datamodels/en/latest/>`__
@@ -31,7 +31,7 @@ Python Processing Function Wrappers
 +++++++++++++++++++++++++++++++++++
 
 Contains processing function wrappers and reference implementations for imaging, calibration,
-coordinate systems, etc, implemented in Python. It meant to allow low-level processing function
+coordinate systems, etc, implemented in Python. It is meant to allow low-level processing function
 libraries (e.g ska-sdp-func) to present high-level interfaces using ska-sdp-datamodel.
 
 - `Repository <https://gitlab.com/ska-telescope/sdp/ska-sdp-func-python>`__
