@@ -1,3 +1,5 @@
+.. _feature-flags-tutorial-web:
+
 ================================================
 Feature Flagging with Unleash React Proxy Client
 ================================================
@@ -99,13 +101,13 @@ Key configuration parameters (to be set as environment variables for the contain
          REACT_APP_MSENTRA_CLIENT_ID: string;
          REACT_APP_MSENTRA_REDIRECT_URI: string;
          REACT_APP_MSENTRA_TENANT_ID: string;
-       +  REACT_APP_UNLEASH_PROXY_URL: string;
-       +  REACT_APP_UNLEASH_APP_NAME: string;
-       +  REACT_APP_UNLEASH_ENVIRONMENT: string;
-       +  REACT_APP_UNLEASH_INSTANCE_ID: string;
-       +  REACT_APP_UNLEASH_CLIENT_KEY: string;
-       +  REACT_APP_UNLEASH_REFRESH_INTERVAL: number;
-       +  REACT_APP_UNLEASH_DISABLE_METRICS: boolean;
+         REACT_APP_UNLEASH_PROXY_URL: string;
+         REACT_APP_UNLEASH_APP_NAME: string;
+         REACT_APP_UNLEASH_ENVIRONMENT: string;
+         REACT_APP_UNLEASH_INSTANCE_ID: string;
+         REACT_APP_UNLEASH_CLIENT_KEY: string;
+         REACT_APP_UNLEASH_REFRESH_INTERVAL: number;
+         REACT_APP_UNLEASH_DISABLE_METRICS: boolean;
        };
        // ... rest of file ...
 
@@ -268,7 +270,7 @@ Use a React Context Provider to initialise the Unleash client and make it availa
 
 1.  **Create a Context Provider**:
 
-    .. code-block:: typescript
+    .. code-block:: tsx
 
        // src/contexts/FeatureFlagProvider.tsx (New file)
        import React, { ReactNode } from 'react';
@@ -343,9 +345,9 @@ Use a React Context Provider to initialise the Unleash client and make it availa
                MSENTRA_TENANT_ID={MSENTRA_TENANT_ID}
                MSENTRA_REDIRECT_URI={MSENTRA_REDIRECT_URI}
              >
-       +        <FeatureFlagProvider> {/* Wrap App with the provider */}
+               <FeatureFlagProvider> {/* Wrap App with the provider */}
                  <App />
-       +        </FeatureFlagProvider>
+               </FeatureFlagProvider>
              </AuthProvider>
            </StoreProvider>
          </React.Suspense>
@@ -357,7 +359,7 @@ Basic Usage (useFlag Hook)
 
 Use the ``useFlag`` hook within your functional components to check if a specific feature is enabled.
 
-.. code-block:: typescript
+.. code-block:: tsx
 
    // Example inside a React component
    import React from 'react';
@@ -387,7 +389,7 @@ The Unleash context (like ``userId``, ``sessionId``, ``remoteAddress``, or custo
 
 1.  **Providing Initial Context via Provider**:
 
-    .. code-block:: typescript
+    .. code-block:: tsx
 
        // src/contexts/FeatureFlagProvider.tsx
        // ... imports ...
@@ -474,14 +476,14 @@ Let's conditionally render a part of the ``ReactSkeleton`` component based on a 
          const { t } = useTranslation('reactSkeleton');
          const [theNumber, setTheNumber] = React.useState(0);
          const [theText, setTheText] = React.useState('');
-       + const showExperimentalCard = useFlag('show-experimental-info-card'); // Use the flag
+        const showExperimentalCard = useFlag('show-experimental-info-card'); // Use the flag
 
          return (
            <>
              {/* ... (existing Grid containers for title, alert, text/number entries) ... */}
 
-       +      {/* Conditionally render the Card based on the feature flag */}
-       +      {showExperimentalCard && (
+             {/* Conditionally render the Card based on the feature flag */}
+             {showExperimentalCard && (
                <Grid container direction="row" alignItems="center" justifyContent="space-around">
                  <Grid size={3}>
                    <Card data-testid="cardId" variant="outlined">
@@ -493,7 +495,7 @@ Let's conditionally render a part of the ``ReactSkeleton`` component based on a 
                    </Card>
                  </Grid>
                </Grid>
-       +      )}
+             )}
            </>
          );
        };
