@@ -1,3 +1,5 @@
+.. _skao-bar-migration-guidelines:
+
 ***********************************************************************************************
 Migration Guidelines for Binary Artefacts Repository (BAR) from Nexus Raw Artefact Repositories
 ***********************************************************************************************

@@ -1,12 +1,19 @@
 **************************************
 SKAO Binary Artefacts Repository (BAR)
 **************************************
+
 The SKAO Binary Artefacts Repository (BAR) is an application that enables the ability to publish and store binary artefacts so that they are archived and made available as part of the SKAO digital infrastructure.
 
 The tool is available at the following link: `SKAO BAR <https://binary.artefact.skao.int>`__.
 
+Migrating from Nexus to BAR
+===========================
+
+* :ref:`skao-bar-migration-guidelines`
+
 Repository and artefacts
 ========================
+
 `Harbor <goharbor.io>`__ has been selected as the preferred solution for storing artefacts within SKAO. This technology includes two main concepts: repository and artefact. A repository is identified with a name and is composed of a collection of artefacts. 
 An artefact is identified with a hash (sha256) and, optionally, with a tag and is composed of one or more files. 
 
