@@ -45,7 +45,7 @@ Frontend applications running in a user's browser **cannot securely store** the 
 The `@unleash/proxy-client-react` library is specifically designed to communicate with this proxy.
 
 .. warning::
-   There are no central managed Proxy Server instances at the moment. You will need to deploy your own Proxy Server and configure it to connect to the upstream Unleash Server for now. Please let System Team know for such a need.
+   There are no central managed Proxy Server instances at the moment. You will need to deploy your own Proxy Server and configure it to connect to the upstream Unleash Server for now. Please let System Team know if you need this deployed.
 
 Installation
 ------------
@@ -61,7 +61,7 @@ This updates ``package.json`` and ``yarn.lock``. Commit these changes and rebuil
 Configuration
 -------------
 
-We need to provide runtime configuration to the React application when it's served. This project already uses a mechanism (`env_config.sh`, `env_config`, `env.js`, `env.ts`) to inject environment variables available at container startup into a `window.env` object accessible by the frontend JavaScript. We will leverage this.
+We need to provide runtime configuration to the React application when it's served. This project already uses a mechanism (`env_config.sh`, `env_config`, `env.js`, `env.ts`) to inject environment variables available at container startup into a `window.env` object accessible by the frontend JavaScript. We will use this.
 
 Key configuration parameters (to be set as environment variables for the container):
 

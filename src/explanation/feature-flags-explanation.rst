@@ -32,7 +32,7 @@ Feature flags offer several advantages:
 *   **Canary Releases & Gradual Rollouts:** Release features to a small subset of users (e.g., internal testers, beta users, percentage of traffic) before a full rollout, reducing risk.
 *   **A/B Testing/Compatibility:** Expose different versions of a feature to different user segments or dependencies to test new functionality or compatibility with other components and gather feedback.
 *   **Kill Switches:** Quickly disable problematic features in production without needing a rollback or hotfix deployment.
-*   **Development:** Allow developers to merge incomplete features to the main branch, hidden behind a flag, reducing merge conflicts and integration pain.
+*   **Development:** Allow developers to merge incomplete features (especially features which require updates to many components) to the main branch, hidden behind a flag, reducing merge conflicts and integration pain.
 *   **Operational Control:** Enable/disable features for specific operational needs (e.g., disabling a resource-intensive feature during peak load).
 
 .. image:: images/feature-flag-types.png
@@ -57,13 +57,13 @@ While powerful, feature flags should be used judiciously:
 GitLab Feature Flags
 ====================
 
-SKAO leverages GitLab's built-in `Feature Flags <https://docs.gitlab.com/operations/feature_flags/>`__ functionality, which is based on the open-source `Unleash <https://www.getunleash.io/>`__ feature management system.
+SKAO uses GitLab's built-in `Feature Flags <https://docs.gitlab.com/operations/feature_flags/>`__ functionality, which is based on the open-source `Unleash <https://www.getunleash.io/>`__ feature management system.
 
 What GitLab Provides:
 ---------------------
 *   **UI for Management:** A simple interface within your GitLab project (under Deploy -> Feature Flags) to create, toggle, and configure flags.
 *   **Environment Scoping:** Define different flag states and strategies per GitLab environment (e.g., `production`, `staging`, `integration`, `development`).
-*   **Basic Strategies:** Support for simple strategies like "All Users", "Percent of Users", "List of User IDs". This does not apply to most of SKAO's use cases. but this can leveraged as a list of options you can turn on and off at a deeper level.
+*   **Basic Strategies:** Support for simple strategies like "All Users", "Percent of Users", "List of User IDs". This does not apply to most of SKAO's use cases. but this can be used as a list of options you can turn on and off at a deeper level.
 *   **API Access:** Programmatic control over flags via the GitLab API.
 *   **Integration with Unleash:** Uses the Unleash protocol, allowing compatibility with standard Unleash client libraries.
 
@@ -85,7 +85,7 @@ This is not enabled in all the environments so you need to check with the System
 Naming Conventions
 ==================
 
-The following naming conventions are advised to be used for feature flags:
+The following naming conventions are advised:
 
 *   Prefix the flag name with the component name. This helps to identify the feature flag and its purpose.
 *   Use the same flag name across different repositories if a flag introduced in `Component A` needs to be controlled during the integration testing of `Subsystem X` or `System 1`. The *definition* and *control plane* (GitLab project) shifts, but the flag name checked in the code remains the same.

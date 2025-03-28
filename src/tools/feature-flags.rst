@@ -3,17 +3,15 @@
 Feature Flags
 =============
 
-Feature flags are a way to control the behavior of the software. They are typically used to control the behavior of the software in development. They are also used to control the behavior of the software in production.
+Feature flags are a way to control the behaviour of the software. They are typically used to control the behaviour of the software in development and production, by controlling the introduction of features across multiple software components.
 
-This guide provides SKAO software developers with the necessary information to understand, implement, and manage feature flags effectively within our ecosystem.
-
-We primarily leverage GitLab's Feature Flags functionality, often paired with the Unleash Proxy for performance and scalability, especially in our Kubernetes-based deployments.
+This page provides SKAO software developers with the necessary information to understand, implement, and manage feature flags effectively within our ecosystem.
 
 
 Explanation of feature flags
 ----------------------------
 
-* :ref:`feature-flags-explanation`
+* The :ref:`feature-flags-explanation` provides a detailed explanation of what feature flags are, why we want to use them and how they fit in to the software development lifecycle at the SKAO.
 
 Tutorials
 ---------
@@ -23,9 +21,9 @@ Tutorials
 How to use feature flags
 ------------------------
 
-* :ref:`feature-flags-how-to`
+* The :ref:`feature-flags-how-to` page gives in-depth tutorials for using feature flags at SKAO in React and Python.
 
 Reference
 ---------
 
-* :ref:`feature-flags-reference`
+* :ref:`feature-flags-reference` provides a detailed technical reference.
