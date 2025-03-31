@@ -1,6 +1,6 @@
 $(document).ready(
   (async function () {
-    const areas = ["sdp", "simulations", "mvp"];
+    const areas = ["sdp", "simulations", "mvp", "tango"];
     const loaders = initializeLoaders(areas);
     try {
       const projects = await fetchProjectsWithPagination(); // From utils.js
