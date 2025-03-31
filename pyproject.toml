@@ -1,11 +1,10 @@
 [tool.poetry]
 name = "developer-skatelescope-org"
-version = "0.1.0"
+version = "1.0.0"
 description = "SKAO Developer Portal"
 authors = ["Ugur Yilmaz <ugur.yilmaz@skao.int>"]
-license = "BSD-3"
+license = "BSD-3-Clause"
 readme = "README.md"
-packages = [{include = "developer"}]
 package-mode = false
 
 [[tool.poetry.source]]
